@@ -73,8 +73,7 @@ flowchart TD
 
 
 ## Bringup
-실행 환경은 Ubuntu 20.04, ROS .
-실행 호스트의 Catkin workspace 루트에서 다음 순서로 빌드 결과를 준비한다.
+실행 환경은 Ubuntu 24.04, ROS .
 
 ```bash
 source /opt/ros//setup.bash
@@ -83,12 +82,8 @@ catkin_make
 source devel/setup.bash
 ```
 
-전체 프로그램용 `run.sh`는 source 호출을 감지하면 별도의 Bash 프로세스에서 bringup을
-수행해 호출한 셸의 옵션, 작업 디렉터리, trap을 변경하지 않아야 한다. Ubuntu 20.04
-실행 호스트에서 `/opt/ros//setup.bash`를 불러오고 `catkin_make`를 실행한 뒤
-workspace의 `devel/setup.bash`를 불러온다. 이어서
-Localization → Object Detection → Traffic Light Recognition → LiDAR Path Planning →
-Parking Path Planning → Selector → Control 순서로 노드를 시작한다. 상시 실행 노드가
+전체 프로그램용 `run.sh`는 전체 SW를 실행한다. 단일 명령으로 빌드, 실행까지 수행한다.
+순서로 노드를 시작한다. 상시 실행 노드가
 종료되면 전체 프로그램도 종료하고, `Ctrl+C`를 누르면 스크립트가 실행한 모든 노드를
 함께 종료한다.
 
@@ -107,12 +102,7 @@ source ./run.sh
 알고리즘이나 의존성이 추가되더라도 아래 실행 계약은 유지한다.
 
 ```bash
-rosrun localization localization_node
-rosrun object_detection object_detection_node
-rosrun traffic_light traffic_light_node
-rosrun lidar_path_planning lidar_path_planning_node
-rosrun parking_path_planning parking_path_planning_node
-rosrun selector selector_node
+
 rosrun control control_node
 ```
 
@@ -123,11 +113,5 @@ rosrun control control_node
 파일을 추가한 패키지에만 적용한다.
 
 ```bash
-./src/localization/launch.sh
-./src/object_detection/launch.sh
-./src/traffic_light/launch.sh
-./src/lidar_path_planning/launch.sh
-./src/parking_path_planning/launch.sh
-./src/selector/launch.sh
 ./src/control/launch.sh
 ```
