@@ -55,6 +55,50 @@ ROS 관례에 따라 노드는 원으로, 토픽은 사각형으로 표현한다
 
 ```mermaid
 flowchart TD
+    SIM((("SIM")))
+    BRIDGE(("Sim Bridge Node"))
+    BUILDER(("HDMap Builder Node"))
+    TRACK(("HDMap Occupancy Tracker Node"))
+    REG("<br><br><br>      HDMap Registry      <br><br><br><br>")
+    GLOB(("Global Path Planner Node"))
+    LOC(("Local Path Planner Node"))
+    SPD(("Speed Annotator Node"))
+    CTRL(("Control Node"))
+
+    POSE["/Ego_pose"]
+    OBJS["/objects"]
+    TL["/traffic_light"]
+    GPATH["/global_path"]
+    LPATH["/local_path"]
+    SPDLIM["/speed_limit"]
+    CMD["/ctrl_cmd"]
+
+    BRIDGE ~~~ GLOB
+    BRIDGE ~~~ SPD
+
+    SIM <--> BRIDGE
+    BRIDGE --> POSE
+    BRIDGE --> OBJS
+    BRIDGE --> TL
+    POSE --> BUILDER
+    OBJS --> TRACK
+    TL --> TRACK
+    GLOB --> GPATH
+    GPATH --> LOC
+    LOC --> LPATH
+    SPD --> SPDLIM
+    SPDLIM --> CTRL
+    LPATH --> CTRL
+    
+    CTRL --> CMD
+    CMD --> BRIDGE
+
+    TRACK -->|read|REG
+    TRACK -->|write|REG
+    BUILDER -->|refresh|REG
+    GLOB -->|read|REG
+    LOC --> |read|REG
+    SPD -->|read|REG
 
 ```
 
