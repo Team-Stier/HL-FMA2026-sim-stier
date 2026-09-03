@@ -59,7 +59,7 @@ flowchart TD
     BRIDGE(("Sim Bridge Node"))
     BUILDER(("HDMap Builder Node"))
     TRACK(("HDMap Occupancy Tracker Node"))
-    REG("<br><br><br>      HDMap Registry      <br><br><br><br>")
+    REG("<br><br><br>HDMap Registry<br><br><br><br>")
     GLOB(("Global Path Planner Node"))
     LOC(("Local Path Planner Node"))
     SPD(("Speed Annotator Node"))
