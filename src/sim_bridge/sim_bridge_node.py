@@ -17,7 +17,7 @@ POSE_FIELDS = ('x', 'y', 'z', 'heading', 'pitch', 'roll')
 OBJECT_FIELDS = ('id', 'x', 'y', 'z', 'heading', 'speed', 'size_x', 'size_y', 'size_z')
 
 
-def decode_frame(frame):
+def decode_frame(frame, object_center_offset=(0.0, 0.0, 0.0)):
     if len(frame) != FRAME_SIZE:
         raise ValueError('expected 1109 bytes')
     ego = EGO.unpack_from(frame)
@@ -29,7 +29,16 @@ def decode_frame(frame):
             continue
         if not all(math.isfinite(value) for value in obj[1:]):
             raise ValueError('non-finite object field')
-        objects.append(obj)
+        dx, dy, dz = object_center_offset
+        cosine, sine = math.cos(obj[4]), math.sin(obj[4])
+        # ponytail: shared offset, add verified per-model offsets when available.
+        # Object packets have no pitch/roll: use yaw-only rotation.
+        # Config is reference -> center on every axis; publish the bottom in z.
+        position = (obj[1] + cosine * dx - sine * dy,
+                    obj[2] + sine * dx + cosine * dy, obj[3] + dz - obj[8] / 2)
+        if not all(math.isfinite(value) and abs(value) <= 3.4028234663852886e38 for value in position):
+            raise ValueError('object position outside finite float32 range')
+        objects.append((obj[0], *position, *obj[4:]))
     if not all(math.isfinite(value) for value in ego):
         raise ValueError('non-finite ego pose')
     return ego, objects, LIGHT.unpack_from(frame, 1104)
@@ -113,6 +122,11 @@ def main(args=None):
                 runtime = yaml.safe_load(source)
             with open(vehicle_path, encoding='utf-8') as source:
                 vehicle = yaml.safe_load(source)
+            offset = runtime['sim_bridge']['object_center_offset_m']
+            self.object_center_offset = tuple(offset[axis] for axis in ('x', 'y', 'z'))
+            if not all(type(value) in (int, float) and math.isfinite(value)
+                       for value in self.object_center_offset):
+                raise ValueError('sim_bridge.object_center_offset_m requires finite numeric x/y/z')
             self.allow_motion = runtime['allow_motion']
             if not isinstance(self.allow_motion, bool):
                 raise ValueError('allow_motion must be a boolean')
@@ -170,7 +184,7 @@ def main(args=None):
             self.next_connect = time.monotonic() + 1.0
 
         def publish_frame(self, frame, stamp):
-            ego_values, object_values, light_values = decode_frame(frame)
+            ego_values, object_values, light_values = decode_frame(frame, self.object_center_offset)
             ego = EgoPose()
             ego.header.stamp = stamp
             ego.header.frame_id = 'map'
