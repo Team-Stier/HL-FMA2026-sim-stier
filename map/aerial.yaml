@@ -1,0 +1,10 @@
+image: aerial_source.png
+frame_id: map
+bounds_xy_m: [-500.0, -1200.0, 2000.0, 1300.0]
+display_plane_z_m: 0.0
+source: HL_FMA_VTD_LivingLab.osgb
+source_sha256: 2d8f83fdc26cb7f8373e71cf850c70f7d90981362789fb474eb31b0d5b253296
+projection: orthographic_top_down
+image_size_px: [8192, 8192]
+pixel_size_m: 0.30517578125
+image_axes: right=+map_x, up=+map_y

@@ -80,7 +80,7 @@ flowchart TD
     TF --> DISPLAY
     DISPLAY --> SCREEN["화면"]
     TF --> AXES(("RViz TF display<br/>base_link 축 표시"))
-    TF --> CAMERA(("RViz 카메라<br/>Ego 위치 추종·월드 방향 고정<br/>화면 위 +x·왼쪽 +y"))
+    TF --> CAMERA(("RViz IdleFollow 카메라<br/>마우스 조작 중 map 기준 자유 이동<br/>10초 유휴 후 Ego 위치 추종·줌 유지<br/>화면 위 +x·왼쪽 +y"))
     MARKERS["map 좌표의 마커"] --> FIXED(("RViz Fixed Frame = map<br/>마커 좌표에 추가 변환 없음"))
     AXES --> SCREEN["화면"]
     CAMERA --> SCREEN
@@ -329,3 +329,15 @@ RViz Fixed Frame은 항상 `map`이며 아래 frame은 **데이터 좌표의 기
 | `/tf` | parent `map`, child `base_link` | Ego pose에서 생성; Path에는 원본 stamp의 변환 적용 |
 
 자료형과 메시지 계약: [README](../README.md), [객체 기준점 조사](05-object-reference-resolution.md), [ROS Marker](https://raw.githubusercontent.com/ros2/common_interfaces/jazzy/visualization_msgs/msg/Marker.msg), [ROS Path](https://raw.githubusercontent.com/ros2/common_interfaces/jazzy/nav_msgs/msg/Path.msg).
+
+## 화면 고정 텍스트 출력
+
+기존 절의 TEXT_VIEW_FACING 생성 경로는 이제 위치 없는 HUD 텍스트로 출력한다. Visualizer가 생성한 텍스트 전체가 대상이며 생산자의 query debug 마커는 별도다. 3D 기하 마커는 기존 frame·stamp 계약을 유지한다.
+
+```mermaid
+flowchart TD
+    SOURCE["수신 토픽의 값·source stamp<br/>Visualizer 자신의 map에서 얻은 ID·선종류"] --> FORMAT(("Visualizer<br/>표시 문자열 작성·토픽별 최신 항목 교체<br/>namespace/id 보존·좌표와 크기는 사용하지 않음"))
+    FORMAT --> HUD["/visualization/hud<br/>std_msgs/String·5Hz<br/>BEST_EFFORT·VOLATILE·KEEP_LAST 1"]
+    HUD --> DISPLAY(("RViz HUD Display<br/>viewport 왼쪽 위 16px·고정 글자 크기<br/>스크롤 가능·TF/카메라 변환 없음"))
+    DISPLAY --> SCREEN["화면 고정 텍스트 패널"]
+```

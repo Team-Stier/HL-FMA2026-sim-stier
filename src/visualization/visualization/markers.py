@@ -1,7 +1,7 @@
 import math
 
 from geometry_msgs.msg import Point
-from visualization_msgs.msg import Marker, MarkerArray
+from visualization_msgs.msg import Marker, MarkerArray, UVCoordinate
 
 
 def point(x, y, z=0.0):
@@ -24,12 +24,29 @@ def marker(header, namespace, index, kind, color=(0.8, 0.8, 0.8, 1.0)):
     return result
 
 
-def line(header, namespace, index, points, color, width=0.08, closed=False):
-    result = marker(header, namespace, index, Marker.LINE_STRIP, color)
+def line(header, namespace, index, points, color, width=0.08, closed=False, kind=Marker.LINE_STRIP):
+    result = marker(header, namespace, index, kind, color)
     result.scale.x = width
     result.points = list(points)
     if closed and result.points:
         result.points.append(result.points[0])
+    if kind == Marker.LINE_LIST:
+        result.points = [value for pair in zip(result.points, result.points[1:]) for value in pair]
+    return result
+
+
+def aerial_marker(header, image_path, bounds_xy, plane_z):
+    minimum_x, minimum_y, maximum_x, maximum_y = bounds_xy
+    result = marker(header, "aerial/osgb_orthographic", 0, Marker.TRIANGLE_LIST, (1, 1, 1, 1))
+    result.scale.x = result.scale.y = result.scale.z = 1.0
+    result.texture_resource = "embedded://" + image_path.name
+    result.texture.header = header
+    result.texture.format = "png"
+    result.texture.data = image_path.read_bytes()
+    for horizontal, vertical in ((0, 0), (0, 1), (1, 1), (0, 0), (1, 1), (1, 0)):
+        result.points.append(point(minimum_x + horizontal*(maximum_x-minimum_x),
+                                   maximum_y - vertical*(maximum_y-minimum_y), plane_z))
+        result.uv_coordinates.append(UVCoordinate(u=float(horizontal), v=float(vertical)))
     return result
 
 
@@ -65,16 +82,9 @@ def bounds(header, namespace, index, points, color):
 class MarkerOutput:
     def __init__(self, publisher):
         self.publisher = publisher
-        self.previous = set()
 
     def publish(self, markers):
-        current = {(item.ns, item.id) for item in markers}
-        removed = []
-        for namespace, index in self.previous - current:
-            item = Marker(ns=namespace, id=index, action=Marker.DELETE)
-            removed.append(item)
-        self.publisher.publish(MarkerArray(markers=markers + removed))
-        self.previous.update(current)
+        self.publisher.publish(MarkerArray(markers=[Marker(action=Marker.DELETEALL)] + markers))
 
 
 def search_markers(message):
@@ -106,7 +116,7 @@ def search_markers(message):
         current = message.parent_index[current]
     if not count:
         return []
-    result = [edges, line(message.header, "search_tree/final", 0, selected, (1, 0.3, 0, 1), 0.16)]
+    result = [edges, line(message.header, "search_tree/final", 0, selected, (1, 0.3, 0, 1), 0.16, kind=Marker.LINE_LIST)]
     result.extend(arrow(message.header, "search_tree/yaw", index, position, message.yaw[index])
                   for index, position in enumerate(positions))
     return result
@@ -114,6 +124,18 @@ def search_markers(message):
 
 def road_line(header, namespace, index, points, subtype):
     result = line(header, namespace, index, points, (0.8, 0.8, 0.8, 1))
+    if subtype == "solid_solid":
+        result.type = Marker.LINE_LIST
+        result.points = []
+        for start, end in zip(points, points[1:]):
+            length = math.hypot(end.x-start.x, end.y-start.y)
+            if length == 0:
+                continue
+            for offset in (-0.12, 0.12):
+                result.points.extend(point(value.x-offset*(end.y-start.y)/length,
+                                           value.y+offset*(end.x-start.x)/length, value.z)
+                                     for value in (start, end))
+        return result
     if "dashed" not in subtype:
         return result
     result.type = Marker.LINE_LIST
@@ -135,3 +157,20 @@ def road_line(header, namespace, index, points, subtype):
             offset += step
         travelled += distance
     return result
+
+
+def batch_lines(markers):
+    groups, result = {}, []
+    for item in markers:
+        if item.type not in (Marker.LINE_LIST, Marker.LINE_STRIP):
+            result.append(item)
+            continue
+        key = (item.ns, item.scale.x)
+        if key not in groups:
+            groups[key] = marker(item.header, item.ns, 0, Marker.LINE_LIST,
+                                 (item.color.r, item.color.g, item.color.b, item.color.a))
+            groups[key].scale.x = item.scale.x
+        points = item.points if item.type == Marker.LINE_LIST else [
+            value for pair in zip(item.points, item.points[1:]) for value in pair]
+        groups[key].points.extend(points)
+    return result + list(groups.values())

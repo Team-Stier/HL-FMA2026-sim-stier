@@ -51,8 +51,8 @@ struct WhiteMeshVisitor : osg::NodeVisitor {
 };
 
 int main(int argc, char** argv) {
-    if (argc != 7 && argc != 4) {
-        std::cerr << "render_map input.osgb output.png xmin ymin xmax ymax\n"
+    if (argc != 7 && argc != 8 && argc != 4) {
+        std::cerr << "render_map input.osgb output.png xmin ymin xmax ymax [pixels]\n"
             << "render_map input.osgb --white-mesh output.txt\n";
         return 1;
     }
@@ -77,8 +77,8 @@ int main(int argc, char** argv) {
     osg::ref_ptr<osg::GraphicsContext::Traits> traits = new osg::GraphicsContext::Traits;
     traits->readDISPLAY();
     traits->setUndefinedScreenDetailsToDefaultScreen();
-    traits->width = 1600;
-    traits->height = 1600;
+    traits->width = argc == 8 ? std::stoi(argv[7]) : 1600;
+    traits->height = traits->width;
     traits->pbuffer = true;
     traits->doubleBuffer = false;
     const auto context = osg::GraphicsContext::createGraphicsContext(traits);

@@ -10,29 +10,23 @@ Visualization Manager:
         Frame Rate: 30
         Background Color: 30; 30; 30
     Displays:
-    -   Class: rviz_default_plugins/MarkerArray
-        Name: Source status
+    -   Class: visualization/Aerial
+        Name: Source aerial (OSGB XY projection)
         Enabled: true
         Topic:
-            Value: /visualization/status
+            Value: /visualization/aerial
             Depth: 1
             History Policy: Keep Last
-            Reliability Policy: Best Effort
-            Durability Policy: Volatile
+            Reliability Policy: Reliable
+            Durability Policy: Transient Local
+    -   Class: visualization/HUD
+        Name: HUD
+        Enabled: true
     -   Class: rviz_default_plugins/MarkerArray
         Name: Ego
         Enabled: true
         Topic:
             Value: /visualization/ego
-            Depth: 1
-            History Policy: Keep Last
-            Reliability Policy: Best Effort
-            Durability Policy: Volatile
-    -   Class: rviz_default_plugins/MarkerArray
-        Name: Ego status
-        Enabled: false
-        Topic:
-            Value: /visualization/ego_status
             Depth: 1
             History Policy: Keep Last
             Reliability Policy: Best Effort
@@ -55,24 +49,24 @@ Visualization Manager:
             History Policy: Keep Last
             Reliability Policy: Best Effort
             Durability Policy: Volatile
-    -   Class: rviz_default_plugins/MarkerArray
+    -   Class: visualization/StaticMarkerArray
         Name: Map local reference
         Enabled: true
         Topic:
             Value: /visualization/map
             Depth: 1
             History Policy: Keep Last
-            Reliability Policy: Best Effort
-            Durability Policy: Volatile
-    -   Class: rviz_default_plugins/MarkerArray
+            Reliability Policy: Reliable
+            Durability Policy: Transient Local
+    -   Class: visualization/StaticMarkerArray
         Name: Cells local reference
         Enabled: true
         Topic:
             Value: /visualization/cells
             Depth: 1
             History Policy: Keep Last
-            Reliability Policy: Best Effort
-            Durability Policy: Volatile
+            Reliability Policy: Reliable
+            Durability Policy: Transient Local
     -   Class: rviz_default_plugins/MarkerArray
         Name: Global path local reference
         Enabled: true
@@ -93,27 +87,9 @@ Visualization Manager:
             Durability Policy: Volatile
     -   Class: rviz_default_plugins/MarkerArray
         Name: Cell speed caps
-        Enabled: false
+        Enabled: true
         Topic:
             Value: /visualization/cell_cap
-            Depth: 1
-            History Policy: Keep Last
-            Reliability Policy: Best Effort
-            Durability Policy: Volatile
-    -   Class: rviz_default_plugins/MarkerArray
-        Name: Speed limit
-        Enabled: false
-        Topic:
-            Value: /visualization/speed_limit
-            Depth: 1
-            History Policy: Keep Last
-            Reliability Policy: Best Effort
-            Durability Policy: Volatile
-    -   Class: rviz_default_plugins/MarkerArray
-        Name: Control requested
-        Enabled: false
-        Topic:
-            Value: /visualization/control
             Depth: 1
             History Policy: Keep Last
             Reliability Policy: Best Effort
@@ -176,13 +152,25 @@ Visualization Manager:
         Line Width: 0.15
     Views:
         Current:
-            Class: rviz_default_plugins/TopDownOrtho
-            Name: Top down
-            Target Frame: base_link
-            Scale: 5.0
+            Class: visualization/IdleFollow
+            Name: Mouse navigation + idle Ego follow
+            Target Frame: map
+            Scale: 0.3
             Angle: -1.5707963267948966
-            X: 0.0
-            Y: 0.0
+            X: 805.6425274103005
+            Y: 26.2605036022312
+            Follow After Idle: 10.0
+        Saved:
+        -   Class: visualization/IdleFollow
+            Name: Mouse navigation + idle Ego follow
+            Target Frame: map
+            Scale: 0.3
+            Angle: -1.5707963267948966
+            X: 805.6425274103005
+            Y: 26.2605036022312
+            Follow After Idle: 10.0
+    Tools:
+    -   Class: rviz_default_plugins/MoveCamera
 Window Geometry:
     Width: 1500
     Height: 950

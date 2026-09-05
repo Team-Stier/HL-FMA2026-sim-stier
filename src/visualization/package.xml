@@ -18,5 +18,8 @@
     <depend>ament_index_python</depend>
     <depend>launch_ros</depend>
     <depend>rviz2</depend>
+    <depend>rviz_common</depend>
+    <depend>rviz_default_plugins</depend>
+    <depend>pluginlib</depend>
     <export><build_type>ament_cmake</build_type></export>
 </package>

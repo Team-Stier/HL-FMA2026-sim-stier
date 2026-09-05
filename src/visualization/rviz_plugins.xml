@@ -1,0 +1,14 @@
+<library path="idle_follow_view">
+    <class name="visualization/StaticMarkerArray" type="visualization::StaticMarkerArray" base_class_type="rviz_common::Display">
+        <description>Native marker array that reacquires retained static geometry after reset.</description>
+    </class>
+    <class name="visualization/Aerial" type="visualization::AerialDisplay" base_class_type="rviz_common::Display">
+        <description>Native textured marker with unlit, unchanged raster colors.</description>
+    </class>
+    <class name="visualization/IdleFollow" type="visualization::IdleFollowView" base_class_type="rviz_common::ViewController">
+        <description>Top-down mouse navigation with delayed Ego position following.</description>
+    </class>
+    <class name="visualization/HUD" type="visualization::HudDisplay" base_class_type="rviz_common::Display">
+        <description>Screen-fixed scrollable text overlay without TF or map coordinates.</description>
+    </class>
+</library>

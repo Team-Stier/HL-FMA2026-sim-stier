@@ -54,3 +54,6 @@ CATKIN_IGNORE
 
 /log/
 __pycache__/
+/.codex/
+/AGENTS.md
+/graphify-out/

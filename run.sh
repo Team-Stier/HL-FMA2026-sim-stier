@@ -7,6 +7,7 @@ set -eo pipefail
 ROOT="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
 cd "$ROOT"
 packages=(ros-jazzy-ros-base ros-jazzy-rviz2 ros-jazzy-tf2-ros-py
+    ros-jazzy-rviz-common ros-jazzy-rviz-default-plugins ros-jazzy-pluginlib qtbase5-dev
     ros-jazzy-rosidl-default-generators ros-jazzy-ament-cmake-python
     ros-jazzy-lanelet2-core ros-jazzy-lanelet2-io ros-jazzy-lanelet2-python
     ros-jazzy-launch-ros python3-colcon-common-extensions python3-yaml

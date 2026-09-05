@@ -7,11 +7,11 @@ import yaml
 from ament_index_python.packages import get_package_share_directory
 from interfaces.msg import EgoPose, EgoStatus, Objects, TrafficLight, DynamicStatus, ControlCommand, SearchTree
 from rclpy.node import Node
-from rclpy.qos import QoSProfile, ReliabilityPolicy
-from std_msgs.msg import Float32, Int64MultiArray, Header
+from rclpy.qos import QoSProfile, ReliabilityPolicy, DurabilityPolicy
+from std_msgs.msg import Float32, Int64MultiArray, Header, String, ColorRGBA
 from visualization_msgs.msg import Marker, MarkerArray
 
-from .markers import MarkerOutput, point, xyz, marker, line, text, arrow, bounds, search_markers, road_line
+from .markers import MarkerOutput, point, xyz, marker, line, text, arrow, bounds, search_markers, road_line, batch_lines, aerial_marker
 
 
 class Visualizer(Node):
@@ -25,21 +25,24 @@ class Visualizer(Node):
         with open(runtime_file) as stream:
             settings = yaml.safe_load(stream)["visualization"]
         self.settings = settings
-        self.radius = float(self.declare_parameter("radius_m", settings["radius_m"]).value)
         self.bin = int(self.declare_parameter("occupancy_bin", settings["occupancy_bin"]).value)
-        if self.radius <= 0 or not math.isfinite(self.radius) or not 0 <= self.bin <= 12:
-            raise ValueError("Expected radius_m > 0 and occupancy_bin in [0,12]")
+        if not 0 <= self.bin <= 12:
+            raise ValueError("Expected occupancy_bin in [0,12]")
         self.qos = QoSProfile(depth=1, reliability=ReliabilityPolicy.BEST_EFFORT)
         self.outputs = {}
+        static_qos = QoSProfile(depth=1, reliability=ReliabilityPolicy.RELIABLE,
+                                durability=DurabilityPolicy.TRANSIENT_LOCAL)
+        for topic in ("map", "cells"):
+            self.outputs[topic] = MarkerOutput(self.create_publisher(MarkerArray, "/visualization/" + topic, static_qos))
+        self.hud_groups = {"signals/observed_controller": ["signals/observed_controller/0: waiting for /traffic_light"]}
+        self.hud_publisher = self.create_publisher(String, "/visualization/hud", self.qos)
         self.receipts = {}
-        self.ego = None
-        self.dynamic = None
-        self.global_ids = []
-        self.signal = None
         self.map = None
         self.cells = []
         self.registry = {}
         self.lanes = []
+        self.map_drawn = False
+        self.cell_edges = None
         map_path = self.declare_parameter("map_path", "").value
         if map_path:
             from hdmap import hdmap_init
@@ -50,6 +53,8 @@ class Visualizer(Node):
             self.get_logger().info(f"Visualizer local reference map: {map_path}; cells={len(self.cells)}")
         else:
             self.get_logger().warning("No map_path: map/cell/global geometry is unavailable, not reconstructed")
+        self.static_signals = self.signal_markers(Header(frame_id="map"))
+        self.observed_signals = []
         subscriptions = [
             (EgoPose, "/ego_pose", self.ego_pose),
             (EgoStatus, "/ego_status", self.ego_status),
@@ -63,7 +68,24 @@ class Visualizer(Node):
         ]
         self.subscriptions_kept = [self.create_subscription(kind, topic, self.observer(topic, callback), self.qos)
                                    for kind, topic, callback in subscriptions]
-        self.timer = self.create_timer(0.2, self.draw_map)
+        aerial_file = self.declare_parameter("aerial_config", str(Path(map_path).with_name("aerial.yaml")) if map_path else "").value
+        self.aerial = None
+        if aerial_file:
+            try:
+                with open(aerial_file) as stream:
+                    aerial = yaml.safe_load(stream)
+                header = Header(frame_id=aerial["frame_id"])
+                self.aerial = aerial_marker(header, Path(aerial_file).parent / aerial["image"],
+                                           aerial["bounds_xy_m"], aerial["display_plane_z_m"])
+            except (OSError, KeyError, TypeError, ValueError) as error:
+                self.get_logger().warning(f"Aerial background unavailable: {error}")
+        if self.aerial is not None:
+            aerial_qos = QoSProfile(depth=1, reliability=ReliabilityPolicy.RELIABLE,
+                                    durability=DurabilityPolicy.TRANSIENT_LOCAL)
+            self.aerial_publisher = self.create_publisher(MarkerArray, "/visualization/aerial", aerial_qos)
+            self.aerial_publisher.publish(MarkerArray(markers=[self.aerial]))
+        self.map_timer = self.create_timer(5.0, self.draw_map)
+        self.status_timer = self.create_timer(0.2, self.draw_status)
 
     def observer(self, topic, callback):
         def receive(message):
@@ -72,50 +94,44 @@ class Visualizer(Node):
         return receive
 
     def draw_status(self):
-        header = Header(stamp=self.get_clock().now().to_msg(), frame_id="map")
-        label = ["Visualizer local reference; input receipt ages (not sensor latency)",
-                 f"map={'loaded' if self.map else 'UNAVAILABLE'} cells={len(self.cells)} ROI={self.radius:g}m bin={self.bin}"]
+        label = [f"LOCAL MAP | {len(self.lanes)} lanes | {len(self.cells)} cells",
+                 f"Full static map | occupancy bin={self.bin}"]
         for topic, (receipt, source) in self.receipts.items():
             stamp = f"{source.stamp.sec}.{source.stamp.nanosec:09d}" if source else "none"
-            label.append(f"{topic}: age={time.monotonic()-receipt:.2f}s source={stamp}")
-        position = point(self.ego.x + 12, self.ego.y, self.ego.z) if self.ego else point(0, 0)
-        self.emit("status", [text(header, "status/display_anchor", 0, position, "\n".join(label))])
+            label.append(f"{topic}: receipt age={time.monotonic()-receipt:.2f}s source={stamp}")
+        self.hud_groups["status"] = label
+        sections = ["[status]\n" + "\n".join(label)]
+        priority = ["signals/observed_controller", "ego_status", "speed_limit", "control", "objects", "global_path"]
+        order = priority + [topic for topic in self.hud_groups if topic not in priority and topic != "status"]
+        for topic in order:
+            values = self.hud_groups.get(topic, [])
+            if values:
+                sections.append(f"[{topic}]\n" + "\n".join(values))
+        self.hud_publisher.publish(String(data="\n\n".join(sections)))
 
     def emit(self, topic, markers):
+        self.hud_groups[topic] = [f"{item.ns}/{item.id}: {item.text}" for item in markers
+                                  if item.type == Marker.TEXT_VIEW_FACING and item.action == Marker.ADD]
+        geometry = [item for item in markers if item.type != Marker.TEXT_VIEW_FACING]
         if topic not in self.outputs:
             self.outputs[topic] = MarkerOutput(self.create_publisher(MarkerArray, "/visualization/" + topic, self.qos))
-        self.outputs[topic].publish(markers)
+        self.outputs[topic].publish(geometry)
 
-    def valid_frame(self, message, frame):
+    def valid_frame(self, message, frame, *topics):
         if message.header.frame_id == frame:
             return True
         self.get_logger().error(f"Rejected {type(message).__name__}: expected {frame}, got {message.header.frame_id}")
+        for topic in topics:
+            self.emit(topic, [])
         return False
 
-    def nearby_cells(self):
-        if not self.map or self.ego is None:
-            return []
-        from lanelet2.core import BasicPoint2d, BoundingBox2d
-        box = BoundingBox2d(BasicPoint2d(self.ego.x-self.radius, self.ego.y-self.radius),
-                            BasicPoint2d(self.ego.x+self.radius, self.ego.y+self.radius))
-        return [self.cells[index] for index in self.map.cellTree().search(box)]
-
-    def visible(self, points):
-        if self.ego is None or not points:
-            return False
-        minimum_x, maximum_x = min(value.x for value in points), max(value.x for value in points)
-        minimum_y, maximum_y = min(value.y for value in points), max(value.y for value in points)
-        nearest_x = max(minimum_x, min(self.ego.x, maximum_x))
-        nearest_y = max(minimum_y, min(self.ego.y, maximum_y))
-        return math.hypot(nearest_x - self.ego.x, nearest_y - self.ego.y) <= self.radius
-
     def ego_pose(self, message):
-        if not self.valid_frame(message, "map"):
+        if not self.valid_frame(message, "map", "ego"):
             return
         if not all(math.isfinite(value) for value in (message.x, message.y, message.z, message.heading, message.pitch, message.roll)):
             self.get_logger().error("Rejected non-finite Ego pose")
+            self.emit("ego", [])
             return
-        self.ego = message
         header = Header(stamp=message.header.stamp, frame_id="base_link")
         body = marker(header, "ego/body", 0, Marker.CUBE, (0.1, 0.5, 1, 0.65))
         body.pose.position = point(self.vehicle["box_center_forward_offset_m"], 0, self.vehicle["height_m"] / 2)
@@ -128,16 +144,21 @@ class Visualizer(Node):
         self.emit("ego", [body, reference, arrow(message.header, "ego/heading", 0, reference.points[0], message.heading)])
 
     def ego_status(self, message):
-        if not self.valid_frame(message, "map"):
+        if not self.valid_frame(message, "map", "ego_status"):
+            return
+        if not all(math.isfinite(value) for value in (message.x, message.y, message.z, message.heading, message.pitch, message.roll, message.speed)):
+            self.get_logger().error("Rejected non-finite EgoStatus")
+            self.emit("ego_status", [])
             return
         self.emit("ego_status", [text(message.header, "ego/status", 0, point(message.x, message.y, message.z),
-            f"Ego speed={message.speed:.3f} m/s\nsource={message.header.stamp.sec}.{message.header.stamp.nanosec:09d}")])
+            f"XYZ=({message.x!r}, {message.y!r}, {message.z!r})\nheading={message.heading!r} pitch={message.pitch!r} roll={message.roll!r}\nspeed={message.speed!r} m/s (pose derivative)\nsource={message.header.stamp.sec}.{message.header.stamp.nanosec:09d}")])
 
     def objects(self, message):
-        if not self.valid_frame(message, "map"):
+        if not self.valid_frame(message, "map", "objects"):
             return
         if not 0 <= message.length <= 30:
             self.get_logger().error("Invalid Objects.length")
+            self.emit("objects", [])
             return
         values = (message.x, message.y, message.z, message.heading, message.speed,
                   message.size_x, message.size_y, message.size_z)
@@ -149,8 +170,6 @@ class Visualizer(Node):
         result = []
         for index in range(message.length):
             center = point(message.x[index], message.y[index], message.z[index])
-            if not self.visible([center]):
-                continue
             heading = message.heading[index]
             length, width, height = message.size_x[index], message.size_y[index], message.size_z[index]
             corners = [point(center.x + math.cos(heading) * forward - math.sin(heading) * left,
@@ -160,13 +179,13 @@ class Visualizer(Node):
             body.pose.position = point(center.x, center.y, center.z + height / 2)
             body.pose.orientation.z, body.pose.orientation.w = math.sin(heading/2), math.cos(heading/2)
             body.scale.x, body.scale.y, body.scale.z = float(length), float(width), float(height)
-            result.extend([body, line(message.header, "objects/footprint", index, corners, (1, 0.5, 0, 1), closed=True),
+            result.extend([body, line(message.header, "objects/footprint", index, corners, (1, 0.5, 0, 1), closed=True, kind=Marker.LINE_LIST),
                 arrow(message.header, "objects/heading", index, center, heading),
-                text(message.header, "objects/info", index, center, f"id={message.id[index]} speed={message.speed[index]:.2f} m/s")])
+                text(message.header, "objects/info", index, center, f"id={message.id[index]} speed={message.speed[index]!r} m/s")])
         self.emit("objects", result)
 
     def search_tree(self, message):
-        if not self.valid_frame(message, "base_link"):
+        if not self.valid_frame(message, "base_link", "search_tree"):
             return
         try:
             self.emit("search_tree", search_markers(message))
@@ -175,128 +194,162 @@ class Visualizer(Node):
             self.emit("search_tree", [])
 
     def traffic_light(self, message):
-        self.signal = message
-        self.draw_signals()
+        self.hud_groups["signals/observed_controller"] = [
+            f"signals/observed_controller/0: controller={message.id} state={message.state} (not individual lamp colors)"]
+        header = Header(stamp=message.header.stamp, frame_id="map")
+        self.observed_signals = self.signal_markers(header, {message.id: self.registry.get(message.id, [])})
+        for item in self.observed_signals:
+            item.ns = "signals/observed/" + item.ns
+            item.color.r, item.color.g, item.color.b = 0.2, 1.0, 1.0
+        if not self.observed_signals:
+            self.hud_groups["signals/observed_controller"].append("No matching geometry in Visualizer local registry")
+        self.emit("signals", self.static_signals + self.observed_signals)
 
-    def draw_signals(self):
-        if self.ego is None:
-            return
+    def signal_markers(self, header, registry=None):
         result = []
-        for controller, signals in self.registry.items():
+        seen = set()
+        for controller, signals in (self.registry if registry is None else registry).items():
             for signal in signals:
-                shapes = list(signal.trafficLights) if self.settings.get("show_traffic_lights", True) else []
-                if self.settings.get("show_stoplines", True) and signal.stopLine is not None:
-                    shapes.append(signal.stopLine)
-                for shape in shapes:
+                stop = signal.stopLine
+                stop_points = [xyz(value) for value in stop] if stop is not None else []
+                if stop_points and self.settings.get("show_stoplines", True) and stop.id not in seen:
+                    seen.add(stop.id)
+                    result.append(line(header, "signals/local_reference/stopline", stop.id,
+                                       stop_points, (1, 0.25, 0.2, 1), 0.22, kind=Marker.LINE_LIST))
+                for shape in signal.trafficLights:
                     points = [xyz(value) for value in shape]
-                    if self.visible(points):
-                        result.append(line(self.ego.header, f"signals/local_reference/{controller}", len(result), points, (1, 0.8, 0.3, 1), 0.16))
-                        result.append(text(self.ego.header, f"signals/local_reference/label/{controller}", len(result), points[0], f"controller={controller} shape={shape.id}"))
-        if self.signal is not None:
-            header = Header(stamp=self.signal.header.stamp, frame_id="map")
-            result.append(text(header, "signals/observed_controller", 0, point(self.ego.x, self.ego.y, self.ego.z),
-                               f"observed controller={self.signal.id} state={self.signal.state}"))
-        self.emit("signals", result)
+                    if not points:
+                        continue
+                    if self.settings.get("show_traffic_lights", True) and shape.id not in seen:
+                        seen.add(shape.id)
+                        result.append(line(header, "signals/local_reference/physical", shape.id,
+                                           points, (1, 0.7, 0.2, 1), 0.3, kind=Marker.LINE_LIST))
+                    result.append(text(header, f"signals/local_reference/id/{controller}/{signal.id}", shape.id, points[0],
+                                       f"controller={controller} physical={shape.id} reg={signal.id} stopline={stop.id if stop is not None else None}"))
+                    if stop_points and self.settings.get("show_traffic_lights", True) and self.settings.get("show_stoplines", True):
+                        endpoints = [point(sum(value.x for value in group)/len(group),
+                                           sum(value.y for value in group)/len(group),
+                                           sum(value.z for value in group)/len(group))
+                                     for group in (points, stop_points)]
+                        result.append(line(header, f"signals/local_reference/relation/{signal.id}", shape.id,
+                                           endpoints, (0.8, 0.4, 1, 0.65), 0.06, kind=Marker.LINE_LIST))
+        return result
 
     def dynamic_status(self, message):
-        if not self.valid_frame(message, "map"):
+        if not self.valid_frame(message, "map", "occupancy", "cell_cap"):
             return
         if self.map and (len(message.speed_cap_mps) != len(self.cells) or len(message.occupancy_probability) != 13 * len(self.cells)):
             self.get_logger().error("DynamicStatus size differs from Visualizer local map; not displaying")
-            self.dynamic = None
             self.emit("occupancy", [])
             self.emit("cell_cap", [])
             return
         if any(not math.isfinite(value) or (value != -1 and not 0 <= value <= 1) for value in message.occupancy_probability) or any(
                 not math.isfinite(value) or value < 0 for value in message.speed_cap_mps):
             self.get_logger().error("Rejected DynamicStatus values")
-            self.dynamic = None
             self.emit("occupancy", [])
             self.emit("cell_cap", [])
             return
-        self.dynamic = message
-        self.draw_dynamic()
+        probabilities = message.occupancy_probability[self.bin::13]
+        self.draw_cell_values(message.header, "occupancy", probabilities)
+        self.draw_cell_values(message.header, "cell_cap", message.speed_cap_mps)
 
-    def draw_dynamic(self):
-        if not self.map or self.dynamic is None:
+    def draw_cell_values(self, header, topic, values):
+        if not self.map:
             return
-        occupied, caps = [], []
-        header = self.dynamic.header
-        for cell in self.nearby_cells():
-            points = [xyz(value) for value in cell.polygon3d()]
-            if not self.visible(points):
-                continue
-            probability = self.dynamic.occupancy_probability[cell.id * 13 + self.bin]
-            color = (0.5, 0.5, 0.5, 0.6) if probability == -1 else (1, 0.1, 0.1, probability * (13-self.bin)/13)
-            occupied.append(line(header, f"occupancy/local_reference/bin_{self.bin}", cell.id, points, color, closed=True))
-            occupied.append(text(header, "occupancy/value", cell.id, points[0], f"cell={cell.id} bin={self.bin} p={probability:g}"))
-            cap = self.dynamic.speed_cap_mps[cell.id]
-            ratio = max(0.0, min(1.0, cap / 20.0))
-            caps.append(line(header, "speed/local_reference/cell_cap", cell.id, points, (1-ratio, ratio, 0, 0.8), closed=True))
-            caps.append(text(header, "speed/cap", cell.id, points[0], f"{cap:g} m/s"))
-        self.emit("occupancy", occupied)
-        self.emit("cell_cap", caps)
+        if self.cell_edges is None:
+            self.cell_edges = []
+            for cell in self.cells:
+                points = [xyz(value) for value in cell.polygon3d()]
+                self.cell_edges.append([value for pair in zip(points, points[1:] + points[:1]) for value in pair])
+        namespace = f"occupancy/local_reference/bin_{self.bin}" if topic == "occupancy" else "speed/local_reference/cell_cap"
+        groups = {}
+        palette = {}
+        labels = []
+        for cell, edges in zip(self.cells, self.cell_edges):
+            value = values[cell.id]
+            if topic == "occupancy":
+                color = (0.5, 0.5, 0.5, 0.6) if value == -1 else (1.0, 0.1, 0.1, value*(13-self.bin)/13)
+                labels.append(f"occupancy/value/{cell.id}: bin={self.bin} p={float(value)!r}")
+            else:
+                ratio = max(0.0, min(1.0, value/20.0))
+                color = (1-ratio, ratio, 0.0, 0.8)
+                labels.append(f"speed/cap/{cell.id}: cap={float(value)!r} m/s")
+            opaque = color[3] >= 0.9998
+            if opaque not in groups:
+                groups[opaque] = marker(header, namespace, int(opaque), Marker.LINE_LIST, color)
+            if color not in palette:
+                palette[color] = ColorRGBA(r=float(color[0]), g=float(color[1]), b=float(color[2]), a=float(color[3]))
+            groups[opaque].points.extend(edges)
+            groups[opaque].colors.extend([palette[color]] * len(edges))
+        self.emit(topic, list(groups.values()))
+        self.hud_groups[topic] = labels
 
     def global_path(self, message):
-        self.global_ids = list(message.data)
-        self.draw_global()
-
-    def draw_global(self):
+        labels = [f"requested lanelet IDs={list(message.data)}"]
         if not self.map:
+            self.hud_groups["global_path"] = labels
             return
         header = Header(stamp=self.get_clock().now().to_msg(), frame_id="map")
         result = []
-        for index, lane_id in enumerate(self.global_ids):
+        for index, lane_id in enumerate(message.data):
             try:
                 lane = self.map.laneletMap().laneletLayer[lane_id]
             except (KeyError, IndexError, RuntimeError):
+                labels.append(f"MISSING lanelet={lane_id} in Visualizer local map")
                 self.get_logger().error(f"Global path lanelet {lane_id} absent in Visualizer local map")
                 continue
             points = [xyz(value) for value in lane.centerline]
-            if self.visible(points):
-                result.append(line(header, "global_path/local_reference", index, points, (0.2, 1, 0.2, 1), 0.3))
+            result.append(line(header, "global_path/local_reference", index, points, (0.2, 1, 0.2, 1), 0.3))
         self.emit("global_path", result)
+        self.hud_groups["global_path"] = labels
 
     def speed_limit(self, message):
-        if self.ego:
-            header = Header(stamp=self.get_clock().now().to_msg(), frame_id="map")
-            self.emit("speed_limit", [text(header, "speed/current_limit", 0, point(self.ego.x, self.ego.y, self.ego.z), f"cap={message.data:g} m/s (unstamped)")])
+        self.hud_groups["speed_limit"] = [f"speed/current_limit/0: cap={message.data!r} m/s (unstamped)"]
 
     def command(self, message):
-        if self.ego:
-            header = Header(stamp=message.header.stamp, frame_id="map")
-            self.emit("control", [text(header, "control/requested", 0, point(self.ego.x, self.ego.y, self.ego.z),
-                f"requested steer={message.steering:g} accel={message.target_accel:g} turn={message.turn_signal}")])
+        self.hud_groups["control"] = [
+            f"control/requested/0: steer={message.steering!r} accel={message.target_accel!r} turn={message.turn_signal}"]
+
+    def static_markers(self, header):
+        roads, cells = [], []
+        for shape in self.map.laneletMap().lineStringLayer:
+            kind = str(shape.attributes["type"]) if "type" in shape.attributes else "unspecified"
+            points = [xyz(value) for value in shape]
+            if kind == "stop_line":
+                if self.settings.get("show_stoplines", True):
+                    roads.append(line(header, "map/local_reference/stopline", shape.id,
+                                      points, (1, 0.25, 0.2, 1), 0.22))
+            elif kind in ("line_thin", "line_thick", "virtual", "curbstone", "road_border"):
+                subtype = str(shape.attributes["subtype"]) if "subtype" in shape.attributes else "unspecified"
+                boundary = road_line(header, f"map/local_reference/{kind}/{subtype}", shape.id, points, subtype)
+                if kind == "virtual":
+                    boundary.color.r, boundary.color.g, boundary.color.b, boundary.color.a = 0.5, 0.5, 0.5, 0.35
+                roads.append(boundary)
+                if self.settings.get("show_lane_marking_types", True):
+                    roads.append(text(header, "map/line_type", shape.id, points[0], f"{kind}/{subtype}"))
+        for lane in self.lanes:
+            points = [xyz(value) for value in lane.centerline]
+            roads.append(line(header, "map/local_reference/center", lane.id, points, (0.3, 0.7, 1, 0.6)))
+            if len(points) > 1:
+                roads.append(arrow(header, "map/local_reference/direction", lane.id, points[0],
+                                   math.atan2(points[1].y-points[0].y, points[1].x-points[0].x)))
+        for cell in self.cells:
+            points = [xyz(value) for value in cell.polygon3d()]
+            cells.append(bounds(header, "cells/local_reference/bounds", cell.id, points, (0.2, 0.65, 0.8, 0.3)))
+            cells.append(line(header, "cells/local_reference/polygon", cell.id, points,
+                              (0.2, 1, 0.55, 0.65), 0.035, closed=True))
+        return roads, cells
 
     def draw_map(self):
-        self.draw_status()
-        self.draw_signals()
-        if not self.map or self.ego is None:
+        if not self.map:
             return
-        result, cells = [], []
-        for lane_index, lane in enumerate(self.lanes):
-            for side, shape in (("left", lane.leftBound), ("right", lane.rightBound), ("center", lane.centerline)):
-                points = [xyz(value) for value in shape]
-                if self.visible(points):
-                    if side == "center":
-                        result.append(line(self.ego.header, "map/local_reference/center", lane_index, points, (0.4, 0.7, 0.9, 0.5)))
-                    else:
-                        subtype = str(shape.attributes["subtype"]) if "subtype" in shape.attributes else "unspecified"
-                        result.append(road_line(self.ego.header, "map/local_reference/" + side, lane_index, points, subtype))
-                        if self.settings.get("show_lane_marking_types", True):
-                            result.append(text(self.ego.header, "map/line_type/" + side, lane_index, points[0], subtype))
-            points = [xyz(value) for value in lane.centerline]
-            if len(points) > 1 and self.visible(points):
-                result.append(arrow(self.ego.header, "map/direction", lane_index, points[0], math.atan2(points[1].y-points[0].y, points[1].x-points[0].x)))
-        for cell in self.nearby_cells():
-            points = [xyz(value) for value in cell.polygon3d()]
-            if self.visible(points):
-                cells.append(bounds(self.ego.header, "cells/local_reference/bounds", cell.id, points, (0.3, 0.8, 0.9, 0.5)))
-        self.emit("map", result)
-        self.emit("cells", cells)
-        self.draw_global()
-        self.draw_dynamic()
-        self.draw_signals()
+        if not self.map_drawn:
+            header = Header(stamp=self.get_clock().now().to_msg(), frame_id="map")
+            roads, cells = self.static_markers(header)
+            self.emit("map", batch_lines(roads))
+            self.emit("cells", batch_lines(cells))
+            self.map_drawn = True
+        self.emit("signals", self.static_signals + self.observed_signals)
 
 
 def main(args=None):

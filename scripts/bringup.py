@@ -9,8 +9,7 @@ import sys
 import time
 
 ROOT = Path(__file__).resolve().parents[1]
-PACKAGES = ('sim_bridge', 'hdmap_dynamic_tracker', 'tf_broadcasting',
-            'local_path_planner', 'speed_annotator', 'control', 'visualization')
+PACKAGES = ('visualization',)
 
 
 def launch_commands():

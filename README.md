@@ -584,17 +584,18 @@ ros2 run visualization visualizer_node --ros-args -p map_path:=/absolute/path/to
 
 ### 구현된 시각화
 
-- `src/visualization/rviz/default.rviz`: Fixed Frame=map, Ego 중심 TopDownOrtho, 위 +x/왼쪽 +y, 기본 Path display와 각 MarkerArray/QoS 설정. `/local_path`는 Visualizer를 거치지 않는다.
+- `src/visualization/rviz/default.rviz`: Fixed Frame=map, 초기 지도 전체 보기와 10초 유휴 Ego 추적 TopDownOrtho, 위 +x/왼쪽 +y, 기본 Path display와 각 MarkerArray/QoS 설정. `/local_path`는 Visualizer를 거치지 않는다.
 - 차체 CUBE·SearchTree는 base_link의 원본 stamp로 발행해 RViz가 TF를 적용한다. 객체는 Bridge가 XY 중심·min Z를 보낸다는 계약이며 box 중심 Z에만 H/2를 더한다.
-- 지도는 Visualizer 자신의 `hdmap_init` 결과다. Lanelet 경계·중심선·진행 방향·선종류 라벨·신호/정지선·Cell AABB·글로벌 중심선 강조를 표시한다. dashed는 표시용 1m 선/1m 공백이며 double 선종류는 라벨로 구분하고 가짜 평행 경계를 만들지 않는다.
-- Cell은 R-tree로 주변 후보를 먼저 조회한다. 반경 100m 기본 ROI는 map 기하의 XY AABB와 Ego 원의 교차로 전체 기하를 선택한다. 선택된 기하를 잘라내지 않으므로 일부는 반경 밖까지 이어질 수 있다. Ego 수신 전에는 지도 ROI를 표시하지 않는다. SearchTree는 잘라내지 않고 전체 노드/관계를 표시한다.
-- occupancy bin·alpha, cap 색상과 원본 값, controller ID/state, 명령 요청값을 표시한다. 물리 신호 형상에 API가 관측하지 않은 개별 lamp 색을 추측해 칠하지 않는다. cap 색상은 표시용 0~20m/s 범위이며 숫자는 원본 값이다.
-- `/visualization/status`는 입력 수신 경과시간·source stamp·지도 유무를 표시한다. 시간 경과는 센서 지연 측정값이 아니다. 상태 텍스트는 Ego 위치에서 map +x 방향 12m(미수신 시 map 원점)의 표시용 위치이며 관측 기하가 아니다. 지도 hash 비교나 전송 drop 계수는 아직 구현하지 않았다.
-- 무기한 마커는 다음 snapshot에서 사라진 ns/id를 DELETE하며 삭제 명령은 이후 snapshot에도 반복한다. BEST_EFFORT이므로 후속 발행까지 모두 끊기면 전달을 보장하지 않는다. cap·속력·명령·Ego 상세 텍스트 display는 겹침을 피하려고 기본 비활성화되어 있으며 RViz에서 켤 수 있다.
+- 지도는 Visualizer 자신의 `hdmap_init` 결과다. Lanelet 경계·중심선·진행 방향·선종류 라벨·물리 신호·모든 정지선·Cell AABB와 원본 polygon·글로벌 중심선 강조를 표시한다. 하늘색은 중심선, 흰색은 차선 경계, 회색은 virtual 경계, 빨간색은 정지선, 주황색은 물리 신호, 초록색은 Cell polygon이다. 보라색 연결선은 같은 TrafficLight regulatory element의 물리 신호와 stopLine 꼭짓점 평균을 잇는 **관계 표시**이지 도로/주행 경로가 아니다. 매핑이 없는 정지선에도 형상은 표시하지만 연결은 만들지 않는다. dashed는 표시용 1m 선/1m 공백이며 solid_solid는 원본 선분 양쪽 0.12m의 표시용 두 획이다. 획 간격은 실측값이 아니며 지도 경계와 Cell 기하를 바꾸지 않는다.
+- 시각화 입력은 독립적이다. 지도·셀·신호 연결은 자기 맵만, 객체는 `/objects`만, 글로벌 경로는 `/global_path`와 자기 맵만, 점유/cap은 `/dynamic_status`와 자기 맵만 사용한다. Ego는 다른 스트림의 필터나 갱신 트리거가 아니다. 최신 리팩토링 요청에 따라 Ego 기반 ROI를 적용하지 않고 전체 입력을 표시한다. DataPipeline 다이어그램은 변경하지 않았으며 12절의 공통 Ego ROI는 현재 적용하지 않는다. 원본 좌표·stamp·값·신호 매핑은 유지한다.
+- 정적 map/cells 선분은 namespace별 LINE_LIST로 묶어 한 번 발행하고 DDS의 RELIABLE/TRANSIENT_LOCAL/KEEP_LAST(1)에 보관한다. 늦게 켠 RViz도 받으며 매 5초마다 수백만 정점을 재업로드하지 않는다. 동적 마커는 기존 BEST_EFFORT/VOLATILE을 유지한다. 동적 Cell 선분은 정점별 원본 RGBA를 사용하는 LINE_LIST로 묶는다. RViz Jazzy의 alpha blending 경계(0.9998)에 따라 투명/불투명 배치만 분리하며 확률을 양자화하지 않는다. HUD에는 모든 Cell ID와 원본 값을 유지한다. 선분 생략·평활화는 없고 배치 마커 ID는 Cell ID가 아니다. 생산자의 query 마커는 별개다. HUD는 독립적으로 5Hz 발행한다. 가짜 Ego/TF는 발행하지 않으며, 카메라만 실제 TF를 이용해 10초 유휴 후 Ego 위치를 추적한다.
+- occupancy bin·alpha, cap 색상과 원본 값, controller ID/state, 명령 요청값을 표시한다. 입력 frame·값을 거부하면 해당 표시만 비우며 다른 스트림에는 영향을 주지 않는다. 관측 controller는 HUD 앞쪽에 배치하며 해당 ID의 신호/정지선 관계만 청록색으로 강조한다. 매핑이 없으면 HUD에 명시한다. 물리 신호 형상에 API가 관측하지 않은 개별 lamp 색을 추측해 칠하지 않는다. cap 색상은 표시용 0~20m/s 범위이며 숫자는 원본 값이다.
+- `/visualization/hud`는 입력 수신 경과시간·source stamp·지도 유무를 화면 고정 패널에 표시한다. 시간 경과는 센서 지연 측정값이 아니다. HUD는 화면 픽셀 위치에 고정되며 지도 좌표를 갖지 않는다. 지도 hash 비교나 전송 drop 계수는 아직 구현하지 않았다.
+- 무기한 마커는 다음 snapshot에서 사라진 ns/id를 DELETE하며 삭제 명령은 이후 snapshot에도 반복한다. BEST_EFFORT이므로 후속 발행까지 모두 끊기면 전달을 보장하지 않는다. cap·속력·명령·Ego 상세 텍스트는 HUD에 모아 표시하며, cap 도형 display도 기본 활성화한다.
 
-설정 기본값은 `config/vehicle.yaml`, `config/runtime.yaml`을 설치 시 복사해 사용한다. 노드 시작 파라미터는 `map_path`, `vehicle_config`, `runtime_config`, `radius_m`, `occupancy_bin`이다. TF 입력은 `/ego_pose`, 출력은 `map → base_link`이며 Header stamp를 그대로 계승한다. Control에 TF 의존성을 추가하지 않는다.
+설정 기본값은 `config/vehicle.yaml`, `config/runtime.yaml`을 설치 시 복사해 사용한다. 노드 시작 파라미터는 `map_path`, `vehicle_config`, `runtime_config`, `occupancy_bin`이다. TF 입력은 `/ego_pose`, 출력은 `map → base_link`이며 Header stamp를 그대로 계승한다. Control에 TF 의존성을 추가하지 않는다.
 
-Python 생산자용 query marker adapter도 제공한다. 조회 콜백에서 생산자의 실제 기하를 복사하며 ID로 Visualizer 맵을 대신 조회하지 않는다. 0.05초 집계가 기본이고 count/window를 표시한다. `aggregate=False`이면 호출마다 발행한다. Marker lifetime은 0이며 다음 빈 window에서 DELETE한다. C++용 ROS adapter는 아직 없다.
+Python 생산자용 query marker adapter도 제공한다. 조회 콜백에서 생산자의 실제 기하를 복사하며 ID로 Visualizer 맵을 대신 조회하지 않는다. 0.05초 집계가 기본이고 count/window를 표시한다. `aggregate=False`이면 호출마다 발행한다. Marker lifetime은 0이며 다음 빈 window에서 빈 snapshot으로 교체한다. C++용 ROS adapter는 아직 없다.
 
 ```python
 from hdmap import hdmap_init
@@ -603,3 +604,38 @@ from visualization.query_debug import QueryDebugSink
 sink = QueryDebugSink(node, producer="planner", enabled=True, aggregate=True, window_s=0.05)
 static_map = hdmap_init(map_path, debug_sink=sink)
 ```
+
+각 `MarkerOutput`은 자기 전용 토픽/Display에 `DELETEALL + 현재 ADD 목록`을 한 MarkerArray로 발행한다. 빈 snapshot도 DELETEALL 하나를 포함한다. 중간 snapshot이 유실되어도 다음 수신으로 이전 그림을 완전히 교체하며 과거 marker ID를 영구 저장하지 않는다. **다른 생산자와 공유하는 토픽에는 이 adapter를 사용하지 않는다.**
+
+map/cells의 `visualization/StaticMarkerArray`는 native MarkerArray 렌더러를 사용하되 RViz Reset 시 DDS에 남은 정적 snapshot을 다시 구독한다. 항공뷰도 같은 방식으로 복구하며 교체·비활성화 시 소유 텍스처를 해제한다. 정적 데이터를 주기적으로 다시 발행하거나 원본 기하를 재계산하는 처리가 아니다.
+
+### RViz 마우스 조작·자동 추적
+
+기본 View Controller는 `visualization/IdleFollow`다. RViz의 TopDownOrtho를 재사용한다.
+
+- 왼쪽/가운데 버튼 드래그: 화면 이동. 휠/오른쪽 버튼 드래그: 확대·축소.
+- 조작 중에는 화면을 map 기준으로 유지해 Ego 이동에 끌려가지 않는다.
+- 마지막 버튼 조작·드래그·휠 이후 10초가 지나면 base_link 위치 추적을 재개한다. 단순 마우스 hover는 타이머를 초기화하지 않는다.
+- 버튼을 누르고 있는 동안에는 재개하지 않는다. 줌과 월드 방향은 유지하며 카메라 중심만 Ego로 돌아간다.
+- 대기 시간은 RViz Views의 `Follow After Idle`에서 변경한다. ROS 시각이 아닌 steady clock을 사용한다.
+- TF가 없으면 현재 화면을 유지한다. 이 플러그인은 TF/마커/경로 좌표를 변경하거나 발행하지 않는다.
+
+### 원본 항공뷰
+
+`map/aerial_source.png`는 동일한 LivingLab OSGB를 8192×8192 정사영으로 렌더한 원본 배경이다. `map/aerial.yaml`에 원본 SHA-256, XY 범위 `[-500, -1200, 2000, 1300]m`, 해상도 `0.30517578125m/px`를 기록한다. `school_source.png`는 이 원본의 `[380, -210, 630, 40]m` 구역을 별도 고해상도로 렌더한 것이며, 학교 이미지를 전체 지도 크기로 늘리지 않는다.
+
+Visualizer는 `/visualization/aerial`에 텍스처 TRIANGLE_LIST 하나를 발행한다. RViz `visualization/Aerial`은 기본 TriangleListMarker의 기하·TF·텍스처 로더를 그대로 사용하고, 추가 조명과 재질 색 곱셈만 끈다. PNG의 색을 다시 밝게 보정하는 방식이 아니다. Jazzy의 이 마커는 PNG를 `embedded://` 텍스처로 내장해야 하며 파일 URI만으로는 표시되지 않는다. 정적 배경만 RELIABLE/TRANSIENT_LOCAL/KEEP_LAST(1)로 한 번 발행해 늦게 켠 RViz도 받으며, 매 프레임 대형 텍스처를 재업로드하지 않는다. PNG 왼쪽 위는 `(xmin, ymax)`, 오른쪽 아래는 `(xmax, ymin)`이며 UV만 대응시킨다. 추가 정합·회전·차선 snap·Ego/TF 의존성이 없다. RViz `Source aerial (OSGB XY projection)`에서 켜고 끌 수 있다. `aerial_config`는 기본적으로 지도 파일 옆 `aerial.yaml`이며 빈 값은 배경을 끈다. 배경 파일 누락은 다른 표시를 막지 않는다.
+
+이는 **XY 정사영 배경**이지 3D 지형이 아니다. 배경 표시 평면은 `z=0`이고 기존 지도 정점의 Z 범위는 약 `35.55..79.29m`다. 기존 지도·객체·TF의 좌표는 변경하지 않는다. 평면도의 XY는 같은 원점을 사용하지만 경사 카메라에서는 높이 차로 어긋나 보일 수 있다. 원본 OSGB와 생성 지도 자체의 형상 차이를 억지로 정합해 숨기지 않는다.
+
+재생성은 기존 `map/tools/render_map.cpp` 실행 파일로 다음과 같이 한다 (DISPLAY·VTD 라이브러리 환경은 정적 지도 제작 기록 참고).
+
+```bash
+/tmp/hdmap-render '/home/stier/vtd 자료/HL_FMA_VTD_LivingLab.osgb' map/aerial_source.png -500 -1200 2000 1300 8192
+```
+
+### 화면 고정 HUD
+
+Visualizer의 상태·객체 ID/속도·신호·제어값·cell 값·선종류 텍스트는 `/visualization/hud` (`std_msgs/msg/String`, BEST_EFFORT/KEEP_LAST(1))로 모아 RViz `visualization/HUD`에 표시한다. 기존 TEXT_VIEW_FACING 마커 대신 viewport 왼쪽 위 16px에 고정된 최대 400×360px 투명 스크롤 패널을 사용한다. 검은 배경이나 테두리를 칠하지 않는다. 전체 텍스트는 유지하며 viewport 높이를 넘지 않는다. 지도 이동·확대·Ego 추적으로 위치나 글자 크기가 바뀌지 않고 TF를 사용하지 않는다. 항목은 토픽·원래 namespace/id로 구분하며 원본 값을 유지한다. 같은 문자열은 다시 배치하지 않고 변경된 문자열 구간만 Qt 문서에 반영한다. 항목 생략·값 반올림·발행 주기 변경은 없다. 패널 안에서 스크롤하고 텍스트를 복사할 수 있으며 Displays의 HUD 체크를 끄면 숨긴다. 생산자의 query debug 마커는 별도 출력이므로 이 HUD 변환 대상이 아니다.
+
+시각화 전수 대조 결과와 남은 제약: [VisualizerAudit](docs/VisualizerAudit.md).
