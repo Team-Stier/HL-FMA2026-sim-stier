@@ -3,7 +3,7 @@
 HL Mando Future Mobility Award 2026 시뮬레이션 부문을 위한 ROS 2 Jazzy 자율주행 SW 설계.
 카메라 인지 없이 대회 API의 Ego·객체·신호 정보를 사용한다. Planner는 정적 지도·dynamic status·ego status로 계획하며 Controller는 local path·ego status·speed limit만 구독한다.
 
-> 설계 계약 초안. C++17 Cell·CellTree·Lanelet 로더·hdmap_init·정지선 역색인·신호 레지스트리·Python binding은 구현했다. 신호 규칙/Tracker·실행 노드·지도 변환기·ROS marker adapter·launch는 아직 구현하지 않았다. 설정 YAML과 custom msg 6종도 후속 구현의 초안이며 현재 빌드 가능한 ROS workspace가 아니다.
+> 설계 계약 초안. C++17 Cell·CellTree·Lanelet 로더·hdmap_init·정지선 역색인·신호 레지스트리·Python binding은 구현했다. 신호 규칙/Tracker·나머지 실행 노드·지도 변환기·ROS marker adapter·launch는 아직 구현하지 않았다. 설정 YAML은 설계 초안이다. Python Sim Bridge와 custom msg 6종은 ROS 2 Jazzy에서 빌드하고 실제 VTD 수신·토픽 발행을 검증했으며, 전체 주행 workspace는 아직 미완성이다.
 > [VTD 종합 검토·심 계약·검증 과제](docs/04-vtd-design-review.md)를 함께 읽는다. 배포 확인값, 설계 기본값, 실측 미확인을 구분한다.
 
 ## Convention
@@ -53,7 +53,7 @@ deadline은 기대하는 메시지 간격, lifespan은 오래된 메시지의 �
 src/
 ├── interfaces/                  # 주행 토픽의 custom msg 6종
 ├── hdmap/                       # Cell/정지선 역색인; R-tree/binding/debug는 후속
-├── sim_bridge/                  # 계획: 참가자 TCP API 중계
+├── sim_bridge/                  # Python 참가자 TCP API 중계
 ├── hdmap_dynamic_tracker/       # 계획: ego 추정, 예측기, 신호 상태기, cell 갱신
 ├── local_path_planner/          # 계획: checkpoint routing, 시간 고려 Hybrid A*
 ├── speed_annotator/             # 계획: 현재 ego cell cap 발행
@@ -209,6 +209,8 @@ flowchart TD
 #### Sim Bridge
 
 심 API ↔ ROS topic 중계. API 데이터를 ROS 메시지로 번역하고 ROS 제어 명령을 심 API 형식으로 번역한다.
+
+Python 구현과 `interfaces` 메시지 빌드 설정을 추가했다. [빌드·실행 및 검증 안내](src/sim_bridge/README.md)를 따른다. 현재 기본 설정은 수신 전용이며, 전체 bringup은 아직 미구현이다.
 
 #### HDMap Dynamic Tracker
 
