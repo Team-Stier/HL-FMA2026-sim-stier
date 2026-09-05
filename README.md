@@ -5,6 +5,7 @@ HL Mando Future Mobility Award 2026 시뮬레이션 부문을 위한 ROS 2 Jazzy
 
 > 설계 계약 초안. C++17 Cell·CellTree·Lanelet 로더·hdmap_init·정지선 역색인·신호 레지스트리·Python binding은 구현했다. 신호 규칙/Tracker·실행 노드·지도 변환기·ROS marker adapter·launch는 아직 구현하지 않았다. 설정 YAML과 custom msg 6종도 후속 구현의 초안이며 현재 빌드 가능한 ROS workspace가 아니다.
 > [VTD 종합 검토·심 계약·검증 과제](docs/04-vtd-design-review.md)를 함께 읽는다. 배포 확인값, 설계 기본값, 실측 미확인을 구분한다.
+> [시각화 Data Pipeline](docs/DataPipeline.md)은 원시 데이터부터 마커까지의 변환·추정·표시 계약이다. `/objects`의 XY 중심·객체별 min Z 변환은 Bridge가 수행하며 실제 오프셋 매핑과 노드는 아직 미구현이다.
 
 ## Convention
 
@@ -196,6 +197,7 @@ flowchart TD
     ESTAT --> SPD
     ESTAT --> CTRL((Control))
     LOC --> PATH["/local_path<br/>nav_msgs/Path"]
+    LOC --> TREE["/search_tree<br/>interfaces/SearchTree"]
     LOC --> GLOBAL["/global_path<br/>std_msgs/Int64MultiArray"]
     SPD --> CAP["/speed_limit<br/>std_msgs/Float32"]
     PATH --> CTRL
@@ -323,6 +325,8 @@ Controller는 `v_actual > v_cap + overspeed_tolerance`이면 설정한 최대 �
 - 바로 다음 lanelet을 목표로 삼으며 옆 차선도 정상 목표. 그 안의 도달 가능한 pose를 local goal로 정한다.
 - primitive마다 `min(target_speed, cell.speed_cap, static_lane_speed_limit)`과 가감속 한계로 도착시간 적분. 탐색 key는 시간·속도 차이를 구분한다.
 - ego 전체 box의 swept footprint와 시간 구간을 대조한다. snapshot 이후 계산/전송 지연도 반영한다. 6초 범위 밖을 free로 보지 않는다.
+- 경로·탐색 트리 생성, 비용 계산, primitive 충돌 검사, Cell R-tree 조회는 모두 `map`에서 수행한다. 발행 직전에만 입력 snapshot 시각 `t0`의 TF 역변환으로 완성된 경로와 탐색 트리를 `base_link`에 옮겨 `/local_path`, `/search_tree`로 발행한다. 인덱스·부모 관계는 바꾸지 않는다. SearchTree는 변환 후 x/y/yaw만 담는 2D 표현이다.
+- Path와 모든 pose Header는 `frame_id=base_link`, `stamp=t0`다. Control은 t0의 TF로 경로를 map에 변환해 map Ego 상태와 함께 사용한다. 현재 시각의 TF로 대체하지 않는다.
 - Path는 기하 경로다. Controller 속도가 내부 계획과 달라질 수 있어 도착시간 창·10Hz 재계획을 사용하고 허용 추종 오차 초과 시 정지한다. Path+Float32만으로 엄밀한 timed trajectory 실행은 보장하지 않는다.
 - 중심 선호는 soft cost, 충돌·금지 실선 횡단은 hard constraint. FOLLOW/CHANGE/SETTLE 상세는 Planner 세션에서 확정한다.
 - 경로 없음은 빈 Path. 과거 경로를 새 stamp로 재포장하지 않는다. Controller는 빈/만료 경로에서 정지한다.
@@ -335,7 +339,7 @@ Lanelet2 shortestPathVia는 연속 경유지 쌍마다 shortestPath를 호출한
 
 Planner는 shortestPathVia 결과의 lanelet ID 리스트를 순서 그대로 `/global_path`로 발행한다. 타입은 `std_msgs/msg/Int64MultiArray`, data=ordered lanelet IDs, layout.dim=[], layout.data_offset=0. 반복 ID를 제거하지 않는다. 탐색 실패/유효하지 않은 입력은 빈 리스트를 발행하고 이전 경로를 성공 결과처럼 반복하지 않는다. BEST_EFFORT / VOLATILE / KEEP_LAST(1), 계산 결과당 한 번 발행한다. 별도 GlobalRouteDebug 타입과 geometry payload는 사용하지 않는다.
 
-Visualizer는 lanelet ID 리스트를 자기 Lanelet2 맵에서 조회해 그린다. 이는 Planner의 원본 geometry가 아니라 Visualizer 맵으로 복원한 표시임을 구분한다. 서로 다른 맵을 로드한 경우를 숨기지 않으며 차선변경 연결을 실제 local 궤적처럼 매끈하게 이어 그리지 않는다.
+Visualizer는 lanelet ID 리스트를 자기 Lanelet2 맵에서 조회해 해당 lanelet 중심선을 각각 밝은 색·굵은 LINE_STRIP으로 강조한다. lanelet 사이 연결선은 추가하지 않는다. 이는 Planner의 원본 geometry가 아니라 Visualizer 맵으로 복원한 표시임을 구분한다. 서로 다른 맵을 로드한 경우를 숨기지 않으며 차선변경 연결을 실제 local 궤적처럼 매끈하게 이어 그리지 않는다.
 
 #### Cell 클래스 (C++17 코어 구현)
 
@@ -422,21 +426,24 @@ Python은 hdmap_init에서 연결한 previous를 조회한다. setPrevious는 Py
 
 ### Topics
 
-주행 토픽의 custom msg는 EgoPose, Objects, TrafficLight, DynamicStatus, EgoStatus, ControlCommand 6종을 작성했다. ROS 패키지 빌드 설정과 실행 노드는 아직 미구현이다. 공간 데이터 frame은 `map`, 신호 frame은 빈 문자열, 제어 명령 기준은 `base_link`.
+주행 토픽의 custom msg는 EgoPose, Objects, TrafficLight, DynamicStatus, EgoStatus, ControlCommand, SearchTree 7종을 작성했다. ROS 패키지 빌드 설정과 실행 노드는 아직 미구현이다. 공간 관측·정적 지도는 `map`, 로컬 경로는 `base_link(t0)`, 신호 frame은 빈 문자열, 제어 명령 기준은 차량 `base_link`다. RViz Fixed Frame은 `map`이며 토픽의 reference frame과 구분한다.
 
-| Topic | 타입 | Fixed/reference frame | 발행 → 구독 | 의미 |
+| Topic | 타입 | Reference frame | 발행 → 구독 | 의미 |
 |---|---|---|---|---|
 | `/ego_pose` | `interfaces/msg/EgoPose` | `map` | Bridge → Tracker, TF | Header, XYZ, heading/pitch/roll |
 | `/objects` | `interfaces/msg/Objects` | `map` | Bridge → Tracker | Header, length, 고정 길이 id/x/y/z/heading/speed/size_x/size_y/size_z 배열(각 30개) |
 | `/traffic_light` | `interfaces/msg/TrafficLight` | 해당 없음; frame_id 빈 문자열 | Bridge → Tracker | Header, raw controller ID/state 하나 |
 | `/dynamic_status` | `interfaces/msg/DynamicStatus` | `map` | Tracker → Planner/Annotator, Visualizer | Header, 모든 cell 상태; Ego 없음 |
 | `/ego_status` | `interfaces/msg/EgoStatus` | `map` | Tracker → Planner/Annotator/Control, Visualizer | Header, x/y/z/heading/pitch/roll/speed |
-| `/local_path` | `nav_msgs/msg/Path` | `map`; 각 pose도 동일 | Planner → Control | source stamp, rear-axle poses |
+| `/local_path` | `nav_msgs/msg/Path` | `base_link`; 각 pose도 동일 | Planner → Control, RViz Path | snapshot stamp t0, rear-axle poses |
+| `/search_tree` | `interfaces/msg/SearchTree` | `base_link`; snapshot t0 | Planner → Visualizer | x/y(m), yaw(rad), parent_index; 루트 부모=-1, final_node_index=-1이면 최종 노드 없음 |
 | `/global_path` | `std_msgs/msg/Int64MultiArray` | `map`의 ID 참조; Header 없음 | Planner → Visualizer | shortestPathVia 결과 lanelet ID 순서; 빈 리스트=유효 경로 없음 |
 | `/speed_limit` | `std_msgs/msg/Float32` | 해당 없음; 스칼라, Header 없음 | Annotator → Control | 현재 cell의 cap m/s |
 | `/ctrl_cmd` | `interfaces/msg/ControlCommand` | `base_link` 차량 기준; fixed frame 아님 | Control → Bridge | 생성 Header, steering, target_accel, turn_signal |
 
 ### Custom 메시지 파일
+
+- [SearchTree.msg](src/interfaces/msg/SearchTree.msg): Header + x/y/yaw/parent_index 배열 + final_node_index. 배열 길이는 같고 인덱스는 메시지 내부 노드를 가리킨다. Header는 해당 탐색의 Path와 동일한 `base_link`, `t0`다.
 
 - [EgoPose.msg](src/interfaces/msg/EgoPose.msg): Header + x/y/z/heading/pitch/roll.
 - [Objects.msg](src/interfaces/msg/Objects.msg): Header + length + id/x/y/z/heading/speed/size_x/size_y/size_z 배열(각 30개).
@@ -445,7 +452,7 @@ Python은 hdmap_init에서 연결한 previous를 조회한다. setPrevious는 Py
 - [EgoStatus.msg](src/interfaces/msg/EgoStatus.msg): Header + x/y/z/heading/pitch/roll/speed.
 - [ControlCommand.msg](src/interfaces/msg/ControlCommand.msg): Header + steering/target_accel/turn_signal.
 
-`Objects.length`는 객체 길이가 아니라 채워진 배열 원소 수(0~30)다. 각 배열은 항상 30개 슬롯이며 같은 인덱스가 같은 객체를 나타낸다. 소비자는 [0, length)만 읽고 Bridge는 나머지 슬롯을 0으로 채운다. id는 uint32, 나머지 객체 필드는 float32다. size_x/size_y/size_z는 원본 API의 length/width/height에 대응하는 전체 길이/폭/높이(m)다. x/y/z는 map 기준 객체 reference point(m), heading은 자세(rad), speed는 XY 속력(m/s)이므로 heading을 속도 방향으로 단정하지 않는다. 원본 API가 제공하지 않는 reference point → 박스 중심 오프셋은 여전히 별도 확인이 필요하며 크기만으로 추정하지 않는다.
+`Objects.length`는 객체 길이가 아니라 채워진 배열 원소 수(0~30)다. 각 배열은 항상 30개 슬롯이며 같은 인덱스가 같은 객체를 나타낸다. 소비자는 [0, length)만 읽고 Bridge는 나머지 슬롯을 0으로 채운다. id는 uint32, 나머지 객체 필드는 float32다. size_x/size_y/size_z는 원본 API의 length/width/height에 대응하는 전체 길이/폭/높이(m)다. x/y는 Bridge가 검증된 오프셋을 적용한 map 기준 XY 박스 중심(m)이며 z는 Bridge가 계산한 해당 객체 박스의 최저 Z다. heading은 자세(rad), speed는 XY 속력(m/s)이므로 heading을 속도 방향으로 단정하지 않는다.Tracker와 Visualizer가 중심 오프셋을 다시 적용하지 않도록 [Data Pipeline](docs/DataPipeline.md)을 따른다.
 
 표준 타입인 `/local_path`, `/global_path`, `/speed_limit`의 custom msg는 만들지 않는다.
 
@@ -525,13 +532,16 @@ cell_ids = static_map.cellTree().queryOverlaps(object_footprint, min_z, max_z)
 
 sink는 원시 query metadata도 발행하도록 구현한다. object_footprint는 객체 기준점·박스 중심 오프셋·크기·자세를 적용한 map 기준 꼭짓점이다. 높이 범위도 같은 map 기준이며 도로면과 객체의 높이 관계를 반영한다. Visualizer 자체 조회에는 sink를 붙이지 않아 재귀 debug를 피한다.
 
+Ego 차체는 차량 제원 크기의 CUBE로 표시한다. `frame_id=base_link`, pose는 후륜축 대비 중심 offset과 identity 회전이며 `/ego_pose` stamp를 계승한다. map 위치·자세는 RViz가 그 시각의 TF로 적용한다. `/search_tree`는 부모 연결선·yaw 화살표·최종 노드의 부모 분기를 `base_link` 마커로 표시하고 t0의 TF를 적용한다. 두 마커 모두 `frame_locked=false`다. 상세 흐름은 [DataPipeline](docs/DataPipeline.md)을 따른다.
+
 ### Visualizer 전용 diagram
 
 ```mermaid
 flowchart TD
+    TREE["/search_tree<br/>base_link·t0"] --> VIS
     DS["/dynamic_status"] --> VIS((Visualizer))
     EGO["/ego_status"] --> VIS
-    PATH["/local_path"] --> VIS
+    PATH["/local_path<br/>base_link·t0"] -->|"기본 Path display·t0의 TF 적용"| RVIZ
     GLOBAL["/global_path<br/>lanelet ID 리스트"] --> VIS
     RAW["/ego_pose /objects /traffic_light<br/>비교용 raw"] --> VIS
     INFO["/debug/node/map_info"] --> VIS
@@ -544,7 +554,9 @@ flowchart TD
 ```
 
 표시 반경은 config의 100m 기본값. ROI 잘림·표시 상한도 공개한다. lanelet 경계·중심선·방향·solid/broken/double solid·정지선·controller/lamp 관계를 그린다. 물리 신호 위치·raw API state·Tracker 판단은 별도 layer. 미검증 geometry/선종류를 그럴듯하게 보완하지 않는다.
-`occupancy_bin`은 화면에 색칠할 예측 구간이다. 0=현재, 1=(0,0.5]초, …, 12=(5.5,6]초. Planner 계산을 바꾸지 않는다. source stamp와 상대시간을 함께 표시한다.
+`occupancy_bin`은 화면에 색칠할 예측 구간이다. 0=현재, 1=(0,0.5]초, …, 12=(5.5,6]초. Planner 계산을 바꾸지 않는다. source stamp와 상대시간을 함께 표시한다. Cell 선의 alpha는 `p * (13 - bin) / 13`으로 현재에 가깝고 점유확률이 높을수록 불투명하게 한다. unknown(-1)은 별도 회색으로 표시한다.
+
+로컬 경로는 Visualizer 마커를 만들지 않고 RViz 기본 Path display로 직접 표시한다. Fixed Frame=map, Buffer Length=1, Offset=(0,0,0)이며 Path Header 시각의 TF를 사용한다. 전체 변환 경로는 [DataPipeline](docs/DataPipeline.md)에 명시한다.
 
 ## Bringup
 
