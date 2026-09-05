@@ -242,9 +242,7 @@ flowchart TD
 ```mermaid
 flowchart TD
     EGO["/ego_status"] --> MPC(("Control MPC<br/>차량 모델·목표 경로로 제어 계산"))
-    PATH["/local_path<br/>base_link·t0"] --> ALIGN(("Control<br/>t0의 TF로 경로를 map에 변환<br/>map Ego 상태와 좌표 기준 통일"))
-    TF["/tf<br/>map → base_link 이력"] --> ALIGN
-    ALIGN --> MPC
+    PATH["/local_path<br/>base_link·t0"] --> MPC
     MPC --> LIMITER(("Control<br/>speed cap·과속 제동 override·HOLD 적용"))
     LIMIT["/speed_limit"] --> LIMITER
     CONFIG[("제어·차량·제동 config")] --> MPC
@@ -257,7 +255,7 @@ flowchart TD
     VTD --> FEEDBACK["다음 Ego 패킷<br/>1절과 3절의 관측 경로"]
 ```
 
-Control은 과거 `base_link(t0)` 경로를 현재 차량 좌표처럼 사용하지 않는다. 경로 기준 시각의 TF가 준비되기 전에는 가속하지 않는다.
+Control은 `/ego_status`, `/local_path`, `/speed_limit`만 구독한다. 발행된 로컬 경로를 입력으로 사용하며 TF 구독·변환은 하지 않는다.
 
 마커는 요청한 바퀴각·가속도이지 실제 차량 응답이 아니다. MPC 원안·override 이유·송신 완료 여부는 `/ctrl_cmd`에 없다.
 
