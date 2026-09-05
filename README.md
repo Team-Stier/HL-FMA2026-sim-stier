@@ -3,9 +3,9 @@
 HL Mando Future Mobility Award 2026 시뮬레이션 부문을 위한 ROS 2 Jazzy 자율주행 SW 설계.
 카메라 인지 없이 대회 API의 Ego·객체·신호 정보를 사용한다. Planner는 정적 지도·dynamic status·ego status로 계획하며 Controller는 local path·ego status·speed limit만 구독한다.
 
-> C++17 HDMap 코어·Python binding, custom msg 7종, TF 노드, Visualizer, RViz 설정·launch·run.sh를 구현했다. Bridge·Tracker·Planner·Control·지도 변환은 미구현이다. 현재 실행 범위는 TF + Visualizer + RViz이며 수신 토픽 없이 주행 데이터를 생성하지 않는다.
+> C++17 HDMap 코어·Python binding, custom msg 7종, TF 노드, Visualizer, RViz 설정·launch·run.sh를 구현했다. SimBridge·개발용 정적 지도·객체 오프셋 매핑도 통합했다. Tracker·Planner·Control은 미구현이다. 현재 실행 범위는 SimBridge + TF + Visualizer + RViz이며 수신 토픽 없이 주행 데이터를 생성하지 않는다.
 > [VTD 종합 검토·심 계약·검증 과제](docs/04-vtd-design-review.md)를 함께 읽는다. 배포 확인값, 설계 기본값, 실측 미확인을 구분한다.
-> [시각화 Data Pipeline](docs/DataPipeline.md)은 원시 데이터부터 마커까지의 변환·추정·표시 계약이다. `/objects`의 XY 중심·객체별 min Z 변환은 Bridge가 수행하며 실제 오프셋 매핑과 노드는 아직 미구현이다.
+> [시각화 Data Pipeline](docs/DataPipeline.md)은 원시 데이터부터 마커까지의 변환·추정·표시 계약이다. `/objects`의 XY 중심·객체별 min Z 변환은 Bridge가 수행하며 ID별 측정 오프셋은 `config/object_offsets.yaml`에 있으며 미등록 ID·크기 변경 패킷은 거부한다.
 
 ## Convention
 
@@ -567,14 +567,14 @@ Ubuntu 24.04와 ROS 2 Jazzy apt 저장소가 설정된 환경을 전제로 한�
 
 빌드 전에 **동일 사용자 소유의 인식 가능한 ROS 프로세스**를 SIGINT → SIGTERM → SIGKILL 순서로 정리한다. `/opt/ros/jazzy/lib/`, Jazzy `ros2` CLI, 이 checkout의 `install/` 실행 경로를 확인한다. 임의의 Python 프로세스·VTD·IDE·호출 셸은 종료하지 않는다. 다른 ROS 프로젝트도 종료될 수 있으므로 배포 전용 계정에서 사용한다. 사용자 정의 wrapper나 다른 설치 경로까지 모든 ROS 프로세스를 발견한다고 보장하지 않는다.
 
-`interfaces`, `tf_broadcasting`, `visualization`을 `colcon build --cmake-clean-cache`로 빌드하고 HDMap Python 코어를 별도 CMake 빌드·설치한다. 이후 TF + Visualizer + 설정된 RViz를 ROS launch로 실행한다. 하나가 종료되거나 Ctrl+C를 누르면 나머지도 함께 종료한다. 아직 없는 Bridge/Tracker/Planner/Annotator/Control은 자동 실행하지 않는다.
+`interfaces`, `sim_bridge`, `tf_broadcasting`, `visualization`을 `colcon build --cmake-clean-cache`로 빌드하고 HDMap Python 코어를 별도 CMake 빌드·설치한다. 이후 TF + Visualizer + 설정된 RViz를 ROS launch로 실행한다. 하나가 종료되거나 Ctrl+C를 누르면 나머지도 함께 종료한다. 아직 없는 Tracker/Planner/Annotator/Control은 자동 실행하지 않는다. Bridge는 VTD_HOST(기본 127.0.0.1), VTD_PORT(기본 9910)에 연결하며 VTD 프로세스 자체를 실행하지 않는다.
 
 ```bash
 export HDMAP_PATH=/absolute/path/to/hdmap.bin
 source /home/physicar/physicar_ws/run.sh
 ```
 
-`HDMAP_PATH`는 실제 사전 제작 Cell이 포함된 Lanelet2 bin이다. 미지정이면 지도 부재를 경고하고 수신 토픽 시각화만 실행한다. 잘못된 파일을 지정하면 초기화에 실패하며 대체 지도를 만들지 않는다. 배포용 지도와 VTD 실험은 이후 작업이다. 설치 후 수동 실행은 다음과 같다. launch는 TF도 포함하므로 별도 TF 명령과 중복 실행하지 않는다.
+`HDMAP_PATH` 기본값은 이 checkout의 `map/hdmap.bin`이다. 2,847개 Lanelet과 94,157개 Cell이 포함된 개발용 지도이며 대회 주행 승인본은 아니다. 잘못된 파일을 지정하면 초기화에 실패하며 대체 지도를 만들지 않는다. 지도·검사 결과는 [정적 지도 기록](docs/06-static-map.md), 오프셋 측정은 [객체 기준점 기록](docs/05-object-reference-resolution.md)을 따른다. ID 2/3/4/5의 오프셋은 측정 시나리오 기준이며 다른 시나리오에 그대로 일반화하지 않는다. 설치 후 수동 실행은 다음과 같다. launch는 Bridge와 TF도 포함하므로 별도 노드 명령과 중복 실행하지 않는다.
 
 ```bash
 ros2 run tf_broadcasting tf_broadcasting_node

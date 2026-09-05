@@ -1,0 +1,26 @@
+cell_length_m: 1.0
+boundary_sample_m: 0.25
+endpoint_join_tolerance_m: 0.15
+coordinate_merge_m: 0.000001
+unverified_speed_cap_mps: 8.0
+school_zone_speed_cap_mps: 8.0
+school_zones:
+    - road_ids: [174, 190, 420, 465]
+      evidence: osgb_school_overhead_30_and_school_zone_text_conservative_whole_road
+asset_stopline_approaches:
+    - [2077, -1]
+    - [2115, -1]
+    - [2116, -1]
+    - [2195, -1]
+    - [2819, -1]
+width_start_overrides:
+    - road_id: 1927
+      section_index: 3
+      lane_id: 4
+      s_offset: 0.0
+      evidence: previous_section_3.3m_and_osgb_continuous_lane_road1927
+endpoint_join_overrides:
+    - source: [2190, 0, -2]
+      target: [2172, 0, 2]
+      tolerance_m: 0.17
+      evidence: explicit_xodr_lane_link_with_0.165m_width_mismatch

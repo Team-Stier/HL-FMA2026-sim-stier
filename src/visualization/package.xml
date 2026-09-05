@@ -9,6 +9,7 @@
     <depend>ament_cmake_python</depend>
     <depend>rclpy</depend>
     <exec_depend>tf_broadcasting</exec_depend>
+    <exec_depend>sim_bridge</exec_depend>
     <depend>interfaces</depend>
     <depend>geometry_msgs</depend>
     <depend>std_msgs</depend>

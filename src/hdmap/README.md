@@ -29,6 +29,8 @@ Cell ID로 `cells().at(id)`와 dynamic 배열을 함께 조회한다. lanelet은
 
 ## 빌드 및 소비
 
+실제 지도 생성본은 루트 `map/hdmap.bin`이다. 제작·검사·미확정 신호 목록은 [정적 지도 제작 기록](../../docs/06-static-map.md)을 따른다. 런타임 로더와 오프라인 `map/tools/build_map.py`는 별개이며, 각 노드는 생성본에 `hdmap_init`만 호출한다.
+
 Lanelet2 core/io, Boost, Eigen 개발 환경이 필요하다. Python API는 기본 빌드하며 Python 개발 헤더와 같은 Python 버전의 Boost.Python이 추가로 필요하다. 실행 시 공식 `lanelet2` Python 패키지가 필요하다. C++만 빌드하려면 `-DHDMAP_BUILD_PYTHON=OFF`를 지정한다.
 
 ```bash

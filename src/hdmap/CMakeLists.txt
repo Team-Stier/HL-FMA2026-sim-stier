@@ -17,6 +17,17 @@ target_include_directories(hdmap_core INTERFACE
     ${Boost_INCLUDE_DIRS})
 target_link_libraries(hdmap_core INTERFACE ${lanelet2_core_LIBRARIES} ${lanelet2_io_LIBRARIES})
 
+option(HDMAP_BUILD_MAP_TOOLS "Build the offline map and routing check" OFF)
+if(HDMAP_BUILD_MAP_TOOLS)
+    find_package(lanelet2_routing REQUIRED)
+    find_package(lanelet2_traffic_rules REQUIRED)
+    add_executable(hdmap_check ../../map/tools/check_map.cpp)
+    target_include_directories(hdmap_check PRIVATE
+        ${lanelet2_routing_INCLUDE_DIRS} ${lanelet2_traffic_rules_INCLUDE_DIRS})
+    target_link_libraries(hdmap_check PRIVATE hdmap::core
+        ${lanelet2_routing_LIBRARIES} ${lanelet2_traffic_rules_LIBRARIES})
+endif()
+
 include(GNUInstallDirs)
 option(HDMAP_BUILD_PYTHON "Build the Python API using Lanelet2 Python types" ON)
 if(HDMAP_BUILD_PYTHON)

@@ -1,6 +1,10 @@
 schema_version: 1
 configuration_kind: design_draft_not_ros_parameter_file
 allow_motion: false
+hdmap:
+    file: map/hdmap.bin
+sim_bridge:
+    object_offsets_file: object_offsets.yaml
 time:
     use_sim_time: false
     source_stamp: bridge_system_ros_receive_time
