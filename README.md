@@ -3,7 +3,7 @@
 HL Mando Future Mobility Award 2026 시뮬레이션 부문을 위한 ROS 2 Jazzy 자율주행 SW 설계.
 카메라 인지 없이 대회 API의 Ego·객체·신호 정보를 사용한다. Planner는 정적 지도·dynamic status·ego status로 계획하며 Controller는 local path·ego status·speed limit만 구독한다.
 
-> 설계 계약 초안. C++17 Cell·정지선 역색인은 구현했으며 신호 규칙/Tracker·실행 노드·지도 변환기·R-tree·Python binding·launch는 아직 구현하지 않았다. 설정 YAML과 custom msg 6종도 후속 구현의 초안이며 현재 빌드 가능한 ROS workspace가 아니다.
+> 설계 계약 초안. C++17 Cell·CellTree·Lanelet 로더·hdmap_init·정지선 역색인·신호 레지스트리·Python binding은 구현했다. 신호 규칙/Tracker·실행 노드·지도 변환기·ROS marker adapter·launch는 아직 구현하지 않았다. 설정 YAML과 custom msg 6종도 후속 구현의 초안이며 현재 빌드 가능한 ROS workspace가 아니다.
 > [VTD 종합 검토·심 계약·검증 과제](docs/04-vtd-design-review.md)를 함께 읽는다. 배포 확인값, 설계 기본값, 실측 미확인을 구분한다.
 
 ## Convention
@@ -68,12 +68,46 @@ src/
 
 ### 정적 지도 및 CellTree
 
-- 필요한 노드마다 사전 제작한 Lanelet2·cell·R-tree를 자기 메모리에 로드한다. 지도 서버나 조회 RPC는 두지 않는다.
+- 필요한 노드는 `hdmap::hdmap_init(path)`를 한 번 호출해 Lanelet2·cell·R-tree를 자기 메모리에 구성한다. 지도 서버·조회 RPC·프로세스 간 공유 singleton은 두지 않는다.
 - cell ID는 사전 확정하며 dynamic 배열의 인덱스로 사용한다. 메모리 로드 때 ID를 다시 만들지 않는다.
 - lanelet을 진행 방향으로 약 1m씩 나누고 차선 전체 폭을 사용한다. 마지막 cell과 정지선 경계에서는 더 짧을 수 있다.
 - Cell geometry는 lanelet 경계의 Point3d를 자른 polygon이다. bounding box는 R-tree 후보 조회용이고, 최종 교차는 cell polygon과 객체 box로 검사한다.
 - lanelet 조회는 기존 Lanelet2 라이브러리를 사용한다. 별도 get_lanelet wrapper는 만들지 않는다.
-- 실제 Cell 메서드와 계획 중인 CellTree API의 호출 예시는 아래에 구분한다.
+- Lanelet과 사전 제작 Cell polygon을 함께 저장한 `hdmap.bin`을 읽는다. R-tree는 저장된 Cell bounding box/ID로 bulk-load한다. 트리 내부 노드 구조를 파일에서 역직렬화하는 방식은 아니며, 런치 때 Cell 분할이나 ID 생성은 하지 않는다.
+- C++와 Python 모두 같은 코어를 사용한다. Python 빌드·설치법은 [hdmap README](src/hdmap/README.md)의 Python 항목을 따른다.
+
+**C++ — 프로세스마다 초기화**
+
+```cpp
+#include "hdmap/hdmap.hpp"
+
+auto static_map = hdmap::hdmap_init("/path/to/hdmap.bin");
+const auto& lanelet_map = static_map->laneletMap();
+const auto& cells = static_map->cells();
+const auto& cell_tree = static_map->cellTree();
+const auto& stopline_cells = static_map->stoplineCells();
+const auto& signals = static_map->signalRegistry();
+const auto lanelet = lanelet_map.laneletLayer.get(cells.at(0).parent().lanelet_id);
+```
+
+`static_map`은 노드 멤버로 보관해 조회하는 동안 유지한다. HdMap의 복사/이동은 금지하며 반환된 unique_ptr 자체는 이동할 수 있다. 모든 Cell 배치를 마친 뒤 R-tree와 역색인을 만들고 previous를 연결한 후 반환한다. Lanelet 지도만 필요하면 별도 wrapper 없이 `lanelet::load(path, projector)`를 직접 사용한다. `.bin`은 사전에 확정한 map 좌표를 유지한다. `.osm` 전체 초기화는 `hdmap_init(path, projector)`에 변환 때와 같은 명시적 Lanelet2 projector를 전달해야 한다.
+
+hdmap은 Lanelet2의 동일 기능·자료형을 재선언하지 않는다. bounding box는 `lanelet::BoundingBox3d`, XY polygon은 `lanelet::BasicPolygon2d`, Lanelet/정지선 ID는 `lanelet::Id`를 사용한다. 형상 변환·bounding box 계산·지도 로드는 `lanelet::traits::toBasicPolygon2d`, `lanelet::geometry::boundingBox2d/3d`, `lanelet::load`를 직접 호출한다. Cell ID는 dynamic 배열 인덱스 계약 때문에 uint32를 유지한다. CellTree는 Cell ID 반환·높이 필터·debug callback이라는 고유 역할만 더한다. 경계 접촉도 포함하는 교차 검사는 Lanelet2 타입의 Boost Geometry 어댑터로 `boost::geometry::intersects`를 사용한다.
+
+**사전 데이터 계약**
+
+Lanelet2 map의 polygonLayer에 다음 속성을 가진 Cell polygon을 저장한다. Polygon ID는 Lanelet2 primitive ID이고 `cell_id`와 별개다. polygon의 Point3d는 사전 분할한 경계점이며 ID와 좌표를 로드 중 바꾸지 않는다.
+
+| polygon 속성 | 의미 |
+|---|---|
+| `type=hdmap_cell` | 일반 polygon과 Cell 구분 |
+| `cell_id` | 0부터 빈 번호 없이 사전 확정한 dynamic 배열 인덱스 |
+| `parent_lanelet_id` | 같은 map의 부모 Lanelet ID |
+| `index_in_lanelet` | 부모 진행 방향 시작부터 0-based 순서 |
+| `stopline_ids` | 선택 속성; 쉼표로 구분한 정지선 ID, 없으면 빈 목록 |
+| `previous_cell_id` | 선택 속성; 사전 확정한 이전 Cell ID, 특히 lanelet 경계 연결에 사용 |
+
+Cell 저장소는 저장된 ID 순으로 배치하지만 ID를 재할당하지 않는다. previous가 생략되면 같은 부모의 index-1을 연결하고 index=0은 nullptr다. 합류점의 상류를 임의 선택하지 않는다. 데이터가 없는 일반 Lanelet 지도만 넣으면 자동으로 1m 분할하지 않고 초기화 오류로 알린다. 실제 대회용 Cell 데이터 제작은 후속 지도 작업이다. `.bin`은 [Lanelet2 IO의 바이너리 포맷](https://docs.ros.org/en/ros2_packages/kilted/api/lanelet2_io/index.html)을 사용하며 제작/배포 Lanelet2·Boost 버전을 맞춘다.
 
 **C++ — 현재 Cell API**
 
@@ -84,40 +118,62 @@ const auto& cell = cells[cell_id];
 const auto id = cell.id();
 const auto lanelet_id = cell.parent().lanelet_id;
 const auto order = cell.parent().index_in_lanelet;
-const auto& polygon = cell.geometry();
-const auto& box = cell.bounding_box();
-const auto& stoplines = cell.stopline_ids();
-const bool on_stopline = cell.is_stopline();
-const auto stopline_cells = hdmap::make_stopline_cell_index(cells);
+const auto& polygon = cell.polygon3d();
+const auto& box = cell.boundingBox3d();
+const auto& stoplines = cell.stoplineIds();
+const bool on_stopline = cell.isStopline();
+const auto stopline_cells = hdmap::makeStoplineCellIndex(cells);
 ```
 
-**Python — 같은 메서드의 바인딩 예정 호출 형태. 아직 실행 불가.**
+**Python — 공식 Lanelet2 Python 타입과 호환**
 
 ```python
+from hdmap import hdmap_init
+
+static_map = hdmap_init("/path/to/hdmap.bin")
+cells = static_map.cells()
 cell = cells[cell_id]
-cell_id = cell.id()
+cell_id = cell.id
 lanelet_id = cell.parent().lanelet_id
 order = cell.parent().index_in_lanelet
-polygon = cell.geometry()
-box = cell.bounding_box()
-stoplines = cell.stopline_ids()
-on_stopline = cell.is_stopline()
-stopline_cells = hdmap.make_stopline_cell_index(cells)
+polygon = cell.polygon3d()
+box = cell.boundingBox3d()
+stoplines = cell.stoplineIds()
+on_stopline = cell.isStopline()
+stopline_cells = static_map.stoplineCells()
 ```
 
-**CellTree — C++/Python 모두 미구현 API 예시**
+**CellTree — 구현된 C++ API**
 
 ```cpp
-const auto candidates = cell_tree.query_aabb(query_box);
-const auto overlaps = cell_tree.query_overlaps(object_box);
+lanelet::BoundingBox3d query_box(
+    lanelet::BasicPoint3d(0.0, 0.0, -0.5),
+    lanelet::BasicPoint3d(10.0, 5.0, 2.0));
+const auto candidates = cell_tree.search(query_box);
+
+lanelet::BoundingBox2d xy_box(lanelet::BasicPoint2d(0.0, 0.0), lanelet::BasicPoint2d(10.0, 5.0));
+const std::vector<hdmap::CellId> xy_candidates = cell_tree.search(xy_box);
+
+lanelet::BasicPolygon2d object_footprint{
+    {1.0, 1.0}, {3.0, 1.0}, {3.0, 2.0}, {1.0, 2.0}};
+const auto overlaps = cell_tree.queryOverlaps(object_footprint, -0.5, 2.0);
 ```
+
+**Python — 같은 CellTree 조회**
 
 ```python
-candidates = cell_tree.query_aabb(query_box)
-overlaps = cell_tree.query_overlaps(object_box)
+from lanelet2.core import BasicPoint2d, BoundingBox2d
+
+cell_tree = static_map.cellTree()
+query_box = BoundingBox2d(BasicPoint2d(0, 0), BasicPoint2d(10, 5))
+candidates = cell_tree.search(query_box)
+object_footprint = [BasicPoint2d(1, 1), BasicPoint2d(3, 1), BasicPoint2d(3, 2), BasicPoint2d(1, 2)]
+overlaps = cell_tree.queryOverlaps(object_footprint, -0.5, 2.0)
 ```
 
-query_aabb는 축 정렬 box로 후보 ID를 반환하고 query_overlaps는 회전 객체 box와 실제 cell polygon을 대조한다. 조회 시 debug marker를 발행하는 기능은 추후 라이브러리에 붙인다.
+search는 3D 축 정렬 box와 겹친 후보 ID를 반환한다. queryOverlaps는 객체 footprint의 후보 조회 후 실제 Cell polygon과 XY 교차를 검사한다. 회전 객체는 map 좌표로 회전·이동한 꼭짓점을 전달한다. 경계 접촉도 교차이며, z는 [min_z, max_z]와 Cell 높이 범위의 겹침으로 거른다. 이는 3D mesh 충돌이 아니며 경사로의 정확한 표면 교차를 계산하지 않는다. 반환 순서는 R-tree 탐색 순서이며 주행 순서를 뜻하지 않는다.
+
+두 조회 메서드는 결과가 없어도 연결된 debug sink를 호출한다. `hdmap_init(path, sink)`의 sink에는 `(operation, vector<const Cell*>)`가 전달되며 실제 조회한 프로세스의 Cell geometry/bounding box다. callback은 동기 호출이고 포인터는 HdMap 수명 내에서만 유효하다. 기본 코어는 ROS를 요구하지 않으며 publisher 연결과 MarkerArray 집계/삭제 adapter는 아직 미구현이다. 따라서 sink를 연결하지 않은 조회가 이미 RViz에 표시된다고 보지 않는다.
 
 ## ROS architecture
 
@@ -289,7 +345,7 @@ Visualizer는 lanelet ID 리스트를 자기 Lanelet2 맵에서 조회해 그린
 
 ```cpp
 using CellId = std::uint32_t;
-using StoplineId = std::uint64_t;
+using StoplineId = lanelet::Id;
 
 struct CellParent {
     lanelet::Id lanelet_id;
@@ -301,11 +357,11 @@ public:
     Cell(CellId id, CellParent parent, lanelet::ConstPolygon3d geometry,
          std::vector<StoplineId> stopline_ids = {});
 
-    const lanelet::ConstPolygon3d& geometry() const noexcept;
-    const lanelet::BoundingBox3d& bounding_box() const noexcept;
-    bool is_stopline() const noexcept;
+    const lanelet::ConstPolygon3d& polygon3d() const noexcept;
+    const lanelet::BoundingBox3d& boundingBox3d() const noexcept;
+    bool isStopline() const noexcept;
     const Cell* previous() const noexcept;
-    void set_previous(const Cell* previous) noexcept;
+    void setPrevious(const Cell* previous) noexcept;
 
 private:
     CellId id_;
@@ -323,23 +379,46 @@ geometry는 잘린 좌측 경계의 Point3d를 진행 방향으로, 우측 경�
 
 여기서 사전 변환 작업은 제공 XODR을 Lanelet2로 바꾸고 cell geometry/고정 ID를 만들어 배포하는 단계다. 예전에 쓴 '지도 빌더'는 이 개발용 작업을 뜻했으며 새로운 주행 노드나 메모리 로더가 아니다. launch 때는 이미 완성된 산출물을 각 프로세스 메모리에 로드한다.
 
-신호 매핑은 controller_id 아래 stopline_id/movement/permitted_states를 두는 설계만 유지한다. 파일 로딩·허용 판단·상태기·신호 참조 검증은 Tracker의 향후 구현 책임이다. [사전 탑재 형식 예제](docs/examples/signal_mapping.yaml)는 문서용이며 ID는 가상 값이다. stopline→cell 역색인은 Cell.stopline_ids에서 생성하므로 신호 테이블에 cell 목록을 중복 저장하지 않는다. lanelet 연결·좌우 변경 가능 여부는 RoutingGraph를 우선 사용한다. map_version은 bundle 단위이며 매 Cell에 중복 문자열로 넣지 않는다. speed cap/occupancy[13]/timestamp는 DynamicStatus에 둔다.
+신호의 정적 레지스트리도 `hdmap_init`에서 프로세스별로 구성한다. `signalRegistry()`는 참가자 API의 int32 controller ID → 읽기 전용 Lanelet2 TrafficLight 목록이다. 별도 신호 클래스나 signal_mapping.hpp는 만들지 않는다. 신호 점등 상태·허용 판단·상태기·speed cap 갱신은 Tracker의 향후 구현 책임이다. stopline→cell 역색인은 Cell.stoplineIds()에서 생성하므로 신호 테이블에 cell 목록을 중복 저장하지 않는다. lanelet 연결·좌우 변경 가능 여부는 RoutingGraph를 우선 사용한다. speed cap/occupancy[13]/timestamp는 DynamicStatus에 둔다.
 
-역색인은 필요한 노드가 launch 후 초기화할 때 `make_stopline_cell_index(cells)`로 한 번 생성해 자기 메모리에 둔다. Cell ID 재할당이나 polygon 재분할은 하지 않는다.
+**신호 사전 탑재 계약**
+
+- 같은 `hdmap.bin`의 regulatoryElementLayer에 Lanelet2 `TrafficLight`를 저장하고 적용 lanelet의 regulatory element로 연결한다.
+- 각 TrafficLight의 `controller_id` 속성은 API의 controller ID다. 누락된 TrafficLight는 초기화 오류로 처리하며 위치로 임의 추정하지 않는다. 신호가 전혀 없는 지도는 빈 registry로 로드한다.
+- `movement`와 `permitted_states` 속성은 예를 들어 `straight`/`3,5`, `left`/`4,5`처럼 저장한다. 레지스트리는 이를 해석하거나 상태를 판단하지 않고 원본 속성을 유지한다.
+- 정지선 또는 허용 movement가 다르면 별도 TrafficLight regulatory element로 만든다. 같은 controller ID 아래 여러 항목이 들어갈 수 있다. 같은 TrafficLight의 trafficLights()에는 같은 신호를 표시하는 물리 형상들만 묶는다.
+- `stopLine()`은 실제 정지선 LineString을 반환하며 그 ID가 Cell의 stoplineIds와 일치해야 한다. `trafficLights()`는 원본 Lanelet2 신호 형상을 반환한다. API controller ID, regulatory element ID, 물리 신호 primitive ID는 서로 다른 ID다. 원본 XODR signal ID가 필요하면 형상의 `xodr_signal_id` 속성에 별도로 보존한다.
+- 실제 대회 ID 대응은 지도 제작 때 확정한다. docs/examples의 가상 YAML은 로드하지 않는다. 객체 목록에서 신호가 사라져도 이 정적 registry는 삭제하지 않는다.
+
+```cpp
+const auto& registry = static_map->signalRegistry();
+const auto entry = registry.find(api_controller_id);
+if (entry != registry.end()) {
+    for (const auto& signal : entry->second) {
+        const auto lamps = signal->trafficLights();
+        const auto stopline = signal->stopLine();
+        const auto movement = signal->attribute("movement").value();
+        if (stopline) {
+            const auto& cell_ids = static_map->stoplineCells().at(stopline->id());
+        }
+    }
+}
+```
+
+역색인은 필요한 노드가 launch 후 초기화할 때 `makeStoplineCellIndex(cells)`로 한 번 생성해 자기 메모리에 둔다. Cell ID 재할당이나 polygon 재분할은 하지 않는다.
 
 previous 포인터는 신호 정지선부터 상류로 speed cap을 기록할 때 사용한다. 기본값은 nullptr이며, **cell 저장소와 R-tree 로드를 완료한 뒤, 노드가 조회를 시작하기 전에** 연결한다. 포인터 대상은 R-tree 내부 엔트리가 아니라 실제 Cell 저장소다. 핵심은 Cell 주소가 확정돼 있다는 점이며 R-tree 생성 순서 자체가 필수 조건은 아니다. 아래는 cells[0]이 cells[1]의 바로 이전 cell인 경우다.
 
 ```cpp
-cells[1].set_previous(&cells[0]);
+cells[1].setPrevious(&cells[0]);
 const hdmap::Cell* upstream = cells[1].previous();
 ```
 
 ```python
-cells[1].set_previous(cells[0])
 upstream = cells[1].previous()
 ```
 
-Python은 바인딩 예정 예시다. 포인터는 비소유이며 각 프로세스 안에서만 유효하다. 연결 후 cell 저장소를 재할당/정렬/복사하지 않고 읽기 전용으로 사용한다. 이전 가지가 여러 개인 합류점은 이 단일 포인터로 모두 표현하지 못하므로 후속 분기 처리가 필요하다. 순회는 감속에 필요한 거리까지만 한다.
+Python은 hdmap_init에서 연결한 previous를 조회한다. setPrevious는 Python에 노출하지 않는다. C++ 포인터는 비소유이며 각 프로세스 안에서만 유효하고, Python Cell/트리 view는 HdMap 소유권을 유지한다. 연결 후 cell 저장소를 재할당/정렬/복사하지 않고 읽기 전용으로 사용한다. 이전 가지가 여러 개인 합류점은 이 단일 포인터로 모두 표현하지 못하므로 후속 분기 처리가 필요하다. 순회는 감속에 필요한 거리까지만 한다.
 
 ### Topics
 
@@ -428,27 +507,23 @@ Marker lifetime=0(영구), 자동 수명 없음. 현재 선택한 query event를
 
 기본 `aggregation_enabled=true`, `query_mode=aggregate`, 집계 window=0.05s다. raw로 전환할 때는 enabled=false/mode=raw를 함께 설정하며 모순된 조합은 초기화 오류로 처리한다. aggregate는 호출별 데이터가 아니라 window 결과를 표시한다. marker 자동 만료와 집계 window는 별개이며 lifetime은 계속 0이다.
 
-다음은 구현 예정 API 샘플이며 아직 실행 가능한 라이브러리가 아니다.
+다음은 ROS adapter의 구현 예정 샘플이다. Python hdmap_init/debug_sink는 구현했지만 QueryDebugSink 클래스와 마커 발행 adapter는 아직 없으므로 아래 전체 코드는 실행할 수 없다.
 
 ```python
-import math
 from rclpy.qos import QoSProfile, ReliabilityPolicy, DurabilityPolicy, HistoryPolicy
 from visualization_msgs.msg import MarkerArray
-from hdmap import CellTree, Box2D, QueryDebugSink
+from hdmap import hdmap_init, QueryDebugSink
 
 qos = QoSProfile(history=HistoryPolicy.KEEP_LAST, depth=1,
                  reliability=ReliabilityPolicy.BEST_EFFORT,
                  durability=DurabilityPolicy.VOLATILE)
 publisher = node.create_publisher(MarkerArray, "/debug/planner/cell_queries", qos)
 sink = QueryDebugSink(node=node, publisher=publisher, mode=config.visualization.query_mode)
-cell_tree = CellTree.load(map_bundle_path, debug_sink=sink)
-box = Box2D(center_x=ego_x + center_offset * math.cos(heading),
-            center_y=ego_y + center_offset * math.sin(heading),
-            length=vehicle_length, width=vehicle_width, yaw=heading)
-cell_ids = cell_tree.query_overlaps(box)
+static_map = hdmap_init(map_bundle_path, debug_sink=sink)
+cell_ids = static_map.cellTree().queryOverlaps(object_footprint, min_z, max_z)
 ```
 
-sink는 원시 query metadata도 발행하도록 구현한다. center_offset 등은 vehicle config. 위는 2D 예이며 3D가 필요하면 full transform을 사용한다. Visualizer 자체 조회에는 sink를 붙이지 않아 재귀 debug를 피한다.
+sink는 원시 query metadata도 발행하도록 구현한다. object_footprint는 객체 기준점·박스 중심 오프셋·크기·자세를 적용한 map 기준 꼭짓점이다. 높이 범위도 같은 map 기준이며 도로면과 객체의 높이 관계를 반영한다. Visualizer 자체 조회에는 sink를 붙이지 않아 재귀 debug를 피한다.
 
 ### Visualizer 전용 diagram
 
