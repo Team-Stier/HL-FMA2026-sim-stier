@@ -8,15 +8,16 @@ int32 length
 uint32[30] id
 
 # Object box-center X/Y in map metres, offset applied by Sim Bridge.
-# Configured XYZ offset is the object-local displacement from reference to CENTER.
-# center = API reference point + Rz(heading) * configured offset.
-# No object pitch/roll in API; yaw-only box approximation. Offsets are uncalibrated.
+# Bridge selects object-local reference -> CENTER offset by simulator object ID.
+# center = API reference point + Rz(heading) * offset[id].
+# No object pitch/roll in API; yaw-only box approximation.
+# No shared fallback. Unknown IDs or changed dimensions reject the whole packet.
 float32[30] x
 
 float32[30] y
 
 # Object bottom (min Z) in map metres: ref_z + offset_z - size_z / 2.
-# With temporary zero offsets: x/y = ref_x/ref_y, z = ref_z - size_z / 2.
+# For an RViz CUBE, use pose.position.z = z + size_z / 2.
 float32[30] z
 
 # Object orientation heading in radians; not necessarily velocity direction.

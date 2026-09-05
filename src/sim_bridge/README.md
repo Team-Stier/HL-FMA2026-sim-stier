@@ -28,14 +28,32 @@ launch에 추가 ROS 인자도 전달할 수 있다(`./src/sim_bridge/launch.sh 
 시뮬레이터 호스트에서 준비하고 시나리오를 실행한다.
 
 `/objects`의 XY는 객체 box 중심, Z는 객체 하단(min Z)이다.
-`config/runtime.yaml`의 `sim_bridge.object_center_offset_m`은 **세 축 모두
-API reference point → box center로 이동시키는 오프셋**이다. 객체 로컬 축
-기준 m 단위(+x 전방, +y 좌측, +z 위)이며, z 설정값도 중심까지의 변위다.
+`config/runtime.yaml`의 `sim_bridge.object_offsets_file`로 지정한 파일을 읽고
+**API object ID로 `center_offset_m`을 조회**한다. 기본은 같은 디렉터리의
+`object_offsets.yaml`이다. 오프셋은 세 축 모두 reference → center의 로컬 변위다.
+단위는 m이고 +x 전방, +y 좌측, +z 위다. `size_m`은 ID 재사용/크기 변경 검사에 쓴다.
 Bridge는 XY 오프셋을 heading으로 회전해 더하고,
 `z = ref_z + offset_z - size_z / 2`로 하단 좌표를 발행한다.
-API에 pitch/roll이 없어 yaw만 사용한다. 현재 공통 임시 오프셋 `(0, 0, 0)`은
-미보정값이며, XY는 원본 좌표, Z는 원본에서 높이 절반을 뺀 값이다.
+API에 pitch/roll이 없어 yaw만 사용한다. 탑재된 측정 세션의 ID 2/5는 Ioniq6의
+`(1.384, 0, 0)`, ID 3은 BMW Z4의 `(1.232, 0, 0)`, ID 4는 Smart의
+`(1.2845, 0, 0)`을 적용한다. 공통 오프셋은 없다. **다른 시나리오에서는 ID표를 새로 생성해야 한다.**
+미등록 ID 또는 측정 크기와 축별 0.001m 초과 차이가 있으면 기존 오류 처리로
+패킷 전체를 거부한다. 일부 객체만 누락한 `/objects`나 빈 목록으로 발행하지 않는다.
+실측 `offZ=0`을 높이 절반으로 바꾸지 않는다. 현재 계약의 발행 Z는
+`ref_z-size_z/2`이며, 그래픽 차체/타이어의 실제 최저점 측정값은 아니다.
+실험·재생성 및 적용 범위는 [객체 기준점 조사](../../docs/05-object-reference-resolution.md)를 따른다.
 Tracker 등 소비자는 오프셋을 다시 적용하지 않는다. 설정 변경 후 노드를 재시작한다.
+RViz `CUBE`는 발행된 `(x, y, z + size_z/2)`를 pose 중심으로 쓰고,
+heading quaternion과 `(size_x, size_y, size_z)` scale을 적용하면 된다.
+
+실제 시나리오 실행 중 ID 매핑 수집(Bridge 등 다른 `9910` 클라이언트는 먼저 종료, 시나리오 변경 없이 관측만):
+
+```bash
+python3 config/tools/measure_object_offsets.py --observe --seconds 30 \
+    --output /tmp/scenario-objects.json --export-offsets /tmp/scenario-object-offsets.yaml
+```
+
+출력을 해당 시나리오용 설정으로 지정한다. 개발용 수집 도구만 RDB를 읽으며 Bridge에는 RDB 연결이 없다.
 
 현재 설정은 `allow_motion=false`, 제동 보정값 `null`이므로 **수신 전용**이다.
 주행 허용에는 `allow_motion=true`, `calibration_verified=true`, 검증된 음수
@@ -70,4 +88,9 @@ Fast DDS discovery는 history/depth를 UNKNOWN/0으로 보고하므로 원격 �
 그 두 값까지 검증했다고 보지 않는다.
 
 검증용 브리지는 정상 종료했고 VTD 시나리오는 Stop 상태로 돌려놓았다.
-비어 있지 않은 객체 목록과 제어 송신·주행·제동의 실제 검증은 남아 있다.
+이후 임시 NPC 세 대의 참가자 API와 원본 RDB를 동시 측정해 reference point와
+geometry offset을 대조했다. 회전·삭제/재생성 결과와 Bridge 변환 검사는
+[`docs/05-object-reference-resolution.md`](../../docs/05-object-reference-resolution.md)에 기록한다.
+ID별 매핑 적용 후 실제 VTD에 연결해 `/objects` 126개와 세 차종의 72개 bbox
+꼭짓점을 검사했다. 미등록 ID·크기 변경 거부와 매핑 내보내기 검사도 통과했다.
+제어 송신·주행·제동 검증과 최종 대회 시나리오의 모든 ID 수집은 남아 있다.

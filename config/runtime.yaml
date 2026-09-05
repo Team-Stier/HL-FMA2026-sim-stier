@@ -4,16 +4,7 @@ allow_motion: false
 hdmap:
     file: map/hdmap.bin
 sim_bridge:
-    # API reference point -> geometric box CENTER displacement, for ALL x/y/z.
-    # Object-local metres: +x forward, +y left, +z up; add, not subtract.
-    # Bridge rotates x/y by heading to publish center_x/center_y.
-    # Published z is the BOTTOM: ref_z + offset_z - object_height / 2.
-    # z below is ref -> CENTER, NOT ref -> bottom. No pitch/roll in object API.
-    # Shared temporary zeros, pending calibration: x/y stay at ref; z=ref_z-height/2.
-    object_center_offset_m:
-        x: 0.0
-        y: 0.0
-        z: 0.0
+    object_offsets_file: object_offsets.yaml
 time:
     use_sim_time: false
     source_stamp: bridge_system_ros_receive_time

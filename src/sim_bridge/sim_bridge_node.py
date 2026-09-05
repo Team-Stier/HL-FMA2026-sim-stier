@@ -17,7 +17,29 @@ POSE_FIELDS = ('x', 'y', 'z', 'heading', 'pitch', 'roll')
 OBJECT_FIELDS = ('id', 'x', 'y', 'z', 'heading', 'speed', 'size_x', 'size_y', 'size_z')
 
 
-def decode_frame(frame, object_center_offset=(0.0, 0.0, 0.0)):
+def load_object_offsets(path):
+    import yaml
+
+    with open(path, encoding='utf-8') as source:
+        offsets = yaml.safe_load(source)
+    if not isinstance(offsets, dict):
+        raise ValueError('object offsets must be a mapping keyed by uint32 object ID')
+    for identifier, geometry in offsets.items():
+        if type(identifier) is not int or not 0 <= identifier <= 0xffffffff:
+            raise ValueError(f'invalid object ID: {identifier!r}')
+        if not isinstance(geometry, dict):
+            raise ValueError(f'object {identifier}: expected size_m and center_offset_m')
+        for field in ('size_m', 'center_offset_m'):
+            values = geometry.get(field)
+            if (not isinstance(values, list) or len(values) != 3
+                    or not all(type(value) in (int, float) and math.isfinite(value) for value in values)):
+                raise ValueError(f'object {identifier}: {field} requires three finite numbers')
+        if any(value <= 0 for value in geometry['size_m']):
+            raise ValueError(f'object {identifier}: size_m must be positive')
+    return offsets
+
+
+def decode_frame(frame, object_offsets):
     if len(frame) != FRAME_SIZE:
         raise ValueError('expected 1109 bytes')
     ego = EGO.unpack_from(frame)
@@ -29,9 +51,13 @@ def decode_frame(frame, object_center_offset=(0.0, 0.0, 0.0)):
             continue
         if not all(math.isfinite(value) for value in obj[1:]):
             raise ValueError('non-finite object field')
-        dx, dy, dz = object_center_offset
+        geometry = object_offsets.get(obj[0])
+        if geometry is None:
+            raise ValueError(f'unmapped object ID {obj[0]}; measure offsets for this scenario')
+        if any(abs(actual - expected) > 0.001 for actual, expected in zip(obj[6:9], geometry['size_m'])):
+            raise ValueError(f'object ID {obj[0]} dimensions changed; remeasure offsets')
+        dx, dy, dz = geometry['center_offset_m']
         cosine, sine = math.cos(obj[4]), math.sin(obj[4])
-        # ponytail: shared offset, add verified per-model offsets when available.
         # Object packets have no pitch/roll: use yaw-only rotation.
         # Config is reference -> center on every axis; publish the bottom in z.
         position = (obj[1] + cosine * dx - sine * dy,
@@ -122,11 +148,8 @@ def main(args=None):
                 runtime = yaml.safe_load(source)
             with open(vehicle_path, encoding='utf-8') as source:
                 vehicle = yaml.safe_load(source)
-            offset = runtime['sim_bridge']['object_center_offset_m']
-            self.object_center_offset = tuple(offset[axis] for axis in ('x', 'y', 'z'))
-            if not all(type(value) in (int, float) and math.isfinite(value)
-                       for value in self.object_center_offset):
-                raise ValueError('sim_bridge.object_center_offset_m requires finite numeric x/y/z')
+            offsets_path = Path(runtime_path).parent / runtime['sim_bridge']['object_offsets_file']
+            self.object_offsets = load_object_offsets(offsets_path)
             self.allow_motion = runtime['allow_motion']
             if not isinstance(self.allow_motion, bool):
                 raise ValueError('allow_motion must be a boolean')
@@ -184,7 +207,7 @@ def main(args=None):
             self.next_connect = time.monotonic() + 1.0
 
         def publish_frame(self, frame, stamp):
-            ego_values, object_values, light_values = decode_frame(frame, self.object_center_offset)
+            ego_values, object_values, light_values = decode_frame(frame, self.object_offsets)
             ego = EgoPose()
             ego.header.stamp = stamp
             ego.header.frame_id = 'map'

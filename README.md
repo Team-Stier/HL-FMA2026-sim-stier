@@ -222,7 +222,7 @@ Python 구현과 `interfaces` 메시지 빌드 설정을 추가했다. [빌드·
 - 속도는 연속 pose의 XY 이동 거리를 Header 시각 차이로 나눈 값이다. 첫 입력·0 이하 시간 차이·설정한 300km/h 초과 점프는 0으로 처리한다. 별도 상태 플래그는 추가하지 않는다.
 - 현재 객체와 교차한 cell은 점유 1.0. 미래는 0.5초 구간 중 잠깐이라도 교차하면 점유 처리한다.
 - 예측기는 `motion_predictor.hpp / ekf_predictor.cpp`로 분리해 다른 담당자가 구현한다. CV는 등속도 모델이며 카메라가 아니다.
-- 객체 좌표는 Bridge가 `config/runtime.yaml`의 `sim_bridge.object_center_offset_m`을 적용한 XY 중심과 Z 하단(min Z)이다. 설정은 XYZ 모두 reference→center 변위이며, 발행 Z는 `ref_z + offset_z - size_z/2`로 계산한다. Tracker는 오프셋을 다시 적용하지 않는다. 현재 공통 오프셋은 임시 0이며 실제 값은 [별도 조사](docs/05-object-reference-resolution.md) 후 보정한다.
+- 객체 좌표는 Bridge가 `config/object_offsets.yaml`에서 **API object ID별** reference→center 오프셋을 조회해 변환한 XY 중심과 Z 하단(min Z)이다. 파일은 `config/runtime.yaml`의 `sim_bridge.object_offsets_file`로 지정한다. 발행 Z는 `ref_z + offset_z - size_z/2`다. 공통 오프셋은 없고, 미등록 ID·크기 불일치 패킷은 거부한다. Tracker는 오프셋을 다시 적용하지 않는다. 탑재한 ID 2/3/4/5는 측정 시나리오 기준이므로 [실제 시나리오 매핑 생성 절차](docs/05-object-reference-resolution.md)를 따른다.
 
 #### Speed Annotator 및 Control 입력
 
@@ -449,7 +449,7 @@ Python은 hdmap_init에서 연결한 previous를 조회한다. setPrevious는 Py
 - [EgoStatus.msg](src/interfaces/msg/EgoStatus.msg): Header + x/y/z/heading/pitch/roll/speed.
 - [ControlCommand.msg](src/interfaces/msg/ControlCommand.msg): Header + steering/target_accel/turn_signal.
 
-`Objects.length`는 객체 길이가 아니라 채워진 배열 원소 수(0~30)다. 각 배열은 항상 30개 슬롯이며 같은 인덱스가 같은 객체를 나타낸다. 소비자는 [0, length)만 읽고 Bridge는 나머지 슬롯을 0으로 채운다. id는 uint32, 나머지 객체 필드는 float32다. size_x/size_y/size_z는 원본 API의 length/width/height에 대응하는 전체 길이/폭/높이(m)다. x/y/z는 Bridge가 설정 오프셋을 적용한 map 기준 객체 XY 중심·Z 하단(m; `z=ref_z+offset_z-size_z/2`, 현재 오프셋은 임시 0), heading은 자세(rad), speed는 XY 속력(m/s)이므로 heading을 속도 방향으로 단정하지 않는다. 실제 reference point → 박스 중심 오프셋은 별도 확인 후 Bridge 설정에 반영하며, 소비자는 중복 적용하지 않는다.
+`Objects.length`는 객체 길이가 아니라 채워진 배열 원소 수(0~30)다. 각 배열은 항상 30개 슬롯이며 같은 인덱스가 같은 객체를 나타낸다. 소비자는 [0, length)만 읽고 Bridge는 나머지 슬롯을 0으로 채운다. id는 uint32, 나머지 객체 필드는 float32다. size_x/size_y/size_z는 원본 API의 length/width/height에 대응하는 전체 길이/폭/높이(m)다. x/y/z는 Bridge가 설정 오프셋을 적용한 map 기준 객체 XY 중심·Z 하단(m; `z=ref_z+offset_z-size_z/2`), heading은 자세(rad), speed는 XY 속력(m/s)이므로 heading을 속도 방향으로 단정하지 않는다. 오프셋은 `config/object_offsets.yaml`에서 object ID로 선택하며 슬롯 인덱스나 차종 공통값으로 선택하지 않는다. 시나리오의 ID 할당이 바뀌면 매핑 파일을 교체한다. 소비자는 오프셋을 중복 적용하지 않는다.
 
 표준 타입인 `/local_path`, `/global_path`, `/speed_limit`의 custom msg는 만들지 않는다.
 
