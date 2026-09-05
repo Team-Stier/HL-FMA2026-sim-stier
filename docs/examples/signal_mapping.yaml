@@ -1,0 +1,29 @@
+schema_version: 1
+example_only: true
+map_version: illustrative_not_a_competition_map
+signals:
+    -
+        controller_id: 100
+        stoplines:
+            -
+                stopline_id: 1001
+                movement: straight
+                permitted_states: [3, 5]
+            -
+                stopline_id: 1002
+                movement: left
+                permitted_states: [4, 5]
+            -
+                stopline_id: 1003
+                movement: right
+                permitted_states: []
+cells:
+    -
+        cell_id: 0
+        stopline_ids: [1001]
+    -
+        cell_id: 1
+        stopline_ids: [1002]
+    -
+        cell_id: 2
+        stopline_ids: [1003]

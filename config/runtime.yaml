@@ -1,0 +1,62 @@
+schema_version: 1
+configuration_kind: design_draft_not_ros_parameter_file
+allow_motion: false
+time:
+    use_sim_time: false
+    source_stamp: bridge_system_ros_receive_time
+    watchdog_clock: monotonic
+qos:
+    history: keep_last
+    depth: 1
+    reliability: best_effort
+    durability: volatile
+rates_hz:
+    tracker_target: 20.0
+    planner_minimum: 10.0
+timeouts_provisional_s:
+    input: 0.25
+    dynamic_status: 0.25
+    ego_status: 0.25
+    local_path: 0.30
+    speed_limit: 0.25
+    control_command: 0.20
+ego_velocity:
+    maximum_speed_kph: 300.0
+    maximum_dt_s: 0.25
+    initial_speed_mps: 0.0
+prediction:
+    interval_s: 0.5
+    horizon_s: 6.0
+    bin_count: 13
+    future_interval_convention: left_open_right_closed
+    unknown_probability: -1.0
+speed:
+    static_limit_fallback_mps: null
+    school_zone_speed_cap_mps: 8.0
+    braking_distance_factor: 1.0
+    minimum_braking_distance_factor: 1.0
+    linear_base_distance: max_measured_braking_distance_and_v_squared_over_design_deceleration
+    design_deceleration_mps2: null
+    emergency_target_acceleration_mps2: null
+    latency_budget_s: 0.25
+    stop_margin_m: 1.0
+    overspeed_tolerance_mps: 0.2
+    overspeed_release_tolerance_mps: 0.1
+tf_broadcasting:
+    input_topic: /ego_pose
+    parent_frame: map
+    child_frame: base_link
+    preserve_source_stamp: true
+visualization:
+    radius_m: 100.0
+    occupancy_bin: 0
+    marker_lifetime_s: 0.0
+    query_mode: aggregate
+    aggregation_enabled: true
+    aggregation_window_s: 0.05
+    maximum_pending_query_events: 1024
+    expose_drops_and_aggregation: true
+    show_stoplines: true
+    show_traffic_lights: true
+    show_lane_marking_types: true
+    preserve_producer_geometry: true

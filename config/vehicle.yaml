@@ -1,0 +1,27 @@
+schema_version: 1
+calibration_verified: false
+source:
+    archive: 00_HL_VTD.tar.gz
+    geometry: Config/HLVTD/hl_vtd_config.json
+    dynamics: HyundaiIoniq6_23.xml
+vehicle:
+    model: HyundaiIoniq6_23_Dyn
+    reference_point: rear_axle_center_at_road_level
+    length_m: 4.848
+    width_m: 1.886
+    height_m: 1.507
+    rear_axle_to_front_m: 3.808
+    rear_axle_to_rear_m: 1.040
+    box_center_forward_offset_m: 1.384
+    left_extent_m: 0.943
+    right_extent_m: 0.943
+    wheelbase_m: 2.944
+model_parameters_not_measured_limits:
+    mass_kg: 2095.0
+    max_deceleration_mps2: 9.5
+    max_acceleration_mps2: 7.0
+    max_steering_rad: 0.48
+    steering_ratio: 16.8
+calibration:
+    braking_distance_table: []
+    object_reference_offsets_verified: false
