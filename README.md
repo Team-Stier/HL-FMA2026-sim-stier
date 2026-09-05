@@ -3,7 +3,7 @@
 HL Mando Future Mobility Award 2026 시뮬레이션 부문을 위한 ROS 2 Jazzy 자율주행 SW 설계.
 카메라 인지 없이 대회 API의 Ego·객체·신호 정보를 사용한다. Planner는 정적 지도·dynamic status·ego status로 계획하며 Controller는 local path·ego status·speed limit만 구독한다.
 
-> 설계 계약 초안. C++17 Cell·CellTree·Lanelet 로더·hdmap_init·정지선 역색인·신호 레지스트리·Python binding은 구현했다. 신호 규칙/Tracker·실행 노드·지도 변환기·ROS marker adapter·launch는 아직 구현하지 않았다. 설정 YAML과 custom msg 6종도 후속 구현의 초안이며 현재 빌드 가능한 ROS workspace가 아니다.
+> 설계 계약 초안. C++17 Cell·CellTree·Lanelet 로더·hdmap_init·정지선 역색인·신호 레지스트리·Python binding과 오프라인 지도 제작 도구는 구현했다. 정적 지도는 `map/hdmap.bin`에 생성했으며, 신호 매핑·법정 제한속도 범위가 일부 미확정이므로 대회 주행 승인본은 아니다. 신호 규칙/Tracker·실행 노드·ROS marker adapter·launch는 아직 구현하지 않았다. 설정 YAML과 custom msg 6종도 후속 구현의 초안이며 현재 빌드 가능한 ROS workspace가 아니다.
 > [VTD 종합 검토·심 계약·검증 과제](docs/04-vtd-design-review.md)를 함께 읽는다. 배포 확인값, 설계 기본값, 실측 미확인을 구분한다.
 
 ## Convention
@@ -52,7 +52,7 @@ deadline은 기대하는 메시지 간격, lifespan은 오래된 메시지의 �
 ```text
 src/
 ├── interfaces/                  # 주행 토픽의 custom msg 6종
-├── hdmap/                       # Cell/정지선 역색인; R-tree/binding/debug는 후속
+├── hdmap/                       # 정적 맵 코어·R-tree·binding
 ├── sim_bridge/                  # 계획: 참가자 TCP API 중계
 ├── hdmap_dynamic_tracker/       # 계획: ego 추정, 예측기, 신호 상태기, cell 갱신
 ├── local_path_planner/          # 계획: checkpoint routing, 시간 고려 Hybrid A*
@@ -62,12 +62,14 @@ src/
 └── visualization/               # 계획: 독립적인 raw/debug 표시
 ```
 
-루트 `config/`에는 runtime.yaml과 vehicle.yaml을 둔다.
+루트 `config/`에는 runtime.yaml, vehicle.yaml과 오프라인 지도 제작용 map.yaml을 둔다.
+지도 생성본은 루트 `map/`, 재생성·에셋 분석·오프라인 검사 도구는 `map/tools/`에 둔다. 주행 중 사용하는 지도 라이브러리는 `src/hdmap/`에 유지한다.
 
 실행 노드 간에는 ROS로 통신한다. `interfaces`, `hdmap` 공용 의존성은 허용한다. 실행 노드 소스를 서로 import하지 않는다. 동일 C++ 지도 라이브러리와 Python 바인딩을 배포하며 코드를 각 노드에 복사하지 않는다.
 
 ### 정적 지도 및 CellTree
 
+- 생성된 지도는 [map/hdmap.bin](map/hdmap.bin)이다. [제작 결과·에셋 보강 근거·재생성 방법](docs/06-static-map.md)에 좌표 보정, 미확정 항목, native 로드·경로 검사 결과를 기록한다.
 - 필요한 노드는 `hdmap::hdmap_init(path)`를 한 번 호출해 Lanelet2·cell·R-tree를 자기 메모리에 구성한다. 지도 서버·조회 RPC·프로세스 간 공유 singleton은 두지 않는다.
 - cell ID는 사전 확정하며 dynamic 배열의 인덱스로 사용한다. 메모리 로드 때 ID를 다시 만들지 않는다.
 - lanelet을 진행 방향으로 약 1m씩 나누고 차선 전체 폭을 사용한다. 마지막 cell과 정지선 경계에서는 더 짧을 수 있다.
@@ -107,7 +109,7 @@ Lanelet2 map의 polygonLayer에 다음 속성을 가진 Cell polygon을 저장�
 | `stopline_ids` | 선택 속성; 쉼표로 구분한 정지선 ID, 없으면 빈 목록 |
 | `previous_cell_id` | 선택 속성; 사전 확정한 이전 Cell ID, 특히 lanelet 경계 연결에 사용 |
 
-Cell 저장소는 저장된 ID 순으로 배치하지만 ID를 재할당하지 않는다. previous가 생략되면 같은 부모의 index-1을 연결하고 index=0은 nullptr다. 합류점의 상류를 임의 선택하지 않는다. 데이터가 없는 일반 Lanelet 지도만 넣으면 자동으로 1m 분할하지 않고 초기화 오류로 알린다. 실제 대회용 Cell 데이터 제작은 후속 지도 작업이다. `.bin`은 [Lanelet2 IO의 바이너리 포맷](https://docs.ros.org/en/ros2_packages/kilted/api/lanelet2_io/index.html)을 사용하며 제작/배포 Lanelet2·Boost 버전을 맞춘다.
+Cell 저장소는 저장된 ID 순으로 배치하지만 ID를 재할당하지 않는다. previous가 생략되면 같은 부모의 index-1을 연결하고 index=0은 nullptr다. 합류점의 상류를 임의 선택하지 않는다. 데이터가 없는 일반 Lanelet 지도만 넣으면 자동으로 1m 분할하지 않고 초기화 오류로 알린다. 현재 Cell 데이터는 오프라인에서 생성해 `hdmap.bin`에 포함했다. 지도나 분할 설정을 바꿔 재생성하면 ID가 달라질 수 있으므로 모든 프로세스는 같은 생성본을 사용한다. `.bin`은 [Lanelet2 IO의 바이너리 포맷](https://docs.ros.org/en/ros2_packages/kilted/api/lanelet2_io/index.html)을 사용하며 제작/배포 Lanelet2·Boost 버전을 맞춘다.
 
 **C++ — 현재 Cell API**
 

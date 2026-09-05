@@ -1,0 +1,17 @@
+{
+    "load_ms": 2309.47,
+    "lanelets": 2847,
+    "cells": 94157,
+    "controllers": 214,
+    "minimum_speed_mps": 8,
+    "maximum_speed_mps": 8,
+    "graph_errors": 0,
+    "invalid_cells": 0,
+    "checkpoint_route_found": true,
+    "path_lanelets": 28,
+    "shortest_path_via_mean_ms": 0.0293958,
+    "binary_sha256": "7759de6a84ba9ef6fd7807792c642d5e479a981c37cbc38f570fc4912420bc78",
+    "python_load_s": 4.819687957002316,
+    "max_cell_union_difference_m2": 1.5393016741338784e-07,
+    "invalid_parent_polygons": []
+}
