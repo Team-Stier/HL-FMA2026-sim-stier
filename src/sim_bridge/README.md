@@ -3,24 +3,29 @@
 VTD 참가자 TCP 연결을 `/ego_pose`, `/objects`, `/traffic_light`로 발행하고
 `/ctrl_cmd`를 `<ffB>`로 송신한다. TF와 `/clock`은 발행하지 않는다.
 
-ROS 2 Jazzy 환경에서 프로젝트 루트 기준:
+프로젝트 루트에서 전체 bringup:
+
+```bash
+./run.sh --check
+./run.sh
+```
+
+`run.sh` → `scripts/bringup.py`가 `src/sim_bridge/launch.sh`를 자동으로 찾아
+첫 번째로 실행한다. launch는 ROS 환경을 불러오고 루트의 `config/runtime.yaml`,
+`config/vehicle.yaml`을 노드에 전달한다. 단독 실행 전에는 한 번 빌드한다:
 
 ```bash
 source /opt/ros/jazzy/setup.bash
 colcon build --packages-select interfaces sim_bridge
-source install/setup.bash
-ros2 run sim_bridge sim_bridge_node --ros-args -p host:=127.0.0.1 -p port:=9910
+./src/sim_bridge/launch.sh
 ```
 
-`host`는 VTD 호스트 주소로 바꾼다. 기본 설정은 설치된 `config/runtime.yaml`,
-`config/vehicle.yaml` 복사본이다. 원본 설정을 바로 사용하려면:
-
-```bash
-ros2 run sim_bridge sim_bridge_node --ros-args \
-    -p host:=127.0.0.1 \
-    -p runtime_config:="$PWD/config/runtime.yaml" \
-    -p vehicle_config:="$PWD/config/vehicle.yaml"
-```
+기본 접속은 `127.0.0.1:9910`이다. 다른 VTD 호스트를 사용하려면
+`VTD_HOST=192.168.0.10 VTD_PORT=9910 ./run.sh`처럼 지정한다.
+launch에 추가 ROS 인자도 전달할 수 있다(`./src/sim_bridge/launch.sh -p host:=192.168.0.10`).
+경로는 launch 파일 위치 기준이므로 다른 작업 디렉터리에서도 절대 경로로 실행할 수 있다.
+브리지는 TCP 클라이언트이며 VTD 자체를 시작하지 않는다. VTD 설치·라이선스는
+시뮬레이터 호스트에서 준비하고 시나리오를 실행한다.
 
 현재 설정은 `allow_motion=false`, 제동 보정값 `null`이므로 **수신 전용**이다.
 주행 허용에는 `allow_motion=true`, `calibration_verified=true`, 검증된 음수
@@ -37,7 +42,7 @@ ros2 run sim_bridge sim_bridge_node --ros-args \
   `base_link`가 아닌 제어 명령과 비유한 명령도 차단한다.
 - 연결 실패/EOF/송신 오류 시 버퍼·명령을 폐기하고 1초 뒤 재접속한다.
   종료 시 연결과 제동 설정이 있으면 정지를 요청한다. 연결 단절 시 전달은 불가능하다.
-- 런타임 설정 변경은 재시작으로 적용한다. 루트의 전체 `run.sh`는 별도 작업이다.
+- 런타임 설정 변경은 재시작으로 적용한다. 루트 `run.sh`의 프로세스 감시·종료 규칙을 따른다.
 
 2026-09-05 로컬 VTD 2025.2 / `00_HL_VTD` / `HL_FMA_VTD_LivingLab.xml`에서
 두 번 연결해 각각 5초 동안 101개 패킷을 받았다(각각 19.9996Hz, 20.0001Hz).
