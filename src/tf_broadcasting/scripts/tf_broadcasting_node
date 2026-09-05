@@ -1,0 +1,5 @@
+#!/usr/bin/env python3
+from tf_broadcasting.node import main
+
+if __name__ == "__main__":
+    main()

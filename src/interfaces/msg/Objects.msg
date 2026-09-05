@@ -7,7 +7,7 @@ int32 length
 # Simulator object ID. Entries at the same index describe the same object.
 uint32[30] id
 
-# Object reference-point coordinates in map metres.
+# Map metres after Bridge conversion: XY box center and world box minimum Z.
 float32[30] x
 
 float32[30] y
@@ -21,7 +21,7 @@ float32[30] heading
 float32[30] speed
 
 # Full object dimensions in metres: API length/width/height respectively.
-# Dimensions alone do not specify the reference-point-to-box-center offset.
+# The Bridge applies the reference offset; consumers must not apply it again.
 float32[30] size_x
 
 float32[30] size_y

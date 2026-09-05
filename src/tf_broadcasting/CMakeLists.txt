@@ -1,0 +1,7 @@
+cmake_minimum_required(VERSION 3.18)
+project(tf_broadcasting)
+find_package(ament_cmake REQUIRED)
+find_package(ament_cmake_python REQUIRED)
+ament_python_install_package(${PROJECT_NAME})
+install(PROGRAMS scripts/tf_broadcasting_node DESTINATION lib/${PROJECT_NAME})
+ament_package()

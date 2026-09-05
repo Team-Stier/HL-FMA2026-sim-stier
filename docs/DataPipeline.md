@@ -1,6 +1,6 @@
 # Data Pipeline — 원시 데이터부터 RViz까지
 
-현재 정한 데이터 경로와 그 사이에 개입하는 연산만 표시한다. 사각형은 데이터·토픽·마커, 원은 연산, 원통은 파일·정적 맵이다. ROS 노드와 마커 발행은 구현할 계약이며, 현재 실행 중이라는 뜻은 아니다.
+현재 정한 데이터 경로와 그 사이에 개입하는 연산만 표시한다. 사각형은 데이터·토픽·마커, 원은 연산, 원통은 파일·정적 맵이다. TF·Visualizer·Python query marker adapter는 구현했다. Bridge·Tracker·Planner·Control 연산은 아직 구현할 계약이다. 실행과 현재 표시 제약은 README Bringup을 따른다.
 
 RViz Fixed Frame은 `map`이다. 메시지의 좌표 frame과 RViz Fixed Frame은 다르다. Planner는 `map`에서 경로·탐색 트리를 계산한 뒤 발행 직전에 입력 snapshot 시각의 TF로 `base_link`에 변환하고 RViz가 해당 시각의 TF로 `map`에 표시한다. 탐색 트리와 Ego 차체 박스도 `base_link` 기준이며 TF로 표시한다. 나머지 공간 관측과 지도 마커는 `map` 기준이다. `/objects`는 **XY 박스 중심 + 객체별 min Z**, Ego는 **후륜축 기준점**이다. 마커 출력은 `visualization_msgs/msg/MarkerArray`다.
 
@@ -63,7 +63,7 @@ flowchart TD
     CONFIG[("runtime ego_velocity 설정")] --> TRACKER
     TRACKER --> STATUS["/ego_status<br/>위치·자세 계승 + 미분 추정 speed<br/>source stamp 계승"]
     STATUS --> TEXT(("Visualizer<br/>위치·자세·추정 속력 텍스트"))
-    TEXT --> SM["/visualization/ego<br/>ego/status: TEXT_VIEW_FACING"]
+    TEXT --> SM["/visualization/ego_status<br/>ego/status: TEXT_VIEW_FACING"]
 ```
 
 차체 CUBE의 pose에는 차량 제원의 후륜축 대비 중심 offset만 넣는다. Ego의 map 위치·RPY는 TF에서 한 번만 적용한다. `header.frame_id=base_link`, stamp는 `/ego_pose`에서 계승하고 `frame_locked=false`로 해당 관측 시각에 표시한다.
@@ -167,13 +167,13 @@ flowchart TD
     MIN --> DS["/dynamic_status.speed_cap_mps"]
     DS --> COLOR(("Visualizer<br/>자기 Cell geometry 조회·cap 색상 매핑"))
     VMAP[("Visualizer 자신의 Cell map")] --> COLOR
-    COLOR --> CM["/visualization/speed<br/>speed/local_reference/cell_cap<br/>LINE_LIST·TEXT_VIEW_FACING"]
+    COLOR --> CM["/visualization/cell_cap<br/>speed/local_reference/cell_cap<br/>LINE_LIST·TEXT_VIEW_FACING"]
     DS --> ANNO(("Speed Annotator<br/>Ego가 속한 Cell의 cap 선택"))
     EGO --> ANNO
     AMAP[("Annotator 자신의 Cell map")] --> ANNO
     ANNO --> LIMIT["/speed_limit<br/>Float32·m/s·Header 없음"]
     LIMIT --> TEXT(("Visualizer<br/>현재 제한속도 텍스트"))
-    TEXT --> LM["/visualization/speed<br/>speed/current_limit: TEXT_VIEW_FACING"]
+    TEXT --> LM["/visualization/speed_limit<br/>speed/current_limit: TEXT_VIEW_FACING"]
 ```
 
 Annotator는 Path를 읽지 않는다. cap은 적용 제한의 최솟값이며 원인별 기여는 메시지에 없다. `/speed_limit`에는 source stamp와 Cell ID가 없다.
@@ -280,7 +280,7 @@ flowchart TD
     SINK --> RESULT["callback 완료 후 호출자에게 Cell ID 목록 반환"]
 ```
 
-마커는 Visualizer가 ID로 재조회한 기하가 아니라 **조회한 프로세스의 실제 Cell**을 사용한다. 기본 집계는 호출 순서·개별 시각을 합치므로 raw trace와 다르다. 현재 sink에 query 입력·source stamp는 없으며, 반환 Cell AABB를 query box라고 표시하지 않는다. marker adapter는 아직 미구현이다.
+마커는 Visualizer가 ID로 재조회한 기하가 아니라 **조회한 프로세스의 실제 Cell**을 사용한다. 기본 집계는 호출 순서·개별 시각을 합치므로 raw trace와 다르다. 현재 sink에 query 입력·source stamp는 없으며, 반환 Cell AABB를 query box라고 표시하지 않는다. Python adapter는 `visualization.query_debug.QueryDebugSink`로 구현했다. C++ ROS adapter는 미구현이다.
 
 ## 12. 공통 마커 처리 → 화면
 

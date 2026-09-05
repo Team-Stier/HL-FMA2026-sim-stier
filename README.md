@@ -3,7 +3,7 @@
 HL Mando Future Mobility Award 2026 시뮬레이션 부문을 위한 ROS 2 Jazzy 자율주행 SW 설계.
 카메라 인지 없이 대회 API의 Ego·객체·신호 정보를 사용한다. Planner는 정적 지도·dynamic status·ego status로 계획하며 Controller는 local path·ego status·speed limit만 구독한다.
 
-> 설계 계약 초안. C++17 Cell·CellTree·Lanelet 로더·hdmap_init·정지선 역색인·신호 레지스트리·Python binding은 구현했다. 신호 규칙/Tracker·실행 노드·지도 변환기·ROS marker adapter·launch는 아직 구현하지 않았다. 설정 YAML과 custom msg 6종도 후속 구현의 초안이며 현재 빌드 가능한 ROS workspace가 아니다.
+> C++17 HDMap 코어·Python binding, custom msg 7종, TF 노드, Visualizer, RViz 설정·launch·run.sh를 구현했다. Bridge·Tracker·Planner·Control·지도 변환은 미구현이다. 현재 실행 범위는 TF + Visualizer + RViz이며 수신 토픽 없이 주행 데이터를 생성하지 않는다.
 > [VTD 종합 검토·심 계약·검증 과제](docs/04-vtd-design-review.md)를 함께 읽는다. 배포 확인값, 설계 기본값, 실측 미확인을 구분한다.
 > [시각화 Data Pipeline](docs/DataPipeline.md)은 원시 데이터부터 마커까지의 변환·추정·표시 계약이다. `/objects`의 XY 중심·객체별 min Z 변환은 Bridge가 수행하며 실제 오프셋 매핑과 노드는 아직 미구현이다.
 
@@ -52,7 +52,7 @@ deadline은 기대하는 메시지 간격, lifespan은 오래된 메시지의 �
 
 ```text
 src/
-├── interfaces/                  # 주행 토픽의 custom msg 6종
+├── interfaces/                  # 주행 토픽의 custom msg 7종
 ├── hdmap/                       # Cell/정지선 역색인; R-tree/binding/debug는 후속
 ├── sim_bridge/                  # 계획: 참가자 TCP API 중계
 ├── hdmap_dynamic_tracker/       # 계획: ego 추정, 예측기, 신호 상태기, cell 갱신
@@ -174,7 +174,7 @@ overlaps = cell_tree.queryOverlaps(object_footprint, -0.5, 2.0)
 
 search는 3D 축 정렬 box와 겹친 후보 ID를 반환한다. queryOverlaps는 객체 footprint의 후보 조회 후 실제 Cell polygon과 XY 교차를 검사한다. 회전 객체는 map 좌표로 회전·이동한 꼭짓점을 전달한다. 경계 접촉도 교차이며, z는 [min_z, max_z]와 Cell 높이 범위의 겹침으로 거른다. 이는 3D mesh 충돌이 아니며 경사로의 정확한 표면 교차를 계산하지 않는다. 반환 순서는 R-tree 탐색 순서이며 주행 순서를 뜻하지 않는다.
 
-두 조회 메서드는 결과가 없어도 연결된 debug sink를 호출한다. `hdmap_init(path, sink)`의 sink에는 `(operation, vector<const Cell*>)`가 전달되며 실제 조회한 프로세스의 Cell geometry/bounding box다. callback은 동기 호출이고 포인터는 HdMap 수명 내에서만 유효하다. 기본 코어는 ROS를 요구하지 않으며 publisher 연결과 MarkerArray 집계/삭제 adapter는 아직 미구현이다. 따라서 sink를 연결하지 않은 조회가 이미 RViz에 표시된다고 보지 않는다.
+두 조회 메서드는 결과가 없어도 연결된 debug sink를 호출한다. `hdmap_init(path, sink)`의 sink에는 `(operation, vector<const Cell*>)`가 전달되며 실제 조회한 프로세스의 Cell geometry/bounding box다. callback은 동기 호출이고 포인터는 HdMap 수명 내에서만 유효하다. 기본 코어는 ROS를 요구하지 않으며 Python publisher 연결과 MarkerArray 집계/삭제 adapter는 `visualization.query_debug`에 구현했다. C++용 ROS adapter는 미구현이다. 따라서 sink를 연결하지 않은 조회가 이미 RViz에 표시된다고 보지 않는다.
 
 ## ROS architecture
 
@@ -426,7 +426,7 @@ Python은 hdmap_init에서 연결한 previous를 조회한다. setPrevious는 Py
 
 ### Topics
 
-주행 토픽의 custom msg는 EgoPose, Objects, TrafficLight, DynamicStatus, EgoStatus, ControlCommand, SearchTree 7종을 작성했다. ROS 패키지 빌드 설정과 실행 노드는 아직 미구현이다. 공간 관측·정적 지도는 `map`, 로컬 경로는 `base_link(t0)`, 신호 frame은 빈 문자열, 제어 명령 기준은 차량 `base_link`다. RViz Fixed Frame은 `map`이며 토픽의 reference frame과 구분한다.
+주행 토픽의 custom msg는 EgoPose, Objects, TrafficLight, DynamicStatus, EgoStatus, ControlCommand, SearchTree 7종을 작성했다. 메시지·TF·Visualizer 패키지는 colcon으로 빌드하며, 나머지 주행 노드는 미구현이다. 공간 관측·정적 지도는 `map`, 로컬 경로는 `base_link(t0)`, 신호 frame은 빈 문자열, 제어 명령 기준은 차량 `base_link`다. RViz Fixed Frame은 `map`이며 토픽의 reference frame과 구분한다.
 
 | Topic | 타입 | Reference frame | 발행 → 구독 | 의미 |
 |---|---|---|---|---|
@@ -493,6 +493,8 @@ Bridge pose를 직접 받아 raw Ego 기준 TF를 발행한다. parent=map, chil
 
 ### 솔직한 표시
 
+이 절의 map_info/hash 비교·query_events·drop/STALE 진단은 후속 계약이다. 현재 구현 범위와 실제 표시 보정은 Bringup의 ‘구현된 시각화’를 따른다. 아직 없는 진단이 작동한다고 간주하지 않는다.
+
 - Visualizer의 로컬 지도는 Visualizer의 reference이며 다른 프로세스의 실제 지도라고 대신 표시하지 않는다.
 - 각 노드가 `/debug/<node>/map_info`에 파일 경로·artifact hash·실제 in-memory geometry hash·cell count·library version·instance ID를 보고한다. manifest 문자열만 복사해 일치 판정하지 않는다.
 - query event에는 생산자가 실제 사용한 box·반환 cell geometry를 전달한다. Visualizer가 ID를 자신의 지도에 조회해 대체하지 않는다.
@@ -514,25 +516,18 @@ Marker lifetime=0(영구), 자동 수명 없음. 현재 선택한 query event를
 
 기본 `aggregation_enabled=true`, `query_mode=aggregate`, 집계 window=0.05s다. raw로 전환할 때는 enabled=false/mode=raw를 함께 설정하며 모순된 조합은 초기화 오류로 처리한다. aggregate는 호출별 데이터가 아니라 window 결과를 표시한다. marker 자동 만료와 집계 window는 별개이며 lifetime은 계속 0이다.
 
-다음은 ROS adapter의 구현 예정 샘플이다. Python hdmap_init/debug_sink는 구현했지만 QueryDebugSink 클래스와 마커 발행 adapter는 아직 없으므로 아래 전체 코드는 실행할 수 없다.
+Python adapter 호출 예시다. query 입력은 map 좌표이며, callback은 반환된 생산자 Cell 기하를 복사한다. query 입력 자체나 원본 source stamp를 새로 만들어 내지는 않는다.
 
 ```python
-from rclpy.qos import QoSProfile, ReliabilityPolicy, DurabilityPolicy, HistoryPolicy
-from visualization_msgs.msg import MarkerArray
-from hdmap import hdmap_init, QueryDebugSink
+from hdmap import hdmap_init
+from visualization.query_debug import QueryDebugSink
 
-qos = QoSProfile(history=HistoryPolicy.KEEP_LAST, depth=1,
-                 reliability=ReliabilityPolicy.BEST_EFFORT,
-                 durability=DurabilityPolicy.VOLATILE)
-publisher = node.create_publisher(MarkerArray, "/debug/planner/cell_queries", qos)
-sink = QueryDebugSink(node=node, publisher=publisher, mode=config.visualization.query_mode)
+sink = QueryDebugSink(node, producer="planner", enabled=True, aggregate=True, window_s=0.05)
 static_map = hdmap_init(map_bundle_path, debug_sink=sink)
 cell_ids = static_map.cellTree().queryOverlaps(object_footprint, min_z, max_z)
 ```
 
-sink는 원시 query metadata도 발행하도록 구현한다. object_footprint는 객체 기준점·박스 중심 오프셋·크기·자세를 적용한 map 기준 꼭짓점이다. 높이 범위도 같은 map 기준이며 도로면과 객체의 높이 관계를 반영한다. Visualizer 자체 조회에는 sink를 붙이지 않아 재귀 debug를 피한다.
-
-Ego 차체는 차량 제원 크기의 CUBE로 표시한다. `frame_id=base_link`, pose는 후륜축 대비 중심 offset과 identity 회전이며 `/ego_pose` stamp를 계승한다. map 위치·자세는 RViz가 그 시각의 TF로 적용한다. `/search_tree`는 부모 연결선·yaw 화살표·최종 노드의 부모 분기를 `base_link` 마커로 표시하고 t0의 TF를 적용한다. 두 마커 모두 `frame_locked=false`다. 상세 흐름은 [DataPipeline](docs/DataPipeline.md)을 따른다.
+Visualizer 자신의 조회에는 sink를 붙이지 않아 재귀 debug를 피한다. Ego 차체 CUBE와 SearchTree는 base_link, 원본 stamp, frame_locked=false로 발행하며 RViz가 TF를 적용한다.
 
 ### Visualizer 전용 diagram
 
@@ -566,52 +561,45 @@ flowchart TD
 source /home/physicar/physicar_ws/run.sh
 ```
 
-아래는 구현할 실행 계약이다. 현재 `run.sh`, 노드 실행 파일, `visualization/launch.sh`는 아직 없으므로 이 명령으로 실행할 수 있는 상태는 아니다. 현재 개발 checkout을 배포 경로로 이동하거나 이름을 변경하지 않는다.
+현재 checkout에서는 `./run.sh` 또는 `source /절대/경로/run.sh`로 실행한다. 호출 디렉터리와 무관하게 스크립트 위치를 루트로 사용한다. source 호출은 별도 Bash에서 실행해 원래 셸의 작업 디렉터리·옵션·trap을 바꾸지 않는다.
 
-`run.sh`는 빌드·새 노드 실행 전에 **배포 계정과 같은 사용자로 실행 중인 기존 ROS 2 노드·launch·RViz·ROS 2 daemon을 모두 종료**하고 깨끗한 프로세스 상태에서 시작한다. 이 단계는 이 프로젝트의 이전 실행뿐 아니라 같은 계정의 다른 ROS 프로젝트도 중단하므로 전용 배포 계정을 전제로 한다. VTD·라이선스 서버·IDE·호출한 셸과 다른 사용자의 프로세스는 종료 대상이 아니다. 단순히 모든 python/bash 프로세스를 죽이는 방식은 쓰지 않는다. SIGINT 후 유예를 두고 남은 대상에 SIGTERM, 필요하면 SIGKILL을 보내며 잔여 대상이 있으면 새 실행을 시작하지 않는다. 프로세스 정리이지 환경변수나 모든 시스템 파일을 초기화한다는 뜻은 아니다.
+Ubuntu 24.04와 ROS 2 Jazzy apt 저장소가 설정된 환경을 전제로 한다. `run.sh`는 누락된 Jazzy/RViz/Lanelet2·Python·빌드 의존성을 apt로 설치한다. 최초 설치에는 sudo 권한과 네트워크가 필요하며 실패하면 실행을 중단한다. 그래픽 세션의 DISPLAY 또는 WAYLAND_DISPLAY가 필요하다.
 
-`run.sh`는 source 호출을 감지하면 별도의 Bash 프로세스에서 bringup을 수행한다. 호출한 셸의 옵션·작업 디렉터리·trap·환경변수를 변경하지 않고 완료 상태만 반환해야 한다. 직접 Bash로 실행해도 같은 동작을 제공한다. 실행 프로세스는 스크립트 자신의 위치로 프로젝트 루트를 결정한다. 빌드 전에 ROS 2 Jazzy·colcon·rosdep·lanelet2_core·Eigen/Boost 등 누락된 공개 SW 의존성을 설치하고 package.xml 기반 rosdep 의존성 해결을 수행해야 한다. 이미 충족된 의존성은 재설치하지 않는다. 최초 설치에 필요한 sudo 권한을 안내하고 실패/비대화형 권한 부재에서는 원인을 출력해 빌드 전에 종료한다. 인증서 검증을 끄지 않으며 임시 `/tmp` 라이브러리에 의존하지 않는다. VTD 본체·상용 라이선스·대회 전용 자산은 자동 취득 대상이 아니라 설치 전제조건으로 검사한다. 이후 `/opt/ros/jazzy/setup.bash`를 불러오고 프로젝트 루트에서 다음을 수행한다.
+빌드 전에 **동일 사용자 소유의 인식 가능한 ROS 프로세스**를 SIGINT → SIGTERM → SIGKILL 순서로 정리한다. `/opt/ros/jazzy/lib/`, Jazzy `ros2` CLI, 이 checkout의 `install/` 실행 경로를 확인한다. 임의의 Python 프로세스·VTD·IDE·호출 셸은 종료하지 않는다. 다른 ROS 프로젝트도 종료될 수 있으므로 배포 전용 계정에서 사용한다. 사용자 정의 wrapper나 다른 설치 경로까지 모든 ROS 프로세스를 발견한다고 보장하지 않는다.
+
+`interfaces`, `tf_broadcasting`, `visualization`을 `colcon build --cmake-clean-cache`로 빌드하고 HDMap Python 코어를 별도 CMake 빌드·설치한다. 이후 TF + Visualizer + 설정된 RViz를 ROS launch로 실행한다. 하나가 종료되거나 Ctrl+C를 누르면 나머지도 함께 종료한다. 아직 없는 Bridge/Tracker/Planner/Annotator/Control은 자동 실행하지 않는다.
 
 ```bash
-colcon build --cmake-clean-cache
-source install/setup.bash
+export HDMAP_PATH=/absolute/path/to/hdmap.bin
+source /home/physicar/physicar_ws/run.sh
 ```
 
-빌드 실패 시 노드를 시작하지 않는다. config/map manifest와 필요한 파일·실행 명령을 검증한 뒤 Sim Bridge → HDMap Dynamic Tracker → TF Broadcasting → Local Path Planner → Speed Annotator → Control → Visualizer/RViz 순서로 프로세스를 시작한다. 시작 순서는 데이터 준비 완료를 의미하지 않으며 임의 sleep으로 readiness를 판단하지 않는다.
-
-Planner와 Annotator는 같은 Header 시각의 `/ego_status`·`/dynamic_status` 쌍을 받을 때까지 대기한다. Control은 ego pose·local path·speed limit 입력이 준비되기 전에는 가속하지 않는다. `allow_motion=false`가 기본값이다. 예제 프로젝트의 Object Detection·일회성 Traffic Light·Calibration 노드 및 `/gosign`은 이 VTD 설계에 도입하지 않는다. 신호 처리는 Tracker가 주행 중 계속 수행하며 TF는 전담 노드만 발행한다.
-
-각 실행 노드 패키지는 `run.sh`를 위해 한 줄의 `ros2 run` 명령을 기본으로 제공한다. 실행 파일 이름은 다음 계약을 따른다. `interfaces` 메시지 패키지와 `hdmap` 라이브러리는 이 실행 규칙의 대상이 아니다.
+`HDMAP_PATH`는 실제 사전 제작 Cell이 포함된 Lanelet2 bin이다. 미지정이면 지도 부재를 경고하고 수신 토픽 시각화만 실행한다. 잘못된 파일을 지정하면 초기화에 실패하며 대체 지도를 만들지 않는다. 배포용 지도와 VTD 실험은 이후 작업이다. 설치 후 수동 실행은 다음과 같다. launch는 TF도 포함하므로 별도 TF 명령과 중복 실행하지 않는다.
 
 ```bash
-ros2 run sim_bridge sim_bridge_node
-ros2 run hdmap_dynamic_tracker hdmap_dynamic_tracker_node
 ros2 run tf_broadcasting tf_broadcasting_node
-ros2 run local_path_planner local_path_planner_node
-ros2 run speed_annotator speed_annotator_node
-ros2 run control control_node
+ros2 run visualization visualizer_node --ros-args -p map_path:=/absolute/path/to/hdmap.bin
 ./src/visualization/launch.sh
 ```
 
-패키지별 환경변수·모델·파라미터·지도 경로 초기화가 필요하면 같은 역할의 `./src/<pkgname>/launch.sh`를 둘 수 있다. 이 경우 담당 개발자가 `run.sh`의 해당 `ros2 run` 줄을 명시적으로 바꾼다. `run.sh`는 `launch.sh` 존재 여부를 자동 감지하지 않는다. 다음은 선택적 경로 예시이며 실제 파일이 추가된 패키지에만 적용한다.
+### 구현된 시각화
 
-```bash
-./src/sim_bridge/launch.sh
-./src/hdmap_dynamic_tracker/launch.sh
-./src/tf_broadcasting/launch.sh
-./src/local_path_planner/launch.sh
-./src/speed_annotator/launch.sh
-./src/control/launch.sh
+- `src/visualization/rviz/default.rviz`: Fixed Frame=map, Ego 중심 TopDownOrtho, 위 +x/왼쪽 +y, 기본 Path display와 각 MarkerArray/QoS 설정. `/local_path`는 Visualizer를 거치지 않는다.
+- 차체 CUBE·SearchTree는 base_link의 원본 stamp로 발행해 RViz가 TF를 적용한다. 객체는 Bridge가 XY 중심·min Z를 보낸다는 계약이며 box 중심 Z에만 H/2를 더한다.
+- 지도는 Visualizer 자신의 `hdmap_init` 결과다. Lanelet 경계·중심선·진행 방향·선종류 라벨·신호/정지선·Cell AABB·글로벌 중심선 강조를 표시한다. dashed는 표시용 1m 선/1m 공백이며 double 선종류는 라벨로 구분하고 가짜 평행 경계를 만들지 않는다.
+- Cell은 R-tree로 주변 후보를 먼저 조회한다. 반경 100m 기본 ROI는 map 기하의 XY AABB와 Ego 원의 교차로 전체 기하를 선택한다. 선택된 기하를 잘라내지 않으므로 일부는 반경 밖까지 이어질 수 있다. Ego 수신 전에는 지도 ROI를 표시하지 않는다. SearchTree는 잘라내지 않고 전체 노드/관계를 표시한다.
+- occupancy bin·alpha, cap 색상과 원본 값, controller ID/state, 명령 요청값을 표시한다. 물리 신호 형상에 API가 관측하지 않은 개별 lamp 색을 추측해 칠하지 않는다. cap 색상은 표시용 0~20m/s 범위이며 숫자는 원본 값이다.
+- `/visualization/status`는 입력 수신 경과시간·source stamp·지도 유무를 표시한다. 시간 경과는 센서 지연 측정값이 아니다. 상태 텍스트는 Ego 위치에서 map +x 방향 12m(미수신 시 map 원점)의 표시용 위치이며 관측 기하가 아니다. 지도 hash 비교나 전송 drop 계수는 아직 구현하지 않았다.
+- 무기한 마커는 다음 snapshot에서 사라진 ns/id를 DELETE하며 삭제 명령은 이후 snapshot에도 반복한다. BEST_EFFORT이므로 후속 발행까지 모두 끊기면 전달을 보장하지 않는다. cap·속력·명령·Ego 상세 텍스트 display는 겹침을 피하려고 기본 비활성화되어 있으며 RViz에서 켤 수 있다.
+
+설정 기본값은 `config/vehicle.yaml`, `config/runtime.yaml`을 설치 시 복사해 사용한다. 노드 시작 파라미터는 `map_path`, `vehicle_config`, `runtime_config`, `radius_m`, `occupancy_bin`이다. TF 입력은 `/ego_pose`, 출력은 `map → base_link`이며 Header stamp를 그대로 계승한다. Control에 TF 의존성을 추가하지 않는다.
+
+Python 생산자용 query marker adapter도 제공한다. 조회 콜백에서 생산자의 실제 기하를 복사하며 ID로 Visualizer 맵을 대신 조회하지 않는다. 0.05초 집계가 기본이고 count/window를 표시한다. `aggregate=False`이면 호출마다 발행한다. Marker lifetime은 0이며 다음 빈 window에서 DELETE한다. C++용 ROS adapter는 아직 없다.
+
+```python
+from hdmap import hdmap_init
+from visualization.query_debug import QueryDebugSink
+
+sink = QueryDebugSink(node, producer="planner", enabled=True, aggregate=True, window_s=0.05)
+static_map = hdmap_init(map_path, debug_sink=sink)
 ```
-
-`visualization`은 Visualizer와 설정된 RViz를 함께 실행하는 `./src/visualization/launch.sh`를 제공하고 `run.sh`가 직접 호출한다. RViz Fixed Frame은 `map`이다. Lanelet2 경계/중심선/선종류·정지선/신호·cell bounding box·Ego·`/global_path`·`/local_path`·선택 occupancy bin·query debug가 미리 설정돼 있어야 한다. 시각화 집계 여부, timestamp, map 불일치, stale/drop을 표시한다. 원본 `/scan`, RDDF, 별도 SIM `/state` 요청은 이 프로젝트의 인터페이스가 아니므로 추가하지 않는다.
-
-SIM 연결이 없으면 Bridge만 재접속을 시도하고 나머지 노드는 입력 대기/STALE을 유지한다. Visualizer는 사용 가능한 정적 맵을 계속 표시하되 Ego가 없으면 마지막 위치 또는 명시적 기본 뷰를 사용하고 실제 관측처럼 꾸미지 않는다. 별도 SIM API를 직접 조회하지 않는다. 입력이 없는데 주행 가능한 비시뮬레이션 모드로 전환하지 않는다.
-
-`run.sh`가 관리하는 상시 프로세스 중 하나가 종료되면 전체 실행을 종료한다. `Ctrl+C`·SIGTERM·부분 시작 실패에서도 자신이 시작한 모든 노드와 RViz를 함께 정리한다. 패키지 `launch.sh`는 자식을 방치하거나 daemonize하지 않으며 단일 실행은 exec, 복수 실행은 자식 감시·종료 전달을 수행한다. 실행 종료 시에는 시작 전 일괄 정리와 달리 이번 실행의 자체 프로세스 그룹만 SIGINT→유예→SIGTERM→최종 SIGKILL 순으로 정리하고 모두 wait한다. 실행 도중 새로 시작된 다른 ROS 작업까지 종료하지 않는다. 정상 신호 종료와 비정상 노드 종료의 exit status를 구분한다.
-
-종료 시 Bridge 연결이 살아 있으면 가능한 범위에서 정지 요청을 시도하지만, 프로세스/네트워크 단절 시 시뮬 차량 정지를 보장하지는 않는다. Visualizer는 주행 계산 의존성은 아니지만 기본 bringup에서 함께 실행했다면 위 전체 종료 규칙의 관리 대상이다.
-
-지도 생성과 VTD 주행·제동 실험은 이후 단계에서 수행한다.
-
-공식 ROS 정의: [QoS](https://raw.githubusercontent.com/ros2/ros2_documentation/jazzy/source/Concepts/Intermediate/About-Quality-of-Service-Settings.rst), [Path](https://raw.githubusercontent.com/ros2/common_interfaces/jazzy/nav_msgs/msg/Path.msg), [Marker](https://raw.githubusercontent.com/ros2/common_interfaces/jazzy/visualization_msgs/msg/Marker.msg), [Time](https://design.ros2.org/articles/clock_and_time.html).

@@ -42,7 +42,7 @@ find_package(hdmap_core REQUIRED)
 target_link_libraries(my_node PRIVATE hdmap::core)
 ```
 
-header-only 코어의 실제 코드 검사는 소비자 translation unit이나 Python 확장을 컴파일해야 한다. ROS 노드·ROS marker adapter는 미구현이다.
+header-only 코어의 실제 코드 검사는 소비자 translation unit이나 Python 확장을 컴파일해야 한다. TF·Visualizer 노드와 Python ROS marker adapter는 각각 `src/tf_broadcasting`, `src/visualization`에 구현했다. C++ ROS marker adapter는 미구현이다.
 
 ## Python
 
