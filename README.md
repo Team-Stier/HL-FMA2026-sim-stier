@@ -479,49 +479,48 @@ flowchart TD
 source /home/physicar/physicar_ws/run.sh
 ```
 
-아래는 구현할 실행 계약이다. 현재 `run.sh`, 노드 실행 파일, `visualization/launch.sh`는 아직 없으므로 이 명령으로 실행할 수 있는 상태는 아니다. 현재 개발 checkout을 배포 경로로 이동하거나 이름을 변경하지 않는다.
+`run.sh`는 아래 실행 계약을 구현한다. 존재하는 패키지별 `launch.sh`를 실행하고 없는 launch는 건너뛴다. 실행할 launch가 하나도 없으면 안내 후 정상 종료하며 설치·빌드·기존 프로세스 정리를 하지 않는다. 현재 개발 checkout을 배포 경로로 이동하거나 이름을 변경하지 않는다.
+
+설치·프로세스 종료 없이 launch 파일 목록만 확인하려면 `./run.sh --check`를 사용한다. `--help`는 사용법을 출력한다. 실행할 launch가 있을 때 기존 ROS 프로세스 정리와 의존성 설치를 수행한다.
+
+VTD가 필요한 패키지의 launch에서 실제 설치 경로를 환경변수 `VTD_ROOT`(VTD의 `bin` 디렉터리를 포함하는 루트), `HLVTD_ROOT`(`Config/HLVTD/hl_vtd_config.json`을 포함하는 대회 자산 루트), `VTD_LICENSE_FILE`(읽을 수 있는 라이선스 파일)로 지정한다. VTD·라이선스·대회 자산 검사는 해당 launch가 담당하며 다른 패키지의 실행을 막지 않는다.
+
+`config/runtime.yaml`의 설계 초안을 실제 노드가 읽는 설정으로 구현해야 한다. `run.sh`는 프로젝트 루트에서 노드를 실행하며 이 초안을 ROS `--params-file`로 전달하지 않는다. `allow_motion`은 명시적인 boolean이어야 하며 기본값은 `false`다. `config/map_manifest.yaml`은 `schema_version: 1`과 비어 있지 않은 `files` 경로 목록을 가진다. 상대 경로는 manifest 디렉터리 기준이며 목록에 있는 모든 지도 artifact가 존재해야 한다. 실제 지도 없이 예시 manifest를 생성하지 않는다. 설정·지도 파일의 유효성 검증은 사용하는 패키지의 launch/노드가 담당한다. 전역 bringup은 지도·라이선스·package.xml 누락이나 설정 초안을 이유로 다른 launch까지 막지 않는다.
+
+ROS 저장소 등록은 [공식 Jazzy 설치 절차](https://github.com/ros2/ros2_documentation/blob/jazzy/source/Installation/_Apt-Repositories.rst)의 `ros2-apt-source`를 사용한다. 공개 의존성은 APT 및 rosdep으로 설치하며 상용 파일은 다운로드하지 않는다.
 
 `run.sh`는 빌드·새 노드 실행 전에 **배포 계정과 같은 사용자로 실행 중인 기존 ROS 2 노드·launch·RViz·ROS 2 daemon을 모두 종료**하고 깨끗한 프로세스 상태에서 시작한다. 이 단계는 이 프로젝트의 이전 실행뿐 아니라 같은 계정의 다른 ROS 프로젝트도 중단하므로 전용 배포 계정을 전제로 한다. VTD·라이선스 서버·IDE·호출한 셸과 다른 사용자의 프로세스는 종료 대상이 아니다. 단순히 모든 python/bash 프로세스를 죽이는 방식은 쓰지 않는다. SIGINT 후 유예를 두고 남은 대상에 SIGTERM, 필요하면 SIGKILL을 보내며 잔여 대상이 있으면 새 실행을 시작하지 않는다. 프로세스 정리이지 환경변수나 모든 시스템 파일을 초기화한다는 뜻은 아니다.
 
-`run.sh`는 source 호출을 감지하면 별도의 Bash 프로세스에서 bringup을 수행한다. 호출한 셸의 옵션·작업 디렉터리·trap·환경변수를 변경하지 않고 완료 상태만 반환해야 한다. 직접 Bash로 실행해도 같은 동작을 제공한다. 실행 프로세스는 스크립트 자신의 위치로 프로젝트 루트를 결정한다. 빌드 전에 ROS 2 Jazzy·colcon·rosdep·lanelet2_core·Eigen/Boost 등 누락된 공개 SW 의존성을 설치하고 package.xml 기반 rosdep 의존성 해결을 수행해야 한다. 이미 충족된 의존성은 재설치하지 않는다. 최초 설치에 필요한 sudo 권한을 안내하고 실패/비대화형 권한 부재에서는 원인을 출력해 빌드 전에 종료한다. 인증서 검증을 끄지 않으며 임시 `/tmp` 라이브러리에 의존하지 않는다. VTD 본체·상용 라이선스·대회 전용 자산은 자동 취득 대상이 아니라 설치 전제조건으로 검사한다. 이후 `/opt/ros/jazzy/setup.bash`를 불러오고 프로젝트 루트에서 다음을 수행한다.
+`run.sh`는 source 호출을 감지하면 별도의 Bash 프로세스에서 bringup을 수행한다. 호출한 셸의 옵션·작업 디렉터리·trap·환경변수를 변경하지 않고 완료 상태만 반환해야 한다. 직접 Bash로 실행해도 같은 동작을 제공한다. 실행 프로세스는 스크립트 자신의 위치로 프로젝트 루트를 결정한다. 빌드 전에 ROS 2 Jazzy·colcon·rosdep·lanelet2_core·Eigen/Boost 등 누락된 공개 SW 의존성을 설치하고 package.xml 기반 rosdep 의존성 해결을 수행해야 한다. 이미 충족된 의존성은 재설치하지 않는다. 최초 설치에 필요한 sudo 권한을 안내하고 실패/비대화형 권한 부재에서는 원인을 출력해 빌드 전에 종료한다. 인증서 검증을 끄지 않으며 임시 `/tmp` 라이브러리에 의존하지 않는다. VTD 본체·상용 라이선스·대회 전용 자산은 자동 취득하지 않으며 사용하는 패키지에서 검사한다. 이후 `/opt/ros/jazzy/setup.bash`를 불러오고 프로젝트 루트에서 다음을 수행한다.
 
 ```bash
 colcon build --cmake-clean-cache
 source install/setup.bash
 ```
 
-빌드 실패 시 노드를 시작하지 않는다. config/map manifest와 필요한 파일·실행 명령을 검증한 뒤 Sim Bridge → HDMap Dynamic Tracker → TF Broadcasting → Local Path Planner → Speed Annotator → Control → Visualizer/RViz 순서로 프로세스를 시작한다. 시작 순서는 데이터 준비 완료를 의미하지 않으며 임의 sleep으로 readiness를 판단하지 않는다.
+빌드 실패 시 노드를 시작하지 않는다. 존재하는 launch를 Sim Bridge → HDMap Dynamic Tracker → TF Broadcasting → Local Path Planner → Speed Annotator → Control → Visualizer/RViz 순서로 프로세스를 시작한다. 시작 순서는 데이터 준비 완료를 의미하지 않으며 임의 sleep으로 readiness를 판단하지 않는다.
 
 Planner와 Annotator는 같은 Header 시각의 `/ego_status`·`/dynamic_status` 쌍을 받을 때까지 대기한다. Control은 ego pose·local path·speed limit 입력이 준비되기 전에는 가속하지 않는다. `allow_motion=false`가 기본값이다. 예제 프로젝트의 Object Detection·일회성 Traffic Light·Calibration 노드 및 `/gosign`은 이 VTD 설계에 도입하지 않는다. 신호 처리는 Tracker가 주행 중 계속 수행하며 TF는 전담 노드만 발행한다.
 
-각 실행 노드 패키지는 `run.sh`를 위해 한 줄의 `ros2 run` 명령을 기본으로 제공한다. 실행 파일 이름은 다음 계약을 따른다. `interfaces` 메시지 패키지와 `hdmap` 라이브러리는 이 실행 규칙의 대상이 아니다.
+모든 실행 노드 패키지는 `src/<pkgname>/launch.sh`를 진입점으로 제공한다. `run.sh`는 다음 순서로 Bash를 통해 호출한다. `interfaces` 메시지 패키지와 `hdmap` 라이브러리는 실행 대상이 아니다.
 
 ```bash
-ros2 run sim_bridge sim_bridge_node
-ros2 run hdmap_dynamic_tracker hdmap_dynamic_tracker_node
-ros2 run tf_broadcasting tf_broadcasting_node
-ros2 run local_path_planner local_path_planner_node
-ros2 run speed_annotator speed_annotator_node
-ros2 run control control_node
-./src/visualization/launch.sh
+bash ./src/sim_bridge/launch.sh
+bash ./src/hdmap_dynamic_tracker/launch.sh
+bash ./src/tf_broadcasting/launch.sh
+bash ./src/local_path_planner/launch.sh
+bash ./src/speed_annotator/launch.sh
+bash ./src/control/launch.sh
+bash ./src/visualization/launch.sh
 ```
 
-패키지별 환경변수·모델·파라미터·지도 경로 초기화가 필요하면 같은 역할의 `./src/<pkgname>/launch.sh`를 둘 수 있다. 이 경우 담당 개발자가 `run.sh`의 해당 `ros2 run` 줄을 명시적으로 바꾼다. `run.sh`는 `launch.sh` 존재 여부를 자동 감지하지 않는다. 다음은 선택적 경로 예시이며 실제 파일이 추가된 패키지에만 적용한다.
-
-```bash
-./src/sim_bridge/launch.sh
-./src/hdmap_dynamic_tracker/launch.sh
-./src/tf_broadcasting/launch.sh
-./src/local_path_planner/launch.sh
-./src/speed_annotator/launch.sh
-./src/control/launch.sh
-```
+없는 launch는 경로를 출력하고 건너뛴다. 실행 권한 비트는 필요 없으며 Bash가 읽을 수 있어야 한다. 각 launch 안에서 환경변수·모델·파라미터·지도 경로를 초기화하고 실제 노드 실행 명령(`exec ros2 run ...` 등)을 호출한다. 실행 실패나 개별 launch 종료는 로그로 알리며 다른 launch는 계속 실행한다. 자동 재시작은 하지 않는다.
 
 `visualization`은 Visualizer와 설정된 RViz를 함께 실행하는 `./src/visualization/launch.sh`를 제공하고 `run.sh`가 직접 호출한다. RViz Fixed Frame은 `map`이다. Lanelet2 경계/중심선/선종류·정지선/신호·cell bounding box·Ego·`/global_path`·`/local_path`·선택 occupancy bin·query debug가 미리 설정돼 있어야 한다. 시각화 집계 여부, timestamp, map 불일치, stale/drop을 표시한다. 원본 `/scan`, RDDF, 별도 SIM `/state` 요청은 이 프로젝트의 인터페이스가 아니므로 추가하지 않는다.
 
 SIM 연결이 없으면 Bridge만 재접속을 시도하고 나머지 노드는 입력 대기/STALE을 유지한다. Visualizer는 사용 가능한 정적 맵을 계속 표시하되 Ego가 없으면 마지막 위치 또는 명시적 기본 뷰를 사용하고 실제 관측처럼 꾸미지 않는다. 별도 SIM API를 직접 조회하지 않는다. 입력이 없는데 주행 가능한 비시뮬레이션 모드로 전환하지 않는다.
 
-`run.sh`가 관리하는 상시 프로세스 중 하나가 종료되면 전체 실행을 종료한다. `Ctrl+C`·SIGTERM·부분 시작 실패에서도 자신이 시작한 모든 노드와 RViz를 함께 정리한다. 패키지 `launch.sh`는 자식을 방치하거나 daemonize하지 않으며 단일 실행은 exec, 복수 실행은 자식 감시·종료 전달을 수행한다. 실행 종료 시에는 시작 전 일괄 정리와 달리 이번 실행의 자체 프로세스 그룹만 SIGINT→유예→SIGTERM→최종 SIGKILL 순으로 정리하고 모두 wait한다. 실행 도중 새로 시작된 다른 ROS 작업까지 종료하지 않는다. 정상 신호 종료와 비정상 노드 종료의 exit status를 구분한다.
+`run.sh`가 관리하는 프로세스 중 하나가 종료돼도 다른 launch는 계속 실행한다. `Ctrl+C`·SIGTERM 또는 모든 launch가 종료됐을 때 이번 실행의 노드와 RViz를 함께 정리한다. 패키지 `launch.sh`는 자식을 방치하거나 daemonize하지 않으며 단일 실행은 exec, 복수 실행은 자식 감시·종료 전달을 수행한다. 실행 종료 시에는 시작 전 일괄 정리와 달리 이번 실행의 자체 프로세스 그룹만 SIGINT→유예→SIGTERM→최종 SIGKILL 순으로 정리하고 모두 wait한다. 실행 도중 새로 시작된 다른 ROS 작업까지 종료하지 않는다. SIGINT 종료는 130, SIGTERM 종료는 143을 반환한다. 모든 launch가 종료되면 하나라도 시작 실패나 비정상 종료가 있었을 때 1, 그 외에는 0을 반환한다. 없는 launch를 건너뛴 것은 실패로 취급하지 않는다. 정상 신호 종료와 비정상 노드 종료의 exit status를 구분한다.
 
 종료 시 Bridge 연결이 살아 있으면 가능한 범위에서 정지 요청을 시도하지만, 프로세스/네트워크 단절 시 시뮬 차량 정지를 보장하지는 않는다. Visualizer는 주행 계산 의존성은 아니지만 기본 bringup에서 함께 실행했다면 위 전체 종료 규칙의 관리 대상이다.
 
