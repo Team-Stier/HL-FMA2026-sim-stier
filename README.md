@@ -3,7 +3,7 @@
 HL Mando Future Mobility Award 2026 시뮬레이션 부문을 위한 ROS 2 Jazzy 자율주행 SW 설계.
 카메라 인지 없이 대회 API의 Ego·객체·신호 정보를 사용한다. Planner는 정적 지도·dynamic status·ego status로 계획하며 Controller는 local path·ego status·speed limit만 구독한다.
 
-> 설계 계약 초안. C++17 Cell·CellTree·Lanelet 로더·hdmap_init·정지선 역색인·신호 레지스트리·Python binding과 오프라인 지도 제작 도구는 구현했다. 정적 지도는 `map/hdmap.bin`에 생성했으며, 신호 매핑·법정 제한속도 범위가 일부 미확정이므로 대회 주행 승인본은 아니다. 신호 규칙/Tracker·실행 노드·ROS marker adapter·launch는 아직 구현하지 않았다. 설정 YAML과 custom msg 6종도 후속 구현의 초안이며 현재 빌드 가능한 ROS workspace가 아니다.
+> 설계 계약 초안. C++17 Cell·CellTree·Lanelet 로더·hdmap_init·정지선 역색인·신호 레지스트리·Python binding과 오프라인 지도 제작 도구는 구현했다. 정적 지도는 `map/hdmap.bin`에 생성했으며, 신호 매핑·법정 제한속도 범위가 일부 미확정이므로 대회 주행 승인본은 아니다. Python Sim Bridge와 custom msg 6종은 ROS 2 Jazzy에서 빌드하고 실제 VTD 수신·토픽 발행을 검증했다. 루트 `run.sh`와 Bridge launch도 구현했으나, 신호 규칙/Tracker·나머지 실행 노드·ROS marker adapter는 미구현이며 전체 주행 workspace는 아직 미완성이다. 설정 YAML은 설계 초안이다.
 > [VTD 종합 검토·심 계약·검증 과제](docs/04-vtd-design-review.md)를 함께 읽는다. 배포 확인값, 설계 기본값, 실측 미확인을 구분한다.
 
 ## Convention
@@ -53,7 +53,7 @@ deadline은 기대하는 메시지 간격, lifespan은 오래된 메시지의 �
 src/
 ├── interfaces/                  # 주행 토픽의 custom msg 6종
 ├── hdmap/                       # 정적 맵 코어·R-tree·binding
-├── sim_bridge/                  # 계획: 참가자 TCP API 중계
+├── sim_bridge/                  # Python 참가자 TCP API 중계
 ├── hdmap_dynamic_tracker/       # 계획: ego 추정, 예측기, 신호 상태기, cell 갱신
 ├── local_path_planner/          # 계획: checkpoint routing, 시간 고려 Hybrid A*
 ├── speed_annotator/             # 계획: 현재 ego cell cap 발행
@@ -212,6 +212,8 @@ flowchart TD
 
 심 API ↔ ROS topic 중계. API 데이터를 ROS 메시지로 번역하고 ROS 제어 명령을 심 API 형식으로 번역한다.
 
+Python 구현과 `interfaces` 메시지 빌드 설정을 추가했다. [빌드·실행 및 검증 안내](src/sim_bridge/README.md)를 따른다. 현재 기본 설정은 수신 전용이다. `run.sh`는 구현된 launch를 실행하고 아직 없는 노드의 launch는 건너뛴다.
+
 #### HDMap Dynamic Tracker
 
 - 같은 시각의 pose·objects·traffic light를 받아 cell의 speed cap과 occupancy를 갱신한다.
@@ -220,7 +222,7 @@ flowchart TD
 - 속도는 연속 pose의 XY 이동 거리를 Header 시각 차이로 나눈 값이다. 첫 입력·0 이하 시간 차이·설정한 300km/h 초과 점프는 0으로 처리한다. 별도 상태 플래그는 추가하지 않는다.
 - 현재 객체와 교차한 cell은 점유 1.0. 미래는 0.5초 구간 중 잠깐이라도 교차하면 점유 처리한다.
 - 예측기는 `motion_predictor.hpp / ekf_predictor.cpp`로 분리해 다른 담당자가 구현한다. CV는 등속도 모델이며 카메라가 아니다.
-- 객체 reference point를 box 중심으로 바꾸는 작업은 [별도 조사](docs/05-object-reference-resolution.md)를 따른다. 실행 비교는 지도 제작 단계에서 함께 한다.
+- 객체 좌표는 Bridge가 `config/runtime.yaml`의 `sim_bridge.object_center_offset_m`을 적용한 XY 중심과 Z 하단(min Z)이다. 설정은 XYZ 모두 reference→center 변위이며, 발행 Z는 `ref_z + offset_z - size_z/2`로 계산한다. Tracker는 오프셋을 다시 적용하지 않는다. 현재 공통 오프셋은 임시 0이며 실제 값은 [별도 조사](docs/05-object-reference-resolution.md) 후 보정한다.
 
 #### Speed Annotator 및 Control 입력
 
@@ -447,7 +449,7 @@ Python은 hdmap_init에서 연결한 previous를 조회한다. setPrevious는 Py
 - [EgoStatus.msg](src/interfaces/msg/EgoStatus.msg): Header + x/y/z/heading/pitch/roll/speed.
 - [ControlCommand.msg](src/interfaces/msg/ControlCommand.msg): Header + steering/target_accel/turn_signal.
 
-`Objects.length`는 객체 길이가 아니라 채워진 배열 원소 수(0~30)다. 각 배열은 항상 30개 슬롯이며 같은 인덱스가 같은 객체를 나타낸다. 소비자는 [0, length)만 읽고 Bridge는 나머지 슬롯을 0으로 채운다. id는 uint32, 나머지 객체 필드는 float32다. size_x/size_y/size_z는 원본 API의 length/width/height에 대응하는 전체 길이/폭/높이(m)다. x/y/z는 map 기준 객체 reference point(m), heading은 자세(rad), speed는 XY 속력(m/s)이므로 heading을 속도 방향으로 단정하지 않는다. 원본 API가 제공하지 않는 reference point → 박스 중심 오프셋은 여전히 별도 확인이 필요하며 크기만으로 추정하지 않는다.
+`Objects.length`는 객체 길이가 아니라 채워진 배열 원소 수(0~30)다. 각 배열은 항상 30개 슬롯이며 같은 인덱스가 같은 객체를 나타낸다. 소비자는 [0, length)만 읽고 Bridge는 나머지 슬롯을 0으로 채운다. id는 uint32, 나머지 객체 필드는 float32다. size_x/size_y/size_z는 원본 API의 length/width/height에 대응하는 전체 길이/폭/높이(m)다. x/y/z는 Bridge가 설정 오프셋을 적용한 map 기준 객체 XY 중심·Z 하단(m; `z=ref_z+offset_z-size_z/2`, 현재 오프셋은 임시 0), heading은 자세(rad), speed는 XY 속력(m/s)이므로 heading을 속도 방향으로 단정하지 않는다. 실제 reference point → 박스 중심 오프셋은 별도 확인 후 Bridge 설정에 반영하며, 소비자는 중복 적용하지 않는다.
 
 표준 타입인 `/local_path`, `/global_path`, `/speed_limit`의 custom msg는 만들지 않는다.
 
@@ -525,7 +527,7 @@ static_map = hdmap_init(map_bundle_path, debug_sink=sink)
 cell_ids = static_map.cellTree().queryOverlaps(object_footprint, min_z, max_z)
 ```
 
-sink는 원시 query metadata도 발행하도록 구현한다. object_footprint는 객체 기준점·박스 중심 오프셋·크기·자세를 적용한 map 기준 꼭짓점이다. 높이 범위도 같은 map 기준이며 도로면과 객체의 높이 관계를 반영한다. Visualizer 자체 조회에는 sink를 붙이지 않아 재귀 debug를 피한다.
+sink는 원시 query metadata도 발행하도록 구현한다. object_footprint는 Bridge가 발행한 객체 XY 중심·크기·자세로 계산한 map 기준 꼭짓점이며, reference point 오프셋을 다시 적용하지 않는다. 높이 범위는 같은 map 기준의 `[z, z + size_z]`이며 z는 객체 하단이다. Visualizer 자체 조회에는 sink를 붙이지 않아 재귀 debug를 피한다.
 
 ### Visualizer 전용 diagram
 
@@ -556,49 +558,48 @@ flowchart TD
 source /home/physicar/physicar_ws/run.sh
 ```
 
-아래는 구현할 실행 계약이다. 현재 `run.sh`, 노드 실행 파일, `visualization/launch.sh`는 아직 없으므로 이 명령으로 실행할 수 있는 상태는 아니다. 현재 개발 checkout을 배포 경로로 이동하거나 이름을 변경하지 않는다.
+`run.sh`는 아래 실행 계약을 구현한다. 존재하는 패키지별 `launch.sh`를 실행하고 없는 launch는 건너뛴다. 실행할 launch가 하나도 없으면 안내 후 정상 종료하며 설치·빌드·기존 프로세스 정리를 하지 않는다. 현재 개발 checkout을 배포 경로로 이동하거나 이름을 변경하지 않는다.
+
+설치·프로세스 종료 없이 launch 파일 목록만 확인하려면 `./run.sh --check`를 사용한다. `--help`는 사용법을 출력한다. 실행할 launch가 있을 때 기존 ROS 프로세스 정리와 의존성 설치를 수행한다.
+
+VTD가 필요한 패키지의 launch에서 실제 설치 경로를 환경변수 `VTD_ROOT`(VTD의 `bin` 디렉터리를 포함하는 루트), `HLVTD_ROOT`(`Config/HLVTD/hl_vtd_config.json`을 포함하는 대회 자산 루트), `VTD_LICENSE_FILE`(읽을 수 있는 라이선스 파일)로 지정한다. VTD·라이선스·대회 자산 검사는 해당 launch가 담당하며 다른 패키지의 실행을 막지 않는다.
+
+`config/runtime.yaml`의 설계 초안을 실제 노드가 읽는 설정으로 구현해야 한다. `run.sh`는 프로젝트 루트에서 노드를 실행하며 이 초안을 ROS `--params-file`로 전달하지 않는다. `allow_motion`은 명시적인 boolean이어야 하며 기본값은 `false`다. `config/map_manifest.yaml`은 `schema_version: 1`과 비어 있지 않은 `files` 경로 목록을 가진다. 상대 경로는 manifest 디렉터리 기준이며 목록에 있는 모든 지도 artifact가 존재해야 한다. 실제 지도 없이 예시 manifest를 생성하지 않는다. 설정·지도 파일의 유효성 검증은 사용하는 패키지의 launch/노드가 담당한다. 전역 bringup은 지도·라이선스·package.xml 누락이나 설정 초안을 이유로 다른 launch까지 막지 않는다.
+
+ROS 저장소 등록은 [공식 Jazzy 설치 절차](https://github.com/ros2/ros2_documentation/blob/jazzy/source/Installation/_Apt-Repositories.rst)의 `ros2-apt-source`를 사용한다. 공개 의존성은 APT 및 rosdep으로 설치하며 상용 파일은 다운로드하지 않는다.
 
 `run.sh`는 빌드·새 노드 실행 전에 **배포 계정과 같은 사용자로 실행 중인 기존 ROS 2 노드·launch·RViz·ROS 2 daemon을 모두 종료**하고 깨끗한 프로세스 상태에서 시작한다. 이 단계는 이 프로젝트의 이전 실행뿐 아니라 같은 계정의 다른 ROS 프로젝트도 중단하므로 전용 배포 계정을 전제로 한다. VTD·라이선스 서버·IDE·호출한 셸과 다른 사용자의 프로세스는 종료 대상이 아니다. 단순히 모든 python/bash 프로세스를 죽이는 방식은 쓰지 않는다. SIGINT 후 유예를 두고 남은 대상에 SIGTERM, 필요하면 SIGKILL을 보내며 잔여 대상이 있으면 새 실행을 시작하지 않는다. 프로세스 정리이지 환경변수나 모든 시스템 파일을 초기화한다는 뜻은 아니다.
 
-`run.sh`는 source 호출을 감지하면 별도의 Bash 프로세스에서 bringup을 수행한다. 호출한 셸의 옵션·작업 디렉터리·trap·환경변수를 변경하지 않고 완료 상태만 반환해야 한다. 직접 Bash로 실행해도 같은 동작을 제공한다. 실행 프로세스는 스크립트 자신의 위치로 프로젝트 루트를 결정한다. 빌드 전에 ROS 2 Jazzy·colcon·rosdep·lanelet2_core·Eigen/Boost 등 누락된 공개 SW 의존성을 설치하고 package.xml 기반 rosdep 의존성 해결을 수행해야 한다. 이미 충족된 의존성은 재설치하지 않는다. 최초 설치에 필요한 sudo 권한을 안내하고 실패/비대화형 권한 부재에서는 원인을 출력해 빌드 전에 종료한다. 인증서 검증을 끄지 않으며 임시 `/tmp` 라이브러리에 의존하지 않는다. VTD 본체·상용 라이선스·대회 전용 자산은 자동 취득 대상이 아니라 설치 전제조건으로 검사한다. 이후 `/opt/ros/jazzy/setup.bash`를 불러오고 프로젝트 루트에서 다음을 수행한다.
+`run.sh`는 source 호출을 감지하면 별도의 Bash 프로세스에서 bringup을 수행한다. 호출한 셸의 옵션·작업 디렉터리·trap·환경변수를 변경하지 않고 완료 상태만 반환해야 한다. 직접 Bash로 실행해도 같은 동작을 제공한다. 실행 프로세스는 스크립트 자신의 위치로 프로젝트 루트를 결정한다. 빌드 전에 ROS 2 Jazzy·colcon·rosdep·lanelet2_core·Eigen/Boost 등 누락된 공개 SW 의존성을 설치하고 package.xml 기반 rosdep 의존성 해결을 수행해야 한다. 이미 충족된 의존성은 재설치하지 않는다. 최초 설치에 필요한 sudo 권한을 안내하고 실패/비대화형 권한 부재에서는 원인을 출력해 빌드 전에 종료한다. 인증서 검증을 끄지 않으며 임시 `/tmp` 라이브러리에 의존하지 않는다. VTD 본체·상용 라이선스·대회 전용 자산은 자동 취득하지 않으며 사용하는 패키지에서 검사한다. 이후 `/opt/ros/jazzy/setup.bash`를 불러오고 프로젝트 루트에서 다음을 수행한다.
 
 ```bash
 colcon build --cmake-clean-cache
 source install/setup.bash
 ```
 
-빌드 실패 시 노드를 시작하지 않는다. config/map manifest와 필요한 파일·실행 명령을 검증한 뒤 Sim Bridge → HDMap Dynamic Tracker → TF Broadcasting → Local Path Planner → Speed Annotator → Control → Visualizer/RViz 순서로 프로세스를 시작한다. 시작 순서는 데이터 준비 완료를 의미하지 않으며 임의 sleep으로 readiness를 판단하지 않는다.
+빌드 실패 시 노드를 시작하지 않는다. 존재하는 launch를 Sim Bridge → HDMap Dynamic Tracker → TF Broadcasting → Local Path Planner → Speed Annotator → Control → Visualizer/RViz 순서로 프로세스를 시작한다. 시작 순서는 데이터 준비 완료를 의미하지 않으며 임의 sleep으로 readiness를 판단하지 않는다.
 
 Planner와 Annotator는 같은 Header 시각의 `/ego_status`·`/dynamic_status` 쌍을 받을 때까지 대기한다. Control은 ego pose·local path·speed limit 입력이 준비되기 전에는 가속하지 않는다. `allow_motion=false`가 기본값이다. 예제 프로젝트의 Object Detection·일회성 Traffic Light·Calibration 노드 및 `/gosign`은 이 VTD 설계에 도입하지 않는다. 신호 처리는 Tracker가 주행 중 계속 수행하며 TF는 전담 노드만 발행한다.
 
-각 실행 노드 패키지는 `run.sh`를 위해 한 줄의 `ros2 run` 명령을 기본으로 제공한다. 실행 파일 이름은 다음 계약을 따른다. `interfaces` 메시지 패키지와 `hdmap` 라이브러리는 이 실행 규칙의 대상이 아니다.
+모든 실행 노드 패키지는 `src/<pkgname>/launch.sh`를 진입점으로 제공한다. `run.sh`는 다음 순서로 Bash를 통해 호출한다. `interfaces` 메시지 패키지와 `hdmap` 라이브러리는 실행 대상이 아니다.
 
 ```bash
-ros2 run sim_bridge sim_bridge_node
-ros2 run hdmap_dynamic_tracker hdmap_dynamic_tracker_node
-ros2 run tf_broadcasting tf_broadcasting_node
-ros2 run local_path_planner local_path_planner_node
-ros2 run speed_annotator speed_annotator_node
-ros2 run control control_node
-./src/visualization/launch.sh
+bash ./src/sim_bridge/launch.sh
+bash ./src/hdmap_dynamic_tracker/launch.sh
+bash ./src/tf_broadcasting/launch.sh
+bash ./src/local_path_planner/launch.sh
+bash ./src/speed_annotator/launch.sh
+bash ./src/control/launch.sh
+bash ./src/visualization/launch.sh
 ```
 
-패키지별 환경변수·모델·파라미터·지도 경로 초기화가 필요하면 같은 역할의 `./src/<pkgname>/launch.sh`를 둘 수 있다. 이 경우 담당 개발자가 `run.sh`의 해당 `ros2 run` 줄을 명시적으로 바꾼다. `run.sh`는 `launch.sh` 존재 여부를 자동 감지하지 않는다. 다음은 선택적 경로 예시이며 실제 파일이 추가된 패키지에만 적용한다.
-
-```bash
-./src/sim_bridge/launch.sh
-./src/hdmap_dynamic_tracker/launch.sh
-./src/tf_broadcasting/launch.sh
-./src/local_path_planner/launch.sh
-./src/speed_annotator/launch.sh
-./src/control/launch.sh
-```
+없는 launch는 경로를 출력하고 건너뛴다. 실행 권한 비트는 필요 없으며 Bash가 읽을 수 있어야 한다. 각 launch 안에서 환경변수·모델·파라미터·지도 경로를 초기화하고 실제 노드 실행 명령(`exec ros2 run ...` 등)을 호출한다. 실행 실패나 개별 launch 종료는 로그로 알리며 다른 launch는 계속 실행한다. 자동 재시작은 하지 않는다.
 
 `visualization`은 Visualizer와 설정된 RViz를 함께 실행하는 `./src/visualization/launch.sh`를 제공하고 `run.sh`가 직접 호출한다. RViz Fixed Frame은 `map`이다. Lanelet2 경계/중심선/선종류·정지선/신호·cell bounding box·Ego·`/global_path`·`/local_path`·선택 occupancy bin·query debug가 미리 설정돼 있어야 한다. 시각화 집계 여부, timestamp, map 불일치, stale/drop을 표시한다. 원본 `/scan`, RDDF, 별도 SIM `/state` 요청은 이 프로젝트의 인터페이스가 아니므로 추가하지 않는다.
 
 SIM 연결이 없으면 Bridge만 재접속을 시도하고 나머지 노드는 입력 대기/STALE을 유지한다. Visualizer는 사용 가능한 정적 맵을 계속 표시하되 Ego가 없으면 마지막 위치 또는 명시적 기본 뷰를 사용하고 실제 관측처럼 꾸미지 않는다. 별도 SIM API를 직접 조회하지 않는다. 입력이 없는데 주행 가능한 비시뮬레이션 모드로 전환하지 않는다.
 
-`run.sh`가 관리하는 상시 프로세스 중 하나가 종료되면 전체 실행을 종료한다. `Ctrl+C`·SIGTERM·부분 시작 실패에서도 자신이 시작한 모든 노드와 RViz를 함께 정리한다. 패키지 `launch.sh`는 자식을 방치하거나 daemonize하지 않으며 단일 실행은 exec, 복수 실행은 자식 감시·종료 전달을 수행한다. 실행 종료 시에는 시작 전 일괄 정리와 달리 이번 실행의 자체 프로세스 그룹만 SIGINT→유예→SIGTERM→최종 SIGKILL 순으로 정리하고 모두 wait한다. 실행 도중 새로 시작된 다른 ROS 작업까지 종료하지 않는다. 정상 신호 종료와 비정상 노드 종료의 exit status를 구분한다.
+`run.sh`가 관리하는 프로세스 중 하나가 종료돼도 다른 launch는 계속 실행한다. `Ctrl+C`·SIGTERM 또는 모든 launch가 종료됐을 때 이번 실행의 노드와 RViz를 함께 정리한다. 패키지 `launch.sh`는 자식을 방치하거나 daemonize하지 않으며 단일 실행은 exec, 복수 실행은 자식 감시·종료 전달을 수행한다. 실행 종료 시에는 시작 전 일괄 정리와 달리 이번 실행의 자체 프로세스 그룹만 SIGINT→유예→SIGTERM→최종 SIGKILL 순으로 정리하고 모두 wait한다. 실행 도중 새로 시작된 다른 ROS 작업까지 종료하지 않는다. SIGINT 종료는 130, SIGTERM 종료는 143을 반환한다. 모든 launch가 종료되면 하나라도 시작 실패나 비정상 종료가 있었을 때 1, 그 외에는 0을 반환한다. 없는 launch를 건너뛴 것은 실패로 취급하지 않는다. 정상 신호 종료와 비정상 노드 종료의 exit status를 구분한다.
 
 종료 시 Bridge 연결이 살아 있으면 가능한 범위에서 정지 요청을 시도하지만, 프로세스/네트워크 단절 시 시뮬 차량 정지를 보장하지는 않는다. Visualizer는 주행 계산 의존성은 아니지만 기본 bringup에서 함께 실행했다면 위 전체 종료 규칙의 관리 대상이다.
 

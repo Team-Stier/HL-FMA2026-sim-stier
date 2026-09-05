@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<package format="3">
+    <name>sim_bridge</name>
+    <version>0.1.0</version>
+    <description>Python bridge for the VTD participant TCP API.</description>
+    <maintainer email="stier@users.noreply.github.com">stier</maintainer>
+    <license>Proprietary</license>
+    <buildtool_depend>ament_cmake</buildtool_depend>
+    <exec_depend>rclpy</exec_depend>
+    <exec_depend>ament_index_python</exec_depend>
+    <exec_depend>interfaces</exec_depend>
+    <exec_depend>python3-yaml</exec_depend>
+    <export><build_type>ament_cmake</build_type></export>
+</package>
