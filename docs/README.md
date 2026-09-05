@@ -4,6 +4,8 @@
 
 ## 문서 바로가기
 
+- [VTD 배포본 검토 및 ROS 설계 근거](04-vtd-design-review.md)
+- [객체 API 기준점 해결 조사](05-object-reference-resolution.md)
 - [VTD 시뮬레이터 설치·실행·사용 가이드](03-vtd-simulator-install-run-guide.md)
 
 | 구분 | 본문 | 전체 자동 전사 |
