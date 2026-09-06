@@ -1,0 +1,33 @@
+hdmap_dynamic_tracker:
+  ros__parameters:
+    frame_id: map
+    target_rate_hz: 20.0
+    ego:
+      maximum_dt_s: 0.25
+      maximum_speed_kph: 300.0
+    occupancy:
+      # The object API is capped at the nearest 30 objects within 80 m. Therefore
+      # absence is not proof of free space. Leave 0 until completeness is verified.
+      known_free_radius_m: 0.0
+      free_space_assumption_verified: false
+      allow_free_when_object_list_full: false
+      unknown_probability: -1.0
+      uncertainty_sigma_multiplier: 2.0
+      maximum_uncertainty_inflation_m: 5.0
+    prediction:
+      process_acceleration_sigma_mps2: 2.0
+      position_measurement_sigma_m: 0.5
+      initial_velocity_sigma_mps: 5.0
+      track_retention_s: 0.5
+      maximum_position_innovation_m: 15.0
+    signals:
+      restrict_unobserved: true
+      # Development-only values. config/runtime.yaml intentionally has null until
+      # competition-vehicle braking calibration is completed.
+      calibration_verified: false
+      design_deceleration_mps2: 2.0
+      braking_distance_factor: 1.0
+      latency_budget_s: 0.25
+      stop_margin_m: 1.0
+    vehicle:
+      rear_axle_to_front_m: 3.808

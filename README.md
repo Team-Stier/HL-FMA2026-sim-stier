@@ -3,7 +3,7 @@
 HL Mando Future Mobility Award 2026 시뮬레이션 부문을 위한 ROS 2 Jazzy 자율주행 SW 설계.
 카메라 인지 없이 대회 API의 Ego·객체·신호 정보를 사용한다. Planner는 정적 지도·dynamic status·ego status로 계획하며 Controller는 local path·ego status·speed limit만 구독한다.
 
-> C++17 HDMap 코어·Python binding, 주행 custom msg 7종·시각화 전용 msg 2종, TF 노드, Visualizer, RViz 설정·launch·run.sh를 구현했다. SimBridge·개발용 정적 지도·객체 오프셋 매핑도 통합했다. Tracker·Planner·Control은 미구현이다. 현재 실행 범위는 SimBridge + TF + Visualizer + RViz이며 수신 토픽 없이 주행 데이터를 생성하지 않는다.
+> C++17 HDMap 코어·Python binding, 주행 custom msg 7종·시각화 전용 msg 2종, TF 노드, HDMap Dynamic Tracker 1차 버전, Visualizer, RViz 설정·launch·run.sh를 구현했다. SimBridge·개발용 정적 지도·객체 오프셋 매핑도 통합했다. Planner·Annotator·Control과 Tracker의 완전한 신호 상태기는 미구현이다. 현재 실행 범위는 SimBridge + TF + Tracker + Visualizer + RViz이며 수신 토픽 없이 주행 데이터를 생성하지 않는다.
 > [VTD 종합 검토·심 계약·검증 과제](docs/04-vtd-design-review.md)를 함께 읽는다. 배포 확인값, 설계 기본값, 실측 미확인을 구분한다.
 > [시각화 Data Pipeline](docs/DataPipeline.md)은 원시 데이터부터 마커까지의 변환·추정·표시 계약이다. `/objects`의 XY 중심·객체별 min Z 변환은 Bridge가 수행하며 ID별 측정 오프셋은 `config/object_offsets.yaml`에 있으며 미등록 ID·크기 변경 패킷은 거부한다.
 
@@ -53,14 +53,14 @@ deadline은 기대하는 메시지 간격, lifespan은 오래된 메시지의 �
 ```text
 src/
 ├── interfaces/                  # 주행 토픽 msg 7종 + 시각화 전용 msg 2종
-├── hdmap/                       # Cell/정지선 역색인; R-tree/binding/debug는 후속
-├── sim_bridge/                  # 계획: 참가자 TCP API 중계
-├── hdmap_dynamic_tracker/       # 계획: ego 추정, 예측기, 신호 상태기, cell 갱신
+├── hdmap/                       # Cell/정지선 역색인, R-tree, C++/Python API
+├── sim_bridge/                  # 참가자 TCP API 중계
+├── hdmap_dynamic_tracker/       # ego 속도, CV-KF 예측, 점유·신호 cell cap 갱신
 ├── local_path_planner/          # 계획: checkpoint routing, 시간 고려 Hybrid A*
 ├── speed_annotator/             # 계획: 현재 ego cell cap 발행
 ├── control/                     # 계획: 별도 담당 MPC, 제한·watchdog
-├── tf_broadcasting/             # 계획: 모든 TF 발행 전담
-└── visualization/               # 계획: 독립적인 raw/debug 표시
+├── tf_broadcasting/             # 모든 TF 발행 전담
+└── visualization/               # 독립적인 raw/debug 표시
 ```
 
 루트 `config/`에는 runtime.yaml과 vehicle.yaml을 둔다.
@@ -253,11 +253,14 @@ flowchart TD
 #### HDMap Dynamic Tracker
 
 - 같은 시각의 pose·objects·traffic light를 받아 cell의 speed cap과 occupancy를 갱신한다.
+- 세 입력은 exact stamp로만 결합하고 최신 완성 snapshot 하나만 계산한다. `/ego_status`는 pose마다 즉시 발행한다.
 - `/dynamic_status`는 Header와 모든 cell의 speed cap/occupancy 배열만 담는다.
 - `/ego_status`는 Header와 x/y/z/heading/pitch/roll/speed만 담는다. 위치는 map 기준 후륜축 위치다.
 - 속도는 연속 pose의 XY 이동 거리를 Header 시각 차이로 나눈 값이다. 첫 입력·0 이하 시간 차이·설정한 300km/h 초과 점프는 0으로 처리한다. 별도 상태 플래그는 추가하지 않는다.
 - 현재 객체와 교차한 cell은 점유 1.0. 미래는 0.5초 구간 중 잠깐이라도 교차하면 점유 처리한다.
-- 예측기는 `motion_predictor.hpp / ekf_predictor.cpp`로 분리해 다른 담당자가 구현한다. CV는 등속도 모델이며 카메라가 아니다.
+- 예측기는 `motion_predictor.hpp / ekf_predictor.cpp`로 분리했다. 현재 구현은 Cartesian constant-velocity Kalman filter이며 선형 운동에서 EKF의 특수형이다. CV는 등속도 모델이며 카메라가 아니다.
+- 객체 API가 80m 내 최근접 최대 30개뿐이므로 미관측 Cell은 기본 unknown=-1이다. 현재 OBB와 0.5초 구간별 swept footprint가 교차한 Cell만 1로 갱신한다.
+- 상세 구현·실행법·현재 안전 한계는 [Tracker README](src/hdmap_dynamic_tracker/README.md)를 따른다.
 - 객체 reference point를 box 중심으로 바꾸는 작업은 [별도 조사](docs/05-object-reference-resolution.md)를 따른다. 실행 비교는 지도 제작 단계에서 함께 한다.
 
 #### Speed Annotator 및 Control 입력
@@ -308,7 +311,7 @@ stateDiagram-v2
     CLEARING --> UNKNOWN: 교차로 이탈 / 이전 접근 종료·다음 접근 초기화
 ```
 
-도식은 구현 예정 상태 머신 설계다. `[*]`는 초기 상태 진입점이며, 상태 간 전이는 `이벤트 [조건] / 액션`으로 표시한다. 신호 cap 해제는 객체·정적 속도 제한까지 해제한다는 뜻이 아니다. UNKNOWN에서도 접근 제한을 유지한다. STOP_REQUIRED/HOLD에서 황색이 계속되면 정지 판단을 유지하고, COMMITTED는 최초 황색 판단을 해당 접근 동안 유지한다. COMMITTED/CLEARING에서도 객체 충돌 제약은 해제하지 않는다. 차량 재배치나 새 시나리오는 현재 접근 상태를 초기화한다.
+도식은 **아직 완성되지 않은** 전체 상태 머신 설계다. 1차 Tracker는 registry의 `permitted_states`와 exact-stamp raw 상태로 GO/보수 정지만 판단하며, 황색 latch·HOLD·COMMITTED·CLEARING은 구현하지 않았다. `[*]`는 초기 상태 진입점이며, 상태 간 전이는 `이벤트 [조건] / 액션`으로 표시한다. 신호 cap 해제는 객체·정적 속도 제한까지 해제한다는 뜻이 아니다. UNKNOWN에서도 접근 제한을 유지한다. STOP_REQUIRED/HOLD에서 황색이 계속되면 정지 판단을 유지하고, COMMITTED는 최초 황색 판단을 해당 접근 동안 유지한다. COMMITTED/CLEARING에서도 객체 충돌 제약은 해제하지 않는다. 차량 재배치나 새 시나리오는 현재 접근 상태를 초기화한다.
 
 | 상태 | 규칙 |
 |---|---|
@@ -375,7 +378,7 @@ Visualizer는 lanelet ID 리스트를 자기 Lanelet2 맵에서 조회해 해당
 
 #### Cell 클래스 (C++17 코어 구현)
 
-정적 Cell과 frame별 DynamicStatus는 별도로 둔다. [cell.hpp](src/hdmap/include/hdmap/cell.hpp)에 Cell 값 타입과 정지선 역색인을 구현했다. 신호 허용 규칙은 Tracker 책임이며 미구현으로 남긴다. 별도 signal_mapping.hpp는 두지 않는다. [상세 API/예제](src/hdmap/README.md)를 따른다.
+정적 Cell과 frame별 DynamicStatus는 별도로 둔다. [cell.hpp](src/hdmap/include/hdmap/cell.hpp)에 Cell 값 타입과 정지선 역색인을 구현했다. 신호의 정적 `permitted_states` 판정과 보수 감속장은 Tracker에 구현했고, 황색 latch를 포함한 전체 접근 상태기는 아직 남아 있다. 별도 signal_mapping.hpp는 두지 않는다. [상세 API/예제](src/hdmap/README.md)를 따른다.
 
 실제 코드에서 구현 본문과 일부 접근자만 생략한 구조 요약이다. 별도 Point3d/BoundingBox를 선언하지 않고 Lanelet2 자료형을 사용한다.
 
@@ -415,7 +418,7 @@ geometry는 잘린 좌측 경계의 Point3d를 진행 방향으로, 우측 경�
 
 여기서 사전 변환 작업은 제공 XODR을 Lanelet2로 바꾸고 cell geometry/고정 ID를 만들어 배포하는 단계다. 예전에 쓴 '지도 빌더'는 이 개발용 작업을 뜻했으며 새로운 주행 노드나 메모리 로더가 아니다. launch 때는 이미 완성된 산출물을 각 프로세스 메모리에 로드한다.
 
-신호의 정적 레지스트리도 `hdmap_init`에서 프로세스별로 구성한다. `signalRegistry()`는 참가자 API의 int32 controller ID → 읽기 전용 Lanelet2 TrafficLight 목록이다. 별도 신호 클래스나 signal_mapping.hpp는 만들지 않는다. 신호 점등 상태·허용 판단·상태기·speed cap 갱신은 Tracker의 향후 구현 책임이다. stopline→cell 역색인은 Cell.stoplineIds()에서 생성하므로 신호 테이블에 cell 목록을 중복 저장하지 않는다. lanelet 연결·좌우 변경 가능 여부는 RoutingGraph를 우선 사용한다. speed cap/occupancy[13]/timestamp는 DynamicStatus에 둔다.
+신호의 정적 레지스트리도 `hdmap_init`에서 프로세스별로 구성한다. `signalRegistry()`는 참가자 API의 int32 controller ID → 읽기 전용 Lanelet2 TrafficLight 목록이다. 별도 신호 클래스나 signal_mapping.hpp는 만들지 않는다. Tracker 1차 버전은 신호 점등 상태·정적 허용 판단·보수 speed cap 갱신을 담당하며, 황색 latch와 접근 상태기는 후속 구현 책임이다. stopline→cell 역색인은 Cell.stoplineIds()에서 생성하므로 신호 테이블에 cell 목록을 중복 저장하지 않는다. lanelet 연결·좌우 변경 가능 여부는 RoutingGraph를 우선 사용한다. speed cap/occupancy[13]/timestamp는 DynamicStatus에 둔다.
 
 **신호 사전 탑재 계약**
 
@@ -599,17 +602,18 @@ Ubuntu 24.04와 ROS 2 Jazzy apt 저장소가 설정된 환경을 전제로 한�
 
 빌드 전에 **동일 사용자 소유의 인식 가능한 ROS 프로세스**를 SIGINT → SIGTERM → SIGKILL 순서로 정리한다. `/opt/ros/jazzy/lib/`, Jazzy `ros2` CLI, 이 checkout의 `install/` 실행 경로를 확인한다. 임의의 Python 프로세스·VTD·IDE·호출 셸은 종료하지 않는다. 다른 ROS 프로젝트도 종료될 수 있으므로 배포 전용 계정에서 사용한다. 사용자 정의 wrapper나 다른 설치 경로까지 모든 ROS 프로세스를 발견한다고 보장하지 않는다.
 
-`interfaces`, `sim_bridge`, `tf_broadcasting`, `visualization`을 `colcon build --cmake-clean-cache`로 빌드하고 HDMap Python 코어를 별도 CMake 빌드·설치한다. 이후 TF + Visualizer + 설정된 RViz를 ROS launch로 실행한다. 하나가 종료되거나 Ctrl+C를 누르면 나머지도 함께 종료한다. 아직 없는 Tracker/Planner/Annotator/Control은 자동 실행하지 않는다. Bridge는 VTD_HOST(기본 127.0.0.1), VTD_PORT(기본 9910)에 연결하며 VTD 프로세스 자체를 실행하지 않는다.
+HDMap C++/Python 코어를 먼저 CMake로 설치하고 그 prefix를 사용해 `interfaces`, `sim_bridge`, `tf_broadcasting`, `hdmap_dynamic_tracker`, `visualization`을 `colcon build --cmake-clean-cache`로 빌드한다. 이후 TF + Tracker + Visualizer + 설정된 RViz를 ROS launch로 실행한다. 하나가 종료되거나 Ctrl+C를 누르면 나머지도 함께 종료한다. 아직 없는 Planner/Annotator/Control은 자동 실행하지 않는다. Bridge는 VTD_HOST(기본 127.0.0.1), VTD_PORT(기본 9910)에 연결하며 VTD 프로세스 자체를 실행하지 않는다.
 
 ```bash
 export HDMAP_PATH=/absolute/path/to/hdmap.bin
 source /home/physicar/physicar_ws/run.sh
 ```
 
-`HDMAP_PATH` 기본값은 이 checkout의 `map/hdmap.bin`이다. 2,847개 Lanelet과 94,157개 Cell이 포함된 개발용 지도이며 대회 주행 승인본은 아니다. 잘못된 파일을 지정하면 초기화에 실패하며 대체 지도를 만들지 않는다. 지도·검사 결과는 [정적 지도 기록](docs/06-static-map.md), 오프셋 측정은 [객체 기준점 기록](docs/05-object-reference-resolution.md)을 따른다. ID 2/3/4/5의 오프셋은 측정 시나리오 기준이며 다른 시나리오에 그대로 일반화하지 않는다. 설치 후 수동 실행은 다음과 같다. launch는 Bridge와 TF도 포함하므로 별도 노드 명령과 중복 실행하지 않는다.
+`HDMAP_PATH` 기본값은 이 checkout의 `map/hdmap.bin`이다. 현재 생성본은 2,845개 Lanelet과 94,154개 Cell이 포함된 개발용 지도이며 대회 주행 승인본은 아니다. 개수는 코드에 고정하지 않고 로드한 지도를 따른다. 잘못된 파일을 지정하면 초기화에 실패하며 대체 지도를 만들지 않는다. 지도·검사 결과는 [정적 지도 기록](docs/06-static-map.md), 오프셋 측정은 [객체 기준점 기록](docs/05-object-reference-resolution.md)을 따른다. ID 2/3/4/5의 오프셋은 측정 시나리오 기준이며 다른 시나리오에 그대로 일반화하지 않는다. 설치 후 수동 실행은 다음과 같다. launch는 Bridge, TF, Tracker도 포함하므로 별도 노드 명령과 중복 실행하지 않는다.
 
 ```bash
 ros2 run tf_broadcasting tf_broadcasting_node
+ros2 launch hdmap_dynamic_tracker tracker.launch.py map_path:=/absolute/path/to/hdmap.bin
 ros2 run visualization visualizer_node --ros-args -p map_path:=/absolute/path/to/hdmap.bin
 ./src/visualization/launch.sh
 ```

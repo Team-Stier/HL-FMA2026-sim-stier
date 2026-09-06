@@ -1,6 +1,6 @@
 # Data Pipeline — 원시 데이터부터 RViz까지
 
-현재 정한 데이터 경로와 그 사이에 개입하는 연산만 표시한다. 사각형은 데이터·토픽·마커, 원은 연산, 원통은 파일·정적 맵이다. TF·Visualizer·Python query marker adapter는 구현했다. Bridge·Tracker·Planner·Control 연산은 아직 구현할 계약이다. 실행과 현재 표시 제약은 README Bringup을 따른다.
+현재 정한 데이터 경로와 그 사이에 개입하는 연산만 표시한다. 사각형은 데이터·토픽·마커, 원은 연산, 원통은 파일·정적 맵이다. Bridge·TF·HDMap Dynamic Tracker 1차 버전·Visualizer·Python query marker adapter는 구현했다. Planner·Annotator·Control과 Tracker의 전체 신호 접근 상태기는 아직 구현할 계약이다. 실행과 현재 표시 제약은 README Bringup 및 [Tracker README](../src/hdmap_dynamic_tracker/README.md)를 따른다.
 
 RViz Fixed Frame은 `map`이다. 메시지의 좌표 frame과 RViz Fixed Frame은 다르다. Planner는 `map`에서 경로·탐색 트리를 계산한 뒤 발행 직전에 입력 snapshot 시각의 TF로 `base_link`에 변환하고 RViz가 해당 시각의 TF로 `map`에 표시한다. 탐색 트리와 Ego 차체 박스도 `base_link` 기준이며 TF로 표시한다. 나머지 공간 관측과 지도 마커는 `map` 기준이다. `/objects`는 **XY 박스 중심 + 객체별 min Z**, Ego는 **후륜축 기준점**이다. 마커 출력은 `visualization_msgs/msg/MarkerArray`다.
 

@@ -10,6 +10,7 @@
     <depend>rclpy</depend>
     <exec_depend>tf_broadcasting</exec_depend>
     <exec_depend>sim_bridge</exec_depend>
+    <exec_depend>hdmap_dynamic_tracker</exec_depend>
     <depend>interfaces</depend>
     <depend>geometry_msgs</depend>
     <depend>std_msgs</depend>

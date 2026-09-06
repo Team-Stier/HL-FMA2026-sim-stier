@@ -68,13 +68,15 @@ for sig in (signal.SIGINT, signal.SIGTERM, signal.SIGKILL):
 if targets:
     raise SystemExit("Some ROS processes did not exit")
 CLEAN
-colcon build --base-paths src/interfaces src/sim_bridge src/tf_broadcasting src/visualization --cmake-clean-cache
 cmake -S src/hdmap -B build/hdmap_core -DCMAKE_INSTALL_PREFIX="$ROOT/install/hdmap_core"
 cmake --build build/hdmap_core --parallel 2
 cmake --install build/hdmap_core
+export CMAKE_PREFIX_PATH="$ROOT/install/hdmap_core${CMAKE_PREFIX_PATH:+:$CMAKE_PREFIX_PATH}"
+colcon build --base-paths src/interfaces src/sim_bridge src/tf_broadcasting \
+    src/hdmap_dynamic_tracker src/visualization --cmake-clean-cache
 source install/setup.bash
 export PYTHONPATH="$ROOT/install/hdmap_core/lib/python3.12/site-packages${PYTHONPATH:+:$PYTHONPATH}"
 export HDMAP_PATH="${HDMAP_PATH:-$ROOT/map/hdmap.bin}"
 test -r "$HDMAP_PATH" || { echo "Missing map: $HDMAP_PATH" >&2; exit 1; }
-echo "Starting SimBridge + TF + Visualizer + RViz. Tracker/Planner/Control are not implemented here."
+echo "Starting SimBridge + TF + HDMap Dynamic Tracker + Visualizer + RViz."
 exec ./src/visualization/launch.sh

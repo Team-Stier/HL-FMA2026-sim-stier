@@ -12,6 +12,12 @@ from launch_ros.parameter_descriptions import ParameterValue
 
 def generate_launch_description():
     share = Path(get_package_share_directory("visualization"))
+    tracker_share = Path(get_package_share_directory("hdmap_dynamic_tracker"))
+    tracker = Node(package="hdmap_dynamic_tracker", executable="hdmap_dynamic_tracker_node",
+                   name="hdmap_dynamic_tracker", output="screen", parameters=[
+                       str(tracker_share / "config/tracker.yaml"),
+                       {"map_path": LaunchConfiguration("map_path"), "use_sim_time": False},
+                   ])
     visualizer = Node(package="visualization", executable="visualizer_node", output="screen",
                       parameters=[{"map_path": LaunchConfiguration("map_path"), "use_sim_time": False}])
     rviz = Node(package="rviz2", executable="rviz2", output="screen",
@@ -28,5 +34,6 @@ def generate_launch_description():
         RegisterEventHandler(OnProcessExit(target_action=rviz, on_exit=[EmitEvent(event=Shutdown(reason="RViz exited"))])),
         RegisterEventHandler(OnProcessExit(target_action=tf, on_exit=[EmitEvent(event=Shutdown(reason="TF exited"))])),
         RegisterEventHandler(OnProcessExit(target_action=bridge, on_exit=[EmitEvent(event=Shutdown(reason="SimBridge exited"))])),
-        bridge, tf, visualizer, rviz,
+        RegisterEventHandler(OnProcessExit(target_action=tracker, on_exit=[EmitEvent(event=Shutdown(reason="Tracker exited"))])),
+        bridge, tf, tracker, visualizer, rviz,
     ])
