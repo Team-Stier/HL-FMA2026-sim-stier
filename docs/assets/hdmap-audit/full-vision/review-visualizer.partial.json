@@ -1,0 +1,357 @@
+{
+  "pages": [
+    3,
+    7,
+    11,
+    15,
+    19,
+    23,
+    27,
+    31,
+    35,
+    39,
+    43,
+    47,
+    51,
+    55,
+    59,
+    63,
+    67,
+    71
+  ],
+  "tiles": [
+    {
+      "tile_id": "t01_16",
+      "page": 3,
+      "observations": "우상단의 곡선 차도와 타일 경계에서 잘린 횡단보도에 lane/cell이 이어지며, 나머지 넓은 비도로 영역에는 망이 없다.",
+      "decision": "clear_visual",
+      "source_keys": [],
+      "zoomed_images": []
+    },
+    {
+      "tile_id": "t01_17",
+      "page": 3,
+      "observations": "중앙선 양쪽 직선 차로와 교차로 우회전 곡선이 연속한다. 접근측 흰 정지선 위에 자홍색 선이 놓이며 연속 횡단보도 자체를 lane 누락으로 오인할 부분은 없다.",
+      "decision": "clear_visual",
+      "source_keys": [],
+      "zoomed_images": []
+    },
+    {
+      "tile_id": "t02_18",
+      "page": 7,
+      "observations": "상단 교차로의 다차로 접근과 우회전 곡선이 포장 차도 안에 있고, 나무·공터 쪽으로 lane/cell이 확장되지 않는다. 보이는 정지선 위치가 도색과 맞는다.",
+      "decision": "clear_visual",
+      "source_keys": [],
+      "zoomed_images": []
+    },
+    {
+      "tile_id": "t02_19",
+      "page": 7,
+      "observations": "다차로 대로의 직선 경계와 셀이 차선 도색을 따른다. 하단 중앙 안전지대 쐐기 주변에서 경계가 수렴하며, 건물과 보도에는 차로 망이 없다.",
+      "decision": "clear_visual",
+      "source_keys": [],
+      "zoomed_images": []
+    },
+    {
+      "tile_id": "t03_19",
+      "page": 11,
+      "observations": "넓은 교차로의 양 접근 정지선이 실제 도색 위치에 있고 곡선 연결은 연석 안쪽을 따른다. 보행공간·큰 건물 영역은 차로에서 제외된다.",
+      "decision": "clear_visual",
+      "source_keys": [],
+      "zoomed_images": []
+    },
+    {
+      "tile_id": "t04_12",
+      "page": 11,
+      "observations": "타일 가장자리의 적색 포장 직선 차로 두 줄과 cell이 연속하며, 주변 건물·회색 외곽에는 망이 없다.",
+      "decision": "clear_visual",
+      "source_keys": [],
+      "zoomed_images": []
+    },
+    {
+      "tile_id": "t04_19",
+      "page": 15,
+      "observations": "다차로 대로의 완만한 확폭과 회전 화살표 구간을 경계·셀이 따라가며, 중앙 이중 황색선 양측 경계가 유지된다.",
+      "decision": "clear_visual",
+      "source_keys": [],
+      "zoomed_images": []
+    },
+    {
+      "tile_id": "t04_20",
+      "page": 15,
+      "observations": "길고 뚜렷한 사선 안전지대 내부는 cell 채움에서 제외되고, 양쪽 진행 차로는 계속 이어진다. 횡단보도 앞 접근 정지선과 자홍색 선이 겹친다.",
+      "decision": "clear_visual",
+      "source_keys": [],
+      "zoomed_images": []
+    },
+    {
+      "tile_id": "t05_17",
+      "page": 19,
+      "observations": "식재 중앙분리대 양쪽 차로가 연속하며 분리대 내부는 셀에서 제외된다. 하단 양 접근의 정지선은 흰 도색과 일치한다.",
+      "decision": "clear_visual",
+      "source_keys": [],
+      "zoomed_images": []
+    },
+    {
+      "tile_id": "t05_19",
+      "page": 19,
+      "observations": "우상단에 일부만 보이는 직선 차로·횡단보도·정지선은 이어져 있고, 나머지 공터·건물에는 차로 망이 없다.",
+      "decision": "clear_visual",
+      "source_keys": [],
+      "zoomed_images": []
+    },
+    {
+      "tile_id": "t06_15",
+      "page": 23,
+      "observations": "확대 원본/overlay에서 두 접근 차로 앞 정지선이 정확히 자홍색으로 표시됨을 확인했다. 축소 atlas에서 잘 안 보이던 현상이며, 중앙 사선 안전지대는 cell에서 제외된다.",
+      "decision": "clear_visual",
+      "source_keys": [],
+      "zoomed_images": [
+        "/tmp/hdmap-audit/full-vision/atlas/tiles/t06_15_source.jpg",
+        "/tmp/hdmap-audit/full-vision/atlas/tiles/t06_15_overlay.jpg"
+      ]
+    },
+    {
+      "tile_id": "t06_16",
+      "page": 23,
+      "observations": "다차로 접근의 흰 정지선과 자홍색 선이 겹치며, 직진·회전 연결이 교차로 안에서 이어진다. 건물·보도 쪽 침범은 보이지 않는다.",
+      "decision": "clear_visual",
+      "source_keys": [],
+      "zoomed_images": []
+    },
+    {
+      "tile_id": "t06_23",
+      "page": 27,
+      "observations": "초지 가장자리를 지나는 다차로 직선 구간의 차선과 경계·셀이 평행하게 맞으며, 초지에는 확장되지 않는다.",
+      "decision": "clear_visual",
+      "source_keys": [],
+      "zoomed_images": []
+    },
+    {
+      "tile_id": "t07_12",
+      "page": 27,
+      "observations": "폭이 좁아지고 다시 확폭하는 도로에서 중앙 사선 안전지대가 제외된다. 횡단보도와 떨어진 두 정지선도 원본에 실제로 도색되어 있어 그 위치를 유지한다.",
+      "decision": "clear_visual",
+      "source_keys": [],
+      "zoomed_images": []
+    },
+    {
+      "tile_id": "t07_20",
+      "page": 31,
+      "observations": "직선 소도로의 접근 확폭·중앙 쐐기 모양 안전지대를 lane/cell 경계가 따르며, 횡단보도와 거리가 있는 정지선도 원본 도색과 같은 위치다. 공터의 빨간 stop543357은 XODR road2115/object2990의 t−74.189m 미배정 객체이며 확대 원본에 같은 흰 도색은 보이지 않는다.",
+      "decision": "retain_xodr_unresolved_object",
+      "source_keys": [],
+      "zoomed_images": [
+        "/tmp/hdmap-audit/full-vision/atlas/tiles/t07_20_source.jpg",
+        "/tmp/hdmap-audit/full-vision/atlas/tiles/t07_20_overlay.jpg"
+      ]
+    },
+    {
+      "tile_id": "t07_21",
+      "page": 31,
+      "observations": "교차로로 접근하는 직선 차로와 끝부분 회전 곡선이 연속하고, 횡단보도 직전 정지선과 신호 연결 시작점이 도색 위치에 있다.",
+      "decision": "clear_visual",
+      "source_keys": [],
+      "zoomed_images": []
+    },
+    {
+      "tile_id": "t08_13",
+      "page": 35,
+      "observations": "우상단 타일 경계의 짧은 대로 조각만 lane/cell이 있고, 넓은 건물·공터 영역은 망에서 제외된다.",
+      "decision": "clear_visual",
+      "source_keys": [],
+      "zoomed_images": []
+    },
+    {
+      "tile_id": "t08_14",
+      "page": 35,
+      "observations": "식재 중앙분리대와 양끝 사선 안전지대를 제외한 양방향 차로가 연속한다. 중앙 횡단보도 양측 정지선은 실제 도색과 겹친다.",
+      "decision": "clear_visual",
+      "source_keys": [],
+      "zoomed_images": []
+    },
+    {
+      "tile_id": "t08_21",
+      "page": 39,
+      "observations": "적색 포장 가지도로를 포함한 삼거리에서 세 접근의 횡단보도·정지선이 도색과 맞고 회전 차로는 연석 안쪽을 따른다.",
+      "decision": "clear_visual",
+      "source_keys": [],
+      "zoomed_images": []
+    },
+    {
+      "tile_id": "t08_22",
+      "page": 39,
+      "observations": "직선 소도로의 중간 사선 쐐기 안전지대가 비워지고 주행 차로는 양쪽으로 이어진다. 건물과 차로 망이 분리된다.",
+      "decision": "clear_visual",
+      "source_keys": [],
+      "zoomed_images": []
+    },
+    {
+      "tile_id": "t09_14",
+      "page": 43,
+      "observations": "식재 중앙분리대 시작부의 사선 안전지대와 차로 확폭을 경계가 따른다. 중앙 식재 공간을 셀로 채우지 않는다.",
+      "decision": "clear_visual",
+      "source_keys": [],
+      "zoomed_images": []
+    },
+    {
+      "tile_id": "t09_16",
+      "page": 43,
+      "observations": "우상단에 보이는 두 횡단보도 사이 소도로의 접근 차로·정지선이 도색을 따르며, 나머지 공터와 건물은 제외된다. 좌하단 빨간 stop543426은 XODR road2195/object3204의 t−110.012m 미배정 객체이며 확대 원본에 같은 흰 도색은 보이지 않는다.",
+      "decision": "retain_xodr_unresolved_object",
+      "source_keys": [],
+      "zoomed_images": [
+        "/tmp/hdmap-audit/full-vision/atlas/tiles/t09_16_source.jpg",
+        "/tmp/hdmap-audit/full-vision/atlas/tiles/t09_16_overlay.jpg"
+      ]
+    },
+    {
+      "tile_id": "t09_23",
+      "page": 47,
+      "observations": "완만한 곡선과 접근 확폭을 lane/cell이 따르고, 연속 횡단보도의 각 접근 정지선이 원본 도색 위치에 있다. 횡단보도 사이 무도색 중앙 공간은 임의로 채우지 않는다.",
+      "decision": "clear_visual",
+      "source_keys": [],
+      "zoomed_images": []
+    },
+    {
+      "tile_id": "t09_24",
+      "page": 47,
+      "observations": "우하단 모서리에 보이는 대로 조각과 셀이 일치하며, 대부분을 차지하는 공터·건물에는 차로 망이 없다.",
+      "decision": "clear_visual",
+      "source_keys": [],
+      "zoomed_images": []
+    },
+    {
+      "tile_id": "t10_15",
+      "page": 51,
+      "observations": "우상단 실제 차로와 정지선은 도색에 맞는다. 공터 중앙의 빨간 stop543441은 확대 원본에 흰 도색이 보이지 않으나 XODR road2241/object3246의 t−67.399m 객체를 보존한 미배정 항목이다.",
+      "decision": "retain_xodr_unresolved_object",
+      "source_keys": [],
+      "zoomed_images": [
+        "/tmp/hdmap-audit/full-vision/atlas/tiles/t10_15_source.jpg",
+        "/tmp/hdmap-audit/full-vision/atlas/tiles/t10_15_overlay.jpg"
+      ]
+    },
+    {
+      "tile_id": "t10_16",
+      "page": 51,
+      "observations": "완만한 곡선의 반복 횡단보도·접근 정지선이 원본 위치와 맞으며, 차로폭 수렴과 안전지대 쐐기 주변의 빈 영역을 유지한다.",
+      "decision": "clear_visual",
+      "source_keys": [],
+      "zoomed_images": []
+    },
+    {
+      "tile_id": "t10_23",
+      "page": 55,
+      "observations": "좁은 곡선 도로의 두 횡단 정지선은 원본에도 같은 위치에 존재한다. 상단 사선 안전지대는 비워지고 양쪽 차로망이 연속한다.",
+      "decision": "clear_visual",
+      "source_keys": [],
+      "zoomed_images": []
+    },
+    {
+      "tile_id": "t10_24",
+      "page": 55,
+      "observations": "왼쪽 경계에 극히 일부 보이는 도로 외에는 건물·공터로, 표시되는 차로망도 타일 경계 밖에 있어 빈 영상이 도로 누락 증거는 아니다.",
+      "decision": "clear_visual",
+      "source_keys": [],
+      "zoomed_images": []
+    },
+    {
+      "tile_id": "t11_13",
+      "page": 59,
+      "observations": "하단 모서리의 두 도로 조각에만 차로망이 있고 초지·건물에는 없다. 타일 중앙에 도로 도색이나 누락 의심 차도가 보이지 않는다.",
+      "decision": "clear_visual",
+      "source_keys": [],
+      "zoomed_images": []
+    },
+    {
+      "tile_id": "t11_14",
+      "page": 59,
+      "observations": "대로의 중앙 식재 분리대·사선 안전지대가 제외되고 양쪽 확폭이 도색을 따른다. 보도/건물 옆 빨간 stop542706은 원본 road1043/object1215의 t−57.579m 미배정 객체이며 확대 원본에 해당 흰 선은 보이지 않는다.",
+      "decision": "retain_xodr_unresolved_object",
+      "source_keys": [],
+      "zoomed_images": [
+        "/tmp/hdmap-audit/full-vision/atlas/tiles/t11_14_source.jpg",
+        "/tmp/hdmap-audit/full-vision/atlas/tiles/t11_14_overlay.jpg"
+      ]
+    },
+    {
+      "tile_id": "t11_24",
+      "page": 63,
+      "observations": "왼쪽 타일 경계의 보도·가로수와 건물이 보이며 차도는 화면 바깥이다. 중앙 공터에 lane/cell을 추가할 영상 근거가 없다.",
+      "decision": "clear_visual",
+      "source_keys": [],
+      "zoomed_images": []
+    },
+    {
+      "tile_id": "t11_25",
+      "page": 63,
+      "observations": "중앙 식재 분리대가 길게 이어지는 대로에서 사선 쐐기와 식재 내부는 비워지고, 차로 수 변화에 맞춰 셀이 연속한다.",
+      "decision": "clear_visual",
+      "source_keys": [],
+      "zoomed_images": []
+    },
+    {
+      "tile_id": "t12_14",
+      "page": 67,
+      "observations": "적색 도로의 양방향 직선 차로·속도 도색·횡단보도가 잘 보이고 정지선 위치에 자홍색 표시가 놓인다. 초지로의 확장은 없다.",
+      "decision": "clear_visual",
+      "source_keys": [],
+      "zoomed_images": []
+    },
+    {
+      "tile_id": "t12_15",
+      "page": 67,
+      "observations": "적색 좁은 도로와 대로가 만나는 접근부의 정지선·횡단보도가 표시된다. 교차로 회전 경계는 안쪽 연석을 따르며 대로 중앙 사선 쐐기는 비워진다.",
+      "decision": "clear_visual",
+      "source_keys": [],
+      "zoomed_images": []
+    },
+    {
+      "tile_id": "t12_25",
+      "page": 71,
+      "observations": "대로와 작은 지선의 삼거리에서 세 접근 정지선이 실제 흰 선에 맞고, 짧은 신호 연결은 같은 교차로의 신호 위치를 잇는다. 회전 차로가 포장 차도 안에 있다.",
+      "decision": "clear_visual",
+      "source_keys": [],
+      "zoomed_images": []
+    },
+    {
+      "tile_id": "t12_26",
+      "page": 71,
+      "observations": "영상은 대형 구조물·초지와 보도 가장자리이며 차량 차로 도색이 없다. 검은 쐐기 모양 표면은 원본에도 같아 overlay의 차로 누락으로 판정하지 않는다.",
+      "decision": "clear_visual",
+      "source_keys": [],
+      "zoomed_images": []
+    }
+  ],
+  "files_actually_viewed": [
+    "/tmp/hdmap-audit/full-vision/atlas/pages/p003.jpg",
+    "/tmp/hdmap-audit/full-vision/atlas/pages/p007.jpg",
+    "/tmp/hdmap-audit/full-vision/atlas/pages/p011.jpg",
+    "/tmp/hdmap-audit/full-vision/atlas/pages/p015.jpg",
+    "/tmp/hdmap-audit/full-vision/atlas/pages/p019.jpg",
+    "/tmp/hdmap-audit/full-vision/atlas/pages/p023.jpg",
+    "/tmp/hdmap-audit/full-vision/atlas/tiles/t06_15_source.jpg",
+    "/tmp/hdmap-audit/full-vision/atlas/tiles/t06_15_overlay.jpg",
+    "/tmp/hdmap-audit/full-vision/atlas/pages/p027.jpg",
+    "/tmp/hdmap-audit/full-vision/atlas/pages/p031.jpg",
+    "/tmp/hdmap-audit/full-vision/atlas/pages/p035.jpg",
+    "/tmp/hdmap-audit/full-vision/atlas/pages/p039.jpg",
+    "/tmp/hdmap-audit/full-vision/atlas/pages/p043.jpg",
+    "/tmp/hdmap-audit/full-vision/atlas/pages/p047.jpg",
+    "/tmp/hdmap-audit/full-vision/atlas/tiles/t07_20_source.jpg",
+    "/tmp/hdmap-audit/full-vision/atlas/tiles/t07_20_overlay.jpg",
+    "/tmp/hdmap-audit/full-vision/atlas/tiles/t09_16_source.jpg",
+    "/tmp/hdmap-audit/full-vision/atlas/tiles/t09_16_overlay.jpg",
+    "/tmp/hdmap-audit/full-vision/atlas/tiles/t10_15_source.jpg",
+    "/tmp/hdmap-audit/full-vision/atlas/tiles/t10_15_overlay.jpg",
+    "/tmp/hdmap-audit/full-vision/atlas/tiles/t11_14_source.jpg",
+    "/tmp/hdmap-audit/full-vision/atlas/tiles/t11_14_overlay.jpg",
+    "/tmp/hdmap-audit/full-vision/atlas/pages/p051.jpg",
+    "/tmp/hdmap-audit/full-vision/atlas/pages/p055.jpg",
+    "/tmp/hdmap-audit/full-vision/atlas/pages/p059.jpg",
+    "/tmp/hdmap-audit/full-vision/atlas/pages/p063.jpg",
+    "/tmp/hdmap-audit/full-vision/atlas/pages/p067.jpg",
+    "/tmp/hdmap-audit/full-vision/atlas/pages/p071.jpg"
+  ]
+}

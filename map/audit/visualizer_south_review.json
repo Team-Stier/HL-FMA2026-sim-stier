@@ -1,0 +1,401 @@
+{
+  "method": "Direct vision inspection of each of 11 source/overlay image pairs; source pixel scale 0.30517578125m; 312.5m square tiles. Coordinates/IDs of isolated red lines confirmed by reading native map.",
+  "coverage": "No obvious additional entire missing driving-road corridor in these 11 southern tiles; this is visual screening, not proof of legal movement permissions or subpixel alignment.",
+  "unresolved_stopline_count": 18,
+  "observations": {
+    "52": {
+      "features": "North roundabout, east T-junction, south map-edge spur",
+      "lane_coverage": "Cyan lane network follows the roundabout circumference and visible road corridor. Roundabout central island and large grass area correctly have no lanes. Southwest road terminates with the rendered source-world boundary; no unsupported extension inferred.",
+      "stoplines": "Two nearly coincident unresolved red lines (542829/542832) lie in an unmarked non-road area near (399,-538); 542775 is beside the east-junction approach and needs source-object/mesh correspondence.",
+      "bounds_xy_m": [
+        125.0,
+        -575.0,
+        437.5,
+        -262.5
+      ],
+      "source_image": "/tmp/hdmap-audit/source_52.jpg",
+      "overlay_image": "/tmp/hdmap-audit/overlay_52.jpg",
+      "unresolved_stoplines": [
+        {
+          "id": 542832,
+          "xyz": [
+            399.51912444871175,
+            -538.0134183279552
+          ],
+          "pixel": [
+            900,
+            903
+          ],
+          "road": "1603",
+          "object": "1477"
+        },
+        {
+          "id": 542829,
+          "xyz": [
+            399.0374641160913,
+            -538.3638567211024
+          ],
+          "pixel": [
+            898,
+            904
+          ],
+          "road": "1603",
+          "object": "1476"
+        },
+        {
+          "id": 542775,
+          "xyz": [
+            409.9272198176595,
+            -347.64476867517186
+          ],
+          "pixel": [
+            934,
+            279
+          ],
+          "road": "1492",
+          "object": "1374"
+        }
+      ]
+    },
+    "53": {
+      "features": "Central large four-way junction, northeast/southwest arterial and northwest/southeast arterial",
+      "lane_coverage": "All four intersection approaches, visible lanes, small west-side junctions and direction-change tapers have cyan coverage. Planted median strips remain narrow gaps; buildings and broad paved-looking block interiors are not evidence of driving lanes.",
+      "stoplines": "Mapped yellow stoplines border the visible crosswalks. Unresolved 542710 and 543445 sit in block interiors without corresponding painted white lines in the source image.",
+      "bounds_xy_m": [
+        437.5,
+        -575.0,
+        750.0,
+        -262.5
+      ],
+      "source_image": "/tmp/hdmap-audit/source_53.jpg",
+      "overlay_image": "/tmp/hdmap-audit/overlay_53.jpg",
+      "unresolved_stoplines": [
+        {
+          "id": 542710,
+          "xyz": [
+            702.1656126204786,
+            -306.25995134921493
+          ],
+          "pixel": [
+            867,
+            143
+          ],
+          "road": "1043",
+          "object": "1215"
+        },
+        {
+          "id": 543445,
+          "xyz": [
+            744.781867645216,
+            -376.35028852890855
+          ],
+          "pixel": [
+            1007,
+            373
+          ],
+          "road": "2241",
+          "object": "3246"
+        }
+      ]
+    },
+    "54": {
+      "features": "Diagonal local street with repeated crossings, lower four-way junction, northeast school-zone corridor",
+      "lane_coverage": "Visible local/arterial corridors and intersection turning connectors are continuously covered. Large gray interiors include buildings and utility-line projections and should not automatically become lanelets.",
+      "stoplines": "Five unresolved stoplines (543430,543433,543448,543391,543400) lie away from painted road stoplines; 543400 overlaps a building footprint. Several source pedestrian-crossing markings are present without an obvious opposite-direction stopline, but imagery alone cannot establish a mandatory stopline at each.",
+      "bounds_xy_m": [
+        750.0,
+        -575.0,
+        1062.5,
+        -262.5
+      ],
+      "source_image": "/tmp/hdmap-audit/source_54.jpg",
+      "overlay_image": "/tmp/hdmap-audit/overlay_54.jpg",
+      "unresolved_stoplines": [
+        {
+          "id": 543430,
+          "xyz": [
+            771.2367810883723,
+            -478.86110998276627
+          ],
+          "pixel": [
+            70,
+            709
+          ],
+          "road": "2195",
+          "object": "3204"
+        },
+        {
+          "id": 543433,
+          "xyz": [
+            943.9379264575967,
+            -342.53578684763187
+          ],
+          "pixel": [
+            635,
+            262
+          ],
+          "road": "2195",
+          "object": "3205"
+        },
+        {
+          "id": 543448,
+          "xyz": [
+            850.6816849386024,
+            -292.9380625286072
+          ],
+          "pixel": [
+            330,
+            100
+          ],
+          "road": "2241",
+          "object": "3247"
+        },
+        {
+          "id": 543391,
+          "xyz": [
+            998.2871709498003,
+            -544.5126256523203
+          ],
+          "pixel": [
+            814,
+            924
+          ],
+          "road": "2152",
+          "object": "3042"
+        },
+        {
+          "id": 543400,
+          "xyz": [
+            964.1867234879544,
+            -519.2863274903036
+          ],
+          "pixel": [
+            702,
+            841
+          ],
+          "road": "2172",
+          "object": "3062"
+        }
+      ]
+    },
+    "55": {
+      "features": "School-zone four-way intersection and southeast T-junction around a large building",
+      "lane_coverage": "All visible branches and curves are covered, including red school-zone pavement; building footprint, grass and block interior remain correctly unlaned.",
+      "stoplines": "Yellow lines generally coincide with transverse white approach marks bordering crosswalks. Unresolved 543361 lies in the southwest non-road block interior.",
+      "bounds_xy_m": [
+        1062.5,
+        -575.0,
+        1375.0,
+        -262.5
+      ],
+      "source_image": "/tmp/hdmap-audit/source_55.jpg",
+      "overlay_image": "/tmp/hdmap-audit/overlay_55.jpg",
+      "unresolved_stoplines": [
+        {
+          "id": 543361,
+          "xyz": [
+            1091.5873458913816,
+            -560.6114435847275
+          ],
+          "pixel": [
+            95,
+            977
+          ],
+          "road": "2115",
+          "object": "2990"
+        }
+      ]
+    },
+    "56": {
+      "features": "Eastern divided arterial and western two-way local curve with crossing/U-turn markings",
+      "lane_coverage": "Both corridors and visible tapering lanes have coverage. Median/grass exclusion is supported by imagery. No visible independent road segment lacking lanelets at this review scale.",
+      "stoplines": "No unresolved red line in this tile. Western transversal marks away from crosswalk correspond to painted marks/U-turn approach; absence of a visible signal cannot establish a missing controller link.",
+      "bounds_xy_m": [
+        1375.0,
+        -575.0,
+        1687.5,
+        -262.5
+      ],
+      "source_image": "/tmp/hdmap-audit/source_56.jpg",
+      "overlay_image": "/tmp/hdmap-audit/overlay_56.jpg",
+      "unresolved_stoplines": []
+    },
+    "63": {
+      "features": "Southwestern school-zone ring junction, map-edge spur and northeast local connector",
+      "lane_coverage": "Ring road, four-way intersection and diagonal connecting road have continuous cyan geometry. Source-world southwest spur ends at the asset boundary. Long pale roofs and block interiors are not driving lanes.",
+      "stoplines": "No unresolved red line. Yellow stoplines align with the road-width approach markings in the source at this scale.",
+      "bounds_xy_m": [
+        437.5,
+        -887.5,
+        750.0,
+        -575.0
+      ],
+      "source_image": "/tmp/hdmap-audit/source_63.jpg",
+      "overlay_image": "/tmp/hdmap-audit/overlay_63.jpg",
+      "unresolved_stoplines": []
+    },
+    "64": {
+      "features": "Northwest/southeast divided arterial, southwest T-junction and northeast local street",
+      "lane_coverage": "All visible routes and intersection connectors covered; planted median remains excluded. No broad drivable asphalt omission apparent.",
+      "stoplines": "543382 appears in the upper-right building/block area; 543373 sits beyond the northeast street edge. Major intersection yellow stoplines match visible crosswalk approach lines at this scale.",
+      "bounds_xy_m": [
+        750.0,
+        -887.5,
+        1062.5,
+        -575.0
+      ],
+      "source_image": "/tmp/hdmap-audit/source_64.jpg",
+      "overlay_image": "/tmp/hdmap-audit/overlay_64.jpg",
+      "unresolved_stoplines": [
+        {
+          "id": 543373,
+          "xyz": [
+            1058.9262314448172,
+            -643.358096459595
+          ],
+          "pixel": [
+            1012,
+            224
+          ],
+          "road": "2116",
+          "object": "3000"
+        },
+        {
+          "id": 543382,
+          "xyz": [
+            1043.3166336544662,
+            -584.4077803859351
+          ],
+          "pixel": [
+            961,
+            31
+          ],
+          "road": "2139",
+          "object": "3022"
+        }
+      ]
+    },
+    "65": {
+      "features": "Southeast divided arterial with school-zone T-junction and northwest local streets",
+      "lane_coverage": "Visible arterial and local streets have lane coverage. Empty interior pavement-like texture and southeast open area lack driving markings and do not justify invented lanes.",
+      "stoplines": "Five unresolved red lines (543322,543325,543343,543352,543364) occur off the road, including beside/over building footprints. Main T-junction and local-street crossing approach yellow lines visually match actual transverse markings.",
+      "bounds_xy_m": [
+        1062.5,
+        -887.5,
+        1375.0,
+        -575.0
+      ],
+      "source_image": "/tmp/hdmap-audit/source_65.jpg",
+      "overlay_image": "/tmp/hdmap-audit/overlay_65.jpg",
+      "unresolved_stoplines": [
+        {
+          "id": 543322,
+          "xyz": [
+            1148.2856970296095,
+            -742.4840805549554
+          ],
+          "pixel": [
+            281,
+            549
+          ],
+          "road": "2077",
+          "object": "2913"
+        },
+        {
+          "id": 543325,
+          "xyz": [
+            1117.045178562643,
+            -767.2043381359122
+          ],
+          "pixel": [
+            179,
+            630
+          ],
+          "road": "2077",
+          "object": "2914"
+        },
+        {
+          "id": 543343,
+          "xyz": [
+            1130.2910151254393,
+            -680.9570848683604
+          ],
+          "pixel": [
+            222,
+            347
+          ],
+          "road": "2096",
+          "object": "2948"
+        },
+        {
+          "id": 543352,
+          "xyz": [
+            1085.830566387205,
+            -672.5741250155306
+          ],
+          "pixel": [
+            76,
+            320
+          ],
+          "road": "2097",
+          "object": "2960"
+        },
+        {
+          "id": 543364,
+          "xyz": [
+            1182.954774073785,
+            -677.371585178427
+          ],
+          "pixel": [
+            395,
+            335
+          ],
+          "road": "2115",
+          "object": "2991"
+        }
+      ]
+    },
+    "66": {
+      "features": "Small northwest arterial sliver; otherwise grass and outside-world background",
+      "lane_coverage": "The only visible road is covered. Large region intentionally has no lanelets.",
+      "stoplines": "No visible/unresolved stopline in reviewed region.",
+      "bounds_xy_m": [
+        1375.0,
+        -887.5,
+        1687.5,
+        -575.0
+      ],
+      "source_image": "/tmp/hdmap-audit/source_66.jpg",
+      "overlay_image": "/tmp/hdmap-audit/overlay_66.jpg",
+      "unresolved_stoplines": []
+    },
+    "74": {
+      "features": "Northeast large junction, west local T-junctions, bottom curved perimeter road",
+      "lane_coverage": "Visible roads, intersection turns, tapering arterial approaches and bottom curve are continuously covered. Interior building areas and western empty space correctly have no lanes.",
+      "stoplines": "No unresolved red line. Yellow lines border source crosswalks and isolated transverse approaches; no clear large alignment error visible at 0.305m/pixel source scale.",
+      "bounds_xy_m": [
+        750.0,
+        -1200.0,
+        1062.5,
+        -887.5
+      ],
+      "source_image": "/tmp/hdmap-audit/source_74.jpg",
+      "overlay_image": "/tmp/hdmap-audit/overlay_74.jpg",
+      "unresolved_stoplines": []
+    },
+    "75": {
+      "features": "Terminal southeast bend changing from wide arterial to narrower perimeter street",
+      "lane_coverage": "Cyan geometry covers the visible curved lane fan and narrower outbound road. Most of this tile is empty source-world background/open ground and should stay without lanelets. Bend widths require source geometry checks rather than inference from flat gray textures.",
+      "stoplines": "No unresolved red line. Yellow crosswalk approach/isolated transverse lines agree with visible road marks at this review scale.",
+      "bounds_xy_m": [
+        1062.5,
+        -1200.0,
+        1375.0,
+        -887.5
+      ],
+      "source_image": "/tmp/hdmap-audit/source_75.jpg",
+      "overlay_image": "/tmp/hdmap-audit/overlay_75.jpg",
+      "unresolved_stoplines": []
+    }
+  }
+}

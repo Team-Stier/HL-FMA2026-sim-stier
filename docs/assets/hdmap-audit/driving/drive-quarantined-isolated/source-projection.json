@@ -1,0 +1,233 @@
+{
+  "map": "/tmp/hdmap-audit/driving-map-758f.bin",
+  "source": "/home/stier/vtd \uc790\ub8cc/HL_FMA_VTD_LivingLab.xodr",
+  "source_sha256": "5a369c7b0609fc98b0034680473465db4273dd396ffb37980996cea70ec6ca2f",
+  "method": "Independent XML road-curve quadrature/poly3 arc-length inversion and raw XY tangent projection; original lane widths. Only targets with reported-driving misses or worst distance>1.5m. Do not equate stale RDB lane type with raw XY membership.",
+  "summary": [
+    {
+      "target": 153837,
+      "source_road": 1926,
+      "requested_lane": 6,
+      "stint_placement_verified": true,
+      "miss_frames": 4,
+      "classifications": {
+        "outside_original_driving": 4
+      },
+      "reported_roads": [
+        1940,
+        1946
+      ],
+      "projected_source_types": {},
+      "nearest_map_distance_range_m": [
+        0.02357900715966942,
+        0.17477660995201247
+      ],
+      "inside_source_rows": []
+    }
+  ],
+  "rows": [
+    {
+      "target": 153837,
+      "frame": 4333,
+      "xyz": [
+        1006.8771556632885,
+        -944.174569547889,
+        53.10968728901182
+      ],
+      "rdb_road": [
+        1940,
+        -1,
+        7.022741794586182,
+        -0.13734814524650574,
+        1.4648257493972778
+      ],
+      "lanelets": [],
+      "cells": [
+        30606
+      ],
+      "projection_basis": "reported_road",
+      "projection": {
+        "road": 1940,
+        "raw_projected_s": 7.225697272410388,
+        "raw_projected_t": 0.023579007159680865,
+        "road_length": 55.835653556076316,
+        "longitudinal_residual_m": 3.789503433271335e-14,
+        "source_interval_hits": [],
+        "driving_intervals": [
+          {
+            "lane": -1,
+            "type": "driving",
+            "t_bounds": [
+              -3.20459064639111,
+              0.0
+            ],
+            "width": 3.20459064639111
+          }
+        ],
+        "signed_driving_lateral_margin_m": -0.023579007159680865,
+        "classification": "outside_original_driving"
+      },
+      "nearest_map_lanelet": 172674,
+      "nearest_map_source": [
+        1940,
+        0,
+        -1
+      ],
+      "nearest_map_distance_m": 0.02357900715966942,
+      "reported_st_raw_xy_error_m": 0.2590144288653494
+    },
+    {
+      "target": 153837,
+      "frame": 4334,
+      "xyz": [
+        1006.6295719114064,
+        -944.1049292253364,
+        53.11550628539693
+      ],
+      "rdb_road": [
+        1940,
+        -1,
+        7.022741794586182,
+        -0.13734814524650574,
+        1.4648257493972778
+      ],
+      "lanelets": [],
+      "cells": [],
+      "projection_basis": "reported_road",
+      "projection": {
+        "road": 1940,
+        "raw_projected_s": 7.4337520095136105,
+        "raw_projected_t": 0.17477660995203997,
+        "road_length": 55.835653556076316,
+        "longitudinal_residual_m": 1.6764367671839864e-14,
+        "source_interval_hits": [],
+        "driving_intervals": [
+          {
+            "lane": -1,
+            "type": "driving",
+            "t_bounds": [
+              -3.2048456064356725,
+              0.0
+            ],
+            "width": 3.2048456064356725
+          }
+        ],
+        "signed_driving_lateral_margin_m": -0.17477660995203997,
+        "classification": "outside_original_driving"
+      },
+      "nearest_map_lanelet": 172674,
+      "nearest_map_source": [
+        1940,
+        0,
+        -1
+      ],
+      "nearest_map_distance_m": 0.17477660995201247,
+      "reported_st_raw_xy_error_m": 0.5160922975422767
+    },
+    {
+      "target": 153837,
+      "frame": 4335,
+      "xyz": [
+        1006.3902992348026,
+        -944.0268125365424,
+        53.11721433556511
+      ],
+      "rdb_road": [
+        1940,
+        -1,
+        7.022741794586182,
+        -0.13734814524650574,
+        1.4648257493972778
+      ],
+      "lanelets": [],
+      "cells": [],
+      "projection_basis": "reported_road",
+      "projection": {
+        "road": 1940,
+        "raw_projected_s": 7.643311239531887,
+        "raw_projected_t": 0.3141988461679052,
+        "road_length": 55.835653556076316,
+        "longitudinal_residual_m": -1.7957857423311907e-14,
+        "source_interval_hits": [],
+        "driving_intervals": [
+          {
+            "lane": -1,
+            "type": "driving",
+            "t_bounds": [
+              -3.2051085889540785,
+              0.0
+            ],
+            "width": 3.2051085889540785
+          }
+        ],
+        "signed_driving_lateral_margin_m": -0.3141988461679052,
+        "classification": "outside_original_driving"
+      },
+      "nearest_map_lanelet": 173947,
+      "nearest_map_source": [
+        1946,
+        0,
+        -1
+      ],
+      "nearest_map_distance_m": 0.11910115379842842,
+      "reported_st_raw_xy_error_m": 0.7674640847985772
+    },
+    {
+      "target": 153837,
+      "frame": 4363,
+      "xyz": [
+        1002.2689913687782,
+        -938.578765244493,
+        53.109512204792054
+      ],
+      "rdb_road": [
+        1946,
+        -1,
+        40.16434860229492,
+        -0.05221569910645485,
+        1.4850589036941528
+      ],
+      "lanelets": [],
+      "cells": [],
+      "projection_basis": "reported_road",
+      "projection": {
+        "road": 1946,
+        "raw_projected_s": 39.919534531600455,
+        "raw_projected_t": 0.056055937558120335,
+        "road_length": 54.40472883634923,
+        "longitudinal_residual_m": -1.578904715304752e-11,
+        "source_interval_hits": [],
+        "driving_intervals": [
+          {
+            "lane": -1,
+            "type": "driving",
+            "t_bounds": [
+              -3.07376239499382,
+              0.0
+            ],
+            "width": 3.07376239499382
+          },
+          {
+            "lane": -2,
+            "type": "driving",
+            "t_bounds": [
+              -6.191254131664607,
+              -3.07376239499382
+            ],
+            "width": 3.117491736670787
+          }
+        ],
+        "signed_driving_lateral_margin_m": -0.056055937558120335,
+        "classification": "outside_original_driving"
+      },
+      "nearest_map_lanelet": 172931,
+      "nearest_map_source": [
+        1940,
+        0,
+        -1
+      ],
+      "nearest_map_distance_m": 0.04621942532530913,
+      "reported_st_raw_xy_error_m": 0.267669164631236
+    }
+  ]
+}

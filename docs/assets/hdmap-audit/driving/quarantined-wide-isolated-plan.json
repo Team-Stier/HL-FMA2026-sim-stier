@@ -1,0 +1,306 @@
+{
+  "map_sha256": "758f2990e28374036725bc88be2938e5857e1f9a6035e3017a83692d78e6c718",
+  "targets": [
+    {
+      "target_lanelet": 367165,
+      "source_road": 2702,
+      "source_lane": -1,
+      "placement_s": 6.499999258747529,
+      "reason": "Interrupted planned cells have no direction-matched motion in final replay",
+      "prior_group": "first_stream_stalled64"
+    },
+    {
+      "target_lanelet": 303353,
+      "source_road": 2470,
+      "source_lane": -4,
+      "placement_s": 108.65946857504403,
+      "reason": "Interrupted planned cells have no direction-matched motion in final replay",
+      "prior_group": "first_stream_stalled64"
+    },
+    {
+      "target_lanelet": 309384,
+      "source_road": 2491,
+      "source_lane": -1,
+      "placement_s": 25.219359184624533,
+      "reason": "Interrupted planned cells have no direction-matched motion in final replay",
+      "prior_group": "first_stream_stalled64"
+    },
+    {
+      "target_lanelet": 266102,
+      "source_road": 2312,
+      "source_lane": -1,
+      "placement_s": 83.29417434188137,
+      "reason": "Interrupted planned cells have no direction-matched motion in final replay",
+      "prior_group": "first_stream_stalled64"
+    },
+    {
+      "target_lanelet": 428758,
+      "source_road": 2815,
+      "source_lane": 2,
+      "placement_s": 252.3339414259505,
+      "reason": "Interrupted planned cells have no direction-matched motion in final replay",
+      "prior_group": "first_stream_stalled64"
+    },
+    {
+      "target_lanelet": 30887,
+      "source_road": 173,
+      "source_lane": 1,
+      "placement_s": 300.81301263606724,
+      "reason": "Interrupted planned cells have no direction-matched motion in final replay",
+      "prior_group": "first_stream_stalled64"
+    },
+    {
+      "target_lanelet": 178158,
+      "source_road": 1976,
+      "source_lane": -1,
+      "placement_s": 32.75332803099436,
+      "reason": "Interrupted planned cells have no direction-matched motion in final replay",
+      "prior_group": "first_stream_stalled64"
+    },
+    {
+      "target_lanelet": 17625,
+      "source_road": 128,
+      "source_lane": -3,
+      "placement_s": 23.504875761733217,
+      "reason": "Interrupted planned cells have no direction-matched motion in final replay",
+      "prior_group": "first_stream_stalled64"
+    },
+    {
+      "target_lanelet": 99175,
+      "source_road": 1225,
+      "source_lane": -1,
+      "placement_s": 28.683772480403665,
+      "reason": "Interrupted planned cells have no direction-matched motion in final replay",
+      "prior_group": "first_stream_stalled64"
+    },
+    {
+      "target_lanelet": 172303,
+      "source_road": 1931,
+      "source_lane": -1,
+      "placement_s": 0.02000801485559491,
+      "reason": "Interrupted planned cells have no direction-matched motion in final replay",
+      "prior_group": "first_stream_stalled64"
+    },
+    {
+      "target_lanelet": 129795,
+      "source_road": 1818,
+      "source_lane": -1,
+      "placement_s": 0.01983174852612203,
+      "reason": "Interrupted planned cells have no direction-matched motion in final replay",
+      "prior_group": "first_stream_stalled64"
+    },
+    {
+      "target_lanelet": 81901,
+      "source_road": 1128,
+      "source_lane": -3,
+      "placement_s": 38.94180854152185,
+      "reason": "Interrupted planned cells have no direction-matched motion in final replay",
+      "prior_group": "first_stream_stalled64"
+    },
+    {
+      "target_lanelet": 312804,
+      "source_road": 2533,
+      "source_lane": -2,
+      "placement_s": 0.019996070463305426,
+      "reason": "Interrupted planned cells have no direction-matched motion in final replay",
+      "prior_group": "first_stream_stalled64"
+    },
+    {
+      "target_lanelet": 11278,
+      "source_road": 116,
+      "source_lane": -1,
+      "placement_s": 104.93009401188505,
+      "reason": "Interrupted planned cells have no direction-matched motion in final replay",
+      "prior_group": "first_stream_stalled64"
+    },
+    {
+      "target_lanelet": 293213,
+      "source_road": 2444,
+      "source_lane": -1,
+      "placement_s": 24.5199182192601,
+      "reason": "Interrupted planned cells have no direction-matched motion in final replay",
+      "prior_group": "first_stream_stalled64"
+    },
+    {
+      "target_lanelet": 497928,
+      "source_road": 3119,
+      "source_lane": -3,
+      "placement_s": 0.020000000000000594,
+      "reason": "Interrupted planned cells have no direction-matched motion in final replay",
+      "prior_group": "first_stream_stalled64"
+    },
+    {
+      "target_lanelet": 60475,
+      "source_road": 574,
+      "source_lane": -1,
+      "placement_s": 30.429339245434175,
+      "reason": "Interrupted planned cells have no direction-matched motion in final replay",
+      "prior_group": "first_stream_stalled64"
+    },
+    {
+      "target_lanelet": 202823,
+      "source_road": 2039,
+      "source_lane": -1,
+      "placement_s": 33.97665274614038,
+      "reason": "Interrupted planned cells have no direction-matched motion in final replay",
+      "prior_group": "partial4_56s64"
+    },
+    {
+      "target_lanelet": 193929,
+      "source_road": 2011,
+      "source_lane": 3,
+      "placement_s": 72.00275455960424,
+      "reason": "Interrupted planned cells have no direction-matched motion in final replay",
+      "prior_group": "guarded2_stream_stalled64"
+    },
+    {
+      "target_lanelet": 177999,
+      "source_road": 1976,
+      "source_lane": -2,
+      "placement_s": 37.46470194983556,
+      "reason": "Interrupted planned cells have no direction-matched motion in final replay",
+      "prior_group": "guarded2_stream_stalled64"
+    },
+    {
+      "target_lanelet": 183068,
+      "source_road": 2003,
+      "source_lane": 6,
+      "placement_s": 25.480999999999995,
+      "reason": "Interrupted planned cells have no direction-matched motion in final replay",
+      "prior_group": "guarded2_stream_stalled64"
+    },
+    {
+      "target_lanelet": 140013,
+      "source_road": 1869,
+      "source_lane": -3,
+      "placement_s": 0.020012380275467163,
+      "reason": "Interrupted planned cells have no direction-matched motion in final replay",
+      "prior_group": "guarded2_stream_stalled64"
+    },
+    {
+      "target_lanelet": 327655,
+      "source_road": 2564,
+      "source_lane": 2,
+      "placement_s": 1.6572062477063731,
+      "reason": "Interrupted planned cells have no direction-matched motion in final replay",
+      "prior_group": "guarded2_stream_stalled64"
+    },
+    {
+      "target_lanelet": 153837,
+      "source_road": 1926,
+      "source_lane": 6,
+      "placement_s": 1.651289804253846,
+      "reason": "Interrupted planned cells have no direction-matched motion in final replay",
+      "prior_group": "guarded2_stream_stalled64"
+    },
+    {
+      "target_lanelet": 524504,
+      "source_road": 3346,
+      "source_lane": -3,
+      "placement_s": 45.5027028745093,
+      "reason": "Interrupted planned cells have no direction-matched motion in final replay",
+      "prior_group": "guarded2_stream_stalled64"
+    },
+    {
+      "target_lanelet": 311399,
+      "source_road": 2521,
+      "source_lane": -1,
+      "placement_s": 28.64222264265069,
+      "reason": "Interrupted planned cells have no direction-matched motion in final replay",
+      "prior_group": "guarded2_stream_stalled64"
+    },
+    {
+      "target_lanelet": 455805,
+      "source_road": 2889,
+      "source_lane": -1,
+      "placement_s": 35.46217052415007,
+      "reason": "Interrupted planned cells have no direction-matched motion in final replay",
+      "prior_group": "guarded2_stream_stalled64"
+    },
+    {
+      "target_lanelet": 537171,
+      "source_road": 4740,
+      "source_lane": 1,
+      "placement_s": 64.19285013649665,
+      "reason": "Interrupted planned cells have no direction-matched motion in final replay",
+      "prior_group": "guarded2_stream_stalled64"
+    },
+    {
+      "target_lanelet": 12627,
+      "source_road": 126,
+      "source_lane": -1,
+      "placement_s": 28.499999999999744,
+      "reason": "Interrupted planned cells have no direction-matched motion in final replay",
+      "prior_group": "guarded2_stream_stalled64"
+    },
+    {
+      "target_lanelet": 266102,
+      "source_road": 2312,
+      "source_lane": -1,
+      "placement_s": 103.29033187557549,
+      "reason": "Interrupted planned cells have no direction-matched motion in final replay",
+      "prior_group": "guarded2_stream_stalled64"
+    },
+    {
+      "target_lanelet": 155396,
+      "source_road": 1926,
+      "source_lane": -1,
+      "placement_s": 90.30098643655512,
+      "reason": "Interrupted planned cells have no direction-matched motion in final replay",
+      "prior_group": "guarded2_stream_stalled64"
+    },
+    {
+      "target_lanelet": 283130,
+      "source_road": 2410,
+      "source_lane": -1,
+      "placement_s": 109.0079282443271,
+      "reason": "Interrupted planned cells have no direction-matched motion in final replay",
+      "prior_group": "guarded2_stream_stalled64"
+    },
+    {
+      "target_lanelet": 411727,
+      "source_road": 2810,
+      "source_lane": -1,
+      "placement_s": 202.6653334308242,
+      "reason": "Interrupted planned cells have no direction-matched motion in final replay",
+      "prior_group": "guarded2_stream_stalled64"
+    },
+    {
+      "target_lanelet": 412857,
+      "source_road": 2811,
+      "source_lane": 2,
+      "placement_s": 1.6486934238716273,
+      "reason": "Interrupted planned cells have no direction-matched motion in final replay",
+      "prior_group": "guarded2_stream_stalled64"
+    },
+    {
+      "target_lanelet": 118556,
+      "source_road": 1705,
+      "source_lane": -3,
+      "placement_s": 51.52947152527178,
+      "reason": "Interrupted planned cells have no direction-matched motion in final replay",
+      "prior_group": "guarded2_stream_stalled64"
+    },
+    {
+      "target_lanelet": 365519,
+      "source_road": 2687,
+      "source_lane": -2,
+      "placement_s": 0.019999999990997545,
+      "reason": "Interrupted planned cells have no direction-matched motion in final replay",
+      "prior_group": "guarded2_stream_stalled64"
+    },
+    {
+      "target_lanelet": 441733,
+      "source_road": 2818,
+      "source_lane": -1,
+      "placement_s": 332.4556786258497,
+      "reason": "Interrupted planned cells have no direction-matched motion in final replay",
+      "prior_group": "guarded2_stream_stalled64"
+    }
+  ],
+  "excluded": {
+    "road845": "same failed overlap condition already implicated; avoid identical reintroduction",
+    "road6024": "two isolated identical-condition native crashes"
+  },
+  "purpose": "single NPC validation candidate plan; not executed"
+}

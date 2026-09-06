@@ -1,0 +1,34 @@
+{
+  "binary_sha256": "e7a426f900813748747a39233f3678237fd7f849c335bae3bc3014b31ae678b0",
+  "lateral_corrections": [
+    {
+      "object": 5153,
+      "mesh": 125,
+      "center_error_m": 0.0
+    },
+    {
+      "object": 5238,
+      "mesh": 317,
+      "center_error_m": 0.0
+    },
+    {
+      "object": 5161,
+      "mesh": 128,
+      "center_error_m": 0.008386671925242067
+    },
+    {
+      "object": 1386,
+      "mesh": 214,
+      "center_error_m": 0.008048878732918898
+    },
+    {
+      "object": 2935,
+      "mesh": 517,
+      "center_error_m": 0.008398361830145553
+    }
+  ],
+  "restored_stoplines_verified": 30,
+  "crosswalk_false_positives": 0,
+  "implicit_zero_width_connections_rejected": 1,
+  "non_driving_overrides_verified": 2
+}

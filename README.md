@@ -3,7 +3,7 @@
 HL Mando Future Mobility Award 2026 시뮬레이션 부문을 위한 ROS 2 Jazzy 자율주행 SW 설계.
 카메라 인지 없이 대회 API의 Ego·객체·신호 정보를 사용한다. Planner는 정적 지도·dynamic status·ego status로 계획하며 Controller는 local path·ego status·speed limit만 구독한다.
 
-> C++17 HDMap 코어·Python binding, custom msg 7종, TF 노드, Visualizer, RViz 설정·launch·run.sh를 구현했다. SimBridge·개발용 정적 지도·객체 오프셋 매핑도 통합했다. Tracker·Planner·Control은 미구현이다. 현재 실행 범위는 SimBridge + TF + Visualizer + RViz이며 수신 토픽 없이 주행 데이터를 생성하지 않는다.
+> C++17 HDMap 코어·Python binding, 주행 custom msg 7종·시각화 전용 msg 2종, TF 노드, Visualizer, RViz 설정·launch·run.sh를 구현했다. SimBridge·개발용 정적 지도·객체 오프셋 매핑도 통합했다. Tracker·Planner·Control은 미구현이다. 현재 실행 범위는 SimBridge + TF + Visualizer + RViz이며 수신 토픽 없이 주행 데이터를 생성하지 않는다.
 > [VTD 종합 검토·심 계약·검증 과제](docs/04-vtd-design-review.md)를 함께 읽는다. 배포 확인값, 설계 기본값, 실측 미확인을 구분한다.
 > [시각화 Data Pipeline](docs/DataPipeline.md)은 원시 데이터부터 마커까지의 변환·추정·표시 계약이다. `/objects`의 XY 중심·객체별 min Z 변환은 Bridge가 수행하며 ID별 측정 오프셋은 `config/object_offsets.yaml`에 있으며 미등록 ID·크기 변경 패킷은 거부한다.
 
@@ -52,7 +52,7 @@ deadline은 기대하는 메시지 간격, lifespan은 오래된 메시지의 �
 
 ```text
 src/
-├── interfaces/                  # 주행 토픽의 custom msg 7종
+├── interfaces/                  # 주행 토픽 msg 7종 + 시각화 전용 msg 2종
 ├── hdmap/                       # Cell/정지선 역색인; R-tree/binding/debug는 후속
 ├── sim_bridge/                  # 계획: 참가자 TCP API 중계
 ├── hdmap_dynamic_tracker/       # 계획: ego 추정, 예측기, 신호 상태기, cell 갱신
@@ -584,14 +584,18 @@ ros2 run visualization visualizer_node --ros-args -p map_path:=/absolute/path/to
 
 ### 구현된 시각화
 
-- `src/visualization/rviz/default.rviz`: Fixed Frame=map, 초기 지도 전체 보기와 10초 유휴 Ego 추적 TopDownOrtho, 위 +x/왼쪽 +y, 기본 Path display와 각 MarkerArray/QoS 설정. `/local_path`는 Visualizer를 거치지 않는다.
+- `src/visualization/rviz/default.rviz`: Fixed Frame=map, 초기 지도 전체 보기와 10초 유휴 Ego 추적 TopDownOrtho, 위 +x/왼쪽 +y, 기본 Path display와 각 MarkerArray·CellColors/QoS 설정. `/local_path`는 Visualizer를 거치지 않는다.
 - 차체 CUBE·SearchTree는 base_link의 원본 stamp로 발행해 RViz가 TF를 적용한다. 객체는 Bridge가 XY 중심·min Z를 보낸다는 계약이며 box 중심 Z에만 H/2를 더한다.
 - 지도는 Visualizer 자신의 `hdmap_init` 결과다. Lanelet 경계·중심선·진행 방향·선종류 라벨·물리 신호·모든 정지선·Cell AABB와 원본 polygon·글로벌 중심선 강조를 표시한다. 하늘색은 중심선, 흰색은 차선 경계, 회색은 virtual 경계, 빨간색은 정지선, 주황색은 물리 신호, 초록색은 Cell polygon이다. 보라색 연결선은 같은 TrafficLight regulatory element의 물리 신호와 stopLine 꼭짓점 평균을 잇는 **관계 표시**이지 도로/주행 경로가 아니다. 매핑이 없는 정지선에도 형상은 표시하지만 연결은 만들지 않는다. dashed는 표시용 1m 선/1m 공백이며 solid_solid는 원본 선분 양쪽 0.12m의 표시용 두 획이다. 획 간격은 실측값이 아니며 지도 경계와 Cell 기하를 바꾸지 않는다.
 - 시각화 입력은 독립적이다. 지도·셀·신호 연결은 자기 맵만, 객체는 `/objects`만, 글로벌 경로는 `/global_path`와 자기 맵만, 점유/cap은 `/dynamic_status`와 자기 맵만 사용한다. Ego는 다른 스트림의 필터나 갱신 트리거가 아니다. 최신 리팩토링 요청에 따라 Ego 기반 ROI를 적용하지 않고 전체 입력을 표시한다. DataPipeline 다이어그램은 변경하지 않았으며 12절의 공통 Ego ROI는 현재 적용하지 않는다. 원본 좌표·stamp·값·신호 매핑은 유지한다.
-- 정적 map/cells 선분은 namespace별 LINE_LIST로 묶어 한 번 발행하고 DDS의 RELIABLE/TRANSIENT_LOCAL/KEEP_LAST(1)에 보관한다. 늦게 켠 RViz도 받으며 매 5초마다 수백만 정점을 재업로드하지 않는다. 동적 마커는 기존 BEST_EFFORT/VOLATILE을 유지한다. 동적 Cell 선분은 정점별 원본 RGBA를 사용하는 LINE_LIST로 묶는다. RViz Jazzy의 alpha blending 경계(0.9998)에 따라 투명/불투명 배치만 분리하며 확률을 양자화하지 않는다. HUD에는 모든 Cell ID와 원본 값을 유지한다. 선분 생략·평활화는 없고 배치 마커 ID는 Cell ID가 아니다. 생산자의 query 마커는 별개다. HUD는 독립적으로 5Hz 발행한다. 가짜 Ego/TF는 발행하지 않으며, 카메라만 실제 TF를 이용해 10초 유휴 후 Ego 위치를 추적한다.
+- 정적 map/cells 선분은 namespace별 LINE_LIST로 묶어 한 번 발행하고 DDS의 RELIABLE/TRANSIENT_LOCAL/KEEP_LAST(1)에 보관한다. 늦게 켠 RViz도 받으며 매 5초마다 수백만 정점을 재업로드하지 않는다. 정적 Cell polygon/AABB는 원본 선분을 100m 공간 배치에 직접 쌓아 중간 마커 생성과 화면 밖 도형 처리를 줄인다. 선분 생략·평활화는 없고 배치 마커 ID는 Cell ID가 아니다.
+- 동적 Cell은 `/visualization/cell_geometry`의 `interfaces/CellGeometry`에 원본 float64 polygon 정점과 Cell별 offsets를 최초 유효 입력 때 한 번 발행한다(RELIABLE/TRANSIENT_LOCAL/KEEP_LAST(1)). 기본 RViz의 `visualization/CellColors` 두 표시가 이를 보관한다. 이후 `/visualization/occupancy_colors`, `/visualization/cell_cap_colors`에는 `interfaces/CellColors`로 매 유효 입력의 전체 Cell RGBA와 원본 stamp를 보낸다(BEST_EFFORT/VOLATILE/KEEP_LAST(1)). 색상은 기존 float32 정밀도이며 확률·값의 양자화나 Cell 생략은 없다. 로드된 지도마다 부여한 geometry_id가 일치할 때만 적용하며, 좌표보다 먼저 도착한 최신 색상은 좌표 도착 후 적용한다. 빈 색상은 표시와 대기 중인 색상을 지운다. TF는 매 색상 메시지의 원본 stamp로 조회한다.
+- `CellColors`는 기존 RViz LINE_LIST의 선폭·색상·투명/불투명 재질을 유지한다. 색상 변경 시 기존 billboard chain의 해당 Cell 색상만 갱신하고, alpha blending 경계(0.9998)를 넘어 배치 분류가 바뀔 때만 보관한 좌표로 배치를 재구성한다. Ogre의 GPU 정점 버퍼는 좌표와 색상이 함께 저장되므로 색상 변경이 GPU의 색상 바이트만 업로드한다는 뜻은 아니다. 기존 `/visualization/occupancy`, `/visualization/cell_cap`의 전체 MarkerArray도 구독자가 있을 때 발행해 호환성을 유지한다. 이 토픽을 추가 구독하면 기존 좌표 전송 비용이 발생한다.
+- HUD에는 모든 Cell ID와 원본 값을 유지한다. 값이 같으면 색상과 HUD를 재사용하되 색상 snapshot의 stamp는 매 입력마다 갱신한다. 생산자의 query 마커는 별개이며 HUD는 독립적으로 5Hz 발행한다. 가짜 Ego/TF는 발행하지 않으며, 카메라만 실제 TF를 이용해 10초 유휴 후 Ego 위치를 추적한다.
+- 기본 RViz의 Signals 그룹은 `/visualization/signals_static`의 정적 형상(1회 발행, RELIABLE/TRANSIENT_LOCAL)과 `/visualization/signals_observed`의 관측 강조(BEST_EFFORT/VOLATILE)를 함께 표시한다. 기존 `/visualization/signals`의 전체 정적·관측 snapshot 계약도 유지하며, 해당 토픽의 구독자가 있을 때 수신/5초 timer에 맞춰 발행한다. HUD의 신호 라벨·ID/state·원본 stamp와 controller 매핑은 그대로다.
 - occupancy bin·alpha, cap 색상과 원본 값, controller ID/state, 명령 요청값을 표시한다. 입력 frame·값을 거부하면 해당 표시만 비우며 다른 스트림에는 영향을 주지 않는다. 관측 controller는 HUD 앞쪽에 배치하며 해당 ID의 신호/정지선 관계만 청록색으로 강조한다. 매핑이 없으면 HUD에 명시한다. 물리 신호 형상에 API가 관측하지 않은 개별 lamp 색을 추측해 칠하지 않는다. cap 색상은 표시용 0~20m/s 범위이며 숫자는 원본 값이다.
 - `/visualization/hud`는 입력 수신 경과시간·source stamp·지도 유무를 화면 고정 패널에 표시한다. 시간 경과는 센서 지연 측정값이 아니다. HUD는 화면 픽셀 위치에 고정되며 지도 좌표를 갖지 않는다. 지도 hash 비교나 전송 drop 계수는 아직 구현하지 않았다.
-- 무기한 마커는 다음 snapshot에서 사라진 ns/id를 DELETE하며 삭제 명령은 이후 snapshot에도 반복한다. BEST_EFFORT이므로 후속 발행까지 모두 끊기면 전달을 보장하지 않는다. cap·속력·명령·Ego 상세 텍스트는 HUD에 모아 표시하며, cap 도형 display도 기본 활성화한다.
+- 동적 마커는 전체 snapshot으로 발행한다. 신호·객체 등 작은 마커가 많은 기본 RViz 표시는 `visualization/SnapshotMarkerArray`로 수신한 snapshot끼리 비교해 사라진 ns/id만 삭제하고 나머지는 기존 도형 객체를 갱신한다. 점유·Cell cap은 위의 전용 CellColors 표시로 좌표 재전송을 없앤다. 중간 snapshot이 유실돼도 다음 전체 snapshot으로 복구한다. BEST_EFFORT이므로 후속 발행까지 모두 끊기면 전달을 보장하지 않는다. cap·속력·명령·Ego 상세 텍스트는 HUD에 모아 표시하며, cap 도형 display도 기본 활성화한다.
 
 설정 기본값은 `config/vehicle.yaml`, `config/runtime.yaml`을 설치 시 복사해 사용한다. 노드 시작 파라미터는 `map_path`, `vehicle_config`, `runtime_config`, `occupancy_bin`이다. TF 입력은 `/ego_pose`, 출력은 `map → base_link`이며 Header stamp를 그대로 계승한다. Control에 TF 의존성을 추가하지 않는다.
 
@@ -607,7 +611,7 @@ static_map = hdmap_init(map_path, debug_sink=sink)
 
 각 `MarkerOutput`은 자기 전용 토픽/Display에 `DELETEALL + 현재 ADD 목록`을 한 MarkerArray로 발행한다. 빈 snapshot도 DELETEALL 하나를 포함한다. 중간 snapshot이 유실되어도 다음 수신으로 이전 그림을 완전히 교체하며 과거 marker ID를 영구 저장하지 않는다. **다른 생산자와 공유하는 토픽에는 이 adapter를 사용하지 않는다.**
 
-map/cells의 `visualization/StaticMarkerArray`는 native MarkerArray 렌더러를 사용하되 RViz Reset 시 DDS에 남은 정적 snapshot을 다시 구독한다. 항공뷰도 같은 방식으로 복구하며 교체·비활성화 시 소유 텍스처를 해제한다. 정적 데이터를 주기적으로 다시 발행하거나 원본 기하를 재계산하는 처리가 아니다.
+`visualization/SnapshotMarkerArray`는 기존 MarkerArray wire 형식을 그대로 받아 RViz의 native MarkerCommon으로 렌더링한다. 정상 전체 snapshot에서만 객체 재사용과 배열 소유권 공유를 적용하며 비표준 배열은 native 처리로 전달한다. map/cells/signals_static의 `visualization/StaticMarkerArray`는 같은 렌더러를 사용하되 RViz Reset 시 DDS에 남은 정적 snapshot을 다시 구독한다. 항공뷰도 같은 방식으로 복구하며 교체·비활성화 시 소유 텍스처를 해제한다. 정적 데이터를 주기적으로 다시 발행하거나 원본 기하를 재계산하는 처리가 아니다.
 
 ### RViz 마우스 조작·자동 추적
 

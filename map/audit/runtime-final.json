@@ -1,0 +1,31 @@
+{
+  "binary_sha256": "e7a426f900813748747a39233f3678237fd7f849c335bae3bc3014b31ae678b0",
+  "ego_unchanged": true,
+  "final_errors": [
+    {
+      "position_m": 0.0,
+      "hpr_rad": 0.0,
+      "speed_mps": 0.0
+    },
+    {
+      "position_m": 0.0,
+      "hpr_rad": 0.0,
+      "speed_mps": 0.0
+    },
+    {
+      "position_m": 0.0,
+      "hpr_rad": 0.0,
+      "speed_mps": 0.0
+    }
+  ],
+  "rdb_samples": 123,
+  "purpose": "Final map reload and live RViz display verification; stationary Ego, no audit NPCs",
+  "stop_sent": true,
+  "after_all_driving_cleanup": {
+    "evidence": "docs/assets/hdmap-audit/driving/driving-cleanup-isolated-final.json",
+    "verified": true,
+    "audit_npc_count": 0,
+    "ego_position_orientation_speed_errors_zero": true,
+    "stop_sent": true
+  }
+}

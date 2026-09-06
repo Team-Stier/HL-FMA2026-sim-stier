@@ -1,0 +1,1913 @@
+{
+  "audit_date": "2026-09-06",
+  "map_binary_sha256": "758f2990e28374036725bc88be2938e5857e1f9a6035e3017a83692d78e6c718",
+  "input_hashes": {
+    "/home/stier/vtd 자료/HL_FMA_VTD_LivingLab.xodr": "5a369c7b0609fc98b0034680473465db4273dd396ffb37980996cea70ec6ca2f",
+    "/home/stier/vtd 자료/HL_FMA_VTD_LivingLab.osgb": "2d8f83fdc26cb7f8373e71cf850c70f7d90981362789fb474eb31b0d5b253296",
+    "/home/stier/VIRES/VTD.2025.2/Data/Setups/00_HL_VTD/Plugins/ModuleManager/libHLVTD.so.1.0.0": "6059d5466def4821a243835c52c116b86f613db83729f113fb8e766aab6eca4e",
+    "map/stopline_mesh.json": "250fc3683047303698ff70094ed21675c2d2f3b081e2e467d31c4b0e1bf85aad"
+  },
+  "scope": "Signal source and API evidence; does not establish simulator braking or all-road dynamic correctness.",
+  "current_counts": {
+    "stoplines": 751,
+    "assigned_stoplines": 725,
+    "regulations": 603,
+    "api_observation": {
+      "selected_controller": 337,
+      "unavailable": 266
+    },
+    "signal_mapping_audit": {
+      "regulation_count": 603,
+      "rejected_candidate_count": 190,
+      "lamp_stopline_relation_count": 1817,
+      "max_lamp_stopline_distance_m": 292.7508959794112,
+      "lamp_stopline_relations_over_100m": 16,
+      "unverified_lane_validity_count": 495
+    }
+  },
+  "controller_1": {
+    "control_members": {
+      "1": [
+        1,
+        2,
+        5
+      ],
+      "2": [
+        3,
+        4,
+        6
+      ],
+      "9": [
+        48,
+        49,
+        52
+      ],
+      "10": [
+        50,
+        51,
+        53
+      ]
+    },
+    "source_components": [
+      {
+        "signal_id": 1,
+        "owner_road": 72,
+        "attributes": {
+          "s": "0.0000000000000000e+00",
+          "t": "2.0000000000000000e+00",
+          "id": "1",
+          "name": "_Sg1",
+          "dynamic": "yes",
+          "orientation": "+",
+          "zOffset": "4.5999999999999996e+00",
+          "type": "1000020",
+          "country": "OpenDRIVE",
+          "countryRevision": "-1",
+          "subtype": "-1",
+          "hOffset": "3.1415926535897931e+00",
+          "pitch": "0.0000000000000000e+00",
+          "roll": "0.0000000000000000e+00",
+          "height": "0.40",
+          "width": "0.41"
+        },
+        "validity": [
+          {
+            "fromLane": "2",
+            "toLane": "2"
+          }
+        ],
+        "positionRoad": [
+          {
+            "roadId": "1183",
+            "s": "1.1000000000000000e-01",
+            "t": "2.0000000000000000e+00",
+            "zOffset": "4.5999999999999996e+00",
+            "hOffset": "3.1415926535897931e+00",
+            "pitch": "0.0000000000000000e+00",
+            "roll": "0.0000000000000000e+00"
+          }
+        ],
+        "center_xyz": [
+          256.563415146052,
+          209.68321909147264,
+          42.0
+        ]
+      },
+      {
+        "signal_id": 2,
+        "owner_road": 72,
+        "attributes": {
+          "s": "0.0000000000000000e+00",
+          "t": "2.3999999999999999e+00",
+          "id": "2",
+          "name": "_Sg2",
+          "dynamic": "yes",
+          "orientation": "+",
+          "zOffset": "4.5999999999999996e+00",
+          "type": "1000008",
+          "country": "OpenDRIVE",
+          "countryRevision": "-1",
+          "subtype": "-1",
+          "hOffset": "3.1415926535897931e+00",
+          "pitch": "0.0000000000000000e+00",
+          "roll": "0.0000000000000000e+00",
+          "height": "0.40",
+          "width": "0.41"
+        },
+        "validity": [
+          {
+            "fromLane": "2",
+            "toLane": "2"
+          }
+        ],
+        "positionRoad": [
+          {
+            "roadId": "1183",
+            "s": "1.1000000000000000e-01",
+            "t": "2.3999999999999999e+00",
+            "zOffset": "4.5999999999999996e+00",
+            "hOffset": "3.1415926535897931e+00",
+            "pitch": "0.0000000000000000e+00",
+            "roll": "0.0000000000000000e+00"
+          }
+        ],
+        "center_xyz": [
+          256.28515570335543,
+          209.97057198000897,
+          42.0
+        ]
+      },
+      {
+        "signal_id": 3,
+        "owner_road": 72,
+        "attributes": {
+          "s": "0.0000000000000000e+00",
+          "t": "2.0000000000000000e+00",
+          "id": "3",
+          "name": "_Sg3",
+          "dynamic": "yes",
+          "orientation": "+",
+          "zOffset": "4.5999999999999996e+00",
+          "type": "1000020",
+          "country": "OpenDRIVE",
+          "countryRevision": "-1",
+          "subtype": "-1",
+          "hOffset": "3.1415926535897931e+00",
+          "pitch": "0.0000000000000000e+00",
+          "roll": "0.0000000000000000e+00",
+          "height": "0.40",
+          "width": "0.41"
+        },
+        "validity": [
+          {
+            "fromLane": "3",
+            "toLane": "4"
+          }
+        ],
+        "positionRoad": []
+      },
+      {
+        "signal_id": 4,
+        "owner_road": 72,
+        "attributes": {
+          "s": "0.0000000000000000e+00",
+          "t": "2.3999999999999999e+00",
+          "id": "4",
+          "name": "_Sg4",
+          "dynamic": "yes",
+          "orientation": "+",
+          "zOffset": "4.5999999999999996e+00",
+          "type": "1000008",
+          "country": "OpenDRIVE",
+          "countryRevision": "-1",
+          "subtype": "-1",
+          "hOffset": "3.1415926535897931e+00",
+          "pitch": "0.0000000000000000e+00",
+          "roll": "0.0000000000000000e+00",
+          "height": "0.40",
+          "width": "0.41"
+        },
+        "validity": [
+          {
+            "fromLane": "3",
+            "toLane": "4"
+          }
+        ],
+        "positionRoad": []
+      },
+      {
+        "signal_id": 5,
+        "owner_road": 72,
+        "attributes": {
+          "s": "0.0000000000000000e+00",
+          "t": "2.7999999999999998e+00",
+          "id": "5",
+          "name": "_Sg5",
+          "dynamic": "yes",
+          "orientation": "+",
+          "zOffset": "4.5999999999999996e+00",
+          "type": "1000012",
+          "country": "OpenDRIVE",
+          "countryRevision": "-1",
+          "subtype": "10",
+          "hOffset": "3.1415926535897931e+00",
+          "pitch": "0.0000000000000000e+00",
+          "roll": "0.0000000000000000e+00",
+          "height": "0.40",
+          "width": "0.41"
+        },
+        "validity": [
+          {
+            "fromLane": "2",
+            "toLane": "2"
+          }
+        ],
+        "positionRoad": [],
+        "center_xyz": [
+          14.56736563781986,
+          45.21614948872045,
+          40.349999999999994
+        ]
+      },
+      {
+        "signal_id": 6,
+        "owner_road": 72,
+        "attributes": {
+          "s": "0.0000000000000000e+00",
+          "t": "3.2000000000000002e+00",
+          "id": "6",
+          "name": "_Sg6",
+          "dynamic": "yes",
+          "orientation": "+",
+          "zOffset": "4.5999999999999996e+00",
+          "type": "1000012",
+          "country": "OpenDRIVE",
+          "countryRevision": "-1",
+          "subtype": "-1",
+          "hOffset": "3.1415926535897931e+00",
+          "pitch": "0.0000000000000000e+00",
+          "roll": "0.0000000000000000e+00",
+          "height": "0.40",
+          "width": "0.41"
+        },
+        "validity": [
+          {
+            "fromLane": "3",
+            "toLane": "4"
+          }
+        ],
+        "positionRoad": []
+      },
+      {
+        "signal_id": 48,
+        "owner_road": 1183,
+        "attributes": {
+          "s": "0.0000000000000000e+00",
+          "t": "2.0000000000000000e+00",
+          "id": "48",
+          "name": "_Sg48",
+          "dynamic": "yes",
+          "orientation": "+",
+          "zOffset": "4.5999999999999996e+00",
+          "type": "1000020",
+          "country": "OpenDRIVE",
+          "countryRevision": "-1",
+          "subtype": "-1",
+          "hOffset": "3.1415926535897931e+00",
+          "pitch": "0.0000000000000000e+00",
+          "roll": "0.0000000000000000e+00",
+          "height": "0.40",
+          "width": "0.41"
+        },
+        "validity": [
+          {
+            "fromLane": "1",
+            "toLane": "1"
+          }
+        ],
+        "positionRoad": []
+      },
+      {
+        "signal_id": 49,
+        "owner_road": 1183,
+        "attributes": {
+          "s": "0.0000000000000000e+00",
+          "t": "2.3999999999999999e+00",
+          "id": "49",
+          "name": "_Sg49",
+          "dynamic": "yes",
+          "orientation": "+",
+          "zOffset": "4.5999999999999996e+00",
+          "type": "1000008",
+          "country": "OpenDRIVE",
+          "countryRevision": "-1",
+          "subtype": "-1",
+          "hOffset": "3.1415926535897931e+00",
+          "pitch": "0.0000000000000000e+00",
+          "roll": "0.0000000000000000e+00",
+          "height": "0.40",
+          "width": "0.41"
+        },
+        "validity": [
+          {
+            "fromLane": "1",
+            "toLane": "1"
+          }
+        ],
+        "positionRoad": []
+      },
+      {
+        "signal_id": 50,
+        "owner_road": 1183,
+        "attributes": {
+          "s": "0.0000000000000000e+00",
+          "t": "3.0000000000000000e+00",
+          "id": "50",
+          "name": "_Sg50",
+          "dynamic": "yes",
+          "orientation": "+",
+          "zOffset": "4.5999999999999996e+00",
+          "type": "1000020",
+          "country": "OpenDRIVE",
+          "countryRevision": "-1",
+          "subtype": "-1",
+          "hOffset": "3.1415926535897931e+00",
+          "pitch": "0.0000000000000000e+00",
+          "roll": "0.0000000000000000e+00",
+          "height": "0.40",
+          "width": "0.41"
+        },
+        "validity": [
+          {
+            "fromLane": "2",
+            "toLane": "3"
+          }
+        ],
+        "positionRoad": []
+      },
+      {
+        "signal_id": 51,
+        "owner_road": 1183,
+        "attributes": {
+          "s": "0.0000000000000000e+00",
+          "t": "3.4000000000000004e+00",
+          "id": "51",
+          "name": "_Sg51",
+          "dynamic": "yes",
+          "orientation": "+",
+          "zOffset": "4.5999999999999996e+00",
+          "type": "1000008",
+          "country": "OpenDRIVE",
+          "countryRevision": "-1",
+          "subtype": "-1",
+          "hOffset": "3.1415926535897931e+00",
+          "pitch": "0.0000000000000000e+00",
+          "roll": "0.0000000000000000e+00",
+          "height": "0.40",
+          "width": "0.41"
+        },
+        "validity": [
+          {
+            "fromLane": "2",
+            "toLane": "3"
+          }
+        ],
+        "positionRoad": []
+      },
+      {
+        "signal_id": 52,
+        "owner_road": 1183,
+        "attributes": {
+          "s": "0.0000000000000000e+00",
+          "t": "3.7999999999999998e+00",
+          "id": "52",
+          "name": "_Sg52",
+          "dynamic": "yes",
+          "orientation": "+",
+          "zOffset": "4.5999999999999996e+00",
+          "type": "1000012",
+          "country": "OpenDRIVE",
+          "countryRevision": "-1",
+          "subtype": "10",
+          "hOffset": "3.1415926535897931e+00",
+          "pitch": "0.0000000000000000e+00",
+          "roll": "0.0000000000000000e+00",
+          "height": "0.40",
+          "width": "0.41"
+        },
+        "validity": [
+          {
+            "fromLane": "1",
+            "toLane": "1"
+          }
+        ],
+        "positionRoad": []
+      },
+      {
+        "signal_id": 53,
+        "owner_road": 1183,
+        "attributes": {
+          "s": "0.0000000000000000e+00",
+          "t": "4.2000000000000002e+00",
+          "id": "53",
+          "name": "_Sg53",
+          "dynamic": "yes",
+          "orientation": "+",
+          "zOffset": "4.5999999999999996e+00",
+          "type": "1000012",
+          "country": "OpenDRIVE",
+          "countryRevision": "-1",
+          "subtype": "-1",
+          "hOffset": "3.1415926535897931e+00",
+          "pitch": "0.0000000000000000e+00",
+          "roll": "0.0000000000000000e+00",
+          "height": "0.40",
+          "width": "0.41"
+        },
+        "validity": [
+          {
+            "fromLane": "2",
+            "toLane": "3"
+          }
+        ],
+        "positionRoad": []
+      }
+    ],
+    "stopline": {
+      "id": 542283,
+      "center_xyz": [
+        14.888334088761749,
+        44.467474403806015,
+        35.55
+      ]
+    },
+    "span": {
+      "controller": 1,
+      "span_m": 292.5944376800545,
+      "coordinates": "source_positionRoad_or_signal_preserved",
+      "review_required": true
+    },
+    "static_geometry_method": "Traverse geodes with direct Texture2D name containing TrafficLight; apply complete node-path world transform to vertex arrays; 1147 geometry bounding boxes total. Bbox presence does not prove dynamic controller ownership.",
+    "static_geometry_count": 1147,
+    "selected_static_geometry": [
+      {
+        "row": 349,
+        "texture": "Tx_Sg_TrafficLight_Module_01.albedo.rgb",
+        "bbox": [
+          14.5713796363,
+          45.0754287978,
+          40.149443977,
+          15.4193631784,
+          45.5461503034,
+          40.5544447733
+        ],
+        "center": [
+          14.99537140735,
+          45.3107895506,
+          40.35194437515
+        ],
+        "vertices": 633
+      },
+      {
+        "row": 1075,
+        "texture": "Tx_Sg_TrafficLight_Module_01.albedo.rgb",
+        "bbox": [
+          256.521500638,
+          209.6399333,
+          41.7994416882,
+          257.255176611,
+          210.359995656,
+          42.2044424845
+        ],
+        "center": [
+          256.8883386245,
+          209.99996447799998,
+          42.00194208635
+        ],
+        "vertices": 633
+      },
+      {
+        "row": 1077,
+        "texture": "Tx_Sg_TrafficLight_Module_01.albedo.rgb",
+        "bbox": [
+          256.243241361,
+          209.927286816,
+          41.7994416882,
+          256.976917334,
+          210.647349172,
+          42.2044424845
+        ],
+        "center": [
+          256.6100793475,
+          210.28731799399998,
+          42.00194208635
+        ],
+        "vertices": 633
+      }
+    ],
+    "physical_ownership_status": "unresolved_source_component_split; no coordinate relocation applied",
+    "reason": "positionRoad has physical override meaning and source OSGB modules exist at both sites; dropping override exactly overlaps controller2 red/yellow logical positions; remote road1183 also has controller9 red/yellow only 0.11m away in s."
+  },
+  "plugin_encoding": {
+    "selection_table_address": "0x52da0",
+    "selection_table_entries": 135,
+    "dispatch_table_address": "0x52d40",
+    "serializer_address": "0x21550",
+    "raw_rdb_to_api": {
+      "0": "0",
+      "1": "1",
+      "2": "2",
+      "3": "static green_code 3 or 5",
+      "4": "static green_code 3 or 5",
+      "5": "2",
+      "6": "6",
+      "7": "0"
+    },
+    "api_4_emitted": false,
+    "api_5_measures_sibling_phase_union": false,
+    "controller_116_117_schedule": "Source controller116 has no phases; controller117 has two Duration1 blink phases. No sibling phase substitution or blink-through permission introduced."
+  },
+  "green_code_3_permission_conflicts": {
+    "rule_count": 30,
+    "controller_count": 25,
+    "interpretation": "raw go cannot satisfy current permitted_states; source validity and actual dynamic left-arrow meaning remain unverified. Not automatic authorization to permit state3.",
+    "rules": [
+      {
+        "controller": 48,
+        "lanelet": 121378,
+        "stopline": 542859,
+        "movement": "left",
+        "permitted_states": [
+          4,
+          5
+        ],
+        "source": "xodr_arrow_object:1553",
+        "api_selected_controller_id": 48,
+        "api_observation": "selected_controller",
+        "lane_validity_source": "unverified_not_specified",
+        "distance_to_approach_end_m": 0.14987943411474958,
+        "road_lane": [
+          1750,
+          0,
+          1
+        ],
+        "green_components": [
+          {
+            "id": 166,
+            "subtype": "-1"
+          }
+        ],
+        "live_probe": {
+          "road": 1750,
+          "lane": 1,
+          "s": 5.0,
+          "t": 1.4,
+          "status": "matching_controller",
+          "samples": 20,
+          "valid_samples": 20,
+          "observed": [
+            {
+              "controller": 48,
+              "state": 1,
+              "samples": 20
+            }
+          ],
+          "same_road_lane_as_rule": true,
+          "api_state_3_observed": false
+        }
+      },
+      {
+        "controller": 225,
+        "lanelet": 125730,
+        "stopline": 542907,
+        "movement": "left",
+        "permitted_states": [
+          4,
+          5
+        ],
+        "source": "xodr_arrow_object:1664",
+        "api_selected_controller_id": 225,
+        "api_observation": "selected_controller",
+        "lane_validity_source": "unverified_not_specified",
+        "distance_to_approach_end_m": 0.15041626872887626,
+        "road_lane": [
+          1778,
+          0,
+          2
+        ],
+        "green_components": [
+          {
+            "id": 701,
+            "subtype": "-1"
+          }
+        ],
+        "live_probe": {
+          "road": 1778,
+          "lane": 2,
+          "s": 5.0,
+          "t": 1.9541256172008956,
+          "status": "matching_controller",
+          "samples": 20,
+          "valid_samples": 20,
+          "observed": [
+            {
+              "controller": 225,
+              "state": 1,
+              "samples": 20
+            }
+          ],
+          "same_road_lane_as_rule": true,
+          "api_state_3_observed": false
+        }
+      },
+      {
+        "controller": 226,
+        "lanelet": 189836,
+        "stopline": 544398,
+        "movement": "left",
+        "permitted_states": [
+          4,
+          5
+        ],
+        "source": "xodr_arrow_object:2498",
+        "api_selected_controller_id": 226,
+        "api_observation": "selected_controller",
+        "lane_validity_source": "unverified_not_specified",
+        "distance_to_approach_end_m": 0.0,
+        "road_lane": [
+          2004,
+          2,
+          -1
+        ],
+        "green_components": [
+          {
+            "id": 704,
+            "subtype": "-1"
+          }
+        ],
+        "live_probe": {
+          "road": 2004,
+          "lane": -1,
+          "s": 80.17094918753865,
+          "t": 1.4963742770538442,
+          "status": "matching_controller",
+          "samples": 20,
+          "valid_samples": 20,
+          "observed": [
+            {
+              "controller": 226,
+              "state": 1,
+              "samples": 20
+            }
+          ],
+          "same_road_lane_as_rule": true,
+          "api_state_3_observed": false
+        }
+      },
+      {
+        "controller": 57,
+        "lanelet": 125108,
+        "stopline": 542895,
+        "movement": "left+straight",
+        "permitted_states": [
+          5
+        ],
+        "source": "xodr_arrow_object:1656",
+        "api_selected_controller_id": 57,
+        "api_observation": "selected_controller",
+        "lane_validity_source": "unverified_not_specified",
+        "distance_to_approach_end_m": 0.14428508454696498,
+        "road_lane": [
+          1777,
+          3,
+          -1
+        ],
+        "green_components": [
+          {
+            "id": 193,
+            "subtype": "-1"
+          }
+        ],
+        "live_probe": {
+          "road": 1777,
+          "lane": -1,
+          "s": 62.89886331647787,
+          "t": -1.527230733734759,
+          "status": "matching_controller",
+          "samples": 20,
+          "valid_samples": 20,
+          "observed": [
+            {
+              "controller": 57,
+              "state": 3,
+              "samples": 20
+            }
+          ],
+          "same_road_lane_as_rule": true,
+          "api_state_3_observed": true
+        }
+      },
+      {
+        "controller": 57,
+        "lanelet": 125108,
+        "stopline": 542901,
+        "movement": "left+straight",
+        "permitted_states": [
+          5
+        ],
+        "source": "xodr_arrow_object:1656",
+        "api_selected_controller_id": 57,
+        "api_observation": "selected_controller",
+        "lane_validity_source": "unverified_not_specified",
+        "distance_to_approach_end_m": 0.14428508454696498,
+        "road_lane": [
+          1777,
+          3,
+          -1
+        ],
+        "green_components": [
+          {
+            "id": 193,
+            "subtype": "-1"
+          }
+        ],
+        "live_probe": {
+          "road": 1777,
+          "lane": -1,
+          "s": 62.89886331647787,
+          "t": -1.527230733734759,
+          "status": "matching_controller",
+          "samples": 20,
+          "valid_samples": 20,
+          "observed": [
+            {
+              "controller": 57,
+              "state": 3,
+              "samples": 20
+            }
+          ],
+          "same_road_lane_as_rule": true,
+          "api_state_3_observed": true
+        }
+      },
+      {
+        "controller": 58,
+        "lanelet": 129901,
+        "stopline": 542922,
+        "movement": "left",
+        "permitted_states": [
+          4,
+          5
+        ],
+        "source": "xodr_arrow_object:1701",
+        "api_selected_controller_id": 58,
+        "api_observation": "selected_controller",
+        "lane_validity_source": "unverified_not_specified",
+        "distance_to_approach_end_m": 0.15059494031935838,
+        "road_lane": [
+          1818,
+          0,
+          1
+        ],
+        "green_components": [
+          {
+            "id": 196,
+            "subtype": "-1"
+          }
+        ],
+        "live_probe": {
+          "road": 1818,
+          "lane": 1,
+          "s": 5.0,
+          "t": 1.46212579093822,
+          "status": "matching_controller",
+          "samples": 20,
+          "valid_samples": 20,
+          "observed": [
+            {
+              "controller": 58,
+              "state": 3,
+              "samples": 20
+            }
+          ],
+          "same_road_lane_as_rule": true,
+          "api_state_3_observed": true
+        }
+      },
+      {
+        "controller": 104,
+        "lanelet": 236328,
+        "stopline": 544421,
+        "movement": "left+straight",
+        "permitted_states": [
+          5
+        ],
+        "source": "xodr_arrow_object:2997",
+        "api_selected_controller_id": 104,
+        "api_observation": "selected_controller",
+        "lane_validity_source": "unverified_not_specified",
+        "distance_to_approach_end_m": 0.0,
+        "road_lane": [
+          2116,
+          0,
+          -1
+        ],
+        "green_components": [
+          {
+            "id": 335,
+            "subtype": "-1"
+          }
+        ],
+        "live_probe": {
+          "road": 2116,
+          "lane": -1,
+          "s": 10.111761704509467,
+          "t": -1.4495600323134163,
+          "status": "matching_controller",
+          "samples": 20,
+          "valid_samples": 20,
+          "observed": [
+            {
+              "controller": 104,
+              "state": 1,
+              "samples": 20
+            }
+          ],
+          "same_road_lane_as_rule": true,
+          "api_state_3_observed": false
+        }
+      },
+      {
+        "controller": 106,
+        "lanelet": 236079,
+        "stopline": 544419,
+        "movement": "left",
+        "permitted_states": [
+          4,
+          5
+        ],
+        "source": "xodr_arrow_object:2987",
+        "api_selected_controller_id": 106,
+        "api_observation": "selected_controller",
+        "lane_validity_source": "unverified_not_specified",
+        "distance_to_approach_end_m": 0.0,
+        "road_lane": [
+          2115,
+          4,
+          -1
+        ],
+        "green_components": [
+          {
+            "id": 341,
+            "subtype": "-1"
+          }
+        ],
+        "live_probe": {
+          "road": 2115,
+          "lane": -1,
+          "s": 68.90826965549114,
+          "t": -1.425,
+          "status": "matching_controller",
+          "samples": 20,
+          "valid_samples": 20,
+          "observed": [
+            {
+              "controller": 106,
+              "state": 3,
+              "samples": 20
+            }
+          ],
+          "same_road_lane_as_rule": true,
+          "api_state_3_observed": true
+        }
+      },
+      {
+        "controller": 105,
+        "lanelet": 234607,
+        "stopline": 543348,
+        "movement": "left+straight",
+        "permitted_states": [
+          5
+        ],
+        "source": "xodr_arrow_object:2953",
+        "api_selected_controller_id": 105,
+        "api_observation": "selected_controller",
+        "lane_validity_source": "unverified_not_specified",
+        "distance_to_approach_end_m": 0.15026112070223088,
+        "road_lane": [
+          2097,
+          0,
+          1
+        ],
+        "green_components": [
+          {
+            "id": 338,
+            "subtype": "-1"
+          }
+        ],
+        "live_probe": {
+          "road": 2097,
+          "lane": 1,
+          "s": 4.173920019506412,
+          "t": 1.437499191296867,
+          "status": "matching_controller",
+          "samples": 20,
+          "valid_samples": 20,
+          "observed": [
+            {
+              "controller": 105,
+              "state": 1,
+              "samples": 20
+            }
+          ],
+          "same_road_lane_as_rule": true,
+          "api_state_3_observed": false
+        }
+      },
+      {
+        "controller": 70,
+        "lanelet": 138722,
+        "stopline": 542988,
+        "movement": "left+straight",
+        "permitted_states": [
+          5
+        ],
+        "source": "xodr_arrow_object:1863",
+        "api_selected_controller_id": 70,
+        "api_observation": "selected_controller",
+        "lane_validity_source": "unverified_not_specified",
+        "distance_to_approach_end_m": 0.14864992054911141,
+        "road_lane": [
+          1868,
+          0,
+          -1
+        ],
+        "green_components": [
+          {
+            "id": 232,
+            "subtype": "-1"
+          }
+        ],
+        "live_probe": {
+          "road": 1868,
+          "lane": -1,
+          "s": 51.628541162009796,
+          "t": -1.5,
+          "status": "matching_controller",
+          "samples": 20,
+          "valid_samples": 20,
+          "observed": [
+            {
+              "controller": 70,
+              "state": 3,
+              "samples": 20
+            }
+          ],
+          "same_road_lane_as_rule": true,
+          "api_state_3_observed": true
+        }
+      },
+      {
+        "controller": 70,
+        "lanelet": 138722,
+        "stopline": 542994,
+        "movement": "left+straight",
+        "permitted_states": [
+          5
+        ],
+        "source": "xodr_arrow_object:1863",
+        "api_selected_controller_id": 70,
+        "api_observation": "selected_controller",
+        "lane_validity_source": "unverified_not_specified",
+        "distance_to_approach_end_m": 0.14864992054911141,
+        "road_lane": [
+          1868,
+          0,
+          -1
+        ],
+        "green_components": [
+          {
+            "id": 232,
+            "subtype": "-1"
+          }
+        ],
+        "live_probe": {
+          "road": 1868,
+          "lane": -1,
+          "s": 51.628541162009796,
+          "t": -1.5,
+          "status": "matching_controller",
+          "samples": 20,
+          "valid_samples": 20,
+          "observed": [
+            {
+              "controller": 70,
+              "state": 3,
+              "samples": 20
+            }
+          ],
+          "same_road_lane_as_rule": true,
+          "api_state_3_observed": true
+        }
+      },
+      {
+        "controller": 71,
+        "lanelet": 150198,
+        "stopline": 543033,
+        "movement": "left+straight",
+        "permitted_states": [
+          5
+        ],
+        "source": "xodr_arrow_object:1957",
+        "api_selected_controller_id": 71,
+        "api_observation": "selected_controller",
+        "lane_validity_source": "unverified_not_specified",
+        "distance_to_approach_end_m": 0.1520840855968714,
+        "road_lane": [
+          1909,
+          0,
+          2
+        ],
+        "green_components": [
+          {
+            "id": 235,
+            "subtype": "-1"
+          }
+        ],
+        "live_probe": {
+          "road": 1909,
+          "lane": 2,
+          "s": 5.0,
+          "t": 1.8460483302577637,
+          "status": "matching_controller",
+          "samples": 20,
+          "valid_samples": 20,
+          "observed": [
+            {
+              "controller": 71,
+              "state": 3,
+              "samples": 20
+            }
+          ],
+          "same_road_lane_as_rule": true,
+          "api_state_3_observed": true
+        }
+      },
+      {
+        "controller": 71,
+        "lanelet": 150198,
+        "stopline": 543039,
+        "movement": "left+straight",
+        "permitted_states": [
+          5
+        ],
+        "source": "xodr_arrow_object:1957",
+        "api_selected_controller_id": 71,
+        "api_observation": "selected_controller",
+        "lane_validity_source": "unverified_not_specified",
+        "distance_to_approach_end_m": 0.1520840855968714,
+        "road_lane": [
+          1909,
+          0,
+          2
+        ],
+        "green_components": [
+          {
+            "id": 235,
+            "subtype": "-1"
+          }
+        ],
+        "live_probe": {
+          "road": 1909,
+          "lane": 2,
+          "s": 5.0,
+          "t": 1.8460483302577637,
+          "status": "matching_controller",
+          "samples": 20,
+          "valid_samples": 20,
+          "observed": [
+            {
+              "controller": 71,
+              "state": 3,
+              "samples": 20
+            }
+          ],
+          "same_road_lane_as_rule": true,
+          "api_state_3_observed": true
+        }
+      },
+      {
+        "controller": 72,
+        "lanelet": 159645,
+        "stopline": 543096,
+        "movement": "left",
+        "permitted_states": [
+          4,
+          5
+        ],
+        "source": "xodr_arrow_object:2133",
+        "api_selected_controller_id": 72,
+        "api_observation": "selected_controller",
+        "lane_validity_source": "unverified_not_specified",
+        "distance_to_approach_end_m": 0.1486727544141786,
+        "road_lane": [
+          1926,
+          5,
+          -2
+        ],
+        "green_components": [
+          {
+            "id": 238,
+            "subtype": "-1"
+          }
+        ],
+        "live_probe": {
+          "road": 1926,
+          "lane": -1,
+          "s": 164.91171933056836,
+          "t": 1.397737330236576,
+          "status": "matching_controller",
+          "samples": 20,
+          "valid_samples": 20,
+          "observed": [
+            {
+              "controller": 72,
+              "state": 3,
+              "samples": 20
+            }
+          ],
+          "same_road_lane_as_rule": false,
+          "api_state_3_observed": true
+        }
+      },
+      {
+        "controller": 72,
+        "lanelet": 159645,
+        "stopline": 543105,
+        "movement": "left",
+        "permitted_states": [
+          4,
+          5
+        ],
+        "source": "xodr_arrow_object:2133",
+        "api_selected_controller_id": 72,
+        "api_observation": "selected_controller",
+        "lane_validity_source": "unverified_not_specified",
+        "distance_to_approach_end_m": 0.1486727544141786,
+        "road_lane": [
+          1926,
+          5,
+          -2
+        ],
+        "green_components": [
+          {
+            "id": 238,
+            "subtype": "-1"
+          }
+        ],
+        "live_probe": {
+          "road": 1926,
+          "lane": -1,
+          "s": 164.91171933056836,
+          "t": 1.397737330236576,
+          "status": "matching_controller",
+          "samples": 20,
+          "valid_samples": 20,
+          "observed": [
+            {
+              "controller": 72,
+              "state": 3,
+              "samples": 20
+            }
+          ],
+          "same_road_lane_as_rule": false,
+          "api_state_3_observed": true
+        }
+      },
+      {
+        "controller": 91,
+        "lanelet": 229480,
+        "stopline": 543306,
+        "movement": "left+straight",
+        "permitted_states": [
+          5
+        ],
+        "source": "xodr_arrow_object:2893",
+        "api_selected_controller_id": 91,
+        "api_observation": "selected_controller",
+        "lane_validity_source": "unverified_not_specified",
+        "distance_to_approach_end_m": 0.1503197551572839,
+        "road_lane": [
+          2076,
+          11,
+          -1
+        ],
+        "green_components": [
+          {
+            "id": 296,
+            "subtype": "-1"
+          }
+        ],
+        "live_probe": {
+          "road": 2076,
+          "lane": -1,
+          "s": 735.0357176973683,
+          "t": -1.812213226442223,
+          "status": "matching_controller",
+          "samples": 20,
+          "valid_samples": 20,
+          "observed": [
+            {
+              "controller": 91,
+              "state": 2,
+              "samples": 20
+            }
+          ],
+          "same_road_lane_as_rule": true,
+          "api_state_3_observed": false
+        }
+      },
+      {
+        "controller": 108,
+        "lanelet": 254679,
+        "stopline": 543465,
+        "movement": "left+straight",
+        "permitted_states": [
+          5
+        ],
+        "source": "xodr_arrow_object:3324",
+        "api_selected_controller_id": 108,
+        "api_observation": "selected_controller",
+        "lane_validity_source": "unverified_not_specified",
+        "distance_to_approach_end_m": 0.15144426958005397,
+        "road_lane": [
+          2264,
+          0,
+          -1
+        ],
+        "green_components": [
+          {
+            "id": 348,
+            "subtype": "10"
+          },
+          {
+            "id": 349,
+            "subtype": "-1"
+          }
+        ],
+        "live_probe": {
+          "road": 2264,
+          "lane": -1,
+          "s": 84.74475234377613,
+          "t": -1.45,
+          "status": "matching_controller",
+          "samples": 20,
+          "valid_samples": 20,
+          "observed": [
+            {
+              "controller": 108,
+              "state": 3,
+              "samples": 20
+            }
+          ],
+          "same_road_lane_as_rule": true,
+          "api_state_3_observed": true
+        }
+      },
+      {
+        "controller": 109,
+        "lanelet": 257299,
+        "stopline": 543473,
+        "movement": "left",
+        "permitted_states": [
+          4,
+          5
+        ],
+        "source": "xodr_arrow_object:3370",
+        "api_selected_controller_id": 109,
+        "api_observation": "selected_controller",
+        "lane_validity_source": "unverified_not_specified",
+        "distance_to_approach_end_m": 0.15355491446000258,
+        "road_lane": [
+          2265,
+          4,
+          -1
+        ],
+        "green_components": [
+          {
+            "id": 352,
+            "subtype": "-1"
+          }
+        ],
+        "live_probe": {
+          "road": 2265,
+          "lane": -1,
+          "s": 120.9937759662661,
+          "t": -1.45,
+          "status": "matching_controller",
+          "samples": 20,
+          "valid_samples": 20,
+          "observed": [
+            {
+              "controller": 109,
+              "state": 1,
+              "samples": 20
+            }
+          ],
+          "same_road_lane_as_rule": true,
+          "api_state_3_observed": false
+        }
+      },
+      {
+        "controller": 117,
+        "lanelet": 264552,
+        "stopline": 543506,
+        "movement": "left+straight",
+        "permitted_states": [
+          5
+        ],
+        "source": "xodr_arrow_object:3499",
+        "api_selected_controller_id": 117,
+        "api_observation": "selected_controller",
+        "lane_validity_source": "unverified_not_specified",
+        "distance_to_approach_end_m": 0.1542064065764257,
+        "road_lane": [
+          2312,
+          0,
+          2
+        ],
+        "green_components": [
+          {
+            "id": 376,
+            "subtype": "-1"
+          }
+        ],
+        "live_probe": {
+          "road": 2312,
+          "lane": 2,
+          "s": 5.0,
+          "t": 2.061877533735212,
+          "status": "matching_controller",
+          "samples": 20,
+          "valid_samples": 20,
+          "observed": [
+            {
+              "controller": 117,
+              "state": 6,
+              "samples": 20
+            }
+          ],
+          "same_road_lane_as_rule": true,
+          "api_state_3_observed": false
+        }
+      },
+      {
+        "controller": 120,
+        "lanelet": 279842,
+        "stopline": 544451,
+        "movement": "left",
+        "permitted_states": [
+          4,
+          5
+        ],
+        "source": "xodr_arrow_object:3725",
+        "api_selected_controller_id": 120,
+        "api_observation": "selected_controller",
+        "lane_validity_source": "unverified_not_specified",
+        "distance_to_approach_end_m": 0.0,
+        "road_lane": [
+          2396,
+          4,
+          -1
+        ],
+        "green_components": [
+          {
+            "id": 385,
+            "subtype": "-1"
+          }
+        ],
+        "live_probe": {
+          "road": 2396,
+          "lane": -1,
+          "s": 79.89329129215184,
+          "t": 1.5257043675932926,
+          "status": "matching_controller",
+          "samples": 20,
+          "valid_samples": 20,
+          "observed": [
+            {
+              "controller": 120,
+              "state": 2,
+              "samples": 20
+            }
+          ],
+          "same_road_lane_as_rule": true,
+          "api_state_3_observed": false
+        }
+      },
+      {
+        "controller": 122,
+        "lanelet": 279033,
+        "stopline": 543560,
+        "movement": "left+straight",
+        "permitted_states": [
+          5
+        ],
+        "source": "xodr_arrow_object:3698",
+        "api_selected_controller_id": 122,
+        "api_observation": "selected_controller",
+        "lane_validity_source": "unverified_not_specified",
+        "distance_to_approach_end_m": 0.14591034440838596,
+        "road_lane": [
+          2396,
+          0,
+          1
+        ],
+        "green_components": [
+          {
+            "id": 391,
+            "subtype": "-1"
+          }
+        ],
+        "live_probe": {
+          "road": 2396,
+          "lane": 1,
+          "s": 5.0,
+          "t": 1.37299375,
+          "status": "matching_controller",
+          "samples": 20,
+          "valid_samples": 20,
+          "observed": [
+            {
+              "controller": 122,
+              "state": 1,
+              "samples": 19
+            },
+            {
+              "controller": 122,
+              "state": 2,
+              "samples": 1
+            }
+          ],
+          "same_road_lane_as_rule": true,
+          "api_state_3_observed": false
+        }
+      },
+      {
+        "controller": 193,
+        "lanelet": 323283,
+        "stopline": 544460,
+        "movement": "left",
+        "permitted_states": [
+          4,
+          5
+        ],
+        "source": "xodr_arrow_object:4281",
+        "api_selected_controller_id": 193,
+        "api_observation": "selected_controller",
+        "lane_validity_source": "unverified_not_specified",
+        "distance_to_approach_end_m": 0.0,
+        "road_lane": [
+          2533,
+          7,
+          -1
+        ],
+        "green_components": [
+          {
+            "id": 605,
+            "subtype": "-1"
+          }
+        ],
+        "live_probe": {
+          "road": 2533,
+          "lane": -1,
+          "s": 333.6039339467074,
+          "t": 1.53455,
+          "status": "matching_controller",
+          "samples": 20,
+          "valid_samples": 20,
+          "observed": [
+            {
+              "controller": 193,
+              "state": 1,
+              "samples": 20
+            }
+          ],
+          "same_road_lane_as_rule": true,
+          "api_state_3_observed": false
+        }
+      },
+      {
+        "controller": 211,
+        "lanelet": 330140,
+        "stopline": 543725,
+        "movement": "left",
+        "permitted_states": [
+          4,
+          5
+        ],
+        "source": "xodr_arrow_object:4362",
+        "api_selected_controller_id": 211,
+        "api_observation": "selected_controller",
+        "lane_validity_source": "unverified_not_specified",
+        "distance_to_approach_end_m": 0.1496616149079273,
+        "road_lane": [
+          2564,
+          7,
+          -1
+        ],
+        "green_components": [
+          {
+            "id": 659,
+            "subtype": "-1"
+          }
+        ],
+        "live_probe": {
+          "road": 2564,
+          "lane": -1,
+          "s": 161.9581381997413,
+          "t": -1.375,
+          "status": "matching_controller",
+          "samples": 20,
+          "valid_samples": 20,
+          "observed": [
+            {
+              "controller": 211,
+              "state": 2,
+              "samples": 20
+            }
+          ],
+          "same_road_lane_as_rule": true,
+          "api_state_3_observed": false
+        }
+      },
+      {
+        "controller": 135,
+        "lanelet": 340704,
+        "stopline": 544463,
+        "movement": "left",
+        "permitted_states": [
+          4,
+          5
+        ],
+        "source": "xodr_arrow_object:4512",
+        "api_selected_controller_id": 135,
+        "api_observation": "selected_controller",
+        "lane_validity_source": "unverified_not_specified",
+        "distance_to_approach_end_m": 0.0,
+        "road_lane": [
+          2625,
+          0,
+          1
+        ],
+        "green_components": [
+          {
+            "id": 430,
+            "subtype": "-1"
+          }
+        ],
+        "live_probe": {
+          "road": 2625,
+          "lane": 1,
+          "s": 5.0,
+          "t": -1.4449594741887357,
+          "status": "matching_controller",
+          "samples": 20,
+          "valid_samples": 20,
+          "observed": [
+            {
+              "controller": 135,
+              "state": 3,
+              "samples": 20
+            }
+          ],
+          "same_road_lane_as_rule": true,
+          "api_state_3_observed": true
+        }
+      },
+      {
+        "controller": 134,
+        "lanelet": 357479,
+        "stopline": 543834,
+        "movement": "left",
+        "permitted_states": [
+          4,
+          5
+        ],
+        "source": "xodr_arrow_object:4711",
+        "api_selected_controller_id": 134,
+        "api_observation": "selected_controller",
+        "lane_validity_source": "unverified_not_specified",
+        "distance_to_approach_end_m": 0.15143706860173722,
+        "road_lane": [
+          2674,
+          3,
+          -2
+        ],
+        "green_components": [
+          {
+            "id": 427,
+            "subtype": "-1"
+          }
+        ],
+        "live_probe": {
+          "road": 2674,
+          "lane": -2,
+          "s": 81.53546777242127,
+          "t": -1.884788211837792,
+          "status": "matching_controller",
+          "samples": 20,
+          "valid_samples": 20,
+          "observed": [
+            {
+              "controller": 134,
+              "state": 3,
+              "samples": 20
+            }
+          ],
+          "same_road_lane_as_rule": true,
+          "api_state_3_observed": true
+        }
+      },
+      {
+        "controller": 134,
+        "lanelet": 357479,
+        "stopline": 543837,
+        "movement": "left",
+        "permitted_states": [
+          4,
+          5
+        ],
+        "source": "xodr_arrow_object:4711",
+        "api_selected_controller_id": 134,
+        "api_observation": "selected_controller",
+        "lane_validity_source": "unverified_not_specified",
+        "distance_to_approach_end_m": 0.15143706860173722,
+        "road_lane": [
+          2674,
+          3,
+          -2
+        ],
+        "green_components": [
+          {
+            "id": 427,
+            "subtype": "-1"
+          }
+        ],
+        "live_probe": {
+          "road": 2674,
+          "lane": -2,
+          "s": 81.53546777242127,
+          "t": -1.884788211837792,
+          "status": "matching_controller",
+          "samples": 20,
+          "valid_samples": 20,
+          "observed": [
+            {
+              "controller": 134,
+              "state": 3,
+              "samples": 20
+            }
+          ],
+          "same_road_lane_as_rule": true,
+          "api_state_3_observed": true
+        }
+      },
+      {
+        "controller": 162,
+        "lanelet": 414605,
+        "stopline": 544472,
+        "movement": "left",
+        "permitted_states": [
+          4,
+          5
+        ],
+        "source": "xodr_arrow_object:5440",
+        "api_selected_controller_id": 162,
+        "api_observation": "selected_controller",
+        "lane_validity_source": "unverified_not_specified",
+        "distance_to_approach_end_m": 0.0,
+        "road_lane": [
+          2812,
+          0,
+          1
+        ],
+        "green_components": [
+          {
+            "id": 512,
+            "subtype": "-1"
+          }
+        ],
+        "live_probe": {
+          "road": 2812,
+          "lane": 1,
+          "s": 4.67524999999999,
+          "t": -1.4812479946524066,
+          "status": "matching_controller",
+          "samples": 20,
+          "valid_samples": 20,
+          "observed": [
+            {
+              "controller": 162,
+              "state": 3,
+              "samples": 20
+            }
+          ],
+          "same_road_lane_as_rule": true,
+          "api_state_3_observed": true
+        }
+      },
+      {
+        "controller": 161,
+        "lanelet": 431265,
+        "stopline": 544252,
+        "movement": "left",
+        "permitted_states": [
+          4,
+          5
+        ],
+        "source": "xodr_arrow_object:5706",
+        "api_selected_controller_id": 161,
+        "api_observation": "selected_controller",
+        "lane_validity_source": "unverified_not_specified",
+        "distance_to_approach_end_m": 0.15005742198478345,
+        "road_lane": [
+          2816,
+          3,
+          -2
+        ],
+        "green_components": [
+          {
+            "id": 509,
+            "subtype": "-1"
+          }
+        ],
+        "live_probe": {
+          "road": 2816,
+          "lane": -2,
+          "s": 121.36414482735417,
+          "t": -1.99335,
+          "status": "matching_controller",
+          "samples": 20,
+          "valid_samples": 20,
+          "observed": [
+            {
+              "controller": 161,
+              "state": 3,
+              "samples": 20
+            }
+          ],
+          "same_road_lane_as_rule": true,
+          "api_state_3_observed": true
+        }
+      },
+      {
+        "controller": 149,
+        "lanelet": 415843,
+        "stopline": 544475,
+        "movement": "left",
+        "permitted_states": [
+          4,
+          5
+        ],
+        "source": "xodr_arrow_object:5462",
+        "api_selected_controller_id": 149,
+        "api_observation": "selected_controller",
+        "lane_validity_source": "unverified_not_specified",
+        "distance_to_approach_end_m": 0.0,
+        "road_lane": [
+          2813,
+          0,
+          1
+        ],
+        "green_components": [
+          {
+            "id": 472,
+            "subtype": "-1"
+          }
+        ],
+        "live_probe": {
+          "road": 2813,
+          "lane": 1,
+          "s": 5.0,
+          "t": -1.4822911764668807,
+          "status": "matching_controller",
+          "samples": 20,
+          "valid_samples": 20,
+          "observed": [
+            {
+              "controller": 149,
+              "state": 3,
+              "samples": 20
+            }
+          ],
+          "same_road_lane_as_rule": true,
+          "api_state_3_observed": true
+        }
+      },
+      {
+        "controller": 152,
+        "lanelet": 422965,
+        "stopline": 544222,
+        "movement": "left",
+        "permitted_states": [
+          4,
+          5
+        ],
+        "source": "xodr_arrow_object:5574",
+        "api_selected_controller_id": 152,
+        "api_observation": "selected_controller",
+        "lane_validity_source": "unverified_not_specified",
+        "distance_to_approach_end_m": 0.15129854072889054,
+        "road_lane": [
+          2815,
+          0,
+          2
+        ],
+        "green_components": [
+          {
+            "id": 482,
+            "subtype": "-1"
+          }
+        ],
+        "live_probe": {
+          "road": 2815,
+          "lane": 2,
+          "s": 5.0,
+          "t": 1.8921596014038875,
+          "status": "matching_controller",
+          "samples": 20,
+          "valid_samples": 20,
+          "observed": [
+            {
+              "controller": 152,
+              "state": 1,
+              "samples": 20
+            }
+          ],
+          "same_road_lane_as_rule": true,
+          "api_state_3_observed": false
+        }
+      }
+    ]
+  },
+  "unresolved": {
+    "api_controllers_without_stopline": [
+      80,
+      82,
+      84,
+      86,
+      89,
+      213,
+      215,
+      221
+    ],
+    "xodr_controllers_without_stopline": [
+      28,
+      89,
+      213,
+      215,
+      221,
+      222
+    ]
+  },
+  "restored_controller_rules": [
+    {
+      "controller": 55,
+      "lanelet": 126484,
+      "stopline": 544389,
+      "movement": "left",
+      "permitted_states": [
+        4,
+        5
+      ],
+      "source": "xodr_arrow_object:1684",
+      "api_selected_controller_id": 55,
+      "api_observation": "selected_controller",
+      "lane_validity_source": "xodr_signal_validity",
+      "distance_to_approach_end_m": 0.0
+    },
+    {
+      "controller": 74,
+      "lanelet": 169931,
+      "stopline": 544395,
+      "movement": "left+uturn",
+      "permitted_states": [
+        4,
+        5
+      ],
+      "source": "xodr_arrow_object:2294",
+      "api_selected_controller_id": 74,
+      "api_observation": "selected_controller",
+      "lane_validity_source": "xodr_signal_validity",
+      "distance_to_approach_end_m": 0.0
+    }
+  ],
+  "live_api_evidence": "signal_api_observations.json",
+  "topology_only_successor_map": {
+    "map_binary_sha256": "e7a426f900813748747a39233f3678237fd7f849c335bae3bc3014b31ae678b0",
+    "signal_semantics_identical": true,
+    "comparison_evidence": "signal_semantics_comparison.json",
+    "actual_api_measurement_repeated": false
+  }
+}

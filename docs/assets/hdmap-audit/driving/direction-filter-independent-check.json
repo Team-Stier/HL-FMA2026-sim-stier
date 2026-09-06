@@ -1,0 +1,191 @@
+{
+  "map_sha256": "e7a426f900813748747a39233f3678237fd7f849c335bae3bc3014b31ae678b0",
+  "source_run_map_sha256": "758f2990e28374036725bc88be2938e5857e1f9a6035e3017a83692d78e6c718",
+  "drive_script_sha256": "1be681b5eab6b85793d8f1ff1d778942988b3950570dede94ac3553515dd5af8",
+  "read_only": true,
+  "simulator_commands_sent": 0,
+  "boundary_direction_review": "Builder reverses both sampled boundaries for positive lane IDs before constructing lanelets. cell_headings consumes their travel order and correctly applies no additional sign reversal.",
+  "cell_chord_check": {
+    "method": "For even polygons, compare polygon entry-edge midpoint to exit-edge midpoint against cell_headings sampled-boundary midpoint tangent. This is a chord-vs-tangent sign check, not an exact tangent equality proof.",
+    "total_cells": 94154,
+    "tested_positive": 32808,
+    "tested_negative": 60998,
+    "opposite_positive": 0,
+    "opposite_negative": 0,
+    "odd_polygon_skipped": 346,
+    "tiny_chord_skipped": 2,
+    "maximum_difference_deg": 10.771712469540649,
+    "largest_differences": [
+      {
+        "difference_deg": 10.771712469540649,
+        "cell": 59351,
+        "lanelet": 334287
+      },
+      {
+        "difference_deg": 8.391381588259264,
+        "cell": 42786,
+        "lanelet": 240375
+      },
+      {
+        "difference_deg": 6.222728414557866,
+        "cell": 63007,
+        "lanelet": 355084
+      },
+      {
+        "difference_deg": 6.114069839166768,
+        "cell": 60637,
+        "lanelet": 341295
+      },
+      {
+        "difference_deg": 6.107066306708473,
+        "cell": 60649,
+        "lanelet": 341343
+      }
+    ]
+  },
+  "anomaly_group_checks": [
+    {
+      "old_target": 46926,
+      "final_target": 46926,
+      "source_key": [
+        420,
+        0,
+        1,
+        0.0,
+        4.4099999967041015
+      ],
+      "anomaly_samples": 36,
+      "same_road_nonzero_steps": 33,
+      "reverse_s": 33,
+      "forward_s": 0
+    },
+    {
+      "old_target": 115657,
+      "final_target": 115657,
+      "source_key": [
+        1648,
+        0,
+        -2,
+        0.0,
+        6.091023862647649
+      ],
+      "anomaly_samples": 21,
+      "same_road_nonzero_steps": 20,
+      "reverse_s": 20,
+      "forward_s": 0
+    },
+    {
+      "old_target": 42314,
+      "final_target": 42314,
+      "source_key": [
+        368,
+        0,
+        1,
+        0.0,
+        10.990396478066785
+      ],
+      "anomaly_samples": 98,
+      "same_road_nonzero_steps": 94,
+      "reverse_s": 94,
+      "forward_s": 0
+    },
+    {
+      "old_target": 485376,
+      "final_target": 485373,
+      "source_key": [
+        3081,
+        0,
+        -1,
+        12.5,
+        29.5
+      ],
+      "anomaly_samples": 149,
+      "same_road_nonzero_steps": 147,
+      "reverse_s": 147,
+      "forward_s": 0
+    },
+    {
+      "old_target": 83160,
+      "final_target": 83160,
+      "source_key": [
+        1163,
+        0,
+        -1,
+        11.0,
+        30.0
+      ],
+      "anomaly_samples": 145,
+      "same_road_nonzero_steps": 144,
+      "reverse_s": 144,
+      "forward_s": 0
+    },
+    {
+      "old_target": 63214,
+      "final_target": 63214,
+      "source_key": [
+        598,
+        0,
+        -1,
+        28.0,
+        39.888563243548276
+      ],
+      "anomaly_samples": 144,
+      "same_road_nonzero_steps": 141,
+      "reverse_s": 141,
+      "forward_s": 0
+    },
+    {
+      "old_target": 115710,
+      "final_target": 115710,
+      "source_key": [
+        1648,
+        0,
+        1,
+        0.0,
+        6.091023862647649
+      ],
+      "anomaly_samples": 14,
+      "same_road_nonzero_steps": 12,
+      "reverse_s": 12,
+      "forward_s": 0
+    },
+    {
+      "old_target": 72169,
+      "final_target": 72169,
+      "source_key": [
+        833,
+        0,
+        -1,
+        0.0,
+        19.575133680692552
+      ],
+      "anomaly_samples": 44,
+      "same_road_nonzero_steps": 43,
+      "reverse_s": 43,
+      "forward_s": 0
+    },
+    {
+      "old_target": 115630,
+      "final_target": 115630,
+      "source_key": [
+        1648,
+        0,
+        -3,
+        0.0,
+        6.091023862647649
+      ],
+      "anomaly_samples": 28,
+      "same_road_nonzero_steps": 27,
+      "reverse_s": 27,
+      "forward_s": 0
+    }
+  ],
+  "source_s_direction_check": "Forward travel requires delta_s * lane_id < 0. Tested consecutive nonzero source-s changes on the same recorded road/lane, dt<=0.5s. Raw source-road selection may itself be wrong; this does not prove physical wrong-way driving.",
+  "replay_filter_review": "Each accepted cell requires both the body heading and the actual old-to-new XY motion vector to have positive dot product with that same cell tangent. Old/current endpoint cells are evaluated with their respective body headings.",
+  "limitations": [
+    "Positive dot product is a forward-hemisphere (less than 90 degrees) filter, not precise heading following or vehicle-footprint clearance.",
+    "The 346 odd polygons and two tiny chords are excluded from this independent polygon-chord check.",
+    "audit_heading.py minimizes body/motion errors separately across candidate cells, whereas replay requires both on the same cell; this can make the diagnostic less strict near opposed candidate tangents. It does not invalidate the existing nine groups, whose same-road source-s progression is reversed.",
+    "Original run cell IDs were not reused on the final map; target correspondence includes road/section/lane and s_begin/s_end."
+  ]
+}

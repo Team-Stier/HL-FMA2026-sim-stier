@@ -21,5 +21,6 @@
     <depend>rviz_common</depend>
     <depend>rviz_default_plugins</depend>
     <depend>pluginlib</depend>
+    <test_depend>tf2_msgs</test_depend>
     <export><build_type>ament_cmake</build_type></export>
 </package>

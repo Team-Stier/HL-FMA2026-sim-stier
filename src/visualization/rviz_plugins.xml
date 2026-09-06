@@ -1,4 +1,10 @@
 <library path="idle_follow_view">
+    <class name="visualization/CellColors" type="visualization::CellColorsDisplay" base_class_type="rviz_common::Display">
+        <description>Native cell outlines with retained polygon geometry and full per-cell color snapshots.</description>
+    </class>
+    <class name="visualization/SnapshotMarkerArray" type="visualization::SnapshotMarkerArray" base_class_type="rviz_common::Display">
+        <description>Native markers that reuse matching objects across complete DELETEALL snapshots.</description>
+    </class>
     <class name="visualization/StaticMarkerArray" type="visualization::StaticMarkerArray" base_class_type="rviz_common::Display">
         <description>Native marker array that reacquires retained static geometry after reset.</description>
     </class>

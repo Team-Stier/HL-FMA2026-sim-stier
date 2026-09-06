@@ -1,0 +1,16 @@
+{
+  "xodr": "5a369c7b0609fc98b0034680473465db4273dd396ffb37980996cea70ec6ca2f",
+  "osgb": "2d8f83fdc26cb7f8373e71cf850c70f7d90981362789fb474eb31b0d5b253296",
+  "map": "e7a426f900813748747a39233f3678237fd7f849c335bae3bc3014b31ae678b0",
+  "renderer": "056f2785f6d1e12d41859968427edb5244060317735a5a549846f2747846d05b",
+  "coverage": "0b3ff222fc15a54247bcb798f30683e9af8f225c3e97dac5070a06476e41cc10",
+  "lod_scale": 0.001,
+  "grid_origin": [
+    -500,
+    -1200
+  ],
+  "core_m": 80,
+  "context_m": 10,
+  "metres_per_pixel": 0.078125,
+  "block_pixels": 4352
+}

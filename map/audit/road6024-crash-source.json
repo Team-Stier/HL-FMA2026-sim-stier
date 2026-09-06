@@ -1,0 +1,1143 @@
+{
+  "provenance": {
+    "/home/stier/vtd \uc790\ub8cc/HL_FMA_VTD_LivingLab.xodr": "5a369c7b0609fc98b0034680473465db4273dd396ffb37980996cea70ec6ca2f",
+    "/tmp/hdmap-audit/traffic-crash/taskRec_Traffic.txt": "b5347e0549e13a87dce2f3ea9576e6e049c1b8246c93c00a77b66e974ed63a41",
+    "/tmp/hdmap-audit/traffic-crash/taskRec_TaskControl.txt": "f13bf8fc6d43c2c2f82c1ab140598a63958496ab8f3c90df8c3570741a4536e0",
+    "/tmp/hdmap-audit/repaired-map/hdmap.bin": "758f2990e28374036725bc88be2938e5857e1f9a6035e3017a83692d78e6c718",
+    "/tmp/hdmap-audit/drive-midpoint/stints.json": "ce9d240cc98dfaa88e3526282140f9cb207ff860c56f7c7e7029290d3e07fa28",
+    "/home/stier/VIRES/VTD.2025.2/Runtime/Tools/ROD/DefaultProject/Odr/HL_FMA_VTD_LivingLab.xodr": "5a369c7b0609fc98b0034680473465db4273dd396ffb37980996cea70ec6ca2f"
+  },
+  "road": 6024,
+  "source_length_m": 31.976808235187548,
+  "source_lane": -1,
+  "plan_geometry_types": [
+    "line",
+    "spiral",
+    "arc",
+    "spiral",
+    "line"
+  ],
+  "width_polynomial": {
+    "sOffset": "0.0000000000000000e+00",
+    "a": "2.7532999999999999e+00",
+    "b": "0.0000000000000000e+00",
+    "c": "1.0667800967411063e-03",
+    "d": "-2.2240704135634826e-05"
+  },
+  "width_extrema": [
+    {
+      "s": 0.0,
+      "width": 2.7533
+    },
+    {
+      "s": 31.976808235187548,
+      "width": 3.1169
+    }
+  ],
+  "reference_curvature_max_per_m": 0.11435806428048553,
+  "centerline_curvature_sampled_range_per_m": [
+    -0.0010667800967411063,
+    0.09815593725789479
+  ],
+  "reference_joins": [
+    {
+      "road": 6024,
+      "join": 1,
+      "s_gap_m": 0.0,
+      "xy_gap_m": 0.0,
+      "heading_gap_rad": 7.771561172376096e-15,
+      "curvature_gap_per_m": 0.0
+    },
+    {
+      "road": 6024,
+      "join": 2,
+      "s_gap_m": -8.881784197001252e-16,
+      "xy_gap_m": 4.248558845841627e-11,
+      "heading_gap_rad": -1.241007296926e-12,
+      "curvature_gap_per_m": 0.0
+    },
+    {
+      "road": 6024,
+      "join": 3,
+      "s_gap_m": -8.881784197001252e-16,
+      "xy_gap_m": 3.892642345528295e-11,
+      "heading_gap_rad": -4.440892098500626e-16,
+      "curvature_gap_per_m": 0.0
+    },
+    {
+      "road": 6024,
+      "join": 4,
+      "s_gap_m": 8.881784197001252e-16,
+      "xy_gap_m": 8.383778017524846e-11,
+      "heading_gap_rad": 1.2545520178264269e-12,
+      "curvature_gap_per_m": 0.0
+    },
+    {
+      "road": 465,
+      "join": 1,
+      "s_gap_m": 0.0,
+      "xy_gap_m": 0.0,
+      "heading_gap_rad": 5.286882043264995e-13,
+      "curvature_gap_per_m": 0.0028084180017921368
+    },
+    {
+      "road": 465,
+      "join": 2,
+      "s_gap_m": 0.0,
+      "xy_gap_m": 7.000558987244769e-05,
+      "heading_gap_rad": 3.905654203384401e-07,
+      "curvature_gap_per_m": 0.013646090602236196
+    },
+    {
+      "road": 465,
+      "join": 3,
+      "s_gap_m": 7.105427357601002e-15,
+      "xy_gap_m": 6.2940501342313655e-06,
+      "heading_gap_rad": -4.9745274621759705e-08,
+      "curvature_gap_per_m": 0.00790356095119777
+    },
+    {
+      "road": 190,
+      "join": 1,
+      "s_gap_m": 0.0,
+      "xy_gap_m": 0.0,
+      "heading_gap_rad": -1.0258460747536446e-13,
+      "curvature_gap_per_m": -2.0451105728050665e-07
+    },
+    {
+      "road": 190,
+      "join": 2,
+      "s_gap_m": 0.0,
+      "xy_gap_m": 4.98981674994262e-10,
+      "heading_gap_rad": 9.992007221626409e-14,
+      "curvature_gap_per_m": -3.105993491401481e-07
+    }
+  ],
+  "endpoint_source_contracts": [
+    {
+      "from_road_lane": [
+        465,
+        -1
+      ],
+      "to_road_lane": [
+        6024,
+        -1
+      ],
+      "from_type": "driving",
+      "to_type": "driving",
+      "ref_gap_m": 0.0,
+      "heading_gap_rad": 1.9484414082171497e-14,
+      "center_gap_m": 5.894604249593682e-06,
+      "width_gap_m": -1.1789208491652658e-05
+    },
+    {
+      "from_road_lane": [
+        6024,
+        -1
+      ],
+      "to_road_lane": [
+        190,
+        -1
+      ],
+      "from_type": "driving",
+      "to_type": "driving",
+      "ref_gap_m": 0.0,
+      "heading_gap_rad": -1.554312234475219e-14,
+      "center_gap_m": 0.0,
+      "width_gap_m": 0.0
+    }
+  ],
+  "generated_lanelet": 537426,
+  "generated_polygon_valid": true,
+  "generated_polygon_area_m2": 100.60757997080871,
+  "native_previous": [
+    57627
+  ],
+  "native_following": [
+    35390
+  ],
+  "placement": {
+    "requested_s": 15.988404117593774,
+    "requested_lane": -1,
+    "raw_xy": [
+      524.3313014417694,
+      -154.85385105066965
+    ],
+    "source_reference_xy": [
+      524.3313014417694,
+      -154.85385105066965
+    ],
+    "correct_lane_center_xy": [
+      525.7582141411042,
+      -155.19681336780806
+    ],
+    "width_m": 2.9351,
+    "source_heading_rad": 1.3349178837156908,
+    "reference_error_m": 0.0,
+    "lane_center_error_m": 1.4675499999999781,
+    "rdb": [
+      207,
+      -2,
+      42.65085220336914,
+      -3.1012556552886963,
+      1.2109078168869019
+    ],
+    "map_hits": [
+      {
+        "lanelet": 36349,
+        "xodr": [
+          207,
+          0,
+          -2
+        ],
+        "overlap_area_m2": 10.215554755202534
+      },
+      {
+        "lanelet": 537426,
+        "xodr": [
+          6024,
+          0,
+          -1
+        ],
+        "overlap_area_m2": 100.60757997080896
+      }
+    ],
+    "stint": {
+      "target_lanelet": 537427,
+      "source_road": 6024,
+      "source_section": 0,
+      "source_lane": -1,
+      "s_range": [
+        0.0,
+        31.976808235187548
+      ],
+      "placement_s": 15.988404117593774,
+      "name": "MapAudit000",
+      "samples": 9,
+      "distance_m": 0.0,
+      "target_distance_m": 0.0,
+      "lane_misses": 0,
+      "cell_misses": 0,
+      "source_lane_misses": 0,
+      "target_hits": 9,
+      "excluded_jumps": 0,
+      "placement": {
+        "name": "MapAudit000",
+        "id": 2,
+        "xyz": [
+          524.3313014417694,
+          -154.85385105066965,
+          42.0
+        ],
+        "hpr": [
+          1.3349179029464722,
+          0.0,
+          0.0
+        ],
+        "coord_type": 0,
+        "parent": 0,
+        "frame": 9405,
+        "sim_time": 376.1600000000448,
+        "road": [
+          207,
+          -2,
+          42.65085220336914,
+          -3.1012556552886963,
+          1.2109078168869019
+        ],
+        "lanelet_hits": [
+          36349,
+          537427
+        ],
+        "cell_hits": [
+          6705,
+          94045
+        ]
+      },
+      "first_drive": {
+        "name": "MapAudit000",
+        "id": 2,
+        "xyz": [
+          524.3313014417694,
+          -154.85385105066965,
+          42.0
+        ],
+        "hpr": [
+          1.3349179029464722,
+          0.0,
+          0.0
+        ],
+        "coord_type": 0,
+        "parent": 0,
+        "frame": 9406,
+        "sim_time": 376.20000000004484,
+        "road": null
+      },
+      "last_drive": {
+        "name": "MapAudit000",
+        "id": 2,
+        "xyz": [
+          524.3313014417694,
+          -154.85385105066965,
+          42.0
+        ],
+        "hpr": [
+          1.3349179029464722,
+          0.0,
+          0.0
+        ],
+        "coord_type": 0,
+        "parent": 0,
+        "frame": 9414,
+        "sim_time": 376.520000000045,
+        "road": [
+          207,
+          -2,
+          42.65085220336914,
+          -3.1012556552886963,
+          1.2109078168869019
+        ]
+      },
+      "status": "no_motion"
+    }
+  },
+  "other_placement_comparison": [
+    {
+      "road": 2690,
+      "lane": -1,
+      "junction": 8,
+      "status": "sampled_motion",
+      "distance_to_requested_source_reference_m": 1.5776069302464437,
+      "distance_to_requested_source_lane_center_m": 0.5084052403654014,
+      "rdb_road": [
+        2690,
+        -1,
+        16.711389541625977,
+        -1.4762486219406128,
+        -0.0038388946559280157
+      ]
+    },
+    {
+      "road": 6045,
+      "lane": -2,
+      "junction": 67,
+      "status": "map_miss",
+      "distance_to_requested_source_reference_m": 0.8799000882363037,
+      "distance_to_requested_source_lane_center_m": 0.5665018611720544,
+      "rdb_road": [
+        2512,
+        -1,
+        13.582225799560547,
+        -0.1967078149318695,
+        1.2829734086990356
+      ]
+    },
+    {
+      "road": 1217,
+      "lane": -1,
+      "junction": 21,
+      "status": "sampled_motion",
+      "distance_to_requested_source_reference_m": 1.5704827164446802,
+      "distance_to_requested_source_lane_center_m": 0.5086776026034475,
+      "rdb_road": [
+        1217,
+        -1,
+        24.454221725463867,
+        -1.4944924116134644,
+        0.0055076428689062595
+      ]
+    },
+    {
+      "road": 1832,
+      "lane": -1,
+      "junction": 34,
+      "status": "sampled_motion",
+      "distance_to_requested_source_reference_m": 1.6604803766614633,
+      "distance_to_requested_source_lane_center_m": 0.5085858726501101,
+      "rdb_road": [
+        1832,
+        -1,
+        14.225076675415039,
+        -1.5864514112472534,
+        -0.02768617309629917
+      ]
+    },
+    {
+      "road": 1814,
+      "lane": -1,
+      "junction": 32,
+      "status": "sampled_motion",
+      "distance_to_requested_source_reference_m": 1.6324629327370093,
+      "distance_to_requested_source_lane_center_m": 0.5085856623425989,
+      "rdb_road": [
+        1814,
+        -1,
+        14.19918155670166,
+        -1.534712553024292,
+        -0.0049010151997208595
+      ]
+    },
+    {
+      "road": 1984,
+      "lane": -1,
+      "junction": 41,
+      "status": "sampled_motion",
+      "distance_to_requested_source_reference_m": 1.6841441948649423,
+      "distance_to_requested_source_lane_center_m": 0.5085444389934062,
+      "rdb_road": [
+        1984,
+        -1,
+        12.810833930969238,
+        -1.5802199840545654,
+        0.004101972561329603
+      ]
+    },
+    {
+      "road": 3170,
+      "lane": -1,
+      "junction": 93,
+      "status": "sampled_motion",
+      "distance_to_requested_source_reference_m": 1.6215323704567992,
+      "distance_to_requested_source_lane_center_m": 0.44892708323246766,
+      "rdb_road": [
+        3170,
+        -1,
+        49.45086669921875,
+        -1.5549899339675903,
+        -0.0023750413674861193
+      ]
+    },
+    {
+      "road": 2653,
+      "lane": -1,
+      "junction": 72,
+      "status": "sampled_motion",
+      "distance_to_requested_source_reference_m": 1.5166603272563177,
+      "distance_to_requested_source_lane_center_m": 0.44881386600352713,
+      "rdb_road": [
+        2653,
+        -1,
+        16.848814010620117,
+        -1.432754635810852,
+        -4.751156666316092e-05
+      ]
+    },
+    {
+      "road": 2898,
+      "lane": -1,
+      "junction": 80,
+      "status": "target_not_driven",
+      "distance_to_requested_source_reference_m": 1.6028518032578665,
+      "distance_to_requested_source_lane_center_m": 0.5026485462668043,
+      "rdb_road": [
+        2853,
+        -1,
+        14.407611846923828,
+        -1.6137709617614746,
+        -0.08874330669641495
+      ]
+    },
+    {
+      "road": 2298,
+      "lane": -1,
+      "junction": 58,
+      "status": "sampled_motion",
+      "distance_to_requested_source_reference_m": 1.6086731026194807,
+      "distance_to_requested_source_lane_center_m": 0.4488735837639367,
+      "rdb_road": [
+        2298,
+        -1,
+        13.901006698608398,
+        -1.5276023149490356,
+        0.0015196427702903748
+      ]
+    },
+    {
+      "road": 2385,
+      "lane": -1,
+      "junction": 60,
+      "status": "sampled_motion",
+      "distance_to_requested_source_reference_m": 1.62522469645758,
+      "distance_to_requested_source_lane_center_m": 0.4488713850030538,
+      "rdb_road": [
+        2385,
+        -1,
+        13.8275785446167,
+        -1.5484205484390259,
+        -0.002622832078486681
+      ]
+    },
+    {
+      "road": 2699,
+      "lane": -1,
+      "junction": 8,
+      "status": "sampled_motion",
+      "distance_to_requested_source_reference_m": 1.462983155155496,
+      "distance_to_requested_source_lane_center_m": 0.44888916132651646,
+      "rdb_road": [
+        2699,
+        -1,
+        20.634679794311523,
+        -1.383139967918396,
+        -0.0049818819388747215
+      ]
+    },
+    {
+      "road": 2373,
+      "lane": -1,
+      "junction": 60,
+      "status": "map_miss",
+      "distance_to_requested_source_reference_m": 1.5685548121246378,
+      "distance_to_requested_source_lane_center_m": 0.5025547393499193,
+      "rdb_road": [
+        2355,
+        -2,
+        21.12827491760254,
+        -5.399019241333008,
+        -0.8045952916145325
+      ]
+    },
+    {
+      "road": 1643,
+      "lane": -1,
+      "junction": 5,
+      "status": "sampled_motion",
+      "distance_to_requested_source_reference_m": 1.5157267746202894,
+      "distance_to_requested_source_lane_center_m": 0.5025867328469051,
+      "rdb_road": [
+        1625,
+        -2,
+        12.3895902633667,
+        -0.9489181041717529,
+        0.13987334072589874
+      ]
+    },
+    {
+      "road": 2304,
+      "lane": -1,
+      "junction": 58,
+      "status": "sampled_motion",
+      "distance_to_requested_source_reference_m": 1.4967994654171874,
+      "distance_to_requested_source_lane_center_m": 0.44885986786366655,
+      "rdb_road": [
+        2304,
+        -1,
+        13.490435600280762,
+        -1.4108092784881592,
+        0.000988510437309742
+      ]
+    },
+    {
+      "road": 3382,
+      "lane": -1,
+      "junction": 53,
+      "status": "target_not_driven",
+      "distance_to_requested_source_reference_m": 1.5422547634321093,
+      "distance_to_requested_source_lane_center_m": 0.5026794259023146,
+      "rdb_road": [
+        2198,
+        -1,
+        16.162084579467773,
+        -1.8224987983703613,
+        -0.3021310567855835
+      ]
+    },
+    {
+      "road": 1555,
+      "lane": -1,
+      "junction": 24,
+      "status": "sampled_motion",
+      "distance_to_requested_source_reference_m": 1.5708152670370366,
+      "distance_to_requested_source_lane_center_m": 0.4488699191598976,
+      "rdb_road": [
+        1555,
+        -1,
+        11.015451431274414,
+        -1.4787780046463013,
+        0.01030220277607441
+      ]
+    },
+    {
+      "road": 1796,
+      "lane": -1,
+      "junction": 32,
+      "status": "target_not_driven",
+      "distance_to_requested_source_reference_m": 1.5808064996981166,
+      "distance_to_requested_source_lane_center_m": 0.508520064428776,
+      "rdb_road": [
+        1781,
+        -1,
+        24.656482696533203,
+        -2.3620214462280273,
+        -0.9503788352012634
+      ]
+    },
+    {
+      "road": 1844,
+      "lane": -1,
+      "junction": 34,
+      "status": "sampled_motion",
+      "distance_to_requested_source_reference_m": 1.6670512473150698,
+      "distance_to_requested_source_lane_center_m": 0.5083495694983677,
+      "rdb_road": [
+        1844,
+        -1,
+        11.885951042175293,
+        -1.570616364479065,
+        -0.0038775319699198008
+      ]
+    },
+    {
+      "road": 2752,
+      "lane": -1,
+      "junction": 74,
+      "status": "target_not_driven",
+      "distance_to_requested_source_reference_m": 1.5888555129405955,
+      "distance_to_requested_source_lane_center_m": 0.5693081811772508,
+      "rdb_road": [
+        2734,
+        -1,
+        20.311315536499023,
+        -0.14362883567810059,
+        1.3558131456375122
+      ]
+    },
+    {
+      "road": 2984,
+      "lane": -1,
+      "junction": 86,
+      "status": "sampled_motion",
+      "distance_to_requested_source_reference_m": 1.7127277648853663,
+      "distance_to_requested_source_lane_center_m": 0.5085664028417239,
+      "rdb_road": [
+        2984,
+        -1,
+        14.703948020935059,
+        -1.6132187843322754,
+        0.001231105183251202
+      ]
+    },
+    {
+      "road": 3291,
+      "lane": -1,
+      "junction": 1,
+      "status": "sampled_motion",
+      "distance_to_requested_source_reference_m": 1.5087494251627265,
+      "distance_to_requested_source_lane_center_m": 0.5085896695594272,
+      "rdb_road": [
+        3291,
+        -1,
+        9.72889232635498,
+        -1.400068759918213,
+        -0.0025754026137292385
+      ]
+    },
+    {
+      "road": 2494,
+      "lane": -1,
+      "junction": 67,
+      "status": "sampled_motion",
+      "distance_to_requested_source_reference_m": 1.5131584788510257,
+      "distance_to_requested_source_lane_center_m": 0.5087725288955902,
+      "rdb_road": [
+        2494,
+        -1,
+        14.883488655090332,
+        -1.42522394657135,
+        -7.6243618423177395e-06
+      ]
+    },
+    {
+      "road": 565,
+      "lane": -1,
+      "junction": 2,
+      "status": "target_not_driven",
+      "distance_to_requested_source_reference_m": 1.565691508143795,
+      "distance_to_requested_source_lane_center_m": 0.5085457231333557,
+      "rdb_road": [
+        562,
+        -3,
+        11.417115211486816,
+        -7.605812072753906,
+        -0.10581224411725998
+      ]
+    },
+    {
+      "road": 3084,
+      "lane": -1,
+      "junction": 89,
+      "status": "target_not_driven",
+      "distance_to_requested_source_reference_m": 1.5229922149672155,
+      "distance_to_requested_source_lane_center_m": 0.5691330595899642,
+      "rdb_road": [
+        3063,
+        -1,
+        21.91050148010254,
+        -1.2952004671096802,
+        0.16973340511322021
+      ]
+    },
+    {
+      "road": 2134,
+      "lane": -1,
+      "junction": 49,
+      "status": "target_not_driven",
+      "distance_to_requested_source_reference_m": 1.5330034850892498,
+      "distance_to_requested_source_lane_center_m": 0.5026076209596232,
+      "rdb_road": [
+        2119,
+        -1,
+        11.501691818237305,
+        -2.1124653816223145,
+        -0.6522678136825562
+      ]
+    },
+    {
+      "road": 2892,
+      "lane": -1,
+      "junction": 80,
+      "status": "sampled_motion",
+      "distance_to_requested_source_reference_m": 1.6728148052592162,
+      "distance_to_requested_source_lane_center_m": 0.44886529011627485,
+      "rdb_road": [
+        2892,
+        -1,
+        15.010431289672852,
+        -1.5960092544555664,
+        -0.0010684157023206353
+      ]
+    },
+    {
+      "road": 1218,
+      "lane": -3,
+      "junction": 21,
+      "status": "target_not_driven",
+      "distance_to_requested_source_reference_m": 5.605168824467037,
+      "distance_to_requested_source_lane_center_m": 0.5026804283939179,
+      "rdb_road": [
+        1187,
+        -1,
+        30.466785430908203,
+        -1.9992947578430176,
+        -0.49929481744766235
+      ]
+    },
+    {
+      "road": 3060,
+      "lane": -1,
+      "junction": 89,
+      "status": "sampled_motion",
+      "distance_to_requested_source_reference_m": 1.496866146893987,
+      "distance_to_requested_source_lane_center_m": 0.4488705996382932,
+      "rdb_road": [
+        3060,
+        -1,
+        18.070293426513672,
+        -1.4162662029266357,
+        -0.004187681712210178
+      ]
+    },
+    {
+      "road": 1496,
+      "lane": -1,
+      "junction": 4,
+      "status": "sampled_motion",
+      "distance_to_requested_source_reference_m": 1.3874517591571307,
+      "distance_to_requested_source_lane_center_m": 0.44888354301186223,
+      "rdb_road": [
+        1496,
+        -1,
+        10.522756576538086,
+        -1.3044748306274414,
+        -0.005271967500448227
+      ]
+    },
+    {
+      "road": 1576,
+      "lane": -1,
+      "junction": 25,
+      "status": "sampled_motion",
+      "distance_to_requested_source_reference_m": 1.5401220348741549,
+      "distance_to_requested_source_lane_center_m": 0.4487936959765268,
+      "rdb_road": [
+        1576,
+        -1,
+        12.243249893188477,
+        -1.4394161701202393,
+        0.016918882727622986
+      ]
+    },
+    {
+      "road": 1502,
+      "lane": -1,
+      "junction": 4,
+      "status": "target_not_driven",
+      "distance_to_requested_source_reference_m": 1.4499776336177987,
+      "distance_to_requested_source_lane_center_m": 0.5026166473705473,
+      "rdb_road": [
+        104,
+        -1,
+        12.375795364379883,
+        -0.5005710124969482,
+        0.8908916115760803
+      ]
+    },
+    {
+      "road": 2367,
+      "lane": -1,
+      "junction": 60,
+      "status": "sampled_motion",
+      "distance_to_requested_source_reference_m": 1.4248689023304035,
+      "distance_to_requested_source_lane_center_m": 0.5085769058536364,
+      "rdb_road": [
+        2367,
+        -1,
+        13.476882934570312,
+        -1.3157509565353394,
+        -0.005846619140356779
+      ]
+    },
+    {
+      "road": 6027,
+      "lane": -1,
+      "junction": 10,
+      "status": "sampled_motion",
+      "distance_to_requested_source_reference_m": 1.6592572002660426,
+      "distance_to_requested_source_lane_center_m": 0.5086122587927941,
+      "rdb_road": [
+        6027,
+        -1,
+        14.589174270629883,
+        -1.5649933815002441,
+        -0.0059948330745100975
+      ]
+    },
+    {
+      "road": 1570,
+      "lane": -1,
+      "junction": 25,
+      "status": "map_miss",
+      "distance_to_requested_source_reference_m": 1.5779959608844132,
+      "distance_to_requested_source_lane_center_m": 0.508567913195467,
+      "rdb_road": [
+        1567,
+        -1,
+        9.946792602539062,
+        -2.252913475036621,
+        -0.7682957649230957
+      ]
+    },
+    {
+      "road": 2993,
+      "lane": -1,
+      "junction": 86,
+      "status": "sampled_motion",
+      "distance_to_requested_source_reference_m": 1.7896971165013102,
+      "distance_to_requested_source_lane_center_m": 0.5084629597209092,
+      "rdb_road": [
+        2993,
+        -1,
+        15.165900230407715,
+        -1.6963907480239868,
+        -0.002176082693040371
+      ]
+    },
+    {
+      "road": 6024,
+      "lane": -1,
+      "junction": 10,
+      "status": "no_motion",
+      "distance_to_requested_source_reference_m": 0.0,
+      "distance_to_requested_source_lane_center_m": 1.4675499999999781,
+      "rdb_road": [
+        207,
+        -2,
+        42.65085220336914,
+        -3.1012556552886963,
+        1.2109078168869019
+      ]
+    }
+  ],
+  "source_poly3_warning_length_matches": [
+    {
+      "displayed_length": 6.86,
+      "candidate_source_poly3s": [
+        {
+          "road": 208,
+          "s": 0.0999999999999863,
+          "length": 6.860000133436917
+        }
+      ]
+    },
+    {
+      "displayed_length": 7.431,
+      "candidate_source_poly3s": [
+        {
+          "road": 1492,
+          "s": 0.009999999999968614,
+          "length": 7.430613286137396
+        }
+      ]
+    },
+    {
+      "displayed_length": 56.627,
+      "candidate_source_poly3s": [
+        {
+          "road": 1868,
+          "s": 0.0009999999999464753,
+          "length": 56.62744116200983
+        }
+      ]
+    },
+    {
+      "displayed_length": 23.135,
+      "candidate_source_poly3s": [
+        {
+          "road": 1910,
+          "s": 0.0009999999999243765,
+          "length": 23.134845564388865
+        }
+      ]
+    },
+    {
+      "displayed_length": 170.605,
+      "candidate_source_poly3s": [
+        {
+          "road": 2003,
+          "s": 0.0009999999999401605,
+          "length": 170.60498046879505
+        }
+      ]
+    },
+    {
+      "displayed_length": 27.603,
+      "candidate_source_poly3s": [
+        {
+          "road": 2152,
+          "s": 0.0010000000000068199,
+          "length": 27.60309811012306
+        }
+      ]
+    },
+    {
+      "displayed_length": 89.744,
+      "candidate_source_poly3s": [
+        {
+          "road": 2264,
+          "s": 0.0009999999999484982,
+          "length": 89.74365234377628
+        }
+      ]
+    },
+    {
+      "displayed_length": 18.668,
+      "candidate_source_poly3s": [
+        {
+          "road": 2575,
+          "s": 0.0009999999999639906,
+          "length": 18.667912450945003
+        }
+      ]
+    },
+    {
+      "displayed_length": 14.219,
+      "candidate_source_poly3s": [
+        {
+          "road": 2588,
+          "s": 0.0010000000000232444,
+          "length": 14.218718052136204
+        }
+      ]
+    },
+    {
+      "displayed_length": 59.104,
+      "candidate_source_poly3s": [
+        {
+          "road": 2808,
+          "s": 0.0010000000002166436,
+          "length": 59.10448837280719
+        }
+      ]
+    },
+    {
+      "displayed_length": 13.273,
+      "candidate_source_poly3s": [
+        {
+          "road": 2809,
+          "s": 0.0010000000000105456,
+          "length": 13.272560889864844
+        }
+      ]
+    }
+  ],
+  "traffic_tail": [
+    " +++ SCP: player \"MapAudit000\": obeyTrafficLights = \"yes\"",
+    "..... add moved object \"MapAudit000\", Vehicle: SmartForTwo_14_WhiteBlack, Driver: DefaultDriver, AdaptDriverToVehicleType: false",
+    " +++ SCP: player \"MapAudit000\": desiredSpeed = \"0.0000\"",
+    " +++ SCP: player \"MapAudit000\": obeyTrafficSigns = \"yes\"",
+    " +++ SCP: player \"MapAudit000\": obeyTrafficLights = \"yes\"",
+    " +++ SCP: set speed of player \"MapAudit000\" to 0.0000.\"",
+    " +++ SCP: set player \"MapAudit000\" to track coord 6024 / 15.9884 / -1, 0.0000deg",
+    "LaneCoord: track = 207 (207), lane = -1, offset = -0.7012, s = 41.5637, t = -2.1091, z = 0.0000, h = 3.9723"
+  ],
+  "interpretation": {
+    "established": [
+      "6024 source geometry is finite, continuous and driving lane has positive width",
+      "source465/-1 ->6024/-1 ->190/-1 contracts exist",
+      "crash-associated placement is exactly at6024 reference t=0, not requested lane center",
+      "rawXY also overlaps source207 driving corridor; native reports207",
+      "GeoPoly warnings predate crash and cannot be assigned to6024 which has no poly3"
+    ],
+    "not_established": [
+      "VTD crash root cause or internal failing function: no native stack/core available",
+      "same-plane crossing connector overlap is not evidence of missing lanelet/cell",
+      "TrackPos lane request was syntactically valid according to simulator owner; native road choice under overlap needs controlled repro"
+    ]
+  },
+  "placement_contract_control": {
+    "comparison": "Last placement RDB samples may already move ~0.5m longitudinally; compare lateral t at reported source s instead of original requested s.",
+    "matching_source_road_lane_count": 23,
+    "within_0_05m_source_lane_center_count": 23,
+    "rows": [
+      {
+        "road": 2690,
+        "lane": -1,
+        "rdb_lane_offset_m": -0.0038388946559280157,
+        "rdb_t_minus_source_center_t_m": -0.003838870097415903
+      },
+      {
+        "road": 1217,
+        "lane": -1,
+        "rdb_lane_offset_m": 0.0055076428689062595,
+        "rdb_t_minus_source_center_t_m": 0.0055075883865356445
+      },
+      {
+        "road": 1832,
+        "lane": -1,
+        "rdb_lane_offset_m": -0.02768617309629917,
+        "rdb_t_minus_source_center_t_m": -0.027686187483553226
+      },
+      {
+        "road": 1814,
+        "lane": -1,
+        "rdb_lane_offset_m": -0.0049010151997208595,
+        "rdb_t_minus_source_center_t_m": -0.004900982892493744
+      },
+      {
+        "road": 1984,
+        "lane": -1,
+        "rdb_lane_offset_m": 0.004101972561329603,
+        "rdb_t_minus_source_center_t_m": 0.004102005209971393
+      },
+      {
+        "road": 3170,
+        "lane": -1,
+        "rdb_lane_offset_m": -0.0023750413674861193,
+        "rdb_t_minus_source_center_t_m": -0.002375048876785746
+      },
+      {
+        "road": 2653,
+        "lane": -1,
+        "rdb_lane_offset_m": -4.751156666316092e-05,
+        "rdb_t_minus_source_center_t_m": -4.747232171276039e-05
+      },
+      {
+        "road": 2298,
+        "lane": -1,
+        "rdb_lane_offset_m": 0.0015196427702903748,
+        "rdb_t_minus_source_center_t_m": 0.001519645894223487
+      },
+      {
+        "road": 2385,
+        "lane": -1,
+        "rdb_lane_offset_m": -0.002622832078486681,
+        "rdb_t_minus_source_center_t_m": -0.0026228155993572866
+      },
+      {
+        "road": 2699,
+        "lane": -1,
+        "rdb_lane_offset_m": -0.0049818819388747215,
+        "rdb_t_minus_source_center_t_m": -0.00498183417017839
+      },
+      {
+        "road": 2304,
+        "lane": -1,
+        "rdb_lane_offset_m": 0.000988510437309742,
+        "rdb_t_minus_source_center_t_m": 0.00098851781204079
+      },
+      {
+        "road": 1555,
+        "lane": -1,
+        "rdb_lane_offset_m": 0.01030220277607441,
+        "rdb_t_minus_source_center_t_m": 0.01030224980501293
+      },
+      {
+        "road": 1844,
+        "lane": -1,
+        "rdb_lane_offset_m": -0.0038775319699198008,
+        "rdb_t_minus_source_center_t_m": -0.00387752754976578
+      },
+      {
+        "road": 2984,
+        "lane": -1,
+        "rdb_lane_offset_m": 0.001231105183251202,
+        "rdb_t_minus_source_center_t_m": 0.0012310585247650163
+      },
+      {
+        "road": 3291,
+        "lane": -1,
+        "rdb_lane_offset_m": -0.0025754026137292385,
+        "rdb_t_minus_source_center_t_m": -0.002575400877379952
+      },
+      {
+        "road": 2494,
+        "lane": -1,
+        "rdb_lane_offset_m": -7.6243618423177395e-06,
+        "rdb_t_minus_source_center_t_m": -7.674710359006909e-06
+      },
+      {
+        "road": 2892,
+        "lane": -1,
+        "rdb_lane_offset_m": -0.0010684157023206353,
+        "rdb_t_minus_source_center_t_m": -0.0010684077710423345
+      },
+      {
+        "road": 3060,
+        "lane": -1,
+        "rdb_lane_offset_m": -0.004187681712210178,
+        "rdb_t_minus_source_center_t_m": -0.004187640571269524
+      },
+      {
+        "road": 1496,
+        "lane": -1,
+        "rdb_lane_offset_m": -0.005271967500448227,
+        "rdb_t_minus_source_center_t_m": -0.0052719965597392004
+      },
+      {
+        "road": 1576,
+        "lane": -1,
+        "rdb_lane_offset_m": 0.016918882727622986,
+        "rdb_t_minus_source_center_t_m": 0.01691890475032798
+      },
+      {
+        "road": 2367,
+        "lane": -1,
+        "rdb_lane_offset_m": -0.005846619140356779,
+        "rdb_t_minus_source_center_t_m": -0.005846617112063912
+      },
+      {
+        "road": 6027,
+        "lane": -1,
+        "rdb_lane_offset_m": -0.0059948330745100975,
+        "rdb_t_minus_source_center_t_m": -0.005994876829926277
+      },
+      {
+        "road": 2993,
+        "lane": -1,
+        "rdb_lane_offset_m": -0.002176082693040371,
+        "rdb_t_minus_source_center_t_m": -0.002176029791034484
+      }
+    ]
+  },
+  "active_vtd_source_hash_matches_analysis_source": true
+}

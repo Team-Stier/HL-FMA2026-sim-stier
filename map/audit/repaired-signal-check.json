@@ -1,0 +1,10 @@
+{
+  "after": {
+    "regulations": 603,
+    "violations": {},
+    "stops_with_multiple_controllers": 184,
+    "lamp_stopline_relations": 1817,
+    "max_lamp_stopline_distance_m": 292.75089597941127,
+    "lamp_stopline_relations_over_100m": 16
+  }
+}

@@ -1,0 +1,128 @@
+{
+  "map_sha256": "758f2990e28374036725bc88be2938e5857e1f9a6035e3017a83692d78e6c718",
+  "lanelets_scanned": 2846,
+  "criterion": "maximum 2D left/right paired sample width across the whole generated lanelet <0.05m; raw source extrema independently included for candidates",
+  "threshold_m": 0.05,
+  "candidates": [
+    {
+      "lanelet": 430702,
+      "xodr": [
+        2816,
+        2,
+        1
+      ],
+      "s_range": [
+        79.50099999979811,
+        80.20100000001423
+      ],
+      "generated_max_width_m": 0.0007213720989320808,
+      "generated_min_width_m": 0.0,
+      "raw_width_extrema": [
+        {
+          "source_s": 79.50099999979811,
+          "raw_width_m": 0.001139020161212451
+        },
+        {
+          "source_s": 80.20100000001423,
+          "raw_width_m": -0.0001139479093168543
+        }
+      ],
+      "area_m2": 0.0002391873101766171,
+      "centroid_xy": [
+        1289.399011681267,
+        728.433975133756
+      ],
+      "cells": [
+        76348,
+        76348
+      ],
+      "source_links": [],
+      "source_roadmark": [
+        {
+          "sOffset": "0.0000000000000000e+00",
+          "type": "solid",
+          "weight": "standard",
+          "color": "yellow",
+          "width": "1.3000000000000000e-01",
+          "laneChange": "none",
+          "height": "1.9999999552965164e-02"
+        }
+      ],
+      "native_previous": [],
+      "native_following": [
+        430618
+      ],
+      "left": null,
+      "right": null,
+      "adjacentLeft": null,
+      "adjacentRight": 430707,
+      "review": "Confirmed non-driving residual: <=1.139mm original width, negative terminal width, no source links, solid yellow boundary with no legal lane change. Exact-key border override supported; preserve adjacent +2 driving lane.",
+      "source_image": "/tmp/hdmap-audit/native-extra-2816.png"
+    },
+    {
+      "lanelet": 410368,
+      "xodr": [
+        2810,
+        2,
+        2
+      ],
+      "s_range": [
+        101.90099999775545,
+        102.70099999815615
+      ],
+      "generated_max_width_m": 0.04999999927150026,
+      "generated_min_width_m": 0.0,
+      "raw_width_extrema": [
+        {
+          "source_s": 101.90099999775545,
+          "raw_width_m": 0.05
+        },
+        {
+          "source_s": 102.70099999815615,
+          "raw_width_m": -2.504378648904293e-11
+        }
+      ],
+      "area_m2": 0.020574543236450984,
+      "centroid_xy": [
+        1175.2500049025043,
+        572.0865452038466
+      ],
+      "cells": [
+        72874,
+        72874
+      ],
+      "source_links": [
+        {
+          "direction": "predecessor",
+          "id": "2"
+        }
+      ],
+      "source_roadmark": [
+        {
+          "sOffset": "0.0000000000000000e+00",
+          "type": "broken",
+          "weight": "standard",
+          "color": "standard",
+          "width": "1.3000000000000000e-01",
+          "laneChange": "both",
+          "height": "1.9999999552965164e-02"
+        }
+      ],
+      "native_previous": [],
+      "native_following": [
+        410319
+      ],
+      "left": null,
+      "right": 410373,
+      "adjacentLeft": null,
+      "adjacentRight": null,
+      "review": "Threshold rounding case: original maximum is exactly0.05m, not strictly below. Preserve normal taper with explicit predecessor+2 and broken white boundary allowing right lane change; no automatic deletion."
+    }
+  ],
+  "raw_source_max_strictly_below_threshold_count": 1,
+  "audit_context": {
+    "measurement_map_sha256": "758f2990e28374036725bc88be2938e5857e1f9a6035e3017a83692d78e6c718",
+    "final_map_sha256": "e7a426f900813748747a39233f3678237fd7f849c335bae3bc3014b31ae678b0",
+    "note": "Primitive IDs belong to the measured snapshot; source road/section/lane and object/mesh keys identify the same geometry. See topology-repair-independent.json."
+  }
+}

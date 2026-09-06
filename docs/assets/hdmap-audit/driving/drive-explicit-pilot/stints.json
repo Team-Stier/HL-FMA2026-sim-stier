@@ -1,0 +1,200 @@
+[
+  {
+    "target_lanelet": 57040,
+    "source_road": 465,
+    "source_section": 0,
+    "source_lane": -1,
+    "s_range": [
+      0.0,
+      30.0
+    ],
+    "placement_s": 15.0,
+    "placement_t": -1.38039,
+    "name": "MapAudit000",
+    "samples": 150,
+    "distance_m": 27.398952863177957,
+    "target_distance_m": 14.270694109700162,
+    "lane_misses": 0,
+    "cell_misses": 0,
+    "source_lane_misses": 0,
+    "target_hits": 85,
+    "excluded_jumps": 0,
+    "placement": {
+      "name": "MapAudit000",
+      "id": 2,
+      "xyz": [
+        469.92537588484873,
+        -191.52285302968764,
+        44.07581071223913
+      ],
+      "hpr": [
+        0.5763658881187439,
+        0.0265364833176136,
+        1.1635071132332087e-05
+      ],
+      "coord_type": 0,
+      "parent": 0,
+      "frame": 256,
+      "sim_time": 10.199999999999958,
+      "road": [
+        465,
+        -1,
+        15.448860168457031,
+        -1.3803820610046387,
+        -0.00016406642680522054
+      ],
+      "lanelet_hits": [
+        57040
+      ],
+      "cell_hits": [
+        10777
+      ]
+    },
+    "placement_verified": true,
+    "first_drive": {
+      "name": "MapAudit000",
+      "id": 2,
+      "xyz": [
+        469.9782875080424,
+        -191.4884608158506,
+        44.07455107745936
+      ],
+      "hpr": [
+        0.5763705968856812,
+        0.027061395347118378,
+        1.1590923350013327e-05
+      ],
+      "coord_type": 0,
+      "parent": 0,
+      "frame": 257,
+      "sim_time": 10.239999999999958,
+      "road": null
+    },
+    "last_drive": {
+      "name": "MapAudit000",
+      "id": 2,
+      "xyz": [
+        493.4175920110205,
+        -177.30543581895057,
+        42.325943831979615
+      ],
+      "hpr": [
+        0.511862576007843,
+        0.047507207840681076,
+        -0.0006016271654516459
+      ],
+      "coord_type": 0,
+      "parent": 0,
+      "frame": 406,
+      "sim_time": 16.199999999999832,
+      "road": [
+        465,
+        -1,
+        42.89063262939453,
+        -1.6806018352508545,
+        -0.2972658574581146
+      ]
+    },
+    "status": "sampled_motion"
+  },
+  {
+    "target_lanelet": 537426,
+    "source_road": 6024,
+    "source_section": 0,
+    "source_lane": -1,
+    "s_range": [
+      0.0,
+      31.976808235187548
+    ],
+    "placement_s": 15.988404117593774,
+    "placement_t": -1.46755,
+    "name": "MapAudit000",
+    "samples": 8,
+    "distance_m": 0.0,
+    "target_distance_m": 0.0,
+    "lane_misses": 0,
+    "cell_misses": 0,
+    "source_lane_misses": 0,
+    "target_hits": 8,
+    "excluded_jumps": 0,
+    "placement": {
+      "name": "MapAudit000",
+      "id": 2,
+      "xyz": [
+        525.7582141411042,
+        -155.19681336780806,
+        42.0
+      ],
+      "hpr": [
+        1.3349179029464722,
+        0.0,
+        0.0
+      ],
+      "coord_type": 0,
+      "parent": 0,
+      "frame": 496,
+      "sim_time": 19.799999999999756,
+      "road": [
+        207,
+        -1,
+        41.56368637084961,
+        -2.1091456413269043,
+        -0.701169490814209
+      ],
+      "lanelet_hits": [
+        36582,
+        537426
+      ],
+      "cell_hits": [
+        6762,
+        94043
+      ]
+    },
+    "placement_verified": false,
+    "first_drive": {
+      "name": "MapAudit000",
+      "id": 2,
+      "xyz": [
+        525.7582141411042,
+        -155.19681336780806,
+        42.0
+      ],
+      "hpr": [
+        1.3349179029464722,
+        0.0,
+        0.0
+      ],
+      "coord_type": 0,
+      "parent": 0,
+      "frame": 497,
+      "sim_time": 19.839999999999755,
+      "road": null
+    },
+    "last_drive": {
+      "name": "MapAudit000",
+      "id": 2,
+      "xyz": [
+        525.7582141411042,
+        -155.19681336780806,
+        42.0
+      ],
+      "hpr": [
+        1.3349179029464722,
+        0.0,
+        0.0
+      ],
+      "coord_type": 0,
+      "parent": 0,
+      "frame": 504,
+      "sim_time": 20.11999999999975,
+      "road": [
+        207,
+        -1,
+        41.56368637084961,
+        -2.1091456413269043,
+        -0.701169490814209
+      ]
+    },
+    "status": "no_motion"
+  }
+]

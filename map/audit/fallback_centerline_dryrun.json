@@ -1,0 +1,40 @@
+{
+  "existing_fallback_relations": 1,
+  "retained": 0,
+  "removed": [
+    {
+      "stopline": 542790,
+      "road": 1529,
+      "object": "1386",
+      "source_s": 23.572102226928205,
+      "source_t": -1.5000003620802593,
+      "lanelet": 104051,
+      "xodr": [
+        1529,
+        0,
+        -1
+      ],
+      "centerline_crosses_stop_buffer": false,
+      "distance_to_centerline_m": 1.5000003013325733,
+      "intersection_centerline_length_m": 0.0
+    }
+  ],
+  "all_rows": [
+    {
+      "stopline": 542790,
+      "road": 1529,
+      "object": "1386",
+      "source_s": 23.572102226928205,
+      "source_t": -1.5000003620802593,
+      "lanelet": 104051,
+      "xodr": [
+        1529,
+        0,
+        -1
+      ],
+      "centerline_crosses_stop_buffer": false,
+      "distance_to_centerline_m": 1.5000003013325733,
+      "intersection_centerline_length_m": 0.0
+    }
+  ]
+}

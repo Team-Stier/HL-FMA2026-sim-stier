@@ -11,15 +11,15 @@
 - `map/stopline_mesh.json`: 원본 OSGB의 흰색 도색 삼각형에서 추출한 사각형 후보. **모든 후보를 정지선으로 채택한 것이 아니다.**
 - `config/map.yaml`: 오프라인 분할·표본 간격, 보수적 제한속도, 확인한 수동 보강 항목. 변경 후에는 지도를 다시 생성한다.
 
-**개발용 정적 지도이며 대회 주행 승인본은 아니다.** `config/runtime.yaml`의 `allow_motion: false`를 유지했다. 실행 노드 구현·시뮬레이터 실주행 검증·제동 보정은 이 작업에서 수행하지 않았다.
+**개발용 정적 지도이며 대회 주행 승인본은 아니다.** `config/runtime.yaml`의 `allow_motion: false`를 유지했다. VTD 내부 운전자 차량의 전역 표본 주행과 후속 단독 재검증을 수행했다. 프로젝트 planner/controller 폐루프와 제동 보정 완료를 뜻하지 않는다. 전수 진단·보강 및 남은 입력 모순은 [HDMapAudit.md](HDMapAudit.md), 실측 범위는 [HDMapDrivingAudit.md](HDMapDrivingAudit.md)에 있다.
 
 | 항목 | 이번 생성본 |
 |---|---:|
-| Lanelet | 2,847 |
-| Cell | 94,157 (`cell_id=0..94156`) |
+| Lanelet | 2,845 |
+| Cell | 94,154 (`cell_id=0..94153`) |
 | 물리 신호 / controller | 646 / 214 |
-| 정지선 geometry | 원본 710 + 에셋 보강 12 |
-| 차선에 연결된 정지선 geometry | 696 |
+| 정지선 geometry | 원본 ID 710 + 에셋 보강 41 = 751 (원본 위치 보정 5개 포함) |
+| 차선에 연결된 정지선 geometry | 725 |
 | 형상 거부 / 명시적 링크 연결 오차 / 잘못된 Cell | 0 / 0 / 0 |
 
 ```cpp
@@ -63,11 +63,11 @@ registry = static_map.signalRegistry()
 
 ### 연결과 형상
 
-도로·laneSection·junction의 명시적인 lane link만 연결한다. 공간상 가까운 도로를 임의 연결하지 않는다. 연결된 양 끝 Point3d는 기본 최대 0.15m 범위에서 동일 ID로 묶는다. 평균내어 매끈하게 만들지 않고 더 작은 원본 point ID 쪽 좌표를 사용하며, 바뀐 거리와 연결을 `endpoint_snaps`에 남긴다.
+도로·laneSection·junction의 명시적인 lane link로 경계 끝점을 묶고, 완성된 지도에서 실제 소비자와 동일한 Lanelet2 native routing graph를 구성한다. cell.previous와 movement 추론도 이 그래프를 사용한다. 명시 목록 밖에서 native가 인식한 5개 연속 끝점 연결은 보고서에 기록한다. 원본 연결 없이 폭 0 끝점이 접촉해 생긴 `1196/−2 → 1218/−2`의 허위 U턴은 공유되지 않은 내측 끝점 ID만 분리하여 막고, 좌표와 합법 차로 변경을 보존한다. 공간상 가까운 도로를 거리만으로 임의 연결하지 않는다. 연결된 양 끝 Point3d는 기본 최대 0.15m 범위에서 동일 ID로 묶는다. 평균내어 매끈하게 만들지 않고 더 작은 원본 point ID 쪽 좌표를 사용하며, 바뀐 거리와 연결을 `endpoint_snaps`에 남긴다.
 
 원본 프로파일에는 같은 s가 부동소수점 오차로 중복·역순 기록된 곳이 있다. 시작점 차이 1e-7m 이내에서는 뒤에 기록된 다항식을 선택한다. 이전 laneSection의 끝에서는 laneOffset을 왼쪽 극한으로 평가한다. 음수 차선 폭은 0으로 제한하고 실제 음수 값을 보고서에 기록한다. 가장 큰 음수 폭은 약 -0.0127m다.
 
-다음 두 보강은 일반 허용오차를 키워 숨기지 않고 `config/map.yaml`에 명시했다.
+다음 기존 보강과 전역 감사에서 확인한 중앙 도색 잔여물 두 건(`2810:5:+1`, `2816:2:+1`) 제외·5개 정지선 좌표 보정은 `config/map.yaml`에 명시했다. 원본 연결과 차로 변경을 가진 좁은 taper는 보존하며, 일반 허용오차를 키워 숨기지 않는다.
 
 | 위치 | 보강 | 근거 |
 |---|---|---|
@@ -91,18 +91,20 @@ road `174, 190, 420, 465` 전체에 **보수적으로 확장한 범위**로 `sch
 API가 선택하는 값은 물리 signal ID가 아니라 controller ID다. 제공 plugin 바이너리의 정적 135개 선택 표와 XODR `<controller><control signalId=...>`를 연결했다. 바이너리 SHA-256이 바뀌면 고정 offset으로 계속 읽지 않고 중단한다. 설치본의 코드나 데이터는 수정하지 않았다.
 
 - XODR의 물리 신호 646개와 controller 214개를 보존한다. 물리 위치는 `positionRoad`가 있으면 그 값을 사용한다.
-- XODR 정지선 모델 710개를 LineString으로 보존한다. 적용 차선이 확인되지 않은 선도 원본 위치 그대로 남기되 `cell_assignment=unresolved`로 표시하고 임의 Cell에 붙이지 않는다.
-- road `2077, 2115, 2116, 2195, 2819`의 일부 정지선은 XODR에 `s=0`, 비정상적으로 큰 `t`가 기록되어 도로 밖에 놓였다. 원본 OSGB의 실제 흰색 도색 삼각형에서 12개 정지선을 복원했다. 후보 목록 전체가 아니라 config에 지정한 접근 도로, 차선 끝 0.6m 이내, 진행방향과 수직인 도색만 채택한다.
-- 에셋 정지선 중심은 차로 끝에서 약 0.15m 바깥에 있을 수 있다. 도색 geometry를 옮기지 않고 해당 접근 차로 끝에 투영하여 마지막 Cell에 연결한다. 이 보수적 Cell 연결은 `cell_assignment=projected_to_approach_end`로 공개한다.
+- XODR 정지선 모델 710개의 ID 대응을 보존한다. OSGB로 입증한 5개 위치 오류는 설정으로 보정하며 `xodr_t`, `effective_t`, `correction_evidence`에 원본과 근거를 남긴다. 적용 차선이 확인되지 않은 선은 `cell_assignment=unresolved`로 표시하고 임의 Cell에 붙이지 않는다.
+- 기존 road `2077, 2115, 2116, 2195, 2819`의 12개 에셋 복원에 전역 영상 검사 결과 29개 신규 geometry를 추가했다. 추가로 확인한 30개 접근 도색 중 mesh 125 한 개는 원본 object 5153을 실제 OSGB geometry로 보정하여 중복 생성을 피했다. config에 지정한 접근 도로, 차선 끝 0.6m 이내, 진행방향과 수직인 도색을 사용한다. 중간 정지선이 있다고 끝 정지선 복원을 건너뛰지 않는다.
+- 에셋 정지선은 차로 끝에서 주로 약 0.15m, 일부는 약 0.287m 바깥에 있을 수 있다. 도색 geometry를 옮기지 않고 해당 접근 차로 끝에 투영하여 마지막 Cell에 연결한다. 이 보수적 Cell 연결은 `cell_assignment=projected_to_approach_end`로 공개한다.
 - 에셋 후보 추출은 직각 삼각형에서 사각형을 복원하고, 중심을 1cm 단위로 묶어 같은 도색의 두 삼각형·LOD 중복을 합친다. 마지막 후보의 실제 좌표를 보존하며 1cm 격자에 geometry를 스냅하는 것은 아니다. 이 중복 제거가 들어간 후보 자료를 원본 삼각형 스트림과 동일하다고 부르지 않는다.
-- 각 TrafficLight에 `controller_id`, `movement`, `permitted_states`, `movement_source`를 담는다. 좌/우/직진/유턴 노면 화살표를 우선하고 없으면 후속 연결의 회전각으로 추정한다. 추정은 `routing_geometry`라고 표시하며 원본 정답으로 포장하지 않는다.
+- 신호 규칙은 원본 signal validity와 terminal approach 범위를 검사한다. 미선언 validity는 미검증으로 기록한다. 각 TrafficLight에 `controller_id`, `api_selected_controller_id`, `api_observation`, `lane_validity_source`, `movement`, `permitted_states`, `movement_source`를 담는다. 좌/우/직진/유턴 노면 화살표를 우선하고 없으면 후속 연결의 회전각으로 추정한다. 추정은 `routing_geometry`라고 표시하며 원본 정답으로 포장하지 않는다.
 - 복합 차로에서 서로 다른 허용 상태는 교집합을 사용한다. 예를 들어 직진+좌회전은 상태 5만 허용하는 보수적 설정이다. 실제 경로에 따라 더 적극적으로 허용하는 기능이나 Tracker 상태 머신은 구현하지 않았다.
+
+plugin의 raw GO는 정적 테이블의 API 3 또는 5로 축약되며 API 4는 발생하지 않는다. 5가 개별 좌회전·직진 램프 동시 점등 측정값이라는 뜻은 아니다. 자세한 근거와 통과가 막힐 수 있는 규칙은 [HDMapSignalAudit.md](HDMapSignalAudit.md)를 참조한다.
 
 **아직 미확정인 항목**:
 
 1. API controller `80, 82, 84, 86`은 이 XODR에 없다. 같은 설치본 XODR도 동일했다. 비슷한 위치의 다른 controller에 연결하지 않았다. 실제 실행의 신호 정의 또는 주최측 계약 확인이 필요하다.
 2. 존재하는 API controller `89, 213, 215, 221`은 대응 물리 신호는 로드하지만 적용 정지선은 확정하지 못했다. `stopLine()`이 없는 규제 요소가 들어가며 통과 허용을 뜻하지 않는다. API 선택 표 밖의 controller 222도 정지선 미연결이다.
-3. 원본 정지선 26개는 여전히 Cell 미연결이다. 위 12개 에셋 보강과 원본 객체 ID의 일대일 동일성까지 증명한 것은 아니므로 원본 객체를 삭제하거나 ID를 바꿔치기하지 않았다.
+3. 원본 정지선 26개는 여전히 Cell 미연결이다. 모든 에셋 보강과 원본 오류 객체 ID의 일대일 동일성까지 증명한 것은 아니므로 임의로 원본 객체를 삭제하거나 ID를 바꿔치기하지 않았다. 미연결 전체와 OSGB 불일치 집합은 같지 않다.
 4. controller가 레지스트리에 있다는 것과 모든 접근 차로·movement가 완전히 검증됐다는 것은 다르다. 법정 제한속도 적용 범위, 신호 규칙, 전체 시나리오의 통과 가능성은 별도 확인 대상이다.
 
 미확정 신호를 녹색으로 취급하거나 원본 객체 누락을 자유 공간으로 해석하면 안 된다. 이 제약 때문에 `release_ready=false`로 기록한다.
@@ -122,6 +124,7 @@ API가 선택하는 값은 물리 signal ID가 아니라 controller ID다. 제�
 프로젝트 루트에서 실행한다. Python 3.12, Native Lanelet2 C++/Python 1.2.2, Boost 1.83, C++17 및 VTD 2025.2 설치본의 OpenSceneGraph가 필요하다. Lanelet2 공식 Python 모듈은 `import lanelet2.core, lanelet2.io`가 되는 환경이어야 한다. Python 바인딩과 C++ consumer가 동일한 Lanelet2/Boost ABI를 사용해야 하며, `.bin`을 이기종 버전 호환 포맷으로 간주하지 않는다.
 
 ```bash
+source /opt/ros/jazzy/setup.bash
 python3 -m venv --system-site-packages /tmp/hdmap-build-env
 /tmp/hdmap-build-env/bin/pip install -r map/tools/requirements.txt
 
@@ -145,7 +148,7 @@ LD_LIBRARY_PATH="$VTD/Runtime/Core/IG64/lib" /tmp/hdmap-render \
     --config config/map.yaml --output map
 ```
 
-OpenSceneGraph 추출 도구만 설치본의 구 ABI를 사용한다. Lanelet2 소비자에 이 ABI 옵션을 복사하지 않는다. OSGB 메시 추출에는 VTD 시뮬레이션 실행이나 GUI가 필요 없다. 아래 렌더링에는 유효한 DISPLAY/XAUTHORITY가 필요하며 pbuffer로 원본 장면만 읽는다.
+OpenSceneGraph 추출 도구만 설치본의 구 ABI를 사용한다. Lanelet2 소비자에 이 ABI 옵션을 복사하지 않는다. OSGB 메시 추출에는 VTD 시뮬레이션 실행이나 GUI가 필요 없다. 항공 렌더 카메라는 `LODScale=0.001`로 정밀 도로 모델을 선택한다. 기본 거리 LOD에서는 거친 포장면이 정지선·횡단보도 도색을 덮는 사례가 재현됐다. 이 설정은 `--white-mesh`의 전체 geometry 추출에는 영향을 주지 않는다. 아래 렌더링에는 유효한 DISPLAY/XAUTHORITY가 필요하며 pbuffer로 원본 장면만 읽는다.
 
 ```bash
 LD_LIBRARY_PATH="$VTD/Runtime/Core/IG64/lib" /tmp/hdmap-render \
@@ -153,6 +156,9 @@ LD_LIBRARY_PATH="$VTD/Runtime/Core/IG64/lib" /tmp/hdmap-render \
 /tmp/hdmap-build-env/bin/python map/tools/preview_map.py \
     map/hdmap.bin /tmp/map_source.png map/map_overlay.png \
     --bounds -500 -1200 2000 1300
+
+LD_LIBRARY_PATH="$VTD/Runtime/Core/IG64/lib" /tmp/hdmap-render \
+    "$SOURCE/HL_FMA_VTD_LivingLab.osgb" map/aerial_source.png -500 -1200 2000 1300 8192
 
 LD_LIBRARY_PATH="$VTD/Runtime/Core/IG64/lib" /tmp/hdmap-render \
     "$SOURCE/HL_FMA_VTD_LivingLab.osgb" map/school_source.png 380 -210 630 40
@@ -166,16 +172,16 @@ LD_LIBRARY_PATH="$VTD/Runtime/Core/IG64/lib" /tmp/hdmap-render \
 Lanelet2 개발 패키지가 CMake에서 검색되는 환경에서 실행한다. 기본 코어 소비자는 검사 도구를 빌드하지 않는다.
 
 ```bash
-cmake -S src/hdmap -B /tmp/hdmap-map-check \
+cmake -S src/hdmap -B /tmp/hdmap-audit/native-check \
     -DCMAKE_BUILD_TYPE=Release -DHDMAP_BUILD_MAP_TOOLS=ON -DHDMAP_BUILD_PYTHON=OFF
-cmake --build /tmp/hdmap-map-check
-/tmp/hdmap-map-check/hdmap_check map/hdmap.bin "$SOURCE/route_example.csv" \
+cmake --build /tmp/hdmap-audit/native-check
+/tmp/hdmap-audit/native-check/hdmap_check map/hdmap.bin "$SOURCE/route_example.csv" \
     > map/native_check.json
 python3 src/hdmap/python/check_api.py
 ```
 
-마지막 명령은 빌드한 `hdmap` Python 확장을 PYTHONPATH에서 찾을 수 있어야 한다. 검사 실행 파일은 실제 map 로드, Cell 자기 ID의 R-tree 조회, previous 소유권, RoutingGraph 오류, 8개 example checkpoint 경유 경로를 확인한다. `route_example.csv`는 제공된 예제이며 확정 대회 checkpoint라고 간주하지 않았다.
+마지막 명령은 빌드한 `hdmap` Python 확장을 PYTHONPATH에서 찾을 수 있어야 한다. 검사 실행 파일은 실제 map 로드, Cell 자기 ID의 R-tree 조회, previous 소유권 및 native predecessor 일치, RoutingGraph 오류, 8개 example checkpoint 경유 경로를 확인한다. `route_example.csv`는 제공된 예제이며 확정 대회 checkpoint라고 간주하지 않았다.
 
 이번 환경에서 `shortestPathVia`의 예제 경로 100회 평균은 약 0.03ms, 지도+Cell+R-tree 로드는 약 2.3초였다. 경로 계산 결과는 28개 Lanelet이다. 이 측정은 **현재 맵의 해당 예제 경로**에 한정하며, 전체 planner 10Hz·모든 경로·시공간 충돌 회피 성능을 보장하지 않는다.
 
-추가로 Python 로드 약 4.8초, 모든 부모 polygon의 유효성, 부모별 Cell 합집합을 검사했다. 부모와 Cell 합집합의 대칭차 면적 최대값은 `1.54e-7 m²`였다. 동일 원본·설정으로 별도 디렉터리에 다시 생성한 `.bin`은 byte 단위까지 같았다. 실제 바이너리 SHA-256은 `7759de6a84ba9ef6fd7807792c642d5e479a981c37cbc38f570fc4912420bc78`이다. 이러한 오프라인 검사는 미확정 신호·속도 규칙을 검증된 것으로 바꾸지 않는다.
+추가로 Python 로드 약 4.8초, 모든 부모 polygon의 유효성, 부모별 Cell 합집합을 검사했다. 부모와 Cell 합집합의 대칭차 면적 최대값은 `1.54e-7 m²`였다. 수정 전과 최종 보강 지도 모두 동일 원본·설정 재생성에서 byte 단위 일치를 확인했다. [재현성 기록](../map/audit/reproducibility.json)에 최종 재생성의 두 SHA를 보존했다. 현재 보강 바이너리 SHA-256은 `e7a426f900813748747a39233f3678237fd7f849c335bae3bc3014b31ae678b0`이며 최신 검사 수치는 `map/native_check.json`과 `map/audit/`에 있다. 이러한 오프라인 검사는 미확정 신호·속도 규칙을 검증된 것으로 바꾸지 않는다.

@@ -1,0 +1,5902 @@
+{
+  "map": "/tmp/hdmap-audit/driving-map-758f.bin",
+  "map_sha256": "758f2990e28374036725bc88be2938e5857e1f9a6035e3017a83692d78e6c718",
+  "source": "/home/stier/vtd \uc790\ub8cc/HL_FMA_VTD_LivingLab.xodr",
+  "source_sha256": "5a369c7b0609fc98b0034680473465db4273dd396ffb37980996cea70ec6ca2f",
+  "method": "Independent XML line/arc/spiral quadrature and poly3 arc-length inversion; raw XY tangent projection; exact source lane width intervals. Nearest map polygon distance is XY only. Source projection alone cannot identify crash actor/cause.",
+  "summary": [
+    {
+      "target": 521083,
+      "source_road": 3261,
+      "requested_lane": -1,
+      "stint_placement_verified": false,
+      "miss_frames": 4,
+      "classifications": {
+        "outside_original_driving": 4
+      },
+      "reported_roads": [
+        3261
+      ],
+      "projected_source_types": {},
+      "nearest_map_distance_range_m": [
+        0.021333003675111442,
+        0.19032665576719326
+      ],
+      "inside_source_rows": []
+    },
+    {
+      "target": 74654,
+      "source_road": 940,
+      "requested_lane": 1,
+      "stint_placement_verified": true,
+      "miss_frames": 8,
+      "classifications": {
+        "outside_original_driving": 8
+      },
+      "reported_roads": [
+        1035
+      ],
+      "projected_source_types": {
+        "border": 3,
+        "sidewalk": 5
+      },
+      "nearest_map_distance_range_m": [
+        0.17923883885203853,
+        1.0748377397497537
+      ],
+      "inside_source_rows": []
+    },
+    {
+      "target": 178756,
+      "source_road": 1977,
+      "requested_lane": 3,
+      "stint_placement_verified": true,
+      "miss_frames": 17,
+      "classifications": {
+        "outside_original_driving": 17
+      },
+      "reported_roads": [
+        1981,
+        1993
+      ],
+      "projected_source_types": {},
+      "nearest_map_distance_range_m": [
+        0.02215163731140152,
+        0.1858423063778054
+      ],
+      "inside_source_rows": []
+    },
+    {
+      "target": 307528,
+      "source_road": 2470,
+      "requested_lane": 3,
+      "stint_placement_verified": true,
+      "miss_frames": 2,
+      "classifications": {
+        "outside_original_driving": 2
+      },
+      "reported_roads": [
+        2470
+      ],
+      "projected_source_types": {
+        "border": 2
+      },
+      "nearest_map_distance_range_m": [
+        0.02056822717309706,
+        0.02061441066817566
+      ],
+      "inside_source_rows": []
+    },
+    {
+      "target": 376152,
+      "source_road": 2734,
+      "requested_lane": -2,
+      "stint_placement_verified": false,
+      "miss_frames": 40,
+      "classifications": {
+        "outside_original_driving": 40
+      },
+      "reported_roads": [
+        2728,
+        2734
+      ],
+      "projected_source_types": {
+        "border": 6,
+        "sidewalk": 23
+      },
+      "nearest_map_distance_range_m": [
+        0.03369175257070689,
+        1.5064929762628996
+      ],
+      "inside_source_rows": []
+    },
+    {
+      "target": 390542,
+      "source_road": 2789,
+      "requested_lane": -3,
+      "stint_placement_verified": false,
+      "miss_frames": 19,
+      "classifications": {
+        "outside_original_driving": 19
+      },
+      "reported_roads": [
+        2789
+      ],
+      "projected_source_types": {},
+      "nearest_map_distance_range_m": [
+        0.07996450917880742,
+        1.0554434823628094
+      ],
+      "inside_source_rows": []
+    }
+  ],
+  "rows": [
+    {
+      "target": 307528,
+      "frame": 270,
+      "xyz": [
+        1266.5089875392073,
+        -111.25732850414627,
+        75.61552043856085
+      ],
+      "rdb_road": [
+        2470,
+        4,
+        155.0803985595703,
+        6.081766128540039,
+        -0.19692206382751465
+      ],
+      "lanelets": [],
+      "cells": [
+        54566
+      ],
+      "projection_basis": "reported_road",
+      "projection": {
+        "road": 2470,
+        "raw_projected_s": 154.99545414047253,
+        "raw_projected_t": 6.080871588288064,
+        "road_length": 234.28686499203533,
+        "longitudinal_residual_m": -3.241851231905457e-14,
+        "source_interval_hits": [
+          {
+            "lane": 4,
+            "type": "border",
+            "t_bounds": [
+              6.059795669898861,
+              6.491934646963598
+            ],
+            "width": 0.4321389770647367
+          }
+        ],
+        "driving_intervals": [
+          {
+            "lane": 1,
+            "type": "driving",
+            "t_bounds": [
+              0.0,
+              2.9537523202649827
+            ],
+            "width": 2.9537523202649827
+          },
+          {
+            "lane": 2,
+            "type": "driving",
+            "t_bounds": [
+              2.9537523202649827,
+              6.045215438907889
+            ],
+            "width": 3.0914631186429067
+          },
+          {
+            "lane": 3,
+            "type": "driving",
+            "t_bounds": [
+              6.045215438907889,
+              6.059795669898861
+            ],
+            "width": 0.01458023099097157
+          },
+          {
+            "lane": -2,
+            "type": "driving",
+            "t_bounds": [
+              -3.610182984466407,
+              -0.7706770056907
+            ],
+            "width": 2.839505978775707
+          },
+          {
+            "lane": -3,
+            "type": "driving",
+            "t_bounds": [
+              -6.4463433827521675,
+              -3.610182984466407
+            ],
+            "width": 2.8361603982857604
+          }
+        ],
+        "signed_driving_lateral_margin_m": -0.02107591838920264,
+        "classification": "outside_original_driving"
+      },
+      "nearest_map_lanelet": 307528,
+      "nearest_map_source": [
+        2470,
+        5,
+        3
+      ],
+      "nearest_map_distance_m": 0.02061441066817566,
+      "reported_st_raw_xy_error_m": 0.08838417634165907
+    },
+    {
+      "target": 307528,
+      "frame": 271,
+      "xyz": [
+        1266.4581150657043,
+        -111.19067368597206,
+        75.60823734856552
+      ],
+      "rdb_road": [
+        2470,
+        4,
+        154.99447631835938,
+        6.08087158203125,
+        -0.194961279630661
+      ],
+      "lanelets": [],
+      "cells": [
+        54566
+      ],
+      "projection_basis": "reported_road",
+      "projection": {
+        "road": 2470,
+        "raw_projected_s": 154.9148958494697,
+        "raw_projected_t": 6.079317930749172,
+        "road_length": 234.28686499203533,
+        "longitudinal_residual_m": 1.6697754290362354e-13,
+        "source_interval_hits": [
+          {
+            "lane": 4,
+            "type": "border",
+            "t_bounds": [
+              6.057621670289317,
+              6.488860942563282
+            ],
+            "width": 0.43123927227396597
+          }
+        ],
+        "driving_intervals": [
+          {
+            "lane": 1,
+            "type": "driving",
+            "t_bounds": [
+              0.0,
+              2.954851605034585
+            ],
+            "width": 2.954851605034585
+          },
+          {
+            "lane": 2,
+            "type": "driving",
+            "t_bounds": [
+              2.954851605034585,
+              6.0490690593040295
+            ],
+            "width": 3.0942174542694443
+          },
+          {
+            "lane": 3,
+            "type": "driving",
+            "t_bounds": [
+              6.0490690593040295,
+              6.057621670289317
+            ],
+            "width": 0.008552610985287283
+          },
+          {
+            "lane": -2,
+            "type": "driving",
+            "t_bounds": [
+              -3.6095721735503705,
+              -0.7706716777091622
+            ],
+            "width": 2.8389004958412083
+          },
+          {
+            "lane": -3,
+            "type": "driving",
+            "t_bounds": [
+              -6.4452448423375355,
+              -3.6095721735503705
+            ],
+            "width": 2.8356726687871645
+          }
+        ],
+        "signed_driving_lateral_margin_m": -0.021696260459854955,
+        "classification": "outside_original_driving"
+      },
+      "nearest_map_lanelet": 307528,
+      "nearest_map_source": [
+        2470,
+        5,
+        3
+      ],
+      "nearest_map_distance_m": 0.02056822717309706,
+      "reported_st_raw_xy_error_m": 0.08283299309397536
+    },
+    {
+      "target": 521083,
+      "frame": 274,
+      "xyz": [
+        437.24636843780104,
+        -216.1089235443234,
+        44.156469130730926
+      ],
+      "rdb_road": [
+        3261,
+        -1,
+        30.046184539794922,
+        -2.737575054168701,
+        -1.3460116386413574
+      ],
+      "lanelets": [],
+      "cells": [],
+      "projection_basis": "reported_road",
+      "projection": {
+        "road": 3261,
+        "raw_projected_s": 30.174567273122037,
+        "raw_projected_t": -2.8541902840265427,
+        "road_length": 55.97760172905902,
+        "longitudinal_residual_m": 1.5543122344752192e-15,
+        "source_interval_hits": [],
+        "driving_intervals": [
+          {
+            "lane": -1,
+            "type": "driving",
+            "t_bounds": [
+              -2.783022886302475,
+              0.0
+            ],
+            "width": 2.783022886302475
+          }
+        ],
+        "signed_driving_lateral_margin_m": -0.07116739772406788,
+        "classification": "outside_original_driving"
+      },
+      "nearest_map_lanelet": 521083,
+      "nearest_map_source": [
+        3261,
+        0,
+        -1
+      ],
+      "nearest_map_distance_m": 0.07116734803153137,
+      "reported_st_raw_xy_error_m": 0.1734394362633666
+    },
+    {
+      "target": 521083,
+      "frame": 275,
+      "xyz": [
+        437.41806331232493,
+        -216.11637453047,
+        44.165032532400396
+      ],
+      "rdb_road": [
+        3261,
+        -1,
+        30.046184539794922,
+        -2.737575054168701,
+        -1.3460116386413574
+      ],
+      "lanelets": [],
+      "cells": [],
+      "projection_basis": "reported_road",
+      "projection": {
+        "road": 3261,
+        "raw_projected_s": 30.29850109172126,
+        "raw_projected_t": -2.9732493271091265,
+        "road_length": 55.97760172905902,
+        "longitudinal_residual_m": 5.773159728050814e-15,
+        "source_interval_hits": [],
+        "driving_intervals": [
+          {
+            "lane": -1,
+            "type": "driving",
+            "t_bounds": [
+              -2.78292258103638,
+              0.0
+            ],
+            "width": 2.78292258103638
+          }
+        ],
+        "signed_driving_lateral_margin_m": -0.19032674607274647,
+        "classification": "outside_original_driving"
+      },
+      "nearest_map_lanelet": 521083,
+      "nearest_map_source": [
+        3261,
+        0,
+        -1
+      ],
+      "nearest_map_distance_m": 0.19032665576719326,
+      "reported_st_raw_xy_error_m": 0.3452622268682746
+    },
+    {
+      "target": 521083,
+      "frame": 276,
+      "xyz": [
+        437.58570249407506,
+        -216.12781286074383,
+        44.164825228556175
+      ],
+      "rdb_road": [
+        3261,
+        -1,
+        30.046184539794922,
+        -2.737575054168701,
+        -1.3460116386413574
+      ],
+      "lanelets": [],
+      "cells": [],
+      "projection_basis": "reported_road",
+      "projection": {
+        "road": 3261,
+        "raw_projected_s": 30.4167559974874,
+        "raw_projected_t": -3.092620629856299,
+        "road_length": 55.97760172905902,
+        "longitudinal_residual_m": 4.1744385725905886e-14,
+        "source_interval_hits": [],
+        "driving_intervals": [
+          {
+            "lane": -1,
+            "type": "driving",
+            "t_bounds": [
+              -2.7828269407026376,
+              0.0
+            ],
+            "width": 2.7828269407026376
+          }
+        ],
+        "signed_driving_lateral_margin_m": -0.30979368915366123,
+        "classification": "outside_original_driving"
+      },
+      "nearest_map_lanelet": 66981,
+      "nearest_map_source": [
+        688,
+        0,
+        -1
+      ],
+      "nearest_map_distance_m": 0.13834684980834006,
+      "reported_st_raw_xy_error_m": 0.513206163322019
+    },
+    {
+      "target": 521083,
+      "frame": 277,
+      "xyz": [
+        437.7494014036374,
+        -216.14256609890688,
+        44.16461091244776
+      ],
+      "rdb_road": [
+        3261,
+        -1,
+        30.046184539794922,
+        -2.737575054168701,
+        -1.3460116386413574
+      ],
+      "lanelets": [],
+      "cells": [
+        12387
+      ],
+      "projection_basis": "reported_road",
+      "projection": {
+        "road": 3261,
+        "raw_projected_s": 30.529863003383802,
+        "raw_projected_t": -3.2118758026805745,
+        "road_length": 55.97760172905902,
+        "longitudinal_residual_m": -1.2434497875801753e-14,
+        "source_interval_hits": [],
+        "driving_intervals": [
+          {
+            "lane": -1,
+            "type": "driving",
+            "t_bounds": [
+              -2.7827355298283507,
+              0.0
+            ],
+            "width": 2.7827355298283507
+          }
+        ],
+        "signed_driving_lateral_margin_m": -0.4291402728522238,
+        "classification": "outside_original_driving"
+      },
+      "nearest_map_lanelet": 66981,
+      "nearest_map_source": [
+        688,
+        0,
+        -1
+      ],
+      "nearest_map_distance_m": 0.021333003675111442,
+      "reported_st_raw_xy_error_m": 0.6774260521848053
+    },
+    {
+      "target": 178756,
+      "frame": 362,
+      "xyz": [
+        845.638203319517,
+        -863.1269229106592,
+        53.44580936147801
+      ],
+      "rdb_road": [
+        1981,
+        -1,
+        21.038002014160156,
+        -0.05467744916677475,
+        1.544270396232605
+      ],
+      "lanelets": [],
+      "cells": [
+        31808
+      ],
+      "projection_basis": "reported_road",
+      "projection": {
+        "road": 1981,
+        "raw_projected_s": 21.2340808305027,
+        "raw_projected_t": 0.025604325381753282,
+        "road_length": 28.323251871458037,
+        "longitudinal_residual_m": -4.1288153451723986e-14,
+        "source_interval_hits": [],
+        "driving_intervals": [
+          {
+            "lane": -1,
+            "type": "driving",
+            "t_bounds": [
+              -3.197996443896252,
+              0.0
+            ],
+            "width": 3.197996443896252
+          }
+        ],
+        "signed_driving_lateral_margin_m": -0.025604325381753282,
+        "classification": "outside_original_driving"
+      },
+      "nearest_map_lanelet": 179921,
+      "nearest_map_source": [
+        1981,
+        0,
+        -1
+      ],
+      "nearest_map_distance_m": 0.025604325381847256,
+      "reported_st_raw_xy_error_m": 0.21187747766794873
+    },
+    {
+      "target": 178756,
+      "frame": 363,
+      "xyz": [
+        845.7485229735964,
+        -862.9479760083858,
+        53.45161997110597
+      ],
+      "rdb_road": [
+        1981,
+        -1,
+        21.038002014160156,
+        -0.05467744916677475,
+        1.544270396232605
+      ],
+      "lanelets": [],
+      "cells": [],
+      "projection_basis": "reported_road",
+      "projection": {
+        "road": 1981,
+        "raw_projected_s": 21.431371443414438,
+        "raw_projected_t": 0.09819105947522852,
+        "road_length": 28.323251871458037,
+        "longitudinal_residual_m": 7.54465934171833e-14,
+        "source_interval_hits": [],
+        "driving_intervals": [
+          {
+            "lane": -1,
+            "type": "driving",
+            "t_bounds": [
+              -3.1980958548950698,
+              0.0
+            ],
+            "width": 3.1980958548950698
+          }
+        ],
+        "signed_driving_lateral_margin_m": -0.09819105947522852,
+        "classification": "outside_original_driving"
+      },
+      "nearest_map_lanelet": 179921,
+      "nearest_map_source": [
+        1981,
+        0,
+        -1
+      ],
+      "nearest_map_distance_m": 0.0981910594752462,
+      "reported_st_raw_xy_error_m": 0.4220287772252953
+    },
+    {
+      "target": 178756,
+      "frame": 364,
+      "xyz": [
+        845.8624257467666,
+        -862.7770795060679,
+        53.45231957854188
+      ],
+      "rdb_road": [
+        1981,
+        -1,
+        21.038002014160156,
+        -0.05467744916677475,
+        1.544270396232605
+      ],
+      "lanelets": [],
+      "cells": [],
+      "projection_basis": "reported_road",
+      "projection": {
+        "road": 1981,
+        "raw_projected_s": 21.62650734751162,
+        "raw_projected_t": 0.16223350194890743,
+        "road_length": 28.323251871458037,
+        "longitudinal_residual_m": -1.995625886763719e-14,
+        "source_interval_hits": [],
+        "driving_intervals": [
+          {
+            "lane": -1,
+            "type": "driving",
+            "t_bounds": [
+              -3.198192299331597,
+              0.0
+            ],
+            "width": 3.198192299331597
+          }
+        ],
+        "signed_driving_lateral_margin_m": -0.16223350194890743,
+        "classification": "outside_original_driving"
+      },
+      "nearest_map_lanelet": 179921,
+      "nearest_map_source": [
+        1981,
+        0,
+        -1
+      ],
+      "nearest_map_distance_m": 0.16223352845724384,
+      "reported_st_raw_xy_error_m": 0.6272072148105248
+    },
+    {
+      "target": 178756,
+      "frame": 365,
+      "xyz": [
+        845.9793784721805,
+        -862.6141752844208,
+        53.45217933579003
+      ],
+      "rdb_road": [
+        1981,
+        -1,
+        21.038002014160156,
+        -0.05467744916677475,
+        1.544270396232605
+      ],
+      "lanelets": [],
+      "cells": [],
+      "projection_basis": "reported_road",
+      "projection": {
+        "road": 1981,
+        "raw_projected_s": 21.81910411890057,
+        "raw_projected_t": 0.218107005496192,
+        "road_length": 28.323251871458037,
+        "longitudinal_residual_m": -4.278521981149197e-14,
+        "source_interval_hits": [],
+        "driving_intervals": [
+          {
+            "lane": -1,
+            "type": "driving",
+            "t_bounds": [
+              -3.1982856054481017,
+              0.0
+            ],
+            "width": 3.1982856054481017
+          }
+        ],
+        "signed_driving_lateral_margin_m": -0.218107005496192,
+        "classification": "outside_original_driving"
+      },
+      "nearest_map_lanelet": 181064,
+      "nearest_map_source": [
+        1996,
+        0,
+        -1
+      ],
+      "nearest_map_distance_m": 0.16429714232999548,
+      "reported_st_raw_xy_error_m": 0.8273652717543226
+    },
+    {
+      "target": 178756,
+      "frame": 366,
+      "xyz": [
+        846.0989304791751,
+        -862.459096662572,
+        53.45203004142726
+      ],
+      "rdb_road": [
+        1981,
+        -1,
+        21.038002014160156,
+        -0.05467744916677475,
+        1.544270396232605
+      ],
+      "lanelets": [],
+      "cells": [],
+      "projection_basis": "reported_road",
+      "projection": {
+        "road": 1981,
+        "raw_projected_s": 22.008908660944996,
+        "raw_projected_t": 0.26622238432574985,
+        "road_length": 28.323251871458037,
+        "longitudinal_residual_m": 1.110753156119415e-11,
+        "source_interval_hits": [],
+        "driving_intervals": [
+          {
+            "lane": -1,
+            "type": "driving",
+            "t_bounds": [
+              -3.198375681070667,
+              0.0
+            ],
+            "width": 3.198375681070667
+          }
+        ],
+        "signed_driving_lateral_margin_m": -0.26622238432574985,
+        "classification": "outside_original_driving"
+      },
+      "nearest_map_lanelet": 181064,
+      "nearest_map_source": [
+        1996,
+        0,
+        -1
+      ],
+      "nearest_map_distance_m": 0.1220652479366859,
+      "reported_st_raw_xy_error_m": 1.0225674032284642
+    },
+    {
+      "target": 178756,
+      "frame": 367,
+      "xyz": [
+        846.2206649915246,
+        -862.3116560818514,
+        53.451871527001266
+      ],
+      "rdb_road": [
+        1981,
+        -1,
+        21.038002014160156,
+        -0.05467744916677475,
+        1.544270396232605
+      ],
+      "lanelets": [],
+      "cells": [],
+      "projection_basis": "reported_road",
+      "projection": {
+        "road": 1981,
+        "raw_projected_s": 22.195708272214624,
+        "raw_projected_t": 0.306986031692993,
+        "road_length": 28.323251871458037,
+        "longitudinal_residual_m": -1.6486811915683575e-14,
+        "source_interval_hits": [],
+        "driving_intervals": [
+          {
+            "lane": -1,
+            "type": "driving",
+            "t_bounds": [
+              -3.1984624655244382,
+              0.0
+            ],
+            "width": 3.1984624655244382
+          }
+        ],
+        "signed_driving_lateral_margin_m": -0.306986031692993,
+        "classification": "outside_original_driving"
+      },
+      "nearest_map_lanelet": 181064,
+      "nearest_map_source": [
+        1996,
+        0,
+        -1
+      ],
+      "nearest_map_distance_m": 0.08591481335403131,
+      "reported_st_raw_xy_error_m": 1.21289171180642
+    },
+    {
+      "target": 178756,
+      "frame": 368,
+      "xyz": [
+        846.3441996162117,
+        -862.1716482285341,
+        53.451703722826075
+      ],
+      "rdb_road": [
+        1981,
+        -1,
+        21.038002014160156,
+        -0.05467744916677475,
+        1.544270396232605
+      ],
+      "lanelets": [],
+      "cells": [],
+      "projection_basis": "reported_road",
+      "projection": {
+        "road": 1981,
+        "raw_projected_s": 22.37932865765904,
+        "raw_projected_t": 0.34079690983764754,
+        "road_length": 28.323251871458037,
+        "longitudinal_residual_m": 3.605449272470196e-14,
+        "source_interval_hits": [],
+        "driving_intervals": [
+          {
+            "lane": -1,
+            "type": "driving",
+            "t_bounds": [
+              -3.198545926768415,
+              0.0
+            ],
+            "width": 3.198545926768415
+          }
+        ],
+        "signed_driving_lateral_margin_m": -0.34079690983764754,
+        "classification": "outside_original_driving"
+      },
+      "nearest_map_lanelet": 181064,
+      "nearest_map_source": [
+        1996,
+        0,
+        -1
+      ],
+      "nearest_map_distance_m": 0.055633168666143255,
+      "reported_st_raw_xy_error_m": 1.3984294357701865
+    },
+    {
+      "target": 178756,
+      "frame": 369,
+      "xyz": [
+        846.4691865361093,
+        -862.0388531075315,
+        53.45152667803852
+      ],
+      "rdb_road": [
+        1981,
+        -1,
+        21.038002014160156,
+        -0.05467744916677475,
+        1.544270396232605
+      ],
+      "lanelets": [],
+      "cells": [],
+      "projection_basis": "reported_road",
+      "projection": {
+        "road": 1981,
+        "raw_projected_s": 22.559632123732055,
+        "raw_projected_t": 0.3680440102455863,
+        "road_length": 28.323251871458037,
+        "longitudinal_residual_m": 2.249961328359973e-11,
+        "source_interval_hits": [],
+        "driving_intervals": [
+          {
+            "lane": -1,
+            "type": "driving",
+            "t_bounds": [
+              -3.1986260586220374,
+              0.0
+            ],
+            "width": 3.1986260586220374
+          }
+        ],
+        "signed_driving_lateral_margin_m": -0.3680440102455863,
+        "classification": "outside_original_driving"
+      },
+      "nearest_map_lanelet": 181064,
+      "nearest_map_source": [
+        1996,
+        0,
+        -1
+      ],
+      "nearest_map_distance_m": 0.030760978435078332,
+      "reported_st_raw_xy_error_m": 1.5792843513907517
+    },
+    {
+      "target": 178756,
+      "frame": 377,
+      "xyz": [
+        847.5799902152052,
+        -861.1529186299534,
+        53.44862073247572
+      ],
+      "rdb_road": [
+        1993,
+        -1,
+        4.709328651428223,
+        -0.009435492567718029,
+        1.5368777513504028
+      ],
+      "lanelets": [],
+      "cells": [
+        31920,
+        31949
+      ],
+      "projection_basis": "reported_road",
+      "projection": {
+        "road": 1993,
+        "raw_projected_s": 4.344444153946347,
+        "raw_projected_t": 0.022174790644141774,
+        "road_length": 28.325341472789628,
+        "longitudinal_residual_m": -7.670799759273983e-12,
+        "source_interval_hits": [],
+        "driving_intervals": [
+          {
+            "lane": -1,
+            "type": "driving",
+            "t_bounds": [
+              -3.0936642871448905,
+              0.0
+            ],
+            "width": 3.0936642871448905
+          },
+          {
+            "lane": -2,
+            "type": "driving",
+            "t_bounds": [
+              -6.199600850090128,
+              -3.0936642871448905
+            ],
+            "width": 3.105936562945238
+          }
+        ],
+        "signed_driving_lateral_margin_m": -0.022174790644141774,
+        "classification": "outside_original_driving"
+      },
+      "nearest_map_lanelet": 180851,
+      "nearest_map_source": [
+        1993,
+        0,
+        -1
+      ],
+      "nearest_map_distance_m": 0.02215163731140152,
+      "reported_st_raw_xy_error_m": 0.36624418011690746
+    },
+    {
+      "target": 178756,
+      "frame": 378,
+      "xyz": [
+        847.7343973831674,
+        -861.0622104513855,
+        53.45138301748976
+      ],
+      "rdb_road": [
+        1993,
+        -1,
+        4.709328651428223,
+        -0.009435492567718029,
+        1.5368777513504028
+      ],
+      "lanelets": [],
+      "cells": [],
+      "projection_basis": "reported_road",
+      "projection": {
+        "road": 1993,
+        "raw_projected_s": 4.166936120452695,
+        "raw_projected_t": 0.04598434874195942,
+        "road_length": 28.325341472789628,
+        "longitudinal_residual_m": -2.4282659216723346e-14,
+        "source_interval_hits": [],
+        "driving_intervals": [
+          {
+            "lane": -1,
+            "type": "driving",
+            "t_bounds": [
+              -3.0941443229426624,
+              0.0
+            ],
+            "width": 3.0941443229426624
+          },
+          {
+            "lane": -2,
+            "type": "driving",
+            "t_bounds": [
+              -6.199631092345388,
+              -3.0941443229426624
+            ],
+            "width": 3.1054867694027255
+          }
+        ],
+        "signed_driving_lateral_margin_m": -0.04598434874195942,
+        "classification": "outside_original_driving"
+      },
+      "nearest_map_lanelet": 180851,
+      "nearest_map_source": [
+        1993,
+        0,
+        -1
+      ],
+      "nearest_map_distance_m": 0.045975454807265816,
+      "reported_st_raw_xy_error_m": 0.5451868129153183
+    },
+    {
+      "target": 178756,
+      "frame": 379,
+      "xyz": [
+        847.8879459371348,
+        -860.9783052928561,
+        53.451190123115076
+      ],
+      "rdb_road": [
+        1993,
+        -1,
+        4.709328651428223,
+        -0.009435492567718029,
+        1.5368777513504028
+      ],
+      "lanelets": [],
+      "cells": [],
+      "projection_basis": "reported_road",
+      "projection": {
+        "road": 1993,
+        "raw_projected_s": 3.9942998927764486,
+        "raw_projected_t": 0.0745540531466918,
+        "road_length": 28.325341472789628,
+        "longitudinal_residual_m": -4.754530102957233e-14,
+        "source_interval_hits": [],
+        "driving_intervals": [
+          {
+            "lane": -1,
+            "type": "driving",
+            "t_bounds": [
+              -3.0945952342895753,
+              0.0
+            ],
+            "width": 3.0945952342895753
+          },
+          {
+            "lane": -2,
+            "type": "driving",
+            "t_bounds": [
+              -6.199659499760243,
+              -3.0945952342895753
+            ],
+            "width": 3.105064265470668
+          }
+        ],
+        "signed_driving_lateral_margin_m": -0.0745540531466918,
+        "classification": "outside_original_driving"
+      },
+      "nearest_map_lanelet": 180851,
+      "nearest_map_source": [
+        1993,
+        0,
+        -1
+      ],
+      "nearest_map_distance_m": 0.07455289400828707,
+      "reported_st_raw_xy_error_m": 0.7199008590623487
+    },
+    {
+      "target": 178756,
+      "frame": 380,
+      "xyz": [
+        848.0404541353786,
+        -860.9009010272409,
+        53.45098890726564
+      ],
+      "rdb_road": [
+        1993,
+        -1,
+        4.709328651428223,
+        -0.009435492567718029,
+        1.5368777513504028
+      ],
+      "lanelets": [],
+      "cells": [],
+      "projection_basis": "reported_road",
+      "projection": {
+        "road": 1993,
+        "raw_projected_s": 3.826495814375986,
+        "raw_projected_t": 0.10759890356518476,
+        "road_length": 28.325341472789628,
+        "longitudinal_residual_m": -1.7354173653671978e-14,
+        "source_interval_hits": [],
+        "driving_intervals": [
+          {
+            "lane": -1,
+            "type": "driving",
+            "t_bounds": [
+              -3.095018190559247,
+              0.0
+            ],
+            "width": 3.095018190559247
+          },
+          {
+            "lane": -2,
+            "type": "driving",
+            "t_bounds": [
+              -6.199686146005233,
+              -3.095018190559247
+            ],
+            "width": 3.1046679554459855
+          }
+        ],
+        "signed_driving_lateral_margin_m": -0.10759890356518476,
+        "classification": "outside_original_driving"
+      },
+      "nearest_map_lanelet": 181064,
+      "nearest_map_source": [
+        1996,
+        0,
+        -1
+      ],
+      "nearest_map_distance_m": 0.10759890356520734,
+      "reported_st_raw_xy_error_m": 0.8905049704565334
+    },
+    {
+      "target": 178756,
+      "frame": 381,
+      "xyz": [
+        848.1917727333512,
+        -860.82970023923,
+        53.45078003003517
+      ],
+      "rdb_road": [
+        1993,
+        -1,
+        4.709328651428223,
+        -0.009435492567718029,
+        1.5368777513504028
+      ],
+      "lanelets": [],
+      "cells": [],
+      "projection_basis": "reported_road",
+      "projection": {
+        "road": 1993,
+        "raw_projected_s": 3.663452030167651,
+        "raw_projected_t": 0.14479560687078832,
+        "road_length": 28.325341472789628,
+        "longitudinal_residual_m": 3.377853552422039e-14,
+        "source_interval_hits": [],
+        "driving_intervals": [
+          {
+            "lane": -1,
+            "type": "driving",
+            "t_bounds": [
+              -3.0954144302065485,
+              0.0
+            ],
+            "width": 3.0954144302065485
+          },
+          {
+            "lane": -2,
+            "type": "driving",
+            "t_bounds": [
+              -6.199711109103013,
+              -3.0954144302065485
+            ],
+            "width": 3.104296678896464
+          }
+        ],
+        "signed_driving_lateral_margin_m": -0.14479560687078832,
+        "classification": "outside_original_driving"
+      },
+      "nearest_map_lanelet": 181064,
+      "nearest_map_source": [
+        1996,
+        0,
+        -1
+      ],
+      "nearest_map_distance_m": 0.14479560687079374,
+      "reported_st_raw_xy_error_m": 1.0571283216255467
+    },
+    {
+      "target": 178756,
+      "frame": 382,
+      "xyz": [
+        848.3417831314893,
+        -860.7644124323749,
+        53.45056434018436
+      ],
+      "rdb_road": [
+        1993,
+        -1,
+        4.709328651428223,
+        -0.009435492567718029,
+        1.5368777513504028
+      ],
+      "lanelets": [],
+      "cells": [],
+      "projection_basis": "reported_road",
+      "projection": {
+        "road": 1993,
+        "raw_projected_s": 3.5050828862883443,
+        "raw_projected_t": 0.18584230637784988,
+        "road_length": 28.325341472789628,
+        "longitudinal_residual_m": 1.10397802011164e-13,
+        "source_interval_hits": [],
+        "driving_intervals": [
+          {
+            "lane": -1,
+            "type": "driving",
+            "t_bounds": [
+              -3.095785201633439,
+              0.0
+            ],
+            "width": 3.095785201633439
+          },
+          {
+            "lane": -2,
+            "type": "driving",
+            "t_bounds": [
+              -6.199734467702907,
+              -3.095785201633439
+            ],
+            "width": 3.103949266069468
+          }
+        ],
+        "signed_driving_lateral_margin_m": -0.18584230637784988,
+        "classification": "outside_original_driving"
+      },
+      "nearest_map_lanelet": 180851,
+      "nearest_map_source": [
+        1993,
+        0,
+        -1
+      ],
+      "nearest_map_distance_m": 0.1858423063778054,
+      "reported_st_raw_xy_error_m": 1.2199095125241528
+    },
+    {
+      "target": 178756,
+      "frame": 383,
+      "xyz": [
+        848.4903952909486,
+        -860.7047560184542,
+        53.450342874399524
+      ],
+      "rdb_road": [
+        1993,
+        -1,
+        4.709328651428223,
+        -0.009435492567718029,
+        1.5368777513504028
+      ],
+      "lanelets": [],
+      "cells": [],
+      "projection_basis": "reported_road",
+      "projection": {
+        "road": 1993,
+        "raw_projected_s": 3.3512857287049282,
+        "raw_projected_t": 0.23046176379638234,
+        "road_length": 28.325341472789628,
+        "longitudinal_residual_m": 1.6209256159527285e-14,
+        "source_interval_hits": [],
+        "driving_intervals": [
+          {
+            "lane": -1,
+            "type": "driving",
+            "t_bounds": [
+              -3.096131762223882,
+              0.0
+            ],
+            "width": 3.096131762223882
+          },
+          {
+            "lane": -2,
+            "type": "driving",
+            "t_bounds": [
+              -6.199756301020105,
+              -3.096131762223882
+            ],
+            "width": 3.1036245387962227
+          }
+        ],
+        "signed_driving_lateral_margin_m": -0.23046176379638234,
+        "classification": "outside_original_driving"
+      },
+      "nearest_map_lanelet": 180504,
+      "nearest_map_source": [
+        1990,
+        0,
+        -1
+      ],
+      "nearest_map_distance_m": 0.16953872262116138,
+      "reported_st_raw_xy_error_m": 1.3789953446412524
+    },
+    {
+      "target": 178756,
+      "frame": 384,
+      "xyz": [
+        848.6375454385282,
+        -860.6504600732836,
+        53.450116847872664
+      ],
+      "rdb_road": [
+        1993,
+        -1,
+        4.709328651428223,
+        -0.009435492567718029,
+        1.5368777513504028
+      ],
+      "lanelets": [],
+      "cells": [],
+      "projection_basis": "reported_road",
+      "projection": {
+        "road": 1993,
+        "raw_projected_s": 3.201943792717043,
+        "raw_projected_t": 0.27840132731149686,
+        "road_length": 28.325341472789628,
+        "longitudinal_residual_m": -1.7180701306074297e-14,
+        "source_interval_hits": [],
+        "driving_intervals": [
+          {
+            "lane": -1,
+            "type": "driving",
+            "t_bounds": [
+              -3.096455363299625,
+              0.0
+            ],
+            "width": 3.096455363299625
+          },
+          {
+            "lane": -2,
+            "type": "driving",
+            "t_bounds": [
+              -6.199776687887876,
+              -3.096455363299625
+            ],
+            "width": 3.1033213245882516
+          }
+        ],
+        "signed_driving_lateral_margin_m": -0.27840132731149686,
+        "classification": "outside_original_driving"
+      },
+      "nearest_map_lanelet": 180504,
+      "nearest_map_source": [
+        1990,
+        0,
+        -1
+      ],
+      "nearest_map_distance_m": 0.1215986727200016,
+      "reported_st_raw_xy_error_m": 1.5345394784070974
+    },
+    {
+      "target": 178756,
+      "frame": 385,
+      "xyz": [
+        848.7831935890388,
+        -860.6012658444521,
+        53.44988763537828
+      ],
+      "rdb_road": [
+        1993,
+        -1,
+        4.709328651428223,
+        -0.009435492567718029,
+        1.5368777513504028
+      ],
+      "lanelets": [],
+      "cells": [],
+      "projection_basis": "reported_road",
+      "projection": {
+        "road": 1993,
+        "raw_projected_s": 3.0569290833154277,
+        "raw_projected_t": 0.32943259179372997,
+        "road_length": 28.325341472789628,
+        "longitudinal_residual_m": 7.188694084447889e-14,
+        "source_interval_hits": [],
+        "driving_intervals": [
+          {
+            "lane": -1,
+            "type": "driving",
+            "t_bounds": [
+              -3.096757237142038,
+              0.0
+            ],
+            "width": 3.096757237142038
+          },
+          {
+            "lane": -2,
+            "type": "driving",
+            "t_bounds": [
+              -6.199795705939948,
+              -3.096757237142038
+            ],
+            "width": 3.1030384687979105
+          }
+        ],
+        "signed_driving_lateral_margin_m": -0.32943259179372997,
+        "classification": "outside_original_driving"
+      },
+      "nearest_map_lanelet": 180504,
+      "nearest_map_source": [
+        1990,
+        0,
+        -1
+      ],
+      "nearest_map_distance_m": 0.07056740823632703,
+      "reported_st_raw_xy_error_m": 1.6867009866664375
+    },
+    {
+      "target": 74654,
+      "frame": 388,
+      "xyz": [
+        594.6887218932418,
+        -394.9279890659995,
+        41.70288038227564
+      ],
+      "rdb_road": [
+        1035,
+        -1,
+        5.207540512084961,
+        -3.185122489929199,
+        -1.5894588232040405
+      ],
+      "lanelets": [],
+      "cells": [],
+      "projection_basis": "reported_road",
+      "projection": {
+        "road": 1035,
+        "raw_projected_s": 5.416584972264166,
+        "raw_projected_t": -3.369960399296737,
+        "road_length": 38.45342548246467,
+        "longitudinal_residual_m": 2.391420395042587e-13,
+        "source_interval_hits": [
+          {
+            "lane": -2,
+            "type": "border",
+            "t_bounds": [
+              -3.690651509382349,
+              -3.190651509382349
+            ],
+            "width": 0.5
+          }
+        ],
+        "driving_intervals": [
+          {
+            "lane": -1,
+            "type": "driving",
+            "t_bounds": [
+              -3.190651509382349,
+              0.0
+            ],
+            "width": 3.190651509382349
+          }
+        ],
+        "signed_driving_lateral_margin_m": -0.17930888991438776,
+        "classification": "outside_original_driving"
+      },
+      "nearest_map_lanelet": 79951,
+      "nearest_map_source": [
+        1035,
+        0,
+        -1
+      ],
+      "nearest_map_distance_m": 0.17923883885203853,
+      "reported_st_raw_xy_error_m": 0.27364452959311875
+    },
+    {
+      "target": 74654,
+      "frame": 389,
+      "xyz": [
+        594.6988835463499,
+        -394.6677665351242,
+        41.711596249958696
+      ],
+      "rdb_road": [
+        1035,
+        -2,
+        5.416596412658691,
+        -3.369960308074951,
+        0.0706910714507103
+      ],
+      "lanelets": [],
+      "cells": [],
+      "projection_basis": "reported_road",
+      "projection": {
+        "road": 1035,
+        "raw_projected_s": 5.625626434984523,
+        "raw_projected_t": -3.537135529222042,
+        "road_length": 38.45342548246467,
+        "longitudinal_residual_m": 2.2928325904558733e-12,
+        "source_interval_hits": [
+          {
+            "lane": -2,
+            "type": "border",
+            "t_bounds": [
+              -3.6899531440573536,
+              -3.1899531440573536
+            ],
+            "width": 0.5
+          }
+        ],
+        "driving_intervals": [
+          {
+            "lane": -1,
+            "type": "driving",
+            "t_bounds": [
+              -3.1899531440573536,
+              0.0
+            ],
+            "width": 3.1899531440573536
+          }
+        ],
+        "signed_driving_lateral_margin_m": -0.34718238516468825,
+        "classification": "outside_original_driving"
+      },
+      "nearest_map_lanelet": 79951,
+      "nearest_map_source": [
+        1035,
+        0,
+        -1
+      ],
+      "nearest_map_distance_m": 0.3470805663587213,
+      "reported_st_raw_xy_error_m": 0.2604125049207369
+    },
+    {
+      "target": 74654,
+      "frame": 390,
+      "xyz": [
+        594.6985449991558,
+        -394.42254707506726,
+        41.71970978056654
+      ],
+      "rdb_road": [
+        1035,
+        -2,
+        5.625643730163574,
+        -3.537135601043701,
+        -0.09718244522809982
+      ],
+      "lanelets": [],
+      "cells": [],
+      "projection_basis": "reported_road",
+      "projection": {
+        "road": 1035,
+        "raw_projected_s": 5.831698098222247,
+        "raw_projected_t": -3.68625751008118,
+        "road_length": 38.45342548246467,
+        "longitudinal_residual_m": -1.8556267633584866e-12,
+        "source_interval_hits": [
+          {
+            "lane": -2,
+            "type": "border",
+            "t_bounds": [
+              -3.689242943863524,
+              -3.189242943863524
+            ],
+            "width": 0.5
+          }
+        ],
+        "driving_intervals": [
+          {
+            "lane": -1,
+            "type": "driving",
+            "t_bounds": [
+              -3.189242943863524,
+              0.0
+            ],
+            "width": 3.189242943863524
+          }
+        ],
+        "signed_driving_lateral_margin_m": -0.49701456621765594,
+        "classification": "outside_original_driving"
+      },
+      "nearest_map_lanelet": 79951,
+      "nearest_map_source": [
+        1035,
+        0,
+        -1
+      ],
+      "nearest_map_distance_m": 0.496903455312457,
+      "reported_st_raw_xy_error_m": 0.24520662273439953
+    },
+    {
+      "target": 74654,
+      "frame": 391,
+      "xyz": [
+        594.6893291858382,
+        -394.1923943961723,
+        41.86970978056654
+      ],
+      "rdb_road": [
+        1035,
+        -2,
+        5.831721782684326,
+        -3.6862576007843018,
+        -0.24701465666294098
+      ],
+      "lanelets": [],
+      "cells": [],
+      "projection_basis": "reported_road",
+      "projection": {
+        "road": 1035,
+        "raw_projected_s": 6.033634804851585,
+        "raw_projected_t": -3.8185282376461123,
+        "road_length": 38.45342548246467,
+        "longitudinal_residual_m": 2.7755575615628914e-14,
+        "source_interval_hits": [
+          {
+            "lane": -3,
+            "type": "sidewalk",
+            "t_bounds": [
+              -7.6885263246809,
+              -3.6885263246809004
+            ],
+            "width": 4.0
+          }
+        ],
+        "driving_intervals": [
+          {
+            "lane": -1,
+            "type": "driving",
+            "t_bounds": [
+              -3.1885263246809004,
+              0.0
+            ],
+            "width": 3.1885263246809004
+          }
+        ],
+        "signed_driving_lateral_margin_m": -0.6300019129652119,
+        "classification": "outside_original_driving"
+      },
+      "nearest_map_lanelet": 79951,
+      "nearest_map_source": [
+        1035,
+        0,
+        -1
+      ],
+      "nearest_map_distance_m": 0.6299252118971455,
+      "reported_st_raw_xy_error_m": 0.23031887410818622
+    },
+    {
+      "target": 74654,
+      "frame": 392,
+      "xyz": [
+        594.6715558440801,
+        -393.9667839519648,
+        41.860994425782714
+      ],
+      "rdb_road": [
+        1035,
+        -3,
+        6.033664703369141,
+        -3.818528175354004,
+        1.8699979782104492
+      ],
+      "lanelets": [],
+      "cells": [],
+      "projection_basis": "reported_road",
+      "projection": {
+        "road": 1035,
+        "raw_projected_s": 6.240250829959697,
+        "raw_projected_t": -3.9405095411450963,
+        "road_length": 38.45342548246467,
+        "longitudinal_residual_m": 1.9273471707492718e-13,
+        "source_interval_hits": [
+          {
+            "lane": -3,
+            "type": "sidewalk",
+            "t_bounds": [
+              -7.68777221425061,
+              -3.68777221425061
+            ],
+            "width": 4.0
+          }
+        ],
+        "driving_intervals": [
+          {
+            "lane": -1,
+            "type": "driving",
+            "t_bounds": [
+              -3.18777221425061,
+              0.0
+            ],
+            "width": 3.18777221425061
+          }
+        ],
+        "signed_driving_lateral_margin_m": -0.7527373268944864,
+        "classification": "outside_original_driving"
+      },
+      "nearest_map_lanelet": 79951,
+      "nearest_map_source": [
+        1035,
+        0,
+        -1
+      ],
+      "nearest_map_distance_m": 0.7527171458185915,
+      "reported_st_raw_xy_error_m": 0.2262861297019115
+    },
+    {
+      "target": 74654,
+      "frame": 393,
+      "xyz": [
+        594.6448385609056,
+        -393.74001275800657,
+        41.85227853473414
+      ],
+      "rdb_road": [
+        1035,
+        -3,
+        6.240286827087402,
+        -3.940509557723999,
+        1.7472625970840454
+      ],
+      "lanelets": [],
+      "cells": [],
+      "projection_basis": "reported_road",
+      "projection": {
+        "road": 1035,
+        "raw_projected_s": 6.4570915997653,
+        "raw_projected_t": -4.05517653996386,
+        "road_length": 38.45342548246467,
+        "longitudinal_residual_m": 4.263700503770451e-12,
+        "source_interval_hits": [
+          {
+            "lane": -3,
+            "type": "sidewalk",
+            "t_bounds": [
+              -7.686958388889985,
+              -3.686958388889985
+            ],
+            "width": 4.0
+          }
+        ],
+        "driving_intervals": [
+          {
+            "lane": -1,
+            "type": "driving",
+            "t_bounds": [
+              -3.186958388889985,
+              0.0
+            ],
+            "width": 3.186958388889985
+          }
+        ],
+        "signed_driving_lateral_margin_m": -0.8682181510738749,
+        "classification": "outside_original_driving"
+      },
+      "nearest_map_lanelet": 79951,
+      "nearest_map_source": [
+        1035,
+        0,
+        -1
+      ],
+      "nearest_map_distance_m": 0.868124608429313,
+      "reported_st_raw_xy_error_m": 0.22831112539853757
+    },
+    {
+      "target": 74654,
+      "frame": 394,
+      "xyz": [
+        594.6090138150635,
+        -393.5125063317176,
+        41.84749863496427
+      ],
+      "rdb_road": [
+        1035,
+        -3,
+        6.457132339477539,
+        -4.055176734924316,
+        1.6317816972732544
+      ],
+      "lanelets": [],
+      "cells": [],
+      "projection_basis": "reported_road",
+      "projection": {
+        "road": 1035,
+        "raw_projected_s": 6.684398067364113,
+        "raw_projected_t": -4.16192941007784,
+        "road_length": 38.45342548246467,
+        "longitudinal_residual_m": -7.48268114136863e-12,
+        "source_interval_hits": [
+          {
+            "lane": -3,
+            "type": "sidewalk",
+            "t_bounds": [
+              -7.686081028844637,
+              -3.686081028844636
+            ],
+            "width": 4.0
+          }
+        ],
+        "driving_intervals": [
+          {
+            "lane": -1,
+            "type": "driving",
+            "t_bounds": [
+              -3.186081028844636,
+              0.0
+            ],
+            "width": 3.186081028844636
+          }
+        ],
+        "signed_driving_lateral_margin_m": -0.9758483812332037,
+        "classification": "outside_original_driving"
+      },
+      "nearest_map_lanelet": 79951,
+      "nearest_map_source": [
+        1035,
+        0,
+        -1
+      ],
+      "nearest_map_distance_m": 0.9757047168172438,
+      "reported_st_raw_xy_error_m": 0.23027707198234273
+    },
+    {
+      "target": 74654,
+      "frame": 395,
+      "xyz": [
+        594.5639414682332,
+        -393.28470404238055,
+        41.84757803042516
+      ],
+      "rdb_road": [
+        1035,
+        -3,
+        6.684441566467285,
+        -4.161929607391357,
+        1.5241514444351196
+      ],
+      "lanelets": [],
+      "cells": [],
+      "projection_basis": "reported_road",
+      "projection": {
+        "road": 1035,
+        "raw_projected_s": 6.922398938915019,
+        "raw_projected_t": -4.260150446430864,
+        "road_length": 38.45342548246467,
+        "longitudinal_residual_m": -6.834532939592464e-13,
+        "source_interval_hits": [
+          {
+            "lane": -3,
+            "type": "sidewalk",
+            "t_bounds": [
+              -7.68513620735178,
+              -3.6851362073517797
+            ],
+            "width": 4.0
+          }
+        ],
+        "driving_intervals": [
+          {
+            "lane": -1,
+            "type": "driving",
+            "t_bounds": [
+              -3.1851362073517797,
+              0.0
+            ],
+            "width": 3.1851362073517797
+          }
+        ],
+        "signed_driving_lateral_margin_m": -1.0750142390790844,
+        "classification": "outside_original_driving"
+      },
+      "nearest_map_lanelet": 79951,
+      "nearest_map_source": [
+        1035,
+        0,
+        -1
+      ],
+      "nearest_map_distance_m": 1.0748377397497537,
+      "reported_st_raw_xy_error_m": 0.23218327481250683
+    },
+    {
+      "target": 376152,
+      "frame": 530,
+      "xyz": [
+        1348.6334050826429,
+        168.97253900316457,
+        55.15098370699665
+      ],
+      "rdb_road": [
+        2734,
+        -2,
+        31.02534294128418,
+        -5.903670787811279,
+        -1.4098098278045654
+      ],
+      "lanelets": [],
+      "cells": [],
+      "projection_basis": "reported_road",
+      "projection": {
+        "road": 2734,
+        "raw_projected_s": 31.15724857501267,
+        "raw_projected_t": -6.022091519779925,
+        "road_length": 46.00663906482666,
+        "longitudinal_residual_m": -4.9960036108132044e-14,
+        "source_interval_hits": [],
+        "driving_intervals": [
+          {
+            "lane": -1,
+            "type": "driving",
+            "t_bounds": [
+              -2.999533960701145,
+              0.0
+            ],
+            "width": 2.999533960701145
+          },
+          {
+            "lane": -2,
+            "type": "driving",
+            "t_bounds": [
+              -5.988373545912772,
+              -2.999533960701145
+            ],
+            "width": 2.988839585211627
+          }
+        ],
+        "signed_driving_lateral_margin_m": -0.03371797386715336,
+        "classification": "outside_original_driving"
+      },
+      "nearest_map_lanelet": 376152,
+      "nearest_map_source": [
+        2734,
+        0,
+        -2
+      ],
+      "nearest_map_distance_m": 0.03369175257070689,
+      "reported_st_raw_xy_error_m": 0.17471253652474306
+    },
+    {
+      "target": 376152,
+      "frame": 531,
+      "xyz": [
+        1348.7773467988434,
+        168.8729314536447,
+        55.15682251508172
+      ],
+      "rdb_road": [
+        2734,
+        -2,
+        31.02534294128418,
+        -5.903670787811279,
+        -1.4098098278045654
+      ],
+      "lanelets": [],
+      "cells": [],
+      "projection_basis": "reported_road",
+      "projection": {
+        "road": 2734,
+        "raw_projected_s": 31.28560969718513,
+        "raw_projected_t": -6.144599993744469,
+        "road_length": 46.00663906482666,
+        "longitudinal_residual_m": 1.7763568394002505e-13,
+        "source_interval_hits": [],
+        "driving_intervals": [
+          {
+            "lane": -1,
+            "type": "driving",
+            "t_bounds": [
+              -2.99954089744751,
+              0.0
+            ],
+            "width": 2.99954089744751
+          },
+          {
+            "lane": -2,
+            "type": "driving",
+            "t_bounds": [
+              -5.98854659947999,
+              -2.99954089744751
+            ],
+            "width": 2.9890057020324794
+          }
+        ],
+        "signed_driving_lateral_margin_m": -0.15605339426447973,
+        "classification": "outside_original_driving"
+      },
+      "nearest_map_lanelet": 376152,
+      "nearest_map_source": [
+        2734,
+        0,
+        -2
+      ],
+      "nearest_map_distance_m": 0.1560334088738586,
+      "reported_st_raw_xy_error_m": 0.34971588348433147
+    },
+    {
+      "target": 376152,
+      "frame": 532,
+      "xyz": [
+        1348.9151082321348,
+        168.77125992795902,
+        55.1594781448572
+      ],
+      "rdb_road": [
+        2734,
+        -2,
+        31.02534294128418,
+        -5.903670787811279,
+        -1.4098098278045654
+      ],
+      "lanelets": [],
+      "cells": [],
+      "projection_basis": "reported_road",
+      "projection": {
+        "road": 2734,
+        "raw_projected_s": 31.407401876375086,
+        "raw_projected_t": -6.268035455814116,
+        "road_length": 46.00663906482666,
+        "longitudinal_residual_m": -2.0983215165415459e-13,
+        "source_interval_hits": [],
+        "driving_intervals": [
+          {
+            "lane": -1,
+            "type": "driving",
+            "t_bounds": [
+              -2.999547449669703,
+              0.0
+            ],
+            "width": 2.999547449669703
+          },
+          {
+            "lane": -2,
+            "type": "driving",
+            "t_bounds": [
+              -5.988710060181007,
+              -2.999547449669703
+            ],
+            "width": 2.989162610511304
+          }
+        ],
+        "signed_driving_lateral_margin_m": -0.27932539563310854,
+        "classification": "outside_original_driving"
+      },
+      "nearest_map_lanelet": 376152,
+      "nearest_map_source": [
+        2734,
+        0,
+        -2
+      ],
+      "nearest_map_distance_m": 0.27929996533992835,
+      "reported_st_raw_xy_error_m": 0.5208117223007322
+    },
+    {
+      "target": 376152,
+      "frame": 533,
+      "xyz": [
+        1349.0467794854167,
+        168.66786448127974,
+        55.1592696254624
+      ],
+      "rdb_road": [
+        2734,
+        -2,
+        31.02534294128418,
+        -5.903670787811279,
+        -1.4098098278045654
+      ],
+      "lanelets": [],
+      "cells": [],
+      "projection_basis": "reported_road",
+      "projection": {
+        "road": 2734,
+        "raw_projected_s": 31.522774834111537,
+        "raw_projected_t": -6.392089139717504,
+        "road_length": 46.00663906482666,
+        "longitudinal_residual_m": 1.5076828674409626e-13,
+        "source_interval_hits": [],
+        "driving_intervals": [
+          {
+            "lane": -1,
+            "type": "driving",
+            "t_bounds": [
+              -2.9995536296341876,
+              0.0
+            ],
+            "width": 2.9995536296341876
+          },
+          {
+            "lane": -2,
+            "type": "driving",
+            "t_bounds": [
+              -5.9888642340318405,
+              -2.9995536296341876
+            ],
+            "width": 2.9893106043976534
+          }
+        ],
+        "signed_driving_lateral_margin_m": -0.40322490568566316,
+        "classification": "outside_original_driving"
+      },
+      "nearest_map_lanelet": 376152,
+      "nearest_map_source": [
+        2734,
+        0,
+        -2
+      ],
+      "nearest_map_distance_m": 0.4032026891257299,
+      "reported_st_raw_xy_error_m": 0.6879935437369616
+    },
+    {
+      "target": 376152,
+      "frame": 534,
+      "xyz": [
+        1349.172566992133,
+        168.5629826270828,
+        55.15905424735675
+      ],
+      "rdb_road": [
+        2734,
+        -2,
+        31.02534294128418,
+        -5.903670787811279,
+        -1.4098098278045654
+      ],
+      "lanelets": [],
+      "cells": [],
+      "projection_basis": "reported_road",
+      "projection": {
+        "road": 2734,
+        "raw_projected_s": 31.63197779691637,
+        "raw_projected_t": -6.516571586212374,
+        "road_length": 46.00663906482666,
+        "longitudinal_residual_m": -1.1790568521519162e-13,
+        "source_interval_hits": [],
+        "driving_intervals": [
+          {
+            "lane": -1,
+            "type": "driving",
+            "t_bounds": [
+              -2.9995594546483644,
+              0.0
+            ],
+            "width": 2.9995594546483644
+          },
+          {
+            "lane": -2,
+            "type": "driving",
+            "t_bounds": [
+              -5.989009552806568,
+              -2.9995594546483644
+            ],
+            "width": 2.989450098158204
+          }
+        ],
+        "signed_driving_lateral_margin_m": -0.5275620334058058,
+        "classification": "outside_original_driving"
+      },
+      "nearest_map_lanelet": 376152,
+      "nearest_map_source": [
+        2734,
+        0,
+        -2
+      ],
+      "nearest_map_distance_m": 0.527543236541697,
+      "reported_st_raw_xy_error_m": 0.8513950232248894
+    },
+    {
+      "target": 376152,
+      "frame": 535,
+      "xyz": [
+        1349.2926821276287,
+        168.45682229570366,
+        55.158833038146184
+      ],
+      "rdb_road": [
+        2734,
+        -2,
+        31.02534294128418,
+        -5.903670787811279,
+        -1.4098098278045654
+      ],
+      "lanelets": [],
+      "cells": [],
+      "projection_basis": "reported_road",
+      "projection": {
+        "road": 2734,
+        "raw_projected_s": 31.735259583494365,
+        "raw_projected_t": -6.641322030136537,
+        "road_length": 46.00663906482666,
+        "longitudinal_residual_m": -1.6564527527407336e-13,
+        "source_interval_hits": [],
+        "driving_intervals": [
+          {
+            "lane": -1,
+            "type": "driving",
+            "t_bounds": [
+              -2.9995649416565326,
+              0.0
+            ],
+            "width": 2.9995649416565326
+          },
+          {
+            "lane": -2,
+            "type": "driving",
+            "t_bounds": [
+              -5.989146439220867,
+              -2.9995649416565326
+            ],
+            "width": 2.989581497564334
+          }
+        ],
+        "signed_driving_lateral_margin_m": -0.6521755909156708,
+        "classification": "outside_original_driving"
+      },
+      "nearest_map_lanelet": 376152,
+      "nearest_map_source": [
+        2734,
+        0,
+        -2
+      ],
+      "nearest_map_distance_m": 0.6521481905816933,
+      "reported_st_raw_xy_error_m": 1.0111584560033895
+    },
+    {
+      "target": 376152,
+      "frame": 536,
+      "xyz": [
+        1349.4073386058103,
+        168.3495630873571,
+        55.158607204622214
+      ],
+      "rdb_road": [
+        2734,
+        -2,
+        31.02534294128418,
+        -5.903670787811279,
+        -1.4098098278045654
+      ],
+      "lanelets": [],
+      "cells": [],
+      "projection_basis": "reported_road",
+      "projection": {
+        "road": 2734,
+        "raw_projected_s": 31.832866283374436,
+        "raw_projected_t": -6.766206869502374,
+        "road_length": 46.00663906482666,
+        "longitudinal_residual_m": 2.5757174171303632e-14,
+        "source_interval_hits": [],
+        "driving_intervals": [
+          {
+            "lane": -1,
+            "type": "driving",
+            "t_bounds": [
+              -2.9995701071268908,
+              0.0
+            ],
+            "width": 2.9995701071268908
+          },
+          {
+            "lane": -2,
+            "type": "driving",
+            "t_bounds": [
+              -5.989275304112958,
+              -2.9995701071268908
+            ],
+            "width": 2.9897051969860673
+          }
+        ],
+        "signed_driving_lateral_margin_m": -0.7769315653894155,
+        "classification": "outside_original_driving"
+      },
+      "nearest_map_lanelet": 375464,
+      "nearest_map_source": [
+        2728,
+        0,
+        -1
+      ],
+      "nearest_map_distance_m": 0.6533125139457655,
+      "reported_st_raw_xy_error_m": 1.1674334222216933
+    },
+    {
+      "target": 376152,
+      "frame": 537,
+      "xyz": [
+        1349.5167500147284,
+        168.241357800487,
+        55.15837811431465
+      ],
+      "rdb_road": [
+        2734,
+        -2,
+        31.02534294128418,
+        -5.903670787811279,
+        -1.4098098278045654
+      ],
+      "lanelets": [],
+      "cells": [],
+      "projection_basis": "reported_road",
+      "projection": {
+        "road": 2734,
+        "raw_projected_s": 31.92503910381222,
+        "raw_projected_t": -6.891117877253257,
+        "road_length": 46.00663906482666,
+        "longitudinal_residual_m": -2.760014439218139e-13,
+        "source_interval_hits": [],
+        "driving_intervals": [
+          {
+            "lane": -1,
+            "type": "driving",
+            "t_bounds": [
+              -2.9995749669516867,
+              0.0
+            ],
+            "width": 2.9995749669516867
+          },
+          {
+            "lane": -2,
+            "type": "driving",
+            "t_bounds": [
+              -5.9893965439526005,
+              -2.9995749669516867
+            ],
+            "width": 2.9898215770009138
+          }
+        ],
+        "signed_driving_lateral_margin_m": -0.9017213333006566,
+        "classification": "outside_original_driving"
+      },
+      "nearest_map_lanelet": 375464,
+      "nearest_map_source": [
+        2728,
+        0,
+        -1
+      ],
+      "nearest_map_distance_m": 0.5004399867370052,
+      "reported_st_raw_xy_error_m": 1.3203753436027124
+    },
+    {
+      "target": 376152,
+      "frame": 538,
+      "xyz": [
+        1349.6211275178828,
+        168.13233420942134,
+        55.15814726740911
+      ],
+      "rdb_road": [
+        2734,
+        -2,
+        31.02534294128418,
+        -5.903670787811279,
+        -1.4098098278045654
+      ],
+      "lanelets": [],
+      "cells": [],
+      "projection_basis": "reported_road",
+      "projection": {
+        "road": 2734,
+        "raw_projected_s": 32.01201241039893,
+        "raw_projected_t": -7.0159701853509215,
+        "road_length": 46.00663906482666,
+        "longitudinal_residual_m": 1.7474910407599964e-13,
+        "source_interval_hits": [],
+        "driving_intervals": [
+          {
+            "lane": -1,
+            "type": "driving",
+            "t_bounds": [
+              -2.9995795363608893,
+              0.0
+            ],
+            "width": 2.9995795363608893
+          },
+          {
+            "lane": -2,
+            "type": "driving",
+            "t_bounds": [
+              -5.9895105386874485,
+              -2.9995795363608893
+            ],
+            "width": 2.9899310023265593
+          }
+        ],
+        "signed_driving_lateral_margin_m": -1.026459646663473,
+        "classification": "outside_original_driving"
+      },
+      "nearest_map_lanelet": 375464,
+      "nearest_map_source": [
+        2728,
+        0,
+        -1
+      ],
+      "nearest_map_distance_m": 0.35033849091657127,
+      "reported_st_raw_xy_error_m": 1.4701439528002362
+    },
+    {
+      "target": 376152,
+      "frame": 539,
+      "xyz": [
+        1349.72067774831,
+        168.0225970573457,
+        55.15791625972255
+      ],
+      "rdb_road": [
+        2734,
+        -2,
+        31.02534294128418,
+        -5.903670787811279,
+        -1.4098098278045654
+      ],
+      "lanelets": [],
+      "cells": [],
+      "projection_basis": "reported_road",
+      "projection": {
+        "road": 2734,
+        "raw_projected_s": 32.094011985351976,
+        "raw_projected_t": -7.140700078995798,
+        "road_length": 46.00663906482666,
+        "longitudinal_residual_m": -5.284661597215745e-14,
+        "source_interval_hits": [],
+        "driving_intervals": [
+          {
+            "lane": -1,
+            "type": "driving",
+            "t_bounds": [
+              -2.9995838298497377,
+              0.0
+            ],
+            "width": 2.9995838298497377
+          },
+          {
+            "lane": -2,
+            "type": "driving",
+            "t_bounds": [
+              -5.989617649935566,
+              -2.9995838298497377
+            ],
+            "width": 2.990033820085828
+          }
+        ],
+        "signed_driving_lateral_margin_m": -1.1510824290602324,
+        "classification": "outside_original_driving"
+      },
+      "nearest_map_lanelet": 375464,
+      "nearest_map_source": [
+        2728,
+        0,
+        -1
+      ],
+      "nearest_map_distance_m": 0.20275011849928315,
+      "reported_st_raw_xy_error_m": 1.6169017034541866
+    },
+    {
+      "target": 376152,
+      "frame": 540,
+      "xyz": [
+        1349.8156009213253,
+        167.91223022302125,
+        55.15768673833916
+      ],
+      "rdb_road": [
+        2734,
+        -2,
+        31.02534294128418,
+        -5.903670787811279,
+        -1.4098098278045654
+      ],
+      "lanelets": [],
+      "cells": [],
+      "projection_basis": "reported_road",
+      "projection": {
+        "road": 2734,
+        "raw_projected_s": 32.171253524627566,
+        "raw_projected_t": -7.265262646261193,
+        "road_length": 46.00663906482666,
+        "longitudinal_residual_m": -5.551115123125783e-14,
+        "source_interval_hits": [],
+        "driving_intervals": [
+          {
+            "lane": -1,
+            "type": "driving",
+            "t_bounds": [
+              -2.999587861120434,
+              0.0
+            ],
+            "width": 2.999587861120434
+          },
+          {
+            "lane": -2,
+            "type": "driving",
+            "t_bounds": [
+              -5.989718219530831,
+              -2.999587861120434
+            ],
+            "width": 2.990130358410397
+          }
+        ],
+        "signed_driving_lateral_margin_m": -1.2755444267303622,
+        "classification": "outside_original_driving"
+      },
+      "nearest_map_lanelet": 375464,
+      "nearest_map_source": [
+        2728,
+        0,
+        -1
+      ],
+      "nearest_map_distance_m": 0.057455029654718166,
+      "reported_st_raw_xy_error_m": 1.7608121547348623
+    },
+    {
+      "target": 376152,
+      "frame": 559,
+      "xyz": [
+        1351.2245682742632,
+        165.00472652562738,
+        55.151091162313186
+      ],
+      "rdb_road": [
+        2728,
+        -1,
+        17.408111572265625,
+        -2.8973076343536377,
+        -1.419305682182312
+      ],
+      "lanelets": [],
+      "cells": [],
+      "projection_basis": "reported_road",
+      "projection": {
+        "road": 2728,
+        "raw_projected_s": 17.248522754041854,
+        "raw_projected_t": -3.066009541934465,
+        "road_length": 32.230468097918624,
+        "longitudinal_residual_m": -1.1968204205459188e-13,
+        "source_interval_hits": [
+          {
+            "lane": -2,
+            "type": "border",
+            "t_bounds": [
+              -3.4,
+              -2.95526560994334
+            ],
+            "width": 0.44473439005665977
+          }
+        ],
+        "driving_intervals": [
+          {
+            "lane": -1,
+            "type": "driving",
+            "t_bounds": [
+              -2.95526560994334,
+              0.0
+            ],
+            "width": 2.95526560994334
+          }
+        ],
+        "signed_driving_lateral_margin_m": -0.11074393199112498,
+        "classification": "outside_original_driving"
+      },
+      "nearest_map_lanelet": 375464,
+      "nearest_map_source": [
+        2728,
+        0,
+        -1
+      ],
+      "nearest_map_distance_m": 0.11064140227966017,
+      "reported_st_raw_xy_error_m": 0.1995021091436945
+    },
+    {
+      "target": 376152,
+      "frame": 560,
+      "xyz": [
+        1351.2579280482537,
+        164.80541200090894,
+        55.151199503857725
+      ],
+      "rdb_road": [
+        2728,
+        -2,
+        17.24852180480957,
+        -3.066009521484375,
+        0.11162326484918594
+      ],
+      "lanelets": [],
+      "cells": [],
+      "projection_basis": "reported_road",
+      "projection": {
+        "road": 2728,
+        "raw_projected_s": 17.068228161619842,
+        "raw_projected_t": -3.2308139942510508,
+        "road_length": 32.230468097918624,
+        "longitudinal_residual_m": 2.6645352591003757e-15,
+        "source_interval_hits": [
+          {
+            "lane": -2,
+            "type": "border",
+            "t_bounds": [
+              -3.4,
+              -2.9544300467807685
+            ],
+            "width": 0.4455699532192316
+          }
+        ],
+        "driving_intervals": [
+          {
+            "lane": -1,
+            "type": "driving",
+            "t_bounds": [
+              -2.9544300467807685,
+              0.0
+            ],
+            "width": 2.9544300467807685
+          }
+        ],
+        "signed_driving_lateral_margin_m": -0.2763839474702823,
+        "classification": "outside_original_driving"
+      },
+      "nearest_map_lanelet": 375464,
+      "nearest_map_source": [
+        2728,
+        0,
+        -1
+      ],
+      "nearest_map_distance_m": 0.2758608845498581,
+      "reported_st_raw_xy_error_m": 0.20208665726455163
+    },
+    {
+      "target": 376152,
+      "frame": 561,
+      "xyz": [
+        1351.2845090114631,
+        164.60267862136433,
+        55.152505964395374
+      ],
+      "rdb_road": [
+        2728,
+        -2,
+        17.068227767944336,
+        -3.230813980102539,
+        -0.05359897017478943
+      ],
+      "lanelets": [],
+      "cells": [],
+      "projection_basis": "reported_road",
+      "projection": {
+        "road": 2728,
+        "raw_projected_s": 16.86586215099837,
+        "raw_projected_t": -3.390573662426222,
+        "road_length": 32.230468097918624,
+        "longitudinal_residual_m": -7.482903185973555e-14,
+        "source_interval_hits": [
+          {
+            "lane": -2,
+            "type": "border",
+            "t_bounds": [
+              -3.4,
+              -2.9534908828329836
+            ],
+            "width": 0.4465091171670162
+          }
+        ],
+        "driving_intervals": [
+          {
+            "lane": -1,
+            "type": "driving",
+            "t_bounds": [
+              -2.9534908828329836,
+              0.0
+            ],
+            "width": 2.9534908828329836
+          }
+        ],
+        "signed_driving_lateral_margin_m": -0.4370827795932386,
+        "classification": "outside_original_driving"
+      },
+      "nearest_map_lanelet": 375464,
+      "nearest_map_source": [
+        2728,
+        0,
+        -1
+      ],
+      "nearest_map_distance_m": 0.4364892038872085,
+      "reported_st_raw_xy_error_m": 0.20446836428385706
+    },
+    {
+      "target": 376152,
+      "frame": 562,
+      "xyz": [
+        1351.303994643921,
+        164.39752164890174,
+        55.30261287212553
+      ],
+      "rdb_road": [
+        2728,
+        -2,
+        16.865861892700195,
+        -3.390573740005493,
+        -0.2138282209634781
+      ],
+      "lanelets": [],
+      "cells": [],
+      "projection_basis": "reported_road",
+      "projection": {
+        "road": 2728,
+        "raw_projected_s": 16.640849935235522,
+        "raw_projected_t": -3.5436588710957864,
+        "road_length": 32.230468097918624,
+        "longitudinal_residual_m": -4.3520742565306136e-14,
+        "source_interval_hits": [
+          {
+            "lane": -3,
+            "type": "sidewalk",
+            "t_bounds": [
+              -7.4,
+              -3.4
+            ],
+            "width": 4.0
+          }
+        ],
+        "driving_intervals": [
+          {
+            "lane": -1,
+            "type": "driving",
+            "t_bounds": [
+              -2.952445339141582,
+              0.0
+            ],
+            "width": 2.952445339141582
+          }
+        ],
+        "signed_driving_lateral_margin_m": -0.5912135319542045,
+        "classification": "outside_original_driving"
+      },
+      "nearest_map_lanelet": 375464,
+      "nearest_map_source": [
+        2728,
+        0,
+        -1
+      ],
+      "nearest_map_distance_m": 0.5906501567447047,
+      "reported_st_raw_xy_error_m": 0.2060800948850923
+    },
+    {
+      "target": 376152,
+      "frame": 563,
+      "xyz": [
+        1351.3161924517356,
+        164.19038484002192,
+        55.3027057207328
+      ],
+      "rdb_road": [
+        2728,
+        -3,
+        16.640850067138672,
+        -3.543658971786499,
+        1.8563411235809326
+      ],
+      "lanelets": [],
+      "cells": [],
+      "projection_basis": "reported_road",
+      "projection": {
+        "road": 2728,
+        "raw_projected_s": 16.39234215418525,
+        "raw_projected_t": -3.6888506814496704,
+        "road_length": 32.230468097918624,
+        "longitudinal_residual_m": -2.220446049250313e-15,
+        "source_interval_hits": [
+          {
+            "lane": -3,
+            "type": "sidewalk",
+            "t_bounds": [
+              -7.4,
+              -3.4000000000000004
+            ],
+            "width": 4.0
+          }
+        ],
+        "driving_intervals": [
+          {
+            "lane": -1,
+            "type": "driving",
+            "t_bounds": [
+              -2.951289528866305,
+              0.0
+            ],
+            "width": 2.951289528866305
+          }
+        ],
+        "signed_driving_lateral_margin_m": -0.7375611525833654,
+        "classification": "outside_original_driving"
+      },
+      "nearest_map_lanelet": 375464,
+      "nearest_map_source": [
+        2728,
+        0,
+        -1
+      ],
+      "nearest_map_distance_m": 0.7369995028287011,
+      "reported_st_raw_xy_error_m": 0.20749563317410352
+    },
+    {
+      "target": 376152,
+      "frame": 564,
+      "xyz": [
+        1351.3209455574572,
+        163.9815986274441,
+        55.30279515263931
+      ],
+      "rdb_road": [
+        2728,
+        -3,
+        16.39234161376953,
+        -3.6888506412506104,
+        1.7111493349075317
+      ],
+      "lanelets": [],
+      "cells": [],
+      "projection_basis": "reported_road",
+      "projection": {
+        "road": 2728,
+        "raw_projected_s": 16.119638277141263,
+        "raw_projected_t": -3.8249639671827254,
+        "road_length": 32.230468097918624,
+        "longitudinal_residual_m": -1.1302070390684094e-13,
+        "source_interval_hits": [
+          {
+            "lane": -3,
+            "type": "sidewalk",
+            "t_bounds": [
+              -7.4,
+              -3.4
+            ],
+            "width": 4.0
+          }
+        ],
+        "driving_intervals": [
+          {
+            "lane": -1,
+            "type": "driving",
+            "t_bounds": [
+              -2.950020497195661,
+              0.0
+            ],
+            "width": 2.950020497195661
+          }
+        ],
+        "signed_driving_lateral_margin_m": -0.8749434699870644,
+        "classification": "outside_original_driving"
+      },
+      "nearest_map_lanelet": 375464,
+      "nearest_map_source": [
+        2728,
+        0,
+        -1
+      ],
+      "nearest_map_distance_m": 0.8743419771526573,
+      "reported_st_raw_xy_error_m": 0.20884009741302098
+    },
+    {
+      "target": 376152,
+      "frame": 565,
+      "xyz": [
+        1351.3181154226518,
+        163.77150079533047,
+        55.30288110601473
+      ],
+      "rdb_road": [
+        2728,
+        -3,
+        16.119638442993164,
+        -3.8249640464782715,
+        1.5750360488891602
+      ],
+      "lanelets": [],
+      "cells": [],
+      "projection_basis": "reported_road",
+      "projection": {
+        "road": 2728,
+        "raw_projected_s": 15.82240163470324,
+        "raw_projected_t": -3.9507616117888844,
+        "road_length": 32.230468097918624,
+        "longitudinal_residual_m": 6.308287225920139e-13,
+        "source_interval_hits": [
+          {
+            "lane": -3,
+            "type": "sidewalk",
+            "t_bounds": [
+              -7.4,
+              -3.4
+            ],
+            "width": 4.0
+          }
+        ],
+        "driving_intervals": [
+          {
+            "lane": -1,
+            "type": "driving",
+            "t_bounds": [
+              -2.9486373133807584,
+              0.0
+            ],
+            "width": 2.9486373133807584
+          }
+        ],
+        "signed_driving_lateral_margin_m": -1.002124298408126,
+        "classification": "outside_original_driving"
+      },
+      "nearest_map_lanelet": 375464,
+      "nearest_map_source": [
+        2728,
+        0,
+        -1
+      ],
+      "nearest_map_distance_m": 1.0015402967042912,
+      "reported_st_raw_xy_error_m": 0.21011691969010496
+    },
+    {
+      "target": 376152,
+      "frame": 566,
+      "xyz": [
+        1351.3075820393583,
+        163.5604353770113,
+        55.302963544807966
+      ],
+      "rdb_road": [
+        2728,
+        -3,
+        15.822402000427246,
+        -3.950761556625366,
+        1.4492384195327759
+      ],
+      "lanelets": [],
+      "cells": [],
+      "projection_basis": "reported_road",
+      "projection": {
+        "road": 2728,
+        "raw_projected_s": 15.500766956231075,
+        "raw_projected_t": -4.064972995581958,
+        "road_length": 32.230468097918624,
+        "longitudinal_residual_m": -3.04867242562068e-12,
+        "source_interval_hits": [
+          {
+            "lane": -3,
+            "type": "sidewalk",
+            "t_bounds": [
+              -7.4,
+              -3.4000000000000004
+            ],
+            "width": 4.0
+          }
+        ],
+        "driving_intervals": [
+          {
+            "lane": -1,
+            "type": "driving",
+            "t_bounds": [
+              -2.9471416674425814,
+              0.0
+            ],
+            "width": 2.9471416674425814
+          }
+        ],
+        "signed_driving_lateral_margin_m": -1.1178313281393768,
+        "classification": "outside_original_driving"
+      },
+      "nearest_map_lanelet": 375464,
+      "nearest_map_source": [
+        2728,
+        0,
+        -1
+      ],
+      "nearest_map_distance_m": 1.117522604047401,
+      "reported_st_raw_xy_error_m": 0.21132829392367034
+    },
+    {
+      "target": 376152,
+      "frame": 567,
+      "xyz": [
+        1351.2892440446064,
+        163.34875157182464,
+        55.30304245670951
+      ],
+      "rdb_road": [
+        2728,
+        -3,
+        15.50076675415039,
+        -4.064972877502441,
+        1.3350269794464111
+      ],
+      "lanelets": [],
+      "cells": [],
+      "projection_basis": "reported_road",
+      "projection": {
+        "road": 2728,
+        "raw_projected_s": 15.155448766565478,
+        "raw_projected_t": -4.166319654982301,
+        "road_length": 32.230468097918624,
+        "longitudinal_residual_m": 2.731148640577885e-14,
+        "source_interval_hits": [
+          {
+            "lane": -3,
+            "type": "sidewalk",
+            "t_bounds": [
+              -7.4,
+              -3.4
+            ],
+            "width": 4.0
+          }
+        ],
+        "driving_intervals": [
+          {
+            "lane": -1,
+            "type": "driving",
+            "t_bounds": [
+              -2.9455384585599713,
+              0.0
+            ],
+            "width": 2.9455384585599713
+          }
+        ],
+        "signed_driving_lateral_margin_m": -1.2207811964223296,
+        "classification": "outside_original_driving"
+      },
+      "nearest_map_lanelet": 375464,
+      "nearest_map_source": [
+        2728,
+        0,
+        -1
+      ],
+      "nearest_map_distance_m": 1.220251448661657,
+      "reported_st_raw_xy_error_m": 0.2124765855160298
+    },
+    {
+      "target": 376152,
+      "frame": 568,
+      "xyz": [
+        1351.2630187636582,
+        163.1368026871913,
+        55.303117850994425
+      ],
+      "rdb_road": [
+        2728,
+        -3,
+        15.155448913574219,
+        -4.166319847106934,
+        1.2336803674697876
+      ],
+      "lanelets": [],
+      "cells": [],
+      "projection_basis": "reported_road",
+      "projection": {
+        "road": 2728,
+        "raw_projected_s": 14.787838559487836,
+        "raw_projected_t": -4.253548375216935,
+        "road_length": 32.230468097918624,
+        "longitudinal_residual_m": -1.0547118733938987e-13,
+        "source_interval_hits": [
+          {
+            "lane": -3,
+            "type": "sidewalk",
+            "t_bounds": [
+              -7.4,
+              -3.4
+            ],
+            "width": 4.0
+          }
+        ],
+        "driving_intervals": [
+          {
+            "lane": -1,
+            "type": "driving",
+            "t_bounds": [
+              -2.9438362971603365,
+              0.0
+            ],
+            "width": 2.9438362971603365
+          }
+        ],
+        "signed_driving_lateral_margin_m": -1.3097120780565987,
+        "classification": "outside_original_driving"
+      },
+      "nearest_map_lanelet": 375464,
+      "nearest_map_source": [
+        2728,
+        0,
+        -1
+      ],
+      "nearest_map_distance_m": 1.3091965449211265,
+      "reported_st_raw_xy_error_m": 0.21356519006669952
+    },
+    {
+      "target": 376152,
+      "frame": 569,
+      "xyz": [
+        1351.2288421878745,
+        162.9249451096118,
+        55.30318975631075
+      ],
+      "rdb_road": [
+        2728,
+        -3,
+        14.78783893585205,
+        -4.2535481452941895,
+        1.1464515924453735
+      ],
+      "lanelets": [],
+      "cells": [],
+      "projection_basis": "reported_road",
+      "projection": {
+        "road": 2728,
+        "raw_projected_s": 14.400075196970887,
+        "raw_projected_t": -4.325471065664796,
+        "road_length": 32.230468097918624,
+        "longitudinal_residual_m": -3.175237850427948e-14,
+        "source_interval_hits": [
+          {
+            "lane": -3,
+            "type": "sidewalk",
+            "t_bounds": [
+              -7.4,
+              -3.4
+            ],
+            "width": 4.0
+          }
+        ],
+        "driving_intervals": [
+          {
+            "lane": -1,
+            "type": "driving",
+            "t_bounds": [
+              -2.942047822550703,
+              0.0
+            ],
+            "width": 2.942047822550703
+          }
+        ],
+        "signed_driving_lateral_margin_m": -1.3834232431140925,
+        "classification": "outside_original_driving"
+      },
+      "nearest_map_lanelet": 375464,
+      "nearest_map_source": [
+        2728,
+        0,
+        -1
+      ],
+      "nearest_map_distance_m": 1.3828741844116863,
+      "reported_st_raw_xy_error_m": 0.21459679848674765
+    },
+    {
+      "target": 376152,
+      "frame": 570,
+      "xyz": [
+        1351.1866688930306,
+        162.71353730743172,
+        55.30325821846209
+      ],
+      "rdb_road": [
+        2728,
+        -3,
+        14.40007495880127,
+        -4.325470924377441,
+        1.0745289325714111
+      ],
+      "lanelets": [],
+      "cells": [],
+      "projection_basis": "reported_road",
+      "projection": {
+        "road": 2728,
+        "raw_projected_s": 13.995071391507913,
+        "raw_projected_t": -4.381009566447243,
+        "road_length": 32.230468097918624,
+        "longitudinal_residual_m": 1.0658141036401503e-14,
+        "source_interval_hits": [
+          {
+            "lane": -3,
+            "type": "sidewalk",
+            "t_bounds": [
+              -7.4,
+              -3.4
+            ],
+            "width": 4.0
+          }
+        ],
+        "driving_intervals": [
+          {
+            "lane": -1,
+            "type": "driving",
+            "t_bounds": [
+              -2.9401897319074295,
+              0.0
+            ],
+            "width": 2.9401897319074295
+          }
+        ],
+        "signed_driving_lateral_margin_m": -1.440819834539813,
+        "classification": "outside_original_driving"
+      },
+      "nearest_map_lanelet": 375464,
+      "nearest_map_source": [
+        2728,
+        0,
+        -1
+      ],
+      "nearest_map_distance_m": 1.4404884256798218,
+      "reported_st_raw_xy_error_m": 0.2155732163681637
+    },
+    {
+      "target": 376152,
+      "frame": 571,
+      "xyz": [
+        1351.1364719037406,
+        162.5029388674607,
+        55.30332329822601
+      ],
+      "rdb_road": [
+        2728,
+        -3,
+        13.995071411132812,
+        -4.381009578704834,
+        1.018990397453308
+      ],
+      "lanelets": [],
+      "cells": [],
+      "projection_basis": "reported_road",
+      "projection": {
+        "road": 2728,
+        "raw_projected_s": 13.576480873128817,
+        "raw_projected_t": -4.419242219505824,
+        "road_length": 32.230468097918624,
+        "longitudinal_residual_m": 1.7985612998927536e-14,
+        "source_interval_hits": [
+          {
+            "lane": -3,
+            "type": "sidewalk",
+            "t_bounds": [
+              -7.4,
+              -3.4
+            ],
+            "width": 4.0
+          }
+        ],
+        "driving_intervals": [
+          {
+            "lane": -1,
+            "type": "driving",
+            "t_bounds": [
+              -2.9382824341998273,
+              0.0
+            ],
+            "width": 2.9382824341998273
+          }
+        ],
+        "signed_driving_lateral_margin_m": -1.4809597853059966,
+        "classification": "outside_original_driving"
+      },
+      "nearest_map_lanelet": 375464,
+      "nearest_map_source": [
+        2728,
+        0,
+        -1
+      ],
+      "nearest_map_distance_m": 1.4803410830598138,
+      "reported_st_raw_xy_error_m": 0.21649813821473488
+    },
+    {
+      "target": 376152,
+      "frame": 572,
+      "xyz": [
+        1351.0782425094064,
+        162.2935095668587,
+        55.3033850692425
+      ],
+      "rdb_road": [
+        2728,
+        -3,
+        13.576480865478516,
+        -4.4192423820495605,
+        0.9807577729225159
+      ],
+      "lanelets": [],
+      "cells": [],
+      "projection_basis": "reported_road",
+      "projection": {
+        "road": 2728,
+        "raw_projected_s": 13.148596911017,
+        "raw_projected_t": -4.439447908179554,
+        "road_length": 32.230468097918624,
+        "longitudinal_residual_m": 6.661338147750939e-16,
+        "source_interval_hits": [
+          {
+            "lane": -3,
+            "type": "sidewalk",
+            "t_bounds": [
+              -7.4,
+              -3.4
+            ],
+            "width": 4.0
+          }
+        ],
+        "driving_intervals": [
+          {
+            "lane": -1,
+            "type": "driving",
+            "t_bounds": [
+              -2.9363492895204786,
+              0.0
+            ],
+            "width": 2.9363492895204786
+          }
+        ],
+        "signed_driving_lateral_margin_m": -1.5030986186590756,
+        "classification": "outside_original_driving"
+      },
+      "nearest_map_lanelet": 375464,
+      "nearest_map_source": [
+        2728,
+        0,
+        -1
+      ],
+      "nearest_map_distance_m": 1.502542275470258,
+      "reported_st_raw_xy_error_m": 0.21737360556526797
+    },
+    {
+      "target": 376152,
+      "frame": 573,
+      "xyz": [
+        1351.0119900367974,
+        162.08560848111878,
+        55.30344361599998
+      ],
+      "rdb_road": [
+        2728,
+        -3,
+        13.14859676361084,
+        -4.43944787979126,
+        0.9605520963668823
+      ],
+      "lanelets": [],
+      "cells": [],
+      "projection_basis": "reported_road",
+      "projection": {
+        "road": 2728,
+        "raw_projected_s": 12.716183029256847,
+        "raw_projected_t": -4.441142696485151,
+        "road_length": 32.230468097918624,
+        "longitudinal_residual_m": 5.1958437552457326e-14,
+        "source_interval_hits": [
+          {
+            "lane": -3,
+            "type": "sidewalk",
+            "t_bounds": [
+              -7.4,
+              -3.4
+            ],
+            "width": 4.0
+          }
+        ],
+        "driving_intervals": [
+          {
+            "lane": -1,
+            "type": "driving",
+            "t_bounds": [
+              -2.9344154662787303,
+              0.0
+            ],
+            "width": 2.9344154662787303
+          }
+        ],
+        "signed_driving_lateral_margin_m": -1.5067272302064203,
+        "classification": "outside_original_driving"
+      },
+      "nearest_map_lanelet": 375464,
+      "nearest_map_source": [
+        2728,
+        0,
+        -1
+      ],
+      "nearest_map_distance_m": 1.5064929762628996,
+      "reported_st_raw_xy_error_m": 0.2182022445362664
+    },
+    {
+      "target": 376152,
+      "frame": 574,
+      "xyz": [
+        1350.9377415840243,
+        161.8795931284787,
+        55.30349903193946
+      ],
+      "rdb_road": [
+        2728,
+        -3,
+        12.716182708740234,
+        -4.441142559051514,
+        0.9588572978973389
+      ],
+      "lanelets": [],
+      "cells": [],
+      "projection_basis": "reported_road",
+      "projection": {
+        "road": 2728,
+        "raw_projected_s": 12.284249137835669,
+        "raw_projected_t": -4.42410449687642,
+        "road_length": 32.230468097918624,
+        "longitudinal_residual_m": 4.374278717023117e-14,
+        "source_interval_hits": [
+          {
+            "lane": -3,
+            "type": "sidewalk",
+            "t_bounds": [
+              -7.4,
+              -3.4
+            ],
+            "width": 4.0
+          }
+        ],
+        "driving_intervals": [
+          {
+            "lane": -1,
+            "type": "driving",
+            "t_bounds": [
+              -2.932506529838619,
+              0.0
+            ],
+            "width": 2.932506529838619
+          }
+        ],
+        "signed_driving_lateral_margin_m": -1.491597967037801,
+        "classification": "outside_original_driving"
+      },
+      "nearest_map_lanelet": 375464,
+      "nearest_map_source": [
+        2728,
+        0,
+        -1
+      ],
+      "nearest_map_distance_m": 1.4910849153861085,
+      "reported_st_raw_xy_error_m": 0.21898649342382875
+    },
+    {
+      "target": 376152,
+      "frame": 575,
+      "xyz": [
+        1350.855541720299,
+        161.67581865067953,
+        55.30355141769176
+      ],
+      "rdb_road": [
+        2728,
+        -3,
+        12.284249305725098,
+        -4.424104690551758,
+        0.9758955240249634
+      ],
+      "lanelets": [],
+      "cells": [],
+      "projection_basis": "reported_road",
+      "projection": {
+        "road": 2728,
+        "raw_projected_s": 11.866246560515917,
+        "raw_projected_t": -4.388501837908688,
+        "road_length": 32.230468097918624,
+        "longitudinal_residual_m": -1.0436096431476471e-14,
+        "source_interval_hits": [
+          {
+            "lane": -3,
+            "type": "sidewalk",
+            "t_bounds": [
+              -7.4,
+              -3.4
+            ],
+            "width": 4.0
+          }
+        ],
+        "driving_intervals": [
+          {
+            "lane": -1,
+            "type": "driving",
+            "t_bounds": [
+              -2.930683524293263,
+              0.0
+            ],
+            "width": 2.930683524293263
+          }
+        ],
+        "signed_driving_lateral_margin_m": -1.4578183136154248,
+        "classification": "outside_original_driving"
+      },
+      "nearest_map_lanelet": 375464,
+      "nearest_map_source": [
+        2728,
+        0,
+        -1
+      ],
+      "nearest_map_distance_m": 1.457214445532752,
+      "reported_st_raw_xy_error_m": 0.21972916109166088
+    },
+    {
+      "target": 376152,
+      "frame": 576,
+      "xyz": [
+        1350.7654521554814,
+        161.47463702965447,
+        55.3036008794571
+      ],
+      "rdb_road": [
+        2728,
+        -3,
+        11.866250991821289,
+        -4.3885016441345215,
+        1.011498212814331
+      ],
+      "lanelets": [],
+      "cells": [],
+      "projection_basis": "reported_road",
+      "projection": {
+        "road": 2728,
+        "raw_projected_s": 11.478049509745379,
+        "raw_projected_t": -4.335441960040636,
+        "road_length": 32.230468097918624,
+        "longitudinal_residual_m": -6.727951529228449e-14,
+        "source_interval_hits": [
+          {
+            "lane": -3,
+            "type": "sidewalk",
+            "t_bounds": [
+              -7.4,
+              -3.4
+            ],
+            "width": 4.0
+          }
+        ],
+        "driving_intervals": [
+          {
+            "lane": -1,
+            "type": "driving",
+            "t_bounds": [
+              -2.9290142822144243,
+              0.0
+            ],
+            "width": 2.9290142822144243
+          }
+        ],
+        "signed_driving_lateral_margin_m": -1.4064276778262115,
+        "classification": "outside_original_driving"
+      },
+      "nearest_map_lanelet": 375464,
+      "nearest_map_source": [
+        2728,
+        0,
+        -1
+      ],
+      "nearest_map_distance_m": 1.4062821533734755,
+      "reported_st_raw_xy_error_m": 0.22043405986944595
+    },
+    {
+      "target": 376152,
+      "frame": 577,
+      "xyz": [
+        1350.6675513830344,
+        161.2763963394662,
+        55.303647527532156
+      ],
+      "rdb_road": [
+        2728,
+        -3,
+        11.478123664855957,
+        -4.335442066192627,
+        1.0645580291748047
+      ],
+      "lanelets": [],
+      "cells": [],
+      "projection_basis": "reported_road",
+      "projection": {
+        "road": 2728,
+        "raw_projected_s": 11.117846037913274,
+        "raw_projected_t": -4.2662814943069245,
+        "road_length": 32.230468097918624,
+        "longitudinal_residual_m": 9.516054610969604e-12,
+        "source_interval_hits": [
+          {
+            "lane": -3,
+            "type": "sidewalk",
+            "t_bounds": [
+              -7.4,
+              -3.4
+            ],
+            "width": 4.0
+          }
+        ],
+        "driving_intervals": [
+          {
+            "lane": -1,
+            "type": "driving",
+            "t_bounds": [
+              -2.927487769118831,
+              0.0
+            ],
+            "width": 2.927487769118831
+          }
+        ],
+        "signed_driving_lateral_margin_m": -1.3387937251880935,
+        "classification": "outside_original_driving"
+      },
+      "nearest_map_lanelet": 375464,
+      "nearest_map_source": [
+        2728,
+        0,
+        -1
+      ],
+      "nearest_map_distance_m": 1.3382353779636798,
+      "reported_st_raw_xy_error_m": 0.2211373304171143
+    },
+    {
+      "target": 376152,
+      "frame": 578,
+      "xyz": [
+        1350.561934299623,
+        161.08144003261216,
+        55.303691474985285
+      ],
+      "rdb_road": [
+        2728,
+        -3,
+        11.117846488952637,
+        -4.266281604766846,
+        1.133718490600586
+      ],
+      "lanelets": [],
+      "cells": [],
+      "projection_basis": "reported_road",
+      "projection": {
+        "road": 2728,
+        "raw_projected_s": 10.783517349870635,
+        "raw_projected_t": -4.182270656057146,
+        "road_length": 32.230468097918624,
+        "longitudinal_residual_m": -2.440214696974863e-12,
+        "source_interval_hits": [
+          {
+            "lane": -3,
+            "type": "sidewalk",
+            "t_bounds": [
+              -7.4,
+              -3.4
+            ],
+            "width": 4.0
+          }
+        ],
+        "driving_intervals": [
+          {
+            "lane": -1,
+            "type": "driving",
+            "t_bounds": [
+              -2.9260916704429136,
+              0.0
+            ],
+            "width": 2.9260916704429136
+          }
+        ],
+        "signed_driving_lateral_margin_m": -1.2561789856142327,
+        "classification": "outside_original_driving"
+      },
+      "nearest_map_lanelet": 375464,
+      "nearest_map_source": [
+        2728,
+        0,
+        -1
+      ],
+      "nearest_map_distance_m": 1.2557885383710146,
+      "reported_st_raw_xy_error_m": 0.22172744360315544
+    },
+    {
+      "target": 376152,
+      "frame": 579,
+      "xyz": [
+        1350.4487585247357,
+        160.89007823083654,
+        55.30373283647803
+      ],
+      "rdb_road": [
+        2728,
+        -3,
+        10.783517837524414,
+        -4.182270526885986,
+        1.2177293300628662
+      ],
+      "lanelets": [],
+      "cells": [],
+      "projection_basis": "reported_road",
+      "projection": {
+        "road": 2728,
+        "raw_projected_s": 10.473026508151644,
+        "raw_projected_t": -4.084600794494614,
+        "road_length": 32.230468097918624,
+        "longitudinal_residual_m": 1.3822276656583199e-14,
+        "source_interval_hits": [
+          {
+            "lane": -3,
+            "type": "sidewalk",
+            "t_bounds": [
+              -7.4,
+              -3.4
+            ],
+            "width": 4.0
+          }
+        ],
+        "driving_intervals": [
+          {
+            "lane": -1,
+            "type": "driving",
+            "t_bounds": [
+              -2.9248142155548122,
+              0.0
+            ],
+            "width": 2.9248142155548122
+          }
+        ],
+        "signed_driving_lateral_margin_m": -1.1597865789398019,
+        "classification": "outside_original_driving"
+      },
+      "nearest_map_lanelet": 375464,
+      "nearest_map_source": [
+        2728,
+        0,
+        -1
+      ],
+      "nearest_map_distance_m": 1.1596313762577983,
+      "reported_st_raw_xy_error_m": 0.22232452398508626
+    },
+    {
+      "target": 376152,
+      "frame": 580,
+      "xyz": [
+        1350.328700965589,
+        160.70228607178257,
+        55.30377172722794
+      ],
+      "rdb_road": [
+        2728,
+        -3,
+        10.473027229309082,
+        -4.084600925445557,
+        1.315399169921875
+      ],
+      "lanelets": [],
+      "cells": [],
+      "projection_basis": "reported_road",
+      "projection": {
+        "road": 2728,
+        "raw_projected_s": 10.184059357826973,
+        "raw_projected_t": -3.9748773723859516,
+        "road_length": 32.230468097918624,
+        "longitudinal_residual_m": 3.272382365082649e-14,
+        "source_interval_hits": [
+          {
+            "lane": -3,
+            "type": "sidewalk",
+            "t_bounds": [
+              -7.4,
+              -3.4
+            ],
+            "width": 4.0
+          }
+        ],
+        "driving_intervals": [
+          {
+            "lane": -1,
+            "type": "driving",
+            "t_bounds": [
+              -2.923642808387549,
+              0.0
+            ],
+            "width": 2.923642808387549
+          }
+        ],
+        "signed_driving_lateral_margin_m": -1.0512345639984026,
+        "classification": "outside_original_driving"
+      },
+      "nearest_map_lanelet": 375464,
+      "nearest_map_source": [
+        2728,
+        0,
+        -1
+      ],
+      "nearest_map_distance_m": 1.0508888878625346,
+      "reported_st_raw_xy_error_m": 0.22288994121217806
+    },
+    {
+      "target": 376152,
+      "frame": 581,
+      "xyz": [
+        1350.202511687531,
+        160.51790919366024,
+        55.303808262106365
+      ],
+      "rdb_road": [
+        2728,
+        -3,
+        10.184061050415039,
+        -3.97487735748291,
+        1.425122618675232
+      ],
+      "lanelets": [],
+      "cells": [],
+      "projection_basis": "reported_road",
+      "projection": {
+        "road": 2728,
+        "raw_projected_s": 9.914325440762832,
+        "raw_projected_t": -3.85464748399075,
+        "road_length": 32.230468097918624,
+        "longitudinal_residual_m": 1.5989987112163817e-13,
+        "source_interval_hits": [
+          {
+            "lane": -3,
+            "type": "sidewalk",
+            "t_bounds": [
+              -7.4,
+              -3.4
+            ],
+            "width": 4.0
+          }
+        ],
+        "driving_intervals": [
+          {
+            "lane": -1,
+            "type": "driving",
+            "t_bounds": [
+              -2.9225653690230247,
+              0.0
+            ],
+            "width": 2.9225653690230247
+          }
+        ],
+        "signed_driving_lateral_margin_m": -0.9320821149677254,
+        "classification": "outside_original_driving"
+      },
+      "nearest_map_lanelet": 375464,
+      "nearest_map_source": [
+        2728,
+        0,
+        -1
+      ],
+      "nearest_map_distance_m": 0.9316832628788771,
+      "reported_st_raw_xy_error_m": 0.22342561003523856
+    },
+    {
+      "target": 376152,
+      "frame": 582,
+      "xyz": [
+        1350.0708943782834,
+        160.33673923700965,
+        55.30384255486293
+      ],
+      "rdb_road": [
+        2728,
+        -3,
+        9.914327621459961,
+        -3.854647397994995,
+        1.5453524589538574
+      ],
+      "lanelets": [],
+      "cells": [],
+      "projection_basis": "reported_road",
+      "projection": {
+        "road": 2728,
+        "raw_projected_s": 9.661688863601956,
+        "raw_projected_t": -3.725285872074349,
+        "road_length": 32.230468097918624,
+        "longitudinal_residual_m": -1.2888995426507677e-14,
+        "source_interval_hits": [
+          {
+            "lane": -3,
+            "type": "sidewalk",
+            "t_bounds": [
+              -7.4,
+              -3.4
+            ],
+            "width": 4.0
+          }
+        ],
+        "driving_intervals": [
+          {
+            "lane": -1,
+            "type": "driving",
+            "t_bounds": [
+              -2.9215708756797447,
+              0.0
+            ],
+            "width": 2.9215708756797447
+          }
+        ],
+        "signed_driving_lateral_margin_m": -0.8037149963946044,
+        "classification": "outside_original_driving"
+      },
+      "nearest_map_lanelet": 375464,
+      "nearest_map_source": [
+        2728,
+        0,
+        -1
+      ],
+      "nearest_map_distance_m": 0.8033245744006146,
+      "reported_st_raw_xy_error_m": 0.22393351244709261
+    },
+    {
+      "target": 376152,
+      "frame": 583,
+      "xyz": [
+        1349.934529451393,
+        160.15850818972686,
+        55.303874717467984
+      ],
+      "rdb_road": [
+        2728,
+        -3,
+        9.661690711975098,
+        -3.725285768508911,
+        1.6747140884399414
+      ],
+      "lanelets": [],
+      "cells": [],
+      "projection_basis": "reported_road",
+      "projection": {
+        "road": 2728,
+        "raw_projected_s": 9.424164434622908,
+        "raw_projected_t": -3.5880324951869116,
+        "road_length": 32.230468097918624,
+        "longitudinal_residual_m": -1.8589754735565123e-11,
+        "source_interval_hits": [
+          {
+            "lane": -3,
+            "type": "sidewalk",
+            "t_bounds": [
+              -7.4,
+              -3.4
+            ],
+            "width": 4.0
+          }
+        ],
+        "driving_intervals": [
+          {
+            "lane": -1,
+            "type": "driving",
+            "t_bounds": [
+              -2.9206493248710443,
+              0.0
+            ],
+            "width": 2.9206493248710443
+          }
+        ],
+        "signed_driving_lateral_margin_m": -0.6673831703158672,
+        "classification": "outside_original_driving"
+      },
+      "nearest_map_lanelet": 375464,
+      "nearest_map_source": [
+        2728,
+        0,
+        -1
+      ],
+      "nearest_map_distance_m": 0.6670424179058546,
+      "reported_st_raw_xy_error_m": 0.22441514524524597
+    },
+    {
+      "target": 376152,
+      "frame": 584,
+      "xyz": [
+        1349.794074524521,
+        159.98289576503512,
+        55.30390485956333
+      ],
+      "rdb_road": [
+        2728,
+        -3,
+        9.424165725708008,
+        -3.5880324840545654,
+        1.8119674921035767
+      ],
+      "lanelets": [],
+      "cells": [],
+      "projection_basis": "reported_road",
+      "projection": {
+        "road": 2728,
+        "raw_projected_s": 9.199916661370343,
+        "raw_projected_t": -3.444006540980473,
+        "road_length": 32.230468097918624,
+        "longitudinal_residual_m": 4.232725281383409e-15,
+        "source_interval_hits": [
+          {
+            "lane": -3,
+            "type": "sidewalk",
+            "t_bounds": [
+              -7.4,
+              -3.4
+            ],
+            "width": 4.0
+          }
+        ],
+        "driving_intervals": [
+          {
+            "lane": -1,
+            "type": "driving",
+            "t_bounds": [
+              -2.9197916934215558,
+              0.0
+            ],
+            "width": 2.9197916934215558
+          }
+        ],
+        "signed_driving_lateral_margin_m": -0.5242148475589175,
+        "classification": "outside_original_driving"
+      },
+      "nearest_map_lanelet": 375464,
+      "nearest_map_source": [
+        2728,
+        0,
+        -1
+      ],
+      "nearest_map_distance_m": 0.5239790096586496,
+      "reported_st_raw_xy_error_m": 0.2248725141217199
+    },
+    {
+      "target": 376152,
+      "frame": 585,
+      "xyz": [
+        1349.6501658653076,
+        159.80953653298155,
+        55.153933088011705
+      ],
+      "rdb_road": [
+        2728,
+        -3,
+        9.199917793273926,
+        -3.4440064430236816,
+        1.955993413925171
+      ],
+      "lanelets": [],
+      "cells": [],
+      "projection_basis": "reported_road",
+      "projection": {
+        "road": 2728,
+        "raw_projected_s": 8.987251398932775,
+        "raw_projected_t": -3.294220697612628,
+        "road_length": 32.230468097918624,
+        "longitudinal_residual_m": 7.022160630754115e-15,
+        "source_interval_hits": [
+          {
+            "lane": -2,
+            "type": "border",
+            "t_bounds": [
+              -3.4,
+              -2.918989867406356
+            ],
+            "width": 0.4810101325936439
+          }
+        ],
+        "driving_intervals": [
+          {
+            "lane": -1,
+            "type": "driving",
+            "t_bounds": [
+              -2.918989867406356,
+              0.0
+            ],
+            "width": 2.918989867406356
+          }
+        ],
+        "signed_driving_lateral_margin_m": -0.3752308302062719,
+        "classification": "outside_original_driving"
+      },
+      "nearest_map_lanelet": 375464,
+      "nearest_map_source": [
+        2728,
+        0,
+        -1
+      ],
+      "nearest_map_distance_m": 0.37518617044016306,
+      "reported_st_raw_xy_error_m": 0.2253073362287049
+    },
+    {
+      "target": 376152,
+      "frame": 586,
+      "xyz": [
+        1349.5034206781565,
+        159.63802679153002,
+        55.15395950653504
+      ],
+      "rdb_road": [
+        2728,
+        -2,
+        8.987252235412598,
+        -3.2942206859588623,
+        -0.13472576439380646
+      ],
+      "lanelets": [],
+      "cells": [],
+      "projection_basis": "reported_road",
+      "projection": {
+        "road": 2728,
+        "raw_projected_s": 8.784604273160955,
+        "raw_projected_t": -3.139595143896644,
+        "road_length": 32.230468097918624,
+        "longitudinal_residual_m": 9.464484751475766e-12,
+        "source_interval_hits": [
+          {
+            "lane": -2,
+            "type": "border",
+            "t_bounds": [
+              -3.4,
+              -2.918236559019828
+            ],
+            "width": 0.481763440980172
+          }
+        ],
+        "driving_intervals": [
+          {
+            "lane": -1,
+            "type": "driving",
+            "t_bounds": [
+              -2.918236559019828,
+              0.0
+            ],
+            "width": 2.918236559019828
+          }
+        ],
+        "signed_driving_lateral_margin_m": -0.2213585848768158,
+        "classification": "outside_original_driving"
+      },
+      "nearest_map_lanelet": 375464,
+      "nearest_map_source": [
+        2728,
+        0,
+        -1
+      ],
+      "nearest_map_distance_m": 0.22114504001703195,
+      "reported_st_raw_xy_error_m": 0.2257209772638173
+    },
+    {
+      "target": 376152,
+      "frame": 587,
+      "xyz": [
+        1349.354440108618,
+        159.46793118551656,
+        55.15398421543236
+      ],
+      "rdb_road": [
+        2728,
+        -2,
+        8.784605026245117,
+        -3.1395950317382812,
+        0.0195231381803751
+      ],
+      "lanelets": [],
+      "cells": [],
+      "projection_basis": "reported_road",
+      "projection": {
+        "road": 2728,
+        "raw_projected_s": 8.59052817125131,
+        "raw_projected_t": -2.9809710017880207,
+        "road_length": 32.230468097918624,
+        "longitudinal_residual_m": 4.68292071786891e-13,
+        "source_interval_hits": [
+          {
+            "lane": -2,
+            "type": "border",
+            "t_bounds": [
+              -3.4,
+              -2.917525222791749
+            ],
+            "width": 0.48247477720825094
+          }
+        ],
+        "driving_intervals": [
+          {
+            "lane": -1,
+            "type": "driving",
+            "t_bounds": [
+              -2.917525222791749,
+              0.0
+            ],
+            "width": 2.917525222791749
+          }
+        ],
+        "signed_driving_lateral_margin_m": -0.06344577899627168,
+        "classification": "outside_original_driving"
+      },
+      "nearest_map_lanelet": 375464,
+      "nearest_map_source": [
+        2728,
+        0,
+        -1
+      ],
+      "nearest_map_distance_m": 0.0631044817067062,
+      "reported_st_raw_xy_error_m": 0.22611477230268678
+    },
+    {
+      "target": 390542,
+      "frame": 804,
+      "xyz": [
+        1481.7310220679121,
+        189.32878992936196,
+        59.14414249766544
+      ],
+      "rdb_road": [
+        2789,
+        -4,
+        30.76535415649414,
+        -9.537982940673828,
+        -1.5914661884307861
+      ],
+      "lanelets": [],
+      "cells": [],
+      "projection_basis": "reported_road",
+      "projection": {
+        "road": 2789,
+        "raw_projected_s": 30.795473607585865,
+        "raw_projected_t": -9.752767848721847,
+        "road_length": 44.03945547043929,
+        "longitudinal_residual_m": 1.4654943925052066e-14,
+        "source_interval_hits": [],
+        "driving_intervals": [
+          {
+            "lane": -1,
+            "type": "driving",
+            "t_bounds": [
+              -7.808391467634124e-06,
+              0.796936158219268
+            ],
+            "width": 0.7969439666107356
+          },
+          {
+            "lane": -2,
+            "type": "driving",
+            "t_bounds": [
+              -3.1804300898728304,
+              -7.808391467634124e-06
+            ],
+            "width": 3.1804222814813627
+          },
+          {
+            "lane": -3,
+            "type": "driving",
+            "t_bounds": [
+              -6.3482653019036945,
+              -3.1804300898728304
+            ],
+            "width": 3.1678352120308637
+          },
+          {
+            "lane": -4,
+            "type": "driving",
+            "t_bounds": [
+              -9.544699313608234,
+              -6.3482653019036945
+            ],
+            "width": 3.196434011704539
+          }
+        ],
+        "signed_driving_lateral_margin_m": -0.2080685351136129,
+        "classification": "outside_original_driving"
+      },
+      "nearest_map_lanelet": 390363,
+      "nearest_map_source": [
+        2789,
+        0,
+        -4
+      ],
+      "nearest_map_distance_m": 0.20806774524409635,
+      "reported_st_raw_xy_error_m": 0.21688646352237972
+    },
+    {
+      "target": 390542,
+      "frame": 805,
+      "xyz": [
+        1481.5260852344666,
+        189.27216001206583,
+        59.149158379808384
+      ],
+      "rdb_road": [
+        2789,
+        -4,
+        30.76535415649414,
+        -9.537982940673828,
+        -1.5914661884307861
+      ],
+      "lanelets": [],
+      "cells": [],
+      "projection_basis": "reported_road",
+      "projection": {
+        "road": 2789,
+        "raw_projected_s": 30.81911119102386,
+        "raw_projected_t": -9.964066968182586,
+        "road_length": 44.03945547043929,
+        "longitudinal_residual_m": -1.5765166949677223e-14,
+        "source_interval_hits": [],
+        "driving_intervals": [
+          {
+            "lane": -1,
+            "type": "driving",
+            "t_bounds": [
+              -7.81438492980513e-06,
+              0.7955138079175914
+            ],
+            "width": 0.7955216223025212
+          },
+          {
+            "lane": -2,
+            "type": "driving",
+            "t_bounds": [
+              -3.180499611625924,
+              -7.81438492980513e-06
+            ],
+            "width": 3.180491797240994
+          },
+          {
+            "lane": -3,
+            "type": "driving",
+            "t_bounds": [
+              -6.348254207035833,
+              -3.180499611625924
+            ],
+            "width": 3.1677545954099084
+          },
+          {
+            "lane": -4,
+            "type": "driving",
+            "t_bounds": [
+              -9.54465566027847,
+              -6.348254207035833
+            ],
+            "width": 3.1964014532426375
+          }
+        ],
+        "signed_driving_lateral_margin_m": -0.41941130790411485,
+        "classification": "outside_original_driving"
+      },
+      "nearest_map_lanelet": 390363,
+      "nearest_map_source": [
+        2789,
+        0,
+        -4
+      ],
+      "nearest_map_distance_m": 0.41941030304420435,
+      "reported_st_raw_xy_error_m": 0.4294617762496032
+    },
+    {
+      "target": 390542,
+      "frame": 806,
+      "xyz": [
+        1481.3246700423922,
+        189.2217413049054,
+        59.149030880900625
+      ],
+      "rdb_road": [
+        2789,
+        -4,
+        30.76535415649414,
+        -9.537982940673828,
+        -1.5914661884307861
+      ],
+      "lanelets": [],
+      "cells": [],
+      "projection_basis": "reported_road",
+      "projection": {
+        "road": 2789,
+        "raw_projected_s": 30.837169913406584,
+        "raw_projected_t": -10.170909923527935,
+        "road_length": 44.03945547043929,
+        "longitudinal_residual_m": 3.3306690738754696e-15,
+        "source_interval_hits": [],
+        "driving_intervals": [
+          {
+            "lane": -1,
+            "type": "driving",
+            "t_bounds": [
+              -7.818963835726223e-06,
+              0.7944271558367499
+            ],
+            "width": 0.7944349748005857
+          },
+          {
+            "lane": -2,
+            "type": "driving",
+            "t_bounds": [
+              -3.1805526773037975,
+              -7.818963835726223e-06
+            ],
+            "width": 3.180544858339962
+          },
+          {
+            "lane": -3,
+            "type": "driving",
+            "t_bounds": [
+              -6.34824573837206,
+              -3.1805526773037975
+            ],
+            "width": 3.1676930610682623
+          },
+          {
+            "lane": -4,
+            "type": "driving",
+            "t_bounds": [
+              -9.544622339872037,
+              -6.34824573837206
+            ],
+            "width": 3.1963766014999773
+          }
+        ],
+        "signed_driving_lateral_margin_m": -0.6262875836558983,
+        "classification": "outside_original_driving"
+      },
+      "nearest_map_lanelet": 390363,
+      "nearest_map_source": [
+        2789,
+        0,
+        -4
+      ],
+      "nearest_map_distance_m": 0.6262863665923306,
+      "reported_st_raw_xy_error_m": 0.6369882797709834
+    },
+    {
+      "target": 390542,
+      "frame": 807,
+      "xyz": [
+        1481.1270139011851,
+        189.17661012649307,
+        59.14889471368976
+      ],
+      "rdb_road": [
+        2789,
+        -4,
+        30.76535415649414,
+        -9.537982940673828,
+        -1.5914661884307861
+      ],
+      "lanelets": [],
+      "cells": [],
+      "projection_basis": "reported_road",
+      "projection": {
+        "road": 2789,
+        "raw_projected_s": 30.850599322998946,
+        "raw_projected_t": -10.373207784069702,
+        "road_length": 44.03945547043929,
+        "longitudinal_residual_m": -1.199040866595169e-14,
+        "source_interval_hits": [],
+        "driving_intervals": [
+          {
+            "lane": -1,
+            "type": "driving",
+            "t_bounds": [
+              -7.822368949472747e-06,
+              0.793619064568235
+            ],
+            "width": 0.7936268869371845
+          },
+          {
+            "lane": -2,
+            "type": "driving",
+            "t_bounds": [
+              -3.1805921128200483,
+              -7.822368949472747e-06
+            ],
+            "width": 3.180584290451099
+          },
+          {
+            "lane": -3,
+            "type": "driving",
+            "t_bounds": [
+              -6.34823944492593,
+              -3.1805921128200483
+            ],
+            "width": 3.1676473321058825
+          },
+          {
+            "lane": -4,
+            "type": "driving",
+            "t_bounds": [
+              -9.544597577967892,
+              -6.34823944492593
+            ],
+            "width": 3.196358133041962
+          }
+        ],
+        "signed_driving_lateral_margin_m": -0.8286102061018106,
+        "classification": "outside_original_driving"
+      },
+      "nearest_map_lanelet": 390363,
+      "nearest_map_source": [
+        2789,
+        0,
+        -4
+      ],
+      "nearest_map_distance_m": 0.8286087648927212,
+      "reported_st_raw_xy_error_m": 0.8395637423316036
+    },
+    {
+      "target": 390542,
+      "frame": 808,
+      "xyz": [
+        1480.9332795901294,
+        189.13590719751173,
+        59.148749599904825
+      ],
+      "rdb_road": [
+        2789,
+        -4,
+        30.76535415649414,
+        -9.537982940673828,
+        -1.5914661884307861
+      ],
+      "lanelets": [],
+      "cells": [],
+      "projection_basis": "reported_road",
+      "projection": {
+        "road": 2789,
+        "raw_projected_s": 30.860273613138613,
+        "raw_projected_t": -10.5709351716976,
+        "road_length": 44.03945547043929,
+        "longitudinal_residual_m": -6.661338147750939e-16,
+        "source_interval_hits": [],
+        "driving_intervals": [
+          {
+            "lane": -1,
+            "type": "driving",
+            "t_bounds": [
+              -7.824821928181791e-06,
+              0.7930369310546821
+            ],
+            "width": 0.7930447558766103
+          },
+          {
+            "lane": -2,
+            "type": "driving",
+            "t_bounds": [
+              -3.180620507174995,
+              -7.824821928181791e-06
+            ],
+            "width": 3.180612682353067
+          },
+          {
+            "lane": -3,
+            "type": "driving",
+            "t_bounds": [
+              -6.348234913521146,
+              -3.180620507174995
+            ],
+            "width": 3.167614406346151
+          },
+          {
+            "lane": -4,
+            "type": "driving",
+            "t_bounds": [
+              -9.544579748907102,
+              -6.348234913521146
+            ],
+            "width": 3.1963448353859563
+          }
+        ],
+        "signed_driving_lateral_margin_m": -1.0263554227904983,
+        "classification": "outside_original_driving"
+      },
+      "nearest_map_lanelet": 390363,
+      "nearest_map_source": [
+        2789,
+        0,
+        -4
+      ],
+      "nearest_map_distance_m": 1.026353622640809,
+      "reported_st_raw_xy_error_m": 1.0373042055379256
+    },
+    {
+      "target": 390542,
+      "frame": 809,
+      "xyz": [
+        1480.7435681700056,
+        189.0988381047168,
+        59.148595332300964
+      ],
+      "rdb_road": [
+        2789,
+        -4,
+        30.76535415649414,
+        -9.537982940673828,
+        -1.5914661884307861
+      ],
+      "lanelets": [],
+      "cells": [],
+      "projection_basis": "reported_road",
+      "projection": {
+        "road": 2789,
+        "raw_projected_s": 30.866993198103895,
+        "raw_projected_t": -10.76411743730168,
+        "road_length": 44.03945547043929,
+        "longitudinal_residual_m": -2.4424906541753444e-15,
+        "source_interval_hits": [],
+        "driving_intervals": [
+          {
+            "lane": -1,
+            "type": "driving",
+            "t_bounds": [
+              -7.826525722398614e-06,
+              0.7926325917647719
+            ],
+            "width": 0.7926404182904943
+          },
+          {
+            "lane": -2,
+            "type": "driving",
+            "t_bounds": [
+              -3.1806402223494716,
+              -7.826525722398614e-06
+            ],
+            "width": 3.180632395823749
+          },
+          {
+            "lane": -3,
+            "type": "driving",
+            "t_bounds": [
+              -6.348231767212096,
+              -3.1806402223494716
+            ],
+            "width": 3.167591544862624
+          },
+          {
+            "lane": -4,
+            "type": "driving",
+            "t_bounds": [
+              -9.544567369579704,
+              -6.348231767212096
+            ],
+            "width": 3.196335602367608
+          }
+        ],
+        "signed_driving_lateral_margin_m": -1.2195500677219755,
+        "classification": "outside_original_driving"
+      },
+      "nearest_map_lanelet": 389661,
+      "nearest_map_source": [
+        2783,
+        0,
+        -3
+      ],
+      "nearest_map_distance_m": 1.0362107557166125,
+      "reported_st_raw_xy_error_m": 1.2303399118130427
+    },
+    {
+      "target": 390542,
+      "frame": 810,
+      "xyz": [
+        1480.5579302634787,
+        189.06467238210425,
+        59.1484317933977
+      ],
+      "rdb_road": [
+        2789,
+        -4,
+        30.76535415649414,
+        -9.537982940673828,
+        -1.5914661884307861
+      ],
+      "lanelets": [],
+      "cells": [],
+      "projection_basis": "reported_road",
+      "projection": {
+        "road": 2789,
+        "raw_projected_s": 30.8714873975543,
+        "raw_projected_t": -10.952819665991811,
+        "road_length": 44.03945547043929,
+        "longitudinal_residual_m": -1.7541523789077473e-14,
+        "source_interval_hits": [],
+        "driving_intervals": [
+          {
+            "lane": -1,
+            "type": "driving",
+            "t_bounds": [
+              -7.827665255755178e-06,
+              0.7923621611617093
+            ],
+            "width": 0.7923699888269651
+          },
+          {
+            "lane": -2,
+            "type": "driving",
+            "t_bounds": [
+              -3.180653405055506,
+              -7.827665255755178e-06
+            ],
+            "width": 3.1806455773902504
+          },
+          {
+            "lane": -3,
+            "type": "driving",
+            "t_bounds": [
+              -6.348229663408195,
+              -3.180653405055506
+            ],
+            "width": 3.167576258352689
+          },
+          {
+            "lane": -4,
+            "type": "driving",
+            "t_bounds": [
+              -9.544559092045803,
+              -6.348229663408195
+            ],
+            "width": 3.196329428637608
+          }
+        ],
+        "signed_driving_lateral_margin_m": -1.4082605739460075,
+        "classification": "outside_original_driving"
+      },
+      "nearest_map_lanelet": 389661,
+      "nearest_map_source": [
+        2783,
+        0,
+        -3
+      ],
+      "nearest_map_distance_m": 1.0438445107421015,
+      "reported_st_raw_xy_error_m": 1.4188119058445494
+    },
+    {
+      "target": 390542,
+      "frame": 811,
+      "xyz": [
+        1480.3763758154225,
+        189.03274152119408,
+        59.148258975292094
+      ],
+      "rdb_road": [
+        2789,
+        -4,
+        30.76535415649414,
+        -9.537982940673828,
+        -1.5914661884307861
+      ],
+      "lanelets": [],
+      "cells": [],
+      "projection_basis": "reported_road",
+      "projection": {
+        "road": 2789,
+        "raw_projected_s": 30.87441793901673,
+        "raw_projected_t": -11.13713735210531,
+        "road_length": 44.03945547043929,
+        "longitudinal_residual_m": -1.7319479184152442e-14,
+        "source_interval_hits": [],
+        "driving_intervals": [
+          {
+            "lane": -1,
+            "type": "driving",
+            "t_bounds": [
+              -7.82840831359266e-06,
+              0.7921858209472328
+            ],
+            "width": 0.7921936493555464
+          },
+          {
+            "lane": -2,
+            "type": "driving",
+            "t_bounds": [
+              -3.180661999739116,
+              -7.82840831359266e-06
+            ],
+            "width": 3.1806541713308025
+          },
+          {
+            "lane": -3,
+            "type": "driving",
+            "t_bounds": [
+              -6.348228291798526,
+              -3.180661999739116
+            ],
+            "width": 3.1675662920594103
+          },
+          {
+            "lane": -4,
+            "type": "driving",
+            "t_bounds": [
+              -9.544553695370631,
+              -6.348228291798526
+            ],
+            "width": 3.1963254035721045
+          }
+        ],
+        "signed_driving_lateral_margin_m": -1.5925836567346785,
+        "classification": "outside_original_driving"
+      },
+      "nearest_map_lanelet": 389661,
+      "nearest_map_source": [
+        2783,
+        0,
+        -3
+      ],
+      "nearest_map_distance_m": 1.0500610318874801,
+      "reported_st_raw_xy_error_m": 1.6028692211962658
+    },
+    {
+      "target": 390542,
+      "frame": 812,
+      "xyz": [
+        1480.1988824720563,
+        189.00243617069455,
+        59.148076999750394
+      ],
+      "rdb_road": [
+        2789,
+        -4,
+        30.76535415649414,
+        -9.537982940673828,
+        -1.5914661884307861
+      ],
+      "lanelets": [],
+      "cells": [],
+      "projection_basis": "reported_road",
+      "projection": {
+        "road": 2789,
+        "raw_projected_s": 30.87638304328037,
+        "raw_projected_t": -11.317188565856844,
+        "road_length": 44.03945547043929,
+        "longitudinal_residual_m": -1.3988810110276972e-14,
+        "source_interval_hits": [],
+        "driving_intervals": [
+          {
+            "lane": -1,
+            "type": "driving",
+            "t_bounds": [
+              -7.828906578355443e-06,
+              0.792067574230112
+            ],
+            "width": 0.7920754031366903
+          },
+          {
+            "lane": -2,
+            "type": "driving",
+            "t_bounds": [
+              -3.1806677623767348,
+              -7.828906578355443e-06
+            ],
+            "width": 3.1806599334701566
+          },
+          {
+            "lane": -3,
+            "type": "driving",
+            "t_bounds": [
+              -6.3482273721499025,
+              -3.1806677623767348
+            ],
+            "width": 3.1675596097731678
+          },
+          {
+            "lane": -4,
+            "type": "driving",
+            "t_bounds": [
+              -9.544550076961386,
+              -6.3482273721499025
+            ],
+            "width": 3.1963227048114833
+          }
+        ],
+        "signed_driving_lateral_margin_m": -1.772638488895458,
+        "classification": "outside_original_driving"
+      },
+      "nearest_map_lanelet": 389661,
+      "nearest_map_source": [
+        2783,
+        0,
+        -3
+      ],
+      "nearest_map_distance_m": 1.0554434823628094,
+      "reported_st_raw_xy_error_m": 1.7826665617506103
+    },
+    {
+      "target": 390542,
+      "frame": 813,
+      "xyz": [
+        1480.0254027352958,
+        188.97320274170917,
+        59.14788613750445
+      ],
+      "rdb_road": [
+        2789,
+        -4,
+        30.76535415649414,
+        -9.537982940673828,
+        -1.5914661884307861
+      ],
+      "lanelets": [],
+      "cells": [],
+      "projection_basis": "reported_road",
+      "projection": {
+        "road": 2789,
+        "raw_projected_s": 30.877921903876146,
+        "raw_projected_t": -11.493107423131592,
+        "road_length": 44.03945547043929,
+        "longitudinal_residual_m": -1.4210854715202004e-14,
+        "source_interval_hits": [],
+        "driving_intervals": [
+          {
+            "lane": -1,
+            "type": "driving",
+            "t_bounds": [
+              -7.829296766459493e-06,
+              0.7919749759812942
+            ],
+            "width": 0.7919828052780606
+          },
+          {
+            "lane": -2,
+            "type": "driving",
+            "t_bounds": [
+              -3.1806722747169203,
+              -7.829296766459493e-06
+            ],
+            "width": 3.180664445420154
+          },
+          {
+            "lane": -3,
+            "type": "driving",
+            "t_bounds": [
+              -6.348226652033957,
+              -3.1806722747169203
+            ],
+            "width": 3.1675543773170367
+          },
+          {
+            "lane": -4,
+            "type": "driving",
+            "t_bounds": [
+              -9.5445472436246,
+              -6.348226652033957
+            ],
+            "width": 3.1963205915906414
+          }
+        ],
+        "signed_driving_lateral_margin_m": -1.948560179506993,
+        "classification": "outside_original_driving"
+      },
+      "nearest_map_lanelet": 389110,
+      "nearest_map_source": [
+        2771,
+        0,
+        -1
+      ],
+      "nearest_map_distance_m": 0.9887375759414829,
+      "reported_st_raw_xy_error_m": 1.958362387214353
+    },
+    {
+      "target": 390542,
+      "frame": 814,
+      "xyz": [
+        1479.8558700570588,
+        188.94453959793853,
+        59.14768682541399
+      ],
+      "rdb_road": [
+        2789,
+        -4,
+        30.76535415649414,
+        -9.537982940673828,
+        -1.5914661884307861
+      ],
+      "lanelets": [],
+      "cells": [],
+      "projection_basis": "reported_road",
+      "projection": {
+        "road": 2789,
+        "raw_projected_s": 30.879519409382706,
+        "raw_projected_t": -11.665038667462419,
+        "road_length": 44.03945547043929,
+        "longitudinal_residual_m": -3.9968028886505635e-15,
+        "source_interval_hits": [],
+        "driving_intervals": [
+          {
+            "lane": -1,
+            "type": "driving",
+            "t_bounds": [
+              -7.8297018242246e-06,
+              0.7918788488773902
+            ],
+            "width": 0.7918866785792145
+          },
+          {
+            "lane": -2,
+            "type": "driving",
+            "t_bounds": [
+              -3.1806769586990704,
+              -7.8297018242246e-06
+            ],
+            "width": 3.180669128997246
+          },
+          {
+            "lane": -3,
+            "type": "driving",
+            "t_bounds": [
+              -6.348225904526023,
+              -3.1806769586990704
+            ],
+            "width": 3.1675489458269523
+          },
+          {
+            "lane": -4,
+            "type": "driving",
+            "t_bounds": [
+              -9.544544302512406,
+              -6.348225904526023
+            ],
+            "width": 3.1963183979863836
+          }
+        ],
+        "signed_driving_lateral_margin_m": -2.1204943649500123,
+        "classification": "outside_original_driving"
+      },
+      "nearest_map_lanelet": 389110,
+      "nearest_map_source": [
+        2771,
+        0,
+        -1
+      ],
+      "nearest_map_distance_m": 0.8742377700084548,
+      "reported_st_raw_xy_error_m": 2.130117313631065
+    },
+    {
+      "target": 390542,
+      "frame": 815,
+      "xyz": [
+        1479.6902040388964,
+        188.91599298065333,
+        59.14747967994059
+      ],
+      "rdb_road": [
+        2789,
+        -4,
+        30.76535415649414,
+        -9.537982940673828,
+        -1.5914661884307861
+      ],
+      "lanelets": [],
+      "cells": [],
+      "projection_basis": "reported_road",
+      "projection": {
+        "road": 2789,
+        "raw_projected_s": 30.88161098670448,
+        "raw_projected_t": -11.833133177297016,
+        "road_length": 44.03945547043929,
+        "longitudinal_residual_m": -1.3322676295501878e-14,
+        "source_interval_hits": [],
+        "driving_intervals": [
+          {
+            "lane": -1,
+            "type": "driving",
+            "t_bounds": [
+              -7.83023215733536e-06,
+              0.791752991864874
+            ],
+            "width": 0.7917608220970314
+          },
+          {
+            "lane": -2,
+            "type": "driving",
+            "t_bounds": [
+              -3.180683090836278,
+              -7.83023215733536e-06
+            ],
+            "width": 3.180675260604121
+          },
+          {
+            "lane": -3,
+            "type": "driving",
+            "t_bounds": [
+              -6.348224925909785,
+              -3.180683090836278
+            ],
+            "width": 3.167541835073507
+          },
+          {
+            "lane": -4,
+            "type": "driving",
+            "t_bounds": [
+              -9.544540452091418,
+              -6.348224925909785
+            ],
+            "width": 3.196315526181632
+          }
+        ],
+        "signed_driving_lateral_margin_m": -2.288592725205598,
+        "classification": "outside_original_driving"
+      },
+      "nearest_map_lanelet": 389110,
+      "nearest_map_source": [
+        2771,
+        0,
+        -1
+      ],
+      "nearest_map_distance_m": 0.7659583627072903,
+      "reported_st_raw_xy_error_m": 2.29809274382949
+    },
+    {
+      "target": 390542,
+      "frame": 816,
+      "xyz": [
+        1479.5283148964734,
+        188.88715279486428,
+        59.14726550526313
+      ],
+      "rdb_road": [
+        2789,
+        -4,
+        30.76535415649414,
+        -9.537982940673828,
+        -1.5914661884307861
+      ],
+      "lanelets": [],
+      "cells": [],
+      "projection_basis": "reported_road",
+      "projection": {
+        "road": 2789,
+        "raw_projected_s": 30.884587465606252,
+        "raw_projected_t": -11.997544221099313,
+        "road_length": 44.03945547043929,
+        "longitudinal_residual_m": -1.176836406102666e-14,
+        "source_interval_hits": [],
+        "driving_intervals": [
+          {
+            "lane": -1,
+            "type": "driving",
+            "t_bounds": [
+              -7.830986862744638e-06,
+              0.7915738874452123
+            ],
+            "width": 0.791581718432075
+          },
+          {
+            "lane": -2,
+            "type": "driving",
+            "t_bounds": [
+              -3.1806918163849858,
+              -7.830986862744638e-06
+            ],
+            "width": 3.180683985398123
+          },
+          {
+            "lane": -3,
+            "type": "driving",
+            "t_bounds": [
+              -6.348223533415984,
+              -3.1806918163849858
+            ],
+            "width": 3.1675317170309985
+          },
+          {
+            "lane": -4,
+            "type": "driving",
+            "t_bounds": [
+              -9.544534973245476,
+              -6.348223533415984
+            ],
+            "width": 3.196311439829492
+          }
+        ],
+        "signed_driving_lateral_margin_m": -2.453009247853837,
+        "classification": "outside_original_driving"
+      },
+      "nearest_map_lanelet": 389110,
+      "nearest_map_source": [
+        2771,
+        0,
+        -1
+      ],
+      "nearest_map_distance_m": 0.6593474044239708,
+      "reported_st_raw_xy_error_m": 2.462449649062797
+    },
+    {
+      "target": 390542,
+      "frame": 817,
+      "xyz": [
+        1479.3701073371617,
+        188.85764836512308,
+        59.147045294398204
+      ],
+      "rdb_road": [
+        2789,
+        -4,
+        30.76535415649414,
+        -9.537982940673828,
+        -1.5914661884307861
+      ],
+      "lanelets": [],
+      "cells": [],
+      "projection_basis": "reported_road",
+      "projection": {
+        "road": 2789,
+        "raw_projected_s": 30.888799880780496,
+        "raw_projected_t": -12.15842429679577,
+        "road_length": 44.03945547043929,
+        "longitudinal_residual_m": -6.661338147750939e-15,
+        "source_interval_hits": [],
+        "driving_intervals": [
+          {
+            "lane": -1,
+            "type": "driving",
+            "t_bounds": [
+              -7.832054947920497e-06,
+              0.7913204127188473
+            ],
+            "width": 0.7913282447737953
+          },
+          {
+            "lane": -2,
+            "type": "driving",
+            "t_bounds": [
+              -3.1807041631444273,
+              -7.832054947920497e-06
+            ],
+            "width": 3.180696331089479
+          },
+          {
+            "lane": -3,
+            "type": "driving",
+            "t_bounds": [
+              -6.3482215630202115,
+              -3.1807041631444273
+            ],
+            "width": 3.167517399875784
+          },
+          {
+            "lane": -4,
+            "type": "driving",
+            "t_bounds": [
+              -9.544527220610917,
+              -6.3482215630202115
+            ],
+            "width": 3.1963056575907047
+          }
+        ],
+        "signed_driving_lateral_margin_m": -2.6138970761848537,
+        "classification": "outside_original_driving"
+      },
+      "nearest_map_lanelet": 389110,
+      "nearest_map_source": [
+        2771,
+        0,
+        -1
+      ],
+      "nearest_map_distance_m": 0.5578994981804952,
+      "reported_st_raw_xy_error_m": 2.62334743175935
+    },
+    {
+      "target": 390542,
+      "frame": 818,
+      "xyz": [
+        1479.2154839832667,
+        188.82714425561485,
+        59.14682022191655
+      ],
+      "rdb_road": [
+        2789,
+        -4,
+        30.76535415649414,
+        -9.537982940673828,
+        -1.5914661884307861
+      ],
+      "lanelets": [],
+      "cells": [],
+      "projection_basis": "reported_road",
+      "projection": {
+        "road": 2789,
+        "raw_projected_s": 30.894564138846583,
+        "raw_projected_t": -12.315922409786255,
+        "road_length": 44.03945547043929,
+        "longitudinal_residual_m": -2.220446049250313e-15,
+        "source_interval_hits": [],
+        "driving_intervals": [
+          {
+            "lane": -1,
+            "type": "driving",
+            "t_bounds": [
+              -7.833516512567584e-06,
+              0.790973558556672
+            ],
+            "width": 0.7909813920731845
+          },
+          {
+            "lane": -2,
+            "type": "driving",
+            "t_bounds": [
+              -3.180721054738383,
+              -7.833516512567584e-06
+            ],
+            "width": 3.1807132212218705
+          },
+          {
+            "lane": -3,
+            "type": "driving",
+            "t_bounds": [
+              -6.348218867323341,
+              -3.180721054738383
+            ],
+            "width": 3.1674978125849584
+          },
+          {
+            "lane": -4,
+            "type": "driving",
+            "t_bounds": [
+              -9.544516614236887,
+              -6.348218867323341
+            ],
+            "width": 3.1962977469135447
+          }
+        ],
+        "signed_driving_lateral_margin_m": -2.7714057955493683,
+        "classification": "outside_original_driving"
+      },
+      "nearest_map_lanelet": 389110,
+      "nearest_map_source": [
+        2771,
+        0,
+        -1
+      ],
+      "nearest_map_distance_m": 0.4577215044457489,
+      "reported_st_raw_xy_error_m": 2.7809428101979745
+    },
+    {
+      "target": 390542,
+      "frame": 819,
+      "xyz": [
+        1479.0643484542247,
+        188.79533623844085,
+        59.14659162729375
+      ],
+      "rdb_road": [
+        2789,
+        -4,
+        30.76535415649414,
+        -9.537982940673828,
+        -1.5914661884307861
+      ],
+      "lanelets": [],
+      "cells": [],
+      "projection_basis": "reported_road",
+      "projection": {
+        "road": 2789,
+        "raw_projected_s": 30.902165485285206,
+        "raw_projected_t": -12.470181664379638,
+        "road_length": 44.03945547043929,
+        "longitudinal_residual_m": -1.2878587085651816e-14,
+        "source_interval_hits": [],
+        "driving_intervals": [
+          {
+            "lane": -1,
+            "type": "driving",
+            "t_bounds": [
+              -7.835443883275062e-06,
+              0.7905161608100499
+            ],
+            "width": 0.7905239962539332
+          },
+          {
+            "lane": -2,
+            "type": "driving",
+            "t_bounds": [
+              -3.180743323234699,
+              -7.835443883275062e-06
+            ],
+            "width": 3.1807354877908156
+          },
+          {
+            "lane": -3,
+            "type": "driving",
+            "t_bounds": [
+              -6.348215313537658,
+              -3.180743323234699
+            ],
+            "width": 3.1674719903029587
+          },
+          {
+            "lane": -4,
+            "type": "driving",
+            "t_bounds": [
+              -9.544502631661523,
+              -6.348215313537658
+            ],
+            "width": 3.196287318123864
+          }
+        ],
+        "signed_driving_lateral_margin_m": -2.925679032718115,
+        "classification": "outside_original_driving"
+      },
+      "nearest_map_lanelet": 389110,
+      "nearest_map_source": [
+        2771,
+        0,
+        -1
+      ],
+      "nearest_map_distance_m": 0.3610059814516502,
+      "reported_st_raw_xy_error_m": 2.93538867869085
+    },
+    {
+      "target": 390542,
+      "frame": 820,
+      "xyz": [
+        1478.916608199508,
+        188.76194748504744,
+        59.14636098859421
+      ],
+      "rdb_road": [
+        2789,
+        -4,
+        30.76535415649414,
+        -9.537982940673828,
+        -1.5914661884307861
+      ],
+      "lanelets": [],
+      "cells": [],
+      "projection_basis": "reported_road",
+      "projection": {
+        "road": 2789,
+        "raw_projected_s": 30.911862711740163,
+        "raw_projected_t": -12.621337066254764,
+        "road_length": 44.03945547043929,
+        "longitudinal_residual_m": -1.9539925233402755e-14,
+        "source_interval_hits": [],
+        "driving_intervals": [
+          {
+            "lane": -1,
+            "type": "driving",
+            "t_bounds": [
+              -7.837902677554354e-06,
+              0.7899326471437815
+            ],
+            "width": 0.7899404850464591
+          },
+          {
+            "lane": -2,
+            "type": "driving",
+            "t_bounds": [
+              -3.1807717209582704,
+              -7.837902677554354e-06
+            ],
+            "width": 3.180763883055593
+          },
+          {
+            "lane": -3,
+            "type": "driving",
+            "t_bounds": [
+              -6.348210781601687,
+              -3.1807717209582704
+            ],
+            "width": 3.167439060643417
+          },
+          {
+            "lane": -4,
+            "type": "driving",
+            "t_bounds": [
+              -9.544484800494537,
+              -6.348210781601687
+            ],
+            "width": 3.1962740188928507
+          }
+        ],
+        "signed_driving_lateral_margin_m": -3.076852265760227,
+        "classification": "outside_original_driving"
+      },
+      "nearest_map_lanelet": 389110,
+      "nearest_map_source": [
+        2771,
+        0,
+        -1
+      ],
+      "nearest_map_distance_m": 0.2656164630745642,
+      "reported_st_raw_xy_error_m": 3.0868329110102963
+    },
+    {
+      "target": 390542,
+      "frame": 821,
+      "xyz": [
+        1478.7721771511606,
+        188.72672504756608,
+        59.14612988701563
+      ],
+      "rdb_road": [
+        2789,
+        -4,
+        30.76535415649414,
+        -9.537982940673828,
+        -1.5914661884307861
+      ],
+      "lanelets": [],
+      "cells": [],
+      "projection_basis": "reported_road",
+      "projection": {
+        "road": 2789,
+        "raw_projected_s": 30.92389204861444,
+        "raw_projected_t": -12.76951345736738,
+        "road_length": 44.03945547043929,
+        "longitudinal_residual_m": 1.9984014443252818e-15,
+        "source_interval_hits": [],
+        "driving_intervals": [
+          {
+            "lane": -1,
+            "type": "driving",
+            "t_bounds": [
+              -7.840952793713996e-06,
+              0.7892088028059294
+            ],
+            "width": 0.7892166437587231
+          },
+          {
+            "lane": -2,
+            "type": "driving",
+            "t_bounds": [
+              -3.1808069313542573,
+              -7.840952793713996e-06
+            ],
+            "width": 3.1807990904014636
+          },
+          {
+            "lane": -3,
+            "type": "driving",
+            "t_bounds": [
+              -6.34820516244662,
+              -3.1808069313542573
+            ],
+            "width": 3.167398231092363
+          },
+          {
+            "lane": -4,
+            "type": "driving",
+            "t_bounds": [
+              -9.544462691596205,
+              -6.34820516244662
+            ],
+            "width": 3.1962575291495856
+          }
+        ],
+        "signed_driving_lateral_margin_m": -3.225050765771174,
+        "classification": "outside_original_driving"
+      },
+      "nearest_map_lanelet": 389110,
+      "nearest_map_source": [
+        2771,
+        0,
+        -1
+      ],
+      "nearest_map_distance_m": 0.17203610855027707,
+      "reported_st_raw_xy_error_m": 3.235417089582037
+    },
+    {
+      "target": 390542,
+      "frame": 822,
+      "xyz": [
+        1478.6309782421185,
+        188.68943668852685,
+        59.14589996372819
+      ],
+      "rdb_road": [
+        2789,
+        -4,
+        30.76535415649414,
+        -9.537982940673828,
+        -1.5914661884307861
+      ],
+      "lanelets": [],
+      "cells": [],
+      "projection_basis": "reported_road",
+      "projection": {
+        "road": 2789,
+        "raw_projected_s": 30.938470692498644,
+        "raw_projected_t": -12.91482352851538,
+        "road_length": 44.03945547043929,
+        "longitudinal_residual_m": -1.554312234475219e-14,
+        "source_interval_hits": [],
+        "driving_intervals": [
+          {
+            "lane": -1,
+            "type": "driving",
+            "t_bounds": [
+              -7.844649303256901e-06,
+              0.7883315583709758
+            ],
+            "width": 0.788339403020279
+          },
+          {
+            "lane": -2,
+            "type": "driving",
+            "t_bounds": [
+              -3.180849578762878,
+              -7.844649303256901e-06
+            ],
+            "width": 3.180841734113575
+          },
+          {
+            "lane": -3,
+            "type": "driving",
+            "t_bounds": [
+              -6.348198356436424,
+              -3.180849578762878
+            ],
+            "width": 3.1673487776735465
+          },
+          {
+            "lane": -4,
+            "type": "driving",
+            "t_bounds": [
+              -9.544435912939758,
+              -6.348198356436424
+            ],
+            "width": 3.1962375565033327
+          }
+        ],
+        "signed_driving_lateral_margin_m": -3.3703876155756216,
+        "classification": "outside_original_driving"
+      },
+      "nearest_map_lanelet": 389110,
+      "nearest_map_source": [
+        2771,
+        0,
+        -1
+      ],
+      "nearest_map_distance_m": 0.07996450917880742,
+      "reported_st_raw_xy_error_m": 3.3812751575006685
+    }
+  ],
+  "road2789_2783": {
+    "requested_placement": {
+      "sample": {
+        "name": "MapAudit000",
+        "id": 2,
+        "xyz": [
+          1485.8074708655997,
+          195.48748618928607,
+          59.1426499
+        ],
+        "hpr": [
+          -1.412600040435791,
+          0.0,
+          0.0
+        ],
+        "coord_type": 0,
+        "parent": 0,
+        "frame": 739,
+        "sim_time": 29.51999999999955,
+        "road": null,
+        "phase": "placement",
+        "target": 390542,
+        "lanelets": [
+          389834,
+          390542
+        ],
+        "cells": [
+          69219,
+          69368
+        ]
+      },
+      "projections": {
+        "2789": {
+          "road": 2789,
+          "raw_projected_s": 25.355873560419685,
+          "raw_projected_t": -4.756997062442654,
+          "road_length": 44.03945547043929,
+          "longitudinal_residual_m": 3.885780586188048e-15,
+          "source_interval_hits": [
+            {
+              "lane": -3,
+              "type": "driving",
+              "t_bounds": [
+                -6.351057150210121,
+                -3.162936974675227
+              ],
+              "width": 3.1881201755348934
+            }
+          ],
+          "driving_intervals": [
+            {
+              "lane": -1,
+              "type": "driving",
+              "t_bounds": [
+                -6.429145701369876e-06,
+                1.124254591103165
+              ],
+              "width": 1.1242610202488663
+            },
+            {
+              "lane": -2,
+              "type": "driving",
+              "t_bounds": [
+                -3.162936974675227,
+                -6.429145701369876e-06
+              ],
+              "width": 3.1629305455295254
+            },
+            {
+              "lane": -3,
+              "type": "driving",
+              "t_bounds": [
+                -6.351057150210121,
+                -3.162936974675227
+              ],
+              "width": 3.1881201755348934
+            },
+            {
+              "lane": -4,
+              "type": "driving",
+              "t_bounds": [
+                -9.55568360664375,
+                -6.351057150210121
+              ],
+              "width": 3.2046264564336298
+            }
+          ],
+          "signed_driving_lateral_margin_m": 1.594060087767427,
+          "classification": "inside_original_driving"
+        },
+        "2783": {
+          "road": 2783,
+          "raw_projected_s": 18.060262990150328,
+          "raw_projected_t": -5.0896781630561225,
+          "road_length": 42.76182731549953,
+          "longitudinal_residual_m": -1.127320459204384e-11,
+          "source_interval_hits": [
+            {
+              "lane": -2,
+              "type": "driving",
+              "t_bounds": [
+                -6.148619889885024,
+                -3.01902968687534
+              ],
+              "width": 3.129590203009685
+            }
+          ],
+          "driving_intervals": [
+            {
+              "lane": -1,
+              "type": "driving",
+              "t_bounds": [
+                -3.01902968687534,
+                0.0
+              ],
+              "width": 3.01902968687534
+            },
+            {
+              "lane": -2,
+              "type": "driving",
+              "t_bounds": [
+                -6.148619889885024,
+                -3.01902968687534
+              ],
+              "width": 3.129590203009685
+            },
+            {
+              "lane": -3,
+              "type": "driving",
+              "t_bounds": [
+                -9.192337973643394,
+                -6.148619889885024
+              ],
+              "width": 3.0437180837583684
+            }
+          ],
+          "signed_driving_lateral_margin_m": 1.0589417268289019,
+          "classification": "inside_original_driving"
+        }
+      }
+    },
+    "last_drive": {
+      "sample": {
+        "name": "MapAudit000",
+        "id": 2,
+        "xyz": [
+          1469.9464398228672,
+          188.5949673445933,
+          59.14115142209862
+        ],
+        "hpr": [
+          -3.7015979290008545,
+          -0.0012007037876173854,
+          -0.01432453840970993
+        ],
+        "coord_type": 0,
+        "parent": 0,
+        "frame": 871,
+        "sim_time": 34.799999999999436,
+        "road": [
+          2783,
+          -3,
+          2.293410301208496,
+          -8.896434783935547,
+          -1.4847108125686646
+        ]
+      },
+      "projections": {
+        "2789": {
+          "road": 2789,
+          "raw_projected_s": 29.663621553545973,
+          "raw_projected_t": -21.50580087019821,
+          "road_length": 44.03945547043929,
+          "longitudinal_residual_m": -2.708944180085382e-14,
+          "source_interval_hits": [],
+          "driving_intervals": [
+            {
+              "lane": -1,
+              "type": "driving",
+              "t_bounds": [
+                -7.5214030603731885e-06,
+                0.8650433788554177
+              ],
+              "width": 0.8650509002584781
+            },
+            {
+              "lane": -2,
+              "type": "driving",
+              "t_bounds": [
+                -3.1770218240368404,
+                -7.5214030603731885e-06
+              ],
+              "width": 3.17701430263378
+            },
+            {
+              "lane": -3,
+              "type": "driving",
+              "t_bounds": [
+                -6.348809229648493,
+                -3.1770218240368404
+              ],
+              "width": 3.1717874056116533
+            },
+            {
+              "lane": -4,
+              "type": "driving",
+              "t_bounds": [
+                -9.546839405302888,
+                -6.348809229648493
+              ],
+              "width": 3.1980301756543956
+            }
+          ],
+          "signed_driving_lateral_margin_m": -11.958961464895323,
+          "classification": "outside_original_driving"
+        },
+        "2783": {
+          "road": 2783,
+          "raw_projected_s": 2.293410250832103,
+          "raw_projected_t": -8.896434863956786,
+          "road_length": 42.76182731549953,
+          "longitudinal_residual_m": 7.616129948928574e-14,
+          "source_interval_hits": [
+            {
+              "lane": -3,
+              "type": "driving",
+              "t_bounds": [
+                -8.912197171084125,
+                -5.91125098696096
+              ],
+              "width": 3.0009461841231655
+            }
+          ],
+          "driving_intervals": [
+            {
+              "lane": -1,
+              "type": "driving",
+              "t_bounds": [
+                -2.9084462850604087,
+                0.0
+              ],
+              "width": 2.9084462850604087
+            },
+            {
+              "lane": -2,
+              "type": "driving",
+              "t_bounds": [
+                -5.91125098696096,
+                -2.9084462850604087
+              ],
+              "width": 3.002804701900551
+            },
+            {
+              "lane": -3,
+              "type": "driving",
+              "t_bounds": [
+                -8.912197171084125,
+                -5.91125098696096
+              ],
+              "width": 3.0009461841231655
+            }
+          ],
+          "signed_driving_lateral_margin_m": 0.01576230712733917,
+          "classification": "inside_original_driving"
+        }
+      },
+      "source_driving_heading_rad": 0.15874567714791993,
+      "vehicle_heading_difference_deg": 138.8186038973627,
+      "nearest_other_actor": {
+        "name": "MapAudit035",
+        "target": 314011,
+        "distance_m": 32.25292702919852
+      }
+    },
+    "requested_st_source_xy": [
+      1485.8074708655997,
+      195.48748618928607
+    ],
+    "requested_st_raw_xy_error_m": 0.0,
+    "placement_heading_difference_between_source_roads_deg": 101.4510795481722
+  }
+}

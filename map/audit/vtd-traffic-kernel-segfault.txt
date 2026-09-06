@@ -1,0 +1,5 @@
+Sep 06 08:36:55 stier kernel: ghostdriver[453655]: segfault at 0 ip 000059692f98b94c sp 00007fffdb335c30 error 4 in ghostdriver.2025.2.438_flexlm[27994c,59692f7f4000+109a000] likely on CPU 2 (core 2, socket 0)
+Sep 06 08:53:52 stier kernel: ghostdriver[522621]: segfault at 0 ip 00005c61ba30c94c sp 00007fffc9792fa0 error 4 in ghostdriver.2025.2.438_flexlm[27994c,5c61ba175000+109a000] likely on CPU 9 (core 3, socket 0)
+Sep 06 09:18:50 stier kernel: ghostdriver[532191]: segfault at 0 ip 000064f5485be94c sp 00007ffca4458160 error 4 in ghostdriver.2025.2.438_flexlm[27994c,64f548427000+109a000] likely on CPU 9 (core 3, socket 0)
+Sep 06 09:25:55 stier kernel: ghostdriver[550282]: segfault at 0 ip 000063cea8d1894c sp 00007ffe17ad8e10 error 4 in ghostdriver.2025.2.438_flexlm[27994c,63cea8b81000+109a000] likely on CPU 6 (core 0, socket 0)
+Sep 06 09:47:36 stier kernel: ghostdriver[556305]: segfault at 0 ip 00005735377a894c sp 00007ffdbc204d30 error 4 in ghostdriver.2025.2.438_flexlm[27994c,573537611000+109a000] likely on CPU 4 (core 4, socket 0)

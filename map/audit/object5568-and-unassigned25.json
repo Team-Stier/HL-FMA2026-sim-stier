@@ -1,0 +1,1242 @@
+{
+  "map_sha256": "758f2990e28374036725bc88be2938e5857e1f9a6035e3017a83692d78e6c718",
+  "object5568": {
+    "raw_object": {
+      "type": "none",
+      "subtype": "",
+      "name": "Rm_StopLine_300cm_JPN_01.flt",
+      "id": "5568",
+      "s": "1.9285101075519813e+02",
+      "t": "-7.8000080231392674e+00",
+      "zOffset": "8.0000000000000002e-03",
+      "validLength": "0.0000000000000000e+00",
+      "orientation": "none",
+      "length": "2.9999999999999999e-01",
+      "width": "3.0000000000000000e+00",
+      "height": "0.0000000000000000e+00",
+      "hdg": "1.0116032146173515e-04",
+      "pitch": "0.0000000000000000e+00",
+      "roll": "0.0000000000000000e+00"
+    },
+    "source_road_length_m": 192.99877544264766,
+    "approach_end_distance_m": 0.14776468744952354,
+    "lane_ranges_at_source_s": [
+      {
+        "lane": -1,
+        "type": "driving",
+        "t_range": [
+          -3.0153754325870166,
+          0.0
+        ],
+        "height": []
+      },
+      {
+        "lane": -2,
+        "type": "driving",
+        "t_range": [
+          -6.026429691029835,
+          -3.0153754325870166
+        ],
+        "height": []
+      },
+      {
+        "lane": -3,
+        "type": "border",
+        "t_range": [
+          -6.526429691029835,
+          -6.026429691029835
+        ],
+        "height": []
+      },
+      {
+        "lane": -4,
+        "type": "sidewalk",
+        "t_range": [
+          -10.526429691029836,
+          -6.526429691029835
+        ],
+        "height": [
+          {
+            "sOffset": "0.0000000000000000e+00",
+            "inner": "1.4999999999999999e-01",
+            "outer": "1.4999999999999999e-01"
+          }
+        ]
+      },
+      {
+        "lane": -5,
+        "type": "border",
+        "t_range": [
+          -10.526529691029836,
+          -10.526429691029836
+        ],
+        "height": []
+      }
+    ],
+    "generated_stop_center": [
+      964.0398779263427,
+      650.1607279995841,
+      41.458935649999994
+    ],
+    "mesh229": {
+      "center": [
+        964.0355529785,
+        650.158477783,
+        41.61693573
+      ],
+      "corners": [
+        [
+          963.461547852,
+          651.552429199,
+          41.61693573
+        ],
+        [
+          963.196899414,
+          651.411132812,
+          41.61693573
+        ],
+        [
+          964.609558105,
+          648.764526367,
+          41.61693573
+        ],
+        [
+          964.874206543,
+          648.905822754,
+          41.61693573
+        ]
+      ]
+    },
+    "mesh_xy_distance_m": 0.004875310094438002,
+    "mesh_height_minus_ground_stop_m": 0.15800008000000787,
+    "nearest_generated_driving_lanelets": [
+      {
+        "lanelet": 420152,
+        "xodr": [
+          2814,
+          2,
+          -2
+        ],
+        "polygon_gap_m": 0.27358344889536707,
+        "center_gap_m": 1.7735834436483195
+      },
+      {
+        "lanelet": 489289,
+        "xodr": [
+          3102,
+          0,
+          -2
+        ],
+        "polygon_gap_m": 0.31131375889730184,
+        "center_gap_m": 1.7797835048010844
+      },
+      {
+        "lanelet": 420622,
+        "xodr": [
+          2814,
+          2,
+          -1
+        ],
+        "polygon_gap_m": 3.2846383837272537,
+        "center_gap_m": 4.7846383765813885
+      },
+      {
+        "lanelet": 489445,
+        "xodr": [
+          3102,
+          0,
+          -1
+        ],
+        "polygon_gap_m": 3.2879824911768902,
+        "center_gap_m": 4.786930180476386
+      },
+      {
+        "lanelet": 421562,
+        "xodr": [
+          2814,
+          2,
+          2
+        ],
+        "polygon_gap_m": 9.585061176942345,
+        "center_gap_m": 11.085061171129755
+      },
+      {
+        "lanelet": 520481,
+        "xodr": [
+          3258,
+          0,
+          -4
+        ],
+        "polygon_gap_m": 9.58619953647477,
+        "center_gap_m": 11.086043746833548
+      },
+      {
+        "lanelet": 520636,
+        "xodr": [
+          3258,
+          0,
+          -3
+        ],
+        "polygon_gap_m": 9.58619953647477,
+        "center_gap_m": 11.086043746833548
+      },
+      {
+        "lanelet": 422033,
+        "xodr": [
+          2814,
+          2,
+          3
+        ],
+        "polygon_gap_m": 12.569117949398091,
+        "center_gap_m": 14.06911794844433
+      }
+    ],
+    "same_road_stop_cells": [
+      {
+        "object": 5566,
+        "stop": 544210,
+        "cells": [
+          {
+            "cell": 74518,
+            "parent": 420152
+          }
+        ],
+        "attributes": {
+          "cell_assignment": "projected_to_lane",
+          "correction_evidence": "none",
+          "effective_t": "-5.000008349847871",
+          "source": "Rm_StopLine_300cm_JPN_01.flt",
+          "type": "stop_line",
+          "visual_z_offset_m": "8.0000000000000002e-03",
+          "xodr_object_id": "5566",
+          "xodr_road_id": "2814",
+          "xodr_s": "192.85101075519813",
+          "xodr_t": "-5.0000083498478709e+00"
+        }
+      },
+      {
+        "object": 5567,
+        "stop": 544213,
+        "cells": [
+          {
+            "cell": 74636,
+            "parent": 420622
+          }
+        ],
+        "attributes": {
+          "cell_assignment": "projected_to_lane",
+          "correction_evidence": "none",
+          "effective_t": "-2.0000097150187197",
+          "source": "Rm_StopLine_300cm_JPN_01.flt",
+          "type": "stop_line",
+          "visual_z_offset_m": "8.0000000000000002e-03",
+          "xodr_object_id": "5567",
+          "xodr_road_id": "2814",
+          "xodr_s": "192.85101075519813",
+          "xodr_t": "-2.0000097150187197e+00"
+        }
+      },
+      {
+        "object": 5568,
+        "stop": 544216,
+        "cells": [],
+        "attributes": {
+          "cell_assignment": "unresolved",
+          "correction_evidence": "none",
+          "effective_t": "-7.800008023139267",
+          "source": "Rm_StopLine_300cm_JPN_01.flt",
+          "type": "stop_line",
+          "visual_z_offset_m": "8.0000000000000002e-03",
+          "xodr_object_id": "5568",
+          "xodr_road_id": "2814",
+          "xodr_s": "192.85101075519813",
+          "xodr_t": "-7.8000080231392674e+00"
+        }
+      }
+    ],
+    "source_image": "/tmp/hdmap-audit/object5568-source.png",
+    "conclusion": "Object center and most width are on original sidewalk -4, not on either driving lane; OSGB elevated paint matches sidewalk height. Preserve unresolved driving-cell assignment; no evidence to add driving lanelet or attach to adjacent driving lane."
+  },
+  "other25_unassigned": [
+    {
+      "object": 1215,
+      "road": 1043,
+      "s": 0.0,
+      "t": -57.57882664511248,
+      "source_hdg": 3.138072656358494,
+      "inferred_approach_sign_from_object_heading": 1,
+      "distance_to_inferred_approach_end_m": 0.0,
+      "new_restoration_approach_present": false,
+      "same_approach_asset_stops": [],
+      "nearest_baseline_compatible_mesh_distance_m": 59.0789509829626,
+      "same_source_road_assets_either_direction": [
+        {
+          "mesh": 25,
+          "lanelet": 80758,
+          "lane_sign": -1,
+          "xy_center_distance_m": 80.54225485125946
+        },
+        {
+          "mesh": 26,
+          "lanelet": 80853,
+          "lane_sign": -1,
+          "xy_center_distance_m": 82.39051509329157
+        }
+      ],
+      "same_source_road_new_approach": true
+    },
+    {
+      "object": 1216,
+      "road": 1043,
+      "s": 0.0,
+      "t": 57.59047836861291,
+      "source_hdg": 3.138072656358494,
+      "inferred_approach_sign_from_object_heading": 1,
+      "distance_to_inferred_approach_end_m": 0.0,
+      "new_restoration_approach_present": false,
+      "same_approach_asset_stops": [],
+      "nearest_baseline_compatible_mesh_distance_m": 53.09080208574507,
+      "same_source_road_assets_either_direction": [
+        {
+          "mesh": 25,
+          "lanelet": 80758,
+          "lane_sign": -1,
+          "xy_center_distance_m": 82.31109822627727
+        },
+        {
+          "mesh": 26,
+          "lanelet": 80853,
+          "lane_sign": -1,
+          "xy_center_distance_m": 80.4822067235661
+        }
+      ],
+      "same_source_road_new_approach": true
+    },
+    {
+      "object": 1374,
+      "road": 1492,
+      "s": 0.14881426572274706,
+      "t": 1.5000004686551243,
+      "source_hdg": 3.141592653590725,
+      "inferred_approach_sign_from_object_heading": 1,
+      "distance_to_inferred_approach_end_m": 0.14881426572274706,
+      "new_restoration_approach_present": true,
+      "same_approach_asset_stops": [
+        {
+          "mesh": 581,
+          "stop": 544380,
+          "xy_center_distance_m": 2.7001770146805018
+        }
+      ],
+      "nearest_baseline_compatible_mesh_distance_m": 2.7001770146805018,
+      "same_source_road_assets_either_direction": [
+        {
+          "mesh": 581,
+          "lanelet": 102463,
+          "lane_sign": 1,
+          "xy_center_distance_m": 2.7001770146805018
+        }
+      ],
+      "same_source_road_new_approach": true
+    },
+    {
+      "object": 1476,
+      "road": 1603,
+      "s": 0.0,
+      "t": -65.53206650086601,
+      "source_hdg": 2.8171701373653635,
+      "inferred_approach_sign_from_object_heading": 1,
+      "distance_to_inferred_approach_end_m": 0.0,
+      "new_restoration_approach_present": false,
+      "same_approach_asset_stops": [],
+      "nearest_baseline_compatible_mesh_distance_m": 160.39867337984452,
+      "same_source_road_assets_either_direction": [
+        {
+          "mesh": 187,
+          "lanelet": 111962,
+          "lane_sign": -1,
+          "xy_center_distance_m": 86.4650346687598
+        },
+        {
+          "mesh": 186,
+          "lanelet": 112061,
+          "lane_sign": -1,
+          "xy_center_distance_m": 88.79533324917594
+        }
+      ],
+      "same_source_road_new_approach": true
+    },
+    {
+      "object": 1477,
+      "road": 1603,
+      "s": 0.0,
+      "t": -64.93641245411435,
+      "source_hdg": 2.8171701373653635,
+      "inferred_approach_sign_from_object_heading": 1,
+      "distance_to_inferred_approach_end_m": 0.0,
+      "new_restoration_approach_present": false,
+      "same_approach_asset_stops": [],
+      "nearest_baseline_compatible_mesh_distance_m": 159.93788845761827,
+      "same_source_road_assets_either_direction": [
+        {
+          "mesh": 187,
+          "lanelet": 111962,
+          "lane_sign": -1,
+          "xy_center_distance_m": 86.06929992536767
+        },
+        {
+          "mesh": 186,
+          "lanelet": 112061,
+          "lane_sign": -1,
+          "xy_center_distance_m": 88.3926725783612
+        }
+      ],
+      "same_source_road_new_approach": true
+    },
+    {
+      "object": 2913,
+      "road": 2077,
+      "s": 0.0,
+      "t": 19.693130534383304,
+      "source_hdg": 3.1415520808785393,
+      "inferred_approach_sign_from_object_heading": 1,
+      "distance_to_inferred_approach_end_m": 0.0,
+      "new_restoration_approach_present": false,
+      "same_approach_asset_stops": [],
+      "nearest_baseline_compatible_mesh_distance_m": 18.193773111587593,
+      "same_source_road_assets_either_direction": [
+        {
+          "mesh": 172,
+          "lanelet": 230308,
+          "lane_sign": -1,
+          "xy_center_distance_m": 31.158667105349213
+        },
+        {
+          "mesh": 171,
+          "lanelet": 230388,
+          "lane_sign": -1,
+          "xy_center_distance_m": 28.891359420818286
+        }
+      ],
+      "same_source_road_new_approach": false
+    },
+    {
+      "object": 2914,
+      "road": 2077,
+      "s": 0.0,
+      "t": -20.144805267484333,
+      "source_hdg": 3.1415520808785393,
+      "inferred_approach_sign_from_object_heading": 1,
+      "distance_to_inferred_approach_end_m": 0.0,
+      "new_restoration_approach_present": false,
+      "same_approach_asset_stops": [],
+      "nearest_baseline_compatible_mesh_distance_m": 20.472482266650992,
+      "same_source_road_assets_either_direction": [
+        {
+          "mesh": 172,
+          "lanelet": 230308,
+          "lane_sign": -1,
+          "xy_center_distance_m": 25.10642664704061
+        },
+        {
+          "mesh": 171,
+          "lanelet": 230388,
+          "lane_sign": -1,
+          "xy_center_distance_m": 27.077823698866336
+        }
+      ],
+      "same_source_road_new_approach": false
+    },
+    {
+      "object": 2948,
+      "road": 2096,
+      "s": 0.0,
+      "t": 46.51519193767852,
+      "source_hdg": 3.1415926536891945,
+      "inferred_approach_sign_from_object_heading": 1,
+      "distance_to_inferred_approach_end_m": 0.0,
+      "new_restoration_approach_present": false,
+      "same_approach_asset_stops": [],
+      "nearest_baseline_compatible_mesh_distance_m": 42.11548675642636,
+      "same_source_road_assets_either_direction": [
+        {
+          "mesh": 520,
+          "lanelet": 234021,
+          "lane_sign": -1,
+          "xy_center_distance_m": 66.83463545124474
+        }
+      ],
+      "same_source_road_new_approach": true
+    },
+    {
+      "object": 2960,
+      "road": 2097,
+      "s": 0.0,
+      "t": 16.91165352647152,
+      "source_hdg": 3.1415926535457563,
+      "inferred_approach_sign_from_object_heading": 1,
+      "distance_to_inferred_approach_end_m": 0.0,
+      "new_restoration_approach_present": false,
+      "same_approach_asset_stops": [],
+      "nearest_baseline_compatible_mesh_distance_m": 12.512519169001902,
+      "same_source_road_assets_either_direction": [
+        {
+          "mesh": 451,
+          "lanelet": 234538,
+          "lane_sign": -1,
+          "xy_center_distance_m": 24.954808917433716
+        }
+      ],
+      "same_source_road_new_approach": true
+    },
+    {
+      "object": 2990,
+      "road": 2115,
+      "s": 0.0,
+      "t": -74.18854013599339,
+      "source_hdg": 3.1402477071394133,
+      "inferred_approach_sign_from_object_heading": 1,
+      "distance_to_inferred_approach_end_m": 0.0,
+      "new_restoration_approach_present": false,
+      "same_approach_asset_stops": [],
+      "nearest_baseline_compatible_mesh_distance_m": 72.88875336076734,
+      "same_source_road_assets_either_direction": [
+        {
+          "mesh": 2,
+          "lanelet": 235941,
+          "lane_sign": -1,
+          "xy_center_distance_m": 101.68668205426201
+        },
+        {
+          "mesh": 3,
+          "lanelet": 236079,
+          "lane_sign": -1,
+          "xy_center_distance_m": 103.76847796395549
+        }
+      ],
+      "same_source_road_new_approach": false
+    },
+    {
+      "object": 2991,
+      "road": 2115,
+      "s": 0.0,
+      "t": 74.0711563349202,
+      "source_hdg": 3.1402477071394133,
+      "inferred_approach_sign_from_object_heading": 1,
+      "distance_to_inferred_approach_end_m": 0.0,
+      "new_restoration_approach_present": false,
+      "same_approach_asset_stops": [],
+      "nearest_baseline_compatible_mesh_distance_m": 72.57124939184776,
+      "same_source_road_assets_either_direction": [
+        {
+          "mesh": 2,
+          "lanelet": 235941,
+          "lane_sign": -1,
+          "xy_center_distance_m": 107.96829793437144
+        },
+        {
+          "mesh": 3,
+          "lanelet": 236079,
+          "lane_sign": -1,
+          "xy_center_distance_m": 105.80787935380658
+        }
+      ],
+      "same_source_road_new_approach": false
+    },
+    {
+      "object": 3000,
+      "road": 2116,
+      "s": 0.0,
+      "t": 13.714278107139725,
+      "source_hdg": 3.1415926536804966,
+      "inferred_approach_sign_from_object_heading": 1,
+      "distance_to_inferred_approach_end_m": 0.0,
+      "new_restoration_approach_present": false,
+      "same_approach_asset_stops": [],
+      "nearest_baseline_compatible_mesh_distance_m": 9.315522349411928,
+      "same_source_road_assets_either_direction": [
+        {
+          "mesh": 100,
+          "lanelet": 236328,
+          "lane_sign": -1,
+          "xy_center_distance_m": 20.42807390897698
+        }
+      ],
+      "same_source_road_new_approach": false
+    },
+    {
+      "object": 3022,
+      "road": 2139,
+      "s": 0.0,
+      "t": 37.86372348302619,
+      "source_hdg": 3.141592653641492,
+      "inferred_approach_sign_from_object_heading": 1,
+      "distance_to_inferred_approach_end_m": 0.0,
+      "new_restoration_approach_present": false,
+      "same_approach_asset_stops": [],
+      "nearest_baseline_compatible_mesh_distance_m": 33.46404243071614,
+      "same_source_road_assets_either_direction": [
+        {
+          "mesh": 334,
+          "lanelet": 238057,
+          "lane_sign": -1,
+          "xy_center_distance_m": 54.59776166173667
+        }
+      ],
+      "same_source_road_new_approach": true
+    },
+    {
+      "object": 3042,
+      "road": 2152,
+      "s": 0.0,
+      "t": 27.794505140395305,
+      "source_hdg": 3.1415926536065157,
+      "inferred_approach_sign_from_object_heading": 1,
+      "distance_to_inferred_approach_end_m": 0.0,
+      "new_restoration_approach_present": false,
+      "same_approach_asset_stops": [],
+      "nearest_baseline_compatible_mesh_distance_m": 23.49497062612347,
+      "same_source_road_assets_either_direction": [
+        {
+          "mesh": 576,
+          "lanelet": 238963,
+          "lane_sign": -1,
+          "xy_center_distance_m": 40.35408445627589
+        }
+      ],
+      "same_source_road_new_approach": true
+    },
+    {
+      "object": 3062,
+      "road": 2172,
+      "s": 0.0,
+      "t": 16.537626556435683,
+      "source_hdg": 3.1415926538734684,
+      "inferred_approach_sign_from_object_heading": 1,
+      "distance_to_inferred_approach_end_m": 0.0,
+      "new_restoration_approach_present": false,
+      "same_approach_asset_stops": [],
+      "nearest_baseline_compatible_mesh_distance_m": 12.238564261537594,
+      "same_source_road_assets_either_direction": [
+        {
+          "mesh": 599,
+          "lanelet": 239839,
+          "lane_sign": -1,
+          "xy_center_distance_m": 24.424995581083248
+        }
+      ],
+      "same_source_road_new_approach": true
+    },
+    {
+      "object": 3204,
+      "road": 2195,
+      "s": 0.0,
+      "t": -110.01197932083589,
+      "source_hdg": 3.141822769200388,
+      "inferred_approach_sign_from_object_heading": 1,
+      "distance_to_inferred_approach_end_m": 0.0,
+      "new_restoration_approach_present": false,
+      "same_approach_asset_stops": [],
+      "nearest_baseline_compatible_mesh_distance_m": 111.51210242615338,
+      "same_source_road_assets_either_direction": [
+        {
+          "mesh": 559,
+          "lanelet": 246721,
+          "lane_sign": -1,
+          "xy_center_distance_m": 154.65849381205592
+        },
+        {
+          "mesh": 560,
+          "lanelet": 246972,
+          "lane_sign": -1,
+          "xy_center_distance_m": 156.49656211895055
+        }
+      ],
+      "same_source_road_new_approach": false
+    },
+    {
+      "object": 3205,
+      "road": 2195,
+      "s": 0.0,
+      "t": 110.01138157463994,
+      "source_hdg": 3.141822769200388,
+      "inferred_approach_sign_from_object_heading": 1,
+      "distance_to_inferred_approach_end_m": 0.0,
+      "new_restoration_approach_present": false,
+      "same_approach_asset_stops": [],
+      "nearest_baseline_compatible_mesh_distance_m": 105.51150116682778,
+      "same_source_road_assets_either_direction": [
+        {
+          "mesh": 559,
+          "lanelet": 246721,
+          "lane_sign": -1,
+          "xy_center_distance_m": 156.49652406892488
+        },
+        {
+          "mesh": 560,
+          "lanelet": 246972,
+          "lane_sign": -1,
+          "xy_center_distance_m": 154.65759283162043
+        }
+      ],
+      "same_source_road_new_approach": false
+    },
+    {
+      "object": 3246,
+      "road": 2241,
+      "s": 0.0,
+      "t": -67.39895916246108,
+      "source_hdg": 3.1388884292698105,
+      "inferred_approach_sign_from_object_heading": 1,
+      "distance_to_inferred_approach_end_m": 0.0,
+      "new_restoration_approach_present": false,
+      "same_approach_asset_stops": [],
+      "nearest_baseline_compatible_mesh_distance_m": 68.89913341281593,
+      "same_source_road_assets_either_direction": [
+        {
+          "mesh": 608,
+          "lanelet": 251534,
+          "lane_sign": -1,
+          "xy_center_distance_m": 94.39266904458283
+        },
+        {
+          "mesh": 609,
+          "lanelet": 251662,
+          "lane_sign": -1,
+          "xy_center_distance_m": 96.23596815323874
+        }
+      ],
+      "same_source_road_new_approach": true
+    },
+    {
+      "object": 3247,
+      "road": 2241,
+      "s": 0.0,
+      "t": 67.4059767601451,
+      "source_hdg": 3.1388884292698105,
+      "inferred_approach_sign_from_object_heading": 1,
+      "distance_to_inferred_approach_end_m": 0.0,
+      "new_restoration_approach_present": false,
+      "same_approach_asset_stops": [],
+      "nearest_baseline_compatible_mesh_distance_m": 62.90616741508519,
+      "same_source_road_assets_either_direction": [
+        {
+          "mesh": 608,
+          "lanelet": 251534,
+          "lane_sign": -1,
+          "xy_center_distance_m": 96.23666614973483
+        },
+        {
+          "mesh": 609,
+          "lanelet": 251662,
+          "lane_sign": -1,
+          "xy_center_distance_m": 94.40284677964453
+        }
+      ],
+      "same_source_road_new_approach": true
+    },
+    {
+      "object": 5959,
+      "road": 2819,
+      "s": 0.0,
+      "t": -171.73323555690533,
+      "source_hdg": 3.1429952024506154,
+      "inferred_approach_sign_from_object_heading": 1,
+      "distance_to_inferred_approach_end_m": 0.0,
+      "new_restoration_approach_present": false,
+      "same_approach_asset_stops": [],
+      "nearest_baseline_compatible_mesh_distance_m": null,
+      "same_source_road_assets_either_direction": [
+        {
+          "mesh": 512,
+          "lanelet": 446010,
+          "lane_sign": -1,
+          "xy_center_distance_m": 237.23876111090712
+        },
+        {
+          "mesh": 507,
+          "lanelet": 446146,
+          "lane_sign": -1,
+          "xy_center_distance_m": 239.66419503160722
+        },
+        {
+          "mesh": 508,
+          "lanelet": 446282,
+          "lane_sign": -1,
+          "xy_center_distance_m": 241.764101608783
+        },
+        {
+          "mesh": 510,
+          "lanelet": 446418,
+          "lane_sign": -1,
+          "xy_center_distance_m": 243.88287215116864
+        },
+        {
+          "mesh": 509,
+          "lanelet": 446554,
+          "lane_sign": -1,
+          "xy_center_distance_m": 246.0199377297038
+        }
+      ],
+      "same_source_road_new_approach": false
+    },
+    {
+      "object": 5960,
+      "road": 2819,
+      "s": 0.0,
+      "t": 171.67661061292017,
+      "source_hdg": 3.1429952024506154,
+      "inferred_approach_sign_from_object_heading": 1,
+      "distance_to_inferred_approach_end_m": 0.0,
+      "new_restoration_approach_present": false,
+      "same_approach_asset_stops": [],
+      "nearest_baseline_compatible_mesh_distance_m": null,
+      "same_source_road_assets_either_direction": [
+        {
+          "mesh": 512,
+          "lanelet": 446010,
+          "lane_sign": -1,
+          "xy_center_distance_m": 248.5104745348169
+        },
+        {
+          "mesh": 507,
+          "lanelet": 446146,
+          "lane_sign": -1,
+          "xy_center_distance_m": 245.98841545576528
+        },
+        {
+          "mesh": 508,
+          "lanelet": 446282,
+          "lane_sign": -1,
+          "xy_center_distance_m": 243.84584869935713
+        },
+        {
+          "mesh": 510,
+          "lanelet": 446418,
+          "lane_sign": -1,
+          "xy_center_distance_m": 241.7215694150862
+        },
+        {
+          "mesh": 509,
+          "lanelet": 446554,
+          "lane_sign": -1,
+          "xy_center_distance_m": 239.6159729515664
+        }
+      ],
+      "same_source_road_new_approach": false
+    },
+    {
+      "object": 5961,
+      "road": 2819,
+      "s": 0.0,
+      "t": 171.720608853258,
+      "source_hdg": 3.1429952024506154,
+      "inferred_approach_sign_from_object_heading": 1,
+      "distance_to_inferred_approach_end_m": 0.0,
+      "new_restoration_approach_present": false,
+      "same_approach_asset_stops": [],
+      "nearest_baseline_compatible_mesh_distance_m": null,
+      "same_source_road_assets_either_direction": [
+        {
+          "mesh": 512,
+          "lanelet": 446010,
+          "lane_sign": -1,
+          "xy_center_distance_m": 248.54228777693083
+        },
+        {
+          "mesh": 507,
+          "lanelet": 446146,
+          "lane_sign": -1,
+          "xy_center_distance_m": 246.01992889355955
+        },
+        {
+          "mesh": 508,
+          "lanelet": 446282,
+          "lane_sign": -1,
+          "xy_center_distance_m": 243.87709776254195
+        },
+        {
+          "mesh": 510,
+          "lanelet": 446418,
+          "lane_sign": -1,
+          "xy_center_distance_m": 241.75254707386995
+        },
+        {
+          "mesh": 509,
+          "lanelet": 446554,
+          "lane_sign": -1,
+          "xy_center_distance_m": 239.64667199974573
+        }
+      ],
+      "same_source_road_new_approach": false
+    },
+    {
+      "object": 5962,
+      "road": 2819,
+      "s": 0.0,
+      "t": 171.67240042661751,
+      "source_hdg": 3.1429952024506154,
+      "inferred_approach_sign_from_object_heading": 1,
+      "distance_to_inferred_approach_end_m": 0.0,
+      "new_restoration_approach_present": false,
+      "same_approach_asset_stops": [],
+      "nearest_baseline_compatible_mesh_distance_m": null,
+      "same_source_road_assets_either_direction": [
+        {
+          "mesh": 512,
+          "lanelet": 446010,
+          "lane_sign": -1,
+          "xy_center_distance_m": 248.50743052439202
+        },
+        {
+          "mesh": 507,
+          "lanelet": 446146,
+          "lane_sign": -1,
+          "xy_center_distance_m": 245.98540013962364
+        },
+        {
+          "mesh": 508,
+          "lanelet": 446282,
+          "lane_sign": -1,
+          "xy_center_distance_m": 243.8428586865225
+        },
+        {
+          "mesh": 510,
+          "lanelet": 446418,
+          "lane_sign": -1,
+          "xy_center_distance_m": 241.7186053783812
+        },
+        {
+          "mesh": 509,
+          "lanelet": 446554,
+          "lane_sign": -1,
+          "xy_center_distance_m": 239.61303558069648
+        }
+      ],
+      "same_source_road_new_approach": false
+    },
+    {
+      "object": 5963,
+      "road": 2819,
+      "s": 0.0,
+      "t": -171.8422234439103,
+      "source_hdg": 3.1429952024506154,
+      "inferred_approach_sign_from_object_heading": 1,
+      "distance_to_inferred_approach_end_m": 0.0,
+      "new_restoration_approach_present": false,
+      "same_approach_asset_stops": [],
+      "nearest_baseline_compatible_mesh_distance_m": null,
+      "same_source_road_assets_either_direction": [
+        {
+          "mesh": 512,
+          "lanelet": 446010,
+          "lane_sign": -1,
+          "xy_center_distance_m": 237.31399346499603
+        },
+        {
+          "mesh": 507,
+          "lanelet": 446146,
+          "lane_sign": -1,
+          "xy_center_distance_m": 239.7402573846525
+        },
+        {
+          "mesh": 508,
+          "lanelet": 446282,
+          "lane_sign": -1,
+          "xy_center_distance_m": 241.84085548991524
+        },
+        {
+          "mesh": 510,
+          "lanelet": 446418,
+          "lane_sign": -1,
+          "xy_center_distance_m": 243.96029966414966
+        },
+        {
+          "mesh": 509,
+          "lanelet": 446554,
+          "lane_sign": -1,
+          "xy_center_distance_m": 246.09802146853448
+        }
+      ],
+      "same_source_road_new_approach": false
+    },
+    {
+      "object": 5964,
+      "road": 2819,
+      "s": 0.0,
+      "t": -171.86547263881724,
+      "source_hdg": 3.1429952024506154,
+      "inferred_approach_sign_from_object_heading": 1,
+      "distance_to_inferred_approach_end_m": 0.0,
+      "new_restoration_approach_present": false,
+      "same_approach_asset_stops": [],
+      "nearest_baseline_compatible_mesh_distance_m": null,
+      "same_source_road_assets_either_direction": [
+        {
+          "mesh": 512,
+          "lanelet": 446010,
+          "lane_sign": -1,
+          "xy_center_distance_m": 237.33004535176568
+        },
+        {
+          "mesh": 507,
+          "lanelet": 446146,
+          "lane_sign": -1,
+          "xy_center_distance_m": 239.756486223932
+        },
+        {
+          "mesh": 508,
+          "lanelet": 446282,
+          "lane_sign": -1,
+          "xy_center_distance_m": 241.85723176021395
+        },
+        {
+          "mesh": 510,
+          "lanelet": 446418,
+          "lane_sign": -1,
+          "xy_center_distance_m": 243.9768195500463
+        },
+        {
+          "mesh": 509,
+          "lanelet": 446554,
+          "lane_sign": -1,
+          "xy_center_distance_m": 246.11468125915246
+        }
+      ],
+      "same_source_road_new_approach": false
+    }
+  ],
+  "approach_comparison_summary": {
+    "count": 25,
+    "same_new_restoration_approach": 1,
+    "with_same_approach_asset": 1,
+    "interpretation": "Same approach presence does not establish identity between a phantom source object and a restored paint; report spatial distances, do not merge IDs.",
+    "on_road_ids_with_new_restoration_approach": 12,
+    "on_road_ids_with_baseline_restoration_approach": 13,
+    "same_road_restored_asset_within1m": 0,
+    "per_road": [
+      {
+        "road": 1043,
+        "objects": [
+          1215,
+          1216
+        ],
+        "scope": "new_27_approaches",
+        "same_road_asset_meshes": [
+          25,
+          26
+        ],
+        "nearest_same_road_asset_distance_range_m": [
+          80.4822067235661,
+          80.54225485125946
+        ]
+      },
+      {
+        "road": 1492,
+        "objects": [
+          1374
+        ],
+        "scope": "new_27_approaches",
+        "same_road_asset_meshes": [
+          581
+        ],
+        "nearest_same_road_asset_distance_range_m": [
+          2.7001770146805018,
+          2.7001770146805018
+        ]
+      },
+      {
+        "road": 1603,
+        "objects": [
+          1476,
+          1477
+        ],
+        "scope": "new_27_approaches",
+        "same_road_asset_meshes": [
+          186,
+          187
+        ],
+        "nearest_same_road_asset_distance_range_m": [
+          86.06929992536767,
+          86.4650346687598
+        ]
+      },
+      {
+        "road": 2077,
+        "objects": [
+          2913,
+          2914
+        ],
+        "scope": "original_5_approaches",
+        "same_road_asset_meshes": [
+          171,
+          172
+        ],
+        "nearest_same_road_asset_distance_range_m": [
+          25.10642664704061,
+          28.891359420818286
+        ]
+      },
+      {
+        "road": 2096,
+        "objects": [
+          2948
+        ],
+        "scope": "new_27_approaches",
+        "same_road_asset_meshes": [
+          520
+        ],
+        "nearest_same_road_asset_distance_range_m": [
+          66.83463545124474,
+          66.83463545124474
+        ]
+      },
+      {
+        "road": 2097,
+        "objects": [
+          2960
+        ],
+        "scope": "new_27_approaches",
+        "same_road_asset_meshes": [
+          451
+        ],
+        "nearest_same_road_asset_distance_range_m": [
+          24.954808917433716,
+          24.954808917433716
+        ]
+      },
+      {
+        "road": 2115,
+        "objects": [
+          2990,
+          2991
+        ],
+        "scope": "original_5_approaches",
+        "same_road_asset_meshes": [
+          2,
+          3
+        ],
+        "nearest_same_road_asset_distance_range_m": [
+          101.68668205426201,
+          105.80787935380658
+        ]
+      },
+      {
+        "road": 2116,
+        "objects": [
+          3000
+        ],
+        "scope": "original_5_approaches",
+        "same_road_asset_meshes": [
+          100
+        ],
+        "nearest_same_road_asset_distance_range_m": [
+          20.42807390897698,
+          20.42807390897698
+        ]
+      },
+      {
+        "road": 2139,
+        "objects": [
+          3022
+        ],
+        "scope": "new_27_approaches",
+        "same_road_asset_meshes": [
+          334
+        ],
+        "nearest_same_road_asset_distance_range_m": [
+          54.59776166173667,
+          54.59776166173667
+        ]
+      },
+      {
+        "road": 2152,
+        "objects": [
+          3042
+        ],
+        "scope": "new_27_approaches",
+        "same_road_asset_meshes": [
+          576
+        ],
+        "nearest_same_road_asset_distance_range_m": [
+          40.35408445627589,
+          40.35408445627589
+        ]
+      },
+      {
+        "road": 2172,
+        "objects": [
+          3062
+        ],
+        "scope": "new_27_approaches",
+        "same_road_asset_meshes": [
+          599
+        ],
+        "nearest_same_road_asset_distance_range_m": [
+          24.424995581083248,
+          24.424995581083248
+        ]
+      },
+      {
+        "road": 2195,
+        "objects": [
+          3204,
+          3205
+        ],
+        "scope": "original_5_approaches",
+        "same_road_asset_meshes": [
+          559,
+          560
+        ],
+        "nearest_same_road_asset_distance_range_m": [
+          154.65759283162043,
+          154.65849381205592
+        ]
+      },
+      {
+        "road": 2241,
+        "objects": [
+          3246,
+          3247
+        ],
+        "scope": "new_27_approaches",
+        "same_road_asset_meshes": [
+          608,
+          609
+        ],
+        "nearest_same_road_asset_distance_range_m": [
+          94.39266904458283,
+          94.40284677964453
+        ]
+      },
+      {
+        "road": 2819,
+        "objects": [
+          5959,
+          5960,
+          5961,
+          5962,
+          5963,
+          5964
+        ],
+        "scope": "original_5_approaches",
+        "same_road_asset_meshes": [
+          507,
+          508,
+          509,
+          510,
+          512
+        ],
+        "nearest_same_road_asset_distance_range_m": [
+          237.23876111090712,
+          239.64667199974573
+        ]
+      }
+    ]
+  },
+  "audit_context": {
+    "measurement_map_sha256": "758f2990e28374036725bc88be2938e5857e1f9a6035e3017a83692d78e6c718",
+    "final_map_sha256": "e7a426f900813748747a39233f3678237fd7f849c335bae3bc3014b31ae678b0",
+    "note": "Primitive IDs belong to the measured snapshot; source road/section/lane and object/mesh keys identify the same geometry. See topology-repair-independent.json."
+  }
+}

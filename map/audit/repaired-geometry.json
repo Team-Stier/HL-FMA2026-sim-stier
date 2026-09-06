@@ -1,0 +1,1670 @@
+{
+  "source_roads": 651,
+  "generated_roads": 643,
+  "lanelets": 2845,
+  "source_coverage_gaps": [
+    [
+      2810,
+      5,
+      1,
+      113.80099999291575,
+      115.50099999353854
+    ],
+    [
+      2816,
+      2,
+      1,
+      79.50099999979811,
+      80.20100000001423
+    ]
+  ],
+  "non_driving_generated": [],
+  "invalid_lanelets": [],
+  "invalid_cells": [],
+  "missing_cells": [],
+  "cell_union_errors": [],
+  "cell_stopline_separation": [
+    {
+      "cell": 79171,
+      "lanelet": 446551,
+      "xodr": [
+        2819,
+        2,
+        -1
+      ],
+      "stopline": 544489,
+      "distance_m": 0.14957592552837878,
+      "source": {
+        "cell_assignment": "projected_to_approach_end",
+        "mesh_candidate_index": "509",
+        "source": "osgb_white_mesh",
+        "type": "stop_line",
+        "xodr_road_id": "2819"
+      }
+    },
+    {
+      "cell": 79137,
+      "lanelet": 446415,
+      "xodr": [
+        2819,
+        2,
+        -2
+      ],
+      "stopline": 544486,
+      "distance_m": 0.14957050360003257,
+      "source": {
+        "cell_assignment": "projected_to_approach_end",
+        "mesh_candidate_index": "510",
+        "source": "osgb_white_mesh",
+        "type": "stop_line",
+        "xodr_road_id": "2819"
+      }
+    },
+    {
+      "cell": 79103,
+      "lanelet": 446279,
+      "xodr": [
+        2819,
+        2,
+        -3
+      ],
+      "stopline": 544484,
+      "distance_m": 0.1495041044350435,
+      "source": {
+        "cell_assignment": "projected_to_approach_end",
+        "mesh_candidate_index": "508",
+        "source": "osgb_white_mesh",
+        "type": "stop_line",
+        "xodr_road_id": "2819"
+      }
+    },
+    {
+      "cell": 70784,
+      "lanelet": 398690,
+      "xodr": [
+        2802,
+        0,
+        1
+      ],
+      "stopline": 544014,
+      "distance_m": 0.14998455670794145,
+      "source": {
+        "cell_assignment": "projected_to_approach_end",
+        "correction_evidence": "opposite_lane_source_error_osgb_mesh_125_at_positive_lane_end_including_0_15m_paint_offset",
+        "effective_t": "1.5",
+        "mesh_candidate_index": "125",
+        "source": "Rm_StopLine_300cm_JPN_01.flt",
+        "type": "stop_line",
+        "visual_z_offset_m": "8.0000000000000002e-03",
+        "xodr_object_id": "5153",
+        "xodr_road_id": "2802",
+        "xodr_s": "0.0",
+        "xodr_t": "-1.5074813431681902e+00"
+      }
+    },
+    {
+      "cell": 41073,
+      "lanelet": 230388,
+      "xodr": [
+        2077,
+        0,
+        -1
+      ],
+      "stopline": 544404,
+      "distance_m": 0.14930679701967692,
+      "source": {
+        "cell_assignment": "projected_to_approach_end",
+        "mesh_candidate_index": "171",
+        "source": "osgb_white_mesh",
+        "type": "stop_line",
+        "xodr_road_id": "2077"
+      }
+    },
+    {
+      "cell": 42118,
+      "lanelet": 236328,
+      "xodr": [
+        2116,
+        0,
+        -1
+      ],
+      "stopline": 544418,
+      "distance_m": 0.149629146098753,
+      "source": {
+        "cell_assignment": "projected_to_approach_end",
+        "mesh_candidate_index": "100",
+        "source": "osgb_white_mesh",
+        "type": "stop_line",
+        "xodr_road_id": "2116"
+      }
+    },
+    {
+      "cell": 19810,
+      "lanelet": 111962,
+      "xodr": [
+        1603,
+        4,
+        -2
+      ],
+      "stopline": 544380,
+      "distance_m": 0.1495695907208402,
+      "source": {
+        "cell_assignment": "projected_to_approach_end",
+        "mesh_candidate_index": "187",
+        "source": "osgb_white_mesh",
+        "type": "stop_line",
+        "xodr_road_id": "1603"
+      }
+    },
+    {
+      "cell": 41673,
+      "lanelet": 234021,
+      "xodr": [
+        2096,
+        0,
+        -1
+      ],
+      "stopline": 544407,
+      "distance_m": 0.14982918709040216,
+      "source": {
+        "cell_assignment": "projected_to_approach_end",
+        "mesh_candidate_index": "520",
+        "source": "osgb_white_mesh",
+        "type": "stop_line",
+        "xodr_road_id": "2096"
+      }
+    },
+    {
+      "cell": 41790,
+      "lanelet": 234538,
+      "xodr": [
+        2097,
+        0,
+        -1
+      ],
+      "stopline": 544410,
+      "distance_m": 0.149265561615175,
+      "source": {
+        "cell_assignment": "projected_to_approach_end",
+        "mesh_candidate_index": "451",
+        "source": "osgb_white_mesh",
+        "type": "stop_line",
+        "xodr_road_id": "2097"
+      }
+    },
+    {
+      "cell": 42034,
+      "lanelet": 235941,
+      "xodr": [
+        2115,
+        4,
+        -2
+      ],
+      "stopline": 544413,
+      "distance_m": 0.14980711390444323,
+      "source": {
+        "cell_assignment": "projected_to_approach_end",
+        "mesh_candidate_index": "2",
+        "source": "osgb_white_mesh",
+        "type": "stop_line",
+        "xodr_road_id": "2115"
+      }
+    },
+    {
+      "cell": 30101,
+      "lanelet": 169931,
+      "xodr": [
+        1928,
+        1,
+        -1
+      ],
+      "stopline": 544392,
+      "distance_m": 0.2869328165933454,
+      "source": {
+        "cell_assignment": "projected_to_approach_end",
+        "mesh_candidate_index": "280",
+        "source": "osgb_white_mesh",
+        "type": "stop_line",
+        "xodr_road_id": "1928"
+      }
+    },
+    {
+      "cell": 70947,
+      "lanelet": 399661,
+      "xodr": [
+        2803,
+        2,
+        -1
+      ],
+      "stopline": 544466,
+      "distance_m": 0.07431084252938554,
+      "source": {
+        "cell_assignment": "projected_to_approach_end",
+        "mesh_candidate_index": "440",
+        "source": "osgb_white_mesh",
+        "type": "stop_line",
+        "xodr_road_id": "2803"
+      }
+    },
+    {
+      "cell": 41053,
+      "lanelet": 230308,
+      "xodr": [
+        2077,
+        0,
+        -2
+      ],
+      "stopline": 544401,
+      "distance_m": 0.14928495554810772,
+      "source": {
+        "cell_assignment": "projected_to_approach_end",
+        "mesh_candidate_index": "172",
+        "source": "osgb_white_mesh",
+        "type": "stop_line",
+        "xodr_road_id": "2077"
+      }
+    },
+    {
+      "cell": 71428,
+      "lanelet": 402612,
+      "xodr": [
+        2805,
+        0,
+        1
+      ],
+      "stopline": 544078,
+      "distance_m": 0.1498970246167533,
+      "source": {
+        "cell_assignment": "projected_to_approach_end",
+        "correction_evidence": "opposite_lane_source_error_osgb_mesh_317_overlaps_316_at_positive_lane_end",
+        "effective_t": "1.5",
+        "mesh_candidate_index": "317",
+        "source": "Rm_StopLine_300cm_JPN_01.flt",
+        "type": "stop_line",
+        "visual_z_offset_m": "8.0000000000000002e-03",
+        "xodr_object_id": "5238",
+        "xodr_road_id": "2805",
+        "xodr_s": "0.0",
+        "xodr_t": "-1.5074813431681862e+00"
+      }
+    },
+    {
+      "cell": 19835,
+      "lanelet": 112061,
+      "xodr": [
+        1603,
+        4,
+        -1
+      ],
+      "stopline": 544383,
+      "distance_m": 0.08903861613843987,
+      "source": {
+        "cell_assignment": "projected_to_approach_end",
+        "mesh_candidate_index": "186",
+        "source": "osgb_white_mesh",
+        "type": "stop_line",
+        "xodr_road_id": "1603"
+      }
+    },
+    {
+      "cell": 43913,
+      "lanelet": 246721,
+      "xodr": [
+        2195,
+        4,
+        -2
+      ],
+      "stopline": 544430,
+      "distance_m": 0.14914539190445977,
+      "source": {
+        "cell_assignment": "projected_to_approach_end",
+        "mesh_candidate_index": "559",
+        "source": "osgb_white_mesh",
+        "type": "stop_line",
+        "xodr_road_id": "2195"
+      }
+    },
+    {
+      "cell": 14732,
+      "lanelet": 80758,
+      "xodr": [
+        1043,
+        4,
+        -2
+      ],
+      "stopline": 544371,
+      "distance_m": 0.14547504850986903,
+      "source": {
+        "cell_assignment": "projected_to_approach_end",
+        "mesh_candidate_index": "25",
+        "source": "osgb_white_mesh",
+        "type": "stop_line",
+        "xodr_road_id": "1043"
+      }
+    },
+    {
+      "cell": 14756,
+      "lanelet": 80853,
+      "xodr": [
+        1043,
+        4,
+        -1
+      ],
+      "stopline": 544374,
+      "distance_m": 0.14903819728931483,
+      "source": {
+        "cell_assignment": "projected_to_approach_end",
+        "mesh_candidate_index": "26",
+        "source": "osgb_white_mesh",
+        "type": "stop_line",
+        "xodr_road_id": "1043"
+      }
+    },
+    {
+      "cell": 42069,
+      "lanelet": 236079,
+      "xodr": [
+        2115,
+        4,
+        -1
+      ],
+      "stopline": 544416,
+      "distance_m": 0.1497118937049762,
+      "source": {
+        "cell_assignment": "projected_to_approach_end",
+        "mesh_candidate_index": "3",
+        "source": "osgb_white_mesh",
+        "type": "stop_line",
+        "xodr_road_id": "2115"
+      }
+    },
+    {
+      "cell": 42366,
+      "lanelet": 238057,
+      "xodr": [
+        2139,
+        0,
+        -1
+      ],
+      "stopline": 544421,
+      "distance_m": 0.14910227224794798,
+      "source": {
+        "cell_assignment": "projected_to_approach_end",
+        "mesh_candidate_index": "334",
+        "source": "osgb_white_mesh",
+        "type": "stop_line",
+        "xodr_road_id": "2139"
+      }
+    },
+    {
+      "cell": 42529,
+      "lanelet": 238963,
+      "xodr": [
+        2152,
+        0,
+        -1
+      ],
+      "stopline": 544424,
+      "distance_m": 0.14980519675000514,
+      "source": {
+        "cell_assignment": "projected_to_approach_end",
+        "mesh_candidate_index": "576",
+        "source": "osgb_white_mesh",
+        "type": "stop_line",
+        "xodr_road_id": "2152"
+      }
+    },
+    {
+      "cell": 42700,
+      "lanelet": 239839,
+      "xodr": [
+        2172,
+        0,
+        -1
+      ],
+      "stopline": 544427,
+      "distance_m": 0.14941883331507413,
+      "source": {
+        "cell_assignment": "projected_to_approach_end",
+        "mesh_candidate_index": "599",
+        "source": "osgb_white_mesh",
+        "type": "stop_line",
+        "xodr_road_id": "2172"
+      }
+    },
+    {
+      "cell": 43976,
+      "lanelet": 246972,
+      "xodr": [
+        2195,
+        4,
+        -1
+      ],
+      "stopline": 544433,
+      "distance_m": 0.1491315807001756,
+      "source": {
+        "cell_assignment": "projected_to_approach_end",
+        "mesh_candidate_index": "560",
+        "source": "osgb_white_mesh",
+        "type": "stop_line",
+        "xodr_road_id": "2195"
+      }
+    },
+    {
+      "cell": 44701,
+      "lanelet": 251534,
+      "xodr": [
+        2241,
+        4,
+        -2
+      ],
+      "stopline": 544436,
+      "distance_m": 0.14915009136575866,
+      "source": {
+        "cell_assignment": "projected_to_approach_end",
+        "mesh_candidate_index": "608",
+        "source": "osgb_white_mesh",
+        "type": "stop_line",
+        "xodr_road_id": "2241"
+      }
+    },
+    {
+      "cell": 44733,
+      "lanelet": 251662,
+      "xodr": [
+        2241,
+        4,
+        -1
+      ],
+      "stopline": 544439,
+      "distance_m": 0.14887479333928808,
+      "source": {
+        "cell_assignment": "projected_to_approach_end",
+        "mesh_candidate_index": "609",
+        "source": "osgb_white_mesh",
+        "type": "stop_line",
+        "xodr_road_id": "2241"
+      }
+    },
+    {
+      "cell": 79035,
+      "lanelet": 446007,
+      "xodr": [
+        2819,
+        2,
+        -5
+      ],
+      "stopline": 544478,
+      "distance_m": 0.14947300242084374,
+      "source": {
+        "cell_assignment": "projected_to_approach_end",
+        "mesh_candidate_index": "512",
+        "source": "osgb_white_mesh",
+        "type": "stop_line",
+        "xodr_road_id": "2819"
+      }
+    },
+    {
+      "cell": 79069,
+      "lanelet": 446143,
+      "xodr": [
+        2819,
+        2,
+        -4
+      ],
+      "stopline": 544481,
+      "distance_m": 0.14949868293922652,
+      "source": {
+        "cell_assignment": "projected_to_approach_end",
+        "mesh_candidate_index": "507",
+        "source": "osgb_white_mesh",
+        "type": "stop_line",
+        "xodr_road_id": "2819"
+      }
+    }
+  ],
+  "bad_previous_geometry": [],
+  "stopline_orientation_errors": [],
+  "cell_id_errors": [],
+  "cells": 94154,
+  "maximum_cell_parent_symmetric_difference_m2": [
+    1.5393016741338784e-07,
+    413902
+  ],
+  "maximum_sibling_cell_overlap_m2": [
+    5.1386450650170445e-11,
+    217962
+  ],
+  "cell_longitudinal_length_m": {
+    "min": 2.1183375320532605e-07,
+    "max": 1.0
+  },
+  "stoplines_without_cells": [
+    {
+      "id": 542828,
+      "attributes": {
+        "cell_assignment": "unresolved",
+        "correction_evidence": "none",
+        "effective_t": "-64.93641245411435",
+        "source": "Rm_StopLine_300cm_JPN_01.flt",
+        "type": "stop_line",
+        "visual_z_offset_m": "8.0000000000000002e-03",
+        "xodr_object_id": "1477",
+        "xodr_road_id": "1603",
+        "xodr_s": "0.0",
+        "xodr_t": "-6.4936412454114347e+01"
+      },
+      "center": [
+        399.51912444871175,
+        -538.0134183279552
+      ]
+    },
+    {
+      "id": 542825,
+      "attributes": {
+        "cell_assignment": "unresolved",
+        "correction_evidence": "none",
+        "effective_t": "-65.53206650086601",
+        "source": "Rm_StopLine_300cm_JPN_01.flt",
+        "type": "stop_line",
+        "visual_z_offset_m": "8.0000000000000002e-03",
+        "xodr_object_id": "1476",
+        "xodr_road_id": "1603",
+        "xodr_s": "0.0",
+        "xodr_t": "-6.5532066500866009e+01"
+      },
+      "center": [
+        399.03746411609126,
+        -538.3638567211024
+      ]
+    },
+    {
+      "id": 542771,
+      "attributes": {
+        "cell_assignment": "unresolved",
+        "correction_evidence": "none",
+        "effective_t": "1.5000004686551243",
+        "source": "Rm_StopLine_300cm_JPN_01.flt",
+        "type": "stop_line",
+        "visual_z_offset_m": "1.5800000000000000e-01",
+        "xodr_object_id": "1374",
+        "xodr_road_id": "1492",
+        "xodr_s": "0.14881426572274706",
+        "xodr_t": "1.5000004686551243e+00"
+      },
+      "center": [
+        409.9272198176595,
+        -347.64476867517186
+      ]
+    },
+    {
+      "id": 542709,
+      "attributes": {
+        "cell_assignment": "unresolved",
+        "correction_evidence": "none",
+        "effective_t": "57.59047836861291",
+        "source": "Rm_StopLine_300cm_JPN_01.flt",
+        "type": "stop_line",
+        "visual_z_offset_m": "8.0000000000000002e-03",
+        "xodr_object_id": "1216",
+        "xodr_road_id": "1043",
+        "xodr_s": "0.0",
+        "xodr_t": "5.7590478368612906e+01"
+      },
+      "center": [
+        792.6984921806072,
+        -235.07170417388588
+      ]
+    },
+    {
+      "id": 542706,
+      "attributes": {
+        "cell_assignment": "unresolved",
+        "correction_evidence": "none",
+        "effective_t": "-57.57882664511248",
+        "source": "Rm_StopLine_300cm_JPN_01.flt",
+        "type": "stop_line",
+        "visual_z_offset_m": "8.0000000000000002e-03",
+        "xodr_object_id": "1215",
+        "xodr_road_id": "1043",
+        "xodr_s": "0.0",
+        "xodr_t": "-5.7578826645112478e+01"
+      },
+      "center": [
+        702.1656126204784,
+        -306.25995134921493
+      ]
+    },
+    {
+      "id": 543426,
+      "attributes": {
+        "cell_assignment": "unresolved",
+        "correction_evidence": "none",
+        "effective_t": "-110.01197932083589",
+        "source": "Rm_StopLine_300cm_JPN_01.flt",
+        "type": "stop_line",
+        "visual_z_offset_m": "8.0000000000000002e-03",
+        "xodr_object_id": "3204",
+        "xodr_road_id": "2195",
+        "xodr_s": "0.0",
+        "xodr_t": "-1.1001197932083589e+02"
+      },
+      "center": [
+        771.2367810883723,
+        -478.8611099827663
+      ]
+    },
+    {
+      "id": 543429,
+      "attributes": {
+        "cell_assignment": "unresolved",
+        "correction_evidence": "none",
+        "effective_t": "110.01138157463994",
+        "source": "Rm_StopLine_300cm_JPN_01.flt",
+        "type": "stop_line",
+        "visual_z_offset_m": "8.0000000000000002e-03",
+        "xodr_object_id": "3205",
+        "xodr_road_id": "2195",
+        "xodr_s": "0.0",
+        "xodr_t": "1.1001138157463994e+02"
+      },
+      "center": [
+        943.9379264575967,
+        -342.53578684763187
+      ]
+    },
+    {
+      "id": 543441,
+      "attributes": {
+        "cell_assignment": "unresolved",
+        "correction_evidence": "none",
+        "effective_t": "-67.39895916246108",
+        "source": "Rm_StopLine_300cm_JPN_01.flt",
+        "type": "stop_line",
+        "visual_z_offset_m": "8.0000000000000002e-03",
+        "xodr_object_id": "3246",
+        "xodr_road_id": "2241",
+        "xodr_s": "0.0",
+        "xodr_t": "-6.7398959162461082e+01"
+      },
+      "center": [
+        744.7818676452159,
+        -376.35028852890855
+      ]
+    },
+    {
+      "id": 543444,
+      "attributes": {
+        "cell_assignment": "unresolved",
+        "correction_evidence": "none",
+        "effective_t": "67.4059767601451",
+        "source": "Rm_StopLine_300cm_JPN_01.flt",
+        "type": "stop_line",
+        "visual_z_offset_m": "8.0000000000000002e-03",
+        "xodr_object_id": "3247",
+        "xodr_road_id": "2241",
+        "xodr_s": "0.0",
+        "xodr_t": "6.7405976760145094e+01"
+      },
+      "center": [
+        850.6816849386023,
+        -292.9380625286072
+      ]
+    },
+    {
+      "id": 544297,
+      "attributes": {
+        "cell_assignment": "unresolved",
+        "correction_evidence": "none",
+        "effective_t": "-171.73323555690533",
+        "source": "Rm_StopLine_300cm_JPN_01.flt",
+        "type": "stop_line",
+        "visual_z_offset_m": "8.0000000000000002e-03",
+        "xodr_object_id": "5959",
+        "xodr_road_id": "2819",
+        "xodr_s": "0.0",
+        "xodr_t": "-1.7173323555690533e+02"
+      },
+      "center": [
+        1263.5094158402144,
+        1141.6365133058155
+      ]
+    },
+    {
+      "id": 544300,
+      "attributes": {
+        "cell_assignment": "unresolved",
+        "correction_evidence": "none",
+        "effective_t": "171.67661061292017",
+        "source": "Rm_StopLine_300cm_JPN_01.flt",
+        "type": "stop_line",
+        "visual_z_offset_m": "8.0000000000000002e-03",
+        "xodr_object_id": "5960",
+        "xodr_road_id": "2819",
+        "xodr_s": "0.0",
+        "xodr_t": "1.7167661061292017e+02"
+      },
+      "center": [
+        1606.6183434127024,
+        1156.0096224489519
+      ]
+    },
+    {
+      "id": 544303,
+      "attributes": {
+        "cell_assignment": "unresolved",
+        "correction_evidence": "none",
+        "effective_t": "171.720608853258",
+        "source": "Rm_StopLine_300cm_JPN_01.flt",
+        "type": "stop_line",
+        "visual_z_offset_m": "8.0000000000000002e-03",
+        "xodr_object_id": "5961",
+        "xodr_road_id": "2819",
+        "xodr_s": "0.0",
+        "xodr_t": "1.7172060885325800e+02"
+      },
+      "center": [
+        1606.662303098849,
+        1156.0114639555875
+      ]
+    },
+    {
+      "id": 544306,
+      "attributes": {
+        "cell_assignment": "unresolved",
+        "correction_evidence": "none",
+        "effective_t": "171.67240042661751",
+        "source": "Rm_StopLine_300cm_JPN_01.flt",
+        "type": "stop_line",
+        "visual_z_offset_m": "8.0000000000000002e-03",
+        "xodr_object_id": "5962",
+        "xodr_road_id": "2819",
+        "xodr_s": "0.0",
+        "xodr_t": "1.7167240042661751e+02"
+      },
+      "center": [
+        1606.6141369156453,
+        1156.0094462354043
+      ]
+    },
+    {
+      "id": 544309,
+      "attributes": {
+        "cell_assignment": "unresolved",
+        "correction_evidence": "none",
+        "effective_t": "-171.8422234439103",
+        "source": "Rm_StopLine_300cm_JPN_01.flt",
+        "type": "stop_line",
+        "visual_z_offset_m": "8.0000000000000002e-03",
+        "xodr_object_id": "5963",
+        "xodr_road_id": "2819",
+        "xodr_s": "0.0",
+        "xodr_t": "-1.7184222344391031e+02"
+      },
+      "center": [
+        1263.4005234556605,
+        1141.6319517161794
+      ]
+    },
+    {
+      "id": 544312,
+      "attributes": {
+        "cell_assignment": "unresolved",
+        "correction_evidence": "none",
+        "effective_t": "-171.86547263881724",
+        "source": "Rm_StopLine_300cm_JPN_01.flt",
+        "type": "stop_line",
+        "visual_z_offset_m": "8.0000000000000002e-03",
+        "xodr_object_id": "5964",
+        "xodr_road_id": "2819",
+        "xodr_s": "0.0",
+        "xodr_t": "-1.7186547263881724e+02"
+      },
+      "center": [
+        1263.3772946332479,
+        1141.6309786421118
+      ]
+    },
+    {
+      "id": 543318,
+      "attributes": {
+        "cell_assignment": "unresolved",
+        "correction_evidence": "none",
+        "effective_t": "19.693130534383304",
+        "source": "Rm_StopLine_300cm_JPN_01.flt",
+        "type": "stop_line",
+        "visual_z_offset_m": "8.0000000000000002e-03",
+        "xodr_object_id": "2913",
+        "xodr_road_id": "2077",
+        "xodr_s": "0.0",
+        "xodr_t": "1.9693130534383304e+01"
+      },
+      "center": [
+        1148.2856970296095,
+        -742.4840805549555
+      ]
+    },
+    {
+      "id": 543321,
+      "attributes": {
+        "cell_assignment": "unresolved",
+        "correction_evidence": "none",
+        "effective_t": "-20.144805267484333",
+        "source": "Rm_StopLine_300cm_JPN_01.flt",
+        "type": "stop_line",
+        "visual_z_offset_m": "8.0000000000000002e-03",
+        "xodr_object_id": "2914",
+        "xodr_road_id": "2077",
+        "xodr_s": "0.0",
+        "xodr_t": "-2.0144805267484333e+01"
+      },
+      "center": [
+        1117.045178562643,
+        -767.2043381359122
+      ]
+    },
+    {
+      "id": 543339,
+      "attributes": {
+        "cell_assignment": "unresolved",
+        "correction_evidence": "none",
+        "effective_t": "46.51519193767852",
+        "source": "Rm_StopLine_300cm_JPN_01.flt",
+        "type": "stop_line",
+        "visual_z_offset_m": "8.0000000000000002e-03",
+        "xodr_object_id": "2948",
+        "xodr_road_id": "2096",
+        "xodr_s": "0.0",
+        "xodr_t": "4.6515191937678523e+01"
+      },
+      "center": [
+        1130.2910151254393,
+        -680.9570848683604
+      ]
+    },
+    {
+      "id": 543348,
+      "attributes": {
+        "cell_assignment": "unresolved",
+        "correction_evidence": "none",
+        "effective_t": "16.91165352647152",
+        "source": "Rm_StopLine_300cm_JPN_01.flt",
+        "type": "stop_line",
+        "visual_z_offset_m": "8.0000000000000002e-03",
+        "xodr_object_id": "2960",
+        "xodr_road_id": "2097",
+        "xodr_s": "0.0",
+        "xodr_t": "1.6911653526471522e+01"
+      },
+      "center": [
+        1085.830566387205,
+        -672.5741250155306
+      ]
+    },
+    {
+      "id": 543357,
+      "attributes": {
+        "cell_assignment": "unresolved",
+        "correction_evidence": "none",
+        "effective_t": "-74.18854013599339",
+        "source": "Rm_StopLine_300cm_JPN_01.flt",
+        "type": "stop_line",
+        "visual_z_offset_m": "8.0000000000000002e-03",
+        "xodr_object_id": "2990",
+        "xodr_road_id": "2115",
+        "xodr_s": "0.0",
+        "xodr_t": "-7.4188540135993392e+01"
+      },
+      "center": [
+        1091.5873458913816,
+        -560.6114435847275
+      ]
+    },
+    {
+      "id": 543360,
+      "attributes": {
+        "cell_assignment": "unresolved",
+        "correction_evidence": "none",
+        "effective_t": "74.0711563349202",
+        "source": "Rm_StopLine_300cm_JPN_01.flt",
+        "type": "stop_line",
+        "visual_z_offset_m": "8.0000000000000002e-03",
+        "xodr_object_id": "2991",
+        "xodr_road_id": "2115",
+        "xodr_s": "0.0",
+        "xodr_t": "7.4071156334920204e+01"
+      },
+      "center": [
+        1182.954774073785,
+        -677.371585178427
+      ]
+    },
+    {
+      "id": 543369,
+      "attributes": {
+        "cell_assignment": "unresolved",
+        "correction_evidence": "none",
+        "effective_t": "13.714278107139725",
+        "source": "Rm_StopLine_300cm_JPN_01.flt",
+        "type": "stop_line",
+        "visual_z_offset_m": "8.0000000000000002e-03",
+        "xodr_object_id": "3000",
+        "xodr_road_id": "2116",
+        "xodr_s": "0.0",
+        "xodr_t": "1.3714278107139725e+01"
+      },
+      "center": [
+        1058.9262314448172,
+        -643.358096459595
+      ]
+    },
+    {
+      "id": 543378,
+      "attributes": {
+        "cell_assignment": "unresolved",
+        "correction_evidence": "none",
+        "effective_t": "37.86372348302619",
+        "source": "Rm_StopLine_300cm_JPN_01.flt",
+        "type": "stop_line",
+        "visual_z_offset_m": "8.0000000000000002e-03",
+        "xodr_object_id": "3022",
+        "xodr_road_id": "2139",
+        "xodr_s": "0.0",
+        "xodr_t": "3.7863723483026192e+01"
+      },
+      "center": [
+        1043.3166336544662,
+        -584.4077803859351
+      ]
+    },
+    {
+      "id": 543387,
+      "attributes": {
+        "cell_assignment": "unresolved",
+        "correction_evidence": "none",
+        "effective_t": "27.794505140395305",
+        "source": "Rm_StopLine_300cm_JPN_01.flt",
+        "type": "stop_line",
+        "visual_z_offset_m": "8.0000000000000002e-03",
+        "xodr_object_id": "3042",
+        "xodr_road_id": "2152",
+        "xodr_s": "0.0",
+        "xodr_t": "2.7794505140395305e+01"
+      },
+      "center": [
+        998.2871709498003,
+        -544.5126256523203
+      ]
+    },
+    {
+      "id": 543396,
+      "attributes": {
+        "cell_assignment": "unresolved",
+        "correction_evidence": "none",
+        "effective_t": "16.537626556435683",
+        "source": "Rm_StopLine_300cm_JPN_01.flt",
+        "type": "stop_line",
+        "visual_z_offset_m": "8.0000000000000002e-03",
+        "xodr_object_id": "3062",
+        "xodr_road_id": "2172",
+        "xodr_s": "0.0",
+        "xodr_t": "1.6537626556435683e+01"
+      },
+      "center": [
+        964.1867234879544,
+        -519.2863274903036
+      ]
+    },
+    {
+      "id": 544213,
+      "attributes": {
+        "cell_assignment": "unresolved",
+        "correction_evidence": "none",
+        "effective_t": "-7.800008023139267",
+        "source": "Rm_StopLine_300cm_JPN_01.flt",
+        "type": "stop_line",
+        "visual_z_offset_m": "8.0000000000000002e-03",
+        "xodr_object_id": "5568",
+        "xodr_road_id": "2814",
+        "xodr_s": "192.85101075519813",
+        "xodr_t": "-7.8000080231392674e+00"
+      },
+      "center": [
+        964.0398779263427,
+        650.1607279995841
+      ]
+    }
+  ],
+  "native_routing_errors": [],
+  "explicit_edges_missing_native": [],
+  "native_forward_edges_not_explicit": [],
+  "graph_stats": {
+    "edges_following_only": 2866,
+    "edges_with_lane_changes": 5414,
+    "weak_components_following_only": [
+      2540,
+      90,
+      24,
+      13,
+      9,
+      9,
+      7,
+      7,
+      6,
+      6,
+      6,
+      5,
+      5,
+      5,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      1
+    ],
+    "weak_components_with_lane_changes": [
+      2845
+    ],
+    "strong_components_with_lane_changes": [
+      2586,
+      5,
+      5,
+      5,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ]
+  },
+  "isolated_weak_components_with_lane_changes": [],
+  "dead_ends_with_lane_changes": [
+    {
+      "lanelet": 88551,
+      "xodr": [
+        1184,
+        0,
+        -1
+      ],
+      "s": [
+        0.0,
+        114.8297823820312
+      ],
+      "begin": [
+        225.9699910864876,
+        222.1373035012917
+      ],
+      "end": [
+        195.02969852357944,
+        332.7202009946487
+      ]
+    },
+    {
+      "lanelet": 127671,
+      "xodr": [
+        1790,
+        0,
+        -1
+      ],
+      "s": [
+        0.0,
+        31.23883364482592
+      ],
+      "begin": [
+        579.4491933462514,
+        -799.214282004772
+      ],
+      "end": [
+        604.2387136307202,
+        -780.2575046493032
+      ]
+    },
+    {
+      "lanelet": 1608,
+      "xodr": [
+        30,
+        0,
+        1
+      ],
+      "s": [
+        0.0,
+        50.072789277272726
+      ],
+      "begin": [
+        -4.807422005431079,
+        24.62630285782425
+      ],
+      "end": [
+        1.8320131530954806,
+        -25.009201174745236
+      ]
+    },
+    {
+      "lanelet": 536137,
+      "xodr": [
+        4738,
+        0,
+        1
+      ],
+      "s": [
+        0.0,
+        75.00000000000009
+      ],
+      "begin": [
+        420.0245309819232,
+        -494.15711206337977
+      ],
+      "end": [
+        360.77846181205035,
+        -540.1451897348661
+      ]
+    },
+    {
+      "lanelet": 537168,
+      "xodr": [
+        4740,
+        0,
+        1
+      ],
+      "s": [
+        0.0,
+        64.21285013649666
+      ],
+      "begin": [
+        557.5788961263142,
+        -809.2263695224033
+      ],
+      "end": [
+        507.706388166514,
+        -849.6741515685405
+      ]
+    },
+    {
+      "lanelet": 107175,
+      "xodr": [
+        1564,
+        0,
+        1
+      ],
+      "s": [
+        0.0,
+        9.541199999999991
+      ],
+      "begin": [
+        438.1814715982315,
+        -430.0288310405594
+      ],
+      "end": [
+        430.6843906219273,
+        -435.93037950471165
+      ]
+    }
+  ],
+  "unreachable_starts_with_lane_changes": [
+    {
+      "lanelet": 52578,
+      "xodr": [
+        429,
+        4,
+        -2
+      ],
+      "s": [
+        92.01000000000002,
+        96.01000000000002
+      ],
+      "begin": [
+        290.23275381389226,
+        26.632787703602837
+      ],
+      "end": [
+        288.7516718176072,
+        30.351088463064045
+      ]
+    },
+    {
+      "lanelet": 111562,
+      "xodr": [
+        1603,
+        2,
+        2
+      ],
+      "s": [
+        29.01100000000003,
+        31.50100000000001
+      ],
+      "begin": [
+        473.2934201425002,
+        -523.7346679877388
+      ],
+      "end": [
+        471.479278571117,
+        -521.7834967155709
+      ]
+    },
+    {
+      "lanelet": 141769,
+      "xodr": [
+        1869,
+        2,
+        1
+      ],
+      "s": [
+        62.00100000017077,
+        63.30100000001289
+      ],
+      "begin": [
+        924.8613344857047,
+        -977.761324634721
+      ],
+      "end": [
+        923.8760804766234,
+        -978.611922973358
+      ]
+    },
+    {
+      "lanelet": 246104,
+      "xodr": [
+        2195,
+        2,
+        2
+      ],
+      "s": [
+        41.001,
+        42.400999999999996
+      ],
+      "begin": [
+        886.09436731413,
+        -442.2154928950863
+      ],
+      "end": [
+        885.0111525263188,
+        -441.28691090142996
+      ]
+    },
+    {
+      "lanelet": 434227,
+      "xodr": [
+        2817,
+        1,
+        -1
+      ],
+      "s": [
+        79.90099999990784,
+        80.60100000014556
+      ],
+      "begin": [
+        1337.6259637795729,
+        875.8762663887906
+      ],
+      "end": [
+        1338.1840036018207,
+        876.306132450088
+      ]
+    },
+    {
+      "lanelet": 517026,
+      "xodr": [
+        3186,
+        0,
+        -1
+      ],
+      "s": [
+        0.0,
+        88.13460131797957
+      ],
+      "begin": [
+        1428.0217807525746,
+        1240.315078624406
+      ],
+      "end": [
+        1415.4916224352583,
+        1165.8612657949334
+      ]
+    },
+    {
+      "lanelet": 1405,
+      "xodr": [
+        30,
+        0,
+        -1
+      ],
+      "s": [
+        0.0,
+        50.072789277272726
+      ],
+      "begin": [
+        4.8055292150501785,
+        -24.61145473629805
+      ],
+      "end": [
+        -0.3452310226027655,
+        25.208412497639372
+      ]
+    },
+    {
+      "lanelet": 434233,
+      "xodr": [
+        2817,
+        1,
+        2
+      ],
+      "s": [
+        79.90099999990784,
+        80.60100000014556
+      ],
+      "begin": [
+        1336.5262351698207,
+        879.0441836669166
+      ],
+      "end": [
+        1335.9660146362903,
+        878.6179655597714
+      ]
+    },
+    {
+      "lanelet": 89013,
+      "xodr": [
+        1184,
+        0,
+        1
+      ],
+      "s": [
+        0.0,
+        114.8297823820312
+      ],
+      "begin": [
+        192.14065105176275,
+        331.9118664688554
+      ],
+      "end": [
+        223.0809436146709,
+        221.32896897549844
+      ]
+    },
+    {
+      "lanelet": 107134,
+      "xodr": [
+        1564,
+        0,
+        -1
+      ],
+      "s": [
+        0.0,
+        9.541199999999991
+      ],
+      "begin": [
+        432.53999006355485,
+        -438.2876556260499
+      ],
+      "end": [
+        440.03707103985903,
+        -432.38610716189766
+      ]
+    },
+    {
+      "lanelet": 260288,
+      "xodr": [
+        2305,
+        1,
+        1
+      ],
+      "s": [
+        72.70000000006749,
+        81.89999999986506
+      ],
+      "begin": [
+        1405.9153251436935,
+        -289.60155643313965
+      ],
+      "end": [
+        1403.633878637485,
+        -280.5933871066389
+      ]
+    },
+    {
+      "lanelet": 535835,
+      "xodr": [
+        4738,
+        0,
+        -1
+      ],
+      "s": [
+        0.0,
+        75.00000000000009
+      ],
+      "begin": [
+        362.61798491890977,
+        -542.5150325016609
+      ],
+      "end": [
+        421.8640540887826,
+        -496.52695483017465
+      ]
+    }
+  ],
+  "source_roadmark_lanechange_counts": {
+    "('solid', 'none')": 1752,
+    "('broken', 'both')": 1111,
+    "('solid solid', 'none')": 12,
+    "('none', 'both')": 125
+  },
+  "summary_counts": {
+    "source_coverage_gaps": 2,
+    "non_driving_generated": 0,
+    "invalid_lanelets": 0,
+    "invalid_cells": 0,
+    "missing_cells": 0,
+    "cell_union_errors": 0,
+    "cell_stopline_separation": 27,
+    "bad_previous_geometry": 0,
+    "stopline_orientation_errors": 0,
+    "cell_id_errors": 0,
+    "stoplines_without_cells": 26,
+    "native_routing_errors": 0,
+    "explicit_edges_missing_native": 0,
+    "native_forward_edges_not_explicit": 0,
+    "isolated_weak_components_with_lane_changes": 0,
+    "dead_ends_with_lane_changes": 6,
+    "unreachable_starts_with_lane_changes": 12
+  },
+  "provenance": {
+    "inputs": {
+      "/home/stier/HL-FMA2026-sim-stier/map/hdmap.bin": "e7a426f900813748747a39233f3678237fd7f849c335bae3bc3014b31ae678b0",
+      "/home/stier/HL-FMA2026-sim-stier/map/build_report.json": "f9c128cbe4a347a18b0c5095b7171fc07876d3b3e2860c6d550fa9295e3c4702",
+      "/home/stier/vtd \uc790\ub8cc/HL_FMA_VTD_LivingLab.xodr": "5a369c7b0609fc98b0034680473465db4273dd396ffb37980996cea70ec6ca2f",
+      "/home/stier/HL-FMA2026-sim-stier/map/tools/audit_geometry.py": "6dd0e3c220c3e859fed914f1bd5df7d2b0dfdb3a4585516b878c65865b861c96"
+    },
+    "python": "3.12.3 (main, Jul 15 2026, 23:46:41) [GCC 13.3.0]",
+    "lanelet2_io": "/opt/ros/jazzy/lib/python3.12/site-packages/lanelet2/io.so",
+    "versions": {
+      "numpy": "2.5.2",
+      "shapely": "2.1.2",
+      "networkx": "3.6.1"
+    }
+  }
+}

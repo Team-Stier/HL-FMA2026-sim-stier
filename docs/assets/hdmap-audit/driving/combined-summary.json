@@ -1,0 +1,168 @@
+{
+  "runs": [
+    {
+      "run": "drive-global",
+      "completed": 2847,
+      "status": {
+        "sampled_motion": 2667,
+        "target_not_driven": 166,
+        "map_miss": 14
+      },
+      "distance_m": 74792.24134591168,
+      "sample_states": 473977,
+      "placement_exact_road_lane_count": 2685,
+      "median_absolute_lane_offset_m": 7.767135684844106e-05,
+      "exact_placement_offsets_under_0_2m": 2685
+    },
+    {
+      "run": "drive-midpoint",
+      "completed": 45,
+      "status": {
+        "sampled_motion": 24,
+        "map_miss": 3,
+        "target_not_driven": 9,
+        "no_motion": 1,
+        "no_rdb": 8
+      },
+      "distance_m": 985.4616821523817,
+      "sample_states": 6041,
+      "placement_exact_road_lane_count": 23,
+      "median_absolute_lane_offset_m": 0.0038775319699198008,
+      "exact_placement_offsets_under_0_2m": 23
+    },
+    {
+      "run": "drive-midpoint-resumed",
+      "completed": 15,
+      "status": {
+        "sampled_motion": 7,
+        "map_miss": 3,
+        "target_not_driven": 5
+      },
+      "distance_m": 404.438009980851,
+      "sample_states": 2510,
+      "placement_exact_road_lane_count": 8,
+      "median_absolute_lane_offset_m": 0.0031830344814807177,
+      "exact_placement_offsets_under_0_2m": 8
+    },
+    {
+      "run": "drive-isolated",
+      "completed": 14,
+      "status": {
+        "sampled_motion": 7,
+        "map_miss": 7
+      },
+      "distance_m": 388.9817370851234,
+      "sample_states": 2348,
+      "placement_exact_road_lane_count": 12,
+      "median_absolute_lane_offset_m": 0.003998537198640406,
+      "exact_placement_offsets_under_0_2m": 12
+    }
+  ],
+  "total_distance_m": 76571.12277513003,
+  "original_25hz_coverage_before_map": {
+    "roads": 591,
+    "lanelets": 2760,
+    "cells": 45788
+  },
+  "final_retained_evidence_coverage": {
+    "roads": 626,
+    "lanelets": 2793,
+    "cells": 45750,
+    "source_roads": 643,
+    "source_lanelets": 2846,
+    "source_cells": 94155
+  },
+  "uncovered_roads": [
+    565,
+    781,
+    1130,
+    1218,
+    1502,
+    1561,
+    1796,
+    1996,
+    2134,
+    2429,
+    2752,
+    2898,
+    3084,
+    3186,
+    3382,
+    6024,
+    6045
+  ],
+  "uncovered_lanelets": [
+    27227,
+    28078,
+    29998,
+    30425,
+    31666,
+    32093,
+    59895,
+    67987,
+    69463,
+    81901,
+    82300,
+    83729,
+    94517,
+    94824,
+    95633,
+    103158,
+    106320,
+    108432,
+    128094,
+    146207,
+    146380,
+    175405,
+    177315,
+    181064,
+    181537,
+    201463,
+    201544,
+    203327,
+    231835,
+    233388,
+    237752,
+    274405,
+    274637,
+    292327,
+    309165,
+    378464,
+    401168,
+    430702,
+    456349,
+    485481,
+    485843,
+    509745,
+    512148,
+    517029,
+    526937,
+    530521,
+    533805,
+    533902,
+    534120,
+    534429,
+    537426,
+    537925,
+    538061
+  ],
+  "final_map_sha256": "758f2990e28374036725bc88be2938e5857e1f9a6035e3017a83692d78e6c718",
+  "map_independent_native_simulation": true,
+  "continuous_complete_route_verified": false,
+  "placement_distance_excluded": true,
+  "crash": {
+    "road": 6024,
+    "lane": -1,
+    "s": 15.9884041176,
+    "observed_xy": [
+      524.3313014417694,
+      -154.85385105066965
+    ],
+    "classification": "Traffic terminated after TrackPos request; native reference-line placement observed, exact cause unresolved"
+  },
+  "audit_context": {
+    "scope": "Historical baseline + midpoint + isolated runs only. final_* fields refer to the then-current 758f map, not the current production map.",
+    "current_final_summary": "drive-final-combined-replay/summary.json",
+    "current_map_sha256": "e7a426f900813748747a39233f3678237fd7f849c335bae3bc3014b31ae678b0"
+  }
+}

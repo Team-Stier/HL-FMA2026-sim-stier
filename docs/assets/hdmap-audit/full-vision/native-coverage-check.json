@@ -1,0 +1,68 @@
+{
+  "native_lanelets": 2845,
+  "native_cells": 94154,
+  "lanelets_or_cells_outside_view_union": {
+    "lanelet": [],
+    "cell": []
+  },
+  "native_stoplines": 751,
+  "road_tiles_stoplines": 748,
+  "supplemental_stoplines": 3,
+  "native_unique_physical_links": 1811,
+  "unique_physical_links_in_road_tiles": 1811,
+  "regulatory_physical_link_occurrences": 1817,
+  "supplemental_xml_objects": [
+    {
+      "type": "none",
+      "subtype": "",
+      "name": "Rm_StopLine_300cm_JPN_01.flt",
+      "id": "5960",
+      "s": "0.0000000000000000e+00",
+      "t": "1.7167661061292017e+02",
+      "zOffset": "8.0000000000000002e-03",
+      "validLength": "0.0000000000000000e+00",
+      "orientation": "none",
+      "length": "2.9999999999999999e-01",
+      "width": "3.0000000000000000e+00",
+      "height": "0.0000000000000000e+00",
+      "hdg": "3.1429952024506154e+00",
+      "pitch": "0.0000000000000000e+00",
+      "roll": "0.0000000000000000e+00"
+    },
+    {
+      "type": "none",
+      "subtype": "",
+      "name": "Rm_StopLine_300cm_JPN_01.flt",
+      "id": "5961",
+      "s": "0.0000000000000000e+00",
+      "t": "1.7172060885325800e+02",
+      "zOffset": "8.0000000000000002e-03",
+      "validLength": "0.0000000000000000e+00",
+      "orientation": "none",
+      "length": "2.9999999999999999e-01",
+      "width": "3.0000000000000000e+00",
+      "height": "0.0000000000000000e+00",
+      "hdg": "3.1429952024506154e+00",
+      "pitch": "0.0000000000000000e+00",
+      "roll": "0.0000000000000000e+00"
+    },
+    {
+      "type": "none",
+      "subtype": "",
+      "name": "Rm_StopLine_300cm_JPN_01.flt",
+      "id": "5962",
+      "s": "0.0000000000000000e+00",
+      "t": "1.7167240042661751e+02",
+      "zOffset": "8.0000000000000002e-03",
+      "validLength": "0.0000000000000000e+00",
+      "orientation": "none",
+      "length": "2.9999999999999999e-01",
+      "width": "3.0000000000000000e+00",
+      "height": "0.0000000000000000e+00",
+      "hdg": "3.1429952024506154e+00",
+      "pitch": "0.0000000000000000e+00",
+      "roll": "0.0000000000000000e+00"
+    }
+  ],
+  "errors": []
+}

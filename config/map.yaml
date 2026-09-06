@@ -8,11 +8,76 @@ school_zones:
     - road_ids: [174, 190, 420, 465]
       evidence: osgb_school_overhead_30_and_school_zone_text_conservative_whole_road
 asset_stopline_approaches:
+    # OSGB paint and native approach endpoints verified in docs/HDMapAudit.md.
+    - [1043, -1]
+    - [1492, 1]
+    - [1603, -1]
+    - [1778, -1]
+    - [1927, -1]
+    - [1928, -1]
+    - [2004, -1]
+    - [2011, -1]
     - [2077, -1]
+    - [2096, -1]
+    - [2097, -1]
     - [2115, -1]
     - [2116, -1]
+    - [2139, -1]
+    - [2152, -1]
+    - [2172, -1]
     - [2195, -1]
+    - [2241, -1]
+    - [2265, 1]
+    - [2305, 1]
+    - [2396, -1]
+    - [2410, -1]
+    - [2445, -1]
+    - [2533, -1]
+    - [2625, 1]
+    - [2674, 1]
+    - [2802, 1]
+    - [2803, -1]
+    - [2812, 1]
+    - [2813, 1]
+    - [2816, 1]
     - [2819, -1]
+non_driving_lane_overrides:
+    - road_id: 2810
+      section_index: 5
+      lane_id: 1
+      evidence: isolated_1_7m_long_median_sliver_max_width_0_01914m_osgb_hatched_divider
+    - road_id: 2816
+      section_index: 2
+      lane_id: 1
+      evidence: isolated_0_7m_yellow_median_sliver_max_source_width_0_00113902m_no_source_links_or_lane_change
+object_lateral_overrides:
+    - road_id: 2802
+      object_id: 5153
+      source_t: -1.5074813431681902
+      t: 1.5
+      mesh_candidate_index: 125
+      evidence: opposite_lane_source_error_osgb_mesh_125_at_positive_lane_end_including_0_15m_paint_offset
+    - road_id: 2805
+      object_id: 5238
+      source_t: -1.5074813431681862
+      t: 1.5
+      mesh_candidate_index: 317
+      evidence: opposite_lane_source_error_osgb_mesh_317_overlaps_316_at_positive_lane_end
+    - road_id: 2802
+      object_id: 5161
+      source_t: -1.50000565
+      t: 1.5
+      evidence: osgb_mesh_128_white_paint_and_lane_center_match_source_shifted_3m
+    - road_id: 1529
+      object_id: 1386
+      source_t: -1.50000036
+      t: 1.5
+      evidence: osgb_mesh_214_white_paint_and_lane_center_match_source_shifted_3m
+    - road_id: 2096
+      object_id: 2935
+      source_t: 1.50000222
+      t: -1.5
+      evidence: osgb_mesh_517_white_paint_and_lane_center_match_source_shifted_3m
 width_start_overrides:
     - road_id: 1927
       section_index: 3

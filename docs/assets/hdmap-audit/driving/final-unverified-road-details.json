@@ -1,0 +1,669 @@
+{
+  "map_sha256": "e7a426f900813748747a39233f3678237fd7f849c335bae3bc3014b31ae678b0",
+  "uncovered_roads": [
+    2752,
+    2898,
+    3382,
+    6024
+  ],
+  "zero_normal_motion_lanelets": [
+    {
+      "xodr_road_id": "173",
+      "xodr_section_index": "0",
+      "xodr_lane_id": "1",
+      "xodr_s_begin": "244.0",
+      "xodr_s_end": "244.1",
+      "lanelet": 30425,
+      "cells": 1,
+      "lane_length_m": 0.09897715747068382,
+      "junction": "-1"
+    },
+    {
+      "xodr_road_id": "700",
+      "xodr_section_index": "0",
+      "xodr_lane_id": "-1",
+      "xodr_s_begin": "38.5",
+      "xodr_s_end": "50.291448629720804",
+      "lanelet": 67987,
+      "cells": 12,
+      "lane_length_m": 11.906382251565171,
+      "junction": "20"
+    },
+    {
+      "xodr_road_id": "1955",
+      "xodr_section_index": "0",
+      "xodr_lane_id": "-1",
+      "xodr_s_begin": "41.0",
+      "xodr_s_end": "53.85578296501191",
+      "lanelet": 175405,
+      "cells": 13,
+      "lane_length_m": 12.95134760767867,
+      "junction": "39"
+    },
+    {
+      "xodr_road_id": "3382",
+      "xodr_section_index": "0",
+      "xodr_lane_id": "-1",
+      "xodr_s_begin": "0.0",
+      "xodr_s_end": "41.517749710171515",
+      "lanelet": 526934,
+      "cells": 42,
+      "lane_length_m": 41.52525221992358,
+      "junction": "53"
+    },
+    {
+      "xodr_road_id": "4728",
+      "xodr_section_index": "0",
+      "xodr_lane_id": "-2",
+      "xodr_s_begin": "42.0",
+      "xodr_s_end": "53.914456632877524",
+      "lanelet": 533899,
+      "cells": 13,
+      "lane_length_m": 12.726835542497048,
+      "junction": "6"
+    },
+    {
+      "xodr_road_id": "4728",
+      "xodr_section_index": "0",
+      "xodr_lane_id": "-1",
+      "xodr_s_begin": "42.0",
+      "xodr_s_end": "53.914456632877524",
+      "lanelet": 534117,
+      "cells": 13,
+      "lane_length_m": 12.183555759844614,
+      "junction": "6"
+    },
+    {
+      "xodr_road_id": "6024",
+      "xodr_section_index": "0",
+      "xodr_lane_id": "-1",
+      "xodr_s_begin": "0.0",
+      "xodr_s_end": "31.976808235187548",
+      "lanelet": 537423,
+      "cells": 35,
+      "lane_length_m": 34.284218795385826,
+      "junction": "10"
+    },
+    {
+      "xodr_road_id": "6045",
+      "xodr_section_index": "0",
+      "xodr_lane_id": "-3",
+      "xodr_s_begin": "0.0",
+      "xodr_s_end": "33.66833896453009",
+      "lanelet": 537922,
+      "cells": 34,
+      "lane_length_m": 33.51185028434762,
+      "junction": "67"
+    },
+    {
+      "xodr_road_id": "3081",
+      "xodr_section_index": "0",
+      "xodr_lane_id": "-1",
+      "xodr_s_begin": "29.5",
+      "xodr_s_end": "42.637329090635745",
+      "lanelet": 485478,
+      "cells": 14,
+      "lane_length_m": 13.217446834485749,
+      "junction": "89"
+    },
+    {
+      "xodr_road_id": "173",
+      "xodr_section_index": "0",
+      "xodr_lane_id": "-1",
+      "xodr_s_begin": "244.0",
+      "xodr_s_end": "244.1",
+      "lanelet": 28078,
+      "cells": 1,
+      "lane_length_m": 0.10102283849183116,
+      "junction": "-1"
+    },
+    {
+      "xodr_road_id": "2898",
+      "xodr_section_index": "0",
+      "xodr_lane_id": "-1",
+      "xodr_s_begin": "0.0",
+      "xodr_s_end": "38.92089172120766",
+      "lanelet": 456346,
+      "cells": 39,
+      "lane_length_m": 38.919957426032624,
+      "junction": "80"
+    },
+    {
+      "xodr_road_id": "2752",
+      "xodr_section_index": "0",
+      "xodr_lane_id": "-1",
+      "xodr_s_begin": "0.0",
+      "xodr_s_end": "47.16977362768899",
+      "lanelet": 378464,
+      "cells": 48,
+      "lane_length_m": 47.16424220184339,
+      "junction": "74"
+    },
+    {
+      "xodr_road_id": "2092",
+      "xodr_section_index": "0",
+      "xodr_lane_id": "-1",
+      "xodr_s_begin": "35.5",
+      "xodr_s_end": "45.562178096767106",
+      "lanelet": 233388,
+      "cells": 11,
+      "lane_length_m": 10.087070672104847,
+      "junction": "46"
+    },
+    {
+      "xodr_road_id": "4731",
+      "xodr_section_index": "0",
+      "xodr_lane_id": "-1",
+      "xodr_s_begin": "27.0",
+      "xodr_s_end": "38.2939794299544",
+      "lanelet": 534426,
+      "cells": 12,
+      "lane_length_m": 11.544570475374767,
+      "junction": "7"
+    },
+    {
+      "xodr_road_id": "1901",
+      "xodr_section_index": "0",
+      "xodr_lane_id": "-2",
+      "xodr_s_begin": "35.0",
+      "xodr_s_end": "42.59039802354067",
+      "lanelet": 146207,
+      "cells": 8,
+      "lane_length_m": 7.590446159779663,
+      "junction": "36"
+    },
+    {
+      "xodr_road_id": "2373",
+      "xodr_section_index": "0",
+      "xodr_lane_id": "-1",
+      "xodr_s_begin": "30.0",
+      "xodr_s_end": "37.982510467448435",
+      "lanelet": 274637,
+      "cells": 8,
+      "lane_length_m": 7.982511694201266,
+      "junction": "60"
+    }
+  ],
+  "trials_for_uncovered_roads": [
+    {
+      "run": "drive-global",
+      "source_road": 2898,
+      "source_lane": -1,
+      "placement_s": 1.0,
+      "placement_t": null,
+      "placement_verified": null,
+      "placement_blocked": null,
+      "samples": 150,
+      "distance_m": 25.187136123309596,
+      "target_distance_m": 0.0,
+      "status": "target_not_driven",
+      "actual_placement_road": [
+        2874,
+        -1,
+        1.185789942741394,
+        -1.4503246545791626,
+        0.00048168745706789196
+      ],
+      "first_actual_road": null
+    },
+    {
+      "run": "drive-global",
+      "source_road": 3382,
+      "source_lane": -1,
+      "placement_s": 1.0,
+      "placement_t": null,
+      "placement_verified": null,
+      "placement_blocked": null,
+      "samples": 150,
+      "distance_m": 24.250345177868933,
+      "target_distance_m": 0.0,
+      "status": "target_not_driven",
+      "actual_placement_road": [
+        2234,
+        -1,
+        1.1565852165222168,
+        -1.4251855611801147,
+        0.00015845960297156125
+      ],
+      "first_actual_road": null
+    },
+    {
+      "run": "drive-global",
+      "source_road": 2752,
+      "source_lane": -1,
+      "placement_s": 1.0,
+      "placement_t": null,
+      "placement_verified": null,
+      "placement_blocked": null,
+      "samples": 150,
+      "distance_m": 29.105869325128946,
+      "target_distance_m": 0.0,
+      "status": "target_not_driven",
+      "actual_placement_road": [
+        2749,
+        -1,
+        1.4476988315582275,
+        -1.5747783184051514,
+        -4.5006858272245154e-05
+      ],
+      "first_actual_road": [
+        2749,
+        -1,
+        1.4778574705123901,
+        -1.5747681856155396,
+        -4.593167977873236e-05
+      ]
+    },
+    {
+      "run": "drive-global",
+      "source_road": 6024,
+      "source_lane": -1,
+      "placement_s": 1.0,
+      "placement_t": null,
+      "placement_verified": null,
+      "placement_blocked": null,
+      "samples": 150,
+      "distance_m": 30.402379261298552,
+      "target_distance_m": 0.0,
+      "status": "target_not_driven",
+      "actual_placement_road": [
+        791,
+        -1,
+        1.2861415147781372,
+        -1.3774291276931763,
+        -0.0005414492916315794
+      ],
+      "first_actual_road": null
+    },
+    {
+      "run": "drive-midpoint",
+      "source_road": 2898,
+      "source_lane": -1,
+      "placement_s": 19.46044586060383,
+      "placement_t": null,
+      "placement_verified": null,
+      "placement_blocked": null,
+      "samples": 150,
+      "distance_m": 14.902346979419038,
+      "target_distance_m": 0.0,
+      "status": "target_not_driven",
+      "actual_placement_road": [
+        2853,
+        -1,
+        14.407611846923828,
+        -1.6137709617614746,
+        -0.08874330669641495
+      ],
+      "first_actual_road": null
+    },
+    {
+      "run": "drive-midpoint",
+      "source_road": 3382,
+      "source_lane": -1,
+      "placement_s": 20.758874855085757,
+      "placement_t": null,
+      "placement_verified": null,
+      "placement_blocked": null,
+      "samples": 150,
+      "distance_m": 35.77969496404513,
+      "target_distance_m": 0.0,
+      "status": "target_not_driven",
+      "actual_placement_road": [
+        2198,
+        -1,
+        16.162084579467773,
+        -1.8224987983703613,
+        -0.3021310567855835
+      ],
+      "first_actual_road": null
+    },
+    {
+      "run": "drive-midpoint",
+      "source_road": 2752,
+      "source_lane": -1,
+      "placement_s": 23.584886813844495,
+      "placement_t": null,
+      "placement_verified": null,
+      "placement_blocked": null,
+      "samples": 150,
+      "distance_m": 31.415110208735552,
+      "target_distance_m": 0.0,
+      "status": "target_not_driven",
+      "actual_placement_road": [
+        2734,
+        -1,
+        20.311315536499023,
+        -0.14362883567810059,
+        1.3558131456375122
+      ],
+      "first_actual_road": null
+    },
+    {
+      "run": "drive-midpoint",
+      "source_road": 6024,
+      "source_lane": -1,
+      "placement_s": 15.988404117593774,
+      "placement_t": null,
+      "placement_verified": null,
+      "placement_blocked": null,
+      "samples": 9,
+      "distance_m": 0.0,
+      "target_distance_m": 0.0,
+      "status": "no_motion",
+      "actual_placement_road": [
+        207,
+        -2,
+        42.65085220336914,
+        -3.1012556552886963,
+        1.2109078168869019
+      ],
+      "first_actual_road": null
+    },
+    {
+      "run": "drive-explicit-pilot",
+      "source_road": 6024,
+      "source_lane": -1,
+      "placement_s": 15.988404117593774,
+      "placement_t": -1.46755,
+      "placement_verified": false,
+      "placement_blocked": null,
+      "samples": 8,
+      "distance_m": 0.0,
+      "target_distance_m": 0.0,
+      "status": "no_motion",
+      "actual_placement_road": [
+        207,
+        -1,
+        41.56368637084961,
+        -2.1091456413269043,
+        -0.701169490814209
+      ],
+      "first_actual_road": null
+    },
+    {
+      "run": "drive-explicit-global",
+      "source_road": 2898,
+      "source_lane": -1,
+      "placement_s": 1.0,
+      "placement_t": -1.450194648980988,
+      "placement_verified": false,
+      "placement_blocked": null,
+      "samples": 151,
+      "distance_m": 24.26225462692717,
+      "target_distance_m": 0.0,
+      "status": "target_not_driven",
+      "actual_placement_road": [
+        2874,
+        -1,
+        1.1365798711776733,
+        -1.4502309560775757,
+        0.000510646088514477
+      ],
+      "first_actual_road": null
+    },
+    {
+      "run": "drive-explicit-global",
+      "source_road": 3382,
+      "source_lane": -1,
+      "placement_s": 1.0,
+      "placement_t": -1.4250428118949046,
+      "placement_verified": false,
+      "placement_blocked": null,
+      "samples": 150,
+      "distance_m": 27.506728797788078,
+      "target_distance_m": 0.0,
+      "status": "target_not_driven",
+      "actual_placement_road": [
+        2234,
+        -1,
+        1.3651056289672852,
+        -1.4257491827011108,
+        -0.00027217873139306903
+      ],
+      "first_actual_road": null
+    },
+    {
+      "run": "drive-explicit-global",
+      "source_road": 2752,
+      "source_lane": -1,
+      "placement_s": 1.0,
+      "placement_t": -1.5748338417683518,
+      "placement_verified": false,
+      "placement_blocked": null,
+      "samples": 150,
+      "distance_m": 30.170948785449518,
+      "target_distance_m": 0.0,
+      "status": "target_not_driven",
+      "actual_placement_road": [
+        2749,
+        -1,
+        1.411600112915039,
+        -1.5748971700668335,
+        -0.0001508473651483655
+      ],
+      "first_actual_road": null
+    },
+    {
+      "run": "drive-explicit-global",
+      "source_road": 6024,
+      "source_lane": -1,
+      "placement_s": 1.0,
+      "placement_t": -1.3771722696963027,
+      "placement_verified": false,
+      "placement_blocked": null,
+      "samples": 150,
+      "distance_m": 27.971532930462498,
+      "target_distance_m": 0.0,
+      "status": "target_not_driven",
+      "actual_placement_road": [
+        791,
+        -1,
+        1.2425520420074463,
+        -1.3771779537200928,
+        -0.00030593827250413597
+      ],
+      "first_actual_road": null
+    },
+    {
+      "run": "drive-uncovered",
+      "source_road": 2898,
+      "source_lane": -1,
+      "placement_s": 18.477013180068894,
+      "placement_t": -1.4962130899373178,
+      "placement_verified": false,
+      "placement_blocked": null,
+      "samples": 150,
+      "distance_m": 14.734198653086386,
+      "target_distance_m": 0.0,
+      "status": "target_not_driven",
+      "actual_placement_road": [
+        2853,
+        -1,
+        14.804682731628418,
+        -0.6991592645645142,
+        0.8252190351486206
+      ],
+      "first_actual_road": [
+        2853,
+        -1,
+        14.792759895324707,
+        -0.7216796278953552,
+        0.8027182221412659
+      ]
+    },
+    {
+      "run": "drive-uncovered",
+      "source_road": 2898,
+      "source_lane": -1,
+      "placement_s": 0.019999999975788274,
+      "placement_t": -1.4500000791893344,
+      "placement_verified": false,
+      "placement_blocked": null,
+      "samples": 150,
+      "distance_m": 21.56653847025725,
+      "target_distance_m": 0.0,
+      "status": "target_not_driven",
+      "actual_placement_road": [
+        2874,
+        -1,
+        0.4420152008533478,
+        -1.4502031803131104,
+        -8.917356171878055e-05
+      ],
+      "first_actual_road": [
+        2874,
+        -1,
+        0.4731111228466034,
+        -1.4502317905426025,
+        -0.00010127967107109725
+      ]
+    },
+    {
+      "run": "drive-uncovered",
+      "source_road": 2752,
+      "source_lane": -1,
+      "placement_s": 38.52816773972809,
+      "placement_t": -1.4610489353261205,
+      "placement_verified": false,
+      "placement_blocked": null,
+      "samples": 150,
+      "distance_m": 12.442790972584936,
+      "target_distance_m": 0.0,
+      "status": "target_not_driven",
+      "actual_placement_road": [
+        2737,
+        -1,
+        24.222490310668945,
+        -1.268401861190796,
+        0.19874976575374603
+      ],
+      "first_actual_road": null
+    },
+    {
+      "run": "drive-uncovered",
+      "source_road": 3382,
+      "source_lane": -1,
+      "placement_s": 18.518038427866927,
+      "placement_t": -1.4354838946514563,
+      "placement_verified": false,
+      "placement_blocked": null,
+      "samples": 150,
+      "distance_m": 29.997369924494013,
+      "target_distance_m": 0.0,
+      "status": "map_miss",
+      "actual_placement_road": [
+        2222,
+        -1,
+        20.088802337646484,
+        -2.137850284576416,
+        -0.5891087651252747
+      ],
+      "first_actual_road": [
+        2222,
+        -1,
+        20.090089797973633,
+        -2.1145405769348145,
+        -0.5657989382743835
+      ]
+    },
+    {
+      "run": "drive-uncovered-resumed",
+      "source_road": 3382,
+      "source_lane": -1,
+      "placement_s": 0.020008047988603853,
+      "placement_t": -1.4250000174126385,
+      "placement_verified": false,
+      "placement_blocked": null,
+      "samples": 0,
+      "distance_m": 0.0,
+      "target_distance_m": 0.0,
+      "status": "no_rdb",
+      "actual_placement_road": null,
+      "first_actual_road": null
+    },
+    {
+      "run": "drive-uncovered-guarded3",
+      "source_road": 3382,
+      "source_lane": -1,
+      "placement_s": 0.020008047988603853,
+      "placement_t": -1.4250000174126385,
+      "placement_verified": false,
+      "placement_blocked": true,
+      "samples": 0,
+      "distance_m": 0.0,
+      "target_distance_m": 0.0,
+      "status": "placement_mismatch",
+      "actual_placement_road": [
+        2234,
+        -1,
+        0.4689052104949951,
+        -1.4252617359161377,
+        -0.00020425411639735103
+      ],
+      "first_actual_road": null
+    },
+    {
+      "run": "drive-uncovered-guarded3",
+      "source_road": 2752,
+      "source_lane": -1,
+      "placement_s": 0.02000801680139893,
+      "placement_t": -1.5749999325489143,
+      "placement_verified": false,
+      "placement_blocked": true,
+      "samples": 0,
+      "distance_m": 0.0,
+      "target_distance_m": 0.0,
+      "status": "placement_mismatch",
+      "actual_placement_road": [
+        2749,
+        -1,
+        0.4128507375717163,
+        -1.5749579668045044,
+        1.9962155420216732e-05
+      ],
+      "first_actual_road": null
+    },
+    {
+      "run": "drive-uncovered-guarded3",
+      "source_road": 3382,
+      "source_lane": -1,
+      "placement_s": 38.4924975215264,
+      "placement_t": -1.4496211412938054,
+      "placement_verified": false,
+      "placement_blocked": true,
+      "samples": 0,
+      "distance_m": 0.0,
+      "target_distance_m": 0.0,
+      "status": "placement_mismatch",
+      "actual_placement_road": [
+        2204,
+        -1,
+        25.138790130615234,
+        -1.447973370552063,
+        0.004660425707697868
+      ],
+      "first_actual_road": null
+    },
+    {
+      "run": "drive-uncovered-guarded3",
+      "source_road": 2752,
+      "source_lane": -1,
+      "placement_s": 18.528296741294668,
+      "placement_t": -1.5322919820532614,
+      "placement_verified": false,
+      "placement_blocked": true,
+      "samples": 0,
+      "distance_m": 0.0,
+      "target_distance_m": 0.0,
+      "status": "placement_mismatch",
+      "actual_placement_road": [
+        2731,
+        -1,
+        21.03894805908203,
+        -1.390844702720642,
+        0.17716696858406067
+      ],
+      "first_actual_road": null
+    }
+  ]
+}

@@ -1,0 +1,444 @@
+[
+  {
+    "road": 30,
+    "object": 1,
+    "baseline_stopline": 542272,
+    "source_center": [
+      1.0620088793000235,
+      25.243854467728113,
+      35.550000000000004
+    ],
+    "image": "docs/assets/hdmap-audit/mismatches/contact0.jpg",
+    "image_position": 0,
+    "observation": "transverse_stop_paint_not_visible_at_source_center"
+  },
+  {
+    "road": 30,
+    "object": 2,
+    "baseline_stopline": 542275,
+    "source_center": [
+      -1.8136101192066767,
+      24.86861510405173,
+      35.550000000000004
+    ],
+    "image": "docs/assets/hdmap-audit/mismatches/contact0.jpg",
+    "image_position": 1,
+    "observation": "transverse_stop_paint_not_visible_at_source_center"
+  },
+  {
+    "road": 76,
+    "object": 114,
+    "baseline_stopline": 542311,
+    "source_center": [
+      -21.848947057796988,
+      36.21664039500903,
+      35.55
+    ],
+    "image": "docs/assets/hdmap-audit/mismatches/contact0.jpg",
+    "image_position": 2,
+    "observation": "transverse_stop_paint_not_visible_at_source_center"
+  },
+  {
+    "road": 76,
+    "object": 115,
+    "baseline_stopline": 542314,
+    "source_center": [
+      -21.564161366092197,
+      31.113280799659215,
+      35.55
+    ],
+    "image": "docs/assets/hdmap-audit/mismatches/contact0.jpg",
+    "image_position": 3,
+    "observation": "transverse_stop_paint_not_visible_at_source_center"
+  },
+  {
+    "road": 76,
+    "object": 116,
+    "baseline_stopline": 542317,
+    "source_center": [
+      -21.51464577004533,
+      30.22596131849936,
+      35.55
+    ],
+    "image": "docs/assets/hdmap-audit/mismatches/contact1.jpg",
+    "image_position": 0,
+    "observation": "transverse_stop_paint_not_visible_at_source_center"
+  },
+  {
+    "road": 76,
+    "object": 117,
+    "baseline_stopline": 542320,
+    "source_center": [
+      -21.691925753949537,
+      33.402818630062754,
+      35.55
+    ],
+    "image": "docs/assets/hdmap-audit/mismatches/contact1.jpg",
+    "image_position": 1,
+    "observation": "transverse_stop_paint_not_visible_at_source_center"
+  },
+  {
+    "road": 310,
+    "object": 735,
+    "baseline_stopline": 542524,
+    "source_center": [
+      287.9851640367813,
+      -117.10189551555132,
+      41.49999999999999
+    ],
+    "image": "docs/assets/hdmap-audit/mismatches/contact1.jpg",
+    "image_position": 2,
+    "observation": "transverse_stop_paint_not_visible_at_source_center"
+  },
+  {
+    "road": 310,
+    "object": 736,
+    "baseline_stopline": 542527,
+    "source_center": [
+      287.6113802562781,
+      -116.7698027811177,
+      41.49999999999999
+    ],
+    "image": "docs/assets/hdmap-audit/mismatches/contact1.jpg",
+    "image_position": 3,
+    "observation": "transverse_stop_paint_not_visible_at_source_center"
+  },
+  {
+    "road": 310,
+    "object": 737,
+    "baseline_stopline": 542530,
+    "source_center": [
+      285.51819201720417,
+      -114.91008429610896,
+      41.49999999999999
+    ],
+    "image": "docs/assets/hdmap-audit/mismatches/contact2.jpg",
+    "image_position": 0,
+    "observation": "transverse_stop_paint_not_visible_at_source_center"
+  },
+  {
+    "road": 1529,
+    "object": 1386,
+    "baseline_stopline": 542790,
+    "source_center": [
+      469.8549482360997,
+      -357.40193494538823,
+      46.28
+    ],
+    "image": "docs/assets/hdmap-audit/mismatches/contact2.jpg",
+    "image_position": 1,
+    "observation": "transverse_stop_paint_not_visible_at_source_center"
+  },
+  {
+    "road": 1530,
+    "object": 1389,
+    "baseline_stopline": 542793,
+    "source_center": [
+      494.58458292199924,
+      -371.4033528214921,
+      44.079
+    ],
+    "image": "docs/assets/hdmap-audit/mismatches/contact2.jpg",
+    "image_position": 2,
+    "observation": "transverse_stop_paint_not_visible_at_source_center"
+  },
+  {
+    "road": 1734,
+    "object": 1544,
+    "baseline_stopline": 542857,
+    "source_center": [
+      500.4820811567354,
+      -674.2856321765439,
+      50.91
+    ],
+    "image": "docs/assets/hdmap-audit/mismatches/contact2.jpg",
+    "image_position": 3,
+    "observation": "transverse_stop_paint_not_visible_at_source_center"
+  },
+  {
+    "road": 1776,
+    "object": 1614,
+    "baseline_stopline": 542881,
+    "source_center": [
+      579.3316026576069,
+      -799.309650990114,
+      52.773
+    ],
+    "image": "docs/assets/hdmap-audit/mismatches/contact3.jpg",
+    "image_position": 0,
+    "observation": "transverse_stop_paint_not_visible_at_source_center"
+  },
+  {
+    "road": 1776,
+    "object": 1615,
+    "baseline_stopline": 542884,
+    "source_center": [
+      577.9458190052407,
+      -797.6009662925361,
+      52.773
+    ],
+    "image": "docs/assets/hdmap-audit/mismatches/contact3.jpg",
+    "image_position": 1,
+    "observation": "transverse_stop_paint_not_visible_at_source_center"
+  },
+  {
+    "road": 1776,
+    "object": 1616,
+    "baseline_stopline": 542887,
+    "source_center": [
+      577.3159173544987,
+      -796.8242914416213,
+      52.773
+    ],
+    "image": "docs/assets/hdmap-audit/mismatches/contact3.jpg",
+    "image_position": 2,
+    "observation": "transverse_stop_paint_not_visible_at_source_center"
+  },
+  {
+    "road": 1826,
+    "object": 1792,
+    "baseline_stopline": 542953,
+    "source_center": [
+      807.2516265242921,
+      -971.7143533734736,
+      58.325
+    ],
+    "image": "docs/assets/hdmap-audit/mismatches/contact3.jpg",
+    "image_position": 3,
+    "observation": "transverse_stop_paint_not_visible_at_source_center"
+  },
+  {
+    "road": 1826,
+    "object": 1793,
+    "baseline_stopline": 542956,
+    "source_center": [
+      808.7263566862671,
+      -970.5163672341722,
+      58.325
+    ],
+    "image": "docs/assets/hdmap-audit/mismatches/contact4.jpg",
+    "image_position": 0,
+    "observation": "transverse_stop_paint_not_visible_at_source_center"
+  },
+  {
+    "road": 1826,
+    "object": 1794,
+    "baseline_stopline": 542959,
+    "source_center": [
+      809.6577651605837,
+      -969.7597444491842,
+      58.325
+    ],
+    "image": "docs/assets/hdmap-audit/mismatches/contact4.jpg",
+    "image_position": 1,
+    "observation": "transverse_stop_paint_not_visible_at_source_center"
+  },
+  {
+    "road": 1926,
+    "object": 2137,
+    "baseline_stopline": 543091,
+    "source_center": [
+      1107.653614585688,
+      -1090.1115287676637,
+      56.1845
+    ],
+    "image": "docs/assets/hdmap-audit/mismatches/contact4.jpg",
+    "image_position": 2,
+    "observation": "transverse_stop_paint_not_visible_at_source_center"
+  },
+  {
+    "road": 1926,
+    "object": 2138,
+    "baseline_stopline": 543094,
+    "source_center": [
+      1107.967561561442,
+      -1089.8636632922942,
+      56.1845
+    ],
+    "image": "docs/assets/hdmap-audit/mismatches/contact4.jpg",
+    "image_position": 3,
+    "observation": "transverse_stop_paint_not_visible_at_source_center"
+  },
+  {
+    "road": 1926,
+    "object": 2139,
+    "baseline_stopline": 543097,
+    "source_center": [
+      1115.03136823833,
+      -1084.286690315633,
+      56.1845
+    ],
+    "image": "docs/assets/hdmap-audit/mismatches/contact5.jpg",
+    "image_position": 0,
+    "observation": "transverse_stop_paint_not_visible_at_source_center"
+  },
+  {
+    "road": 1926,
+    "object": 2140,
+    "baseline_stopline": 543100,
+    "source_center": [
+      1110.3221638738446,
+      -1088.004672231565,
+      56.1845
+    ],
+    "image": "docs/assets/hdmap-audit/mismatches/contact5.jpg",
+    "image_position": 1,
+    "observation": "transverse_stop_paint_not_visible_at_source_center"
+  },
+  {
+    "road": 1926,
+    "object": 2141,
+    "baseline_stopline": 543103,
+    "source_center": [
+      1112.676766149202,
+      -1086.1456812000838,
+      56.1845
+    ],
+    "image": "docs/assets/hdmap-audit/mismatches/contact5.jpg",
+    "image_position": 2,
+    "observation": "transverse_stop_paint_not_visible_at_source_center"
+  },
+  {
+    "road": 1926,
+    "object": 2142,
+    "baseline_stopline": 543106,
+    "source_center": [
+      1115.0313682085466,
+      -1084.2866903391475,
+      56.1845
+    ],
+    "image": "docs/assets/hdmap-audit/mismatches/contact5.jpg",
+    "image_position": 3,
+    "observation": "transverse_stop_paint_not_visible_at_source_center"
+  },
+  {
+    "road": 2096,
+    "object": 2935,
+    "baseline_stopline": 543334,
+    "source_center": [
+      1108.2471712056574,
+      -725.7053842388322,
+      60.08415288709265
+    ],
+    "image": "docs/assets/hdmap-audit/mismatches/contact6.jpg",
+    "image_position": 0,
+    "observation": "transverse_stop_paint_not_visible_at_source_center"
+  },
+  {
+    "road": 2802,
+    "object": 5153,
+    "baseline_stopline": 544018,
+    "source_center": [
+      1116.9182606703675,
+      474.0426475631955,
+      48.8444832
+    ],
+    "image": "docs/assets/hdmap-audit/mismatches/contact6.jpg",
+    "image_position": 1,
+    "observation": "transverse_stop_paint_not_visible_at_source_center"
+  },
+  {
+    "road": 2802,
+    "object": 5161,
+    "baseline_stopline": 544026,
+    "source_center": [
+      1117.910062579219,
+      449.2456100028243,
+      49.564663507221056
+    ],
+    "image": "docs/assets/hdmap-audit/mismatches/contact6.jpg",
+    "image_position": 2,
+    "observation": "transverse_stop_paint_not_visible_at_source_center"
+  },
+  {
+    "road": 2805,
+    "object": 5238,
+    "baseline_stopline": 544082,
+    "source_center": [
+      1404.9135960205815,
+      482.97289631907057,
+      58.05338575
+    ],
+    "image": "docs/assets/hdmap-audit/mismatches/contact6.jpg",
+    "image_position": 3,
+    "observation": "transverse_stop_paint_not_visible_at_source_center"
+  },
+  {
+    "road": 2813,
+    "object": 5488,
+    "baseline_stopline": 544196,
+    "source_center": [
+      798.4102438667069,
+      486.8017776954383,
+      41.4255
+    ],
+    "image": "docs/assets/hdmap-audit/mismatches/contact7.jpg",
+    "image_position": 0,
+    "observation": "transverse_stop_paint_not_visible_at_source_center"
+  },
+  {
+    "road": 2813,
+    "object": 5489,
+    "baseline_stopline": 544199,
+    "source_center": [
+      795.8102109115262,
+      485.3051721436678,
+      41.4255
+    ],
+    "image": "docs/assets/hdmap-audit/mismatches/contact7.jpg",
+    "image_position": 1,
+    "observation": "transverse_stop_paint_not_visible_at_source_center"
+  },
+  {
+    "road": 2817,
+    "object": 5782,
+    "baseline_stopline": 544265,
+    "source_center": [
+      1416.8876917475786,
+      922.0751081762132,
+      52.92373196700001
+    ],
+    "image": "docs/assets/hdmap-audit/mismatches/contact7.jpg",
+    "image_position": 2,
+    "observation": "transverse_stop_paint_not_visible_at_source_center"
+  },
+  {
+    "road": 2817,
+    "object": 5783,
+    "baseline_stopline": 544268,
+    "source_center": [
+      1419.8912168355912,
+      917.1132624493081,
+      52.92373196700001
+    ],
+    "image": "docs/assets/hdmap-audit/mismatches/contact7.jpg",
+    "image_position": 3,
+    "observation": "transverse_stop_paint_not_visible_at_source_center"
+  },
+  {
+    "road": 2817,
+    "object": 5784,
+    "baseline_stopline": 544271,
+    "source_center": [
+      1418.443493856987,
+      919.5099460023905,
+      52.92373196700001
+    ],
+    "image": "docs/assets/hdmap-audit/mismatches/contact8.jpg",
+    "image_position": 0,
+    "observation": "transverse_stop_paint_not_visible_at_source_center"
+  },
+  {
+    "road": 2817,
+    "object": 5785,
+    "baseline_stopline": 544274,
+    "source_center": [
+      1416.8900505426668,
+      922.0764255922466,
+      52.92373196700001
+    ],
+    "image": "docs/assets/hdmap-audit/mismatches/contact8.jpg",
+    "image_position": 1,
+    "observation": "transverse_stop_paint_not_visible_at_source_center"
+  }
+]

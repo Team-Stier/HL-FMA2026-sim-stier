@@ -1,0 +1,334 @@
+{
+  "map_sha256": "758f2990e28374036725bc88be2938e5857e1f9a6035e3017a83692d78e6c718",
+  "extra_edge_geometry": [
+    {
+      "from": 91721,
+      "to": 94824,
+      "from_source": [
+        1196,
+        0,
+        -2
+      ],
+      "to_source": [
+        1218,
+        0,
+        -2
+      ],
+      "exit_width_m": 0.0,
+      "entry_width_m": 0.0,
+      "heading_change_deg": 176.4599107632414,
+      "from_bound_ids": [
+        538828,
+        538826
+      ],
+      "to_bound_ids": [
+        538841,
+        538839
+      ],
+      "exit_point_ids": [
+        87629,
+        87629
+      ],
+      "entry_point_ids": [
+        87629,
+        87629
+      ]
+    },
+    {
+      "from": 113557,
+      "to": 536140,
+      "from_source": [
+        1622,
+        0,
+        1
+      ],
+      "to_source": [
+        4738,
+        0,
+        1
+      ],
+      "exit_width_m": 3.0000000000000315,
+      "entry_width_m": 3.0000000000000315,
+      "heading_change_deg": 8.537736462515939e-07,
+      "from_bound_ids": [
+        539011,
+        539013
+      ],
+      "to_bound_ids": [
+        542257,
+        542259
+      ],
+      "exit_point_ids": [
+        113442,
+        113556
+      ],
+      "entry_point_ids": [
+        113442,
+        113556
+      ]
+    },
+    {
+      "from": 124048,
+      "to": 537171,
+      "from_source": [
+        1776,
+        0,
+        1
+      ],
+      "to_source": [
+        4740,
+        0,
+        1
+      ],
+      "exit_width_m": 2.9999999999999605,
+      "entry_width_m": 2.9999999999999605,
+      "heading_change_deg": 0.0,
+      "from_bound_ids": [
+        539141,
+        539142
+      ],
+      "to_bound_ids": [
+        542262,
+        542263
+      ],
+      "exit_point_ids": [
+        123857,
+        124047
+      ],
+      "entry_point_ids": [
+        123857,
+        124047
+      ]
+    },
+    {
+      "from": 430702,
+      "to": 430618,
+      "from_source": [
+        2816,
+        2,
+        1
+      ],
+      "to_source": [
+        2816,
+        1,
+        1
+      ],
+      "exit_width_m": 0.0,
+      "entry_width_m": 0.0,
+      "heading_change_deg": 3.4401276984302265,
+      "from_bound_ids": [
+        541688,
+        541689
+      ],
+      "to_bound_ids": [
+        541682,
+        541683
+      ],
+      "exit_point_ids": [
+        430489,
+        430489
+      ],
+      "entry_point_ids": [
+        430489,
+        430489
+      ]
+    },
+    {
+      "from": 535838,
+      "to": 113518,
+      "from_source": [
+        4738,
+        0,
+        -1
+      ],
+      "to_source": [
+        1622,
+        0,
+        -1
+      ],
+      "exit_width_m": 2.9999999999999516,
+      "entry_width_m": 2.9999999999999516,
+      "heading_change_deg": 0.0,
+      "from_bound_ids": [
+        542257,
+        542258
+      ],
+      "to_bound_ids": [
+        539011,
+        539012
+      ],
+      "exit_point_ids": [
+        113442,
+        113480
+      ],
+      "entry_point_ids": [
+        113442,
+        113480
+      ]
+    },
+    {
+      "from": 536655,
+      "to": 123856,
+      "from_source": [
+        4740,
+        0,
+        -2
+      ],
+      "to_source": [
+        1776,
+        0,
+        -2
+      ],
+      "exit_width_m": 2.9999999999999605,
+      "entry_width_m": 2.9999999999999605,
+      "heading_change_deg": 0.0,
+      "from_bound_ids": [
+        542260,
+        542261
+      ],
+      "to_bound_ids": [
+        539139,
+        539140
+      ],
+      "exit_point_ids": [
+        123666,
+        123761
+      ],
+      "entry_point_ids": [
+        123666,
+        123761
+      ]
+    },
+    {
+      "from": 536913,
+      "to": 123952,
+      "from_source": [
+        4740,
+        0,
+        -1
+      ],
+      "to_source": [
+        1776,
+        0,
+        -1
+      ],
+      "exit_width_m": 3.0000000000000484,
+      "entry_width_m": 3.0000000000000484,
+      "heading_change_deg": 8.537736462515939e-07,
+      "from_bound_ids": [
+        542262,
+        542260
+      ],
+      "to_bound_ids": [
+        539141,
+        539139
+      ],
+      "exit_point_ids": [
+        123857,
+        123666
+      ],
+      "entry_point_ids": [
+        123857,
+        123666
+      ]
+    }
+  ],
+  "source_bound_users": {
+    "leftBound": [
+      {
+        "lanelet": 91721,
+        "source": [
+          1196,
+          0,
+          -2
+        ],
+        "side": "leftBound"
+      }
+    ],
+    "rightBound": [
+      {
+        "lanelet": 91721,
+        "source": [
+          1196,
+          0,
+          -2
+        ],
+        "side": "rightBound"
+      },
+      {
+        "lanelet": 91415,
+        "source": [
+          1196,
+          0,
+          -3
+        ],
+        "side": "leftBound"
+      }
+    ]
+  },
+  "previous_before": {
+    "91721": [
+      54759
+    ],
+    "94824": [
+      91721
+    ]
+  },
+  "neighbors_before": {
+    "91721": {
+      "left": null,
+      "right": 91415,
+      "adjacentLeft": null,
+      "adjacentRight": null
+    },
+    "94824": {
+      "left": null,
+      "right": 94517,
+      "adjacentLeft": null,
+      "adjacentRight": null
+    }
+  },
+  "neighbors_after": {
+    "91721": {
+      "left": null,
+      "right": 91415,
+      "adjacentLeft": null,
+      "adjacentRight": null
+    },
+    "94824": {
+      "left": null,
+      "right": 94517,
+      "adjacentLeft": null,
+      "adjacentRight": null
+    }
+  },
+  "in_memory_probe": {
+    "changed_only": "leftBound[-1] of91721 to new point identity with identicalXYZ; original binary untouched",
+    "forward_removed": [
+      [
+        91721,
+        94824
+      ]
+    ],
+    "forward_added": [],
+    "full_including_lane_change_removed": [
+      [
+        91721,
+        94824
+      ]
+    ],
+    "full_including_lane_change_added": [],
+    "same_point_coordinates": true,
+    "previous_after": {
+      "91721": [
+        54759
+      ],
+      "94824": []
+    }
+  },
+  "audit_context": {
+    "measurement_map_sha256": "758f2990e28374036725bc88be2938e5857e1f9a6035e3017a83692d78e6c718",
+    "final_map_sha256": "e7a426f900813748747a39233f3678237fd7f849c335bae3bc3014b31ae678b0",
+    "note": "Primitive IDs belong to the measured snapshot; source road/section/lane and object/mesh keys identify the same geometry. See topology-repair-independent.json."
+  }
+}

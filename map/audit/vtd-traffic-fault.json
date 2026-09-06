@@ -1,0 +1,21 @@
+{
+  "binary": "/home/stier/VIRES/VTD.2025.2/Runtime/Core/Traffic/ghostdriver.2025.2.438_flexlm",
+  "sha256": "7d53194e5347433ce94705fdd1f58ee99f88bf331d79e038bd3047287561220e",
+  "elf_build_id": "786df1c0b7a919438438c6ea6bf3dafaa7f92ae9",
+  "observed_crashes_local": [
+    "2026-09-06 08:36:55",
+    "2026-09-06 08:53:52",
+    "2026-09-06 09:18:50",
+    "2026-09-06 09:25:55",
+    "2026-09-06 09:47:36"
+  ],
+  "fault_address": "0x0",
+  "elf_fault_offset": "0x27994c",
+  "function": "DT_OdrPath::getNeighbourIfToNarrow(OpenDrive::Path::Leg::LaneList::LaneInfo const&) const",
+  "instruction": "mov (%rsi),%rsi",
+  "interpretation": "null LaneInfo reference dereference in native neighbour/width handling; originating call chain not captured",
+  "full_stack_available": false,
+  "vendor_binary_modified": false,
+  "kernel_evidence": "map/audit/vtd-traffic-kernel-segfault.txt",
+  "additional_crash_context": "uncovered-cell sweep; road6024 excluded; additional batch failures, including both wrong-road selection and narrow-placement candidates. Individual triggers not isolated."
+}

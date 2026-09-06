@@ -1,0 +1,33 @@
+{
+  "binary_sha256": "e7a426f900813748747a39233f3678237fd7f849c335bae3bc3014b31ae678b0",
+  "lane_centers": 2845,
+  "cell_polygons": 94154,
+  "stoplines": 751,
+  "yellow_boundaries": 1853,
+  "roads": {
+    "vertices": 2340978,
+    "line_groups": 8,
+    "segment_hashes": {
+      "('map/local_reference/stopline', 0.22, 1.0, 0.25, 0.2, 1.0)": "30d6160def235a460efd2161f3e8a327db5d9e017ba58372d1c63b8c52da7293",
+      "('map/local_reference/virtual/dashed', 0.08, 0.5, 0.5, 0.5, 0.35)": "128b6571b80a67e5431e84d2849365d982e8102f0f5873266ae135c2cf6b417e",
+      "('map/local_reference/line_thin/solid', 0.08, 1.0, 1.0, 0.0, 1.0)": "e1e02e053b10bc567bbaf73e5ea5a216063086459068024322754a19489ba69f",
+      "('map/local_reference/line_thin/dashed', 0.08, 0.8, 0.8, 0.8, 1.0)": "8a307e38a813265cf9cba3474200a10536c1f3a797fab40ec4d4b413727ba6f2",
+      "('map/local_reference/line_thin/dashed', 0.08, 1.0, 1.0, 0.0, 1.0)": "c221a13ec0229adef64ac597f4d7b5e4f1a29a1c497d809f92949ab92d87676d",
+      "('map/local_reference/line_thin/solid_solid', 0.08, 1.0, 1.0, 0.0, 1.0)": "a0c0c60368194f007e57b404160e9f317832df0ac1f176a1e704d0a6a73d3761",
+      "('map/local_reference/line_thin/solid', 0.08, 0.8, 0.8, 0.8, 1.0)": "f5a0c8c0ddf1ae60622f7437a05ee6e0181f7ff72e332dd37fd25b5058216846",
+      "('map/local_reference/center', 0.08, 0.3, 0.7, 1.0, 0.6)": "5fa058fafcf8434d1005fb54e6740aad573a11f96e5aad20e74cd55c7e9a6755"
+    },
+    "all_segments_preserved": true,
+    "duplicate_marker_ids": 0
+  },
+  "cells": {
+    "vertices": 4476432,
+    "line_groups": 2,
+    "segment_hashes": {
+      "('cells/local_reference/bounds', 0.08, 0.2, 0.65, 0.8, 0.3)": "b8b5e17c9b49c2c6d2ed9d290c57a3126b0b67501f2bd7f94af2e4681c89640c",
+      "('cells/local_reference/polygon', 0.035, 0.2, 1.0, 0.55, 0.65)": "4d87c27f78368f033dad5c356f01acec78a6dfc4c57cf9f650c2a962a0ddf63b"
+    },
+    "all_segments_preserved": true,
+    "duplicate_marker_ids": 0
+  }
+}

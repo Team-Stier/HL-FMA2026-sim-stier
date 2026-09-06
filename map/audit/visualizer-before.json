@@ -1,0 +1,15 @@
+{
+  "generated_seconds": 16.273966388995177,
+  "raw_road_markers": 14834,
+  "raw_cell_markers": 188314,
+  "lane_centers": 2847,
+  "cell_polygons": 94157,
+  "cell_aabb_bounds": 94157,
+  "all_source_stoplines": 722,
+  "roads_batch_groups": 6,
+  "roads_line_vertices": 2340962,
+  "roads_batch_preserves_all_segments": true,
+  "cells_batch_groups": 2,
+  "cells_line_vertices": 4476552,
+  "cells_batch_preserves_all_segments": true
+}

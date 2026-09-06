@@ -1,0 +1,5963 @@
+{
+  "audit_date": "2026-09-06",
+  "map_binary_sha256": "758f2990e28374036725bc88be2938e5857e1f9a6035e3017a83692d78e6c718",
+  "input_hashes": {
+    "/home/stier/vtd 자료/HL_FMA_VTD_LivingLab.xodr": "5a369c7b0609fc98b0034680473465db4273dd396ffb37980996cea70ec6ca2f",
+    "/home/stier/vtd 자료/HL_FMA_VTD_LivingLab.osgb": "2d8f83fdc26cb7f8373e71cf850c70f7d90981362789fb474eb31b0d5b253296",
+    "/home/stier/VIRES/VTD.2025.2/Data/Setups/00_HL_VTD/Plugins/ModuleManager/libHLVTD.so.1.0.0": "6059d5466def4821a243835c52c116b86f613db83729f113fb8e766aab6eca4e",
+    "map/stopline_mesh.json": "250fc3683047303698ff70094ed21675c2d2f3b081e2e467d31c4b0e1bf85aad"
+  },
+  "method": "One stationary Ego placement per plugin road/sign approach, explicit source lane-center t; .7s settling then 1s observation; API pose matched to fresh RDB road/lane/s/t and zero speed.",
+  "driving_coverage": false,
+  "all_lanes_per_approach_tested": false,
+  "all_signal_phases_tested": false,
+  "physical_lamp_direction_measured": false,
+  "approaches": 135,
+  "matching_controller_approaches": 135,
+  "api_samples": 2700,
+  "valid_samples": 2700,
+  "wrong_road_lane_samples": 0,
+  "api_state_counts": {
+    "0": 80,
+    "1": 1132,
+    "2": 246,
+    "3": 454,
+    "5": 768,
+    "6": 20
+  },
+  "api_green_encoding_mismatches": [],
+  "maximum_retained_api_rdb_position_difference_m": 6.491513072204358e-05,
+  "original_ego": {
+    "id": 1,
+    "xyz": [
+      508.7996826,
+      -168.2876587,
+      42.00000000000001
+    ],
+    "hpr": [
+      0.5161694288253784,
+      0.0,
+      0.0
+    ],
+    "velocity": [
+      0.0,
+      0.0,
+      -0.0,
+      0.0,
+      0.0,
+      0.0,
+      3,
+      0,
+      0
+    ],
+    "frame": 4598,
+    "sim_time": 183.8799999999977,
+    "road": {
+      "road": 465,
+      "lane": -1,
+      "s": 60.896522521972656,
+      "t": -1.3249645233154297,
+      "frame": 4597
+    },
+    "speed": 0.0
+  },
+  "restoration": {
+    "attempted": true,
+    "final_errors": [
+      {
+        "position_m": 0.0,
+        "hpr_rad": 0.0,
+        "speed_mps": 0.0
+      },
+      {
+        "position_m": 0.0,
+        "hpr_rad": 0.0,
+        "speed_mps": 0.0
+      },
+      {
+        "position_m": 0.0,
+        "hpr_rad": 0.0,
+        "speed_mps": 0.0
+      }
+    ],
+    "final_observations": [
+      {
+        "ego": {
+          "id": 1,
+          "xyz": [
+            508.7996826,
+            -168.2876587,
+            42.00000000000001
+          ],
+          "hpr": [
+            0.5161694288253784,
+            0.0,
+            0.0
+          ],
+          "velocity": [
+            0.0,
+            0.0,
+            -0.0,
+            0.0,
+            0.0,
+            0.0,
+            3,
+            0,
+            0
+          ],
+          "frame": 10509,
+          "sim_time": 420.3200000000674,
+          "road": {
+            "road": 465,
+            "lane": -1,
+            "s": 60.896522521972656,
+            "t": -1.3249645233154297,
+            "frame": 10508
+          }
+        },
+        "api_pose": [
+          508.7996826171875,
+          -168.28765869140625,
+          42.0,
+          0.5161694288253784,
+          0.0,
+          0.0
+        ],
+        "controller": 27,
+        "state": 1,
+        "api_rdb_distance_m": 1.9216228397588896e-08
+      },
+      {
+        "ego": {
+          "id": 1,
+          "xyz": [
+            508.7996826,
+            -168.2876587,
+            42.00000000000001
+          ],
+          "hpr": [
+            0.5161694288253784,
+            0.0,
+            0.0
+          ],
+          "velocity": [
+            0.0,
+            0.0,
+            -0.0,
+            0.0,
+            0.0,
+            0.0,
+            3,
+            0,
+            0
+          ],
+          "frame": 10510,
+          "sim_time": 420.36000000006743,
+          "road": {
+            "road": 465,
+            "lane": -1,
+            "s": 60.896522521972656,
+            "t": -1.3249645233154297,
+            "frame": 10509
+          }
+        },
+        "api_pose": [
+          508.7996826171875,
+          -168.28765869140625,
+          42.0,
+          0.5161694288253784,
+          0.0,
+          0.0
+        ],
+        "controller": 27,
+        "state": 1,
+        "api_rdb_distance_m": 1.9216228397588896e-08
+      },
+      {
+        "ego": {
+          "id": 1,
+          "xyz": [
+            508.7996826,
+            -168.2876587,
+            42.00000000000001
+          ],
+          "hpr": [
+            0.5161694288253784,
+            0.0,
+            0.0
+          ],
+          "velocity": [
+            0.0,
+            0.0,
+            -0.0,
+            0.0,
+            0.0,
+            0.0,
+            3,
+            0,
+            0
+          ],
+          "frame": 10511,
+          "sim_time": 420.40000000006745,
+          "road": {
+            "road": 465,
+            "lane": -1,
+            "s": 60.896522521972656,
+            "t": -1.3249645233154297,
+            "frame": 10510
+          }
+        },
+        "api_pose": [
+          508.7996826171875,
+          -168.28765869140625,
+          42.0,
+          0.5161694288253784,
+          0.0,
+          0.0
+        ],
+        "controller": 27,
+        "state": 1,
+        "api_rdb_distance_m": 1.9216228397588896e-08
+      }
+    ],
+    "verified": true
+  },
+  "cleanup": {
+    "sim_bridge_pid": 526581,
+    "sim_bridge_resumed_and_api_reconnected": true,
+    "final_stop_sent": true,
+    "simulator_ownership_handed_back": true
+  },
+  "pilot": {
+    "actual_displacement_m": 573.1539095357448,
+    "result": "matching_controller",
+    "restoration": {
+      "attempted": true,
+      "final_errors": [
+        {
+          "position_m": 0.0,
+          "hpr_rad": 0.0,
+          "speed_mps": 0.0
+        },
+        {
+          "position_m": 0.0,
+          "hpr_rad": 0.0,
+          "speed_mps": 0.0
+        },
+        {
+          "position_m": 0.0,
+          "hpr_rad": 0.0,
+          "speed_mps": 0.0
+        }
+      ],
+      "final_observations": [
+        {
+          "ego": {
+            "id": 1,
+            "xyz": [
+              508.7996826,
+              -168.2876587,
+              42.00000000000001
+            ],
+            "hpr": [
+              0.5161694288253784,
+              0.0,
+              0.0
+            ],
+            "velocity": [
+              0.0,
+              0.0,
+              -0.0,
+              0.0,
+              0.0,
+              0.0,
+              3,
+              0,
+              0
+            ],
+            "frame": 3291,
+            "sim_time": 131.6000000000081,
+            "road": {
+              "road": 465,
+              "lane": -1,
+              "s": 60.896522521972656,
+              "t": -1.3249645233154297,
+              "frame": 3290
+            }
+          },
+          "api_pose": [
+            508.7996826171875,
+            -168.28765869140625,
+            42.0,
+            0.5161694288253784,
+            0.0,
+            0.0
+          ],
+          "controller": 27,
+          "state": 1,
+          "api_rdb_distance_m": 1.9216228397588896e-08
+        },
+        {
+          "ego": {
+            "id": 1,
+            "xyz": [
+              508.7996826,
+              -168.2876587,
+              42.00000000000001
+            ],
+            "hpr": [
+              0.5161694288253784,
+              0.0,
+              0.0
+            ],
+            "velocity": [
+              0.0,
+              0.0,
+              -0.0,
+              0.0,
+              0.0,
+              0.0,
+              3,
+              0,
+              0
+            ],
+            "frame": 3293,
+            "sim_time": 131.68000000000808,
+            "road": {
+              "road": 465,
+              "lane": -1,
+              "s": 60.896522521972656,
+              "t": -1.3249645233154297,
+              "frame": 3292
+            }
+          },
+          "api_pose": [
+            508.7996826171875,
+            -168.28765869140625,
+            42.0,
+            0.5161694288253784,
+            0.0,
+            0.0
+          ],
+          "controller": 27,
+          "state": 1,
+          "api_rdb_distance_m": 1.9216228397588896e-08
+        },
+        {
+          "ego": {
+            "id": 1,
+            "xyz": [
+              508.7996826,
+              -168.2876587,
+              42.00000000000001
+            ],
+            "hpr": [
+              0.5161694288253784,
+              0.0,
+              0.0
+            ],
+            "velocity": [
+              0.0,
+              0.0,
+              -0.0,
+              0.0,
+              0.0,
+              0.0,
+              3,
+              0,
+              0
+            ],
+            "frame": 3294,
+            "sim_time": 131.72000000000807,
+            "road": {
+              "road": 465,
+              "lane": -1,
+              "s": 60.896522521972656,
+              "t": -1.3249645233154297,
+              "frame": 3293
+            }
+          },
+          "api_pose": [
+            508.7996826171875,
+            -168.28765869140625,
+            42.0,
+            0.5161694288253784,
+            0.0,
+            0.0
+          ],
+          "controller": 27,
+          "state": 1,
+          "api_rdb_distance_m": 1.9216228397588896e-08
+        }
+      ],
+      "verified": true
+    }
+  },
+  "approaches_observed": [
+    {
+      "road": 76,
+      "lane_sign": -1,
+      "controller": 4,
+      "green_code": 3,
+      "source_controller_present": true,
+      "source_validity": [],
+      "available_lanes": [
+        -3,
+        -2,
+        -1
+      ],
+      "lane": -1,
+      "lanelet": 8862,
+      "s": 39.010896565874205,
+      "t": -1.5,
+      "status": "matching_controller",
+      "samples": 20,
+      "valid_samples": 20,
+      "observed": [
+        {
+          "controller": 4,
+          "state": 3,
+          "samples": 20
+        }
+      ],
+      "wrong_road_lane_samples": 0
+    },
+    {
+      "road": 30,
+      "lane_sign": -1,
+      "controller": 3,
+      "green_code": 5,
+      "source_controller_present": true,
+      "source_validity": [],
+      "available_lanes": [
+        -1
+      ],
+      "lane": -1,
+      "lanelet": 1405,
+      "s": 45.072789277272726,
+      "t": -2.4423136845411406,
+      "status": "matching_controller",
+      "samples": 20,
+      "valid_samples": 20,
+      "observed": [
+        {
+          "controller": 3,
+          "state": 1,
+          "samples": 20
+        }
+      ],
+      "wrong_road_lane_samples": 0
+    },
+    {
+      "road": 72,
+      "lane_sign": 1,
+      "controller": 1,
+      "green_code": 5,
+      "source_controller_present": true,
+      "source_validity": [
+        [
+          2,
+          2
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          2,
+          2
+        ]
+      ],
+      "available_lanes": [
+        2,
+        3,
+        4
+      ],
+      "lane": 2,
+      "lanelet": 2859,
+      "s": 5.0,
+      "t": 2.0,
+      "status": "matching_controller",
+      "samples": 20,
+      "valid_samples": 20,
+      "observed": [
+        {
+          "controller": 1,
+          "state": 5,
+          "samples": 20
+        }
+      ],
+      "wrong_road_lane_samples": 0
+    },
+    {
+      "road": 72,
+      "lane_sign": -1,
+      "controller": 5,
+      "green_code": 5,
+      "source_controller_present": true,
+      "source_validity": [
+        [
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1
+        ]
+      ],
+      "available_lanes": [
+        -4,
+        -3,
+        -2,
+        -1
+      ],
+      "lane": -1,
+      "lanelet": 7619,
+      "s": 225.6828702607466,
+      "t": 1.6,
+      "status": "matching_controller",
+      "samples": 20,
+      "valid_samples": 20,
+      "observed": [
+        {
+          "controller": 5,
+          "state": 5,
+          "samples": 20
+        }
+      ],
+      "wrong_road_lane_samples": 0
+    },
+    {
+      "road": 1183,
+      "lane_sign": 1,
+      "controller": 9,
+      "green_code": 5,
+      "source_controller_present": true,
+      "source_validity": [
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "available_lanes": [
+        1,
+        2,
+        3
+      ],
+      "lane": 1,
+      "lanelet": 86614,
+      "s": 5.0,
+      "t": 1.5,
+      "status": "matching_controller",
+      "samples": 20,
+      "valid_samples": 20,
+      "observed": [
+        {
+          "controller": 9,
+          "state": 5,
+          "samples": 20
+        }
+      ],
+      "wrong_road_lane_samples": 0
+    },
+    {
+      "road": 429,
+      "lane_sign": -1,
+      "controller": 7,
+      "green_code": 5,
+      "source_controller_present": true,
+      "source_validity": [
+        [
+          -2,
+          -2
+        ],
+        [
+          -2,
+          -2
+        ],
+        [
+          -2,
+          -2
+        ]
+      ],
+      "available_lanes": [
+        -5,
+        -4,
+        -3,
+        -2
+      ],
+      "lane": -2,
+      "lanelet": 55167,
+      "s": 216.43007735436552,
+      "t": 2.2753972850525863,
+      "status": "matching_controller",
+      "samples": 20,
+      "valid_samples": 20,
+      "observed": [
+        {
+          "controller": 7,
+          "state": 1,
+          "samples": 20
+        }
+      ],
+      "wrong_road_lane_samples": 0
+    },
+    {
+      "road": 429,
+      "lane_sign": 1,
+      "controller": 11,
+      "green_code": 5,
+      "source_controller_present": true,
+      "source_validity": [
+        [
+          2,
+          2
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          2,
+          2
+        ]
+      ],
+      "available_lanes": [
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "lane": 2,
+      "lanelet": 48656,
+      "s": 4.502500000000005,
+      "t": 2.1,
+      "status": "matching_controller",
+      "samples": 20,
+      "valid_samples": 20,
+      "observed": [
+        {
+          "controller": 11,
+          "state": 2,
+          "samples": 19
+        },
+        {
+          "controller": 11,
+          "state": 5,
+          "samples": 1
+        }
+      ],
+      "wrong_road_lane_samples": 0
+    },
+    {
+      "road": 420,
+      "lane_sign": 1,
+      "controller": 17,
+      "green_code": 5,
+      "source_controller_present": true,
+      "source_validity": [
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "available_lanes": [
+        1,
+        2
+      ],
+      "lane": 1,
+      "lanelet": 46926,
+      "s": 1.1024999991760254,
+      "t": 1.5,
+      "status": "matching_controller",
+      "samples": 20,
+      "valid_samples": 20,
+      "observed": [
+        {
+          "controller": 17,
+          "state": 1,
+          "samples": 20
+        }
+      ],
+      "wrong_road_lane_samples": 0
+    },
+    {
+      "road": 418,
+      "lane_sign": -1,
+      "controller": 15,
+      "green_code": 5,
+      "source_controller_present": true,
+      "source_validity": [
+        [
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1
+        ]
+      ],
+      "available_lanes": [
+        -4,
+        -3,
+        -2,
+        -1
+      ],
+      "lane": -1,
+      "lanelet": 46383,
+      "s": 106.81382945933001,
+      "t": 1.65,
+      "status": "matching_controller",
+      "samples": 20,
+      "valid_samples": 20,
+      "observed": [
+        {
+          "controller": 15,
+          "state": 1,
+          "samples": 20
+        }
+      ],
+      "wrong_road_lane_samples": 0
+    },
+    {
+      "road": 418,
+      "lane_sign": 1,
+      "controller": 19,
+      "green_code": 5,
+      "source_controller_present": true,
+      "source_validity": [
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "available_lanes": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "lane": 1,
+      "lanelet": 44181,
+      "s": 5.0,
+      "t": 1.65,
+      "status": "matching_controller",
+      "samples": 20,
+      "valid_samples": 20,
+      "observed": [
+        {
+          "controller": 19,
+          "state": 1,
+          "samples": 20
+        }
+      ],
+      "wrong_road_lane_samples": 0
+    },
+    {
+      "road": 208,
+      "lane_sign": -1,
+      "controller": 21,
+      "green_code": 5,
+      "source_controller_present": true,
+      "source_validity": [
+        [
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1
+        ]
+      ],
+      "available_lanes": [
+        -2,
+        -1
+      ],
+      "lane": -1,
+      "lanelet": 36671,
+      "s": 5.227500100077692,
+      "t": -1.4999999116610037,
+      "status": "matching_controller",
+      "samples": 20,
+      "valid_samples": 20,
+      "observed": [
+        {
+          "controller": 21,
+          "state": 5,
+          "samples": 20
+        }
+      ],
+      "wrong_road_lane_samples": 0
+    },
+    {
+      "road": 465,
+      "lane_sign": 1,
+      "controller": 25,
+      "green_code": 5,
+      "source_controller_present": true,
+      "source_validity": [
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "available_lanes": [
+        1,
+        2
+      ],
+      "lane": 1,
+      "lanelet": 57162,
+      "s": 5.0,
+      "t": 1.38388,
+      "status": "matching_controller",
+      "samples": 20,
+      "valid_samples": 20,
+      "observed": [
+        {
+          "controller": 25,
+          "state": 5,
+          "samples": 20
+        }
+      ],
+      "wrong_road_lane_samples": 0
+    },
+    {
+      "road": 128,
+      "lane_sign": -1,
+      "controller": 23,
+      "green_code": 5,
+      "source_controller_present": true,
+      "source_validity": [
+        [
+          -2,
+          -2
+        ],
+        [
+          -2,
+          -2
+        ],
+        [
+          -2,
+          -2
+        ]
+      ],
+      "available_lanes": [
+        -6,
+        -5,
+        -4,
+        -3,
+        -2
+      ],
+      "lane": -2,
+      "lanelet": 23075,
+      "s": 163.13104542115477,
+      "t": -2.35,
+      "status": "matching_controller",
+      "samples": 20,
+      "valid_samples": 20,
+      "observed": [
+        {
+          "controller": 23,
+          "state": 1,
+          "samples": 20
+        }
+      ],
+      "wrong_road_lane_samples": 0
+    },
+    {
+      "road": 465,
+      "lane_sign": -1,
+      "controller": 27,
+      "green_code": 5,
+      "source_controller_present": true,
+      "source_validity": [
+        [
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1
+        ]
+      ],
+      "available_lanes": [
+        -1
+      ],
+      "lane": -1,
+      "lanelet": 57627,
+      "s": 60.835432248585875,
+      "t": -1.3772340164548211,
+      "status": "matching_controller",
+      "samples": 20,
+      "valid_samples": 20,
+      "observed": [
+        {
+          "controller": 27,
+          "state": 1,
+          "samples": 20
+        }
+      ],
+      "wrong_road_lane_samples": 0
+    },
+    {
+      "road": 190,
+      "lane_sign": 1,
+      "controller": 312,
+      "green_code": 5,
+      "source_controller_present": true,
+      "source_validity": [],
+      "available_lanes": [
+        1
+      ],
+      "lane": 1,
+      "lanelet": 35882,
+      "s": 5.0,
+      "t": 1.5676000033139863,
+      "status": "matching_controller",
+      "samples": 20,
+      "valid_samples": 20,
+      "observed": [
+        {
+          "controller": 312,
+          "state": 5,
+          "samples": 20
+        }
+      ],
+      "wrong_road_lane_samples": 0
+    },
+    {
+      "road": 174,
+      "lane_sign": -1,
+      "controller": 29,
+      "green_code": 3,
+      "source_controller_present": true,
+      "source_validity": [],
+      "available_lanes": [
+        -2,
+        -1
+      ],
+      "lane": -1,
+      "lanelet": 34191,
+      "s": 48.339421533656754,
+      "t": -1.5291753385333142,
+      "status": "matching_controller",
+      "samples": 20,
+      "valid_samples": 20,
+      "observed": [
+        {
+          "controller": 29,
+          "state": 1,
+          "samples": 20
+        }
+      ],
+      "wrong_road_lane_samples": 0
+    },
+    {
+      "road": 174,
+      "lane_sign": 1,
+      "controller": 136,
+      "green_code": 3,
+      "source_controller_present": true,
+      "source_validity": [],
+      "available_lanes": [
+        1
+      ],
+      "lane": 1,
+      "lanelet": 34407,
+      "s": 5.0,
+      "t": 1.5175275,
+      "status": "matching_controller",
+      "samples": 20,
+      "valid_samples": 20,
+      "observed": [
+        {
+          "controller": 136,
+          "state": 1,
+          "samples": 20
+        }
+      ],
+      "wrong_road_lane_samples": 0
+    },
+    {
+      "road": 146,
+      "lane_sign": -1,
+      "controller": 137,
+      "green_code": 5,
+      "source_controller_present": true,
+      "source_validity": [],
+      "available_lanes": [
+        -1
+      ],
+      "lane": -1,
+      "lanelet": 25662,
+      "s": 144.53073441178225,
+      "t": -1.7179,
+      "status": "matching_controller",
+      "samples": 20,
+      "valid_samples": 20,
+      "observed": [
+        {
+          "controller": 137,
+          "state": 2,
+          "samples": 20
+        }
+      ],
+      "wrong_road_lane_samples": 0
+    },
+    {
+      "road": 173,
+      "lane_sign": 1,
+      "controller": 139,
+      "green_code": 5,
+      "source_controller_present": true,
+      "source_validity": [
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "available_lanes": [
+        1,
+        2
+      ],
+      "lane": 1,
+      "lanelet": 29945,
+      "s": 5.0,
+      "t": 1.5,
+      "status": "matching_controller",
+      "samples": 20,
+      "valid_samples": 20,
+      "observed": [
+        {
+          "controller": 139,
+          "state": 1,
+          "samples": 8
+        },
+        {
+          "controller": 139,
+          "state": 5,
+          "samples": 12
+        }
+      ],
+      "wrong_road_lane_samples": 0
+    },
+    {
+      "road": 128,
+      "lane_sign": 1,
+      "controller": 30,
+      "green_code": 5,
+      "source_controller_present": true,
+      "source_validity": [
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "available_lanes": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "lane": 1,
+      "lanelet": 17993,
+      "s": 5.0,
+      "t": -1.6,
+      "status": "matching_controller",
+      "samples": 20,
+      "valid_samples": 20,
+      "observed": [
+        {
+          "controller": 30,
+          "state": 5,
+          "samples": 20
+        }
+      ],
+      "wrong_road_lane_samples": 0
+    },
+    {
+      "road": 1648,
+      "lane_sign": 1,
+      "controller": 32,
+      "green_code": 5,
+      "source_controller_present": true,
+      "source_validity": [],
+      "available_lanes": [
+        1,
+        2,
+        3
+      ],
+      "lane": 1,
+      "lanelet": 115710,
+      "s": 1.5227559656619123,
+      "t": 1.5,
+      "status": "matching_controller",
+      "samples": 20,
+      "valid_samples": 20,
+      "observed": [
+        {
+          "controller": 32,
+          "state": 1,
+          "samples": 20
+        }
+      ],
+      "wrong_road_lane_samples": 0
+    },
+    {
+      "road": 126,
+      "lane_sign": -1,
+      "controller": 36,
+      "green_code": 5,
+      "source_controller_present": true,
+      "source_validity": [],
+      "available_lanes": [
+        -4,
+        -3,
+        -2,
+        -1
+      ],
+      "lane": -1,
+      "lanelet": 16718,
+      "s": 152.44151260613964,
+      "t": 1.25,
+      "status": "matching_controller",
+      "samples": 20,
+      "valid_samples": 20,
+      "observed": [
+        {
+          "controller": 36,
+          "state": 1,
+          "samples": 20
+        }
+      ],
+      "wrong_road_lane_samples": 0
+    },
+    {
+      "road": 940,
+      "lane_sign": 1,
+      "controller": 34,
+      "green_code": 5,
+      "source_controller_present": true,
+      "source_validity": [
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "available_lanes": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "lane": 1,
+      "lanelet": 74654,
+      "s": 5.0,
+      "t": 1.6,
+      "status": "matching_controller",
+      "samples": 20,
+      "valid_samples": 20,
+      "observed": [
+        {
+          "controller": 34,
+          "state": 5,
+          "samples": 20
+        }
+      ],
+      "wrong_road_lane_samples": 0
+    },
+    {
+      "road": 146,
+      "lane_sign": 1,
+      "controller": 39,
+      "green_code": 5,
+      "source_controller_present": true,
+      "source_validity": [],
+      "available_lanes": [
+        1,
+        2
+      ],
+      "lane": 1,
+      "lanelet": 24542,
+      "s": 3.5,
+      "t": 1.5221067582648522,
+      "status": "matching_controller",
+      "samples": 20,
+      "valid_samples": 20,
+      "observed": [
+        {
+          "controller": 39,
+          "state": 1,
+          "samples": 20
+        }
+      ],
+      "wrong_road_lane_samples": 0
+    },
+    {
+      "road": 1043,
+      "lane_sign": 1,
+      "controller": 43,
+      "green_code": 5,
+      "source_controller_present": true,
+      "source_validity": [],
+      "available_lanes": [
+        1,
+        2
+      ],
+      "lane": 1,
+      "lanelet": 80268,
+      "s": 5.0,
+      "t": 1.4854651162790697,
+      "status": "matching_controller",
+      "samples": 20,
+      "valid_samples": 20,
+      "observed": [
+        {
+          "controller": 43,
+          "state": 1,
+          "samples": 20
+        }
+      ],
+      "wrong_road_lane_samples": 0
+    },
+    {
+      "road": 126,
+      "lane_sign": 1,
+      "controller": 41,
+      "green_code": 5,
+      "source_controller_present": true,
+      "source_validity": [],
+      "available_lanes": [
+        2,
+        3,
+        4,
+        5
+      ],
+      "lane": 2,
+      "lanelet": 12872,
+      "s": 5.0,
+      "t": 2.0,
+      "status": "matching_controller",
+      "samples": 20,
+      "valid_samples": 20,
+      "observed": [
+        {
+          "controller": 41,
+          "state": 5,
+          "samples": 20
+        }
+      ],
+      "wrong_road_lane_samples": 0
+    },
+    {
+      "road": 2423,
+      "lane_sign": 1,
+      "controller": 45,
+      "green_code": 5,
+      "source_controller_present": true,
+      "source_validity": [],
+      "available_lanes": [
+        2,
+        3,
+        4,
+        5
+      ],
+      "lane": 2,
+      "lanelet": 285164,
+      "s": 5.0,
+      "t": 1.8607104476988587,
+      "status": "matching_controller",
+      "samples": 20,
+      "valid_samples": 20,
+      "observed": [
+        {
+          "controller": 45,
+          "state": 5,
+          "samples": 20
+        }
+      ],
+      "wrong_road_lane_samples": 0
+    },
+    {
+      "road": 1734,
+      "lane_sign": -1,
+      "controller": 47,
+      "green_code": 3,
+      "source_controller_present": true,
+      "source_validity": [],
+      "available_lanes": [
+        -1
+      ],
+      "lane": -1,
+      "lanelet": 120595,
+      "s": 19.686937202315992,
+      "t": -1.376814128577262,
+      "status": "matching_controller",
+      "samples": 20,
+      "valid_samples": 20,
+      "observed": [
+        {
+          "controller": 47,
+          "state": 1,
+          "samples": 20
+        }
+      ],
+      "wrong_road_lane_samples": 0
+    },
+    {
+      "road": 1750,
+      "lane_sign": 1,
+      "controller": 48,
+      "green_code": 3,
+      "source_controller_present": true,
+      "source_validity": [],
+      "available_lanes": [
+        1,
+        2
+      ],
+      "lane": 1,
+      "lanelet": 121378,
+      "s": 5.0,
+      "t": 1.4,
+      "status": "matching_controller",
+      "samples": 20,
+      "valid_samples": 20,
+      "observed": [
+        {
+          "controller": 48,
+          "state": 1,
+          "samples": 20
+        }
+      ],
+      "wrong_road_lane_samples": 0
+    },
+    {
+      "road": 940,
+      "lane_sign": -1,
+      "controller": 38,
+      "green_code": 3,
+      "source_controller_present": true,
+      "source_validity": [],
+      "available_lanes": [
+        -4,
+        -3,
+        -2,
+        -1
+      ],
+      "lane": -1,
+      "lanelet": 77590,
+      "s": 140.7134879912523,
+      "t": -1.6,
+      "status": "matching_controller",
+      "samples": 20,
+      "valid_samples": 20,
+      "observed": [
+        {
+          "controller": 38,
+          "state": 3,
+          "samples": 20
+        }
+      ],
+      "wrong_road_lane_samples": 0
+    },
+    {
+      "road": 2011,
+      "lane_sign": 1,
+      "controller": 88,
+      "green_code": 3,
+      "source_controller_present": true,
+      "source_validity": [],
+      "available_lanes": [
+        2,
+        3,
+        4
+      ],
+      "lane": 2,
+      "lanelet": 191155,
+      "s": 1.6502499999317934,
+      "t": 5.15,
+      "status": "matching_controller",
+      "samples": 20,
+      "valid_samples": 20,
+      "observed": [
+        {
+          "controller": 88,
+          "state": 3,
+          "samples": 20
+        }
+      ],
+      "wrong_road_lane_samples": 0
+    },
+    {
+      "road": 2423,
+      "lane_sign": -1,
+      "controller": 124,
+      "green_code": 3,
+      "source_controller_present": true,
+      "source_validity": [],
+      "available_lanes": [
+        -2,
+        -1
+      ],
+      "lane": -1,
+      "lanelet": 290506,
+      "s": 255.5758456139177,
+      "t": -1.4662745367257306,
+      "status": "matching_controller",
+      "samples": 20,
+      "valid_samples": 20,
+      "observed": [
+        {
+          "controller": 124,
+          "state": 3,
+          "samples": 20
+        }
+      ],
+      "wrong_road_lane_samples": 0
+    },
+    {
+      "road": 2445,
+      "lane_sign": 1,
+      "controller": 125,
+      "green_code": 3,
+      "source_controller_present": true,
+      "source_validity": [],
+      "available_lanes": [
+        2,
+        3
+      ],
+      "lane": 2,
+      "lanelet": 293526,
+      "s": 3.8002500000011676,
+      "t": 4.773300000000001,
+      "status": "matching_controller",
+      "samples": 20,
+      "valid_samples": 20,
+      "observed": [
+        {
+          "controller": 125,
+          "state": 3,
+          "samples": 20
+        }
+      ],
+      "wrong_road_lane_samples": 0
+    },
+    {
+      "road": 1778,
+      "lane_sign": -1,
+      "controller": 55,
+      "green_code": 5,
+      "source_controller_present": true,
+      "source_validity": [
+        [
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1
+        ]
+      ],
+      "available_lanes": [
+        -2,
+        -1
+      ],
+      "lane": -1,
+      "lanelet": 126484,
+      "s": 58.33316578057947,
+      "t": 1.4184218325123363,
+      "status": "matching_controller",
+      "samples": 20,
+      "valid_samples": 20,
+      "observed": [
+        {
+          "controller": 55,
+          "state": 5,
+          "samples": 20
+        }
+      ],
+      "wrong_road_lane_samples": 0
+    },
+    {
+      "road": 1769,
+      "lane_sign": -1,
+      "controller": 49,
+      "green_code": 5,
+      "source_controller_present": true,
+      "source_validity": [
+        [
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1
+        ]
+      ],
+      "available_lanes": [
+        -2,
+        -1
+      ],
+      "lane": -1,
+      "lanelet": 123412,
+      "s": 49.07619090567127,
+      "t": 1.4967634149474147,
+      "status": "matching_controller",
+      "samples": 20,
+      "valid_samples": 20,
+      "observed": [
+        {
+          "controller": 49,
+          "state": 1,
+          "samples": 20
+        }
+      ],
+      "wrong_road_lane_samples": 0
+    },
+    {
+      "road": 1776,
+      "lane_sign": -1,
+      "controller": 51,
+      "green_code": 5,
+      "source_controller_present": true,
+      "source_validity": [
+        [
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1
+        ]
+      ],
+      "available_lanes": [
+        -2,
+        -1
+      ],
+      "lane": -1,
+      "lanelet": 123952,
+      "s": 18.292741293138924,
+      "t": -4.5,
+      "status": "matching_controller",
+      "samples": 20,
+      "valid_samples": 20,
+      "observed": [
+        {
+          "controller": 51,
+          "state": 5,
+          "samples": 20
+        }
+      ],
+      "wrong_road_lane_samples": 0
+    },
+    {
+      "road": 1777,
+      "lane_sign": 1,
+      "controller": 53,
+      "green_code": 5,
+      "source_controller_present": true,
+      "source_validity": [
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "available_lanes": [
+        1,
+        2
+      ],
+      "lane": 1,
+      "lanelet": 124308,
+      "s": 5.0,
+      "t": 1.42450251771473,
+      "status": "matching_controller",
+      "samples": 20,
+      "valid_samples": 20,
+      "observed": [
+        {
+          "controller": 53,
+          "state": 1,
+          "samples": 20
+        }
+      ],
+      "wrong_road_lane_samples": 0
+    },
+    {
+      "road": 1778,
+      "lane_sign": 1,
+      "controller": 225,
+      "green_code": 3,
+      "source_controller_present": true,
+      "source_validity": [],
+      "available_lanes": [
+        2,
+        3
+      ],
+      "lane": 2,
+      "lanelet": 125730,
+      "s": 5.0,
+      "t": 1.9541256172008956,
+      "status": "matching_controller",
+      "samples": 20,
+      "valid_samples": 20,
+      "observed": [
+        {
+          "controller": 225,
+          "state": 1,
+          "samples": 20
+        }
+      ],
+      "wrong_road_lane_samples": 0
+    },
+    {
+      "road": 2004,
+      "lane_sign": -1,
+      "controller": 226,
+      "green_code": 3,
+      "source_controller_present": true,
+      "source_validity": [],
+      "available_lanes": [
+        -2,
+        -1
+      ],
+      "lane": -1,
+      "lanelet": 189836,
+      "s": 80.17094918753865,
+      "t": 1.4963742770538442,
+      "status": "matching_controller",
+      "samples": 20,
+      "valid_samples": 20,
+      "observed": [
+        {
+          "controller": 226,
+          "state": 1,
+          "samples": 20
+        }
+      ],
+      "wrong_road_lane_samples": 0
+    },
+    {
+      "road": 2004,
+      "lane_sign": 1,
+      "controller": 82,
+      "green_code": 5,
+      "source_controller_present": false,
+      "source_validity": [],
+      "available_lanes": [
+        2,
+        3
+      ],
+      "lane": 2,
+      "lanelet": 189309,
+      "s": 5.0,
+      "t": 1.8451871287475767,
+      "status": "matching_controller",
+      "samples": 20,
+      "valid_samples": 20,
+      "observed": [
+        {
+          "controller": 82,
+          "state": 0,
+          "samples": 20
+        }
+      ],
+      "wrong_road_lane_samples": 0
+    },
+    {
+      "road": 2011,
+      "lane_sign": -1,
+      "controller": 80,
+      "green_code": 5,
+      "source_controller_present": false,
+      "source_validity": [],
+      "available_lanes": [
+        -5,
+        -4,
+        -3,
+        -2,
+        -1
+      ],
+      "lane": -1,
+      "lanelet": 194798,
+      "s": 106.63946142159438,
+      "t": 1.5,
+      "status": "matching_controller",
+      "samples": 20,
+      "valid_samples": 20,
+      "observed": [
+        {
+          "controller": 80,
+          "state": 0,
+          "samples": 20
+        }
+      ],
+      "wrong_road_lane_samples": 0
+    },
+    {
+      "road": 2012,
+      "lane_sign": 1,
+      "controller": 86,
+      "green_code": 5,
+      "source_controller_present": false,
+      "source_validity": [],
+      "available_lanes": [
+        2,
+        3
+      ],
+      "lane": 2,
+      "lanelet": 196710,
+      "s": 5.0,
+      "t": 2.05,
+      "status": "matching_controller",
+      "samples": 20,
+      "valid_samples": 20,
+      "observed": [
+        {
+          "controller": 86,
+          "state": 0,
+          "samples": 20
+        }
+      ],
+      "wrong_road_lane_samples": 0
+    },
+    {
+      "road": 2003,
+      "lane_sign": 1,
+      "controller": 84,
+      "green_code": 5,
+      "source_controller_present": false,
+      "source_validity": [],
+      "available_lanes": [
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "lane": 2,
+      "lanelet": 182648,
+      "s": 5.0,
+      "t": 2.1,
+      "status": "matching_controller",
+      "samples": 20,
+      "valid_samples": 20,
+      "observed": [
+        {
+          "controller": 84,
+          "state": 0,
+          "samples": 20
+        }
+      ],
+      "wrong_road_lane_samples": 0
+    },
+    {
+      "road": 2195,
+      "lane_sign": -1,
+      "controller": 96,
+      "green_code": 5,
+      "source_controller_present": true,
+      "source_validity": [],
+      "available_lanes": [
+        -2,
+        -1
+      ],
+      "lane": -1,
+      "lanelet": 246972,
+      "s": 104.85484556835934,
+      "t": 1.375,
+      "status": "matching_controller",
+      "samples": 20,
+      "valid_samples": 20,
+      "observed": [
+        {
+          "controller": 96,
+          "state": 1,
+          "samples": 20
+        }
+      ],
+      "wrong_road_lane_samples": 0
+    },
+    {
+      "road": 2012,
+      "lane_sign": -1,
+      "controller": 98,
+      "green_code": 5,
+      "source_controller_present": true,
+      "source_validity": [
+        [
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1
+        ]
+      ],
+      "available_lanes": [
+        -3,
+        -2,
+        -1
+      ],
+      "lane": -1,
+      "lanelet": 199434,
+      "s": 159.81506484375583,
+      "t": -1.55,
+      "status": "matching_controller",
+      "samples": 20,
+      "valid_samples": 20,
+      "observed": [
+        {
+          "controller": 98,
+          "state": 5,
+          "samples": 20
+        }
+      ],
+      "wrong_road_lane_samples": 0
+    },
+    {
+      "road": 2172,
+      "lane_sign": 1,
+      "controller": 100,
+      "green_code": 5,
+      "source_controller_present": true,
+      "source_validity": [],
+      "available_lanes": [
+        1,
+        2
+      ],
+      "lane": 1,
+      "lanelet": 239907,
+      "s": 4.079864843753318,
+      "t": 1.45,
+      "status": "matching_controller",
+      "samples": 20,
+      "valid_samples": 20,
+      "observed": [
+        {
+          "controller": 100,
+          "state": 1,
+          "samples": 20
+        }
+      ],
+      "wrong_road_lane_samples": 0
+    },
+    {
+      "road": 2192,
+      "lane_sign": 1,
+      "controller": 102,
+      "green_code": 5,
+      "source_controller_present": true,
+      "source_validity": [],
+      "available_lanes": [
+        2,
+        3,
+        4
+      ],
+      "lane": 2,
+      "lanelet": 241571,
+      "s": 5.0,
+      "t": 2.037830050426966,
+      "status": "matching_controller",
+      "samples": 20,
+      "valid_samples": 20,
+      "observed": [
+        {
+          "controller": 102,
+          "state": 5,
+          "samples": 20
+        }
+      ],
+      "wrong_road_lane_samples": 0
+    },
+    {
+      "road": 1777,
+      "lane_sign": -1,
+      "controller": 57,
+      "green_code": 3,
+      "source_controller_present": true,
+      "source_validity": [],
+      "available_lanes": [
+        -2,
+        -1
+      ],
+      "lane": -1,
+      "lanelet": 125108,
+      "s": 62.89886331647787,
+      "t": -1.527230733734759,
+      "status": "matching_controller",
+      "samples": 20,
+      "valid_samples": 20,
+      "observed": [
+        {
+          "controller": 57,
+          "state": 3,
+          "samples": 20
+        }
+      ],
+      "wrong_road_lane_samples": 0
+    },
+    {
+      "road": 1818,
+      "lane_sign": 1,
+      "controller": 58,
+      "green_code": 3,
+      "source_controller_present": true,
+      "source_validity": [],
+      "available_lanes": [
+        1,
+        2
+      ],
+      "lane": 1,
+      "lanelet": 129901,
+      "s": 5.0,
+      "t": 1.46212579093822,
+      "status": "matching_controller",
+      "samples": 20,
+      "valid_samples": 20,
+      "observed": [
+        {
+          "controller": 58,
+          "state": 3,
+          "samples": 20
+        }
+      ],
+      "wrong_road_lane_samples": 0
+    },
+    {
+      "road": 1818,
+      "lane_sign": -1,
+      "controller": 59,
+      "green_code": 5,
+      "source_controller_present": true,
+      "source_validity": [],
+      "available_lanes": [
+        -2,
+        -1
+      ],
+      "lane": -1,
+      "lanelet": 130911,
+      "s": 91.38076180438935,
+      "t": 1.5,
+      "status": "matching_controller",
+      "samples": 20,
+      "valid_samples": 20,
+      "observed": [
+        {
+          "controller": 59,
+          "state": 2,
+          "samples": 20
+        }
+      ],
+      "wrong_road_lane_samples": 0
+    },
+    {
+      "road": 1826,
+      "lane_sign": 1,
+      "controller": 61,
+      "green_code": 3,
+      "source_controller_present": true,
+      "source_validity": [],
+      "available_lanes": [
+        1
+      ],
+      "lane": 1,
+      "lanelet": 133846,
+      "s": 5.0,
+      "t": 1.523,
+      "status": "matching_controller",
+      "samples": 20,
+      "valid_samples": 20,
+      "observed": [
+        {
+          "controller": 61,
+          "state": 1,
+          "samples": 20
+        }
+      ],
+      "wrong_road_lane_samples": 0
+    },
+    {
+      "road": 2003,
+      "lane_sign": -1,
+      "controller": 90,
+      "green_code": 3,
+      "source_controller_present": true,
+      "source_validity": [],
+      "available_lanes": [
+        -3,
+        -2,
+        -1
+      ],
+      "lane": -1,
+      "lanelet": 187077,
+      "s": 165.606080468795,
+      "t": -1.6,
+      "status": "matching_controller",
+      "samples": 20,
+      "valid_samples": 20,
+      "observed": [
+        {
+          "controller": 90,
+          "state": 1,
+          "samples": 8
+        },
+        {
+          "controller": 90,
+          "state": 2,
+          "samples": 12
+        }
+      ],
+      "wrong_road_lane_samples": 0
+    },
+    {
+      "road": 1928,
+      "lane_sign": 1,
+      "controller": 89,
+      "green_code": 3,
+      "source_controller_present": true,
+      "source_validity": [],
+      "available_lanes": [
+        2,
+        3,
+        4
+      ],
+      "lane": 2,
+      "lanelet": 168086,
+      "s": 5.0,
+      "t": 5.1,
+      "status": "matching_controller",
+      "samples": 20,
+      "valid_samples": 20,
+      "observed": [
+        {
+          "controller": 89,
+          "state": 3,
+          "samples": 20
+        }
+      ],
+      "wrong_road_lane_samples": 0
+    },
+    {
+      "road": 2116,
+      "lane_sign": -1,
+      "controller": 104,
+      "green_code": 3,
+      "source_controller_present": true,
+      "source_validity": [],
+      "available_lanes": [
+        -1
+      ],
+      "lane": -1,
+      "lanelet": 236328,
+      "s": 10.111761704509467,
+      "t": -1.4495600323134163,
+      "status": "matching_controller",
+      "samples": 20,
+      "valid_samples": 20,
+      "observed": [
+        {
+          "controller": 104,
+          "state": 1,
+          "samples": 20
+        }
+      ],
+      "wrong_road_lane_samples": 0
+    },
+    {
+      "road": 2115,
+      "lane_sign": -1,
+      "controller": 106,
+      "green_code": 3,
+      "source_controller_present": true,
+      "source_validity": [],
+      "available_lanes": [
+        -2,
+        -1
+      ],
+      "lane": -1,
+      "lanelet": 236079,
+      "s": 68.90826965549114,
+      "t": -1.425,
+      "status": "matching_controller",
+      "samples": 20,
+      "valid_samples": 20,
+      "observed": [
+        {
+          "controller": 106,
+          "state": 3,
+          "samples": 20
+        }
+      ],
+      "wrong_road_lane_samples": 0
+    },
+    {
+      "road": 2097,
+      "lane_sign": 1,
+      "controller": 105,
+      "green_code": 3,
+      "source_controller_present": true,
+      "source_validity": [],
+      "available_lanes": [
+        1,
+        2
+      ],
+      "lane": 1,
+      "lanelet": 234607,
+      "s": 4.173920019506412,
+      "t": 1.437499191296867,
+      "status": "matching_controller",
+      "samples": 20,
+      "valid_samples": 20,
+      "observed": [
+        {
+          "controller": 105,
+          "state": 1,
+          "samples": 20
+        }
+      ],
+      "wrong_road_lane_samples": 0
+    },
+    {
+      "road": 1846,
+      "lane_sign": -1,
+      "controller": 64,
+      "green_code": 5,
+      "source_controller_present": true,
+      "source_validity": [],
+      "available_lanes": [
+        -2,
+        -1
+      ],
+      "lane": -1,
+      "lanelet": 136595,
+      "s": 17.974607817062203,
+      "t": -1.4278307994214825,
+      "status": "matching_controller",
+      "samples": 20,
+      "valid_samples": 20,
+      "observed": [
+        {
+          "controller": 64,
+          "state": 1,
+          "samples": 20
+        }
+      ],
+      "wrong_road_lane_samples": 0
+    },
+    {
+      "road": 1869,
+      "lane_sign": 1,
+      "controller": 68,
+      "green_code": 5,
+      "source_controller_present": true,
+      "source_validity": [
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "available_lanes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "lane": 1,
+      "lanelet": 140618,
+      "s": 5.0,
+      "t": -1.5239519979518483,
+      "status": "matching_controller",
+      "samples": 20,
+      "valid_samples": 20,
+      "observed": [
+        {
+          "controller": 68,
+          "state": 5,
+          "samples": 20
+        }
+      ],
+      "wrong_road_lane_samples": 0
+    },
+    {
+      "road": 1868,
+      "lane_sign": 1,
+      "controller": 66,
+      "green_code": 5,
+      "source_controller_present": true,
+      "source_validity": [],
+      "available_lanes": [
+        2,
+        3
+      ],
+      "lane": 2,
+      "lanelet": 139179,
+      "s": 5.0,
+      "t": 1.8969911605675847,
+      "status": "matching_controller",
+      "samples": 20,
+      "valid_samples": 20,
+      "observed": [
+        {
+          "controller": 66,
+          "state": 1,
+          "samples": 20
+        }
+      ],
+      "wrong_road_lane_samples": 0
+    },
+    {
+      "road": 1868,
+      "lane_sign": -1,
+      "controller": 70,
+      "green_code": 3,
+      "source_controller_present": true,
+      "source_validity": [],
+      "available_lanes": [
+        -2,
+        -1
+      ],
+      "lane": -1,
+      "lanelet": 138722,
+      "s": 51.628541162009796,
+      "t": -1.5,
+      "status": "matching_controller",
+      "samples": 20,
+      "valid_samples": 20,
+      "observed": [
+        {
+          "controller": 70,
+          "state": 3,
+          "samples": 20
+        }
+      ],
+      "wrong_road_lane_samples": 0
+    },
+    {
+      "road": 1909,
+      "lane_sign": 1,
+      "controller": 71,
+      "green_code": 3,
+      "source_controller_present": true,
+      "source_validity": [],
+      "available_lanes": [
+        2,
+        3
+      ],
+      "lane": 2,
+      "lanelet": 150198,
+      "s": 5.0,
+      "t": 1.8460483302577637,
+      "status": "matching_controller",
+      "samples": 20,
+      "valid_samples": 20,
+      "observed": [
+        {
+          "controller": 71,
+          "state": 3,
+          "samples": 20
+        }
+      ],
+      "wrong_road_lane_samples": 0
+    },
+    {
+      "road": 1910,
+      "lane_sign": -1,
+      "controller": 73,
+      "green_code": 5,
+      "source_controller_present": true,
+      "source_validity": [],
+      "available_lanes": [
+        -2,
+        -1
+      ],
+      "lane": -1,
+      "lanelet": 151192,
+      "s": 18.135945564388706,
+      "t": -1.5,
+      "status": "matching_controller",
+      "samples": 20,
+      "valid_samples": 20,
+      "observed": [
+        {
+          "controller": 73,
+          "state": 5,
+          "samples": 20
+        }
+      ],
+      "wrong_road_lane_samples": 0
+    },
+    {
+      "road": 1926,
+      "lane_sign": -1,
+      "controller": 72,
+      "green_code": 3,
+      "source_controller_present": true,
+      "source_validity": [],
+      "available_lanes": [
+        -5,
+        -4,
+        -3,
+        -2,
+        -1
+      ],
+      "lane": -1,
+      "lanelet": 159769,
+      "s": 164.91171933056836,
+      "t": 1.397737330236576,
+      "status": "matching_controller",
+      "samples": 20,
+      "valid_samples": 20,
+      "observed": [
+        {
+          "controller": 72,
+          "state": 3,
+          "samples": 20
+        }
+      ],
+      "wrong_road_lane_samples": 0
+    },
+    {
+      "road": 1869,
+      "lane_sign": -1,
+      "controller": 227,
+      "green_code": 5,
+      "source_controller_present": true,
+      "source_validity": [
+        [
+          -3,
+          -2
+        ],
+        [
+          -3,
+          -2
+        ],
+        [
+          -3,
+          -2
+        ]
+      ],
+      "available_lanes": [
+        -6,
+        -5,
+        -4,
+        -3,
+        -2
+      ],
+      "lane": -2,
+      "lanelet": 144051,
+      "s": 114.88176068545083,
+      "t": -1.95,
+      "status": "matching_controller",
+      "samples": 20,
+      "valid_samples": 20,
+      "observed": [
+        {
+          "controller": 227,
+          "state": 1,
+          "samples": 20
+        }
+      ],
+      "wrong_road_lane_samples": 0
+    },
+    {
+      "road": 1926,
+      "lane_sign": 1,
+      "controller": 76,
+      "green_code": 5,
+      "source_controller_present": true,
+      "source_validity": [
+        [
+          2,
+          2
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          2,
+          2
+        ]
+      ],
+      "available_lanes": [
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "lane": 2,
+      "lanelet": 153317,
+      "s": 5.0,
+      "t": 2.0448562403698,
+      "status": "matching_controller",
+      "samples": 20,
+      "valid_samples": 20,
+      "observed": [
+        {
+          "controller": 76,
+          "state": 5,
+          "samples": 20
+        }
+      ],
+      "wrong_road_lane_samples": 0
+    },
+    {
+      "road": 1928,
+      "lane_sign": -1,
+      "controller": 74,
+      "green_code": 5,
+      "source_controller_present": true,
+      "source_validity": [
+        [
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1
+        ]
+      ],
+      "available_lanes": [
+        -5,
+        -4,
+        -3,
+        -2,
+        -1
+      ],
+      "lane": -1,
+      "lanelet": 169931,
+      "s": 89.763698485541,
+      "t": 1.44627221319002,
+      "status": "matching_controller",
+      "samples": 20,
+      "valid_samples": 20,
+      "observed": [
+        {
+          "controller": 74,
+          "state": 5,
+          "samples": 20
+        }
+      ],
+      "wrong_road_lane_samples": 0
+    },
+    {
+      "road": 1927,
+      "lane_sign": -1,
+      "controller": 78,
+      "green_code": 5,
+      "source_controller_present": true,
+      "source_validity": [],
+      "available_lanes": [
+        -5,
+        -4,
+        -3,
+        -2,
+        -1
+      ],
+      "lane": -1,
+      "lanelet": 166125,
+      "s": 154.13604444978594,
+      "t": 1.475,
+      "status": "matching_controller",
+      "samples": 20,
+      "valid_samples": 20,
+      "observed": [
+        {
+          "controller": 78,
+          "state": 1,
+          "samples": 20
+        }
+      ],
+      "wrong_road_lane_samples": 0
+    },
+    {
+      "road": 1927,
+      "lane_sign": 1,
+      "controller": 94,
+      "green_code": 5,
+      "source_controller_present": true,
+      "source_validity": [],
+      "available_lanes": [
+        2,
+        3,
+        4,
+        5
+      ],
+      "lane": 2,
+      "lanelet": 161142,
+      "s": 5.0,
+      "t": 4.9594693382826405,
+      "status": "matching_controller",
+      "samples": 20,
+      "valid_samples": 20,
+      "observed": [
+        {
+          "controller": 94,
+          "state": 5,
+          "samples": 20
+        }
+      ],
+      "wrong_road_lane_samples": 0
+    },
+    {
+      "road": 2077,
+      "lane_sign": -1,
+      "controller": 92,
+      "green_code": 5,
+      "source_controller_present": true,
+      "source_validity": [],
+      "available_lanes": [
+        -2,
+        -1
+      ],
+      "lane": -1,
+      "lanelet": 230388,
+      "s": 14.615034731876914,
+      "t": -1.5,
+      "status": "matching_controller",
+      "samples": 20,
+      "valid_samples": 20,
+      "observed": [
+        {
+          "controller": 92,
+          "state": 1,
+          "samples": 20
+        }
+      ],
+      "wrong_road_lane_samples": 0
+    },
+    {
+      "road": 2076,
+      "lane_sign": -1,
+      "controller": 91,
+      "green_code": 3,
+      "source_controller_present": true,
+      "source_validity": [],
+      "available_lanes": [
+        -4,
+        -3,
+        -2,
+        -1
+      ],
+      "lane": -1,
+      "lanelet": 229480,
+      "s": 735.0357176973683,
+      "t": -1.812213226442223,
+      "status": "matching_controller",
+      "samples": 20,
+      "valid_samples": 20,
+      "observed": [
+        {
+          "controller": 91,
+          "state": 2,
+          "samples": 20
+        }
+      ],
+      "wrong_road_lane_samples": 0
+    },
+    {
+      "road": 2257,
+      "lane_sign": 1,
+      "controller": 107,
+      "green_code": 5,
+      "source_controller_present": true,
+      "source_validity": [],
+      "available_lanes": [
+        1,
+        2
+      ],
+      "lane": 1,
+      "lanelet": 253345,
+      "s": 5.0,
+      "t": 1.45,
+      "status": "matching_controller",
+      "samples": 20,
+      "valid_samples": 20,
+      "observed": [
+        {
+          "controller": 107,
+          "state": 1,
+          "samples": 12
+        },
+        {
+          "controller": 107,
+          "state": 2,
+          "samples": 8
+        }
+      ],
+      "wrong_road_lane_samples": 0
+    },
+    {
+      "road": 2264,
+      "lane_sign": -1,
+      "controller": 108,
+      "green_code": 3,
+      "source_controller_present": true,
+      "source_validity": [],
+      "available_lanes": [
+        -1
+      ],
+      "lane": -1,
+      "lanelet": 254679,
+      "s": 84.74475234377613,
+      "t": -1.45,
+      "status": "matching_controller",
+      "samples": 20,
+      "valid_samples": 20,
+      "observed": [
+        {
+          "controller": 108,
+          "state": 3,
+          "samples": 20
+        }
+      ],
+      "wrong_road_lane_samples": 0
+    },
+    {
+      "road": 2265,
+      "lane_sign": -1,
+      "controller": 109,
+      "green_code": 3,
+      "source_controller_present": true,
+      "source_validity": [],
+      "available_lanes": [
+        -2,
+        -1
+      ],
+      "lane": -1,
+      "lanelet": 257299,
+      "s": 120.9937759662661,
+      "t": -1.45,
+      "status": "matching_controller",
+      "samples": 20,
+      "valid_samples": 20,
+      "observed": [
+        {
+          "controller": 109,
+          "state": 1,
+          "samples": 20
+        }
+      ],
+      "wrong_road_lane_samples": 0
+    },
+    {
+      "road": 2264,
+      "lane_sign": 1,
+      "controller": 114,
+      "green_code": 5,
+      "source_controller_present": true,
+      "source_validity": [],
+      "available_lanes": [
+        1,
+        2
+      ],
+      "lane": 1,
+      "lanelet": 255040,
+      "s": 5.0,
+      "t": 1.5,
+      "status": "matching_controller",
+      "samples": 20,
+      "valid_samples": 20,
+      "observed": [
+        {
+          "controller": 114,
+          "state": 5,
+          "samples": 20
+        }
+      ],
+      "wrong_road_lane_samples": 0
+    },
+    {
+      "road": 2192,
+      "lane_sign": -1,
+      "controller": 112,
+      "green_code": 5,
+      "source_controller_present": true,
+      "source_validity": [],
+      "available_lanes": [
+        -3,
+        -2,
+        -1
+      ],
+      "lane": -1,
+      "lanelet": 244801,
+      "s": 165.9040739167006,
+      "t": -1.4798640271483428,
+      "status": "matching_controller",
+      "samples": 20,
+      "valid_samples": 20,
+      "observed": [
+        {
+          "controller": 112,
+          "state": 1,
+          "samples": 20
+        }
+      ],
+      "wrong_road_lane_samples": 0
+    },
+    {
+      "road": 2312,
+      "lane_sign": 1,
+      "controller": 117,
+      "green_code": 3,
+      "source_controller_present": true,
+      "source_validity": [],
+      "available_lanes": [
+        2,
+        3,
+        4
+      ],
+      "lane": 2,
+      "lanelet": 264552,
+      "s": 5.0,
+      "t": 2.061877533735212,
+      "status": "matching_controller",
+      "samples": 20,
+      "valid_samples": 20,
+      "observed": [
+        {
+          "controller": 117,
+          "state": 6,
+          "samples": 20
+        }
+      ],
+      "wrong_road_lane_samples": 0
+    },
+    {
+      "road": 2313,
+      "lane_sign": -1,
+      "controller": 110,
+      "green_code": 5,
+      "source_controller_present": true,
+      "source_validity": [],
+      "available_lanes": [
+        -2,
+        -1
+      ],
+      "lane": -1,
+      "lanelet": 271679,
+      "s": 22.335087955587912,
+      "t": -1.35,
+      "status": "matching_controller",
+      "samples": 20,
+      "valid_samples": 20,
+      "observed": [
+        {
+          "controller": 110,
+          "state": 5,
+          "samples": 20
+        }
+      ],
+      "wrong_road_lane_samples": 0
+    },
+    {
+      "road": 2313,
+      "lane_sign": 1,
+      "controller": 118,
+      "green_code": 3,
+      "source_controller_present": true,
+      "source_validity": [],
+      "available_lanes": [
+        1
+      ],
+      "lane": 1,
+      "lanelet": 271791,
+      "s": 5.0,
+      "t": 1.4816405963134318,
+      "status": "matching_controller",
+      "samples": 20,
+      "valid_samples": 20,
+      "observed": [
+        {
+          "controller": 118,
+          "state": 3,
+          "samples": 20
+        }
+      ],
+      "wrong_road_lane_samples": 0
+    },
+    {
+      "road": 2386,
+      "lane_sign": -1,
+      "controller": 119,
+      "green_code": 3,
+      "source_controller_present": true,
+      "source_validity": [],
+      "available_lanes": [
+        -1
+      ],
+      "lane": -1,
+      "lanelet": 276897,
+      "s": 122.39295333242872,
+      "t": -1.5,
+      "status": "matching_controller",
+      "samples": 20,
+      "valid_samples": 20,
+      "observed": [
+        {
+          "controller": 119,
+          "state": 3,
+          "samples": 20
+        }
+      ],
+      "wrong_road_lane_samples": 0
+    },
+    {
+      "road": 2386,
+      "lane_sign": 1,
+      "controller": 121,
+      "green_code": 3,
+      "source_controller_present": true,
+      "source_validity": [],
+      "available_lanes": [
+        1,
+        2
+      ],
+      "lane": 1,
+      "lanelet": 277107,
+      "s": 5.0,
+      "t": 1.45,
+      "status": "matching_controller",
+      "samples": 20,
+      "valid_samples": 20,
+      "observed": [
+        {
+          "controller": 121,
+          "state": 2,
+          "samples": 9
+        },
+        {
+          "controller": 121,
+          "state": 3,
+          "samples": 11
+        }
+      ],
+      "wrong_road_lane_samples": 0
+    },
+    {
+      "road": 2396,
+      "lane_sign": -1,
+      "controller": 120,
+      "green_code": 3,
+      "source_controller_present": true,
+      "source_validity": [],
+      "available_lanes": [
+        -2,
+        -1
+      ],
+      "lane": -1,
+      "lanelet": 279842,
+      "s": 79.89329129215184,
+      "t": 1.5257043675932926,
+      "status": "matching_controller",
+      "samples": 20,
+      "valid_samples": 20,
+      "observed": [
+        {
+          "controller": 120,
+          "state": 2,
+          "samples": 20
+        }
+      ],
+      "wrong_road_lane_samples": 0
+    },
+    {
+      "road": 2396,
+      "lane_sign": 1,
+      "controller": 122,
+      "green_code": 3,
+      "source_controller_present": true,
+      "source_validity": [],
+      "available_lanes": [
+        1,
+        2
+      ],
+      "lane": 1,
+      "lanelet": 279033,
+      "s": 5.0,
+      "t": 1.37299375,
+      "status": "matching_controller",
+      "samples": 20,
+      "valid_samples": 20,
+      "observed": [
+        {
+          "controller": 122,
+          "state": 1,
+          "samples": 19
+        },
+        {
+          "controller": 122,
+          "state": 2,
+          "samples": 1
+        }
+      ],
+      "wrong_road_lane_samples": 0
+    },
+    {
+      "road": 2403,
+      "lane_sign": -1,
+      "controller": 123,
+      "green_code": 3,
+      "source_controller_present": true,
+      "source_validity": [],
+      "available_lanes": [
+        -1
+      ],
+      "lane": -1,
+      "lanelet": 280837,
+      "s": 26.641396535864743,
+      "t": -1.5732872026370346,
+      "status": "matching_controller",
+      "samples": 20,
+      "valid_samples": 20,
+      "observed": [
+        {
+          "controller": 123,
+          "state": 1,
+          "samples": 20
+        }
+      ],
+      "wrong_road_lane_samples": 0
+    },
+    {
+      "road": 2445,
+      "lane_sign": -1,
+      "controller": 128,
+      "green_code": 5,
+      "source_controller_present": true,
+      "source_validity": [],
+      "available_lanes": [
+        -4,
+        -3,
+        -2,
+        -1
+      ],
+      "lane": -1,
+      "lanelet": 295763,
+      "s": 98.99919849045627,
+      "t": 1.50445,
+      "status": "matching_controller",
+      "samples": 20,
+      "valid_samples": 20,
+      "observed": [
+        {
+          "controller": 128,
+          "state": 5,
+          "samples": 20
+        }
+      ],
+      "wrong_road_lane_samples": 0
+    },
+    {
+      "road": 2588,
+      "lane_sign": 1,
+      "controller": 130,
+      "green_code": 5,
+      "source_controller_present": true,
+      "source_validity": [],
+      "available_lanes": [
+        1,
+        2,
+        3
+      ],
+      "lane": 1,
+      "lanelet": 337406,
+      "s": 3.554954513034054,
+      "t": 1.45,
+      "status": "matching_controller",
+      "samples": 20,
+      "valid_samples": 20,
+      "observed": [
+        {
+          "controller": 130,
+          "state": 1,
+          "samples": 20
+        }
+      ],
+      "wrong_road_lane_samples": 0
+    },
+    {
+      "road": 2626,
+      "lane_sign": -1,
+      "controller": 132,
+      "green_code": 5,
+      "source_controller_present": true,
+      "source_validity": [],
+      "available_lanes": [
+        -5,
+        -4,
+        -3,
+        -2
+      ],
+      "lane": -2,
+      "lanelet": 350039,
+      "s": 263.67550171999153,
+      "t": -1.7674273625642263,
+      "status": "matching_controller",
+      "samples": 20,
+      "valid_samples": 20,
+      "observed": [
+        {
+          "controller": 132,
+          "state": 5,
+          "samples": 20
+        }
+      ],
+      "wrong_road_lane_samples": 0
+    },
+    {
+      "road": 2625,
+      "lane_sign": -1,
+      "controller": 126,
+      "green_code": 5,
+      "source_controller_present": true,
+      "source_validity": [],
+      "available_lanes": [
+        -4,
+        -3,
+        -2
+      ],
+      "lane": -2,
+      "lanelet": 342090,
+      "s": 72.82464942432756,
+      "t": -1.95,
+      "status": "matching_controller",
+      "samples": 20,
+      "valid_samples": 20,
+      "observed": [
+        {
+          "controller": 126,
+          "state": 1,
+          "samples": 20
+        }
+      ],
+      "wrong_road_lane_samples": 0
+    },
+    {
+      "road": 2305,
+      "lane_sign": 1,
+      "controller": 202,
+      "green_code": 5,
+      "source_controller_present": true,
+      "source_validity": [],
+      "available_lanes": [
+        1,
+        2
+      ],
+      "lane": 1,
+      "lanelet": 259846,
+      "s": 5.0,
+      "t": -1.4606248968363138,
+      "status": "matching_controller",
+      "samples": 20,
+      "valid_samples": 20,
+      "observed": [
+        {
+          "controller": 202,
+          "state": 5,
+          "samples": 20
+        }
+      ],
+      "wrong_road_lane_samples": 0
+    },
+    {
+      "road": 2467,
+      "lane_sign": 1,
+      "controller": 204,
+      "green_code": 5,
+      "source_controller_present": true,
+      "source_validity": [],
+      "available_lanes": [
+        1,
+        2
+      ],
+      "lane": 1,
+      "lanelet": 297333,
+      "s": 5.0,
+      "t": 1.4,
+      "status": "matching_controller",
+      "samples": 20,
+      "valid_samples": 20,
+      "observed": [
+        {
+          "controller": 204,
+          "state": 1,
+          "samples": 20
+        }
+      ],
+      "wrong_road_lane_samples": 0
+    },
+    {
+      "road": 2468,
+      "lane_sign": -1,
+      "controller": 198,
+      "green_code": 5,
+      "source_controller_present": true,
+      "source_validity": [],
+      "available_lanes": [
+        -2,
+        -1
+      ],
+      "lane": -1,
+      "lanelet": 299736,
+      "s": 63.774073660743696,
+      "t": -1.45,
+      "status": "matching_controller",
+      "samples": 20,
+      "valid_samples": 20,
+      "observed": [
+        {
+          "controller": 198,
+          "state": 2,
+          "samples": 20
+        }
+      ],
+      "wrong_road_lane_samples": 0
+    },
+    {
+      "road": 2469,
+      "lane_sign": -1,
+      "controller": 200,
+      "green_code": 5,
+      "source_controller_present": true,
+      "source_validity": [],
+      "available_lanes": [
+        -2,
+        -1
+      ],
+      "lane": -1,
+      "lanelet": 300795,
+      "s": 54.02068358049429,
+      "t": 1.38075,
+      "status": "matching_controller",
+      "samples": 20,
+      "valid_samples": 20,
+      "observed": [
+        {
+          "controller": 200,
+          "state": 1,
+          "samples": 20
+        }
+      ],
+      "wrong_road_lane_samples": 0
+    },
+    {
+      "road": 2467,
+      "lane_sign": -1,
+      "controller": 194,
+      "green_code": 5,
+      "source_controller_present": true,
+      "source_validity": [],
+      "available_lanes": [
+        -2,
+        -1
+      ],
+      "lane": -1,
+      "lanelet": 298366,
+      "s": 105.78259530104653,
+      "t": 1.4218,
+      "status": "matching_controller",
+      "samples": 20,
+      "valid_samples": 20,
+      "observed": [
+        {
+          "controller": 194,
+          "state": 5,
+          "samples": 20
+        }
+      ],
+      "wrong_road_lane_samples": 0
+    },
+    {
+      "road": 2076,
+      "lane_sign": 1,
+      "controller": 196,
+      "green_code": 5,
+      "source_controller_present": true,
+      "source_validity": [],
+      "available_lanes": [
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "lane": 2,
+      "lanelet": 206749,
+      "s": 5.0,
+      "t": 2.10794026616367,
+      "status": "matching_controller",
+      "samples": 20,
+      "valid_samples": 20,
+      "observed": [
+        {
+          "controller": 196,
+          "state": 1,
+          "samples": 20
+        }
+      ],
+      "wrong_road_lane_samples": 0
+    },
+    {
+      "road": 2533,
+      "lane_sign": -1,
+      "controller": 193,
+      "green_code": 3,
+      "source_controller_present": true,
+      "source_validity": [],
+      "available_lanes": [
+        -5,
+        -4,
+        -3,
+        -2,
+        -1
+      ],
+      "lane": -1,
+      "lanelet": 323283,
+      "s": 333.6039339467074,
+      "t": 1.53455,
+      "status": "matching_controller",
+      "samples": 20,
+      "valid_samples": 20,
+      "observed": [
+        {
+          "controller": 193,
+          "state": 1,
+          "samples": 20
+        }
+      ],
+      "wrong_road_lane_samples": 0
+    },
+    {
+      "road": 2468,
+      "lane_sign": 1,
+      "controller": 212,
+      "green_code": 3,
+      "source_controller_present": true,
+      "source_validity": [],
+      "available_lanes": [
+        1,
+        2
+      ],
+      "lane": 1,
+      "lanelet": 298738,
+      "s": 2.500249999999999,
+      "t": 1.45,
+      "status": "matching_controller",
+      "samples": 20,
+      "valid_samples": 20,
+      "observed": [
+        {
+          "controller": 212,
+          "state": 2,
+          "samples": 17
+        },
+        {
+          "controller": 212,
+          "state": 3,
+          "samples": 3
+        }
+      ],
+      "wrong_road_lane_samples": 0
+    },
+    {
+      "road": 2564,
+      "lane_sign": -1,
+      "controller": 211,
+      "green_code": 3,
+      "source_controller_present": true,
+      "source_validity": [],
+      "available_lanes": [
+        -2,
+        -1
+      ],
+      "lane": -1,
+      "lanelet": 330140,
+      "s": 161.9581381997413,
+      "t": -1.375,
+      "status": "matching_controller",
+      "samples": 20,
+      "valid_samples": 20,
+      "observed": [
+        {
+          "controller": 211,
+          "state": 2,
+          "samples": 20
+        }
+      ],
+      "wrong_road_lane_samples": 0
+    },
+    {
+      "road": 2564,
+      "lane_sign": 1,
+      "controller": 214,
+      "green_code": 3,
+      "source_controller_present": true,
+      "source_validity": [],
+      "available_lanes": [
+        1,
+        2
+      ],
+      "lane": 1,
+      "lanelet": 327564,
+      "s": 5.0,
+      "t": 1.3827613636363636,
+      "status": "matching_controller",
+      "samples": 20,
+      "valid_samples": 20,
+      "observed": [
+        {
+          "controller": 214,
+          "state": 3,
+          "samples": 20
+        }
+      ],
+      "wrong_road_lane_samples": 0
+    },
+    {
+      "road": 2575,
+      "lane_sign": -1,
+      "controller": 213,
+      "green_code": 3,
+      "source_controller_present": true,
+      "source_validity": [],
+      "available_lanes": [
+        -3,
+        -2
+      ],
+      "lane": -2,
+      "lanelet": 335544,
+      "s": 17.652009338208714,
+      "t": -1.7000000000000002,
+      "status": "matching_controller",
+      "samples": 20,
+      "valid_samples": 20,
+      "observed": [
+        {
+          "controller": 213,
+          "state": 3,
+          "samples": 20
+        }
+      ],
+      "wrong_road_lane_samples": 0
+    },
+    {
+      "road": 2575,
+      "lane_sign": 1,
+      "controller": 183,
+      "green_code": 5,
+      "source_controller_present": true,
+      "source_validity": [],
+      "available_lanes": [
+        1,
+        2
+      ],
+      "lane": 1,
+      "lanelet": 335295,
+      "s": 2.075249999999992,
+      "t": 1.45,
+      "status": "matching_controller",
+      "samples": 20,
+      "valid_samples": 20,
+      "observed": [
+        {
+          "controller": 183,
+          "state": 5,
+          "samples": 20
+        }
+      ],
+      "wrong_road_lane_samples": 0
+    },
+    {
+      "road": 2626,
+      "lane_sign": 1,
+      "controller": 181,
+      "green_code": 5,
+      "source_controller_present": true,
+      "source_validity": [],
+      "available_lanes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "lane": 1,
+      "lanelet": 343752,
+      "s": 5.0,
+      "t": -1.625,
+      "status": "matching_controller",
+      "samples": 20,
+      "valid_samples": 20,
+      "observed": [
+        {
+          "controller": 181,
+          "state": 1,
+          "samples": 20
+        }
+      ],
+      "wrong_road_lane_samples": 0
+    },
+    {
+      "road": 2718,
+      "lane_sign": 1,
+      "controller": 185,
+      "green_code": 5,
+      "source_controller_present": true,
+      "source_validity": [],
+      "available_lanes": [
+        2,
+        3,
+        4,
+        5
+      ],
+      "lane": 2,
+      "lanelet": 370163,
+      "s": 5.0,
+      "t": 1.8825675127674404,
+      "status": "matching_controller",
+      "samples": 20,
+      "valid_samples": 20,
+      "observed": [
+        {
+          "controller": 185,
+          "state": 1,
+          "samples": 20
+        }
+      ],
+      "wrong_road_lane_samples": 0
+    },
+    {
+      "road": 2719,
+      "lane_sign": -1,
+      "controller": 179,
+      "green_code": 5,
+      "source_controller_present": true,
+      "source_validity": [],
+      "available_lanes": [
+        -3,
+        -2
+      ],
+      "lane": -2,
+      "lanelet": 373475,
+      "s": 60.442976167101065,
+      "t": -2.129789477755425,
+      "status": "matching_controller",
+      "samples": 20,
+      "valid_samples": 20,
+      "observed": [
+        {
+          "controller": 179,
+          "state": 1,
+          "samples": 20
+        }
+      ],
+      "wrong_road_lane_samples": 0
+    },
+    {
+      "road": 2718,
+      "lane_sign": -1,
+      "controller": 189,
+      "green_code": 5,
+      "source_controller_present": true,
+      "source_validity": [],
+      "available_lanes": [
+        -4,
+        -3,
+        -2,
+        -1
+      ],
+      "lane": -1,
+      "lanelet": 371857,
+      "s": 100.81565906016837,
+      "t": 1.453,
+      "status": "matching_controller",
+      "samples": 20,
+      "valid_samples": 20,
+      "observed": [
+        {
+          "controller": 189,
+          "state": 1,
+          "samples": 20
+        }
+      ],
+      "wrong_road_lane_samples": 0
+    },
+    {
+      "road": 2533,
+      "lane_sign": 1,
+      "controller": 191,
+      "green_code": 5,
+      "source_controller_present": true,
+      "source_validity": [],
+      "available_lanes": [
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "lane": 2,
+      "lanelet": 313709,
+      "s": 5.0,
+      "t": 2.1593382352941175,
+      "status": "matching_controller",
+      "samples": 20,
+      "valid_samples": 20,
+      "observed": [
+        {
+          "controller": 191,
+          "state": 5,
+          "samples": 20
+        }
+      ],
+      "wrong_road_lane_samples": 0
+    },
+    {
+      "road": 2756,
+      "lane_sign": -1,
+      "controller": 187,
+      "green_code": 5,
+      "source_controller_present": true,
+      "source_validity": [],
+      "available_lanes": [
+        -5,
+        -4,
+        -3,
+        -2,
+        -1
+      ],
+      "lane": -1,
+      "lanelet": 385391,
+      "s": 181.03498631366105,
+      "t": 1.3953038164336447,
+      "status": "matching_controller",
+      "samples": 20,
+      "valid_samples": 20,
+      "observed": [
+        {
+          "controller": 187,
+          "state": 5,
+          "samples": 20
+        }
+      ],
+      "wrong_road_lane_samples": 0
+    },
+    {
+      "road": 2625,
+      "lane_sign": 1,
+      "controller": 135,
+      "green_code": 3,
+      "source_controller_present": true,
+      "source_validity": [],
+      "available_lanes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "lane": 1,
+      "lanelet": 340704,
+      "s": 5.0,
+      "t": -1.4449594741887357,
+      "status": "matching_controller",
+      "samples": 20,
+      "valid_samples": 20,
+      "observed": [
+        {
+          "controller": 135,
+          "state": 3,
+          "samples": 20
+        }
+      ],
+      "wrong_road_lane_samples": 0
+    },
+    {
+      "road": 2674,
+      "lane_sign": -1,
+      "controller": 134,
+      "green_code": 3,
+      "source_controller_present": true,
+      "source_validity": [],
+      "available_lanes": [
+        -4,
+        -3,
+        -2
+      ],
+      "lane": -2,
+      "lanelet": 357479,
+      "s": 81.53546777242127,
+      "t": -1.884788211837792,
+      "status": "matching_controller",
+      "samples": 20,
+      "valid_samples": 20,
+      "observed": [
+        {
+          "controller": 134,
+          "state": 3,
+          "samples": 20
+        }
+      ],
+      "wrong_road_lane_samples": 0
+    },
+    {
+      "road": 2674,
+      "lane_sign": 1,
+      "controller": 145,
+      "green_code": 5,
+      "source_controller_present": true,
+      "source_validity": [],
+      "available_lanes": [
+        1,
+        2,
+        3
+      ],
+      "lane": 1,
+      "lanelet": 356287,
+      "s": 5.0,
+      "t": -1.4780722070844685,
+      "status": "matching_controller",
+      "samples": 20,
+      "valid_samples": 20,
+      "observed": [
+        {
+          "controller": 145,
+          "state": 5,
+          "samples": 20
+        }
+      ],
+      "wrong_road_lane_samples": 0
+    },
+    {
+      "road": 173,
+      "lane_sign": -1,
+      "controller": 143,
+      "green_code": 5,
+      "source_controller_present": true,
+      "source_validity": [
+        [
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1
+        ]
+      ],
+      "available_lanes": [
+        -2,
+        -1
+      ],
+      "lane": -1,
+      "lanelet": 33446,
+      "s": 452.2695024422647,
+      "t": 1.7592845920543816,
+      "status": "matching_controller",
+      "samples": 20,
+      "valid_samples": 20,
+      "observed": [
+        {
+          "controller": 143,
+          "state": 1,
+          "samples": 20
+        }
+      ],
+      "wrong_road_lane_samples": 0
+    },
+    {
+      "road": 2675,
+      "lane_sign": 1,
+      "controller": 141,
+      "green_code": 5,
+      "source_controller_present": true,
+      "source_validity": [],
+      "available_lanes": [
+        2,
+        3,
+        4
+      ],
+      "lane": 2,
+      "lanelet": 359090,
+      "s": 5.0,
+      "t": 1.8422,
+      "status": "matching_controller",
+      "samples": 20,
+      "valid_samples": 20,
+      "observed": [
+        {
+          "controller": 141,
+          "state": 2,
+          "samples": 5
+        },
+        {
+          "controller": 141,
+          "state": 5,
+          "samples": 15
+        }
+      ],
+      "wrong_road_lane_samples": 0
+    },
+    {
+      "road": 1222,
+      "lane_sign": 1,
+      "controller": 147,
+      "green_code": 5,
+      "source_controller_present": true,
+      "source_validity": [],
+      "available_lanes": [
+        1,
+        2
+      ],
+      "lane": 1,
+      "lanelet": 96980,
+      "s": 5.0,
+      "t": 1.5,
+      "status": "matching_controller",
+      "samples": 20,
+      "valid_samples": 20,
+      "observed": [
+        {
+          "controller": 147,
+          "state": 1,
+          "samples": 20
+        }
+      ],
+      "wrong_road_lane_samples": 0
+    },
+    {
+      "road": 2790,
+      "lane_sign": 1,
+      "controller": 175,
+      "green_code": 5,
+      "source_controller_present": true,
+      "source_validity": [],
+      "available_lanes": [
+        1,
+        2
+      ],
+      "lane": 1,
+      "lanelet": 392764,
+      "s": 5.0,
+      "t": 1.5674511399947129,
+      "status": "matching_controller",
+      "samples": 20,
+      "valid_samples": 20,
+      "observed": [
+        {
+          "controller": 175,
+          "state": 1,
+          "samples": 15
+        },
+        {
+          "controller": 175,
+          "state": 2,
+          "samples": 5
+        }
+      ],
+      "wrong_road_lane_samples": 0
+    },
+    {
+      "road": 2801,
+      "lane_sign": -1,
+      "controller": 173,
+      "green_code": 5,
+      "source_controller_present": true,
+      "source_validity": [],
+      "available_lanes": [
+        -2,
+        -1
+      ],
+      "lane": -1,
+      "lanelet": 397017,
+      "s": 149.4559571718808,
+      "t": 1.65,
+      "status": "matching_controller",
+      "samples": 20,
+      "valid_samples": 20,
+      "observed": [
+        {
+          "controller": 173,
+          "state": 5,
+          "samples": 20
+        }
+      ],
+      "wrong_road_lane_samples": 0
+    },
+    {
+      "road": 2803,
+      "lane_sign": 1,
+      "controller": 177,
+      "green_code": 5,
+      "source_controller_present": true,
+      "source_validity": [],
+      "available_lanes": [
+        2,
+        3
+      ],
+      "lane": 2,
+      "lanelet": 399060,
+      "s": 5.0,
+      "t": 2.088873059693802,
+      "status": "matching_controller",
+      "samples": 20,
+      "valid_samples": 20,
+      "observed": [
+        {
+          "controller": 177,
+          "state": 5,
+          "samples": 20
+        }
+      ],
+      "wrong_road_lane_samples": 0
+    },
+    {
+      "road": 2804,
+      "lane_sign": -1,
+      "controller": 171,
+      "green_code": 5,
+      "source_controller_present": true,
+      "source_validity": [],
+      "available_lanes": [
+        -3,
+        -2
+      ],
+      "lane": -2,
+      "lanelet": 400882,
+      "s": 71.81807259530923,
+      "t": -2.1565075795783364,
+      "status": "matching_controller",
+      "samples": 20,
+      "valid_samples": 20,
+      "observed": [
+        {
+          "controller": 171,
+          "state": 1,
+          "samples": 20
+        }
+      ],
+      "wrong_road_lane_samples": 0
+    },
+    {
+      "road": 2756,
+      "lane_sign": 1,
+      "controller": 216,
+      "green_code": 3,
+      "source_controller_present": true,
+      "source_validity": [],
+      "available_lanes": [
+        2,
+        3,
+        4,
+        5
+      ],
+      "lane": 2,
+      "lanelet": 381145,
+      "s": 5.0,
+      "t": 5.054986635816013,
+      "status": "matching_controller",
+      "samples": 20,
+      "valid_samples": 20,
+      "observed": [
+        {
+          "controller": 216,
+          "state": 1,
+          "samples": 20
+        }
+      ],
+      "wrong_road_lane_samples": 0
+    },
+    {
+      "road": 2806,
+      "lane_sign": -1,
+      "controller": 215,
+      "green_code": 3,
+      "source_controller_present": true,
+      "source_validity": [],
+      "available_lanes": [
+        -4,
+        -3,
+        -2,
+        -1
+      ],
+      "lane": -1,
+      "lanelet": 404656,
+      "s": 96.50379641365714,
+      "t": -1.6475281197337261,
+      "status": "matching_controller",
+      "samples": 20,
+      "valid_samples": 20,
+      "observed": [
+        {
+          "controller": 215,
+          "state": 1,
+          "samples": 20
+        }
+      ],
+      "wrong_road_lane_samples": 0
+    },
+    {
+      "road": 2809,
+      "lane_sign": -1,
+      "controller": 167,
+      "green_code": 5,
+      "source_controller_present": true,
+      "source_validity": [],
+      "available_lanes": [
+        -2,
+        -1
+      ],
+      "lane": -1,
+      "lanelet": 408507,
+      "s": 9.955245667398646,
+      "t": -1.6,
+      "status": "matching_controller",
+      "samples": 20,
+      "valid_samples": 20,
+      "observed": [
+        {
+          "controller": 167,
+          "state": 1,
+          "samples": 20
+        }
+      ],
+      "wrong_road_lane_samples": 0
+    },
+    {
+      "road": 2810,
+      "lane_sign": -1,
+      "controller": 165,
+      "green_code": 5,
+      "source_controller_present": true,
+      "source_validity": [],
+      "available_lanes": [
+        -2,
+        -1
+      ],
+      "lane": -1,
+      "lanelet": 411727,
+      "s": 201.69352018817193,
+      "t": 1.41885,
+      "status": "matching_controller",
+      "samples": 20,
+      "valid_samples": 20,
+      "observed": [
+        {
+          "controller": 165,
+          "state": 5,
+          "samples": 20
+        }
+      ],
+      "wrong_road_lane_samples": 0
+    },
+    {
+      "road": 2811,
+      "lane_sign": 1,
+      "controller": 169,
+      "green_code": 5,
+      "source_controller_present": true,
+      "source_validity": [],
+      "available_lanes": [
+        2,
+        3
+      ],
+      "lane": 2,
+      "lanelet": 412857,
+      "s": 5.0,
+      "t": 2.0169160142349933,
+      "status": "matching_controller",
+      "samples": 20,
+      "valid_samples": 20,
+      "observed": [
+        {
+          "controller": 169,
+          "state": 5,
+          "samples": 20
+        }
+      ],
+      "wrong_road_lane_samples": 0
+    },
+    {
+      "road": 2812,
+      "lane_sign": -1,
+      "controller": 163,
+      "green_code": 5,
+      "source_controller_present": true,
+      "source_validity": [],
+      "available_lanes": [
+        -3,
+        -2
+      ],
+      "lane": -2,
+      "lanelet": 415123,
+      "s": 41.90487380443694,
+      "t": -1.9998,
+      "status": "matching_controller",
+      "samples": 20,
+      "valid_samples": 20,
+      "observed": [
+        {
+          "controller": 163,
+          "state": 1,
+          "samples": 20
+        }
+      ],
+      "wrong_road_lane_samples": 0
+    },
+    {
+      "road": 2812,
+      "lane_sign": 1,
+      "controller": 162,
+      "green_code": 3,
+      "source_controller_present": true,
+      "source_validity": [],
+      "available_lanes": [
+        1,
+        2
+      ],
+      "lane": 1,
+      "lanelet": 414605,
+      "s": 4.67524999999999,
+      "t": -1.4812479946524066,
+      "status": "matching_controller",
+      "samples": 20,
+      "valid_samples": 20,
+      "observed": [
+        {
+          "controller": 162,
+          "state": 3,
+          "samples": 20
+        }
+      ],
+      "wrong_road_lane_samples": 0
+    },
+    {
+      "road": 2816,
+      "lane_sign": -1,
+      "controller": 161,
+      "green_code": 3,
+      "source_controller_present": true,
+      "source_validity": [],
+      "available_lanes": [
+        -3,
+        -2
+      ],
+      "lane": -2,
+      "lanelet": 431265,
+      "s": 121.36414482735417,
+      "t": -1.99335,
+      "status": "matching_controller",
+      "samples": 20,
+      "valid_samples": 20,
+      "observed": [
+        {
+          "controller": 161,
+          "state": 3,
+          "samples": 20
+        }
+      ],
+      "wrong_road_lane_samples": 0
+    },
+    {
+      "road": 2813,
+      "lane_sign": 1,
+      "controller": 149,
+      "green_code": 3,
+      "source_controller_present": true,
+      "source_validity": [],
+      "available_lanes": [
+        1,
+        2,
+        3
+      ],
+      "lane": 1,
+      "lanelet": 415843,
+      "s": 5.0,
+      "t": -1.4822911764668807,
+      "status": "matching_controller",
+      "samples": 20,
+      "valid_samples": 20,
+      "observed": [
+        {
+          "controller": 149,
+          "state": 3,
+          "samples": 20
+        }
+      ],
+      "wrong_road_lane_samples": 0
+    },
+    {
+      "road": 2814,
+      "lane_sign": 1,
+      "controller": 150,
+      "green_code": 5,
+      "source_controller_present": true,
+      "source_validity": [],
+      "available_lanes": [
+        2,
+        3,
+        4
+      ],
+      "lane": 2,
+      "lanelet": 418523,
+      "s": 5.0,
+      "t": 1.7798886287986906,
+      "status": "matching_controller",
+      "samples": 20,
+      "valid_samples": 20,
+      "observed": [
+        {
+          "controller": 150,
+          "state": 2,
+          "samples": 20
+        }
+      ],
+      "wrong_road_lane_samples": 0
+    },
+    {
+      "road": 2814,
+      "lane_sign": -1,
+      "controller": 151,
+      "green_code": 3,
+      "source_controller_present": true,
+      "source_validity": [],
+      "available_lanes": [
+        -2,
+        -1
+      ],
+      "lane": -1,
+      "lanelet": 420622,
+      "s": 187.99877544264766,
+      "t": -1.507218832426408,
+      "status": "matching_controller",
+      "samples": 20,
+      "valid_samples": 20,
+      "observed": [
+        {
+          "controller": 151,
+          "state": 1,
+          "samples": 9
+        },
+        {
+          "controller": 151,
+          "state": 2,
+          "samples": 11
+        }
+      ],
+      "wrong_road_lane_samples": 0
+    },
+    {
+      "road": 2815,
+      "lane_sign": 1,
+      "controller": 152,
+      "green_code": 3,
+      "source_controller_present": true,
+      "source_validity": [],
+      "available_lanes": [
+        2,
+        3,
+        4
+      ],
+      "lane": 2,
+      "lanelet": 422965,
+      "s": 5.0,
+      "t": 1.8921596014038875,
+      "status": "matching_controller",
+      "samples": 20,
+      "valid_samples": 20,
+      "observed": [
+        {
+          "controller": 152,
+          "state": 1,
+          "samples": 20
+        }
+      ],
+      "wrong_road_lane_samples": 0
+    },
+    {
+      "road": 2816,
+      "lane_sign": 1,
+      "controller": 157,
+      "green_code": 5,
+      "source_controller_present": true,
+      "source_validity": [],
+      "available_lanes": [
+        1,
+        2
+      ],
+      "lane": 1,
+      "lanelet": 430034,
+      "s": 5.0,
+      "t": -1.45,
+      "status": "matching_controller",
+      "samples": 20,
+      "valid_samples": 20,
+      "observed": [
+        {
+          "controller": 157,
+          "state": 1,
+          "samples": 20
+        }
+      ],
+      "wrong_road_lane_samples": 0
+    },
+    {
+      "road": 2815,
+      "lane_sign": -1,
+      "controller": 155,
+      "green_code": 5,
+      "source_controller_present": true,
+      "source_validity": [],
+      "available_lanes": [
+        -3,
+        -2,
+        -1
+      ],
+      "lane": -1,
+      "lanelet": 428509,
+      "s": 263.9751835180276,
+      "t": 1.40275,
+      "status": "matching_controller",
+      "samples": 20,
+      "valid_samples": 20,
+      "observed": [
+        {
+          "controller": 155,
+          "state": 5,
+          "samples": 20
+        }
+      ],
+      "wrong_road_lane_samples": 0
+    },
+    {
+      "road": 2817,
+      "lane_sign": 1,
+      "controller": 159,
+      "green_code": 5,
+      "source_controller_present": true,
+      "source_validity": [],
+      "available_lanes": [
+        2,
+        3,
+        4
+      ],
+      "lane": 2,
+      "lanelet": 433567,
+      "s": 5.0,
+      "t": 1.7071536585200848,
+      "status": "matching_controller",
+      "samples": 20,
+      "valid_samples": 20,
+      "observed": [
+        {
+          "controller": 159,
+          "state": 5,
+          "samples": 20
+        }
+      ],
+      "wrong_road_lane_samples": 0
+    },
+    {
+      "road": 2818,
+      "lane_sign": -1,
+      "controller": 153,
+      "green_code": 5,
+      "source_controller_present": true,
+      "source_validity": [],
+      "available_lanes": [
+        -1
+      ],
+      "lane": -1,
+      "lanelet": 442872,
+      "s": 471.1175691147926,
+      "t": -1.4243113005804442,
+      "status": "matching_controller",
+      "samples": 20,
+      "valid_samples": 20,
+      "observed": [
+        {
+          "controller": 153,
+          "state": 1,
+          "samples": 20
+        }
+      ],
+      "wrong_road_lane_samples": 0
+    },
+    {
+      "road": 3142,
+      "lane_sign": -1,
+      "controller": 221,
+      "green_code": 5,
+      "source_controller_present": true,
+      "source_validity": [],
+      "available_lanes": [
+        -2,
+        -1
+      ],
+      "lane": -1,
+      "lanelet": 505827,
+      "s": 260.0339,
+      "t": -1.6,
+      "status": "matching_controller",
+      "samples": 20,
+      "valid_samples": 20,
+      "observed": [
+        {
+          "controller": 221,
+          "state": 1,
+          "samples": 1
+        },
+        {
+          "controller": 221,
+          "state": 2,
+          "samples": 19
+        }
+      ],
+      "wrong_road_lane_samples": 0
+    },
+    {
+      "road": 2817,
+      "lane_sign": -1,
+      "controller": 219,
+      "green_code": 5,
+      "source_controller_present": true,
+      "source_validity": [],
+      "available_lanes": [
+        -4,
+        -3,
+        -2,
+        -1
+      ],
+      "lane": -1,
+      "lanelet": 436074,
+      "s": 166.7835303225573,
+      "t": 1.4008,
+      "status": "matching_controller",
+      "samples": 20,
+      "valid_samples": 20,
+      "observed": [
+        {
+          "controller": 219,
+          "state": 5,
+          "samples": 20
+        }
+      ],
+      "wrong_road_lane_samples": 0
+    },
+    {
+      "road": 3113,
+      "lane_sign": 1,
+      "controller": 223,
+      "green_code": 5,
+      "source_controller_present": true,
+      "source_validity": [],
+      "available_lanes": [
+        2,
+        3,
+        4
+      ],
+      "lane": 2,
+      "lanelet": 495521,
+      "s": 5.0,
+      "t": 4.6672,
+      "status": "matching_controller",
+      "samples": 20,
+      "valid_samples": 20,
+      "observed": [
+        {
+          "controller": 223,
+          "state": 5,
+          "samples": 20
+        }
+      ],
+      "wrong_road_lane_samples": 0
+    },
+    {
+      "road": 2819,
+      "lane_sign": -1,
+      "controller": 217,
+      "green_code": 5,
+      "source_controller_present": true,
+      "source_validity": [],
+      "available_lanes": [
+        -5,
+        -4,
+        -3,
+        -2,
+        -1
+      ],
+      "lane": -1,
+      "lanelet": 446554,
+      "s": 166.51844697365712,
+      "t": 4.5,
+      "status": "matching_controller",
+      "samples": 20,
+      "valid_samples": 20,
+      "observed": [
+        {
+          "controller": 217,
+          "state": 1,
+          "samples": 20
+        }
+      ],
+      "wrong_road_lane_samples": 0
+    }
+  ],
+  "source_missing_controller_observations": [
+    {
+      "road": 2004,
+      "lane_sign": 1,
+      "controller": 82,
+      "green_code": 5,
+      "source_controller_present": false,
+      "source_validity": [],
+      "available_lanes": [
+        2,
+        3
+      ],
+      "lane": 2,
+      "lanelet": 189309,
+      "s": 5.0,
+      "t": 1.8451871287475767,
+      "status": "matching_controller",
+      "samples": 20,
+      "valid_samples": 20,
+      "observed": [
+        {
+          "controller": 82,
+          "state": 0,
+          "samples": 20
+        }
+      ],
+      "wrong_road_lane_samples": 0
+    },
+    {
+      "road": 2011,
+      "lane_sign": -1,
+      "controller": 80,
+      "green_code": 5,
+      "source_controller_present": false,
+      "source_validity": [],
+      "available_lanes": [
+        -5,
+        -4,
+        -3,
+        -2,
+        -1
+      ],
+      "lane": -1,
+      "lanelet": 194798,
+      "s": 106.63946142159438,
+      "t": 1.5,
+      "status": "matching_controller",
+      "samples": 20,
+      "valid_samples": 20,
+      "observed": [
+        {
+          "controller": 80,
+          "state": 0,
+          "samples": 20
+        }
+      ],
+      "wrong_road_lane_samples": 0
+    },
+    {
+      "road": 2012,
+      "lane_sign": 1,
+      "controller": 86,
+      "green_code": 5,
+      "source_controller_present": false,
+      "source_validity": [],
+      "available_lanes": [
+        2,
+        3
+      ],
+      "lane": 2,
+      "lanelet": 196710,
+      "s": 5.0,
+      "t": 2.05,
+      "status": "matching_controller",
+      "samples": 20,
+      "valid_samples": 20,
+      "observed": [
+        {
+          "controller": 86,
+          "state": 0,
+          "samples": 20
+        }
+      ],
+      "wrong_road_lane_samples": 0
+    },
+    {
+      "road": 2003,
+      "lane_sign": 1,
+      "controller": 84,
+      "green_code": 5,
+      "source_controller_present": false,
+      "source_validity": [],
+      "available_lanes": [
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "lane": 2,
+      "lanelet": 182648,
+      "s": 5.0,
+      "t": 2.1,
+      "status": "matching_controller",
+      "samples": 20,
+      "valid_samples": 20,
+      "observed": [
+        {
+          "controller": 84,
+          "state": 0,
+          "samples": 20
+        }
+      ],
+      "wrong_road_lane_samples": 0
+    }
+  ],
+  "green_code_3_rule_conflicts": {
+    "rule_count": 30,
+    "state3_seen_on_controller_rules": 17,
+    "state3_seen_on_same_rule_road_lane": 15,
+    "rules": [
+      {
+        "controller": 48,
+        "lanelet": 121378,
+        "stopline": 542859,
+        "movement": "left",
+        "permitted_states": [
+          4,
+          5
+        ],
+        "source": "xodr_arrow_object:1553",
+        "api_selected_controller_id": 48,
+        "api_observation": "selected_controller",
+        "lane_validity_source": "unverified_not_specified",
+        "distance_to_approach_end_m": 0.14987943411474958,
+        "road_lane": [
+          1750,
+          0,
+          1
+        ],
+        "green_components": [
+          {
+            "id": 166,
+            "subtype": "-1"
+          }
+        ],
+        "live_probe": {
+          "road": 1750,
+          "lane": 1,
+          "s": 5.0,
+          "t": 1.4,
+          "status": "matching_controller",
+          "samples": 20,
+          "valid_samples": 20,
+          "observed": [
+            {
+              "controller": 48,
+              "state": 1,
+              "samples": 20
+            }
+          ],
+          "same_road_lane_as_rule": true,
+          "api_state_3_observed": false
+        }
+      },
+      {
+        "controller": 225,
+        "lanelet": 125730,
+        "stopline": 542907,
+        "movement": "left",
+        "permitted_states": [
+          4,
+          5
+        ],
+        "source": "xodr_arrow_object:1664",
+        "api_selected_controller_id": 225,
+        "api_observation": "selected_controller",
+        "lane_validity_source": "unverified_not_specified",
+        "distance_to_approach_end_m": 0.15041626872887626,
+        "road_lane": [
+          1778,
+          0,
+          2
+        ],
+        "green_components": [
+          {
+            "id": 701,
+            "subtype": "-1"
+          }
+        ],
+        "live_probe": {
+          "road": 1778,
+          "lane": 2,
+          "s": 5.0,
+          "t": 1.9541256172008956,
+          "status": "matching_controller",
+          "samples": 20,
+          "valid_samples": 20,
+          "observed": [
+            {
+              "controller": 225,
+              "state": 1,
+              "samples": 20
+            }
+          ],
+          "same_road_lane_as_rule": true,
+          "api_state_3_observed": false
+        }
+      },
+      {
+        "controller": 226,
+        "lanelet": 189836,
+        "stopline": 544398,
+        "movement": "left",
+        "permitted_states": [
+          4,
+          5
+        ],
+        "source": "xodr_arrow_object:2498",
+        "api_selected_controller_id": 226,
+        "api_observation": "selected_controller",
+        "lane_validity_source": "unverified_not_specified",
+        "distance_to_approach_end_m": 0.0,
+        "road_lane": [
+          2004,
+          2,
+          -1
+        ],
+        "green_components": [
+          {
+            "id": 704,
+            "subtype": "-1"
+          }
+        ],
+        "live_probe": {
+          "road": 2004,
+          "lane": -1,
+          "s": 80.17094918753865,
+          "t": 1.4963742770538442,
+          "status": "matching_controller",
+          "samples": 20,
+          "valid_samples": 20,
+          "observed": [
+            {
+              "controller": 226,
+              "state": 1,
+              "samples": 20
+            }
+          ],
+          "same_road_lane_as_rule": true,
+          "api_state_3_observed": false
+        }
+      },
+      {
+        "controller": 57,
+        "lanelet": 125108,
+        "stopline": 542895,
+        "movement": "left+straight",
+        "permitted_states": [
+          5
+        ],
+        "source": "xodr_arrow_object:1656",
+        "api_selected_controller_id": 57,
+        "api_observation": "selected_controller",
+        "lane_validity_source": "unverified_not_specified",
+        "distance_to_approach_end_m": 0.14428508454696498,
+        "road_lane": [
+          1777,
+          3,
+          -1
+        ],
+        "green_components": [
+          {
+            "id": 193,
+            "subtype": "-1"
+          }
+        ],
+        "live_probe": {
+          "road": 1777,
+          "lane": -1,
+          "s": 62.89886331647787,
+          "t": -1.527230733734759,
+          "status": "matching_controller",
+          "samples": 20,
+          "valid_samples": 20,
+          "observed": [
+            {
+              "controller": 57,
+              "state": 3,
+              "samples": 20
+            }
+          ],
+          "same_road_lane_as_rule": true,
+          "api_state_3_observed": true
+        }
+      },
+      {
+        "controller": 57,
+        "lanelet": 125108,
+        "stopline": 542901,
+        "movement": "left+straight",
+        "permitted_states": [
+          5
+        ],
+        "source": "xodr_arrow_object:1656",
+        "api_selected_controller_id": 57,
+        "api_observation": "selected_controller",
+        "lane_validity_source": "unverified_not_specified",
+        "distance_to_approach_end_m": 0.14428508454696498,
+        "road_lane": [
+          1777,
+          3,
+          -1
+        ],
+        "green_components": [
+          {
+            "id": 193,
+            "subtype": "-1"
+          }
+        ],
+        "live_probe": {
+          "road": 1777,
+          "lane": -1,
+          "s": 62.89886331647787,
+          "t": -1.527230733734759,
+          "status": "matching_controller",
+          "samples": 20,
+          "valid_samples": 20,
+          "observed": [
+            {
+              "controller": 57,
+              "state": 3,
+              "samples": 20
+            }
+          ],
+          "same_road_lane_as_rule": true,
+          "api_state_3_observed": true
+        }
+      },
+      {
+        "controller": 58,
+        "lanelet": 129901,
+        "stopline": 542922,
+        "movement": "left",
+        "permitted_states": [
+          4,
+          5
+        ],
+        "source": "xodr_arrow_object:1701",
+        "api_selected_controller_id": 58,
+        "api_observation": "selected_controller",
+        "lane_validity_source": "unverified_not_specified",
+        "distance_to_approach_end_m": 0.15059494031935838,
+        "road_lane": [
+          1818,
+          0,
+          1
+        ],
+        "green_components": [
+          {
+            "id": 196,
+            "subtype": "-1"
+          }
+        ],
+        "live_probe": {
+          "road": 1818,
+          "lane": 1,
+          "s": 5.0,
+          "t": 1.46212579093822,
+          "status": "matching_controller",
+          "samples": 20,
+          "valid_samples": 20,
+          "observed": [
+            {
+              "controller": 58,
+              "state": 3,
+              "samples": 20
+            }
+          ],
+          "same_road_lane_as_rule": true,
+          "api_state_3_observed": true
+        }
+      },
+      {
+        "controller": 104,
+        "lanelet": 236328,
+        "stopline": 544421,
+        "movement": "left+straight",
+        "permitted_states": [
+          5
+        ],
+        "source": "xodr_arrow_object:2997",
+        "api_selected_controller_id": 104,
+        "api_observation": "selected_controller",
+        "lane_validity_source": "unverified_not_specified",
+        "distance_to_approach_end_m": 0.0,
+        "road_lane": [
+          2116,
+          0,
+          -1
+        ],
+        "green_components": [
+          {
+            "id": 335,
+            "subtype": "-1"
+          }
+        ],
+        "live_probe": {
+          "road": 2116,
+          "lane": -1,
+          "s": 10.111761704509467,
+          "t": -1.4495600323134163,
+          "status": "matching_controller",
+          "samples": 20,
+          "valid_samples": 20,
+          "observed": [
+            {
+              "controller": 104,
+              "state": 1,
+              "samples": 20
+            }
+          ],
+          "same_road_lane_as_rule": true,
+          "api_state_3_observed": false
+        }
+      },
+      {
+        "controller": 106,
+        "lanelet": 236079,
+        "stopline": 544419,
+        "movement": "left",
+        "permitted_states": [
+          4,
+          5
+        ],
+        "source": "xodr_arrow_object:2987",
+        "api_selected_controller_id": 106,
+        "api_observation": "selected_controller",
+        "lane_validity_source": "unverified_not_specified",
+        "distance_to_approach_end_m": 0.0,
+        "road_lane": [
+          2115,
+          4,
+          -1
+        ],
+        "green_components": [
+          {
+            "id": 341,
+            "subtype": "-1"
+          }
+        ],
+        "live_probe": {
+          "road": 2115,
+          "lane": -1,
+          "s": 68.90826965549114,
+          "t": -1.425,
+          "status": "matching_controller",
+          "samples": 20,
+          "valid_samples": 20,
+          "observed": [
+            {
+              "controller": 106,
+              "state": 3,
+              "samples": 20
+            }
+          ],
+          "same_road_lane_as_rule": true,
+          "api_state_3_observed": true
+        }
+      },
+      {
+        "controller": 105,
+        "lanelet": 234607,
+        "stopline": 543348,
+        "movement": "left+straight",
+        "permitted_states": [
+          5
+        ],
+        "source": "xodr_arrow_object:2953",
+        "api_selected_controller_id": 105,
+        "api_observation": "selected_controller",
+        "lane_validity_source": "unverified_not_specified",
+        "distance_to_approach_end_m": 0.15026112070223088,
+        "road_lane": [
+          2097,
+          0,
+          1
+        ],
+        "green_components": [
+          {
+            "id": 338,
+            "subtype": "-1"
+          }
+        ],
+        "live_probe": {
+          "road": 2097,
+          "lane": 1,
+          "s": 4.173920019506412,
+          "t": 1.437499191296867,
+          "status": "matching_controller",
+          "samples": 20,
+          "valid_samples": 20,
+          "observed": [
+            {
+              "controller": 105,
+              "state": 1,
+              "samples": 20
+            }
+          ],
+          "same_road_lane_as_rule": true,
+          "api_state_3_observed": false
+        }
+      },
+      {
+        "controller": 70,
+        "lanelet": 138722,
+        "stopline": 542988,
+        "movement": "left+straight",
+        "permitted_states": [
+          5
+        ],
+        "source": "xodr_arrow_object:1863",
+        "api_selected_controller_id": 70,
+        "api_observation": "selected_controller",
+        "lane_validity_source": "unverified_not_specified",
+        "distance_to_approach_end_m": 0.14864992054911141,
+        "road_lane": [
+          1868,
+          0,
+          -1
+        ],
+        "green_components": [
+          {
+            "id": 232,
+            "subtype": "-1"
+          }
+        ],
+        "live_probe": {
+          "road": 1868,
+          "lane": -1,
+          "s": 51.628541162009796,
+          "t": -1.5,
+          "status": "matching_controller",
+          "samples": 20,
+          "valid_samples": 20,
+          "observed": [
+            {
+              "controller": 70,
+              "state": 3,
+              "samples": 20
+            }
+          ],
+          "same_road_lane_as_rule": true,
+          "api_state_3_observed": true
+        }
+      },
+      {
+        "controller": 70,
+        "lanelet": 138722,
+        "stopline": 542994,
+        "movement": "left+straight",
+        "permitted_states": [
+          5
+        ],
+        "source": "xodr_arrow_object:1863",
+        "api_selected_controller_id": 70,
+        "api_observation": "selected_controller",
+        "lane_validity_source": "unverified_not_specified",
+        "distance_to_approach_end_m": 0.14864992054911141,
+        "road_lane": [
+          1868,
+          0,
+          -1
+        ],
+        "green_components": [
+          {
+            "id": 232,
+            "subtype": "-1"
+          }
+        ],
+        "live_probe": {
+          "road": 1868,
+          "lane": -1,
+          "s": 51.628541162009796,
+          "t": -1.5,
+          "status": "matching_controller",
+          "samples": 20,
+          "valid_samples": 20,
+          "observed": [
+            {
+              "controller": 70,
+              "state": 3,
+              "samples": 20
+            }
+          ],
+          "same_road_lane_as_rule": true,
+          "api_state_3_observed": true
+        }
+      },
+      {
+        "controller": 71,
+        "lanelet": 150198,
+        "stopline": 543033,
+        "movement": "left+straight",
+        "permitted_states": [
+          5
+        ],
+        "source": "xodr_arrow_object:1957",
+        "api_selected_controller_id": 71,
+        "api_observation": "selected_controller",
+        "lane_validity_source": "unverified_not_specified",
+        "distance_to_approach_end_m": 0.1520840855968714,
+        "road_lane": [
+          1909,
+          0,
+          2
+        ],
+        "green_components": [
+          {
+            "id": 235,
+            "subtype": "-1"
+          }
+        ],
+        "live_probe": {
+          "road": 1909,
+          "lane": 2,
+          "s": 5.0,
+          "t": 1.8460483302577637,
+          "status": "matching_controller",
+          "samples": 20,
+          "valid_samples": 20,
+          "observed": [
+            {
+              "controller": 71,
+              "state": 3,
+              "samples": 20
+            }
+          ],
+          "same_road_lane_as_rule": true,
+          "api_state_3_observed": true
+        }
+      },
+      {
+        "controller": 71,
+        "lanelet": 150198,
+        "stopline": 543039,
+        "movement": "left+straight",
+        "permitted_states": [
+          5
+        ],
+        "source": "xodr_arrow_object:1957",
+        "api_selected_controller_id": 71,
+        "api_observation": "selected_controller",
+        "lane_validity_source": "unverified_not_specified",
+        "distance_to_approach_end_m": 0.1520840855968714,
+        "road_lane": [
+          1909,
+          0,
+          2
+        ],
+        "green_components": [
+          {
+            "id": 235,
+            "subtype": "-1"
+          }
+        ],
+        "live_probe": {
+          "road": 1909,
+          "lane": 2,
+          "s": 5.0,
+          "t": 1.8460483302577637,
+          "status": "matching_controller",
+          "samples": 20,
+          "valid_samples": 20,
+          "observed": [
+            {
+              "controller": 71,
+              "state": 3,
+              "samples": 20
+            }
+          ],
+          "same_road_lane_as_rule": true,
+          "api_state_3_observed": true
+        }
+      },
+      {
+        "controller": 72,
+        "lanelet": 159645,
+        "stopline": 543096,
+        "movement": "left",
+        "permitted_states": [
+          4,
+          5
+        ],
+        "source": "xodr_arrow_object:2133",
+        "api_selected_controller_id": 72,
+        "api_observation": "selected_controller",
+        "lane_validity_source": "unverified_not_specified",
+        "distance_to_approach_end_m": 0.1486727544141786,
+        "road_lane": [
+          1926,
+          5,
+          -2
+        ],
+        "green_components": [
+          {
+            "id": 238,
+            "subtype": "-1"
+          }
+        ],
+        "live_probe": {
+          "road": 1926,
+          "lane": -1,
+          "s": 164.91171933056836,
+          "t": 1.397737330236576,
+          "status": "matching_controller",
+          "samples": 20,
+          "valid_samples": 20,
+          "observed": [
+            {
+              "controller": 72,
+              "state": 3,
+              "samples": 20
+            }
+          ],
+          "same_road_lane_as_rule": false,
+          "api_state_3_observed": true
+        }
+      },
+      {
+        "controller": 72,
+        "lanelet": 159645,
+        "stopline": 543105,
+        "movement": "left",
+        "permitted_states": [
+          4,
+          5
+        ],
+        "source": "xodr_arrow_object:2133",
+        "api_selected_controller_id": 72,
+        "api_observation": "selected_controller",
+        "lane_validity_source": "unverified_not_specified",
+        "distance_to_approach_end_m": 0.1486727544141786,
+        "road_lane": [
+          1926,
+          5,
+          -2
+        ],
+        "green_components": [
+          {
+            "id": 238,
+            "subtype": "-1"
+          }
+        ],
+        "live_probe": {
+          "road": 1926,
+          "lane": -1,
+          "s": 164.91171933056836,
+          "t": 1.397737330236576,
+          "status": "matching_controller",
+          "samples": 20,
+          "valid_samples": 20,
+          "observed": [
+            {
+              "controller": 72,
+              "state": 3,
+              "samples": 20
+            }
+          ],
+          "same_road_lane_as_rule": false,
+          "api_state_3_observed": true
+        }
+      },
+      {
+        "controller": 91,
+        "lanelet": 229480,
+        "stopline": 543306,
+        "movement": "left+straight",
+        "permitted_states": [
+          5
+        ],
+        "source": "xodr_arrow_object:2893",
+        "api_selected_controller_id": 91,
+        "api_observation": "selected_controller",
+        "lane_validity_source": "unverified_not_specified",
+        "distance_to_approach_end_m": 0.1503197551572839,
+        "road_lane": [
+          2076,
+          11,
+          -1
+        ],
+        "green_components": [
+          {
+            "id": 296,
+            "subtype": "-1"
+          }
+        ],
+        "live_probe": {
+          "road": 2076,
+          "lane": -1,
+          "s": 735.0357176973683,
+          "t": -1.812213226442223,
+          "status": "matching_controller",
+          "samples": 20,
+          "valid_samples": 20,
+          "observed": [
+            {
+              "controller": 91,
+              "state": 2,
+              "samples": 20
+            }
+          ],
+          "same_road_lane_as_rule": true,
+          "api_state_3_observed": false
+        }
+      },
+      {
+        "controller": 108,
+        "lanelet": 254679,
+        "stopline": 543465,
+        "movement": "left+straight",
+        "permitted_states": [
+          5
+        ],
+        "source": "xodr_arrow_object:3324",
+        "api_selected_controller_id": 108,
+        "api_observation": "selected_controller",
+        "lane_validity_source": "unverified_not_specified",
+        "distance_to_approach_end_m": 0.15144426958005397,
+        "road_lane": [
+          2264,
+          0,
+          -1
+        ],
+        "green_components": [
+          {
+            "id": 348,
+            "subtype": "10"
+          },
+          {
+            "id": 349,
+            "subtype": "-1"
+          }
+        ],
+        "live_probe": {
+          "road": 2264,
+          "lane": -1,
+          "s": 84.74475234377613,
+          "t": -1.45,
+          "status": "matching_controller",
+          "samples": 20,
+          "valid_samples": 20,
+          "observed": [
+            {
+              "controller": 108,
+              "state": 3,
+              "samples": 20
+            }
+          ],
+          "same_road_lane_as_rule": true,
+          "api_state_3_observed": true
+        }
+      },
+      {
+        "controller": 109,
+        "lanelet": 257299,
+        "stopline": 543473,
+        "movement": "left",
+        "permitted_states": [
+          4,
+          5
+        ],
+        "source": "xodr_arrow_object:3370",
+        "api_selected_controller_id": 109,
+        "api_observation": "selected_controller",
+        "lane_validity_source": "unverified_not_specified",
+        "distance_to_approach_end_m": 0.15355491446000258,
+        "road_lane": [
+          2265,
+          4,
+          -1
+        ],
+        "green_components": [
+          {
+            "id": 352,
+            "subtype": "-1"
+          }
+        ],
+        "live_probe": {
+          "road": 2265,
+          "lane": -1,
+          "s": 120.9937759662661,
+          "t": -1.45,
+          "status": "matching_controller",
+          "samples": 20,
+          "valid_samples": 20,
+          "observed": [
+            {
+              "controller": 109,
+              "state": 1,
+              "samples": 20
+            }
+          ],
+          "same_road_lane_as_rule": true,
+          "api_state_3_observed": false
+        }
+      },
+      {
+        "controller": 117,
+        "lanelet": 264552,
+        "stopline": 543506,
+        "movement": "left+straight",
+        "permitted_states": [
+          5
+        ],
+        "source": "xodr_arrow_object:3499",
+        "api_selected_controller_id": 117,
+        "api_observation": "selected_controller",
+        "lane_validity_source": "unverified_not_specified",
+        "distance_to_approach_end_m": 0.1542064065764257,
+        "road_lane": [
+          2312,
+          0,
+          2
+        ],
+        "green_components": [
+          {
+            "id": 376,
+            "subtype": "-1"
+          }
+        ],
+        "live_probe": {
+          "road": 2312,
+          "lane": 2,
+          "s": 5.0,
+          "t": 2.061877533735212,
+          "status": "matching_controller",
+          "samples": 20,
+          "valid_samples": 20,
+          "observed": [
+            {
+              "controller": 117,
+              "state": 6,
+              "samples": 20
+            }
+          ],
+          "same_road_lane_as_rule": true,
+          "api_state_3_observed": false
+        }
+      },
+      {
+        "controller": 120,
+        "lanelet": 279842,
+        "stopline": 544451,
+        "movement": "left",
+        "permitted_states": [
+          4,
+          5
+        ],
+        "source": "xodr_arrow_object:3725",
+        "api_selected_controller_id": 120,
+        "api_observation": "selected_controller",
+        "lane_validity_source": "unverified_not_specified",
+        "distance_to_approach_end_m": 0.0,
+        "road_lane": [
+          2396,
+          4,
+          -1
+        ],
+        "green_components": [
+          {
+            "id": 385,
+            "subtype": "-1"
+          }
+        ],
+        "live_probe": {
+          "road": 2396,
+          "lane": -1,
+          "s": 79.89329129215184,
+          "t": 1.5257043675932926,
+          "status": "matching_controller",
+          "samples": 20,
+          "valid_samples": 20,
+          "observed": [
+            {
+              "controller": 120,
+              "state": 2,
+              "samples": 20
+            }
+          ],
+          "same_road_lane_as_rule": true,
+          "api_state_3_observed": false
+        }
+      },
+      {
+        "controller": 122,
+        "lanelet": 279033,
+        "stopline": 543560,
+        "movement": "left+straight",
+        "permitted_states": [
+          5
+        ],
+        "source": "xodr_arrow_object:3698",
+        "api_selected_controller_id": 122,
+        "api_observation": "selected_controller",
+        "lane_validity_source": "unverified_not_specified",
+        "distance_to_approach_end_m": 0.14591034440838596,
+        "road_lane": [
+          2396,
+          0,
+          1
+        ],
+        "green_components": [
+          {
+            "id": 391,
+            "subtype": "-1"
+          }
+        ],
+        "live_probe": {
+          "road": 2396,
+          "lane": 1,
+          "s": 5.0,
+          "t": 1.37299375,
+          "status": "matching_controller",
+          "samples": 20,
+          "valid_samples": 20,
+          "observed": [
+            {
+              "controller": 122,
+              "state": 1,
+              "samples": 19
+            },
+            {
+              "controller": 122,
+              "state": 2,
+              "samples": 1
+            }
+          ],
+          "same_road_lane_as_rule": true,
+          "api_state_3_observed": false
+        }
+      },
+      {
+        "controller": 193,
+        "lanelet": 323283,
+        "stopline": 544460,
+        "movement": "left",
+        "permitted_states": [
+          4,
+          5
+        ],
+        "source": "xodr_arrow_object:4281",
+        "api_selected_controller_id": 193,
+        "api_observation": "selected_controller",
+        "lane_validity_source": "unverified_not_specified",
+        "distance_to_approach_end_m": 0.0,
+        "road_lane": [
+          2533,
+          7,
+          -1
+        ],
+        "green_components": [
+          {
+            "id": 605,
+            "subtype": "-1"
+          }
+        ],
+        "live_probe": {
+          "road": 2533,
+          "lane": -1,
+          "s": 333.6039339467074,
+          "t": 1.53455,
+          "status": "matching_controller",
+          "samples": 20,
+          "valid_samples": 20,
+          "observed": [
+            {
+              "controller": 193,
+              "state": 1,
+              "samples": 20
+            }
+          ],
+          "same_road_lane_as_rule": true,
+          "api_state_3_observed": false
+        }
+      },
+      {
+        "controller": 211,
+        "lanelet": 330140,
+        "stopline": 543725,
+        "movement": "left",
+        "permitted_states": [
+          4,
+          5
+        ],
+        "source": "xodr_arrow_object:4362",
+        "api_selected_controller_id": 211,
+        "api_observation": "selected_controller",
+        "lane_validity_source": "unverified_not_specified",
+        "distance_to_approach_end_m": 0.1496616149079273,
+        "road_lane": [
+          2564,
+          7,
+          -1
+        ],
+        "green_components": [
+          {
+            "id": 659,
+            "subtype": "-1"
+          }
+        ],
+        "live_probe": {
+          "road": 2564,
+          "lane": -1,
+          "s": 161.9581381997413,
+          "t": -1.375,
+          "status": "matching_controller",
+          "samples": 20,
+          "valid_samples": 20,
+          "observed": [
+            {
+              "controller": 211,
+              "state": 2,
+              "samples": 20
+            }
+          ],
+          "same_road_lane_as_rule": true,
+          "api_state_3_observed": false
+        }
+      },
+      {
+        "controller": 135,
+        "lanelet": 340704,
+        "stopline": 544463,
+        "movement": "left",
+        "permitted_states": [
+          4,
+          5
+        ],
+        "source": "xodr_arrow_object:4512",
+        "api_selected_controller_id": 135,
+        "api_observation": "selected_controller",
+        "lane_validity_source": "unverified_not_specified",
+        "distance_to_approach_end_m": 0.0,
+        "road_lane": [
+          2625,
+          0,
+          1
+        ],
+        "green_components": [
+          {
+            "id": 430,
+            "subtype": "-1"
+          }
+        ],
+        "live_probe": {
+          "road": 2625,
+          "lane": 1,
+          "s": 5.0,
+          "t": -1.4449594741887357,
+          "status": "matching_controller",
+          "samples": 20,
+          "valid_samples": 20,
+          "observed": [
+            {
+              "controller": 135,
+              "state": 3,
+              "samples": 20
+            }
+          ],
+          "same_road_lane_as_rule": true,
+          "api_state_3_observed": true
+        }
+      },
+      {
+        "controller": 134,
+        "lanelet": 357479,
+        "stopline": 543834,
+        "movement": "left",
+        "permitted_states": [
+          4,
+          5
+        ],
+        "source": "xodr_arrow_object:4711",
+        "api_selected_controller_id": 134,
+        "api_observation": "selected_controller",
+        "lane_validity_source": "unverified_not_specified",
+        "distance_to_approach_end_m": 0.15143706860173722,
+        "road_lane": [
+          2674,
+          3,
+          -2
+        ],
+        "green_components": [
+          {
+            "id": 427,
+            "subtype": "-1"
+          }
+        ],
+        "live_probe": {
+          "road": 2674,
+          "lane": -2,
+          "s": 81.53546777242127,
+          "t": -1.884788211837792,
+          "status": "matching_controller",
+          "samples": 20,
+          "valid_samples": 20,
+          "observed": [
+            {
+              "controller": 134,
+              "state": 3,
+              "samples": 20
+            }
+          ],
+          "same_road_lane_as_rule": true,
+          "api_state_3_observed": true
+        }
+      },
+      {
+        "controller": 134,
+        "lanelet": 357479,
+        "stopline": 543837,
+        "movement": "left",
+        "permitted_states": [
+          4,
+          5
+        ],
+        "source": "xodr_arrow_object:4711",
+        "api_selected_controller_id": 134,
+        "api_observation": "selected_controller",
+        "lane_validity_source": "unverified_not_specified",
+        "distance_to_approach_end_m": 0.15143706860173722,
+        "road_lane": [
+          2674,
+          3,
+          -2
+        ],
+        "green_components": [
+          {
+            "id": 427,
+            "subtype": "-1"
+          }
+        ],
+        "live_probe": {
+          "road": 2674,
+          "lane": -2,
+          "s": 81.53546777242127,
+          "t": -1.884788211837792,
+          "status": "matching_controller",
+          "samples": 20,
+          "valid_samples": 20,
+          "observed": [
+            {
+              "controller": 134,
+              "state": 3,
+              "samples": 20
+            }
+          ],
+          "same_road_lane_as_rule": true,
+          "api_state_3_observed": true
+        }
+      },
+      {
+        "controller": 162,
+        "lanelet": 414605,
+        "stopline": 544472,
+        "movement": "left",
+        "permitted_states": [
+          4,
+          5
+        ],
+        "source": "xodr_arrow_object:5440",
+        "api_selected_controller_id": 162,
+        "api_observation": "selected_controller",
+        "lane_validity_source": "unverified_not_specified",
+        "distance_to_approach_end_m": 0.0,
+        "road_lane": [
+          2812,
+          0,
+          1
+        ],
+        "green_components": [
+          {
+            "id": 512,
+            "subtype": "-1"
+          }
+        ],
+        "live_probe": {
+          "road": 2812,
+          "lane": 1,
+          "s": 4.67524999999999,
+          "t": -1.4812479946524066,
+          "status": "matching_controller",
+          "samples": 20,
+          "valid_samples": 20,
+          "observed": [
+            {
+              "controller": 162,
+              "state": 3,
+              "samples": 20
+            }
+          ],
+          "same_road_lane_as_rule": true,
+          "api_state_3_observed": true
+        }
+      },
+      {
+        "controller": 161,
+        "lanelet": 431265,
+        "stopline": 544252,
+        "movement": "left",
+        "permitted_states": [
+          4,
+          5
+        ],
+        "source": "xodr_arrow_object:5706",
+        "api_selected_controller_id": 161,
+        "api_observation": "selected_controller",
+        "lane_validity_source": "unverified_not_specified",
+        "distance_to_approach_end_m": 0.15005742198478345,
+        "road_lane": [
+          2816,
+          3,
+          -2
+        ],
+        "green_components": [
+          {
+            "id": 509,
+            "subtype": "-1"
+          }
+        ],
+        "live_probe": {
+          "road": 2816,
+          "lane": -2,
+          "s": 121.36414482735417,
+          "t": -1.99335,
+          "status": "matching_controller",
+          "samples": 20,
+          "valid_samples": 20,
+          "observed": [
+            {
+              "controller": 161,
+              "state": 3,
+              "samples": 20
+            }
+          ],
+          "same_road_lane_as_rule": true,
+          "api_state_3_observed": true
+        }
+      },
+      {
+        "controller": 149,
+        "lanelet": 415843,
+        "stopline": 544475,
+        "movement": "left",
+        "permitted_states": [
+          4,
+          5
+        ],
+        "source": "xodr_arrow_object:5462",
+        "api_selected_controller_id": 149,
+        "api_observation": "selected_controller",
+        "lane_validity_source": "unverified_not_specified",
+        "distance_to_approach_end_m": 0.0,
+        "road_lane": [
+          2813,
+          0,
+          1
+        ],
+        "green_components": [
+          {
+            "id": 472,
+            "subtype": "-1"
+          }
+        ],
+        "live_probe": {
+          "road": 2813,
+          "lane": 1,
+          "s": 5.0,
+          "t": -1.4822911764668807,
+          "status": "matching_controller",
+          "samples": 20,
+          "valid_samples": 20,
+          "observed": [
+            {
+              "controller": 149,
+              "state": 3,
+              "samples": 20
+            }
+          ],
+          "same_road_lane_as_rule": true,
+          "api_state_3_observed": true
+        }
+      },
+      {
+        "controller": 152,
+        "lanelet": 422965,
+        "stopline": 544222,
+        "movement": "left",
+        "permitted_states": [
+          4,
+          5
+        ],
+        "source": "xodr_arrow_object:5574",
+        "api_selected_controller_id": 152,
+        "api_observation": "selected_controller",
+        "lane_validity_source": "unverified_not_specified",
+        "distance_to_approach_end_m": 0.15129854072889054,
+        "road_lane": [
+          2815,
+          0,
+          2
+        ],
+        "green_components": [
+          {
+            "id": 482,
+            "subtype": "-1"
+          }
+        ],
+        "live_probe": {
+          "road": 2815,
+          "lane": 2,
+          "s": 5.0,
+          "t": 1.8921596014038875,
+          "status": "matching_controller",
+          "samples": 20,
+          "valid_samples": 20,
+          "observed": [
+            {
+              "controller": 152,
+              "state": 1,
+              "samples": 20
+            }
+          ],
+          "same_road_lane_as_rule": true,
+          "api_state_3_observed": false
+        }
+      }
+    ]
+  },
+  "topology_only_successor_map": {
+    "map_binary_sha256": "e7a426f900813748747a39233f3678237fd7f849c335bae3bc3014b31ae678b0",
+    "signal_semantics_identical": true,
+    "comparison_evidence": "signal_semantics_comparison.json",
+    "actual_api_measurement_repeated": false
+  }
+}

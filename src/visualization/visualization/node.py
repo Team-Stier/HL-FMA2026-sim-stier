@@ -1,17 +1,18 @@
 import math
 import time
 from pathlib import Path
+from uuid import uuid4
 
 import rclpy
 import yaml
 from ament_index_python.packages import get_package_share_directory
-from interfaces.msg import EgoPose, EgoStatus, Objects, TrafficLight, DynamicStatus, ControlCommand, SearchTree
+from interfaces.msg import EgoPose, EgoStatus, Objects, TrafficLight, DynamicStatus, ControlCommand, SearchTree, CellGeometry, CellColors
 from rclpy.node import Node
 from rclpy.qos import QoSProfile, ReliabilityPolicy, DurabilityPolicy
 from std_msgs.msg import Float32, Int64MultiArray, Header, String, ColorRGBA
 from visualization_msgs.msg import Marker, MarkerArray
 
-from .markers import MarkerOutput, point, xyz, marker, line, text, arrow, bounds, search_markers, road_line, batch_lines, aerial_marker
+from .markers import MarkerOutput, point, xyz, marker, line, text, arrow, bounds_points, search_markers, road_line, batch_lines, aerial_marker
 
 
 class Visualizer(Node):
@@ -32,8 +33,13 @@ class Visualizer(Node):
         self.outputs = {}
         static_qos = QoSProfile(depth=1, reliability=ReliabilityPolicy.RELIABLE,
                                 durability=DurabilityPolicy.TRANSIENT_LOCAL)
-        for topic in ("map", "cells"):
+        for topic in ("map", "cells", "signals_static"):
             self.outputs[topic] = MarkerOutput(self.create_publisher(MarkerArray, "/visualization/" + topic, static_qos))
+        self.cell_geometry_publisher = self.create_publisher(CellGeometry, "/visualization/cell_geometry", static_qos)
+        self.cell_color_publishers = {}
+        for topic in ("occupancy", "cell_cap"):
+            self.outputs[topic] = MarkerOutput(self.create_publisher(MarkerArray, "/visualization/" + topic, self.qos))
+            self.cell_color_publishers[topic] = self.create_publisher(CellColors, "/visualization/" + topic + "_colors", self.qos)
         self.hud_groups = {"signals/observed_controller": ["signals/observed_controller/0: waiting for /traffic_light"]}
         self.hud_publisher = self.create_publisher(String, "/visualization/hud", self.qos)
         self.receipts = {}
@@ -42,7 +48,11 @@ class Visualizer(Node):
         self.registry = {}
         self.lanes = []
         self.map_drawn = False
+        self.cell_geometry_id = uuid4().hex
+        self.cell_geometry = None
         self.cell_edges = None
+        self.cell_value_cache = {}
+        self.cell_marker_cache = {}
         map_path = self.declare_parameter("map_path", "").value
         if map_path:
             from hdmap import hdmap_init
@@ -54,7 +64,14 @@ class Visualizer(Node):
         else:
             self.get_logger().warning("No map_path: map/cell/global geometry is unavailable, not reconstructed")
         self.static_signals = self.signal_markers(Header(frame_id="map"))
+        self.static_signal_labels = [f"{item.ns}/{item.id}: {item.text}" for item in self.static_signals
+                                     if item.type == Marker.TEXT_VIEW_FACING]
+        self.static_signal_geometry = [item for item in self.static_signals if item.type != Marker.TEXT_VIEW_FACING]
+        self.outputs["signals_static"].publish(self.static_signal_geometry)
+        for topic in ("signals", "signals_observed"):
+            self.outputs[topic] = MarkerOutput(self.create_publisher(MarkerArray, "/visualization/" + topic, self.qos))
         self.observed_signals = []
+        self.observed_controller = None
         subscriptions = [
             (EgoPose, "/ego_pose", self.ego_pose),
             (EgoStatus, "/ego_status", self.ego_status),
@@ -197,13 +214,27 @@ class Visualizer(Node):
         self.hud_groups["signals/observed_controller"] = [
             f"signals/observed_controller/0: controller={message.id} state={message.state} (not individual lamp colors)"]
         header = Header(stamp=message.header.stamp, frame_id="map")
-        self.observed_signals = self.signal_markers(header, {message.id: self.registry.get(message.id, [])})
+        if message.id != self.observed_controller:
+            self.observed_signals = self.signal_markers(header, {message.id: self.registry.get(message.id, [])})
+            self.observed_controller = message.id
+            for item in self.observed_signals:
+                item.ns = "signals/observed/" + item.ns
         for item in self.observed_signals:
-            item.ns = "signals/observed/" + item.ns
+            item.header = header
             item.color.r, item.color.g, item.color.b = 0.2, 1.0, 1.0
         if not self.observed_signals:
             self.hud_groups["signals/observed_controller"].append("No matching geometry in Visualizer local registry")
-        self.emit("signals", self.static_signals + self.observed_signals)
+        self.draw_signals()
+
+    def draw_signals(self):
+        geometry = [item for item in self.observed_signals if item.type != Marker.TEXT_VIEW_FACING]
+        labels = [f"{item.ns}/{item.id}: {item.text}" for item in self.observed_signals
+                  if item.type == Marker.TEXT_VIEW_FACING]
+        self.hud_groups["signals"] = self.static_signal_labels + labels
+        self.outputs["signals_observed"].publish(geometry)
+        # Preserve the combined topic for existing consumers; RViz uses the split topics.
+        if self.outputs["signals"].publisher.get_subscription_count():
+            self.outputs["signals"].publish(self.static_signal_geometry + geometry)
 
     def signal_markers(self, header, registry=None):
         result = []
@@ -235,19 +266,23 @@ class Visualizer(Node):
                                            endpoints, (0.8, 0.4, 1, 0.65), 0.06, kind=Marker.LINE_LIST))
         return result
 
+    def clear_cell_values(self, header):
+        for topic in ("occupancy", "cell_cap"):
+            self.cell_color_publishers[topic].publish(CellColors(header=header, geometry_id=self.cell_geometry_id))
+            self.emit(topic, [])
+
     def dynamic_status(self, message):
-        if not self.valid_frame(message, "map", "occupancy", "cell_cap"):
+        if not self.valid_frame(message, "map"):
+            self.clear_cell_values(message.header)
             return
         if self.map and (len(message.speed_cap_mps) != len(self.cells) or len(message.occupancy_probability) != 13 * len(self.cells)):
             self.get_logger().error("DynamicStatus size differs from Visualizer local map; not displaying")
-            self.emit("occupancy", [])
-            self.emit("cell_cap", [])
+            self.clear_cell_values(message.header)
             return
         if any(not math.isfinite(value) or (value != -1 and not 0 <= value <= 1) for value in message.occupancy_probability) or any(
                 not math.isfinite(value) or value < 0 for value in message.speed_cap_mps):
             self.get_logger().error("Rejected DynamicStatus values")
-            self.emit("occupancy", [])
-            self.emit("cell_cap", [])
+            self.clear_cell_values(message.header)
             return
         probabilities = message.occupancy_probability[self.bin::13]
         self.draw_cell_values(message.header, "occupancy", probabilities)
@@ -256,33 +291,64 @@ class Visualizer(Node):
     def draw_cell_values(self, header, topic, values):
         if not self.map:
             return
-        if self.cell_edges is None:
-            self.cell_edges = []
+        if self.cell_geometry is None:
+            geometry = CellGeometry(header=Header(frame_id="map"), geometry_id=self.cell_geometry_id, offsets=[0])
+            # HDMap.load_cells guarantees cells are ordered by dense IDs starting at zero.
             for cell in self.cells:
                 points = [xyz(value) for value in cell.polygon3d()]
-                self.cell_edges.append([value for pair in zip(points, points[1:] + points[:1]) for value in pair])
-        namespace = f"occupancy/local_reference/bin_{self.bin}" if topic == "occupancy" else "speed/local_reference/cell_cap"
-        groups = {}
-        palette = {}
-        labels = []
-        for cell, edges in zip(self.cells, self.cell_edges):
-            value = values[cell.id]
-            if topic == "occupancy":
-                color = (0.5, 0.5, 0.5, 0.6) if value == -1 else (1.0, 0.1, 0.1, value*(13-self.bin)/13)
-                labels.append(f"occupancy/value/{cell.id}: bin={self.bin} p={float(value)!r}")
-            else:
-                ratio = max(0.0, min(1.0, value/20.0))
-                color = (1-ratio, ratio, 0.0, 0.8)
-                labels.append(f"speed/cap/{cell.id}: cap={float(value)!r} m/s")
-            opaque = color[3] >= 0.9998
-            if opaque not in groups:
-                groups[opaque] = marker(header, namespace, int(opaque), Marker.LINE_LIST, color)
-            if color not in palette:
-                palette[color] = ColorRGBA(r=float(color[0]), g=float(color[1]), b=float(color[2]), a=float(color[3]))
-            groups[opaque].points.extend(edges)
-            groups[opaque].colors.extend([palette[color]] * len(edges))
-        self.emit(topic, list(groups.values()))
-        self.hud_groups[topic] = labels
+                geometry.points.extend(points)
+                geometry.offsets.append(len(geometry.points))
+            self.cell_geometry = geometry
+            self.cell_geometry_publisher.publish(geometry)
+        cache_key = (self.bin, values.tobytes())
+        cached = self.cell_value_cache.get(topic)
+        if cached is None or cached[0] != cache_key:
+            colors, labels, palette = [], [], {}
+            for cell in self.cells:
+                value = values[cell.id]
+                if topic == "occupancy":
+                    color = (0.5, 0.5, 0.5, 0.6) if value == -1 else (1.0, 0.1, 0.1, value*(13-self.bin)/13)
+                    labels.append(f"occupancy/value/{cell.id}: bin={self.bin} p={float(value)!r}")
+                else:
+                    ratio = max(0.0, min(1.0, value/20.0))
+                    color = (1-ratio, ratio, 0.0, 0.8)
+                    labels.append(f"speed/cap/{cell.id}: cap={float(value)!r} m/s")
+                if color not in palette:
+                    palette[color] = ColorRGBA(r=float(color[0]), g=float(color[1]), b=float(color[2]), a=float(color[3]))
+                colors.append(palette[color])
+            cached = (cache_key, CellColors(header=header, geometry_id=self.cell_geometry_id, colors=colors), labels)
+            self.cell_value_cache[topic] = cached
+        cached[1].header = header
+        self.cell_color_publishers[topic].publish(cached[1])
+        self.hud_groups[topic] = cached[2]
+        if not self.outputs[topic].publisher.get_subscription_count():
+            return
+        legacy = self.cell_marker_cache.get(topic)
+        if legacy is None or legacy[0] != cache_key:
+            if self.cell_edges is None:
+                self.cell_edges = []
+                for start, end in zip(self.cell_geometry.offsets, self.cell_geometry.offsets[1:]):
+                    points = self.cell_geometry.points[start:end]
+                    self.cell_edges.append([p for pair in zip(points, points[1:] + points[:1]) for p in pair])
+            namespace = f"occupancy/local_reference/bin_{self.bin}" if topic == "occupancy" else "speed/local_reference/cell_cap"
+            groups = {}
+            for edges, color in zip(self.cell_edges, cached[1].colors):
+                opaque = color.a >= 0.9998
+                if opaque not in groups:
+                    groups[opaque] = marker(header, namespace, int(opaque), Marker.LINE_LIST,
+                                            (color.r, color.g, color.b, color.a))
+                group = groups[opaque]
+                if group.colors or group.color != color:
+                    if not group.colors:
+                        group.colors.extend([group.color] * len(group.points))
+                    group.colors.extend([color] * len(edges))
+                group.points.extend(edges)
+            legacy = (cache_key, list(groups.values()))
+            self.cell_marker_cache[topic] = legacy
+        for item in legacy[1]:
+            item.header = header
+        self.emit(topic, legacy[1])
+        self.hud_groups[topic] = cached[2]
 
     def global_path(self, message):
         labels = [f"requested lanelet IDs={list(message.data)}"]
@@ -311,7 +377,7 @@ class Visualizer(Node):
             f"control/requested/0: steer={message.steering!r} accel={message.target_accel!r} turn={message.turn_signal}"]
 
     def static_markers(self, header):
-        roads, cells = [], []
+        roads, cells = [], {}
         for shape in self.map.laneletMap().lineStringLayer:
             kind = str(shape.attributes["type"]) if "type" in shape.attributes else "unspecified"
             points = [xyz(value) for value in shape]
@@ -324,6 +390,8 @@ class Visualizer(Node):
                 boundary = road_line(header, f"map/local_reference/{kind}/{subtype}", shape.id, points, subtype)
                 if kind == "virtual":
                     boundary.color.r, boundary.color.g, boundary.color.b, boundary.color.a = 0.5, 0.5, 0.5, 0.35
+                elif "color" in shape.attributes and shape.attributes["color"] == "yellow":
+                    boundary.color.r, boundary.color.g, boundary.color.b = 1.0, 1.0, 0.0
                 roads.append(boundary)
                 if self.settings.get("show_lane_marking_types", True):
                     roads.append(text(header, "map/line_type", shape.id, points[0], f"{kind}/{subtype}"))
@@ -335,10 +403,18 @@ class Visualizer(Node):
                                    math.atan2(points[1].y-points[0].y, points[1].x-points[0].x)))
         for cell in self.cells:
             points = [xyz(value) for value in cell.polygon3d()]
-            cells.append(bounds(header, "cells/local_reference/bounds", cell.id, points, (0.2, 0.65, 0.8, 0.3)))
-            cells.append(line(header, "cells/local_reference/polygon", cell.id, points,
-                              (0.2, 1, 0.55, 0.65), 0.035, closed=True))
-        return roads, cells
+            # Retain every edge; spatial batches let RViz cull distant cells.
+            tile = (math.floor(points[0].x / 100), math.floor(points[0].y / 100))
+            if tile not in cells:
+                index = 2 * len(cells)
+                box = marker(header, "cells/local_reference/bounds", index, Marker.LINE_LIST, (0.2, 0.65, 0.8, 0.3))
+                polygon = marker(header, "cells/local_reference/polygon", index + 1, Marker.LINE_LIST, (0.2, 1, 0.55, 0.65))
+                polygon.scale.x = 0.035
+                cells[tile] = (box, polygon)
+            box, polygon = cells[tile]
+            box.points.extend(bounds_points(points))
+            polygon.points.extend(value for pair in zip(points, points[1:] + points[:1]) for value in pair)
+        return roads, [item for group in cells.values() for item in group]
 
     def draw_map(self):
         if not self.map:
@@ -347,9 +423,9 @@ class Visualizer(Node):
             header = Header(stamp=self.get_clock().now().to_msg(), frame_id="map")
             roads, cells = self.static_markers(header)
             self.emit("map", batch_lines(roads))
-            self.emit("cells", batch_lines(cells))
+            self.emit("cells", cells)
             self.map_drawn = True
-        self.emit("signals", self.static_signals + self.observed_signals)
+        self.draw_signals()
 
 
 def main(args=None):

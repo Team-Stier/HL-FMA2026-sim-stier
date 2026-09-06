@@ -1,0 +1,618 @@
+[
+  {
+    "controller": 48,
+    "lanelet": 121378,
+    "stopline": 542860,
+    "movement": "left",
+    "permitted_states": [
+      4,
+      5
+    ],
+    "source": "xodr_arrow_object:1553",
+    "api_selected_controller_id": 48,
+    "api_observation": "selected_controller",
+    "lane_validity_source": "unverified_not_specified",
+    "distance_to_approach_end_m": 0.14987943411474958,
+    "road_lane": [
+      1750,
+      0,
+      1
+    ],
+    "green_components": [
+      {
+        "id": "166",
+        "subtype": "-1"
+      }
+    ]
+  },
+  {
+    "controller": 225,
+    "lanelet": 125730,
+    "stopline": 542908,
+    "movement": "left",
+    "permitted_states": [
+      4,
+      5
+    ],
+    "source": "xodr_arrow_object:1664",
+    "api_selected_controller_id": 225,
+    "api_observation": "selected_controller",
+    "lane_validity_source": "unverified_not_specified",
+    "distance_to_approach_end_m": 0.15041626872887626,
+    "road_lane": [
+      1778,
+      0,
+      2
+    ],
+    "green_components": [
+      {
+        "id": "701",
+        "subtype": "-1"
+      }
+    ]
+  },
+  {
+    "controller": 57,
+    "lanelet": 125108,
+    "stopline": 542896,
+    "movement": "left+straight",
+    "permitted_states": [
+      5
+    ],
+    "source": "xodr_arrow_object:1656",
+    "api_selected_controller_id": 57,
+    "api_observation": "selected_controller",
+    "lane_validity_source": "unverified_not_specified",
+    "distance_to_approach_end_m": 0.14428508454696498,
+    "road_lane": [
+      1777,
+      3,
+      -1
+    ],
+    "green_components": [
+      {
+        "id": "193",
+        "subtype": "-1"
+      }
+    ]
+  },
+  {
+    "controller": 57,
+    "lanelet": 125108,
+    "stopline": 542902,
+    "movement": "left+straight",
+    "permitted_states": [
+      5
+    ],
+    "source": "xodr_arrow_object:1656",
+    "api_selected_controller_id": 57,
+    "api_observation": "selected_controller",
+    "lane_validity_source": "unverified_not_specified",
+    "distance_to_approach_end_m": 0.14428508454696498,
+    "road_lane": [
+      1777,
+      3,
+      -1
+    ],
+    "green_components": [
+      {
+        "id": "193",
+        "subtype": "-1"
+      }
+    ]
+  },
+  {
+    "controller": 58,
+    "lanelet": 129901,
+    "stopline": 542923,
+    "movement": "left",
+    "permitted_states": [
+      4,
+      5
+    ],
+    "source": "xodr_arrow_object:1701",
+    "api_selected_controller_id": 58,
+    "api_observation": "selected_controller",
+    "lane_validity_source": "unverified_not_specified",
+    "distance_to_approach_end_m": 0.15059494031935838,
+    "road_lane": [
+      1818,
+      0,
+      1
+    ],
+    "green_components": [
+      {
+        "id": "196",
+        "subtype": "-1"
+      }
+    ]
+  },
+  {
+    "controller": 104,
+    "lanelet": 236328,
+    "stopline": 544386,
+    "movement": "left+straight",
+    "permitted_states": [
+      5
+    ],
+    "source": "xodr_arrow_object:2997",
+    "api_selected_controller_id": 104,
+    "api_observation": "selected_controller",
+    "lane_validity_source": "unverified_not_specified",
+    "distance_to_approach_end_m": 0.0,
+    "road_lane": [
+      2116,
+      0,
+      -1
+    ],
+    "green_components": [
+      {
+        "id": "335",
+        "subtype": "-1"
+      }
+    ]
+  },
+  {
+    "controller": 106,
+    "lanelet": 236079,
+    "stopline": 544384,
+    "movement": "left",
+    "permitted_states": [
+      4,
+      5
+    ],
+    "source": "xodr_arrow_object:2987",
+    "api_selected_controller_id": 106,
+    "api_observation": "selected_controller",
+    "lane_validity_source": "unverified_not_specified",
+    "distance_to_approach_end_m": 0.0,
+    "road_lane": [
+      2115,
+      4,
+      -1
+    ],
+    "green_components": [
+      {
+        "id": "341",
+        "subtype": "-1"
+      }
+    ]
+  },
+  {
+    "controller": 105,
+    "lanelet": 234607,
+    "stopline": 543349,
+    "movement": "left+straight",
+    "permitted_states": [
+      5
+    ],
+    "source": "xodr_arrow_object:2953",
+    "api_selected_controller_id": 105,
+    "api_observation": "selected_controller",
+    "lane_validity_source": "unverified_not_specified",
+    "distance_to_approach_end_m": 0.15026112070223088,
+    "road_lane": [
+      2097,
+      0,
+      1
+    ],
+    "green_components": [
+      {
+        "id": "338",
+        "subtype": "-1"
+      }
+    ]
+  },
+  {
+    "controller": 70,
+    "lanelet": 138722,
+    "stopline": 542989,
+    "movement": "left+straight",
+    "permitted_states": [
+      5
+    ],
+    "source": "xodr_arrow_object:1863",
+    "api_selected_controller_id": 70,
+    "api_observation": "selected_controller",
+    "lane_validity_source": "unverified_not_specified",
+    "distance_to_approach_end_m": 0.14864992054911141,
+    "road_lane": [
+      1868,
+      0,
+      -1
+    ],
+    "green_components": [
+      {
+        "id": "232",
+        "subtype": "-1"
+      }
+    ]
+  },
+  {
+    "controller": 70,
+    "lanelet": 138722,
+    "stopline": 542995,
+    "movement": "left+straight",
+    "permitted_states": [
+      5
+    ],
+    "source": "xodr_arrow_object:1863",
+    "api_selected_controller_id": 70,
+    "api_observation": "selected_controller",
+    "lane_validity_source": "unverified_not_specified",
+    "distance_to_approach_end_m": 0.14864992054911141,
+    "road_lane": [
+      1868,
+      0,
+      -1
+    ],
+    "green_components": [
+      {
+        "id": "232",
+        "subtype": "-1"
+      }
+    ]
+  },
+  {
+    "controller": 71,
+    "lanelet": 150198,
+    "stopline": 543034,
+    "movement": "left+straight",
+    "permitted_states": [
+      5
+    ],
+    "source": "xodr_arrow_object:1957",
+    "api_selected_controller_id": 71,
+    "api_observation": "selected_controller",
+    "lane_validity_source": "unverified_not_specified",
+    "distance_to_approach_end_m": 0.1520840855968714,
+    "road_lane": [
+      1909,
+      0,
+      2
+    ],
+    "green_components": [
+      {
+        "id": "235",
+        "subtype": "-1"
+      }
+    ]
+  },
+  {
+    "controller": 71,
+    "lanelet": 150198,
+    "stopline": 543040,
+    "movement": "left+straight",
+    "permitted_states": [
+      5
+    ],
+    "source": "xodr_arrow_object:1957",
+    "api_selected_controller_id": 71,
+    "api_observation": "selected_controller",
+    "lane_validity_source": "unverified_not_specified",
+    "distance_to_approach_end_m": 0.1520840855968714,
+    "road_lane": [
+      1909,
+      0,
+      2
+    ],
+    "green_components": [
+      {
+        "id": "235",
+        "subtype": "-1"
+      }
+    ]
+  },
+  {
+    "controller": 72,
+    "lanelet": 159645,
+    "stopline": 543097,
+    "movement": "left",
+    "permitted_states": [
+      4,
+      5
+    ],
+    "source": "xodr_arrow_object:2133",
+    "api_selected_controller_id": 72,
+    "api_observation": "selected_controller",
+    "lane_validity_source": "unverified_not_specified",
+    "distance_to_approach_end_m": 0.1486727544141786,
+    "road_lane": [
+      1926,
+      5,
+      -2
+    ],
+    "green_components": [
+      {
+        "id": "238",
+        "subtype": "-1"
+      }
+    ]
+  },
+  {
+    "controller": 72,
+    "lanelet": 159645,
+    "stopline": 543106,
+    "movement": "left",
+    "permitted_states": [
+      4,
+      5
+    ],
+    "source": "xodr_arrow_object:2133",
+    "api_selected_controller_id": 72,
+    "api_observation": "selected_controller",
+    "lane_validity_source": "unverified_not_specified",
+    "distance_to_approach_end_m": 0.1486727544141786,
+    "road_lane": [
+      1926,
+      5,
+      -2
+    ],
+    "green_components": [
+      {
+        "id": "238",
+        "subtype": "-1"
+      }
+    ]
+  },
+  {
+    "controller": 91,
+    "lanelet": 229480,
+    "stopline": 543307,
+    "movement": "left+straight",
+    "permitted_states": [
+      5
+    ],
+    "source": "xodr_arrow_object:2893",
+    "api_selected_controller_id": 91,
+    "api_observation": "selected_controller",
+    "lane_validity_source": "unverified_not_specified",
+    "distance_to_approach_end_m": 0.1503197551572839,
+    "road_lane": [
+      2076,
+      11,
+      -1
+    ],
+    "green_components": [
+      {
+        "id": "296",
+        "subtype": "-1"
+      }
+    ]
+  },
+  {
+    "controller": 108,
+    "lanelet": 254679,
+    "stopline": 543466,
+    "movement": "left+straight",
+    "permitted_states": [
+      5
+    ],
+    "source": "xodr_arrow_object:3324",
+    "api_selected_controller_id": 108,
+    "api_observation": "selected_controller",
+    "lane_validity_source": "unverified_not_specified",
+    "distance_to_approach_end_m": 0.15144426958005397,
+    "road_lane": [
+      2264,
+      0,
+      -1
+    ],
+    "green_components": [
+      {
+        "id": "348",
+        "subtype": "10"
+      },
+      {
+        "id": "349",
+        "subtype": "-1"
+      }
+    ]
+  },
+  {
+    "controller": 109,
+    "lanelet": 257299,
+    "stopline": 543474,
+    "movement": "left",
+    "permitted_states": [
+      4,
+      5
+    ],
+    "source": "xodr_arrow_object:3370",
+    "api_selected_controller_id": 109,
+    "api_observation": "selected_controller",
+    "lane_validity_source": "unverified_not_specified",
+    "distance_to_approach_end_m": 0.15355491446000258,
+    "road_lane": [
+      2265,
+      4,
+      -1
+    ],
+    "green_components": [
+      {
+        "id": "352",
+        "subtype": "-1"
+      }
+    ]
+  },
+  {
+    "controller": 117,
+    "lanelet": 264552,
+    "stopline": 543507,
+    "movement": "left+straight",
+    "permitted_states": [
+      5
+    ],
+    "source": "xodr_arrow_object:3499",
+    "api_selected_controller_id": 117,
+    "api_observation": "selected_controller",
+    "lane_validity_source": "unverified_not_specified",
+    "distance_to_approach_end_m": 0.1542064065764257,
+    "road_lane": [
+      2312,
+      0,
+      2
+    ],
+    "green_components": [
+      {
+        "id": "376",
+        "subtype": "-1"
+      }
+    ]
+  },
+  {
+    "controller": 122,
+    "lanelet": 279033,
+    "stopline": 543561,
+    "movement": "left+straight",
+    "permitted_states": [
+      5
+    ],
+    "source": "xodr_arrow_object:3698",
+    "api_selected_controller_id": 122,
+    "api_observation": "selected_controller",
+    "lane_validity_source": "unverified_not_specified",
+    "distance_to_approach_end_m": 0.14591034440838596,
+    "road_lane": [
+      2396,
+      0,
+      1
+    ],
+    "green_components": [
+      {
+        "id": "391",
+        "subtype": "-1"
+      }
+    ]
+  },
+  {
+    "controller": 211,
+    "lanelet": 330140,
+    "stopline": 543726,
+    "movement": "left",
+    "permitted_states": [
+      4,
+      5
+    ],
+    "source": "xodr_arrow_object:4362",
+    "api_selected_controller_id": 211,
+    "api_observation": "selected_controller",
+    "lane_validity_source": "unverified_not_specified",
+    "distance_to_approach_end_m": 0.1496616149079273,
+    "road_lane": [
+      2564,
+      7,
+      -1
+    ],
+    "green_components": [
+      {
+        "id": "659",
+        "subtype": "-1"
+      }
+    ]
+  },
+  {
+    "controller": 134,
+    "lanelet": 357479,
+    "stopline": 543835,
+    "movement": "left",
+    "permitted_states": [
+      4,
+      5
+    ],
+    "source": "xodr_arrow_object:4711",
+    "api_selected_controller_id": 134,
+    "api_observation": "selected_controller",
+    "lane_validity_source": "unverified_not_specified",
+    "distance_to_approach_end_m": 0.15143706860173722,
+    "road_lane": [
+      2674,
+      3,
+      -2
+    ],
+    "green_components": [
+      {
+        "id": "427",
+        "subtype": "-1"
+      }
+    ]
+  },
+  {
+    "controller": 134,
+    "lanelet": 357479,
+    "stopline": 543838,
+    "movement": "left",
+    "permitted_states": [
+      4,
+      5
+    ],
+    "source": "xodr_arrow_object:4711",
+    "api_selected_controller_id": 134,
+    "api_observation": "selected_controller",
+    "lane_validity_source": "unverified_not_specified",
+    "distance_to_approach_end_m": 0.15143706860173722,
+    "road_lane": [
+      2674,
+      3,
+      -2
+    ],
+    "green_components": [
+      {
+        "id": "427",
+        "subtype": "-1"
+      }
+    ]
+  },
+  {
+    "controller": 161,
+    "lanelet": 431266,
+    "stopline": 544253,
+    "movement": "left",
+    "permitted_states": [
+      4,
+      5
+    ],
+    "source": "xodr_arrow_object:5706",
+    "api_selected_controller_id": 161,
+    "api_observation": "selected_controller",
+    "lane_validity_source": "unverified_not_specified",
+    "distance_to_approach_end_m": 0.15005742198478345,
+    "road_lane": [
+      2816,
+      3,
+      -2
+    ],
+    "green_components": [
+      {
+        "id": "509",
+        "subtype": "-1"
+      }
+    ]
+  },
+  {
+    "controller": 152,
+    "lanelet": 422966,
+    "stopline": 544223,
+    "movement": "left",
+    "permitted_states": [
+      4,
+      5
+    ],
+    "source": "xodr_arrow_object:5574",
+    "api_selected_controller_id": 152,
+    "api_observation": "selected_controller",
+    "lane_validity_source": "unverified_not_specified",
+    "distance_to_approach_end_m": 0.15129854072889054,
+    "road_lane": [
+      2815,
+      0,
+      2
+    ],
+    "green_components": [
+      {
+        "id": "482",
+        "subtype": "-1"
+      }
+    ]
+  }
+]

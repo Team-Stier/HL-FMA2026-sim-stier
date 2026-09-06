@@ -1,4 +1,5 @@
 #include <memory>
+#include <mutex>
 
 #include <OgreException.h>
 #include <OgreMaterial.h>
@@ -10,15 +11,72 @@
 #include <rviz_common/ros_topic_display.hpp>
 #include <rviz_default_plugins/displays/marker/marker_common.hpp>
 #include <rviz_default_plugins/displays/marker/markers/triangle_list_marker.hpp>
-#include <rviz_default_plugins/displays/marker_array/marker_array_display.hpp>
 #include <visualization_msgs/msg/marker_array.hpp>
+
+#include "snapshot_markers.hpp"
 
 namespace visualization {
 
-class StaticMarkerArray : public rviz_default_plugins::displays::MarkerArrayDisplay {
+class SnapshotMarkerArray : public rviz_common::RosTopicDisplay<visualization_msgs::msg::MarkerArray> {
+public:
+    SnapshotMarkerArray()
+        : markers_(std::make_unique<rviz_default_plugins::displays::MarkerCommon>(this)) {}
+
+    void onInitialize() override {
+        RosTopicDisplay::onInitialize();
+        markers_->initialize(context_, scene_node_);
+    }
+
+    void load(const rviz_common::Config & config) override {
+        RosTopicDisplay::load(config);
+        markers_->load(config);
+    }
+
+    void update(float wall_dt, float ros_dt) override {
+        std::vector<visualization_msgs::msg::MarkerArray::ConstSharedPtr> pending;
+        {
+            std::lock_guard<std::mutex> lock(queue_mutex_);
+            pending.swap(pending_);
+        }
+        for (const auto & array : pending) {
+            if (auto updates = snapshot_.update(array)) {
+                deleteStatus("Duplicate Marker Check");
+                for (auto & marker : *updates) {
+                    markers_->processMessage(std::move(marker));
+                }
+            } else {
+                markers_->addMessage(array);
+                markers_->update(wall_dt, ros_dt);
+            }
+        }
+        markers_->update(wall_dt, ros_dt);
+    }
+
+    void reset() override {
+        RosTopicDisplay::reset();
+        markers_->clearMarkers();
+        snapshot_.reset();
+        std::lock_guard<std::mutex> lock(queue_mutex_);
+        pending_.clear();
+    }
+
+protected:
+    void processMessage(visualization_msgs::msg::MarkerArray::ConstSharedPtr array) override {
+        std::lock_guard<std::mutex> lock(queue_mutex_);
+        pending_.push_back(std::move(array));
+    }
+
+private:
+    std::unique_ptr<rviz_default_plugins::displays::MarkerCommon> markers_;
+    MarkerSnapshot snapshot_;
+    std::mutex queue_mutex_;
+    std::vector<visualization_msgs::msg::MarkerArray::ConstSharedPtr> pending_;
+};
+
+class StaticMarkerArray : public SnapshotMarkerArray {
 public:
     void reset() override {
-        MarkerArrayDisplay::reset();
+        SnapshotMarkerArray::reset();
         if (subscription_) {
             unsubscribe();
             subscribe();
@@ -115,4 +173,5 @@ private:
 }
 
 PLUGINLIB_EXPORT_CLASS(visualization::AerialDisplay, rviz_common::Display)
+PLUGINLIB_EXPORT_CLASS(visualization::SnapshotMarkerArray, rviz_common::Display)
 PLUGINLIB_EXPORT_CLASS(visualization::StaticMarkerArray, rviz_common::Display)

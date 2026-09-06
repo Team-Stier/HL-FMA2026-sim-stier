@@ -80,6 +80,7 @@ public:
     void onEnable() override {
         if (overlay_) {
             overlay_->show();
+            overlay_->raise();
         }
     }
 
@@ -96,14 +97,21 @@ public:
         auto panel = overlay_->parentWidget();
         if (!panel->isVisible() || panel->window()->isMinimized() ||
             (!panel->window()->isActiveWindow() && !overlay_->isActiveWindow())) {
-            overlay_->hide();
+            if (overlay_->isVisible()) {
+                overlay_->hide();
+            }
             return;
         }
         const auto origin = panel->mapToGlobal(QPoint(16, 16));
-        overlay_->setGeometry(origin.x(), origin.y(), std::max(1, std::min(400, panel->width() - 32)),
-                              std::max(1, std::min(360, panel->height() - 32)));
-        overlay_->show();
-        overlay_->raise();
+        const QRect geometry(origin.x(), origin.y(), std::max(1, std::min(400, panel->width() - 32)),
+                             std::max(1, std::min(360, panel->height() - 32)));
+        if (overlay_->geometry() != geometry) {
+            overlay_->setGeometry(geometry);
+        }
+        if (!overlay_->isVisible()) {
+            overlay_->show();
+            overlay_->raise();
+        }
         std::string text;
         {
             std::lock_guard<std::mutex> guard(state_->mutex);

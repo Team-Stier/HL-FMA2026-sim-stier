@@ -1,0 +1,14 @@
+[
+  {
+    "case": "wrong_page",
+    "rejected_before_publication": true
+  },
+  {
+    "case": "confirmed_error",
+    "rejected_before_publication": true
+  },
+  {
+    "case": "missing_tile",
+    "rejected_before_publication": true
+  }
+]

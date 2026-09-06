@@ -22,7 +22,7 @@ Visualization Manager:
     -   Class: visualization/HUD
         Name: HUD
         Enabled: true
-    -   Class: rviz_default_plugins/MarkerArray
+    -   Class: visualization/SnapshotMarkerArray
         Name: Ego
         Enabled: true
         Topic:
@@ -31,7 +31,7 @@ Visualization Manager:
             History Policy: Keep Last
             Reliability Policy: Best Effort
             Durability Policy: Volatile
-    -   Class: rviz_default_plugins/MarkerArray
+    -   Class: visualization/SnapshotMarkerArray
         Name: Objects
         Enabled: true
         Topic:
@@ -40,15 +40,28 @@ Visualization Manager:
             History Policy: Keep Last
             Reliability Policy: Best Effort
             Durability Policy: Volatile
-    -   Class: rviz_default_plugins/MarkerArray
+    -   Class: rviz_common/Group
         Name: Signals
         Enabled: true
-        Topic:
-            Value: /visualization/signals
-            Depth: 1
-            History Policy: Keep Last
-            Reliability Policy: Best Effort
-            Durability Policy: Volatile
+        Displays:
+        -   Class: visualization/StaticMarkerArray
+            Name: Static local reference
+            Enabled: true
+            Topic:
+                Value: /visualization/signals_static
+                Depth: 1
+                History Policy: Keep Last
+                Reliability Policy: Reliable
+                Durability Policy: Transient Local
+        -   Class: visualization/SnapshotMarkerArray
+            Name: Observed controller
+            Enabled: true
+            Topic:
+                Value: /visualization/signals_observed
+                Depth: 1
+                History Policy: Keep Last
+                Reliability Policy: Best Effort
+                Durability Policy: Volatile
     -   Class: visualization/StaticMarkerArray
         Name: Map local reference
         Enabled: true
@@ -67,7 +80,7 @@ Visualization Manager:
             History Policy: Keep Last
             Reliability Policy: Reliable
             Durability Policy: Transient Local
-    -   Class: rviz_default_plugins/MarkerArray
+    -   Class: visualization/SnapshotMarkerArray
         Name: Global path local reference
         Enabled: true
         Topic:
@@ -76,25 +89,25 @@ Visualization Manager:
             History Policy: Keep Last
             Reliability Policy: Best Effort
             Durability Policy: Volatile
-    -   Class: rviz_default_plugins/MarkerArray
+    -   Class: visualization/CellColors
         Name: Occupancy
         Enabled: true
         Topic:
-            Value: /visualization/occupancy
+            Value: /visualization/occupancy_colors
             Depth: 1
             History Policy: Keep Last
             Reliability Policy: Best Effort
             Durability Policy: Volatile
-    -   Class: rviz_default_plugins/MarkerArray
+    -   Class: visualization/CellColors
         Name: Cell speed caps
         Enabled: true
         Topic:
-            Value: /visualization/cell_cap
+            Value: /visualization/cell_cap_colors
             Depth: 1
             History Policy: Keep Last
             Reliability Policy: Best Effort
             Durability Policy: Volatile
-    -   Class: rviz_default_plugins/MarkerArray
+    -   Class: visualization/SnapshotMarkerArray
         Name: Search tree
         Enabled: true
         Topic:
@@ -103,7 +116,7 @@ Visualization Manager:
             History Policy: Keep Last
             Reliability Policy: Best Effort
             Durability Policy: Volatile
-    -   Class: rviz_default_plugins/MarkerArray
+    -   Class: visualization/SnapshotMarkerArray
         Name: tracker cell queries
         Enabled: true
         Topic:
@@ -112,7 +125,7 @@ Visualization Manager:
             History Policy: Keep Last
             Reliability Policy: Best Effort
             Durability Policy: Volatile
-    -   Class: rviz_default_plugins/MarkerArray
+    -   Class: visualization/SnapshotMarkerArray
         Name: planner cell queries
         Enabled: true
         Topic:
@@ -121,7 +134,7 @@ Visualization Manager:
             History Policy: Keep Last
             Reliability Policy: Best Effort
             Durability Policy: Volatile
-    -   Class: rviz_default_plugins/MarkerArray
+    -   Class: visualization/SnapshotMarkerArray
         Name: annotator cell queries
         Enabled: true
         Topic:

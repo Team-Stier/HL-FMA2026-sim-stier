@@ -1,0 +1,146 @@
+{
+  "inputs": {
+    "xodr": "5a369c7b0609fc98b0034680473465db4273dd396ffb37980996cea70ec6ca2f",
+    "osgb": "2d8f83fdc26cb7f8373e71cf850c70f7d90981362789fb474eb31b0d5b253296",
+    "map": "e7a426f900813748747a39233f3678237fd7f849c335bae3bc3014b31ae678b0",
+    "renderer": "056f2785f6d1e12d41859968427edb5244060317735a5a549846f2747846d05b",
+    "coverage": "0b3ff222fc15a54247bcb798f30683e9af8f225c3e97dac5070a06476e41cc10",
+    "lod_scale": 0.001,
+    "grid_origin": [
+      -500,
+      -1200
+    ],
+    "core_m": 80,
+    "context_m": 10,
+    "metres_per_pixel": 0.078125,
+    "block_pixels": 4352
+  },
+  "road_count": 1,
+  "tile_count": 1,
+  "block_count": 1,
+  "pages": [
+    {
+      "file": "p000.jpg",
+      "tile_ids": [
+        "t29_26"
+      ]
+    }
+  ],
+  "tiles": [
+    {
+      "id": "t29_26",
+      "ix": 26,
+      "iy": 29,
+      "bounds_xy_m": [
+        1580,
+        1120,
+        1660,
+        1200
+      ],
+      "context_bounds": [
+        1570,
+        1110,
+        1670,
+        1210
+      ],
+      "block_id": "b07_06",
+      "road_ids": [
+        2819
+      ],
+      "roads_intersecting_core": [],
+      "scope": "supplemental source objects5960–5962 outside road coverage",
+      "view_bounds_xy_m": [
+        1570,
+        1110,
+        1670,
+        1210
+      ],
+      "native_lanelets": [],
+      "cell_count": 0,
+      "cell_ids": [],
+      "stoplines": [
+        {
+          "id": 544306,
+          "attrs": {
+            "cell_assignment": "unresolved",
+            "correction_evidence": "none",
+            "effective_t": "171.67240042661751",
+            "source": "Rm_StopLine_300cm_JPN_01.flt",
+            "type": "stop_line",
+            "visual_z_offset_m": "8.0000000000000002e-03",
+            "xodr_object_id": "5962",
+            "xodr_road_id": "2819",
+            "xodr_s": "0.0",
+            "xodr_t": "1.7167240042661751e+02"
+          }
+        },
+        {
+          "id": 544300,
+          "attrs": {
+            "cell_assignment": "unresolved",
+            "correction_evidence": "none",
+            "effective_t": "171.67661061292017",
+            "source": "Rm_StopLine_300cm_JPN_01.flt",
+            "type": "stop_line",
+            "visual_z_offset_m": "8.0000000000000002e-03",
+            "xodr_object_id": "5960",
+            "xodr_road_id": "2819",
+            "xodr_s": "0.0",
+            "xodr_t": "1.7167661061292017e+02"
+          }
+        },
+        {
+          "id": 544303,
+          "attrs": {
+            "cell_assignment": "unresolved",
+            "correction_evidence": "none",
+            "effective_t": "171.720608853258",
+            "source": "Rm_StopLine_300cm_JPN_01.flt",
+            "type": "stop_line",
+            "visual_z_offset_m": "8.0000000000000002e-03",
+            "xodr_object_id": "5961",
+            "xodr_road_id": "2819",
+            "xodr_s": "0.0",
+            "xodr_t": "1.7172060885325800e+02"
+          }
+        }
+      ],
+      "signal_links": [],
+      "review_status": "reviewed",
+      "page": "p000.jpg",
+      "review": {
+        "tile_id": "t29_26",
+        "page": "p000.jpg",
+        "observations": [
+          "건물/장면 가장자리 부지에 붉은 정지선이 겹쳐 나타남. 차도·횡단보도 도색은 없음. XODR road2819 objects5960/5961/5962의 s=0,t≈171.7m 원본 위치이며 cell·controller 할당 없음. 세 객체를 삭제하거나 도로로 옮기지 않고 원본 기준 유지."
+        ],
+        "decision": "preserve_by_xodr_policy",
+        "source_keys": {
+          "roads": [
+            2819
+          ],
+          "stops": [
+            {
+              "native_stopline": 544306,
+              "road": 2819,
+              "object": 5962
+            },
+            {
+              "native_stopline": 544300,
+              "road": 2819,
+              "object": 5960
+            },
+            {
+              "native_stopline": 544303,
+              "road": 2819,
+              "object": 5961
+            }
+          ]
+        },
+        "zoomed_images": []
+      }
+    }
+  ],
+  "coverage_source": "/tmp/hdmap-audit/full-vision/supplemental-coverage.json",
+  "review_status": "visually_reviewed_with_xodr_policy"
+}

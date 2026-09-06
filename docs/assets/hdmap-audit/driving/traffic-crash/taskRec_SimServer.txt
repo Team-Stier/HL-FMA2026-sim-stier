@@ -1,0 +1,168 @@
+INFO  Sat 2026-09-05 23:15:48 processCmdLine:     Run as a Master
+INFO  Sat 2026-09-05 23:15:48 main:                Date:          Sat Sep  5 23:15:48 2026
+ MSC Id:        b0a4606cceb0 (ethernet) (Linux)
+ Hostname:      stier (user stier, display /dev/tty)
+ License files: 27500@stier
+ CEID:          74D27349-AB933388
+ User:          stier
+ Display:       /dev/tty
+ LAPI Version:  LAPI 2025.1.0 (CL 81b1d9c5) (FLEXlm 11.19.6.3)
+
+VTD_ImageGenerator                      15001
+VTD_vIG_Pedestrians1                    15005
+VTD_vIG_Pedestrians2                    15006
+VTD_vIG_SDK_Base                        15008
+VTD_vIG_SDK_OptiX                       15009
+VTD_vIG_OptiX_RunTime                   15010
+VTD_TRAFFIC_SCENARIO                    15011
+VTD_TaskControl                         15012
+VTD_VtGUI                               15013
+VTD_SCP_GUI                             15014
+VTD_ModuleManager                       15015
+VTD_ModuleManager_SDK                   15016
+VTD_RoadDesigner                        15017
+VTD_Sound                               15022
+VTD_OpenDRIVE_SDK                       15024
+VTD_OpenDRIVE_Gateway                   15025
+VTD_SmartDB                             15026
+VTD_Vehicle_Model_StandardDB            15027
+VTD_Vehicle_Model_Dev_License           15029
+VTD_Vehicle_Model_Showroom              15030
+VTD_Pedestrian_Animation                15034
+VTD_RoadDesigner_3D                     15138
+VTD_AVL_VSM_Core                        15139
+VTD_AVL_VSM_Simulate                    15140
+VTD_Perception_Sensor_Base              15141
+VTD_Perception_Sensor_Full              15142
+VTD_ScenarioEngine                      15143
+VTD_USD_Import                          15144
+VTD_USD_Export                          15145
+VTDx_Scheduler                          15147
+VTDx_ObjectListSensor                   15148
+Using MSC_LICENSE_FILE: 27500@stier
+
+Checked out feature (VTD_TaskControl). LICENSING_STATE: 1(OK)
+
+INFO  Sat 2026-09-05 23:15:48 SetupBase::initialize: Resolved VTD_ROOT </home/stier/VIRES/VTD.2025.2>
+INFO  Sat 2026-09-05 23:15:48 SetupBase::initialize: -- Default setting --
+INFO  Sat 2026-09-05 23:15:48 SetupBase::showInfo: ---- Settings info ----
+INFO  Sat 2026-09-05 23:15:48 SetupBase::showInfo: Config name = Standard
+INFO  Sat 2026-09-05 23:15:48 SetupBase::showInfo: Idle rate = 20
+INFO  Sat 2026-09-05 23:15:48 SetupBase::showInfo: Work rate = 33
+INFO  Sat 2026-09-05 23:15:48 SetupBase::showInfo: log dir = /tmp
+INFO  Sat 2026-09-05 23:15:48 SetupBase::showInfo: log name = taskRec_SimServer.txt
+INFO  Sat 2026-09-05 23:15:48 SetupBase::showInfo: notify level = INFO
+INFO  Sat 2026-09-05 23:15:48 SetupBase::showInfo: username = stier
+INFO  Sat 2026-09-05 23:15:48 SetupBase::showInfo: vtdRoot = /home/stier/VIRES/VTD.2025.2
+INFO  Sat 2026-09-05 23:15:48 Master::initialize: unblock signals  SIGCHLD SIGINT SIGTERM
+INFO  Sat 2026-09-05 23:15:48 Master::initialize: Preparing for redirecting </home/stier/VIRES/VTD.2025.2/bin/../Data/Setups/00_HL_VTD/Config/SimServer/simServer.xml> [configName = Standard] base on VTD_ROOT...
+INFO  Sat 2026-09-05 23:15:48 Master::initialize: Config file absolute path </home/stier/VIRES/VTD.2025.2/bin/../Data/Setups/00_HL_VTD/Config/SimServer>
+INFO  Sat 2026-09-05 23:15:48 Master::initialize: VTD_ROOT absolute path </home/stier/VIRES/VTD.2025.2>
+INFO  Sat 2026-09-05 23:15:48 Master::initialize: Config file relative path to VTD_ROOT <Data/Setups/00_HL_VTD/Config/SimServer>
+INFO  Sat 2026-09-05 23:15:48 Master::initialize: Reset config file's path to <Data/Setups/00_HL_VTD/Config/SimServer/simServer.xml>
+INFO  Sat 2026-09-05 23:15:48 Master::initialize: Change working directory to </home/stier/VIRES/VTD.2025.2>
+INFO  Sat 2026-09-05 23:15:48 Master::initialize: Verify working directory </home/stier/VIRES/VTD.2025.2>
+INFO  Sat 2026-09-05 23:15:48 MasterSetup::normalize: normalizing <Data/Setups/00_HL_VTD/Config/SimServer/simServer.xml> [setupName = Standard] ...
+INFO  Sat 2026-09-05 23:15:48 MasterSetup::normalize: predefined envvar [PORT_SIMSERVER = 32512]
+INFO  Sat 2026-09-05 23:15:48 Master::initialize: Run as a Master, host <stier> [tuple = 127.0.1.1:32512], 
+INFO  Sat 2026-09-05 23:15:48 vtd::SocketTcpMultipleServerChannel::open: open: success open port 32512 on channel Master.
+INFO  Sat 2026-09-05 23:15:48 Master::initialize: Set envvar PORT_SIMSERVER to <32512>
+INFO  Sat 2026-09-05 23:15:48 Master::initialize: going to cbInit ... 
+INFO  Sat 2026-09-05 23:15:48 Master::cbInit:     going to cbRun
+INFO  Sat 2026-09-05 23:15:48 SetupBase::initialize: Resolved VTD_ROOT </home/stier/VIRES/VTD.2025.2>
+INFO  Sat 2026-09-05 23:15:48 SetupBase::initialize: -- Default setting --
+INFO  Sat 2026-09-05 23:15:48 SetupBase::showInfo: ---- Settings info ----
+INFO  Sat 2026-09-05 23:15:48 SetupBase::showInfo: Config name = Standard
+INFO  Sat 2026-09-05 23:15:48 SetupBase::showInfo: Idle rate = 20
+INFO  Sat 2026-09-05 23:15:48 SetupBase::showInfo: Work rate = 33
+INFO  Sat 2026-09-05 23:15:48 SetupBase::showInfo: log dir = /tmp
+INFO  Sat 2026-09-05 23:15:48 SetupBase::showInfo: log name = taskRec_SimServer.txt
+INFO  Sat 2026-09-05 23:15:48 SetupBase::showInfo: notify level = INFO
+INFO  Sat 2026-09-05 23:15:48 SetupBase::showInfo: username = stier
+INFO  Sat 2026-09-05 23:15:48 SetupBase::showInfo: vtdRoot = /home/stier/VIRES/VTD.2025.2
+INFO  Sat 2026-09-05 23:15:48 vtd::SocketTcpServerChannel::open: open: success open port 32513 on channel stier.
+INFO  Sat 2026-09-05 23:15:48 Master::cbInit:     Starting a slave <stier> by command '${VTD_ROOT}/Runtime/Core/SimServer/startSlave.sh stier 32512 127.0.1.1 /home/stier/VIRES/VTD.2025.2 stier stier /tmp/taskRec_SimServerSlave.txt 127.0.1.1'
+INFO  Sat 2026-09-05 23:15:48 Master::cbInit:     system(): 0
+INFO  Sat 2026-09-05 23:15:48 Master::operator:   welcome <stier> [port = 32513]
+INFO  Sat 2026-09-05 23:15:48 SlaveStub::operator: return from <stier> calling method <configure> [pass = true] 
+INFO  Sat 2026-09-05 23:15:48 SlaveStub::operator: host <stier> success [isConfigured = true]
+INFO  Sat 2026-09-05 23:15:48 Master::transit:    <Config> ==> <Ready>
+INFO  Sat 2026-09-05 23:15:48 SlaveStub::operator: return from <stier> calling method <load> [pass = true] 
+INFO  Sat 2026-09-05 23:15:48 SlaveBase::startExplicitTask: <ParamServer>. [Go]
+INFO  Sat 2026-09-05 23:15:48 SlaveStub::operator: task <ParamServer> success [task running = true]
+INFO  Sat 2026-09-05 23:15:48 SlaveStub::operator: return from <stier> calling method <load> [pass = true] 
+INFO  Sat 2026-09-05 23:15:48 SlaveBase::startExplicitTask: <TaskControl>. [Go]
+INFO  Sat 2026-09-05 23:15:48 SlaveStub::operator: task <TaskControl> success [task running = true]
+INFO  Sat 2026-09-05 23:15:49 SlaveStub::operator: return from <stier> calling method <load> [pass = true] 
+INFO  Sat 2026-09-05 23:15:49 SlaveBase::startExplicitTask: <Traffic>. [Go]
+INFO  Sat 2026-09-05 23:15:49 SlaveStub::operator: task <Traffic> success [task running = true]
+INFO  Sat 2026-09-05 23:15:49 SlaveStub::operator: return from <stier> calling method <load> [pass = true] 
+INFO  Sat 2026-09-05 23:15:49 SlaveBase::startExplicitTask: <VtGui>. [Go]
+INFO  Sat 2026-09-05 23:15:49 SlaveStub::operator: task <VtGui> success [task running = true]
+INFO  Sat 2026-09-05 23:15:49 SlaveStub::operator: return from <stier> calling method <load> [pass = true] 
+INFO  Sat 2026-09-05 23:15:49 SlaveBase::startExplicitTask: <hlvtdMediaMTX>. [Go]
+INFO  Sat 2026-09-05 23:15:49 SlaveStub::operator: task <hlvtdMediaMTX> success [task running = true]
+INFO  Sat 2026-09-05 23:21:21 SlaveStub::operator: return from <stier> calling method <load> [pass = true] 
+INFO  Sat 2026-09-05 23:21:21 SlaveBase::startExplicitTask: <ModuleManager>. [Go]
+INFO  Sat 2026-09-05 23:21:21 SlaveBase::startExplicitTask: <ParamServer> is already running. [Cancel]
+INFO  Sat 2026-09-05 23:21:21 SlaveBase::startExplicitTask: <TaskControl> is already running. [Cancel]
+INFO  Sat 2026-09-05 23:21:21 SlaveBase::startExplicitTask: <Traffic> is already running. [Cancel]
+INFO  Sat 2026-09-05 23:21:21 SlaveBase::startExplicitTask: <VtGui> is already running. [Cancel]
+INFO  Sat 2026-09-05 23:21:21 SlaveBase::startExplicitTask: <hlvtdCameraSender>. [Go]
+INFO  Sat 2026-09-05 23:21:21 SlaveBase::startExplicitTask: <hlvtdLidarSender>. [Go]
+INFO  Sat 2026-09-05 23:21:21 SlaveBase::startExplicitTask: <hlvtdMediaMTX> is already running. [Cancel]
+INFO  Sat 2026-09-05 23:21:21 SlaveBase::startExplicitTask: <igLidar>. [Go]
+INFO  Sat 2026-09-05 23:21:21 SlaveBase::startExplicitTask: <igLidarWriter>. [Go]
+INFO  Sat 2026-09-05 23:21:21 SlaveBase::startExplicitTask: <igVisualBroadcast>. [Go]
+INFO  Sat 2026-09-05 23:21:21 SlaveBase::startExplicitTask: <igVisualStudent>. [Go]
+INFO  Sat 2026-09-05 23:21:21 SlaveStub::operator: host <stier> success [implicit tasks running = true]
+INFO  Sat 2026-09-05 23:21:21 Master::transit:    <Ready> ==> <Loaded>
+INFO  Sat 2026-09-05 23:26:05 SlaveStub::operator: return from <stier> calling method <unload> [pass = true] 
+INFO  Sat 2026-09-05 23:26:05 SlaveBase::stopGroupTasks: Stopping stopGroupTasks, SLAVEBASE, line number hundered ninety one
+INFO  Sat 2026-09-05 23:26:05 SlaveBase::stopExplicitTask: <hlvtdCameraSender>. [Go]
+INFO  Sat 2026-09-05 23:26:05 SlaveBase::stopGroupTasks: Stopping stopGroupTasks, SLAVEBASE, line number hundered ninety one
+INFO  Sat 2026-09-05 23:26:05 SlaveBase::stopExplicitTask: <hlvtdLidarSender>. [Go]
+INFO  Sat 2026-09-05 23:26:05 SlaveBase::stopGroupTasks: Stopping stopGroupTasks, SLAVEBASE, line number hundered ninety one
+INFO  Sat 2026-09-05 23:26:05 SlaveBase::stopExplicitTask: <igLidar>. [Go]
+INFO  Sat 2026-09-05 23:26:05 SlaveBase::stopGroupTasks: Stopping stopGroupTasks, SLAVEBASE, line number hundered ninety one
+INFO  Sat 2026-09-05 23:26:05 SlaveBase::stopExplicitTask: <igLidarWriter>. [Go]
+INFO  Sat 2026-09-05 23:26:05 SlaveBase::stopGroupTasks: Stopping stopGroupTasks, SLAVEBASE, line number hundered ninety one
+INFO  Sat 2026-09-05 23:26:05 SlaveBase::stopExplicitTask: <igVisualBroadcast>. [Go]
+INFO  Sat 2026-09-05 23:26:05 SlaveBase::stopGroupTasks: Stopping stopGroupTasks, SLAVEBASE, line number hundered ninety one
+INFO  Sat 2026-09-05 23:26:05 SlaveBase::stopExplicitTask: <igVisualStudent>. [Go]
+INFO  Sat 2026-09-05 23:26:05 SlaveStub::operator: group <igGroup> success [group running = false]
+INFO  Sat 2026-09-05 23:26:08 SlaveStub::operator: return from <stier> calling method <load> [pass = true] 
+INFO  Sat 2026-09-05 23:26:08 SlaveBase::startExplicitTask: <hlvtdCameraSender>. [Go]
+INFO  Sat 2026-09-05 23:26:08 SlaveBase::startExplicitTask: <hlvtdLidarSender>. [Go]
+INFO  Sat 2026-09-05 23:26:08 SlaveBase::startExplicitTask: <igLidar>. [Go]
+INFO  Sat 2026-09-05 23:26:08 SlaveBase::startExplicitTask: <igLidarWriter>. [Go]
+INFO  Sat 2026-09-05 23:26:08 SlaveBase::startExplicitTask: <igVisualBroadcast>. [Go]
+INFO  Sat 2026-09-05 23:26:08 SlaveBase::startExplicitTask: <igVisualStudent>. [Go]
+INFO  Sat 2026-09-05 23:26:08 SlaveStub::operator: group <igGroup> success [group running = true]
+INFO  Sat 2026-09-05 23:54:09 SlaveStub::operator: return from <stier> calling method <unload> [pass = true] 
+INFO  Sat 2026-09-05 23:54:09 SlaveBase::stopGroupTasks: Stopping stopGroupTasks, SLAVEBASE, line number hundered ninety one
+INFO  Sat 2026-09-05 23:54:09 SlaveBase::stopExplicitTask: <hlvtdCameraSender>. [Go]
+INFO  Sat 2026-09-05 23:54:09 SlaveBase::stopGroupTasks: Stopping stopGroupTasks, SLAVEBASE, line number hundered ninety one
+INFO  Sat 2026-09-05 23:54:09 SlaveBase::stopExplicitTask: <hlvtdLidarSender>. [Go]
+INFO  Sat 2026-09-05 23:54:09 SlaveBase::stopGroupTasks: Stopping stopGroupTasks, SLAVEBASE, line number hundered ninety one
+INFO  Sat 2026-09-05 23:54:09 SlaveBase::stopExplicitTask: <igLidar>. [Go]
+INFO  Sat 2026-09-05 23:54:09 SlaveBase::stopGroupTasks: Stopping stopGroupTasks, SLAVEBASE, line number hundered ninety one
+INFO  Sat 2026-09-05 23:54:09 SlaveBase::stopExplicitTask: <igLidarWriter>. [Go]
+INFO  Sat 2026-09-05 23:54:09 SlaveBase::stopGroupTasks: Stopping stopGroupTasks, SLAVEBASE, line number hundered ninety one
+INFO  Sat 2026-09-05 23:54:09 SlaveBase::stopExplicitTask: <igVisualBroadcast>. [Go]
+INFO  Sat 2026-09-05 23:54:09 SlaveBase::stopGroupTasks: Stopping stopGroupTasks, SLAVEBASE, line number hundered ninety one
+INFO  Sat 2026-09-05 23:54:09 SlaveBase::stopExplicitTask: <igVisualStudent>. [Go]
+INFO  Sat 2026-09-05 23:54:09 SlaveStub::operator: group <igGroup> success [group running = false]
+INFO  Sat 2026-09-05 23:54:12 SlaveStub::operator: return from <stier> calling method <load> [pass = true] 
+INFO  Sat 2026-09-05 23:54:12 SlaveBase::startExplicitTask: <hlvtdCameraSender>. [Go]
+INFO  Sat 2026-09-05 23:54:12 SlaveBase::startExplicitTask: <hlvtdLidarSender>. [Go]
+INFO  Sat 2026-09-05 23:54:12 SlaveBase::startExplicitTask: <igLidar>. [Go]
+INFO  Sat 2026-09-05 23:54:12 SlaveBase::startExplicitTask: <igLidarWriter>. [Go]
+INFO  Sat 2026-09-05 23:54:12 SlaveBase::startExplicitTask: <igVisualBroadcast>. [Go]
+INFO  Sat 2026-09-05 23:54:12 SlaveBase::startExplicitTask: <igVisualStudent>. [Go]
+INFO  Sat 2026-09-05 23:54:12 SlaveStub::operator: group <igGroup> success [group running = true]
+INFO  Sat 2026-09-05 20:35:08 Master::transit:    <Loaded> ==> <Ending>
+INFO  Sat 2026-09-05 20:35:09 SlaveStub::operator: return from <stier> calling method <terminate> [pass = true] 
+INFO  Sat 2026-09-05 20:35:09 SlaveStub::operator: host <stier> success [isTerminated = true]
+INFO  Sat 2026-09-05 20:35:09 Master::cbExit:     stop the running loop, server is about to exit.
+INFO  Sat 2026-09-05 20:35:09 Master::run:        Exit normally!

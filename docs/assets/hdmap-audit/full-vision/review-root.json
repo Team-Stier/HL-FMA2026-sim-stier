@@ -1,0 +1,1571 @@
+{
+  "reviewer": "root",
+  "files_actually_viewed": [
+    "/tmp/hdmap-audit/full-vision/atlas/pages/p000.jpg",
+    "/tmp/hdmap-audit/full-vision/atlas/pages/p004.jpg",
+    "/tmp/hdmap-audit/full-vision/atlas/pages/p008.jpg",
+    "/tmp/hdmap-audit/full-vision/atlas/pages/p012.jpg",
+    "/tmp/hdmap-audit/full-vision/atlas/pages/p016.jpg",
+    "/tmp/hdmap-audit/full-vision/atlas/pages/p020.jpg",
+    "/tmp/hdmap-audit/full-vision/atlas/pages/p024.jpg",
+    "/tmp/hdmap-audit/full-vision/atlas/pages/p028.jpg",
+    "/tmp/hdmap-audit/full-vision/atlas/pages/p032.jpg",
+    "/tmp/hdmap-audit/full-vision/atlas/pages/p036.jpg",
+    "/tmp/hdmap-audit/full-vision/atlas/pages/p040.jpg",
+    "/tmp/hdmap-audit/full-vision/atlas/pages/p044.jpg",
+    "/tmp/hdmap-audit/full-vision/atlas/pages/p048.jpg",
+    "/tmp/hdmap-audit/full-vision/atlas/pages/p052.jpg",
+    "/tmp/hdmap-audit/full-vision/atlas/pages/p056.jpg",
+    "/tmp/hdmap-audit/full-vision/atlas/pages/p060.jpg",
+    "/tmp/hdmap-audit/full-vision/atlas/pages/p064.jpg",
+    "/tmp/hdmap-audit/full-vision/atlas/pages/p068.jpg",
+    "/tmp/hdmap-audit/full-vision/atlas/pages/p072.jpg",
+    "/tmp/hdmap-audit/full-vision/atlas/pages/p076.jpg",
+    "/tmp/hdmap-audit/full-vision/atlas/pages/p080.jpg",
+    "/tmp/hdmap-audit/full-vision/atlas/pages/p084.jpg",
+    "/tmp/hdmap-audit/full-vision/atlas/pages/p088.jpg",
+    "/tmp/hdmap-audit/full-vision/atlas/pages/p092.jpg",
+    "/tmp/hdmap-audit/full-vision/atlas/pages/p096.jpg",
+    "/tmp/hdmap-audit/full-vision/atlas/pages/p100.jpg",
+    "/tmp/hdmap-audit/full-vision/atlas/pages/p104.jpg",
+    "/tmp/hdmap-audit/full-vision/atlas/pages/p108.jpg",
+    "/tmp/hdmap-audit/full-vision/atlas/pages/p112.jpg",
+    "/tmp/hdmap-audit/full-vision/atlas/pages/p116.jpg",
+    "/tmp/hdmap-audit/full-vision/atlas/pages/p120.jpg",
+    "/tmp/hdmap-audit/full-vision/atlas/pages/p124.jpg",
+    "/tmp/hdmap-audit/full-vision/atlas/pages/p128.jpg",
+    "/tmp/hdmap-audit/full-vision/atlas/pages/p132.jpg",
+    "/tmp/hdmap-audit/full-vision/atlas/pages/p136.jpg",
+    "/tmp/hdmap-audit/full-vision/atlas/pages/p140.jpg",
+    "/tmp/hdmap-audit/full-vision/atlas/pages/p144.jpg",
+    "/tmp/hdmap-audit/full-vision/atlas/pages/p148.jpg",
+    "/tmp/hdmap-audit/full-vision/atlas/pages/p152.jpg",
+    "/tmp/hdmap-audit/full-vision/atlas/tiles/t01_19_overlay.jpg",
+    "/tmp/hdmap-audit/full-vision/atlas/tiles/t04_13_overlay.jpg",
+    "/tmp/hdmap-audit/full-vision/atlas/tiles/t05_20_overlay.jpg",
+    "/tmp/hdmap-audit/full-vision/atlas/tiles/t11_16_overlay.jpg",
+    "/tmp/hdmap-audit/full-vision/atlas/tiles/t15_06_overlay.jpg"
+  ],
+  "tiles": [
+    {
+      "tile_id": "t-1_18",
+      "page": "p000.jpg",
+      "observations": [
+        "남쪽 외곽 문맥 타일로 포장 배경과 그림자만 보이며 차로·cell이 잘못 생성되지 않음."
+      ],
+      "decision": "context_only",
+      "source_keys": {
+        "roads": [
+          1909
+        ]
+      },
+      "zoomed_images": []
+    },
+    {
+      "tile_id": "t-1_19",
+      "page": "p000.jpg",
+      "observations": [
+        "남쪽 외곽 문맥 타일. 나무와 긴 그림자만 있고 native 주행 면적 표시 없음."
+      ],
+      "decision": "context_only",
+      "source_keys": {
+        "roads": [
+          1909
+        ]
+      },
+      "zoomed_images": []
+    },
+    {
+      "tile_id": "t01_18",
+      "page": "p004.jpg",
+      "observations": [
+        "좌하단 대각 접근부의 횡단보도와 정지선이 native 차로/cell 경계와 정합. 건물 지붕을 차로로 채우지 않음."
+      ],
+      "decision": "aligned_visible",
+      "source_keys": {
+        "roads": [
+          1909,
+          1916
+        ]
+      },
+      "zoomed_images": []
+    },
+    {
+      "tile_id": "t01_19",
+      "page": "p004.jpg",
+      "observations": [
+        "다차로 대각 도로와 차로 감속/합류 화살표 정합. 중앙 사선 도색 taper에 대한 native 주행 범위는 확대하여 원본 유형 확인 필요.",
+        "1280px 확대 재검토: 사선지대 내부에는 주황 cell이 없으며 청록 차로 경계가 양쪽으로 우회함. 저해상도 중첩에 따른 의심 해소."
+      ],
+      "decision": "aligned_visible",
+      "source_keys": {
+        "roads": [
+          1910,
+          1925,
+          1926,
+          1976
+        ]
+      },
+      "zoomed_images": [
+        "atlas/tiles/t01_19_overlay.jpg"
+      ]
+    },
+    {
+      "tile_id": "t02_20",
+      "page": "p008.jpg",
+      "observations": [
+        "좌하단의 다차로 직선 가장자리만 포함. 도로 외 건물/빈 공간은 native 영역에서 제외되고 cell 연속."
+      ],
+      "decision": "aligned_visible",
+      "source_keys": {
+        "roads": [
+          1926
+        ]
+      },
+      "zoomed_images": []
+    },
+    {
+      "tile_id": "t03_14",
+      "page": "p008.jpg",
+      "observations": [
+        "북쪽 가장자리의 휘어진 도로 부분만 포함되며 중첩 경계가 이를 따름. 넓은 그림자/건물 지역은 비주행 배경으로 남음."
+      ],
+      "decision": "context_only",
+      "source_keys": {
+        "roads": [
+          1818
+        ]
+      },
+      "zoomed_images": []
+    },
+    {
+      "tile_id": "t04_13",
+      "page": "p012.jpg",
+      "observations": [
+        "붉은 노면 두 접근부와 굽은 교차로가 native 경계로 연결됨. 횡단보도 접근 정지선은 도색과 맞으며 중앙 사선 도색 taper는 확대 대표 사례와 함께 검토.",
+        "1280px 확대 재검토: 사선지대 내부에는 주황 cell이 없으며 청록 차로 경계가 양쪽으로 우회함. 저해상도 중첩에 따른 의심 해소."
+      ],
+      "decision": "aligned_visible",
+      "source_keys": {
+        "roads": [
+          1776,
+          1777,
+          1781,
+          1787,
+          1790,
+          1793,
+          1796,
+          1799,
+          1802,
+          1805,
+          1808,
+          1811,
+          4740
+        ]
+      },
+      "zoomed_images": [
+        "atlas/tiles/t04_13_overlay.jpg"
+      ]
+    },
+    {
+      "tile_id": "t04_14",
+      "page": "p012.jpg",
+      "observations": [
+        "곡선 도로의 두 횡단보도·정지선과 가변 폭 차로가 대응. 긴 중앙 사선 도색 공간을 따라 차로 경계가 분리되고 도로 외 건물에는 cell 없음."
+      ],
+      "decision": "aligned_visible",
+      "source_keys": {
+        "roads": [
+          1777,
+          1818,
+          1821,
+          1824
+        ]
+      },
+      "zoomed_images": []
+    },
+    {
+      "tile_id": "t04_21",
+      "page": "p016.jpg",
+      "observations": [
+        "북서쪽 끝의 도로 조각만 포함. 나머지는 건물과 그림자이며 잘못된 주행 격자 없음."
+      ],
+      "decision": "context_only",
+      "source_keys": {
+        "roads": [
+          2080
+        ]
+      },
+      "zoomed_images": []
+    },
+    {
+      "tile_id": "t05_12",
+      "page": "p016.jpg",
+      "observations": [
+        "북동쪽 좁은 도로의 붉은 노면·직진 화살표와 중간 횡단 정지 도색이 맞음. 건물/그림자에 cell을 추가하지 않음."
+      ],
+      "decision": "aligned_visible",
+      "source_keys": {
+        "roads": [
+          1750,
+          1769,
+          1775,
+          3317
+        ]
+      },
+      "zoomed_images": []
+    },
+    {
+      "tile_id": "t05_20",
+      "page": "p020.jpg",
+      "observations": [
+        "소도로와 넓은 대로 교차로의 native 회전 경계/횡단보도는 대응. 도로 밖에 빨간 미배정 정지선 두 개가 보여 원본 객체를 조회해 보존 판정할 대상.",
+        "직접 XODR objects/object 존재 및 s·t 일치 확인(root-source-checks.json). 도색의 불확실성은 사용자 기준에 따라 원본 유지. 미할당 객체는 관계없는 차량 cell에 연결하지 않음."
+      ],
+      "decision": "preserve_by_xodr_policy",
+      "source_keys": {
+        "roads": [
+          1927,
+          2076,
+          2077,
+          2080,
+          2083,
+          2086,
+          2089,
+          2092,
+          2095,
+          2096,
+          2107,
+          2110
+        ],
+        "stops": [
+          {
+            "native_stopline": 543321,
+            "road": 2077,
+            "object": 2914,
+            "s": 0,
+            "t": -20.144805267484333
+          },
+          {
+            "native_stopline": 543318,
+            "road": 2077,
+            "object": 2913,
+            "s": 0,
+            "t": 19.693130534383304
+          }
+        ]
+      },
+      "zoomed_images": [
+        "atlas/tiles/t05_20_overlay.jpg"
+      ]
+    },
+    {
+      "tile_id": "t05_21",
+      "page": "p020.jpg",
+      "observations": [
+        "다차로 직선 대로의 중앙 황색선·차선·교차로 접근 정지선과 native 경계가 정합. 붉은 포장과 회색 포장 양쪽 cell 연속."
+      ],
+      "decision": "aligned_visible",
+      "source_keys": {
+        "roads": [
+          2076,
+          2080,
+          2086,
+          2089,
+          2092
+        ]
+      },
+      "zoomed_images": []
+    },
+    {
+      "tile_id": "t06_17",
+      "page": "p024.jpg",
+      "observations": [
+        "좌하단 끝의 도로 조각만 포함되고 나머지 넓은 빈 공간에는 cell 없음."
+      ],
+      "decision": "context_only",
+      "source_keys": {
+        "roads": [
+          2003
+        ]
+      },
+      "zoomed_images": []
+    },
+    {
+      "tile_id": "t06_18",
+      "page": "p024.jpg",
+      "observations": [
+        "동북쪽 프레임 끝의 도로 가장자리만 포함. 건물·나무·빈 공간에 허위 주행 영역이 없음."
+      ],
+      "decision": "context_only",
+      "source_keys": {
+        "roads": [
+          2139
+        ]
+      },
+      "zoomed_images": []
+    },
+    {
+      "tile_id": "t07_14",
+      "page": "p028.jpg",
+      "observations": [
+        "북동쪽 다차로 도로와 중앙 식재대의 경계가 대응. 도로 외 넓은 배경은 제외."
+      ],
+      "decision": "aligned_visible",
+      "source_keys": {
+        "roads": [
+          2011
+        ]
+      },
+      "zoomed_images": []
+    },
+    {
+      "tile_id": "t07_15",
+      "page": "p028.jpg",
+      "observations": [
+        "50 노면표시·중앙 식재대·추가 회전차로가 있는 대로 접근부. 정지선이 횡단보도 앞 도색에 맞고 cell이 교차로로 연속."
+      ],
+      "decision": "aligned_visible",
+      "source_keys": {
+        "roads": [
+          2011,
+          2012,
+          2015,
+          2018,
+          2024,
+          2027,
+          2036,
+          2039,
+          2042,
+          2045,
+          2048,
+          2051,
+          3360
+        ]
+      },
+      "zoomed_images": []
+    },
+    {
+      "tile_id": "t07_22",
+      "page": "p032.jpg",
+      "observations": [
+        "동남쪽 다차로 직선 부분에만 native 격자가 있으며 인접 건물에는 확장되지 않음."
+      ],
+      "decision": "aligned_visible",
+      "source_keys": {
+        "roads": [
+          2076
+        ]
+      },
+      "zoomed_images": []
+    },
+    {
+      "tile_id": "t07_23",
+      "page": "p032.jpg",
+      "observations": [
+        "넓은 직선 대로의 양방향 차선·중앙 분리 공간과 native 경계가 대응. 전체 보이는 도로의 cell이 연속."
+      ],
+      "decision": "aligned_visible",
+      "source_keys": {
+        "roads": [
+          2076
+        ]
+      },
+      "zoomed_images": []
+    },
+    {
+      "tile_id": "t08_15",
+      "page": "p036.jpg",
+      "observations": [
+        "중앙 식재대와 교차로 접근 정지선은 원본 도색에 맞음. 동북쪽 빈 공간의 빨간 미배정 정지선은 원본 ID 확인 대상.",
+        "직접 XODR objects/object 존재 및 s·t 일치 확인(root-source-checks.json). 도색의 불확실성은 사용자 기준에 따라 원본 유지. 미할당 객체는 관계없는 차량 cell에 연결하지 않음."
+      ],
+      "decision": "preserve_by_xodr_policy",
+      "source_keys": {
+        "roads": [
+          2011,
+          2240
+        ],
+        "stops": [
+          {
+            "native_stopline": 543426,
+            "road": 2195,
+            "object": 3204,
+            "s": 0,
+            "t": -110.01197932083589
+          }
+        ]
+      },
+      "zoomed_images": []
+    },
+    {
+      "tile_id": "t08_16",
+      "page": "p036.jpg",
+      "observations": [
+        "도로는 동남쪽 모서리에만 있고 좌상단 빈 공간에 빨간 미배정 정지선이 보임. 원본 유지 판정 대조 대상.",
+        "직접 XODR objects/object 존재 및 s·t 일치 확인(root-source-checks.json). 도색의 불확실성은 사용자 기준에 따라 원본 유지. 미할당 객체는 관계없는 차량 cell에 연결하지 않음."
+      ],
+      "decision": "preserve_by_xodr_policy",
+      "source_keys": {
+        "roads": [
+          2012
+        ],
+        "stops": [
+          {
+            "native_stopline": 543426,
+            "road": 2195,
+            "object": 3204,
+            "s": 0,
+            "t": -110.01197932083589
+          }
+        ]
+      },
+      "zoomed_images": []
+    },
+    {
+      "tile_id": "t08_23",
+      "page": "p040.jpg",
+      "observations": [
+        "동남쪽 도로 가장자리만 보이며 나머지 건물·빈 공간은 native 주행 면적 밖."
+      ],
+      "decision": "context_only",
+      "source_keys": {
+        "roads": [
+          2076,
+          2265,
+          3464
+        ]
+      },
+      "zoomed_images": []
+    },
+    {
+      "tile_id": "t08_24",
+      "page": "p040.jpg",
+      "observations": [
+        "양방향 직선 대로의 중앙 분리 식재대가 비워지고 양쪽 차로/cell이 연속. 폭·경계가 도색과 정합."
+      ],
+      "decision": "aligned_visible",
+      "source_keys": {
+        "roads": [
+          2076
+        ]
+      },
+      "zoomed_images": []
+    },
+    {
+      "tile_id": "t09_17",
+      "page": "p044.jpg",
+      "observations": [
+        "왕복 도로의 횡단보도 접근선, 사선 도색 taper 및 중간 화살표에 차로 경계가 대응. 과도한 비도로 확장 없음."
+      ],
+      "decision": "aligned_visible",
+      "source_keys": {
+        "roads": [
+          2195,
+          2253,
+          2256
+        ]
+      },
+      "zoomed_images": []
+    },
+    {
+      "tile_id": "t09_18",
+      "page": "p044.jpg",
+      "observations": [
+        "남쪽의 완만한 곡선 도로와 방향 화살표가 native 경계 안에 있음. 상부 건물에는 cell 없음."
+      ],
+      "decision": "aligned_visible",
+      "source_keys": {
+        "roads": [
+          2192
+        ]
+      },
+      "zoomed_images": []
+    },
+    {
+      "tile_id": "t09_25",
+      "page": "p048.jpg",
+      "observations": [
+        "긴 중앙 분리 식재대가 있는 대로 곡선. 중앙 공간은 제외되고 양쪽 3차로 격자가 도로 전체에 연속."
+      ],
+      "decision": "aligned_visible",
+      "source_keys": {
+        "roads": [
+          2076
+        ]
+      },
+      "zoomed_images": []
+    },
+    {
+      "tile_id": "t10_10",
+      "page": "p048.jpg",
+      "observations": [
+        "북쪽 끝의 분기/합류 taper 도로만 포함. 황색 중앙 공간 주변으로 차로가 나뉘며 들판·그림자에 cell 없음."
+      ],
+      "decision": "aligned_visible",
+      "source_keys": {
+        "roads": [
+          100,
+          1173,
+          1499
+        ]
+      },
+      "zoomed_images": []
+    },
+    {
+      "tile_id": "t10_17",
+      "page": "p052.jpg",
+      "observations": [
+        "남서쪽 횡단보도와 정지선은 일치. 북동쪽 도로 밖 붉은 정지선은 원본 객체 대조 완료.",
+        "직접 XODR objects/object 존재 및 s·t 일치 확인(root-source-checks.json). 도색의 불확실성은 사용자 기준에 따라 원본 유지. 미할당 객체는 관계없는 차량 cell에 연결하지 않음."
+      ],
+      "decision": "preserve_by_xodr_policy",
+      "source_keys": {
+        "roads": [
+          2195,
+          2253,
+          2256
+        ],
+        "stops": [
+          {
+            "native_stopline": 543429,
+            "road": 2195,
+            "object": 3205,
+            "s": 0,
+            "t": 110.01138157463994
+          }
+        ]
+      },
+      "zoomed_images": []
+    },
+    {
+      "tile_id": "t10_18",
+      "page": "p052.jpg",
+      "observations": [
+        "북동쪽 끝의 도로만 cell 포함. 중앙 좌측 빈 공간의 붉은 정지선 원본 대조 완료.",
+        "직접 XODR objects/object 존재 및 s·t 일치 확인(root-source-checks.json). 도색의 불확실성은 사용자 기준에 따라 원본 유지. 미할당 객체는 관계없는 차량 cell에 연결하지 않음."
+      ],
+      "decision": "preserve_by_xodr_policy",
+      "source_keys": {
+        "roads": [
+          2386
+        ],
+        "stops": [
+          {
+            "native_stopline": 543429,
+            "road": 2195,
+            "object": 3205,
+            "s": 0,
+            "t": 110.01138157463994
+          }
+        ]
+      },
+      "zoomed_images": []
+    },
+    {
+      "tile_id": "t10_25",
+      "page": "p056.jpg",
+      "observations": [
+        "완만하게 휜 다차로 도로와 중앙 분리 공간 경계를 cell이 연속적으로 따름."
+      ],
+      "decision": "aligned_visible",
+      "source_keys": {
+        "roads": [
+          2076
+        ]
+      },
+      "zoomed_images": []
+    },
+    {
+      "tile_id": "t10_26",
+      "page": "p056.jpg",
+      "observations": [
+        "서쪽 가장자리 도로의 cell은 도로 내에 있으며 넓은 들판에는 없음."
+      ],
+      "decision": "aligned_visible",
+      "source_keys": {
+        "roads": [
+          2076
+        ]
+      },
+      "zoomed_images": []
+    },
+    {
+      "tile_id": "t11_15",
+      "page": "p060.jpg",
+      "observations": [
+        "사거리 횡단보도와 회전 cell, 남동쪽 진입로 정지선은 원본과 일치. 남서쪽 건물 위 붉은 선 원본 대조 완료.",
+        "직접 XODR objects/object 존재 및 s·t 일치 확인(root-source-checks.json). 도색의 불확실성은 사용자 기준에 따라 원본 유지. 미할당 객체는 관계없는 차량 cell에 연결하지 않음."
+      ],
+      "decision": "preserve_by_xodr_policy",
+      "source_keys": {
+        "roads": [
+          126,
+          146,
+          1043,
+          1094,
+          1109,
+          1154,
+          1163,
+          1166,
+          2247,
+          2423,
+          2426,
+          2429,
+          2432,
+          2438,
+          2444,
+          3375,
+          3405,
+          4731
+        ],
+        "stops": [
+          {
+            "native_stopline": 542706,
+            "road": 1043,
+            "object": 1215,
+            "s": 0,
+            "t": -57.57882664511248
+          }
+        ]
+      },
+      "zoomed_images": []
+    },
+    {
+      "tile_id": "t11_16",
+      "page": "p060.jpg",
+      "observations": [
+        "남서쪽 좁은 도로의 정지선 일치, 분기 사이 공간은 비어 있음. 도로 밖 붉은 선 원본 대조 완료.",
+        "직접 XODR objects/object 존재 및 s·t 일치 확인(root-source-checks.json). 도색의 불확실성은 사용자 기준에 따라 원본 유지. 미할당 객체는 관계없는 차량 cell에 연결하지 않음."
+      ],
+      "decision": "preserve_by_xodr_policy",
+      "source_keys": {
+        "roads": [
+          1043,
+          2241,
+          2247,
+          2423,
+          3375
+        ],
+        "stops": [
+          {
+            "native_stopline": 543444,
+            "road": 2241,
+            "object": 3247,
+            "s": 0,
+            "t": 67.4059767601451
+          },
+          {
+            "native_stopline": 542709,
+            "road": 1043,
+            "object": 1216,
+            "s": 0,
+            "t": 57.59047836861291
+          }
+        ]
+      },
+      "zoomed_images": [
+        "atlas/tiles/t11_16_overlay.jpg"
+      ]
+    },
+    {
+      "tile_id": "t11_26",
+      "page": "p064.jpg",
+      "observations": [
+        "서쪽 가장자리 도로에만 연속 cell, 들판에는 차로 없음."
+      ],
+      "decision": "aligned_visible",
+      "source_keys": {
+        "roads": [
+          2076
+        ]
+      },
+      "zoomed_images": []
+    },
+    {
+      "tile_id": "t12_09",
+      "page": "p064.jpg",
+      "observations": [
+        "건물을 사이에 둔 두 곡선 도로 모두 cell이 경계를 따르며 건물 사이 빈 공간은 보존됨."
+      ],
+      "decision": "aligned_visible",
+      "source_keys": {
+        "roads": [
+          310,
+          338
+        ]
+      },
+      "zoomed_images": []
+    },
+    {
+      "tile_id": "t12_16",
+      "page": "p068.jpg",
+      "observations": [
+        "분리대/좌회전 taper 주위 연속 차로는 일치. 남쪽 건물 곁 도로 밖 붉은 정지선은 원본 대조 완료.",
+        "직접 XODR objects/object 존재 및 s·t 일치 확인(root-source-checks.json). 도색의 불확실성은 사용자 기준에 따라 원본 유지. 미할당 객체는 관계없는 차량 cell에 연결하지 않음."
+      ],
+      "decision": "preserve_by_xodr_policy",
+      "source_keys": {
+        "roads": [
+          2423
+        ],
+        "stops": [
+          {
+            "native_stopline": 542709,
+            "road": 1043,
+            "object": 1216,
+            "s": 0,
+            "t": 57.59047836861291
+          }
+        ]
+      },
+      "zoomed_images": []
+    },
+    {
+      "tile_id": "t12_17",
+      "page": "p068.jpg",
+      "observations": [
+        "북서쪽 끝의 도로만 cell 포함, 건물과 빈 부지에는 생성 없음."
+      ],
+      "decision": "aligned_visible",
+      "source_keys": {
+        "roads": [
+          2423
+        ]
+      },
+      "zoomed_images": []
+    },
+    {
+      "tile_id": "t13_09",
+      "page": "p072.jpg",
+      "observations": [
+        "두 곡선 도로와 작은 교차부가 이어지며 횡단보도 앞 정지선 일치."
+      ],
+      "decision": "aligned_visible",
+      "source_keys": {
+        "roads": [
+          310,
+          338,
+          368,
+          396,
+          800,
+          803,
+          806,
+          809,
+          812,
+          815,
+          818,
+          821,
+          824,
+          827,
+          830,
+          833
+        ]
+      },
+      "zoomed_images": []
+    },
+    {
+      "tile_id": "t13_10",
+      "page": "p072.jpg",
+      "observations": [
+        "대형 교차로와 좁은 양방향 지선의 모든 진입 정지선 및 횡단보도 위치 일치. 중앙 섬은 비워짐."
+      ],
+      "decision": "aligned_visible",
+      "source_keys": {
+        "roads": [
+          310,
+          338,
+          346,
+          368,
+          396,
+          418,
+          420,
+          574,
+          577,
+          580,
+          583,
+          586,
+          589,
+          592,
+          598,
+          601,
+          604,
+          607,
+          800,
+          803,
+          806,
+          809,
+          812,
+          815,
+          818,
+          821,
+          824,
+          827,
+          830,
+          833,
+          1128
+        ]
+      },
+      "zoomed_images": []
+    },
+    {
+      "tile_id": "t13_17",
+      "page": "p076.jpg",
+      "observations": [
+        "중앙 식수대 양측 직선 다차로와 cell 경계 일치, 분리대 빈 공간 보존."
+      ],
+      "decision": "aligned_visible",
+      "source_keys": {
+        "roads": [
+          2423
+        ]
+      },
+      "zoomed_images": []
+    },
+    {
+      "tile_id": "t13_18",
+      "page": "p076.jpg",
+      "observations": [
+        "다차로에서 좁아지는 곡선 도로의 세 횡단보도 접근 정지선 모두 일치."
+      ],
+      "decision": "aligned_visible",
+      "source_keys": {
+        "roads": [
+          2403,
+          2406,
+          2409,
+          2410,
+          2419,
+          2422,
+          2423,
+          2445,
+          2462,
+          3398
+        ]
+      },
+      "zoomed_images": []
+    },
+    {
+      "tile_id": "t14_06",
+      "page": "p080.jpg",
+      "observations": [
+        "원본 장면 남쪽 끝에서 도로와 cell이 함께 종료. 검은 장면 바깥에 도로 임의 연장 없음."
+      ],
+      "decision": "source_boundary",
+      "source_keys": {
+        "roads": [
+          30
+        ]
+      },
+      "zoomed_images": []
+    },
+    {
+      "tile_id": "t14_09",
+      "page": "p080.jpg",
+      "observations": [
+        "중앙 분리대 끝과 대형 도로의 좌회전 차로 연속 cell 일치. 건물/빈 부지는 비워짐."
+      ],
+      "decision": "aligned_visible",
+      "source_keys": {
+        "roads": [
+          429,
+          601
+        ]
+      },
+      "zoomed_images": []
+    },
+    {
+      "tile_id": "t14_17",
+      "page": "p084.jpg",
+      "observations": [
+        "서쪽 좁은 곡선도로 횡단보도 양측 정지선 일치. 남동 모서리 다차로와 별개로 cell 생성됨."
+      ],
+      "decision": "aligned_visible",
+      "source_keys": {
+        "roads": [
+          173,
+          2423
+        ]
+      },
+      "zoomed_images": []
+    },
+    {
+      "tile_id": "t14_18",
+      "page": "p084.jpg",
+      "observations": [
+        "넓은 도로 횡단보도 양쪽 정지선 일치, 중앙 식수대와 합류 taper 공간 경계 보존."
+      ],
+      "decision": "aligned_visible",
+      "source_keys": {
+        "roads": [
+          2410,
+          2423,
+          2445,
+          2462,
+          3398
+        ]
+      },
+      "zoomed_images": []
+    },
+    {
+      "tile_id": "t15_05",
+      "page": "p088.jpg",
+      "observations": [
+        "서쪽 장면 경계까지 다차로 cell 일치. 동향 접근 magenta 정지선 위치에 흰 도색은 뚜렷하지 않아 XODR 대조 완료.",
+        "직접 XODR objects/object 존재 및 s·t 일치 확인(root-source-checks.json). 도색의 불확실성은 사용자 기준에 따라 원본 유지. 미할당 객체는 관계없는 차량 cell에 연결하지 않음."
+      ],
+      "decision": "preserve_by_xodr_policy",
+      "source_keys": {
+        "roads": [
+          30,
+          76,
+          553,
+          556,
+          562,
+          565
+        ],
+        "stops": [
+          {
+            "native_stopline": 542313,
+            "road": 76,
+            "object": 116,
+            "s": 43.862359789964444,
+            "t": -7.500000142734985
+          },
+          {
+            "native_stopline": 542310,
+            "road": 76,
+            "object": 115,
+            "s": 43.862359789964444,
+            "t": -6.611300161921616
+          },
+          {
+            "native_stopline": 542316,
+            "road": 76,
+            "object": 117,
+            "s": 43.862359789964444,
+            "t": -4.318200247907076
+          },
+          {
+            "native_stopline": 542307,
+            "road": 76,
+            "object": 114,
+            "s": 43.862359789964444,
+            "t": -1.500000713674746
+          }
+        ]
+      },
+      "zoomed_images": []
+    },
+    {
+      "tile_id": "t15_06",
+      "page": "p088.jpg",
+      "observations": [
+        "T자 교차로 회전 cell과 동쪽·남쪽 횡단보도 앞 정지선 일치. 서쪽 접근은 도색이 희미하거나 없는 XODR 정지선 대조 완료.",
+        "직접 XODR objects/object 존재 및 s·t 일치 확인(root-source-checks.json). 도색의 불확실성은 사용자 기준에 따라 원본 유지. 미할당 객체는 관계없는 차량 cell에 연결하지 않음."
+      ],
+      "decision": "preserve_by_xodr_policy",
+      "source_keys": {
+        "roads": [
+          30,
+          72,
+          76,
+          550,
+          553,
+          556,
+          559,
+          562,
+          565
+        ],
+        "stops": [
+          {
+            "native_stopline": 542313,
+            "road": 76,
+            "object": 116,
+            "s": 43.862359789964444,
+            "t": -7.500000142734985
+          },
+          {
+            "native_stopline": 542310,
+            "road": 76,
+            "object": 115,
+            "s": 43.862359789964444,
+            "t": -6.611300161921616
+          },
+          {
+            "native_stopline": 542316,
+            "road": 76,
+            "object": 117,
+            "s": 43.862359789964444,
+            "t": -4.318200247907076
+          },
+          {
+            "native_stopline": 542307,
+            "road": 76,
+            "object": 114,
+            "s": 43.862359789964444,
+            "t": -1.500000713674746
+          }
+        ]
+      },
+      "zoomed_images": [
+        "atlas/tiles/t15_06_overlay.jpg"
+      ]
+    },
+    {
+      "tile_id": "t15_17",
+      "page": "p092.jpg",
+      "observations": [
+        "좁은 남북 도로의 완만한 곡선/차선변화 연속 cell 일치, 남쪽 횡단보도 앞 정지선 일치."
+      ],
+      "decision": "aligned_visible",
+      "source_keys": {
+        "roads": [
+          173
+        ]
+      },
+      "zoomed_images": []
+    },
+    {
+      "tile_id": "t15_18",
+      "page": "p092.jpg",
+      "observations": [
+        "북동쪽 도로의 중앙 사선지대는 분리 경계 사이로 보존, 빈 부지에 차로 없음."
+      ],
+      "decision": "aligned_visible",
+      "source_keys": {
+        "roads": [
+          2445,
+          2625,
+          2708
+        ]
+      },
+      "zoomed_images": []
+    },
+    {
+      "tile_id": "t15_25",
+      "page": "p096.jpg",
+      "observations": [
+        "남북 다차로 도로의 중앙 식수대 양편에 연속 cell, 식수대 안은 비워짐."
+      ],
+      "decision": "aligned_visible",
+      "source_keys": {
+        "roads": [
+          2533
+        ]
+      },
+      "zoomed_images": []
+    },
+    {
+      "tile_id": "t16_06",
+      "page": "p096.jpg",
+      "observations": [
+        "도로 주변 여유 영역만 들어온 타일로 cell이 없고 지붕 위 보라선은 신호 관계 표시임."
+      ],
+      "decision": "context_only",
+      "source_keys": {
+        "roads": [
+          72
+        ]
+      },
+      "zoomed_images": []
+    },
+    {
+      "tile_id": "t16_19",
+      "page": "p100.jpg",
+      "observations": [
+        "남서쪽 다차로 교차로 접근 정지선과 회색 횡단보도 일치. 나머지는 건물 부지로 cell 없음."
+      ],
+      "decision": "aligned_visible",
+      "source_keys": {
+        "roads": [
+          2625,
+          2711
+        ]
+      },
+      "zoomed_images": []
+    },
+    {
+      "tile_id": "t16_20",
+      "page": "p100.jpg",
+      "observations": [
+        "남쪽 대각선 도로의 중앙 식수대 제외하고 양편 cell 연속."
+      ],
+      "decision": "aligned_visible",
+      "source_keys": {
+        "roads": [
+          2626
+        ]
+      },
+      "zoomed_images": []
+    },
+    {
+      "tile_id": "t17_09",
+      "page": "p104.jpg",
+      "observations": [
+        "대형 교차로 회전부와 좁은 북서쪽 지선, 남서쪽 분리섬 주위 cell이 원본 도로 경계를 따름. 횡단보도 앞 정지선 일치."
+      ],
+      "decision": "aligned_visible",
+      "source_keys": {
+        "roads": [
+          72,
+          429,
+          568,
+          1183,
+          1184,
+          1187,
+          1190,
+          1193,
+          1196,
+          1199,
+          1202,
+          1208,
+          1211,
+          1217,
+          1218,
+          1219,
+          1272
+        ]
+      },
+      "zoomed_images": []
+    },
+    {
+      "tile_id": "t17_10",
+      "page": "p104.jpg",
+      "observations": [
+        "북서 모서리 다차로만 포함, 큰 빈 부지에는 차로 없음."
+      ],
+      "decision": "aligned_visible",
+      "source_keys": {
+        "roads": [
+          1183
+        ]
+      },
+      "zoomed_images": []
+    },
+    {
+      "tile_id": "t17_24",
+      "page": "p108.jpg",
+      "observations": [
+        "T자 대형 교차로의 세 진입 정지선·회색 횡단보도와 회전 cell 일치. 중앙 사선지대 공간 보존."
+      ],
+      "decision": "aligned_visible",
+      "source_keys": {
+        "roads": [
+          2533,
+          2718,
+          2756,
+          2759,
+          2765,
+          2771,
+          2777,
+          2783,
+          2789
+        ]
+      },
+      "zoomed_images": []
+    },
+    {
+      "tile_id": "t17_25",
+      "page": "p108.jpg",
+      "observations": [
+        "T자 교차로 반대쪽 가장자리까지 직진·회전 cell 연속. 남쪽 접근 흰 정지선 일치."
+      ],
+      "decision": "aligned_visible",
+      "source_keys": {
+        "roads": [
+          2533,
+          2756,
+          2759,
+          2765,
+          2783,
+          2789
+        ]
+      },
+      "zoomed_images": []
+    },
+    {
+      "tile_id": "t18_19",
+      "page": "p112.jpg",
+      "observations": [
+        "대각선 도로의 확폭 구간과 cell 외곽 일치, 주위 건물 부지에는 생성 없음."
+      ],
+      "decision": "aligned_visible",
+      "source_keys": {
+        "roads": [
+          1222,
+          2823
+        ]
+      },
+      "zoomed_images": []
+    },
+    {
+      "tile_id": "t18_22",
+      "page": "p112.jpg",
+      "observations": [
+        "남북 도로 두 횡단보도에 방향별 정지선 한 쪽씩 있으며 원본 흰 도색과 일치."
+      ],
+      "decision": "aligned_visible",
+      "source_keys": {
+        "roads": [
+          2719,
+          2790,
+          2793,
+          2796
+        ]
+      },
+      "zoomed_images": []
+    },
+    {
+      "tile_id": "t19_19",
+      "page": "p116.jpg",
+      "observations": [
+        "곡선 도로에 여러 정지선이 연달아 있지만 모두 원본 흰 도색에 대응. 좁아지는 좌측 차로와 직진 cell 연속."
+      ],
+      "decision": "aligned_visible",
+      "source_keys": {
+        "roads": [
+          1222,
+          2800,
+          2823,
+          2826,
+          2844
+        ]
+      },
+      "zoomed_images": []
+    },
+    {
+      "tile_id": "t19_20",
+      "page": "p116.jpg",
+      "observations": [
+        "곡선 차로와 횡단보도, 그 앞뒤 멀리 떨어진 정지선도 각각 원본 흰 선과 일치."
+      ],
+      "decision": "aligned_visible",
+      "source_keys": {
+        "roads": [
+          1222,
+          2800,
+          2801,
+          2823,
+          2826,
+          2829,
+          2832,
+          2835,
+          2844
+        ]
+      },
+      "zoomed_images": []
+    },
+    {
+      "tile_id": "t20_19",
+      "page": "p120.jpg",
+      "observations": [
+        "동쪽 가장자리 도로 일부만 보이고 넓은 들판에 cell 생성 없음."
+      ],
+      "decision": "context_only",
+      "source_keys": {
+        "roads": [
+          2800,
+          2802,
+          2844,
+          2850
+        ]
+      },
+      "zoomed_images": []
+    },
+    {
+      "tile_id": "t20_20",
+      "page": "p120.jpg",
+      "observations": [
+        "좁은 T자 교차로와 다수 횡단보도/정지선이 모두 원본 도색 위치에 대응, 중앙 사선 공간 비워짐."
+      ],
+      "decision": "aligned_visible",
+      "source_keys": {
+        "roads": [
+          2800,
+          2801,
+          2802,
+          2810,
+          2829,
+          2832,
+          2835,
+          2838,
+          2841,
+          2844,
+          2847,
+          2850
+        ]
+      },
+      "zoomed_images": []
+    },
+    {
+      "tile_id": "t21_16",
+      "page": "p124.jpg",
+      "observations": [
+        "굽은 다차로 접속부의 정지선·횡단보도 일치, 중앙 사선 도색은 cell 경계 사이 공간."
+      ],
+      "decision": "aligned_visible",
+      "source_keys": {
+        "roads": [
+          2813,
+          2814,
+          3090,
+          3093,
+          3096,
+          3099
+        ]
+      },
+      "zoomed_images": []
+    },
+    {
+      "tile_id": "t21_19",
+      "page": "p124.jpg",
+      "observations": [
+        "동쪽 맨 끝 보도 및 주변 여유 영역만 포함. 들판에 lanelet/cell 없음."
+      ],
+      "decision": "context_only",
+      "source_keys": {
+        "roads": [
+          2810,
+          2850
+        ]
+      },
+      "zoomed_images": []
+    },
+    {
+      "tile_id": "t22_15",
+      "page": "p128.jpg",
+      "observations": [
+        "남동쪽 급곡선 도로에 cell이 이어지며 곡선 출구 정지선 위치 일치."
+      ],
+      "decision": "aligned_visible",
+      "source_keys": {
+        "roads": [
+          2814,
+          3096,
+          3099
+        ]
+      },
+      "zoomed_images": []
+    },
+    {
+      "tile_id": "t22_16",
+      "page": "p128.jpg",
+      "observations": [
+        "다차로 직선의 정지선과 중앙 분리대 시작 taper 일치, 넓은 북쪽 들판은 비워짐."
+      ],
+      "decision": "aligned_visible",
+      "source_keys": {
+        "roads": [
+          2814,
+          3096,
+          3099
+        ]
+      },
+      "zoomed_images": []
+    },
+    {
+      "tile_id": "t22_24",
+      "page": "p132.jpg",
+      "observations": [
+        "분리된 남북 본선 옆 T자 지선은 본선 같은 쪽 차로로만 연결, 지선 중앙 사선지대는 비워짐. 정지선은 지선 횡단보도 앞에만 원본과 일치."
+      ],
+      "decision": "aligned_visible",
+      "source_keys": {
+        "roads": [
+          2806,
+          2811,
+          2820,
+          3018,
+          3021,
+          3024,
+          3027,
+          3030,
+          3033,
+          3142,
+          3145
+        ]
+      },
+      "zoomed_images": []
+    },
+    {
+      "tile_id": "t23_17",
+      "page": "p132.jpg",
+      "observations": [
+        "남쪽 가장자리 분리대로 나뉜 다차로 연속 cell, 북쪽 들판과 주택에 생성 없음."
+      ],
+      "decision": "aligned_visible",
+      "source_keys": {
+        "roads": [
+          2814
+        ]
+      },
+      "zoomed_images": []
+    },
+    {
+      "tile_id": "t24_20",
+      "page": "p136.jpg",
+      "observations": [
+        "대각선 다차로의 분리대 종료 및 좌회전 차로 확폭 경계가 원본에 대응."
+      ],
+      "decision": "aligned_visible",
+      "source_keys": {
+        "roads": [
+          2815
+        ]
+      },
+      "zoomed_images": []
+    },
+    {
+      "tile_id": "t24_21",
+      "page": "p136.jpg",
+      "observations": [
+        "대형 도로와 좁은 남북 지선의 교차부 접근 정지선 일치. 중앙 도색 경계 사이 공간 유지."
+      ],
+      "decision": "aligned_visible",
+      "source_keys": {
+        "roads": [
+          2815,
+          2816,
+          3054,
+          3057,
+          3060,
+          3063,
+          3066,
+          3069,
+          3072,
+          3084
+        ]
+      },
+      "zoomed_images": []
+    },
+    {
+      "tile_id": "t25_24",
+      "page": "p140.jpg",
+      "observations": [
+        "여러 분리된 평행 본선 차로의 경계와 cell이 일치하며 분리 공간은 유지됨."
+      ],
+      "decision": "aligned_visible",
+      "source_keys": {
+        "roads": [
+          2820,
+          3018,
+          3128,
+          3134,
+          3142,
+          3148,
+          3164,
+          3167,
+          3170
+        ]
+      },
+      "zoomed_images": []
+    },
+    {
+      "tile_id": "t26_20",
+      "page": "p140.jpg",
+      "observations": [
+        "동쪽 가장자리 보도와 여유 영역만 보이는 타일. 들판에 차로 없음."
+      ],
+      "decision": "context_only",
+      "source_keys": {
+        "roads": [
+          2818
+        ]
+      },
+      "zoomed_images": []
+    },
+    {
+      "tile_id": "t27_21",
+      "page": "p144.jpg",
+      "observations": [
+        "완만한 양방향 단차로 곡선과 횡단보도 양편 정지선 일치, 연속 cell."
+      ],
+      "decision": "aligned_visible",
+      "source_keys": {
+        "roads": [
+          2818
+        ]
+      },
+      "zoomed_images": []
+    },
+    {
+      "tile_id": "t27_23",
+      "page": "p144.jpg",
+      "observations": [
+        "동쪽 맨 끝 보도만 보임. 차도는 다음 타일로 이어지며 들판에 cell 없음."
+      ],
+      "decision": "context_only",
+      "source_keys": {
+        "roads": [
+          2819,
+          3111
+        ]
+      },
+      "zoomed_images": []
+    },
+    {
+      "tile_id": "t28_24",
+      "page": "p148.jpg",
+      "observations": [
+        "여러 평행 본선의 분리 공간과 합류 끝부분까지 cell 경계 일치. 건물 내부로 차로 없음."
+      ],
+      "decision": "aligned_visible",
+      "source_keys": {
+        "roads": [
+          2819,
+          3018,
+          3149
+        ]
+      },
+      "zoomed_images": []
+    },
+    {
+      "tile_id": "t28_25",
+      "page": "p148.jpg",
+      "observations": [
+        "남동쪽 가장자리 도로 일부만 포함, 큰 건물과 부지 내부는 cell 없음."
+      ],
+      "decision": "aligned_visible",
+      "source_keys": {
+        "roads": [
+          3113
+        ]
+      },
+      "zoomed_images": []
+    },
+    {
+      "tile_id": "t30_23",
+      "page": "p152.jpg",
+      "observations": [
+        "북쪽 장면 경계에서 차도와 cell이 함께 종료. 들판에는 생성 없음."
+      ],
+      "decision": "source_boundary",
+      "source_keys": {
+        "roads": [
+          3183,
+          3186
+        ]
+      },
+      "zoomed_images": []
+    },
+    {
+      "tile_id": "t30_24",
+      "page": "p152.jpg",
+      "observations": [
+        "북쪽 맵 끝에서 다차로 도로와 cell이 함께 끝나며 검은 영역으로 연장되지 않음."
+      ],
+      "decision": "source_boundary",
+      "source_keys": {
+        "roads": [
+          3177,
+          3180,
+          3183,
+          3186,
+          3192
+        ]
+      },
+      "zoomed_images": []
+    }
+  ]
+}

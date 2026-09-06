@@ -1,0 +1,39 @@
+{
+  "reviewer": "root",
+  "files_actually_viewed": [
+    "/tmp/hdmap-audit/full-vision/supplemental/pages/p000.jpg"
+  ],
+  "tiles": [
+    {
+      "tile_id": "t29_26",
+      "page": "p000.jpg",
+      "observations": [
+        "건물/장면 가장자리 부지에 붉은 정지선이 겹쳐 나타남. 차도·횡단보도 도색은 없음. XODR road2819 objects5960/5961/5962의 s=0,t≈171.7m 원본 위치이며 cell·controller 할당 없음. 세 객체를 삭제하거나 도로로 옮기지 않고 원본 기준 유지."
+      ],
+      "decision": "preserve_by_xodr_policy",
+      "source_keys": {
+        "roads": [
+          2819
+        ],
+        "stops": [
+          {
+            "native_stopline": 544306,
+            "road": 2819,
+            "object": 5962
+          },
+          {
+            "native_stopline": 544300,
+            "road": 2819,
+            "object": 5960
+          },
+          {
+            "native_stopline": 544303,
+            "road": 2819,
+            "object": 5961
+          }
+        ]
+      },
+      "zoomed_images": []
+    }
+  ]
+}

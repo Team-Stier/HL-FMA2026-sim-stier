@@ -1,0 +1,4050 @@
+{
+  "pages": [
+    3,
+    7,
+    11,
+    15,
+    19,
+    23,
+    27,
+    31,
+    35,
+    39,
+    43,
+    47,
+    51,
+    55,
+    59,
+    63,
+    67,
+    71,
+    75,
+    79,
+    83,
+    87,
+    91,
+    95,
+    99,
+    103,
+    107,
+    111,
+    115,
+    119,
+    123,
+    127,
+    131,
+    135,
+    139,
+    143,
+    147,
+    151
+  ],
+  "tiles": [
+    {
+      "tile_id": "t01_16",
+      "page": 3,
+      "observations": "우상단의 곡선 차도와 타일 경계에서 잘린 횡단보도에 lane/cell이 이어지며, 나머지 넓은 비도로 영역에는 망이 없다.",
+      "decision": "clear_visual",
+      "source_keys": [
+        {
+          "kind": "road",
+          "id": 1868,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 1878,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 1892,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 1895,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 1901,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        }
+      ],
+      "zoomed_images": [],
+      "manifest_context": {
+        "bounds_xy_m": [
+          780,
+          -1120,
+          860,
+          -1040
+        ],
+        "roads_intersecting_core": [
+          1892,
+          1901
+        ],
+        "native_lanelet_count": 9,
+        "cell_count": 159,
+        "stop_ids": []
+      }
+    },
+    {
+      "tile_id": "t01_17",
+      "page": 3,
+      "observations": "중앙선 양쪽 직선 차로와 교차로 우회전 곡선이 연속한다. 접근측 흰 정지선 위에 자홍색 선이 놓이며 연속 횡단보도 자체를 lane 누락으로 오인할 부분은 없다.",
+      "decision": "clear_visual",
+      "source_keys": [
+        {
+          "kind": "road",
+          "id": 1868,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 1869,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 1878,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 1892,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 1895,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 1898,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 1901,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 1909,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 1916,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 3337,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        }
+      ],
+      "zoomed_images": [],
+      "manifest_context": {
+        "bounds_xy_m": [
+          860,
+          -1120,
+          940,
+          -1040
+        ],
+        "roads_intersecting_core": [
+          1868,
+          1878,
+          1892,
+          1898,
+          1901,
+          1916,
+          3337
+        ],
+        "native_lanelet_count": 20,
+        "cell_count": 601,
+        "stop_ids": [
+          543030,
+          543036,
+          542988,
+          542991,
+          542985,
+          542979,
+          542982,
+          543033,
+          543039
+        ]
+      }
+    },
+    {
+      "tile_id": "t02_18",
+      "page": 7,
+      "observations": "상단 교차로의 다차로 접근과 우회전 곡선이 포장 차도 안에 있고, 나무·공터 쪽으로 lane/cell이 확장되지 않는다. 보이는 정지선 위치가 도색과 맞는다.",
+      "decision": "clear_visual",
+      "source_keys": [
+        {
+          "kind": "road",
+          "id": 1869,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 1926,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 1931,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 1937,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 1946,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 3229,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 4725,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        }
+      ],
+      "zoomed_images": [],
+      "manifest_context": {
+        "bounds_xy_m": [
+          940,
+          -1040,
+          1020,
+          -960
+        ],
+        "roads_intersecting_core": [
+          1869,
+          1926,
+          1937
+        ],
+        "native_lanelet_count": 60,
+        "cell_count": 735,
+        "stop_ids": [
+          543015,
+          543018,
+          543021,
+          543024
+        ]
+      }
+    },
+    {
+      "tile_id": "t02_19",
+      "page": 7,
+      "observations": "다차로 대로의 직선 경계와 셀이 차선 도색을 따른다. 하단 중앙 안전지대 쐐기 주변에서 경계가 수렴하며, 건물과 보도에는 차로 망이 없다.",
+      "decision": "clear_visual",
+      "source_keys": [
+        {
+          "kind": "road",
+          "id": 1926,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        }
+      ],
+      "zoomed_images": [],
+      "manifest_context": {
+        "bounds_xy_m": [
+          1020,
+          -1040,
+          1100,
+          -960
+        ],
+        "roads_intersecting_core": [
+          1926
+        ],
+        "native_lanelet_count": 51,
+        "cell_count": 1260,
+        "stop_ids": []
+      }
+    },
+    {
+      "tile_id": "t03_19",
+      "page": 11,
+      "observations": "넓은 교차로의 양 접근 정지선이 실제 도색 위치에 있고 곡선 연결은 연석 안쪽을 따른다. 보행공간·큰 건물 영역은 차로에서 제외된다.",
+      "decision": "clear_visual",
+      "source_keys": [
+        {
+          "kind": "road",
+          "id": 1926,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 1927,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 1931,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 1940,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 1943,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 1946,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 1949,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 1955,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 1964,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 3229,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        }
+      ],
+      "zoomed_images": [],
+      "manifest_context": {
+        "bounds_xy_m": [
+          1020,
+          -960,
+          1100,
+          -880
+        ],
+        "roads_intersecting_core": [
+          1926,
+          1927,
+          1931,
+          1943,
+          1955,
+          1964
+        ],
+        "native_lanelet_count": 43,
+        "cell_count": 979,
+        "stop_ids": [
+          543078,
+          543072,
+          543084,
+          543075,
+          543081,
+          543066,
+          543069,
+          544389,
+          543122,
+          543119,
+          543134,
+          543131,
+          543125
+        ]
+      }
+    },
+    {
+      "tile_id": "t04_12",
+      "page": 11,
+      "observations": "타일 가장자리의 적색 포장 직선 차로 두 줄과 cell이 연속하며, 주변 건물·회색 외곽에는 망이 없다.",
+      "decision": "clear_visual",
+      "source_keys": [
+        {
+          "kind": "road",
+          "id": 4740,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        }
+      ],
+      "zoomed_images": [],
+      "manifest_context": {
+        "bounds_xy_m": [
+          460,
+          -880,
+          540,
+          -800
+        ],
+        "roads_intersecting_core": [
+          4740
+        ],
+        "native_lanelet_count": 3,
+        "cell_count": 162,
+        "stop_ids": []
+      }
+    },
+    {
+      "tile_id": "t04_19",
+      "page": 15,
+      "observations": "다차로 대로의 완만한 확폭과 회전 화살표 구간을 경계·셀이 따라가며, 중앙 이중 황색선 양측 경계가 유지된다.",
+      "decision": "clear_visual",
+      "source_keys": [
+        {
+          "kind": "road",
+          "id": 1927,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 6029,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        }
+      ],
+      "zoomed_images": [],
+      "manifest_context": {
+        "bounds_xy_m": [
+          1020,
+          -880,
+          1100,
+          -800
+        ],
+        "roads_intersecting_core": [
+          1927,
+          6029
+        ],
+        "native_lanelet_count": 26,
+        "cell_count": 852,
+        "stop_ids": []
+      }
+    },
+    {
+      "tile_id": "t04_20",
+      "page": 15,
+      "observations": "길고 뚜렷한 사선 안전지대 내부는 cell 채움에서 제외되고, 양쪽 진행 차로는 계속 이어진다. 횡단보도 앞 접근 정지선과 자홍색 선이 겹친다.",
+      "decision": "clear_visual",
+      "source_keys": [
+        {
+          "kind": "road",
+          "id": 1927,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 2080,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 2083,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 2086,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 2095,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        }
+      ],
+      "zoomed_images": [],
+      "manifest_context": {
+        "bounds_xy_m": [
+          1100,
+          -880,
+          1180,
+          -800
+        ],
+        "roads_intersecting_core": [
+          1927,
+          2080,
+          2083,
+          2086
+        ],
+        "native_lanelet_count": 32,
+        "cell_count": 835,
+        "stop_ids": [
+          543104,
+          543113,
+          543110,
+          543116,
+          543107
+        ]
+      }
+    },
+    {
+      "tile_id": "t05_17",
+      "page": 19,
+      "observations": "식재 중앙분리대 양쪽 차로가 연속하며 분리대 내부는 셀에서 제외된다. 하단 양 접근의 정지선은 흰 도색과 일치한다.",
+      "decision": "clear_visual",
+      "source_keys": [
+        {
+          "kind": "road",
+          "id": 2003,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 2075,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 3195,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 3372,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        }
+      ],
+      "zoomed_images": [],
+      "manifest_context": {
+        "bounds_xy_m": [
+          860,
+          -800,
+          940,
+          -720
+        ],
+        "roads_intersecting_core": [
+          2003,
+          3195,
+          3372
+        ],
+        "native_lanelet_count": 23,
+        "cell_count": 578,
+        "stop_ids": [
+          544349,
+          544346,
+          543208,
+          544354,
+          543214,
+          544351,
+          543211,
+          543216
+        ]
+      }
+    },
+    {
+      "tile_id": "t05_19",
+      "page": 19,
+      "observations": "우상단에 일부만 보이는 직선 차로·횡단보도·정지선은 이어져 있고, 나머지 공터·건물에는 차로 망이 없다.",
+      "decision": "clear_visual",
+      "source_keys": [
+        {
+          "kind": "road",
+          "id": 2096,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 3385,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 6029,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        }
+      ],
+      "zoomed_images": [],
+      "manifest_context": {
+        "bounds_xy_m": [
+          1020,
+          -800,
+          1100,
+          -720
+        ],
+        "roads_intersecting_core": [
+          2096,
+          6029
+        ],
+        "native_lanelet_count": 8,
+        "cell_count": 84,
+        "stop_ids": [
+          543330
+        ]
+      }
+    },
+    {
+      "tile_id": "t06_15",
+      "page": 23,
+      "observations": "확대 원본/overlay에서 두 접근 차로 앞 정지선이 정확히 자홍색으로 표시됨을 확인했다. 축소 atlas에서 잘 안 보이던 현상이며, 중앙 사선 안전지대는 cell에서 제외된다.",
+      "decision": "clear_visual",
+      "source_keys": [
+        {
+          "kind": "road",
+          "id": 2003,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 2004,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 2011,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 2015,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 2018,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 2024,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 2027,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 2030,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 2036,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 2039,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 2042,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 2045,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 2048,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 2051,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 3360,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        }
+      ],
+      "zoomed_images": [
+        "/tmp/hdmap-audit/full-vision/atlas/tiles/t06_15_source.jpg",
+        "/tmp/hdmap-audit/full-vision/atlas/tiles/t06_15_overlay.jpg"
+      ],
+      "manifest_context": {
+        "bounds_xy_m": [
+          700,
+          -720,
+          780,
+          -640
+        ],
+        "roads_intersecting_core": [
+          2003,
+          2004,
+          2015,
+          2024,
+          2027,
+          2030,
+          2036,
+          2039,
+          2042,
+          2045,
+          2051,
+          3360
+        ],
+        "native_lanelet_count": 41,
+        "cell_count": 1006,
+        "stop_ids": [
+          543199,
+          543218,
+          543196,
+          543221,
+          543260,
+          543245
+        ]
+      }
+    },
+    {
+      "tile_id": "t06_16",
+      "page": 23,
+      "observations": "다차로 접근의 흰 정지선과 자홍색 선이 겹치며, 직진·회전 연결이 교차로 안에서 이어진다. 건물·보도 쪽 침범은 보이지 않는다.",
+      "decision": "clear_visual",
+      "source_keys": [
+        {
+          "kind": "road",
+          "id": 2003,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 2012,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 2015,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 2018,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 2024,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 2027,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 2030,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 2036,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 2042,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 2045,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 2048,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 2051,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 3360,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        }
+      ],
+      "zoomed_images": [],
+      "manifest_context": {
+        "bounds_xy_m": [
+          780,
+          -720,
+          860,
+          -640
+        ],
+        "roads_intersecting_core": [
+          2003,
+          2015,
+          2018,
+          2024,
+          2036,
+          2045,
+          2051,
+          3360
+        ],
+        "native_lanelet_count": 57,
+        "cell_count": 1175,
+        "stop_ids": [
+          543193,
+          543202,
+          543190,
+          543199,
+          543196,
+          543205
+        ]
+      }
+    },
+    {
+      "tile_id": "t06_23",
+      "page": 27,
+      "observations": "초지 가장자리를 지나는 다차로 직선 구간의 차선과 경계·셀이 평행하게 맞으며, 초지에는 확장되지 않는다.",
+      "decision": "clear_visual",
+      "source_keys": [
+        {
+          "kind": "road",
+          "id": 2076,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        }
+      ],
+      "zoomed_images": [],
+      "manifest_context": {
+        "bounds_xy_m": [
+          1340,
+          -720,
+          1420,
+          -640
+        ],
+        "roads_intersecting_core": [
+          2076
+        ],
+        "native_lanelet_count": 6,
+        "cell_count": 243,
+        "stop_ids": []
+      }
+    },
+    {
+      "tile_id": "t07_12",
+      "page": 27,
+      "observations": "폭이 좁아지고 다시 확폭하는 도로에서 중앙 사선 안전지대가 제외된다. 횡단보도와 떨어진 두 정지선도 원본에 실제로 도색되어 있어 그 위치를 유지한다.",
+      "decision": "clear_visual",
+      "source_keys": [
+        {
+          "kind": "road",
+          "id": 1603,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 1712,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 1725,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 1734,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 1743,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 1765,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 1768,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        }
+      ],
+      "zoomed_images": [],
+      "manifest_context": {
+        "bounds_xy_m": [
+          460,
+          -640,
+          540,
+          -560
+        ],
+        "roads_intersecting_core": [
+          1712,
+          1725,
+          1743,
+          1765,
+          1768
+        ],
+        "native_lanelet_count": 18,
+        "cell_count": 285,
+        "stop_ids": [
+          542847,
+          542850,
+          542844,
+          542841,
+          542838,
+          544380,
+          544383
+        ]
+      }
+    },
+    {
+      "tile_id": "t07_20",
+      "page": 31,
+      "observations": "직선 소도로의 접근 확폭·중앙 쐐기 모양 안전지대를 lane/cell 경계가 따르며, 횡단보도와 거리가 있는 정지선도 원본 도색과 같은 위치다. 공터의 빨간 stop543357은 XODR road2115/object2990의 t−74.189m 미배정 객체이며 확대 원본에 같은 흰 도색은 보이지 않는다.",
+      "decision": "retain_xodr_unresolved_object",
+      "source_keys": [
+        {
+          "kind": "road",
+          "id": 2115,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 2257,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 2260,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 2263,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "stop_object",
+          "road": 2115,
+          "object": 2990,
+          "stopline": 543357,
+          "provenance": "original XODR XML read; visualizer-orphan-stops.json"
+        }
+      ],
+      "zoomed_images": [
+        "/tmp/hdmap-audit/full-vision/atlas/tiles/t07_20_source.jpg",
+        "/tmp/hdmap-audit/full-vision/atlas/tiles/t07_20_overlay.jpg"
+      ],
+      "manifest_context": {
+        "bounds_xy_m": [
+          1100,
+          -640,
+          1180,
+          -560
+        ],
+        "roads_intersecting_core": [
+          2115,
+          2257,
+          2260,
+          2263
+        ],
+        "native_lanelet_count": 22,
+        "cell_count": 385,
+        "stop_ids": [
+          543357,
+          543351,
+          543354,
+          543453
+        ]
+      }
+    },
+    {
+      "tile_id": "t07_21",
+      "page": 31,
+      "observations": "교차로로 접근하는 직선 차로와 끝부분 회전 곡선이 연속하고, 횡단보도 직전 정지선과 신호 연결 시작점이 도색 위치에 있다.",
+      "decision": "clear_visual",
+      "source_keys": [
+        {
+          "kind": "road",
+          "id": 2257,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 2265,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 2268,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 2292,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 2295,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 2298,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 2301,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        }
+      ],
+      "zoomed_images": [],
+      "manifest_context": {
+        "bounds_xy_m": [
+          1180,
+          -640,
+          1260,
+          -560
+        ],
+        "roads_intersecting_core": [
+          2257,
+          2268,
+          2292,
+          2298,
+          2301
+        ],
+        "native_lanelet_count": 10,
+        "cell_count": 275,
+        "stop_ids": [
+          543450,
+          543447
+        ]
+      }
+    },
+    {
+      "tile_id": "t08_13",
+      "page": 35,
+      "observations": "우상단 타일 경계의 짧은 대로 조각만 lane/cell이 있고, 넓은 건물·공터 영역은 망에서 제외된다.",
+      "decision": "clear_visual",
+      "source_keys": [
+        {
+          "kind": "road",
+          "id": 940,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        }
+      ],
+      "zoomed_images": [],
+      "manifest_context": {
+        "bounds_xy_m": [
+          540,
+          -560,
+          620,
+          -480
+        ],
+        "roads_intersecting_core": [
+          940
+        ],
+        "native_lanelet_count": 4,
+        "cell_count": 50,
+        "stop_ids": []
+      }
+    },
+    {
+      "tile_id": "t08_14",
+      "page": 35,
+      "observations": "식재 중앙분리대와 양끝 사선 안전지대를 제외한 양방향 차로가 연속한다. 중앙 횡단보도 양측 정지선은 실제 도색과 겹친다.",
+      "decision": "clear_visual",
+      "source_keys": [
+        {
+          "kind": "road",
+          "id": 940,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 2011,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 2237,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 2240,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        }
+      ],
+      "zoomed_images": [],
+      "manifest_context": {
+        "bounds_xy_m": [
+          620,
+          -560,
+          700,
+          -480
+        ],
+        "roads_intersecting_core": [
+          940,
+          2011,
+          2237,
+          2240
+        ],
+        "native_lanelet_count": 26,
+        "cell_count": 838,
+        "stop_ids": [
+          543233,
+          543236,
+          543239,
+          543242,
+          542685,
+          542688,
+          542694,
+          542691
+        ]
+      }
+    },
+    {
+      "tile_id": "t08_21",
+      "page": 39,
+      "observations": "적색 포장 가지도로를 포함한 삼거리에서 세 접근의 횡단보도·정지선이 도색과 맞고 회전 차로는 연석 안쪽을 따른다.",
+      "decision": "clear_visual",
+      "source_keys": [
+        {
+          "kind": "road",
+          "id": 2257,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 2264,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 2265,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 2268,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 2292,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 2295,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 2298,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 2301,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 2304,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        }
+      ],
+      "zoomed_images": [],
+      "manifest_context": {
+        "bounds_xy_m": [
+          1180,
+          -560,
+          1260,
+          -480
+        ],
+        "roads_intersecting_core": [
+          2257,
+          2264,
+          2265,
+          2268,
+          2292,
+          2295,
+          2298,
+          2301,
+          2304
+        ],
+        "native_lanelet_count": 17,
+        "cell_count": 601,
+        "stop_ids": [
+          543450,
+          543447,
+          543470,
+          543462,
+          543473
+        ]
+      }
+    },
+    {
+      "tile_id": "t08_22",
+      "page": 39,
+      "observations": "직선 소도로의 중간 사선 쐐기 안전지대가 비워지고 주행 차로는 양쪽으로 이어진다. 건물과 차로 망이 분리된다.",
+      "decision": "clear_visual",
+      "source_keys": [
+        {
+          "kind": "road",
+          "id": 2265,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 3464,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        }
+      ],
+      "zoomed_images": [],
+      "manifest_context": {
+        "bounds_xy_m": [
+          1260,
+          -560,
+          1340,
+          -480
+        ],
+        "roads_intersecting_core": [
+          2265
+        ],
+        "native_lanelet_count": 16,
+        "cell_count": 304,
+        "stop_ids": []
+      }
+    },
+    {
+      "tile_id": "t09_14",
+      "page": 43,
+      "observations": "식재 중앙분리대 시작부의 사선 안전지대와 차로 확폭을 경계가 따른다. 중앙 식재 공간을 셀로 채우지 않는다.",
+      "decision": "clear_visual",
+      "source_keys": [
+        {
+          "kind": "road",
+          "id": 940,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        }
+      ],
+      "zoomed_images": [],
+      "manifest_context": {
+        "bounds_xy_m": [
+          620,
+          -480,
+          700,
+          -400
+        ],
+        "roads_intersecting_core": [
+          940
+        ],
+        "native_lanelet_count": 23,
+        "cell_count": 533,
+        "stop_ids": []
+      }
+    },
+    {
+      "tile_id": "t09_16",
+      "page": 43,
+      "observations": "우상단에 보이는 두 횡단보도 사이 소도로의 접근 차로·정지선이 도색을 따르며, 나머지 공터와 건물은 제외된다. 좌하단 빨간 stop543426은 XODR road2195/object3204의 t−110.012m 미배정 객체이며 확대 원본에 같은 흰 도색은 보이지 않는다.",
+      "decision": "retain_xodr_unresolved_object",
+      "source_keys": [
+        {
+          "kind": "road",
+          "id": 2195,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 2241,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 2253,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 2256,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "stop_object",
+          "road": 2195,
+          "object": 3204,
+          "stopline": 543426,
+          "provenance": "original XODR XML read; visualizer-orphan-stops.json"
+        }
+      ],
+      "zoomed_images": [
+        "/tmp/hdmap-audit/full-vision/atlas/tiles/t09_16_source.jpg",
+        "/tmp/hdmap-audit/full-vision/atlas/tiles/t09_16_overlay.jpg"
+      ],
+      "manifest_context": {
+        "bounds_xy_m": [
+          780,
+          -480,
+          860,
+          -400
+        ],
+        "roads_intersecting_core": [
+          2195,
+          2253,
+          2256
+        ],
+        "native_lanelet_count": 5,
+        "cell_count": 119,
+        "stop_ids": [
+          543426,
+          543423,
+          543420,
+          543417
+        ]
+      }
+    },
+    {
+      "tile_id": "t09_23",
+      "page": 47,
+      "observations": "완만한 곡선과 접근 확폭을 lane/cell이 따르고, 연속 횡단보도의 각 접근 정지선이 원본 도색 위치에 있다. 횡단보도 사이 무도색 중앙 공간은 임의로 채우지 않는다.",
+      "decision": "clear_visual",
+      "source_keys": [
+        {
+          "kind": "road",
+          "id": 2265,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 2305,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 2311,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 3464,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        }
+      ],
+      "zoomed_images": [],
+      "manifest_context": {
+        "bounds_xy_m": [
+          1340,
+          -480,
+          1420,
+          -400
+        ],
+        "roads_intersecting_core": [
+          2305,
+          2311,
+          3464
+        ],
+        "native_lanelet_count": 7,
+        "cell_count": 274,
+        "stop_ids": [
+          543468,
+          543465,
+          544442,
+          543500,
+          543497
+        ]
+      }
+    },
+    {
+      "tile_id": "t09_24",
+      "page": 47,
+      "observations": "우하단 모서리에 보이는 대로 조각과 셀이 일치하며, 대부분을 차지하는 공터·건물에는 차로 망이 없다.",
+      "decision": "clear_visual",
+      "source_keys": [
+        {
+          "kind": "road",
+          "id": 2076,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        }
+      ],
+      "zoomed_images": [],
+      "manifest_context": {
+        "bounds_xy_m": [
+          1420,
+          -480,
+          1500,
+          -400
+        ],
+        "roads_intersecting_core": [],
+        "native_lanelet_count": 3,
+        "cell_count": 44,
+        "stop_ids": []
+      }
+    },
+    {
+      "tile_id": "t10_15",
+      "page": 51,
+      "observations": "우상단 실제 차로와 정지선은 도색에 맞는다. 공터 중앙의 빨간 stop543441은 확대 원본에 흰 도색이 보이지 않으나 XODR road2241/object3246의 t−67.399m 객체를 보존한 미배정 항목이다.",
+      "decision": "retain_xodr_unresolved_object",
+      "source_keys": [
+        {
+          "kind": "road",
+          "id": 1043,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 2247,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 3375,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "stop_object",
+          "road": 2241,
+          "object": 3246,
+          "stopline": 543441,
+          "provenance": "original XODR XML read; visualizer-orphan-stops.json"
+        }
+      ],
+      "zoomed_images": [
+        "/tmp/hdmap-audit/full-vision/atlas/tiles/t10_15_source.jpg",
+        "/tmp/hdmap-audit/full-vision/atlas/tiles/t10_15_overlay.jpg"
+      ],
+      "manifest_context": {
+        "bounds_xy_m": [
+          700,
+          -400,
+          780,
+          -320
+        ],
+        "roads_intersecting_core": [
+          1043,
+          3375
+        ],
+        "native_lanelet_count": 6,
+        "cell_count": 59,
+        "stop_ids": [
+          543441,
+          544371,
+          544374
+        ]
+      }
+    },
+    {
+      "tile_id": "t10_16",
+      "page": 51,
+      "observations": "완만한 곡선의 반복 횡단보도·접근 정지선이 원본 위치와 맞으며, 차로폭 수렴과 안전지대 쐐기 주변의 빈 영역을 유지한다.",
+      "decision": "clear_visual",
+      "source_keys": [
+        {
+          "kind": "road",
+          "id": 1043,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 2195,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 2241,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 2247,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 2253,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 2256,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 3375,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        }
+      ],
+      "zoomed_images": [],
+      "manifest_context": {
+        "bounds_xy_m": [
+          780,
+          -400,
+          860,
+          -320
+        ],
+        "roads_intersecting_core": [
+          2241,
+          2247,
+          2253,
+          2256,
+          3375
+        ],
+        "native_lanelet_count": 26,
+        "cell_count": 383,
+        "stop_ids": [
+          544371,
+          544374,
+          543423,
+          543420,
+          543417,
+          544436,
+          544439,
+          543432,
+          543435,
+          543438
+        ]
+      }
+    },
+    {
+      "tile_id": "t10_23",
+      "page": 55,
+      "observations": "좁은 곡선 도로의 두 횡단 정지선은 원본에도 같은 위치에 존재한다. 상단 사선 안전지대는 비워지고 양쪽 차로망이 연속한다.",
+      "decision": "clear_visual",
+      "source_keys": [
+        {
+          "kind": "road",
+          "id": 2305,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        }
+      ],
+      "zoomed_images": [],
+      "manifest_context": {
+        "bounds_xy_m": [
+          1340,
+          -400,
+          1420,
+          -320
+        ],
+        "roads_intersecting_core": [
+          2305
+        ],
+        "native_lanelet_count": 16,
+        "cell_count": 320,
+        "stop_ids": [
+          543494,
+          543491,
+          543488,
+          543485
+        ]
+      }
+    },
+    {
+      "tile_id": "t10_24",
+      "page": 55,
+      "observations": "왼쪽 경계에 극히 일부 보이는 도로 외에는 건물·공터로, 표시되는 차로망도 타일 경계 밖에 있어 빈 영상이 도로 누락 증거는 아니다.",
+      "decision": "clear_visual",
+      "source_keys": [
+        {
+          "kind": "road",
+          "id": 2305,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        }
+      ],
+      "zoomed_images": [],
+      "manifest_context": {
+        "bounds_xy_m": [
+          1420,
+          -400,
+          1500,
+          -320
+        ],
+        "roads_intersecting_core": [],
+        "native_lanelet_count": 0,
+        "cell_count": 0,
+        "stop_ids": []
+      }
+    },
+    {
+      "tile_id": "t11_13",
+      "page": 59,
+      "observations": "하단 모서리의 두 도로 조각에만 차로망이 있고 초지·건물에는 없다. 타일 중앙에 도로 도색이나 누락 의심 차도가 보이지 않는다.",
+      "decision": "clear_visual",
+      "source_keys": [
+        {
+          "kind": "road",
+          "id": 126,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 128,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        }
+      ],
+      "zoomed_images": [],
+      "manifest_context": {
+        "bounds_xy_m": [
+          540,
+          -320,
+          620,
+          -240
+        ],
+        "roads_intersecting_core": [
+          128
+        ],
+        "native_lanelet_count": 11,
+        "cell_count": 68,
+        "stop_ids": []
+      }
+    },
+    {
+      "tile_id": "t11_14",
+      "page": 59,
+      "observations": "대로의 중앙 식재 분리대·사선 안전지대가 제외되고 양쪽 확폭이 도색을 따른다. 보도/건물 옆 빨간 stop542706은 원본 road1043/object1215의 t−57.579m 미배정 객체이며 확대 원본에 해당 흰 선은 보이지 않는다.",
+      "decision": "retain_xodr_unresolved_object",
+      "source_keys": [
+        {
+          "kind": "road",
+          "id": 126,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 1154,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "stop_object",
+          "road": 1043,
+          "object": 1215,
+          "stopline": 542706,
+          "provenance": "original XODR XML read; visualizer-orphan-stops.json"
+        }
+      ],
+      "zoomed_images": [
+        "/tmp/hdmap-audit/full-vision/atlas/tiles/t11_14_source.jpg",
+        "/tmp/hdmap-audit/full-vision/atlas/tiles/t11_14_overlay.jpg"
+      ],
+      "manifest_context": {
+        "bounds_xy_m": [
+          620,
+          -320,
+          700,
+          -240
+        ],
+        "roads_intersecting_core": [
+          126
+        ],
+        "native_lanelet_count": 36,
+        "cell_count": 565,
+        "stop_ids": [
+          542706
+        ]
+      }
+    },
+    {
+      "tile_id": "t11_24",
+      "page": 63,
+      "observations": "왼쪽 타일 경계의 보도·가로수와 건물이 보이며 차도는 화면 바깥이다. 중앙 공터에 lane/cell을 추가할 영상 근거가 없다.",
+      "decision": "clear_visual",
+      "source_keys": [
+        {
+          "kind": "road",
+          "id": 2305,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        }
+      ],
+      "zoomed_images": [],
+      "manifest_context": {
+        "bounds_xy_m": [
+          1420,
+          -320,
+          1500,
+          -240
+        ],
+        "roads_intersecting_core": [],
+        "native_lanelet_count": 0,
+        "cell_count": 0,
+        "stop_ids": []
+      }
+    },
+    {
+      "tile_id": "t11_25",
+      "page": 63,
+      "observations": "중앙 식재 분리대가 길게 이어지는 대로에서 사선 쐐기와 식재 내부는 비워지고, 차로 수 변화에 맞춰 셀이 연속한다.",
+      "decision": "clear_visual",
+      "source_keys": [
+        {
+          "kind": "road",
+          "id": 2076,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        }
+      ],
+      "zoomed_images": [],
+      "manifest_context": {
+        "bounds_xy_m": [
+          1500,
+          -320,
+          1580,
+          -240
+        ],
+        "roads_intersecting_core": [
+          2076
+        ],
+        "native_lanelet_count": 30,
+        "cell_count": 701,
+        "stop_ids": []
+      }
+    },
+    {
+      "tile_id": "t12_14",
+      "page": 67,
+      "observations": "적색 도로의 양방향 직선 차로·속도 도색·횡단보도가 잘 보이고 정지선 위치에 자홍색 표시가 놓인다. 초지로의 확장은 없다.",
+      "decision": "clear_visual",
+      "source_keys": [
+        {
+          "kind": "road",
+          "id": 146,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        }
+      ],
+      "zoomed_images": [],
+      "manifest_context": {
+        "bounds_xy_m": [
+          620,
+          -240,
+          700,
+          -160
+        ],
+        "roads_intersecting_core": [
+          146
+        ],
+        "native_lanelet_count": 5,
+        "cell_count": 210,
+        "stop_ids": [
+          542409
+        ]
+      }
+    },
+    {
+      "tile_id": "t12_15",
+      "page": 67,
+      "observations": "적색 좁은 도로와 대로가 만나는 접근부의 정지선·횡단보도가 표시된다. 교차로 회전 경계는 안쪽 연석을 따르며 대로 중앙 사선 쐐기는 비워진다.",
+      "decision": "clear_visual",
+      "source_keys": [
+        {
+          "kind": "road",
+          "id": 146,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 1154,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 1163,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 1166,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 2423,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 2426,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 2429,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 2432,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 2438,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 2444,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 3405,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 4731,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        }
+      ],
+      "zoomed_images": [],
+      "manifest_context": {
+        "bounds_xy_m": [
+          700,
+          -240,
+          780,
+          -160
+        ],
+        "roads_intersecting_core": [
+          146,
+          1154,
+          1163,
+          1166,
+          2423,
+          2432,
+          2438,
+          2444,
+          3405,
+          4731
+        ],
+        "native_lanelet_count": 38,
+        "cell_count": 779,
+        "stop_ids": [
+          543587,
+          542406,
+          543590,
+          542403,
+          543593,
+          543596,
+          543599,
+          542409
+        ]
+      }
+    },
+    {
+      "tile_id": "t12_25",
+      "page": 71,
+      "observations": "대로와 작은 지선의 삼거리에서 세 접근 정지선이 실제 흰 선에 맞고, 짧은 신호 연결은 같은 교차로의 신호 위치를 잇는다. 회전 차로가 포장 차도 안에 있다.",
+      "decision": "clear_visual",
+      "source_keys": [
+        {
+          "kind": "road",
+          "id": 2076,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 2467,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 2533,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 2536,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 2542,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 2545,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 2551,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 2554,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 2559,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        }
+      ],
+      "zoomed_images": [],
+      "manifest_context": {
+        "bounds_xy_m": [
+          1500,
+          -240,
+          1580,
+          -160
+        ],
+        "roads_intersecting_core": [
+          2076,
+          2467,
+          2536,
+          2542,
+          2545,
+          2551,
+          2554,
+          2559
+        ],
+        "native_lanelet_count": 42,
+        "cell_count": 1144,
+        "stop_ids": [
+          543288,
+          543285,
+          543297,
+          543291,
+          543294,
+          543282,
+          543632,
+          543635,
+          543701,
+          543698,
+          543704,
+          543689,
+          543692,
+          543695,
+          544457
+        ]
+      }
+    },
+    {
+      "tile_id": "t12_26",
+      "page": 71,
+      "observations": "영상은 대형 구조물·초지와 보도 가장자리이며 차량 차로 도색이 없다. 검은 쐐기 모양 표면은 원본에도 같아 overlay의 차로 누락으로 판정하지 않는다.",
+      "decision": "clear_visual",
+      "source_keys": [
+        {
+          "kind": "road",
+          "id": 2076,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        }
+      ],
+      "zoomed_images": [],
+      "manifest_context": {
+        "bounds_xy_m": [
+          1580,
+          -240,
+          1660,
+          -160
+        ],
+        "roads_intersecting_core": [],
+        "native_lanelet_count": 0,
+        "cell_count": 0,
+        "stop_ids": []
+      }
+    },
+    {
+      "tile_id": "t13_15",
+      "page": 75,
+      "observations": "적색 포장 곡선 도로의 3개 차로와 횡단보도 앞 정지선이 도색을 따른다. 하단 주택·보도로 확장된 셀은 없다.",
+      "decision": "clear_visual",
+      "source_keys": [
+        {
+          "kind": "road",
+          "id": 173,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        }
+      ],
+      "zoomed_images": [],
+      "manifest_context": {
+        "bounds_xy_m": [
+          700,
+          -160,
+          780,
+          -80
+        ],
+        "roads_intersecting_core": [
+          173
+        ],
+        "native_lanelet_count": 6,
+        "cell_count": 307,
+        "stop_ids": [
+          542439
+        ]
+      }
+    },
+    {
+      "tile_id": "t13_16",
+      "page": 75,
+      "observations": "상단 적색 곡선의 양측 접근 정지선이 실제 흰 선 위에 있고, 우하단 대로는 식재 중앙분리대를 제외하고 이어진다.",
+      "decision": "clear_visual",
+      "source_keys": [
+        {
+          "kind": "road",
+          "id": 173,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 2423,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        }
+      ],
+      "zoomed_images": [],
+      "manifest_context": {
+        "bounds_xy_m": [
+          780,
+          -160,
+          860,
+          -80
+        ],
+        "roads_intersecting_core": [
+          173,
+          2423
+        ],
+        "native_lanelet_count": 24,
+        "cell_count": 393,
+        "stop_ids": [
+          542442,
+          542439,
+          542445
+        ]
+      }
+    },
+    {
+      "tile_id": "t13_23",
+      "page": 79,
+      "observations": "중앙 사선 안전지대를 제외한 접근 차로와 직선 연결이 원본 폭을 따른다. 멀리 떨어져 있는 두 정지선도 원본에 각각 존재하며 신호 연결은 도로 내부 접근을 따른다.",
+      "decision": "clear_visual",
+      "source_keys": [
+        {
+          "kind": "road",
+          "id": 2468,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 2564,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 2567,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 2573,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        }
+      ],
+      "zoomed_images": [],
+      "manifest_context": {
+        "bounds_xy_m": [
+          1340,
+          -160,
+          1420,
+          -80
+        ],
+        "roads_intersecting_core": [
+          2468,
+          2567,
+          2573
+        ],
+        "native_lanelet_count": 22,
+        "cell_count": 386,
+        "stop_ids": [
+          543638,
+          543641,
+          543725,
+          543722
+        ]
+      }
+    },
+    {
+      "tile_id": "t13_25",
+      "page": 79,
+      "observations": "식재 분리대 끝에서 넓어지는 좌회전 접근을 차로·셀이 따르며, 하단 흰 정지선과 신호 위치가 자홍색·녹색 표시와 맞는다.",
+      "decision": "clear_visual",
+      "source_keys": [
+        {
+          "kind": "road",
+          "id": 2533,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 2542,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 2551,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 2554,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 2559,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        }
+      ],
+      "zoomed_images": [],
+      "manifest_context": {
+        "bounds_xy_m": [
+          1500,
+          -160,
+          1580,
+          -80
+        ],
+        "roads_intersecting_core": [
+          2533,
+          2542,
+          2551,
+          2554,
+          2559
+        ],
+        "native_lanelet_count": 33,
+        "cell_count": 868,
+        "stop_ids": [
+          543701,
+          543698,
+          543704,
+          543689,
+          543692,
+          543695,
+          544457
+        ]
+      }
+    },
+    {
+      "tile_id": "t14_15",
+      "page": 83,
+      "observations": "하단 가장자리 적색 차로·횡단보도 조각만 표시되고 대형 건물과 보도는 제외된다. 상단 빈 공간은 도로 누락으로 볼 도색이 없다.",
+      "decision": "clear_visual",
+      "source_keys": [
+        {
+          "kind": "road",
+          "id": 173,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        }
+      ],
+      "zoomed_images": [],
+      "manifest_context": {
+        "bounds_xy_m": [
+          700,
+          -80,
+          780,
+          0
+        ],
+        "roads_intersecting_core": [
+          173
+        ],
+        "native_lanelet_count": 6,
+        "cell_count": 244,
+        "stop_ids": [
+          542439
+        ]
+      }
+    },
+    {
+      "tile_id": "t14_16",
+      "page": 83,
+      "observations": "큰 반경의 적색 도로 곡선 전체에 셀이 연속하며, 양끝 횡단보도 및 두 방향 정지선이 실제 흰 도색과 일치한다.",
+      "decision": "clear_visual",
+      "source_keys": [
+        {
+          "kind": "road",
+          "id": 173,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        }
+      ],
+      "zoomed_images": [],
+      "manifest_context": {
+        "bounds_xy_m": [
+          780,
+          -80,
+          860,
+          0
+        ],
+        "roads_intersecting_core": [
+          173
+        ],
+        "native_lanelet_count": 21,
+        "cell_count": 453,
+        "stop_ids": [
+          542442,
+          542448,
+          542451,
+          542454,
+          542439,
+          542445
+        ]
+      }
+    },
+    {
+      "tile_id": "t14_24",
+      "page": 87,
+      "observations": "영상에 보이는 것은 건물과 보도·가로수 경계이며 차도는 우측 바깥이다. 중앙 공터에는 원본 도로 도색도 차로망도 없다.",
+      "decision": "clear_visual",
+      "source_keys": [
+        {
+          "kind": "road",
+          "id": 2533,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        }
+      ],
+      "zoomed_images": [],
+      "manifest_context": {
+        "bounds_xy_m": [
+          1420,
+          -80,
+          1500,
+          0
+        ],
+        "roads_intersecting_core": [],
+        "native_lanelet_count": 0,
+        "cell_count": 0,
+        "stop_ids": []
+      }
+    },
+    {
+      "tile_id": "t14_25",
+      "page": 87,
+      "observations": "식재 중앙분리대를 둔 직선 대로의 세 차로씩이 원본 점선과 평행하게 이어지고, 식재와 보도는 셀 영역에서 빠져 있다.",
+      "decision": "clear_visual",
+      "source_keys": [
+        {
+          "kind": "road",
+          "id": 2533,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        }
+      ],
+      "zoomed_images": [],
+      "manifest_context": {
+        "bounds_xy_m": [
+          1500,
+          -80,
+          1580,
+          0
+        ],
+        "roads_intersecting_core": [
+          2533
+        ],
+        "native_lanelet_count": 16,
+        "cell_count": 623,
+        "stop_ids": []
+      }
+    },
+    {
+      "tile_id": "t15_11",
+      "page": 91,
+      "observations": "초지 옆 회색 포장과 건물 가장자리에 차선 도색이 없고 overlay도 비어 있다. 원본 road794의 차로 유형과 타일 교차 범위를 확인해 임의 lane 추가를 보류한다. 원본794에는 driving−1이 있으나 manifest에서 이 타일 core와 실제 도로 교차가 없고 native lanelet/cell도 0으로, 도로를 포함한다고 넓게 잡힌 문맥 타일이다.",
+      "decision": "clear_context_only",
+      "source_keys": [
+        {
+          "kind": "road",
+          "id": 794,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road_lane_types",
+          "road": 794,
+          "lanes": {
+            "-1": "driving",
+            "-2": "border",
+            "-3": "sidewalk"
+          },
+          "provenance": "original XODR XML read; tile has no actual core road intersection"
+        }
+      ],
+      "zoomed_images": [],
+      "manifest_context": {
+        "bounds_xy_m": [
+          380,
+          0,
+          460,
+          80
+        ],
+        "roads_intersecting_core": [],
+        "native_lanelet_count": 0,
+        "cell_count": 0,
+        "stop_ids": []
+      }
+    },
+    {
+      "tile_id": "t15_16",
+      "page": 91,
+      "observations": "좁은 완만한 곡선 도로의 3개 차로 경계가 원본 차선을 따르며, 하단 횡단보도 앞 흰 정지선과 자홍색 표시가 겹친다.",
+      "decision": "clear_visual",
+      "source_keys": [
+        {
+          "kind": "road",
+          "id": 173,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        }
+      ],
+      "zoomed_images": [],
+      "manifest_context": {
+        "bounds_xy_m": [
+          780,
+          0,
+          860,
+          80
+        ],
+        "roads_intersecting_core": [
+          173
+        ],
+        "native_lanelet_count": 9,
+        "cell_count": 313,
+        "stop_ids": [
+          542451,
+          542454
+        ]
+      }
+    },
+    {
+      "tile_id": "t15_23",
+      "page": 95,
+      "observations": "직선에서 완만하게 휘는 소도로의 두 방향 차로와 셀이 차선 폭 안에 연속한다. 건물과 공터 쪽으로 망이 번지지 않는다.",
+      "decision": "clear_visual",
+      "source_keys": [
+        {
+          "kind": "road",
+          "id": 2564,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        }
+      ],
+      "zoomed_images": [],
+      "manifest_context": {
+        "bounds_xy_m": [
+          1340,
+          0,
+          1420,
+          80
+        ],
+        "roads_intersecting_core": [
+          2564
+        ],
+        "native_lanelet_count": 11,
+        "cell_count": 354,
+        "stop_ids": []
+      }
+    },
+    {
+      "tile_id": "t15_24",
+      "page": 95,
+      "observations": "우측 경계에 보이는 대로 차선과 셀이 일치하고, 나머지 공터·보도는 비워져 있다.",
+      "decision": "clear_visual",
+      "source_keys": [
+        {
+          "kind": "road",
+          "id": 2533,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        }
+      ],
+      "zoomed_images": [],
+      "manifest_context": {
+        "bounds_xy_m": [
+          1420,
+          0,
+          1500,
+          80
+        ],
+        "roads_intersecting_core": [
+          2533
+        ],
+        "native_lanelet_count": 11,
+        "cell_count": 178,
+        "stop_ids": []
+      }
+    },
+    {
+      "tile_id": "t16_17",
+      "page": 99,
+      "observations": "왼쪽 곡선 소도로의 차로폭과 셀이 연속하며, 횡단보도에서 떨어진 상·하 정지선도 실제 원본 도색과 일치한다.",
+      "decision": "clear_visual",
+      "source_keys": [
+        {
+          "kind": "road",
+          "id": 173,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 2674,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        }
+      ],
+      "zoomed_images": [],
+      "manifest_context": {
+        "bounds_xy_m": [
+          860,
+          80,
+          940,
+          160
+        ],
+        "roads_intersecting_core": [
+          173,
+          2674
+        ],
+        "native_lanelet_count": 20,
+        "cell_count": 384,
+        "stop_ids": [
+          542457,
+          542463,
+          542460
+        ]
+      }
+    },
+    {
+      "tile_id": "t16_18",
+      "page": 99,
+      "observations": "직선 대로 중앙의 큰 사선 안전지대를 제외하고 양방향 차로와 셀이 이어진다. 두 횡단보도 앞 정지선·신호 시작점은 원본 위치에 있다.",
+      "decision": "clear_visual",
+      "source_keys": [
+        {
+          "kind": "road",
+          "id": 2625,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 2674,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 2708,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 2711,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        }
+      ],
+      "zoomed_images": [],
+      "manifest_context": {
+        "bounds_xy_m": [
+          940,
+          80,
+          1020,
+          160
+        ],
+        "roads_intersecting_core": [
+          2625,
+          2674,
+          2708,
+          2711
+        ],
+        "native_lanelet_count": 36,
+        "cell_count": 719,
+        "stop_ids": [
+          544460,
+          543766,
+          543769,
+          543772,
+          543775,
+          543825,
+          543828,
+          543831,
+          543834
+        ]
+      }
+    },
+    {
+      "tile_id": "t16_25",
+      "page": 103,
+      "observations": "다차로 대로의 접근 확폭과 좌회전 화살표 구간을 경계가 따르며 중앙 식재·사선 쐐기 내부는 셀에서 제외된다.",
+      "decision": "clear_visual",
+      "source_keys": [
+        {
+          "kind": "road",
+          "id": 2533,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        }
+      ],
+      "zoomed_images": [],
+      "manifest_context": {
+        "bounds_xy_m": [
+          1500,
+          80,
+          1580,
+          160
+        ],
+        "roads_intersecting_core": [
+          2533
+        ],
+        "native_lanelet_count": 30,
+        "cell_count": 834,
+        "stop_ids": []
+      }
+    },
+    {
+      "tile_id": "t17_08",
+      "page": 103,
+      "observations": "소도로와 큰 교차로를 잇는 곡선이 연석 안에 있고 보행섬 내부를 비워 둔다. 상단 좁은 접근과 하단 넓은 접근의 정지선이 실제 도색에 맞는다.",
+      "decision": "clear_visual",
+      "source_keys": [
+        {
+          "kind": "road",
+          "id": 72,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 568,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 1184,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 1187,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 1190,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 1196,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 1199,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 1202,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 1211,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 1217,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 1218,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 1219,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 1272,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        }
+      ],
+      "zoomed_images": [],
+      "manifest_context": {
+        "bounds_xy_m": [
+          140,
+          160,
+          220,
+          240
+        ],
+        "roads_intersecting_core": [
+          72,
+          568,
+          1184,
+          1187,
+          1190,
+          1199,
+          1211,
+          1219,
+          1272
+        ],
+        "native_lanelet_count": 22,
+        "cell_count": 670,
+        "stop_ids": [
+          542298,
+          542301,
+          542304,
+          542292,
+          542295,
+          542724
+        ]
+      }
+    },
+    {
+      "tile_id": "t17_22",
+      "page": 107,
+      "observations": "사거리의 직진·회전 연결이 차도 범위 안에서 이어지고 북·서 접근 정지선은 횡단보도 직전 흰 선에 맞는다. 신호 연결은 이 교차로 안의 실제 신호 위치를 향한다.",
+      "decision": "clear_visual",
+      "source_keys": [
+        {
+          "kind": "road",
+          "id": 2626,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 2719,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 2722,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 2725,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 2728,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 2731,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 2734,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 2737,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 2740,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 2743,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 2746,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 2749,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 2752,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 2755,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        }
+      ],
+      "zoomed_images": [],
+      "manifest_context": {
+        "bounds_xy_m": [
+          1260,
+          160,
+          1340,
+          240
+        ],
+        "roads_intersecting_core": [
+          2626,
+          2719,
+          2722,
+          2725,
+          2731,
+          2734,
+          2737,
+          2740,
+          2743,
+          2746,
+          2749,
+          2752,
+          2755
+        ],
+        "native_lanelet_count": 41,
+        "cell_count": 1157,
+        "stop_ids": [
+          543746,
+          543749,
+          543799,
+          543787,
+          543796,
+          543793,
+          543790,
+          543896,
+          543893,
+          543899
+        ]
+      }
+    },
+    {
+      "tile_id": "t17_23",
+      "page": 107,
+      "observations": "동측 대로의 중앙 사선 쐐기 안전지대가 셀에서 빠지고 접근 차로가 확폭된다. 네 방향 교차로 정지선과 긴 신호 관계선은 같은 교차로 영역 안에서 이어진다.",
+      "decision": "clear_visual",
+      "source_keys": [
+        {
+          "kind": "road",
+          "id": 2575,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 2718,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 2719,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 2722,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 2725,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 2728,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 2731,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 2734,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 2737,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 2740,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 2743,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 2746,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 2749,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 2752,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 2755,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        }
+      ],
+      "zoomed_images": [],
+      "manifest_context": {
+        "bounds_xy_m": [
+          1340,
+          160,
+          1420,
+          240
+        ],
+        "roads_intersecting_core": [
+          2718,
+          2719,
+          2722,
+          2725,
+          2728,
+          2731,
+          2734,
+          2740,
+          2743,
+          2746,
+          2749,
+          2752
+        ],
+        "native_lanelet_count": 41,
+        "cell_count": 1196,
+        "stop_ids": [
+          543746,
+          543749,
+          543864,
+          543855,
+          543867,
+          543861,
+          543858,
+          543896,
+          543893,
+          543899
+        ]
+      }
+    },
+    {
+      "tile_id": "t18_17",
+      "page": 111,
+      "observations": "식재 중앙분리대가 끝나며 접근 차로로 확폭하는 구간에서 사선 쐐기와 식재는 제외되고 양방향 차로가 원본 폭을 따른다.",
+      "decision": "clear_visual",
+      "source_keys": [
+        {
+          "kind": "road",
+          "id": 1222,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 2675,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 2681,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 2687,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 2702,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        }
+      ],
+      "zoomed_images": [],
+      "manifest_context": {
+        "bounds_xy_m": [
+          860,
+          240,
+          940,
+          320
+        ],
+        "roads_intersecting_core": [
+          2675
+        ],
+        "native_lanelet_count": 15,
+        "cell_count": 515,
+        "stop_ids": []
+      }
+    },
+    {
+      "tile_id": "t18_18",
+      "page": 111,
+      "observations": "초지 경계의 직선 소도로에서 횡단보도 양쪽 접근 정지선이 실제 도색과 맞고 셀은 차도 안에서만 연속한다.",
+      "decision": "clear_visual",
+      "source_keys": [
+        {
+          "kind": "road",
+          "id": 1222,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        }
+      ],
+      "zoomed_images": [],
+      "manifest_context": {
+        "bounds_xy_m": [
+          940,
+          240,
+          1020,
+          320
+        ],
+        "roads_intersecting_core": [
+          1222
+        ],
+        "native_lanelet_count": 9,
+        "cell_count": 315,
+        "stop_ids": [
+          542733,
+          542736,
+          542739
+        ]
+      }
+    },
+    {
+      "tile_id": "t19_16",
+      "page": 115,
+      "observations": "중앙 식재가 있는 직선 대로 양방향 두 차로가 연속하며, 상단 안전지대·식재 영역에는 셀이 없다.",
+      "decision": "clear_visual",
+      "source_keys": [
+        {
+          "kind": "road",
+          "id": 2675,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        }
+      ],
+      "zoomed_images": [],
+      "manifest_context": {
+        "bounds_xy_m": [
+          780,
+          320,
+          860,
+          400
+        ],
+        "roads_intersecting_core": [
+          2675
+        ],
+        "native_lanelet_count": 9,
+        "cell_count": 364,
+        "stop_ids": []
+      }
+    },
+    {
+      "tile_id": "t19_17",
+      "page": 115,
+      "observations": "초지 가장자리 대로의 점선과 셀 경계가 평행하다. 초지를 가로지르는 검은 선은 source/overlay 모두에 있는 원본 배경이며 신호 링크가 아니다.",
+      "decision": "clear_visual",
+      "source_keys": [
+        {
+          "kind": "road",
+          "id": 2675,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        }
+      ],
+      "zoomed_images": [],
+      "manifest_context": {
+        "bounds_xy_m": [
+          860,
+          320,
+          940,
+          400
+        ],
+        "roads_intersecting_core": [
+          2675
+        ],
+        "native_lanelet_count": 5,
+        "cell_count": 342,
+        "stop_ids": []
+      }
+    },
+    {
+      "tile_id": "t20_16",
+      "page": 119,
+      "observations": "식재 분리대 끝과 두 횡단보도 사이 접근 구간에서 차로가 연속한다. 양 정지선은 실제 흰 도색에 맞고 사선 쐐기는 비워져 있다.",
+      "decision": "clear_visual",
+      "source_keys": [
+        {
+          "kind": "road",
+          "id": 2675,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 2813,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 3090,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 3093,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        }
+      ],
+      "zoomed_images": [],
+      "manifest_context": {
+        "bounds_xy_m": [
+          780,
+          400,
+          860,
+          480
+        ],
+        "roads_intersecting_core": [
+          2675,
+          3090,
+          3093
+        ],
+        "native_lanelet_count": 20,
+        "cell_count": 616,
+        "stop_ids": [
+          544189,
+          543846,
+          543852,
+          543849,
+          544195,
+          544192
+        ]
+      }
+    },
+    {
+      "tile_id": "t20_17",
+      "page": 119,
+      "observations": "대부분 초지인 문맥 타일로 좌하단의 짧은 도로 조각에만 차로망이 있다. 가느다란 배경 선은 원본에도 같으며 lane/cell 누락으로 보지 않는다.",
+      "decision": "clear_visual",
+      "source_keys": [
+        {
+          "kind": "road",
+          "id": 2675,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        }
+      ],
+      "zoomed_images": [],
+      "manifest_context": {
+        "bounds_xy_m": [
+          860,
+          400,
+          940,
+          480
+        ],
+        "roads_intersecting_core": [],
+        "native_lanelet_count": 3,
+        "cell_count": 24,
+        "stop_ids": []
+      }
+    },
+    {
+      "tile_id": "t20_25",
+      "page": 123,
+      "observations": "왼쪽 끝의 매우 얇은 도로·연석 조각 외에는 회색 비도로 배경이며, 차로망도 실제 도로가 닿는 경계에만 있다.",
+      "decision": "clear_visual",
+      "source_keys": [
+        {
+          "kind": "road",
+          "id": 2756,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 2806,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 2933,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        }
+      ],
+      "zoomed_images": [],
+      "manifest_context": {
+        "bounds_xy_m": [
+          1500,
+          400,
+          1580,
+          480
+        ],
+        "roads_intersecting_core": [],
+        "native_lanelet_count": 1,
+        "cell_count": 17,
+        "stop_ids": []
+      }
+    },
+    {
+      "tile_id": "t21_15",
+      "page": 123,
+      "observations": "운동장 옆 큰 굽이 도로의 세 차로 곡률과 셀이 도색을 따른다. 접근 정지선·신호 위치가 실제 도색과 같고 안전지대 쐐기가 제외된다.",
+      "decision": "clear_visual",
+      "source_keys": [
+        {
+          "kind": "road",
+          "id": 2813,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 3093,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 3096,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 3099,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        }
+      ],
+      "zoomed_images": [],
+      "manifest_context": {
+        "bounds_xy_m": [
+          700,
+          480,
+          780,
+          560
+        ],
+        "roads_intersecting_core": [
+          2813,
+          3096,
+          3099
+        ],
+        "native_lanelet_count": 17,
+        "cell_count": 497,
+        "stop_ids": [
+          544472,
+          544183,
+          544180,
+          544186,
+          544201
+        ]
+      }
+    },
+    {
+      "tile_id": "t21_24",
+      "page": 127,
+      "observations": "중앙 식재 분리대를 둔 넓은 직선 대로의 양측 네 차로씩과 차로 변경 표시가 연속하며, 식재 내부에 셀이 없다.",
+      "decision": "clear_visual",
+      "source_keys": [
+        {
+          "kind": "road",
+          "id": 2805,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 2806,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 2807,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 2942,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 2948,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 3021,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 3024,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 3027,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 3033,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 3145,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        }
+      ],
+      "zoomed_images": [],
+      "manifest_context": {
+        "bounds_xy_m": [
+          1420,
+          480,
+          1500,
+          560
+        ],
+        "roads_intersecting_core": [
+          2806,
+          3021,
+          3024,
+          3027,
+          3033,
+          3145
+        ],
+        "native_lanelet_count": 19,
+        "cell_count": 854,
+        "stop_ids": []
+      }
+    },
+    {
+      "tile_id": "t21_25",
+      "page": 127,
+      "observations": "왼쪽 가장자리 보도·가로수와 건물만 보이고 차도는 타일 밖이다. 중앙 비도로 영역은 차로망에서 제외된다.",
+      "decision": "clear_visual",
+      "source_keys": [
+        {
+          "kind": "road",
+          "id": 2806,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        }
+      ],
+      "zoomed_images": [],
+      "manifest_context": {
+        "bounds_xy_m": [
+          1500,
+          480,
+          1580,
+          560
+        ],
+        "roads_intersecting_core": [],
+        "native_lanelet_count": 0,
+        "cell_count": 0,
+        "stop_ids": []
+      }
+    },
+    {
+      "tile_id": "t22_22",
+      "page": 131,
+      "observations": "작은 사거리의 네 접근 차로·횡단보도·정지선이 서로 대응한다. 중앙의 교차 연결은 교차로 안에 있으며 주변 초지·보도는 제외된다.",
+      "decision": "clear_visual",
+      "source_keys": [
+        {
+          "kind": "road",
+          "id": 2809,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 2810,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 2811,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 2812,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 2960,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 2963,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 2969,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 2972,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 2975,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 2978,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 2981,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 2984,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 2987,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 2990,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 2993,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 2996,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 3005,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 3011,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 3039,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 3051,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 3247,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        }
+      ],
+      "zoomed_images": [],
+      "manifest_context": {
+        "bounds_xy_m": [
+          1260,
+          560,
+          1340,
+          640
+        ],
+        "roads_intersecting_core": [
+          2809,
+          2810,
+          2811,
+          2812,
+          2969,
+          2972,
+          2975,
+          2978,
+          2981,
+          2984,
+          2987,
+          2990,
+          2993,
+          2996,
+          3005,
+          3011
+        ],
+        "native_lanelet_count": 54,
+        "cell_count": 898,
+        "stop_ids": [
+          544151,
+          544148,
+          544140,
+          544120,
+          544123,
+          544125,
+          544137,
+          544134,
+          544174,
+          544177,
+          544469,
+          544168,
+          544143,
+          544145,
+          544171
+        ]
+      }
+    },
+    {
+      "tile_id": "t22_23",
+      "page": 131,
+      "observations": "길게 이어진 사선 안전지대가 cell 채움에서 빠지고, 좁아지는 두 방향 차로가 원본 폭을 따른다. 횡단보도 양쪽 정지선도 도색에 맞는다.",
+      "decision": "clear_visual",
+      "source_keys": [
+        {
+          "kind": "road",
+          "id": 2808,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 2811,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 2948,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        }
+      ],
+      "zoomed_images": [],
+      "manifest_context": {
+        "bounds_xy_m": [
+          1340,
+          560,
+          1420,
+          640
+        ],
+        "roads_intersecting_core": [
+          2811
+        ],
+        "native_lanelet_count": 14,
+        "cell_count": 270,
+        "stop_ids": [
+          544151,
+          544148,
+          544157,
+          544154,
+          544159
+        ]
+      }
+    },
+    {
+      "tile_id": "t23_24",
+      "page": 135,
+      "observations": "여러 평행 차로 묶음이 있는 직선 도로에서 황색 구분선과 흰 점선에 맞춰 각각의 lane/cell 띠가 연속한다. 보도로의 확장은 없다.",
+      "decision": "clear_visual",
+      "source_keys": [
+        {
+          "kind": "road",
+          "id": 2820,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 3018,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 3142,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        }
+      ],
+      "zoomed_images": [],
+      "manifest_context": {
+        "bounds_xy_m": [
+          1420,
+          640,
+          1500,
+          720
+        ],
+        "roads_intersecting_core": [
+          2820,
+          3018,
+          3142
+        ],
+        "native_lanelet_count": 8,
+        "cell_count": 810,
+        "stop_ids": []
+      }
+    },
+    {
+      "tile_id": "t24_19",
+      "page": 135,
+      "observations": "초지 하단의 대로 조각에서 식재 중앙분리대 내부를 제외하고 양측 차로가 도색을 따른다. 주변 초지는 비워져 있다.",
+      "decision": "clear_visual",
+      "source_keys": [
+        {
+          "kind": "road",
+          "id": 2815,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        }
+      ],
+      "zoomed_images": [],
+      "manifest_context": {
+        "bounds_xy_m": [
+          1020,
+          720,
+          1100,
+          800
+        ],
+        "roads_intersecting_core": [
+          2815
+        ],
+        "native_lanelet_count": 4,
+        "cell_count": 260,
+        "stop_ids": []
+      }
+    },
+    {
+      "tile_id": "t25_22",
+      "page": 139,
+      "observations": "넓은 대로와 작은 지선의 교차로에서 접근 정지선·횡단보도·신호 위치가 대응한다. 사선 중앙 안전지대를 제외하고 회전 경계는 차도 안에 있다.",
+      "decision": "clear_visual",
+      "source_keys": [
+        {
+          "kind": "road",
+          "id": 2816,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 2817,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 3057,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 3060,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 3063,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 3066,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 3069,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 3072,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 3078,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 3081,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 3084,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 3431,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        }
+      ],
+      "zoomed_images": [],
+      "manifest_context": {
+        "bounds_xy_m": [
+          1260,
+          800,
+          1340,
+          880
+        ],
+        "roads_intersecting_core": [
+          2816,
+          2817,
+          3057,
+          3069,
+          3072,
+          3078,
+          3081,
+          3431
+        ],
+        "native_lanelet_count": 39,
+        "cell_count": 930,
+        "stop_ids": [
+          544475,
+          544234,
+          544237,
+          544240,
+          544255,
+          544258,
+          544252
+        ]
+      }
+    },
+    {
+      "tile_id": "t25_23",
+      "page": 139,
+      "observations": "좌상단 대로의 사선 안전지대 쐐기가 비워지고 양쪽 차로와 셀이 이어진다. 길쭉한 건물과 공터는 차로 영역에서 제외된다.",
+      "decision": "clear_visual",
+      "source_keys": [
+        {
+          "kind": "road",
+          "id": 2817,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        }
+      ],
+      "zoomed_images": [],
+      "manifest_context": {
+        "bounds_xy_m": [
+          1340,
+          800,
+          1420,
+          880
+        ],
+        "roads_intersecting_core": [
+          2817
+        ],
+        "native_lanelet_count": 20,
+        "cell_count": 258,
+        "stop_ids": []
+      }
+    },
+    {
+      "tile_id": "t26_25",
+      "page": 143,
+      "observations": "좌상단의 교차로 일부에만 lane/cell이 보이며, 넓은 초지 안의 검은 부채꼴은 원본에도 동일한 배경 기하이다. 차로 표시가 그 초지로 이어지지 않는다.",
+      "decision": "clear_visual",
+      "source_keys": [
+        {
+          "kind": "road",
+          "id": 3113,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 3119,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 3125,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 3170,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        }
+      ],
+      "zoomed_images": [],
+      "manifest_context": {
+        "bounds_xy_m": [
+          1500,
+          880,
+          1580,
+          960
+        ],
+        "roads_intersecting_core": [
+          3170
+        ],
+        "native_lanelet_count": 7,
+        "cell_count": 75,
+        "stop_ids": []
+      }
+    },
+    {
+      "tile_id": "t27_20",
+      "page": 143,
+      "observations": "오른쪽 끝 보도·가로수와 넓은 초지뿐으로 차도는 타일 바깥이다. 차선 도색이 없는 초지를 임의로 lanelet으로 채울 근거가 없다.",
+      "decision": "clear_visual",
+      "source_keys": [
+        {
+          "kind": "road",
+          "id": 2818,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        }
+      ],
+      "zoomed_images": [],
+      "manifest_context": {
+        "bounds_xy_m": [
+          1100,
+          960,
+          1180,
+          1040
+        ],
+        "roads_intersecting_core": [],
+        "native_lanelet_count": 0,
+        "cell_count": 0,
+        "stop_ids": []
+      }
+    },
+    {
+      "tile_id": "t28_22",
+      "page": 147,
+      "observations": "대부분 초지이며 좌상단에 잘린 사선 도로의 lane/cell은 연속한다. 가장자리에 일부 보이는 횡단보도와 정지선이 원본 도색에 맞고, 초지의 배경 선은 원본에도 있어 신호 연결선으로 볼 수 없다.",
+      "decision": "clear_visual",
+      "source_keys": [
+        {
+          "kind": "road",
+          "id": 2818,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        }
+      ],
+      "zoomed_images": [],
+      "manifest_context": {
+        "bounds_xy_m": [
+          1260,
+          1040,
+          1340,
+          1120
+        ],
+        "roads_intersecting_core": [
+          2818
+        ],
+        "native_lanelet_count": 10,
+        "cell_count": 86,
+        "stop_ids": [
+          544276
+        ]
+      }
+    },
+    {
+      "tile_id": "t28_23",
+      "page": 147,
+      "observations": "대부분 초지이고 오른쪽 가장자리에 보도와 도로 단면 일부만 들어온다. 우상단의 작은 cyan 경계 외 실제 차도는 타일 밖이며, 초지에 차선 도색이나 lanelet 누락 근거가 없다.",
+      "decision": "clear_visual",
+      "source_keys": [
+        {
+          "kind": "road",
+          "id": 2819,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        }
+      ],
+      "zoomed_images": [],
+      "manifest_context": {
+        "bounds_xy_m": [
+          1340,
+          1040,
+          1420,
+          1120
+        ],
+        "roads_intersecting_core": [],
+        "native_lanelet_count": 1,
+        "cell_count": 19,
+        "stop_ids": []
+      }
+    },
+    {
+      "tile_id": "t29_23",
+      "page": 151,
+      "observations": "가로 방향의 작은 양방향 도로가 오른쪽 T자 교차로로 진입한다. 왼쪽 원본의 접근 정지선·횡단보도와 오른쪽 표시가 겹치며, 회전 연결 차로는 연석 안쪽을 따르고 초지에는 cell이 없다.",
+      "decision": "clear_visual",
+      "source_keys": [
+        {
+          "kind": "road",
+          "id": 2818,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 2819,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 3174,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 3183,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 3186,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        }
+      ],
+      "zoomed_images": [],
+      "manifest_context": {
+        "bounds_xy_m": [
+          1340,
+          1120,
+          1420,
+          1200
+        ],
+        "roads_intersecting_core": [
+          2818,
+          3174,
+          3186
+        ],
+        "native_lanelet_count": 6,
+        "cell_count": 355,
+        "stop_ids": [
+          544273
+        ]
+      }
+    },
+    {
+      "tile_id": "t29_24",
+      "page": 151,
+      "observations": "황색 분리선이 있는 넓은 평행 도로와 서쪽의 작은 T자 접속이 보인다. 서쪽 접속은 인접 도로에만 연결되고 곡선 lanelet은 연석 안쪽을 따른다. 작은 접근의 정지선·횡단보도는 맞으며, 원본에 정지선이 없는 큰 직진 도로에 새 정지선을 만들지 않았다. 동쪽 건물은 차로 밖이다.",
+      "decision": "clear_visual",
+      "source_keys": [
+        {
+          "kind": "road",
+          "id": 2818,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 2819,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 3018,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 3149,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 3174,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 3177,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 3180,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 3183,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 3186,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        },
+        {
+          "kind": "road",
+          "id": 3192,
+          "provenance": "atlas manifest road_ids; not a claim of independent XML read for every road"
+        }
+      ],
+      "zoomed_images": [],
+      "manifest_context": {
+        "bounds_xy_m": [
+          1420,
+          1120,
+          1500,
+          1200
+        ],
+        "roads_intersecting_core": [
+          2819,
+          3018,
+          3149,
+          3174,
+          3177,
+          3180,
+          3183,
+          3186,
+          3192
+        ],
+        "native_lanelet_count": 20,
+        "cell_count": 908,
+        "stop_ids": [
+          544273
+        ]
+      }
+    }
+  ],
+  "files_actually_viewed": [
+    "/tmp/hdmap-audit/full-vision/atlas/pages/p003.jpg",
+    "/tmp/hdmap-audit/full-vision/atlas/pages/p007.jpg",
+    "/tmp/hdmap-audit/full-vision/atlas/pages/p011.jpg",
+    "/tmp/hdmap-audit/full-vision/atlas/pages/p015.jpg",
+    "/tmp/hdmap-audit/full-vision/atlas/pages/p019.jpg",
+    "/tmp/hdmap-audit/full-vision/atlas/pages/p023.jpg",
+    "/tmp/hdmap-audit/full-vision/atlas/tiles/t06_15_source.jpg",
+    "/tmp/hdmap-audit/full-vision/atlas/tiles/t06_15_overlay.jpg",
+    "/tmp/hdmap-audit/full-vision/atlas/pages/p027.jpg",
+    "/tmp/hdmap-audit/full-vision/atlas/pages/p031.jpg",
+    "/tmp/hdmap-audit/full-vision/atlas/pages/p035.jpg",
+    "/tmp/hdmap-audit/full-vision/atlas/pages/p039.jpg",
+    "/tmp/hdmap-audit/full-vision/atlas/pages/p043.jpg",
+    "/tmp/hdmap-audit/full-vision/atlas/pages/p047.jpg",
+    "/tmp/hdmap-audit/full-vision/atlas/tiles/t07_20_source.jpg",
+    "/tmp/hdmap-audit/full-vision/atlas/tiles/t07_20_overlay.jpg",
+    "/tmp/hdmap-audit/full-vision/atlas/tiles/t09_16_source.jpg",
+    "/tmp/hdmap-audit/full-vision/atlas/tiles/t09_16_overlay.jpg",
+    "/tmp/hdmap-audit/full-vision/atlas/tiles/t10_15_source.jpg",
+    "/tmp/hdmap-audit/full-vision/atlas/tiles/t10_15_overlay.jpg",
+    "/tmp/hdmap-audit/full-vision/atlas/tiles/t11_14_source.jpg",
+    "/tmp/hdmap-audit/full-vision/atlas/tiles/t11_14_overlay.jpg",
+    "/tmp/hdmap-audit/full-vision/atlas/pages/p051.jpg",
+    "/tmp/hdmap-audit/full-vision/atlas/pages/p055.jpg",
+    "/tmp/hdmap-audit/full-vision/atlas/pages/p059.jpg",
+    "/tmp/hdmap-audit/full-vision/atlas/pages/p063.jpg",
+    "/tmp/hdmap-audit/full-vision/atlas/pages/p067.jpg",
+    "/tmp/hdmap-audit/full-vision/atlas/pages/p071.jpg",
+    "/tmp/hdmap-audit/full-vision/atlas/pages/p075.jpg",
+    "/tmp/hdmap-audit/full-vision/atlas/pages/p079.jpg",
+    "/tmp/hdmap-audit/full-vision/atlas/pages/p083.jpg",
+    "/tmp/hdmap-audit/full-vision/atlas/pages/p087.jpg",
+    "/tmp/hdmap-audit/full-vision/atlas/pages/p091.jpg",
+    "/tmp/hdmap-audit/full-vision/atlas/pages/p095.jpg",
+    "/tmp/hdmap-audit/full-vision/atlas/pages/p099.jpg",
+    "/tmp/hdmap-audit/full-vision/atlas/pages/p103.jpg",
+    "/tmp/hdmap-audit/full-vision/atlas/pages/p107.jpg",
+    "/tmp/hdmap-audit/full-vision/atlas/pages/p111.jpg",
+    "/tmp/hdmap-audit/full-vision/atlas/pages/p115.jpg",
+    "/tmp/hdmap-audit/full-vision/atlas/pages/p119.jpg",
+    "/tmp/hdmap-audit/full-vision/atlas/pages/p123.jpg",
+    "/tmp/hdmap-audit/full-vision/atlas/pages/p127.jpg",
+    "/tmp/hdmap-audit/full-vision/atlas/pages/p131.jpg",
+    "/tmp/hdmap-audit/full-vision/atlas/pages/p135.jpg",
+    "/tmp/hdmap-audit/full-vision/atlas/pages/p139.jpg",
+    "/tmp/hdmap-audit/full-vision/atlas/pages/p143.jpg",
+    "/tmp/hdmap-audit/full-vision/atlas/pages/p147.jpg",
+    "/tmp/hdmap-audit/full-vision/atlas/pages/p151.jpg"
+  ],
+  "schema_version": 1,
+  "reviewer": "visualizer_audit",
+  "task": "Read every assigned atlas source/overlay image, zoom suspected defects and retain ambiguous source objects",
+  "assignment": "zero-based page index % 4 == 3",
+  "inputs": {
+    "xodr": "5a369c7b0609fc98b0034680473465db4273dd396ffb37980996cea70ec6ca2f",
+    "osgb": "2d8f83fdc26cb7f8373e71cf850c70f7d90981362789fb474eb31b0d5b253296",
+    "map": "e7a426f900813748747a39233f3678237fd7f849c335bae3bc3014b31ae678b0",
+    "renderer": "056f2785f6d1e12d41859968427edb5244060317735a5a549846f2747846d05b",
+    "coverage": "ab35166c01cef60d8926470050c60bb42dc9bb4160aab853034409b248a1d619",
+    "lod_scale": 0.001,
+    "grid_origin": [
+      -500,
+      -1200
+    ],
+    "core_m": 80,
+    "context_m": 10,
+    "metres_per_pixel": 0.078125,
+    "block_pixels": 4352
+  },
+  "manifest_path": "/tmp/hdmap-audit/full-vision/atlas/manifest.json",
+  "summary": {
+    "assigned_pages": 38,
+    "viewed_pages": 38,
+    "assigned_tiles": 76,
+    "reviewed_tiles": 76,
+    "files_actually_viewed": 48,
+    "zoom_images": 10,
+    "missing_tiles": [],
+    "unexpected_tiles": [],
+    "duplicate_tiles": [],
+    "unique_road_ids_from_manifest": 216,
+    "decision_counts": {
+      "clear_visual": 71,
+      "retain_xodr_unresolved_object": 4,
+      "clear_context_only": 1
+    },
+    "new_confirmed_conversion_errors": 0,
+    "unresolved_source_objects": 4,
+    "production_or_runtime_changes": 0
+  },
+  "files_sha256": {
+    "/tmp/hdmap-audit/full-vision/atlas/pages/p003.jpg": "e4bb0b4c755ed8fd6fd8c33588e769823ad550da0d2a0da0e046ef192b0e1300",
+    "/tmp/hdmap-audit/full-vision/atlas/pages/p007.jpg": "61d50ae86eedf8fa2bfc00c19b89b46104ccbf1de21aa4a5310cba31a3291f42",
+    "/tmp/hdmap-audit/full-vision/atlas/pages/p011.jpg": "96ff1681303549b633a41b9cbb3546d78efa3c9eda258f7d8c146cc1f729dde8",
+    "/tmp/hdmap-audit/full-vision/atlas/pages/p015.jpg": "dca33a905b8ef2a543e709aa4c74c9441b448e737a2909e6252b851ee5ec40c1",
+    "/tmp/hdmap-audit/full-vision/atlas/pages/p019.jpg": "5857d2e218eab0f19a70caae692db61e158e48f17cd069bf4ba4052bb1802b8d",
+    "/tmp/hdmap-audit/full-vision/atlas/pages/p023.jpg": "3dbb72a2b6e60bd2f899fc9f7d6739182f1915e6ecd84d43ba5128245339c695",
+    "/tmp/hdmap-audit/full-vision/atlas/tiles/t06_15_source.jpg": "2059eba2e9956ae0e156c4c594b6077d723dac2833101a9b98bf063c88e5a161",
+    "/tmp/hdmap-audit/full-vision/atlas/tiles/t06_15_overlay.jpg": "b0e1ece8552d871c6ab3a1f8268bbd4733785067277b2b25315b1d3fb7b83236",
+    "/tmp/hdmap-audit/full-vision/atlas/pages/p027.jpg": "b38d99aef7e4ac3b6d443dffa512304d276f9fa1a6b14a404be6cc12e645e79a",
+    "/tmp/hdmap-audit/full-vision/atlas/pages/p031.jpg": "3bd3d9f1d621ed396c1ea643535cfe1d4f37545ea76a4ce01289b2592deadd0b",
+    "/tmp/hdmap-audit/full-vision/atlas/pages/p035.jpg": "eb1a72a7e616eca475c9440ae6e60ef354d081eb186fd3e72de482347c4b9050",
+    "/tmp/hdmap-audit/full-vision/atlas/pages/p039.jpg": "7fbf533bb5b3171435e4af1e414be809bf23ba7869b70a7fda9dfb6a32ccf913",
+    "/tmp/hdmap-audit/full-vision/atlas/pages/p043.jpg": "0901e23aadedce6c807b32acc78e91f3ffcd67c9f70dc990321cb85317369035",
+    "/tmp/hdmap-audit/full-vision/atlas/pages/p047.jpg": "133851854eb325eefb1e19d0d71ca352d7a58ee2132d96b5e9faddfb88e0af70",
+    "/tmp/hdmap-audit/full-vision/atlas/tiles/t07_20_source.jpg": "99ea278c07d0a6cbf218f055aba43e5964891b3d726594f9d476080cf763f7ab",
+    "/tmp/hdmap-audit/full-vision/atlas/tiles/t07_20_overlay.jpg": "6ec62766b8f8d82ecf546ae7d376fdf171dcf72cb0fe67d310e1b64ce5538146",
+    "/tmp/hdmap-audit/full-vision/atlas/tiles/t09_16_source.jpg": "d6c8acd28a709698d5a9c6d25de52f85a019bf3608c9889a23bbbaf778ce7bc0",
+    "/tmp/hdmap-audit/full-vision/atlas/tiles/t09_16_overlay.jpg": "2ea611d79df09f5c4eefe3269b3fe0da421da7893f5b1a9775c6a1c669522321",
+    "/tmp/hdmap-audit/full-vision/atlas/tiles/t10_15_source.jpg": "935a56f517e2fb9ba888c33be67496d487bc37f1cf068ca462f78eafef923b97",
+    "/tmp/hdmap-audit/full-vision/atlas/tiles/t10_15_overlay.jpg": "cd60d899bf1c27e617d3d79ab01bcdaccb5dec58a0db8609c553890a8799a131",
+    "/tmp/hdmap-audit/full-vision/atlas/tiles/t11_14_source.jpg": "c43cfa9a91826cf2654af9fb192e0ef9798977fea45f2e85f744abb425018f7c",
+    "/tmp/hdmap-audit/full-vision/atlas/tiles/t11_14_overlay.jpg": "265604c4231e006b136133df9c1b891c8b7ac5b0a26b050356f174778c78d0a2",
+    "/tmp/hdmap-audit/full-vision/atlas/pages/p051.jpg": "18b416019f07625bf24dd159c637169f95b875d25f82568c3d378b33b6e45a31",
+    "/tmp/hdmap-audit/full-vision/atlas/pages/p055.jpg": "0ad23547b946791037d300ec02d6096a1164c07b82bd50b179f9f02240b4fb6c",
+    "/tmp/hdmap-audit/full-vision/atlas/pages/p059.jpg": "03f3e9266d753d5186bc69c7e71095f59b49df9e9061459c70ef1aba66b4354c",
+    "/tmp/hdmap-audit/full-vision/atlas/pages/p063.jpg": "25e4d2ba6beeb6e9f4cc48ab6fdf902f8dbcdb9b9ad0fee424a163e5b4c9ded0",
+    "/tmp/hdmap-audit/full-vision/atlas/pages/p067.jpg": "5dba64a7ded24c80c5f14f2955d16f72748a3031c5ec6d7633fd96808ab25b68",
+    "/tmp/hdmap-audit/full-vision/atlas/pages/p071.jpg": "39759ac970a6bf822d8dcd5c5e8f97fa2434d75cc26c14ef14643ae44566e31a",
+    "/tmp/hdmap-audit/full-vision/atlas/pages/p075.jpg": "795f926b8668f1b29aec16ad7d9b6606bc1808a80a3379cf8453a2f2083766e6",
+    "/tmp/hdmap-audit/full-vision/atlas/pages/p079.jpg": "10126b650bf8bf7bfcf9d568099ec33d9f02f5db28e0816ac8f06e2e2d3864c3",
+    "/tmp/hdmap-audit/full-vision/atlas/pages/p083.jpg": "2f2504bece499d964d5a3e6984a6785125c9f4d2c15ef83b9eb232b45e8bf90c",
+    "/tmp/hdmap-audit/full-vision/atlas/pages/p087.jpg": "c5fd2640e95b67a97d7fef62e9ba5ba7de422cd95eb3b5e69b041a462720365a",
+    "/tmp/hdmap-audit/full-vision/atlas/pages/p091.jpg": "3b6baafff8fabc89e2a2ba03da7d603619ca474dfda91973cbc80ff906b3fa6d",
+    "/tmp/hdmap-audit/full-vision/atlas/pages/p095.jpg": "9f4a84647c914b08c8b9b61a494120ff4c62a6846f770ccd32c15aec196fb90f",
+    "/tmp/hdmap-audit/full-vision/atlas/pages/p099.jpg": "1bc93de384d3701e957a112e26d24739850c966dc6251d81666418db9c539bab",
+    "/tmp/hdmap-audit/full-vision/atlas/pages/p103.jpg": "1bd6b23937d448445f7d44aaf833ed2c6b7644a788a7e7754f8d516a2b746ee3",
+    "/tmp/hdmap-audit/full-vision/atlas/pages/p107.jpg": "16bf88904a80c69dc95879f9e62a3ad44a3d14b38388639615f8cccbf6ca7b4b",
+    "/tmp/hdmap-audit/full-vision/atlas/pages/p111.jpg": "3a76ae4ee9ea2360458e98a02676ad98bad43d721458c151982b467594f51b5a",
+    "/tmp/hdmap-audit/full-vision/atlas/pages/p115.jpg": "913df3a50e0bf2bc4b4b2a21c7e8608104760309cdb26a3a6267676644627cbc",
+    "/tmp/hdmap-audit/full-vision/atlas/pages/p119.jpg": "872f55cc66765515bb215c083ec63c18bdbc77db0613726842e83cb19749f0c6",
+    "/tmp/hdmap-audit/full-vision/atlas/pages/p123.jpg": "cf92a46a7e1b78bfe12dbf0fc74644636c8520004d0e2f7cf381055448deaaba",
+    "/tmp/hdmap-audit/full-vision/atlas/pages/p127.jpg": "e2bd1f66157f0cf1db129670d711e2f9ce06799fe9ed569d7a9e161eb78a2dc2",
+    "/tmp/hdmap-audit/full-vision/atlas/pages/p131.jpg": "ada2a24d9b68b741f83bf260935b999ab3192ce72ada56c50ea9bbef2aaac22d",
+    "/tmp/hdmap-audit/full-vision/atlas/pages/p135.jpg": "612f5af713d82902fe73e1ce7f3e94668283d654f37c0b46bf66852f1b2529ae",
+    "/tmp/hdmap-audit/full-vision/atlas/pages/p139.jpg": "e7536330b14983c559a2cb6e797a5e4986e5e8802c124f22888cbc940cca00a2",
+    "/tmp/hdmap-audit/full-vision/atlas/pages/p143.jpg": "3b579956f7638c0ab1e758cda66d7f84ff06835c641a6dca0e5c5297f8ed03a4",
+    "/tmp/hdmap-audit/full-vision/atlas/pages/p147.jpg": "c3ea954a55c19def7584dbc08b8f941863c6fbc2c5553beba55c29f8abf79d30",
+    "/tmp/hdmap-audit/full-vision/atlas/pages/p151.jpg": "94b2d77bb0c8e1a8ffb678cb7ec0878d687f3e98cba6febdfc04b78246e12804"
+  },
+  "evidence_files": [
+    "/tmp/hdmap-audit/full-vision/visualizer-orphan-stops.json",
+    "/tmp/hdmap-audit/full-vision/lod-scope.json"
+  ],
+  "limitations": [
+    "Visual comparison is limited to the assigned 76 tiles and rendered visible surfaces; it does not certify absence of all source or runtime defects.",
+    "Thumbnail pages were read in full; the ten listed source/overlay zoom images were additionally read. No other tile zoom is claimed.",
+    "Four red unassigned stop objects have original XODR records but no corresponding white paint visible in their enlarged source tiles. Their original positions remain unresolved and preserved.",
+    "Controller correctness cannot be established from geometric relation lines alone; separate API/controller evidence is required.",
+    "Objects hidden by source mesh, vegetation, buildings or other fine geometry can remain obscured even when near road LOD is selected.",
+    "road_ids are atlas context metadata and may include roads that do not intersect a tile core; no road in a context-only view is not proof of a missing lanelet."
+  ]
+}

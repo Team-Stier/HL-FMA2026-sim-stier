@@ -1,0 +1,610 @@
+{
+  "map": "map/hdmap.bin",
+  "rows": [
+    {
+      "target_lanelet": 115970,
+      "miss_samples": 16,
+      "nearest_driving_polygon_range_m": [
+        0.03622450848730715,
+        0.3987076497276136
+      ],
+      "reported_source_lane_types": {
+        "driving": 1,
+        "parking": 15
+      },
+      "reported_road_ids": [
+        1562,
+        1666
+      ],
+      "reported_road_driving_lateral_max_m": 0.3987090587615967,
+      "nearest_logged_audit_peer_m": null,
+      "peers_under_4m": 0,
+      "first": {
+        "name": "MapAudit000",
+        "id": 2,
+        "xyz": [
+          520.1891064396864,
+          -396.0238005456827,
+          41.69937573670956
+        ],
+        "hpr": [
+          -4.219486236572266,
+          -0.1292622834444046,
+          0.04769955202937126
+        ],
+        "coord_type": 0,
+        "parent": 0,
+        "frame": 1104,
+        "sim_time": 44.11999999999924,
+        "road": [
+          1666,
+          -3,
+          25.527029037475586,
+          -3.2688000202178955,
+          0.5945980548858643
+        ],
+        "phase": "drive",
+        "target": 115970,
+        "lanelets": [],
+        "cells": [],
+        "nearest_driving_polygon_m": 0.2055387753378097,
+        "nearest_lanelet": 115970,
+        "reported_source_lane_type": "driving",
+        "reported_road_driving_lateral_distance_m": 0.0,
+        "nearest_logged_audit_peer": null
+      },
+      "worst": {
+        "name": "MapAudit000",
+        "id": 2,
+        "xyz": [
+          519.6083931162361,
+          -395.15371688880145,
+          41.763651576629755
+        ],
+        "hpr": [
+          -4.072453022003174,
+          -0.2320171743631363,
+          0.03941382095217705
+        ],
+        "coord_type": 0,
+        "parent": 0,
+        "frame": 1108,
+        "sim_time": 44.279999999999234,
+        "road": [
+          1562,
+          2,
+          9.10986328125,
+          3.391158103942871,
+          -0.4718569219112396
+        ],
+        "phase": "drive",
+        "target": 115970,
+        "lanelets": [],
+        "cells": [],
+        "nearest_driving_polygon_m": 0.3987076497276136,
+        "nearest_lanelet": 106448,
+        "reported_source_lane_type": "parking",
+        "reported_road_driving_lateral_distance_m": 0.3911581039428711,
+        "nearest_logged_audit_peer": null
+      }
+    },
+    {
+      "target_lanelet": 356804,
+      "miss_samples": 27,
+      "nearest_driving_polygon_range_m": [
+        0.03209949116891878,
+        0.20220261832859912
+      ],
+      "reported_source_lane_types": {
+        "border": 27
+      },
+      "reported_road_ids": [
+        2674
+      ],
+      "reported_road_driving_lateral_max_m": 0.20516731387555787,
+      "nearest_logged_audit_peer_m": null,
+      "peers_under_4m": 0,
+      "first": {
+        "name": "MapAudit000",
+        "id": 2,
+        "xyz": [
+          967.8878363583848,
+          154.5583953782213,
+          56.85833411490539
+        ],
+        "hpr": [
+          2.2409842014312744,
+          0.11015623062849045,
+          -0.1277604103088379
+        ],
+        "coord_type": 0,
+        "parent": 0,
+        "frame": 1781,
+        "sim_time": 71.19999999999993,
+        "road": [
+          2674,
+          5,
+          50.53520584106445,
+          6.213035583496094,
+          -0.17169447243213654
+        ],
+        "phase": "drive",
+        "target": 356804,
+        "lanelets": [],
+        "cells": [],
+        "nearest_driving_polygon_m": 0.03209949116891878,
+        "nearest_lanelet": 356804,
+        "reported_source_lane_type": "border",
+        "reported_road_driving_lateral_distance_m": 0.012076123536619576,
+        "nearest_logged_audit_peer": null
+      },
+      "worst": {
+        "name": "MapAudit000",
+        "id": 2,
+        "xyz": [
+          967.2518333067982,
+          155.34944113458832,
+          56.739906075760935
+        ],
+        "hpr": [
+          2.252422571182251,
+          0.10969159752130508,
+          -0.14636047184467316
+        ],
+        "coord_type": 0,
+        "parent": 0,
+        "frame": 1789,
+        "sim_time": 71.51999999999998,
+        "road": [
+          2674,
+          5,
+          49.5372428894043,
+          6.185848712921143,
+          -0.015009135939180851
+        ],
+        "phase": "drive",
+        "target": 356804,
+        "lanelets": [],
+        "cells": [],
+        "nearest_driving_polygon_m": 0.20220261832859912,
+        "nearest_lanelet": 356804,
+        "reported_source_lane_type": "border",
+        "reported_road_driving_lateral_distance_m": 0.18319963911859993,
+        "nearest_logged_audit_peer": null
+      }
+    },
+    {
+      "target_lanelet": 440092,
+      "miss_samples": 46,
+      "nearest_driving_polygon_range_m": [
+        0.06421228382937161,
+        1.3959535002233265
+      ],
+      "reported_source_lane_types": {
+        "driving": 1,
+        "none": 45
+      },
+      "reported_road_ids": [
+        2818
+      ],
+      "reported_road_driving_lateral_max_m": 1.4450281858444214,
+      "nearest_logged_audit_peer_m": null,
+      "peers_under_4m": 0,
+      "first": {
+        "name": "MapAudit000",
+        "id": 2,
+        "xyz": [
+          1237.1662017047643,
+          1099.0576524842313,
+          44.5533524912907
+        ],
+        "hpr": [
+          -2.2481837272644043,
+          -0.0006936974823474884,
+          0.00033581085153855383
+        ],
+        "coord_type": 0,
+        "parent": 0,
+        "frame": 2035,
+        "sim_time": 81.36000000000152,
+        "road": [
+          2818,
+          -1,
+          199.96945190429688,
+          -1.4418731927871704,
+          0.0085648437961936
+        ],
+        "phase": "drive",
+        "target": 440092,
+        "lanelets": [],
+        "cells": [],
+        "nearest_driving_polygon_m": 0.08411515146134779,
+        "nearest_lanelet": 440091,
+        "reported_source_lane_type": "driving",
+        "reported_road_driving_lateral_distance_m": 0.0,
+        "nearest_logged_audit_peer": null
+      },
+      "worst": {
+        "name": "MapAudit000",
+        "id": 2,
+        "xyz": [
+          1236.27099209765,
+          1098.0456536563026,
+          44.54987670453269
+        ],
+        "hpr": [
+          -2.365218162536621,
+          -0.0003351911436766386,
+          -0.014905574731528759
+        ],
+        "coord_type": 0,
+        "parent": 0,
+        "frame": 2045,
+        "sim_time": 81.76000000000158,
+        "road": [
+          2818,
+          -1,
+          201.261474609375,
+          -1.4756406545639038,
+          -0.03048860654234886
+        ],
+        "phase": "drive",
+        "target": 440092,
+        "lanelets": [],
+        "cells": [],
+        "nearest_driving_polygon_m": 1.3959535002233265,
+        "nearest_lanelet": 440656,
+        "reported_source_lane_type": "none",
+        "reported_road_driving_lateral_distance_m": 1.4146633869024425,
+        "nearest_logged_audit_peer": null
+      }
+    },
+    {
+      "target_lanelet": 410621,
+      "miss_samples": 45,
+      "nearest_driving_polygon_range_m": [
+        0.025254316495053233,
+        0.29399002109641964
+      ],
+      "reported_source_lane_types": {
+        "none": 45
+      },
+      "reported_road_ids": [
+        2810
+      ],
+      "reported_road_driving_lateral_max_m": 0.31957999847924956,
+      "nearest_logged_audit_peer_m": null,
+      "peers_under_4m": 0,
+      "first": {
+        "name": "MapAudit000",
+        "id": 2,
+        "xyz": [
+          1186.0957965955718,
+          575.9612682194384,
+          49.93427614560481
+        ],
+        "hpr": [
+          3.6171467304229736,
+          0.0066007100977003574,
+          0.0114589873701334
+        ],
+        "coord_type": 0,
+        "parent": 0,
+        "frame": 2292,
+        "sim_time": 91.64000000000313,
+        "road": [
+          2810,
+          1,
+          113.46368408203125,
+          2.9564907550811768,
+          -0.0598137304186821
+        ],
+        "phase": "drive",
+        "target": 410621,
+        "lanelets": [],
+        "cells": [],
+        "nearest_driving_polygon_m": 0.031439366315669535,
+        "nearest_lanelet": 410528,
+        "reported_source_lane_type": "none",
+        "reported_road_driving_lateral_distance_m": 0.009026835923944265,
+        "nearest_logged_audit_peer": null
+      },
+      "worst": {
+        "name": "MapAudit000",
+        "id": 2,
+        "xyz": [
+          1183.7287990221505,
+          574.3126927957597,
+          49.90400049047536
+        ],
+        "hpr": [
+          3.852691411972046,
+          0.0063288831152021885,
+          0.015101129189133644
+        ],
+        "coord_type": 0,
+        "parent": 0,
+        "frame": 2311,
+        "sim_time": 92.40000000000325,
+        "road": [
+          2810,
+          1,
+          110.8274917602539,
+          2.1501660346984863,
+          -0.28784409165382385
+        ],
+        "phase": "drive",
+        "target": 410621,
+        "lanelets": [],
+        "cells": [],
+        "nearest_driving_polygon_m": 0.29399002109641964,
+        "nearest_lanelet": 410528,
+        "reported_source_lane_type": "none",
+        "reported_road_driving_lateral_distance_m": 0.3189950642057049,
+        "nearest_logged_audit_peer": null
+      }
+    },
+    {
+      "target_lanelet": 36924,
+      "miss_samples": 7,
+      "nearest_driving_polygon_range_m": [
+        0.035880326214787144,
+        0.17360210908287643
+      ],
+      "reported_source_lane_types": {
+        "driving": 7
+      },
+      "reported_road_ids": [
+        211
+      ],
+      "reported_road_driving_lateral_max_m": 0.0,
+      "nearest_logged_audit_peer_m": null,
+      "peers_under_4m": 0,
+      "first": {
+        "name": "MapAudit000",
+        "id": 2,
+        "xyz": [
+          364.918696269096,
+          -271.82581969398547,
+          47.99895825680116
+        ],
+        "hpr": [
+          3.6454226970672607,
+          -0.0008347302209585905,
+          0.01092349924147129
+        ],
+        "coord_type": 0,
+        "parent": 0,
+        "frame": 3079,
+        "sim_time": 123.12000000000805,
+        "road": [
+          211,
+          1,
+          0.12435634434223175,
+          -0.2422383725643158,
+          1.3577616214752197
+        ],
+        "phase": "drive",
+        "target": 36924,
+        "lanelets": [],
+        "cells": [],
+        "nearest_driving_polygon_m": 0.04627651839020976,
+        "nearest_lanelet": 36924,
+        "reported_source_lane_type": "driving",
+        "reported_road_driving_lateral_distance_m": 0.0,
+        "nearest_logged_audit_peer": null
+      },
+      "worst": {
+        "name": "MapAudit000",
+        "id": 2,
+        "xyz": [
+          364.76794337584647,
+          -271.91153665226693,
+          48.00479083335478
+        ],
+        "hpr": [
+          3.658411741256714,
+          0.0038388182874768972,
+          0.012349453754723072
+        ],
+        "coord_type": 0,
+        "parent": 0,
+        "frame": 3080,
+        "sim_time": 123.16000000000805,
+        "road": [
+          211,
+          1,
+          0.12435634434223175,
+          -0.2422383725643158,
+          1.3577616214752197
+        ],
+        "phase": "drive",
+        "target": 36924,
+        "lanelets": [],
+        "cells": [],
+        "nearest_driving_polygon_m": 0.17360210908287643,
+        "nearest_lanelet": 84298,
+        "reported_source_lane_type": "driving",
+        "reported_road_driving_lateral_distance_m": 0.0,
+        "nearest_logged_audit_peer": null
+      }
+    },
+    {
+      "target_lanelet": 116073,
+      "miss_samples": 16,
+      "nearest_driving_polygon_range_m": [
+        0.023763330537803447,
+        0.18897828146911022
+      ],
+      "reported_source_lane_types": {
+        "driving": 1,
+        "none": 15
+      },
+      "reported_road_ids": [
+        1666
+      ],
+      "reported_road_driving_lateral_max_m": 0.19120872848050396,
+      "nearest_logged_audit_peer_m": null,
+      "peers_under_4m": 0,
+      "first": {
+        "name": "MapAudit000",
+        "id": 2,
+        "xyz": [
+          524.4396971704938,
+          -405.1481383916338,
+          41.70002193698178
+        ],
+        "hpr": [
+          -3.6026673316955566,
+          1.75777095137164e-05,
+          -0.03018944337964058
+        ],
+        "coord_type": 0,
+        "parent": 0,
+        "frame": 3363,
+        "sim_time": 134.48000000000752,
+        "road": [
+          1666,
+          -2,
+          15.749957084655762,
+          -1.0413095951080322,
+          0.9857866764068604
+        ],
+        "phase": "drive",
+        "target": 116073,
+        "lanelets": [],
+        "cells": [
+          20411
+        ],
+        "nearest_driving_polygon_m": 0.023763330537803447,
+        "nearest_lanelet": 116073,
+        "reported_source_lane_type": "driving",
+        "reported_road_driving_lateral_distance_m": 0.0,
+        "nearest_logged_audit_peer": null
+      },
+      "worst": {
+        "name": "MapAudit000",
+        "id": 2,
+        "xyz": [
+          523.1366600991291,
+          -404.22162758013803,
+          41.69928813183658
+        ],
+        "hpr": [
+          -3.881605863571167,
+          -0.000570407195482403,
+          -0.03015955537557602
+        ],
+        "coord_type": 0,
+        "parent": 0,
+        "frame": 3371,
+        "sim_time": 134.80000000000746,
+        "road": [
+          1666,
+          -1,
+          17.3243465423584,
+          -0.5696389675140381,
+          -0.18965162336826324
+        ],
+        "phase": "drive",
+        "target": 116073,
+        "lanelets": [],
+        "cells": [],
+        "nearest_driving_polygon_m": 0.18897828146911022,
+        "nearest_lanelet": 116073,
+        "reported_source_lane_type": "none",
+        "reported_road_driving_lateral_distance_m": 0.19033564159194793,
+        "nearest_logged_audit_peer": null
+      }
+    },
+    {
+      "target_lanelet": 241980,
+      "miss_samples": 35,
+      "nearest_driving_polygon_range_m": [
+        0.024151126749172695,
+        0.2051438259567532
+      ],
+      "reported_source_lane_types": {
+        "driving": 1,
+        "border": 34
+      },
+      "reported_road_ids": [
+        2192
+      ],
+      "reported_road_driving_lateral_max_m": 0.20738131290281014,
+      "nearest_logged_audit_peer_m": null,
+      "peers_under_4m": 0,
+      "first": {
+        "name": "MapAudit000",
+        "id": 2,
+        "xyz": [
+          999.451315515965,
+          -487.16477590118495,
+          59.913961346645685
+        ],
+        "hpr": [
+          0.3185634911060333,
+          -0.07110297679901123,
+          -0.16441912949085236
+        ],
+        "coord_type": 0,
+        "parent": 0,
+        "frame": 3576,
+        "sim_time": 143.00000000000583,
+        "road": [
+          2192,
+          -3,
+          48.96883773803711,
+          -6.5145673751831055,
+          -0.1382470279932022
+        ],
+        "phase": "drive",
+        "target": 241980,
+        "lanelets": [],
+        "cells": [
+          43092
+        ],
+        "nearest_driving_polygon_m": 0.025840754781024187,
+        "nearest_lanelet": 241980,
+        "reported_source_lane_type": "driving",
+        "reported_road_driving_lateral_distance_m": 0.0,
+        "nearest_logged_audit_peer": null
+      },
+      "worst": {
+        "name": "MapAudit000",
+        "id": 2,
+        "xyz": [
+          1000.7119881652822,
+          -486.69385950827456,
+          60.01793947584095
+        ],
+        "hpr": [
+          0.4401698708534241,
+          -0.06560779362916946,
+          -0.16141675412654877
+        ],
+        "coord_type": 0,
+        "parent": 0,
+        "frame": 3591,
+        "sim_time": 143.6000000000057,
+        "road": [
+          2192,
+          -4,
+          50.478851318359375,
+          -6.4519877433776855,
+          0.021403538063168526
+        ],
+        "phase": "drive",
+        "target": 241980,
+        "lanelets": [],
+        "cells": [],
+        "nearest_driving_polygon_m": 0.2051438259567532,
+        "nearest_lanelet": 242656,
+        "reported_source_lane_type": "border",
+        "reported_road_driving_lateral_distance_m": 0.20738131290281014,
+        "nearest_logged_audit_peer": null
+      }
+    }
+  ],
+  "note": "Nearest source lateral distance uses RDB reported road s/t and original XODR widths. Peer proximity uses retained MapAudit samples within 81ms; it does not prove collisions and excludes unlogged Ego/other traffic."
+}

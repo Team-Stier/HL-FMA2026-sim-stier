@@ -1,0 +1,115 @@
+{
+  "map": "/tmp/hdmap-audit/driving-map-758f.bin",
+  "xodr": "/home/stier/vtd \uc790\ub8cc/HL_FMA_VTD_LivingLab.xodr",
+  "rows": [
+    {
+      "target_lanelet": 153837,
+      "miss_samples": 4,
+      "nearest_driving_polygon_range_m": [
+        0.02357900715968086,
+        0.17477660995203997
+      ],
+      "reported_source_lane_types": {
+        "driving": 4
+      },
+      "reported_road_ids": [
+        1940,
+        1946
+      ],
+      "reported_road_driving_lateral_max_m": 0.0,
+      "nearest_logged_audit_peer_m": null,
+      "peers_under_4m": 0,
+      "first": {
+        "name": "MapAudit000",
+        "id": 2,
+        "xyz": [
+          1006.8771556632885,
+          -944.174569547889,
+          53.10968728901182
+        ],
+        "hpr": [
+          2.909374237060547,
+          -0.00025056969025172293,
+          -0.04583187401294708
+        ],
+        "dimensions": [
+          3.5190000534057617,
+          1.6519999504089355,
+          1.5429999828338623
+        ],
+        "center_offset": [
+          1.284500002861023,
+          0.0,
+          0.0
+        ],
+        "coord_type": 0,
+        "parent": 0,
+        "frame": 4333,
+        "sim_time": 173.2799999999998,
+        "road": [
+          1940,
+          -1,
+          7.022741794586182,
+          -0.13734814524650574,
+          1.4648257493972778
+        ],
+        "phase": "drive",
+        "target": 153837,
+        "lanelets": [],
+        "cells": [
+          30606
+        ],
+        "nearest_driving_polygon_m": 0.02357900715968086,
+        "nearest_lanelet": 172674,
+        "reported_source_lane_type": "driving",
+        "reported_road_driving_lateral_distance_m": 0.0,
+        "nearest_logged_audit_peer": null
+      },
+      "worst": {
+        "name": "MapAudit000",
+        "id": 2,
+        "xyz": [
+          1006.6295719114064,
+          -944.1049292253364,
+          53.11550628539693
+        ],
+        "hpr": [
+          2.8673388957977295,
+          0.004412102047353983,
+          -0.04502354562282562
+        ],
+        "dimensions": [
+          3.5190000534057617,
+          1.6519999504089355,
+          1.5429999828338623
+        ],
+        "center_offset": [
+          1.284500002861023,
+          0.0,
+          0.0
+        ],
+        "coord_type": 0,
+        "parent": 0,
+        "frame": 4334,
+        "sim_time": 173.3199999999998,
+        "road": [
+          1940,
+          -1,
+          7.022741794586182,
+          -0.13734814524650574,
+          1.4648257493972778
+        ],
+        "phase": "drive",
+        "target": 153837,
+        "lanelets": [],
+        "cells": [],
+        "nearest_driving_polygon_m": 0.17477660995203997,
+        "nearest_lanelet": 172674,
+        "reported_source_lane_type": "driving",
+        "reported_road_driving_lateral_distance_m": 0.0,
+        "nearest_logged_audit_peer": null
+      }
+    }
+  ],
+  "note": "Nearest source lateral distance uses RDB reported road s/t and original XODR widths. Peer proximity uses retained MapAudit samples within 81ms; it does not prove collisions and excludes unlogged Ego/other traffic."
+}

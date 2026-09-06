@@ -1,0 +1,1860 @@
+{
+  "source": "/home/stier/vtd \uc790\ub8cc/HL_FMA_VTD_LivingLab.xodr",
+  "source_sha256": "5a369c7b0609fc98b0034680473465db4273dd396ffb37980996cea70ec6ca2f",
+  "sampling_log": "/tmp/hdmap-audit/drive-explicit-global/rdb_samples.jsonl.gz",
+  "method": "Independent line/spiral/arc integration; solve tangent projection near RDB s; extend only endpoint straight geometries to expose s<0 or s>L. Classify original lane-width intervals using raw XY projection.",
+  "summary": [
+    {
+      "target": 36924,
+      "miss_frames": 16,
+      "classifications": [
+        "outside_reported_road_longitudinal_extent"
+      ],
+      "source_s_range": [
+        -2.100945555887158,
+        -0.02989077215627134
+      ],
+      "source_t_range": [
+        -0.9664228632993714,
+        -0.057777795832124584
+      ],
+      "reported_st_raw_xy_error_range_m": [
+        0.1734661295319697,
+        2.4350064044239144
+      ],
+      "reported_st_unique_count": 1,
+      "neighbor_frame_reported_states": [
+        {
+          "frame": 5311,
+          "road": [
+            211,
+            1,
+            0.4392361640930176,
+            -1.1852569580078125,
+            0.414743036031723
+          ],
+          "raw_xy": [
+            365.7594704522284,
+            -272.2999373407402
+          ]
+        },
+        {
+          "frame": 5312,
+          "road": [
+            211,
+            1,
+            0.2830921411514282,
+            -1.1140192747116089,
+            0.4859807789325714
+          ],
+          "raw_xy": [
+            365.5932305634551,
+            -272.3462661639157
+          ]
+        },
+        {
+          "frame": 5313,
+          "road": [
+            211,
+            1,
+            0.12675869464874268,
+            -1.0409308671951294,
+            0.5590691566467285
+          ],
+          "raw_xy": [
+            365.425826436626,
+            -272.3917233417243
+          ]
+        },
+        {
+          "frame": 5314,
+          "road": [
+            211,
+            1,
+            0.12675869464874268,
+            -1.0409308671951294,
+            0.5590691566467285
+          ],
+          "raw_xy": [
+            365.2590473860273,
+            -272.4363108615979
+          ]
+        },
+        {
+          "frame": 5315,
+          "road": [
+            211,
+            1,
+            0.12675869464874268,
+            -1.0409308671951294,
+            0.5590691566467285
+          ],
+          "raw_xy": [
+            365.0958572070304,
+            -272.47972659829014
+          ]
+        },
+        {
+          "frame": 5316,
+          "road": [
+            211,
+            1,
+            0.12675869464874268,
+            -1.0409308671951294,
+            0.5590691566467285
+          ],
+          "raw_xy": [
+            364.9363041279048,
+            -272.52241140365027
+          ]
+        },
+        {
+          "frame": 5317,
+          "road": [
+            211,
+            1,
+            0.12675869464874268,
+            -1.0409308671951294,
+            0.5590691566467285
+          ],
+          "raw_xy": [
+            364.78033133967557,
+            -272.564789098829
+          ]
+        },
+        {
+          "frame": 5318,
+          "road": [
+            211,
+            1,
+            0.12675869464874268,
+            -1.0409308671951294,
+            0.5590691566467285
+          ],
+          "raw_xy": [
+            364.627871830563,
+            -272.60724588040773
+          ]
+        },
+        {
+          "frame": 5319,
+          "road": [
+            211,
+            1,
+            0.12675869464874268,
+            -1.0409308671951294,
+            0.5590691566467285
+          ],
+          "raw_xy": [
+            364.4788525055562,
+            -272.6501340703735
+          ]
+        },
+        {
+          "frame": 5320,
+          "road": [
+            211,
+            1,
+            0.12675869464874268,
+            -1.0409308671951294,
+            0.5590691566467285
+          ],
+          "raw_xy": [
+            364.3331347056064,
+            -272.6935644913921
+          ]
+        },
+        {
+          "frame": 5321,
+          "road": [
+            211,
+            1,
+            0.12675869464874268,
+            -1.0409308671951294,
+            0.5590691566467285
+          ],
+          "raw_xy": [
+            364.19050593364295,
+            -272.737402933999
+          ]
+        },
+        {
+          "frame": 5322,
+          "road": [
+            211,
+            1,
+            0.12675869464874268,
+            -1.0409308671951294,
+            0.5590691566467285
+          ],
+          "raw_xy": [
+            364.05076566642947,
+            -272.78156855341706
+          ]
+        },
+        {
+          "frame": 5323,
+          "road": [
+            211,
+            1,
+            0.12675869464874268,
+            -1.0409308671951294,
+            0.5590691566467285
+          ],
+          "raw_xy": [
+            363.91371699746105,
+            -272.82599707604527
+          ]
+        },
+        {
+          "frame": 5324,
+          "road": [
+            211,
+            1,
+            0.12675869464874268,
+            -1.0409308671951294,
+            0.5590691566467285
+          ],
+          "raw_xy": [
+            363.77916780737195,
+            -272.8706384211941
+          ]
+        },
+        {
+          "frame": 5325,
+          "road": [
+            211,
+            1,
+            0.12675869464874268,
+            -1.0409308671951294,
+            0.5590691566467285
+          ],
+          "raw_xy": [
+            363.6469318303692,
+            -272.9154544956189
+          ]
+        },
+        {
+          "frame": 5326,
+          "road": [
+            211,
+            1,
+            0.12675869464874268,
+            -1.0409308671951294,
+            0.5590691566467285
+          ],
+          "raw_xy": [
+            363.51682961384705,
+            -272.96041720563437
+          ]
+        },
+        {
+          "frame": 5327,
+          "road": [
+            211,
+            1,
+            0.12675869464874268,
+            -1.0409308671951294,
+            0.5590691566467285
+          ],
+          "raw_xy": [
+            363.3886893519088,
+            -273.0055066780125
+          ]
+        },
+        {
+          "frame": 5328,
+          "road": [
+            211,
+            1,
+            0.12675869464874268,
+            -1.0409308671951294,
+            0.5590691566467285
+          ],
+          "raw_xy": [
+            363.2623475762735,
+            -273.0507096819884
+          ]
+        },
+        {
+          "frame": 5329,
+          "road": [
+            211,
+            1,
+            0.12675869464874268,
+            -1.0409308671951294,
+            0.5590691566467285
+          ],
+          "raw_xy": [
+            363.13764946502164,
+            -273.0960176182925
+          ]
+        },
+        {
+          "frame": 5330,
+          "road": [
+            211,
+            1,
+            0.12675869464874268,
+            -1.0409308671951294,
+            0.5590691566467285
+          ],
+          "raw_xy": [
+            363.0139458456894,
+            -273.14154510552584
+          ]
+        }
+      ]
+    },
+    {
+      "target": 115710,
+      "miss_frames": 1,
+      "classifications": [
+        "outside_source_driving_lateral_extent"
+      ],
+      "source_s_range": [
+        13.761001456519308,
+        13.761001456519308
+      ],
+      "source_t_range": [
+        0.11841474291536155,
+        0.11841474291536155
+      ],
+      "reported_st_raw_xy_error_range_m": [
+        0.23050061933372423,
+        0.23050061933372423
+      ],
+      "reported_st_unique_count": 1,
+      "neighbor_frame_reported_states": [
+        {
+          "frame": 5205,
+          "road": [
+            1687,
+            -1,
+            13.317887306213379,
+            -0.41099998354911804,
+            1.1051602363586426
+          ],
+          "raw_xy": [
+            554.8105262872864,
+            -394.5048387264197
+          ]
+        },
+        {
+          "frame": 5206,
+          "road": [
+            1687,
+            -1,
+            13.4717435836792,
+            -0.2401803731918335,
+            1.2763162851333618
+          ],
+          "raw_xy": [
+            554.8165095454914,
+            -394.27449050869166
+          ]
+        },
+        {
+          "frame": 5207,
+          "road": [
+            1687,
+            -1,
+            13.619523048400879,
+            -0.06359843909740448,
+            1.453223705291748
+          ],
+          "raw_xy": [
+            554.8135366783939,
+            -394.0440088870914
+          ]
+        },
+        {
+          "frame": 5208,
+          "road": [
+            1687,
+            -1,
+            13.619523048400879,
+            -0.06359843909740448,
+            1.453223705291748
+          ],
+          "raw_xy": [
+            554.8018994857572,
+            -393.81705884937486
+          ]
+        },
+        {
+          "frame": 5209,
+          "road": [
+            1708,
+            -1,
+            38.71978759765625,
+            -0.09687620401382446,
+            1.2961838245391846
+          ],
+          "raw_xy": [
+            554.7816543495693,
+            -393.5918688354961
+          ]
+        }
+      ]
+    },
+    {
+      "target": 115737,
+      "miss_frames": 5,
+      "classifications": [
+        "outside_source_driving_lateral_extent"
+      ],
+      "source_s_range": [
+        15.876798007923064,
+        15.901423717371943
+      ],
+      "source_t_range": [
+        -7.125615439939391,
+        -6.104606395778782
+      ],
+      "reported_st_raw_xy_error_range_m": [
+        0.26760076833236507,
+        1.2874990023938553
+      ],
+      "reported_st_unique_count": 1,
+      "neighbor_frame_reported_states": [
+        {
+          "frame": 6248,
+          "road": [
+            1690,
+            -2,
+            15.77775764465332,
+            -5.310388088226318,
+            -0.8103879690170288
+          ],
+          "raw_xy": [
+            561.818642260999,
+            -399.605723685526
+          ]
+        },
+        {
+          "frame": 6249,
+          "road": [
+            1690,
+            -2,
+            15.824849128723145,
+            -5.57327938079834,
+            -1.0732792615890503
+          ],
+          "raw_xy": [
+            562.012139216756,
+            -399.79045752105435
+          ]
+        },
+        {
+          "frame": 6250,
+          "road": [
+            1690,
+            -2,
+            15.860746383666992,
+            -5.838223934173584,
+            -1.338224172592163
+          ],
+          "raw_xy": [
+            562.1975168248399,
+            -399.98344731258106
+          ]
+        },
+        {
+          "frame": 6251,
+          "road": [
+            1690,
+            -2,
+            15.860746383666992,
+            -5.838223934173584,
+            -1.338224172592163
+          ],
+          "raw_xy": [
+            562.3720847905253,
+            -400.1814604308775
+          ]
+        },
+        {
+          "frame": 6252,
+          "road": [
+            1690,
+            -2,
+            15.860746383666992,
+            -5.838223934173584,
+            -1.338224172592163
+          ],
+          "raw_xy": [
+            562.5345923495637,
+            -400.38225419093624
+          ]
+        },
+        {
+          "frame": 6253,
+          "road": [
+            1690,
+            -2,
+            15.860746383666992,
+            -5.838223934173584,
+            -1.338224172592163
+          ],
+          "raw_xy": [
+            562.6852841683632,
+            -400.585114232801
+          ]
+        },
+        {
+          "frame": 6254,
+          "road": [
+            1690,
+            -2,
+            15.860746383666992,
+            -5.838223934173584,
+            -1.338224172592163
+          ],
+          "raw_xy": [
+            562.8244400124837,
+            -400.7893671728156
+          ]
+        },
+        {
+          "frame": 6255,
+          "road": [
+            1690,
+            -2,
+            15.860746383666992,
+            -5.838223934173584,
+            -1.338224172592163
+          ],
+          "raw_xy": [
+            562.9527932166279,
+            -400.99515793451144
+          ]
+        },
+        {
+          "frame": 6256,
+          "road": [
+            1693,
+            -1,
+            17.272367477416992,
+            -0.1461590677499771,
+            1.4164042472839355
+          ],
+          "raw_xy": [
+            563.0729370550055,
+            -401.20639444157376
+          ]
+        }
+      ]
+    },
+    {
+      "target": 116073,
+      "miss_frames": 1,
+      "classifications": [
+        "outside_reported_road_longitudinal_extent"
+      ],
+      "source_s_range": [
+        25.80457707408205,
+        25.80457707408205
+      ],
+      "source_t_range": [
+        -3.0649656087276327,
+        -3.0649656087276327
+      ],
+      "reported_st_raw_xy_error_range_m": [
+        0.24511839788473558,
+        0.24511839788473558
+      ],
+      "reported_st_unique_count": 1,
+      "neighbor_frame_reported_states": [
+        {
+          "frame": 5542,
+          "road": [
+            1666,
+            -3,
+            25.085378646850586,
+            -3.209871292114258,
+            0.6541625261306763
+          ],
+          "raw_xy": [
+            520.360067486062,
+            -396.47039089928836
+          ]
+        },
+        {
+          "frame": 5543,
+          "road": [
+            1666,
+            -3,
+            25.326557159423828,
+            -3.1713461875915527,
+            0.6922131180763245
+          ],
+          "raw_xy": [
+            520.1732436973341,
+            -396.31236758369135
+          ]
+        },
+        {
+          "frame": 5544,
+          "road": [
+            1666,
+            -3,
+            25.566417694091797,
+            -3.122958183288574,
+            0.7404334545135498
+          ],
+          "raw_xy": [
+            519.9799458982095,
+            -396.16164006589804
+          ]
+        },
+        {
+          "frame": 5545,
+          "road": [
+            1562,
+            2,
+            9.86999797821045,
+            3.0649452209472656,
+            -0.7982924580574036
+          ],
+          "raw_xy": [
+            519.781027211645,
+            -396.01774087380375
+          ]
+        },
+        {
+          "frame": 5546,
+          "road": [
+            1562,
+            1,
+            9.6331787109375,
+            2.998243808746338,
+            1.498243808746338
+          ],
+          "raw_xy": [
+            519.577236143579,
+            -395.8801770297649
+          ]
+        }
+      ]
+    }
+  ],
+  "rows": [
+    {
+      "target": 115710,
+      "frame": 5207,
+      "raw_xy": [
+        554.8135366783939,
+        -394.0440088870914
+      ],
+      "reported_road": [
+        1687,
+        -1,
+        13.619523048400879,
+        -0.06359843909740448,
+        1.453223705291748
+      ],
+      "projected_source_s": 13.761001456519308,
+      "projected_source_t": 0.11841474291536155,
+      "source_road_length_m": 52.282889240189675,
+      "beyond_source_s_range_m": 0,
+      "driving_lateral_gap_m": 0.11841474291536155,
+      "projected_source_types": [],
+      "driving_ranges": [
+        {
+          "id": -1,
+          "type": "driving",
+          "t_range": [
+            -3.0342719974471932,
+            0.0
+          ]
+        }
+      ],
+      "distance_raw_xy_to_reported_st_m": 0.23050061933372423,
+      "classification": "outside_source_driving_lateral_extent"
+    },
+    {
+      "target": 36924,
+      "frame": 5313,
+      "raw_xy": [
+        365.425826436626,
+        -272.3917233417243
+      ],
+      "reported_road": [
+        211,
+        1,
+        0.12675869464874268,
+        -1.0409308671951294,
+        0.5590691566467285
+      ],
+      "projected_source_s": -0.02989077215627134,
+      "projected_source_t": -0.9664228632993714,
+      "source_road_length_m": 29.574800749750544,
+      "beyond_source_s_range_m": 0.02989077215627134,
+      "driving_lateral_gap_m": 0,
+      "projected_source_types": [
+        {
+          "id": 1,
+          "type": "driving",
+          "t_range": [
+            -3.2,
+            0.0
+          ]
+        }
+      ],
+      "driving_ranges": [
+        {
+          "id": 1,
+          "type": "driving",
+          "t_range": [
+            -3.2,
+            0.0
+          ]
+        },
+        {
+          "id": 2,
+          "type": "driving",
+          "t_range": [
+            0.0,
+            3.2
+          ]
+        },
+        {
+          "id": -1,
+          "type": "driving",
+          "t_range": [
+            -6.4,
+            -3.2
+          ]
+        }
+      ],
+      "distance_raw_xy_to_reported_st_m": 0.1734661295319697,
+      "classification": "outside_reported_road_longitudinal_extent"
+    },
+    {
+      "target": 36924,
+      "frame": 5314,
+      "raw_xy": [
+        365.2590473860273,
+        -272.4363108615979
+      ],
+      "reported_road": [
+        211,
+        1,
+        0.12675869464874268,
+        -1.0409308671951294,
+        0.5590691566467285
+      ],
+      "projected_source_s": -0.185499553017336,
+      "projected_source_t": -0.8916618710238704,
+      "source_road_length_m": 29.574800749750544,
+      "beyond_source_s_range_m": 0.185499553017336,
+      "driving_lateral_gap_m": 0,
+      "projected_source_types": [
+        {
+          "id": 1,
+          "type": "driving",
+          "t_range": [
+            -3.2,
+            0.0
+          ]
+        }
+      ],
+      "driving_ranges": [
+        {
+          "id": 1,
+          "type": "driving",
+          "t_range": [
+            -3.2,
+            0.0
+          ]
+        },
+        {
+          "id": 2,
+          "type": "driving",
+          "t_range": [
+            0.0,
+            3.2
+          ]
+        },
+        {
+          "id": -1,
+          "type": "driving",
+          "t_range": [
+            -6.4,
+            -3.2
+          ]
+        }
+      ],
+      "distance_raw_xy_to_reported_st_m": 0.346101786261506,
+      "classification": "outside_reported_road_longitudinal_extent"
+    },
+    {
+      "target": 36924,
+      "frame": 5315,
+      "raw_xy": [
+        365.0958572070304,
+        -272.47972659829014
+      ],
+      "reported_road": [
+        211,
+        1,
+        0.12675869464874268,
+        -1.0409308671951294,
+        0.5590691566467285
+      ],
+      "projected_source_s": -0.33762157950311167,
+      "projected_source_t": -0.818348504088305,
+      "source_road_length_m": 29.574800749750544,
+      "beyond_source_s_range_m": 0.33762157950311167,
+      "driving_lateral_gap_m": 0,
+      "projected_source_types": [
+        {
+          "id": 1,
+          "type": "driving",
+          "t_range": [
+            -3.2,
+            0.0
+          ]
+        }
+      ],
+      "driving_ranges": [
+        {
+          "id": 1,
+          "type": "driving",
+          "t_range": [
+            -3.2,
+            0.0
+          ]
+        },
+        {
+          "id": 2,
+          "type": "driving",
+          "t_range": [
+            0.0,
+            3.2
+          ]
+        },
+        {
+          "id": -1,
+          "type": "driving",
+          "t_range": [
+            -6.4,
+            -3.2
+          ]
+        }
+      ],
+      "distance_raw_xy_to_reported_st_m": 0.5149679090851023,
+      "classification": "outside_reported_road_longitudinal_extent"
+    },
+    {
+      "target": 36924,
+      "frame": 5316,
+      "raw_xy": [
+        364.9363041279048,
+        -272.52241140365027
+      ],
+      "reported_road": [
+        211,
+        1,
+        0.12675869464874268,
+        -1.0409308671951294,
+        0.5590691566467285
+      ],
+      "projected_source_s": -0.48650731530431646,
+      "projected_source_t": -0.7468487464521705,
+      "source_road_length_m": 29.574800749750544,
+      "beyond_source_s_range_m": 0.48650731530431646,
+      "driving_lateral_gap_m": 0,
+      "projected_source_types": [
+        {
+          "id": 1,
+          "type": "driving",
+          "t_range": [
+            -3.2,
+            0.0
+          ]
+        }
+      ],
+      "driving_ranges": [
+        {
+          "id": 1,
+          "type": "driving",
+          "t_range": [
+            -3.2,
+            0.0
+          ]
+        },
+        {
+          "id": 2,
+          "type": "driving",
+          "t_range": [
+            0.0,
+            3.2
+          ]
+        },
+        {
+          "id": -1,
+          "type": "driving",
+          "t_range": [
+            -6.4,
+            -3.2
+          ]
+        }
+      ],
+      "distance_raw_xy_to_reported_st_m": 0.6801319671242531,
+      "classification": "outside_reported_road_longitudinal_extent"
+    },
+    {
+      "target": 36924,
+      "frame": 5317,
+      "raw_xy": [
+        364.78033133967557,
+        -272.564789098829
+      ],
+      "reported_road": [
+        211,
+        1,
+        0.12675869464874268,
+        -1.0409308671951294,
+        0.5590691566467285
+      ],
+      "projected_source_s": -0.6324758511996267,
+      "projected_source_t": -0.6774472605512931,
+      "source_road_length_m": 29.574800749750544,
+      "beyond_source_s_range_m": 0.6324758511996267,
+      "driving_lateral_gap_m": 0,
+      "projected_source_types": [
+        {
+          "id": 1,
+          "type": "driving",
+          "t_range": [
+            -3.2,
+            0.0
+          ]
+        }
+      ],
+      "driving_ranges": [
+        {
+          "id": 1,
+          "type": "driving",
+          "t_range": [
+            -3.2,
+            0.0
+          ]
+        },
+        {
+          "id": 2,
+          "type": "driving",
+          "t_range": [
+            0.0,
+            3.2
+          ]
+        },
+        {
+          "id": -1,
+          "type": "driving",
+          "t_range": [
+            -6.4,
+            -3.2
+          ]
+        }
+      ],
+      "distance_raw_xy_to_reported_st_m": 0.841758533017763,
+      "classification": "outside_reported_road_longitudinal_extent"
+    },
+    {
+      "target": 36924,
+      "frame": 5318,
+      "raw_xy": [
+        364.627871830563,
+        -272.60724588040773
+      ],
+      "reported_road": [
+        211,
+        1,
+        0.12675869464874268,
+        -1.0409308671951294,
+        0.5590691566467285
+      ],
+      "projected_source_s": -0.7758295215798281,
+      "projected_source_t": -0.6103935103996563,
+      "source_road_length_m": 29.574800749750544,
+      "beyond_source_s_range_m": 0.7758295215798281,
+      "driving_lateral_gap_m": 0,
+      "projected_source_types": [
+        {
+          "id": 1,
+          "type": "driving",
+          "t_range": [
+            -3.2,
+            0.0
+          ]
+        }
+      ],
+      "driving_ranges": [
+        {
+          "id": 1,
+          "type": "driving",
+          "t_range": [
+            -3.2,
+            0.0
+          ]
+        },
+        {
+          "id": 2,
+          "type": "driving",
+          "t_range": [
+            0.0,
+            3.2
+          ]
+        },
+        {
+          "id": -1,
+          "type": "driving",
+          "t_range": [
+            -6.4,
+            -3.2
+          ]
+        }
+      ],
+      "distance_raw_xy_to_reported_st_m": 1.000013951738128,
+      "classification": "outside_reported_road_longitudinal_extent"
+    },
+    {
+      "target": 36924,
+      "frame": 5319,
+      "raw_xy": [
+        364.4788525055562,
+        -272.6501340703735
+      ],
+      "reported_road": [
+        211,
+        1,
+        0.12675869464874268,
+        -1.0409308671951294,
+        0.5590691566467285
+      ],
+      "projected_source_s": -0.9168532197852723,
+      "projected_source_t": -0.5459072901003713,
+      "source_road_length_m": 29.574800749750544,
+      "beyond_source_s_range_m": 0.9168532197852723,
+      "driving_lateral_gap_m": 0,
+      "projected_source_types": [
+        {
+          "id": 1,
+          "type": "driving",
+          "t_range": [
+            -3.2,
+            0.0
+          ]
+        }
+      ],
+      "driving_ranges": [
+        {
+          "id": 1,
+          "type": "driving",
+          "t_range": [
+            -3.2,
+            0.0
+          ]
+        },
+        {
+          "id": 2,
+          "type": "driving",
+          "t_range": [
+            0.0,
+            3.2
+          ]
+        },
+        {
+          "id": -1,
+          "type": "driving",
+          "t_range": [
+            -6.4,
+            -3.2
+          ]
+        }
+      ],
+      "distance_raw_xy_to_reported_st_m": 1.1550645738780376,
+      "classification": "outside_reported_road_longitudinal_extent"
+    },
+    {
+      "target": 36924,
+      "frame": 5320,
+      "raw_xy": [
+        364.3331347056064,
+        -272.6935644913921
+      ],
+      "reported_road": [
+        211,
+        1,
+        0.12675869464874268,
+        -1.0409308671951294,
+        0.5590691566467285
+      ],
+      "projected_source_s": -1.0557243430515695,
+      "projected_source_t": -0.4839824177564753,
+      "source_road_length_m": 29.574800749750544,
+      "beyond_source_s_range_m": 1.0557243430515695,
+      "driving_lateral_gap_m": 0,
+      "projected_source_types": [
+        {
+          "id": 1,
+          "type": "driving",
+          "t_range": [
+            -3.2,
+            0.0
+          ]
+        }
+      ],
+      "driving_ranges": [
+        {
+          "id": 1,
+          "type": "driving",
+          "t_range": [
+            -3.2,
+            0.0
+          ]
+        },
+        {
+          "id": 2,
+          "type": "driving",
+          "t_range": [
+            0.0,
+            3.2
+          ]
+        },
+        {
+          "id": -1,
+          "type": "driving",
+          "t_range": [
+            -6.4,
+            -3.2
+          ]
+        }
+      ],
+      "distance_raw_xy_to_reported_st_m": 1.3070798406297812,
+      "classification": "outside_reported_road_longitudinal_extent"
+    },
+    {
+      "target": 36924,
+      "frame": 5321,
+      "raw_xy": [
+        364.19050593364295,
+        -272.737402933999
+      ],
+      "reported_road": [
+        211,
+        1,
+        0.12675869464874268,
+        -1.0409308671951294,
+        0.5590691566467285
+      ],
+      "projected_source_s": -1.192516771525364,
+      "projected_source_t": -0.42437866658048473,
+      "source_road_length_m": 29.574800749750544,
+      "beyond_source_s_range_m": 1.192516771525364,
+      "driving_lateral_gap_m": 0,
+      "projected_source_types": [
+        {
+          "id": 1,
+          "type": "driving",
+          "t_range": [
+            -3.2,
+            0.0
+          ]
+        }
+      ],
+      "driving_ranges": [
+        {
+          "id": 1,
+          "type": "driving",
+          "t_range": [
+            -3.2,
+            0.0
+          ]
+        },
+        {
+          "id": 2,
+          "type": "driving",
+          "t_range": [
+            0.0,
+            3.2
+          ]
+        },
+        {
+          "id": -1,
+          "type": "driving",
+          "t_range": [
+            -6.4,
+            -3.2
+          ]
+        }
+      ],
+      "distance_raw_xy_to_reported_st_m": 1.4562363722044984,
+      "classification": "outside_reported_road_longitudinal_extent"
+    },
+    {
+      "target": 36924,
+      "frame": 5322,
+      "raw_xy": [
+        364.05076566642947,
+        -272.78156855341706
+      ],
+      "reported_road": [
+        211,
+        1,
+        0.12675869464874268,
+        -1.0409308671951294,
+        0.5590691566467285
+      ],
+      "projected_source_s": -1.3273300470056708,
+      "projected_source_t": -0.3669041072194268,
+      "source_road_length_m": 29.574800749750544,
+      "beyond_source_s_range_m": 1.3273300470056708,
+      "driving_lateral_gap_m": 0,
+      "projected_source_types": [
+        {
+          "id": 1,
+          "type": "driving",
+          "t_range": [
+            -3.2,
+            0.0
+          ]
+        }
+      ],
+      "driving_ranges": [
+        {
+          "id": 1,
+          "type": "driving",
+          "t_range": [
+            -3.2,
+            0.0
+          ]
+        },
+        {
+          "id": 2,
+          "type": "driving",
+          "t_range": [
+            0.0,
+            3.2
+          ]
+        },
+        {
+          "id": -1,
+          "type": "driving",
+          "t_range": [
+            -6.4,
+            -3.2
+          ]
+        }
+      ],
+      "distance_raw_xy_to_reported_st_m": 1.6027121206782737,
+      "classification": "outside_reported_road_longitudinal_extent"
+    },
+    {
+      "target": 36924,
+      "frame": 5323,
+      "raw_xy": [
+        363.91371699746105,
+        -272.82599707604527
+      ],
+      "reported_road": [
+        211,
+        1,
+        0.12675869464874268,
+        -1.0409308671951294,
+        0.5590691566467285
+      ],
+      "projected_source_s": -1.4602717569349881,
+      "projected_source_t": -0.3113817419058733,
+      "source_road_length_m": 29.574800749750544,
+      "beyond_source_s_range_m": 1.4602717569349881,
+      "driving_lateral_gap_m": 0,
+      "projected_source_types": [
+        {
+          "id": 1,
+          "type": "driving",
+          "t_range": [
+            -3.2,
+            0.0
+          ]
+        }
+      ],
+      "driving_ranges": [
+        {
+          "id": 1,
+          "type": "driving",
+          "t_range": [
+            -3.2,
+            0.0
+          ]
+        },
+        {
+          "id": 2,
+          "type": "driving",
+          "t_range": [
+            0.0,
+            3.2
+          ]
+        },
+        {
+          "id": -1,
+          "type": "driving",
+          "t_range": [
+            -6.4,
+            -3.2
+          ]
+        }
+      ],
+      "distance_raw_xy_to_reported_st_m": 1.746684739861177,
+      "classification": "outside_reported_road_longitudinal_extent"
+    },
+    {
+      "target": 36924,
+      "frame": 5324,
+      "raw_xy": [
+        363.77916780737195,
+        -272.8706384211941
+      ],
+      "reported_road": [
+        211,
+        1,
+        0.12675869464874268,
+        -1.0409308671951294,
+        0.5590691566467285
+      ],
+      "projected_source_s": -1.591455097495733,
+      "projected_source_t": -0.2576484616258385,
+      "source_road_length_m": 29.574800749750544,
+      "beyond_source_s_range_m": 1.591455097495733,
+      "driving_lateral_gap_m": 0,
+      "projected_source_types": [
+        {
+          "id": 1,
+          "type": "driving",
+          "t_range": [
+            -3.2,
+            0.0
+          ]
+        }
+      ],
+      "driving_ranges": [
+        {
+          "id": 1,
+          "type": "driving",
+          "t_range": [
+            -3.2,
+            0.0
+          ]
+        },
+        {
+          "id": 2,
+          "type": "driving",
+          "t_range": [
+            0.0,
+            3.2
+          ]
+        },
+        {
+          "id": -1,
+          "type": "driving",
+          "t_range": [
+            -6.4,
+            -3.2
+          ]
+        }
+      ],
+      "distance_raw_xy_to_reported_st_m": 1.8883299400235678,
+      "classification": "outside_reported_road_longitudinal_extent"
+    },
+    {
+      "target": 36924,
+      "frame": 5325,
+      "raw_xy": [
+        363.6469318303692,
+        -272.9154544956189
+      ],
+      "reported_road": [
+        211,
+        1,
+        0.12675869464874268,
+        -1.0409308671951294,
+        0.5590691566467285
+      ],
+      "projected_source_s": -1.7209966281364175,
+      "projected_source_t": -0.20555406672593945,
+      "source_road_length_m": 29.574800749750544,
+      "beyond_source_s_range_m": 1.7209966281364175,
+      "driving_lateral_gap_m": 0,
+      "projected_source_types": [
+        {
+          "id": 1,
+          "type": "driving",
+          "t_range": [
+            -3.2,
+            0.0
+          ]
+        }
+      ],
+      "driving_ranges": [
+        {
+          "id": 1,
+          "type": "driving",
+          "t_range": [
+            -3.2,
+            0.0
+          ]
+        },
+        {
+          "id": 2,
+          "type": "driving",
+          "t_range": [
+            0.0,
+            3.2
+          ]
+        },
+        {
+          "id": -1,
+          "type": "driving",
+          "t_range": [
+            -6.4,
+            -3.2
+          ]
+        }
+      ],
+      "distance_raw_xy_to_reported_st_m": 2.027820044195851,
+      "classification": "outside_reported_road_longitudinal_extent"
+    },
+    {
+      "target": 36924,
+      "frame": 5326,
+      "raw_xy": [
+        363.51682961384705,
+        -272.96041720563437
+      ],
+      "reported_road": [
+        211,
+        1,
+        0.12675869464874268,
+        -1.0409308671951294,
+        0.5590691566467285
+      ],
+      "projected_source_s": -1.8490142488474506,
+      "projected_source_t": -0.15496038309444754,
+      "source_road_length_m": 29.574800749750544,
+      "beyond_source_s_range_m": 1.8490142488474506,
+      "driving_lateral_gap_m": 0,
+      "projected_source_types": [
+        {
+          "id": 1,
+          "type": "driving",
+          "t_range": [
+            -3.2,
+            0.0
+          ]
+        }
+      ],
+      "driving_ranges": [
+        {
+          "id": 1,
+          "type": "driving",
+          "t_range": [
+            -3.2,
+            0.0
+          ]
+        },
+        {
+          "id": 2,
+          "type": "driving",
+          "t_range": [
+            0.0,
+            3.2
+          ]
+        },
+        {
+          "id": -1,
+          "type": "driving",
+          "t_range": [
+            -6.4,
+            -3.2
+          ]
+        }
+      ],
+      "distance_raw_xy_to_reported_st_m": 2.165322706422438,
+      "classification": "outside_reported_road_longitudinal_extent"
+    },
+    {
+      "target": 36924,
+      "frame": 5327,
+      "raw_xy": [
+        363.3886893519088,
+        -273.0055066780125
+      ],
+      "reported_road": [
+        211,
+        1,
+        0.12675869464874268,
+        -1.0409308671951294,
+        0.5590691566467285
+      ],
+      "projected_source_s": -1.9756254090853935,
+      "projected_source_t": -0.10574045468989651,
+      "source_road_length_m": 29.574800749750544,
+      "beyond_source_s_range_m": 1.9756254090853935,
+      "driving_lateral_gap_m": 0,
+      "projected_source_types": [
+        {
+          "id": 1,
+          "type": "driving",
+          "t_range": [
+            -3.2,
+            0.0
+          ]
+        }
+      ],
+      "driving_ranges": [
+        {
+          "id": 1,
+          "type": "driving",
+          "t_range": [
+            -3.2,
+            0.0
+          ]
+        },
+        {
+          "id": 2,
+          "type": "driving",
+          "t_range": [
+            0.0,
+            3.2
+          ]
+        },
+        {
+          "id": -1,
+          "type": "driving",
+          "t_range": [
+            -6.4,
+            -3.2
+          ]
+        }
+      ],
+      "distance_raw_xy_to_reported_st_m": 2.300999788629934,
+      "classification": "outside_reported_road_longitudinal_extent"
+    },
+    {
+      "target": 36924,
+      "frame": 5328,
+      "raw_xy": [
+        363.2623475762735,
+        -273.0507096819884
+      ],
+      "reported_road": [
+        211,
+        1,
+        0.12675869464874268,
+        -1.0409308671951294,
+        0.5590691566467285
+      ],
+      "projected_source_s": -2.100945555887158,
+      "projected_source_t": -0.057777795832124584,
+      "source_road_length_m": 29.574800749750544,
+      "beyond_source_s_range_m": 2.100945555887158,
+      "driving_lateral_gap_m": 0,
+      "projected_source_types": [
+        {
+          "id": 1,
+          "type": "driving",
+          "t_range": [
+            -3.2,
+            0.0
+          ]
+        }
+      ],
+      "driving_ranges": [
+        {
+          "id": 1,
+          "type": "driving",
+          "t_range": [
+            -3.2,
+            0.0
+          ]
+        },
+        {
+          "id": 2,
+          "type": "driving",
+          "t_range": [
+            0.0,
+            3.2
+          ]
+        },
+        {
+          "id": -1,
+          "type": "driving",
+          "t_range": [
+            -6.4,
+            -3.2
+          ]
+        }
+      ],
+      "distance_raw_xy_to_reported_st_m": 2.4350064044239144,
+      "classification": "outside_reported_road_longitudinal_extent"
+    },
+    {
+      "target": 116073,
+      "frame": 5544,
+      "raw_xy": [
+        519.9799458982095,
+        -396.16164006589804
+      ],
+      "reported_road": [
+        1666,
+        -3,
+        25.566417694091797,
+        -3.122958183288574,
+        0.7404334545135498
+      ],
+      "projected_source_s": 25.80457707408205,
+      "projected_source_t": -3.0649656087276327,
+      "source_road_length_m": 25.577279181458426,
+      "beyond_source_s_range_m": 0.22729789262362488,
+      "driving_lateral_gap_m": 0,
+      "projected_source_types": [
+        {
+          "id": -3,
+          "type": "driving",
+          "t_range": [
+            -4.726782530114474,
+            -3.0000000000000004
+          ]
+        }
+      ],
+      "driving_ranges": [
+        {
+          "id": -2,
+          "type": "driving",
+          "t_range": [
+            -3.0000000000000004,
+            -1.3322676295501878e-15
+          ]
+        },
+        {
+          "id": -3,
+          "type": "driving",
+          "t_range": [
+            -4.726782530114474,
+            -3.0000000000000004
+          ]
+        }
+      ],
+      "distance_raw_xy_to_reported_st_m": 0.24511839788473558,
+      "classification": "outside_reported_road_longitudinal_extent"
+    },
+    {
+      "target": 115737,
+      "frame": 6250,
+      "raw_xy": [
+        562.1975168248399,
+        -399.98344731258106
+      ],
+      "reported_road": [
+        1690,
+        -2,
+        15.860746383666992,
+        -5.838223934173584,
+        -1.338224172592163
+      ],
+      "projected_source_s": 15.88542193952639,
+      "projected_source_t": -6.104606395778782,
+      "source_road_length_m": 62.437690274594594,
+      "beyond_source_s_range_m": 0,
+      "driving_lateral_gap_m": 0.10460639577878172,
+      "projected_source_types": [],
+      "driving_ranges": [
+        {
+          "id": -1,
+          "type": "driving",
+          "t_range": [
+            -3.0,
+            0.0
+          ]
+        },
+        {
+          "id": -2,
+          "type": "driving",
+          "t_range": [
+            -6.0,
+            -3.0
+          ]
+        }
+      ],
+      "distance_raw_xy_to_reported_st_m": 0.26760076833236507,
+      "classification": "outside_source_driving_lateral_extent"
+    },
+    {
+      "target": 115737,
+      "frame": 6251,
+      "raw_xy": [
+        562.3720847905253,
+        -400.1814604308775
+      ],
+      "reported_road": [
+        1690,
+        -2,
+        15.860746383666992,
+        -5.838223934173584,
+        -1.338224172592163
+      ],
+      "projected_source_s": 15.89882958758194,
+      "projected_source_t": -6.36821682766898,
+      "source_road_length_m": 62.437690274594594,
+      "beyond_source_s_range_m": 0,
+      "driving_lateral_gap_m": 0.3682168276689799,
+      "projected_source_types": [],
+      "driving_ranges": [
+        {
+          "id": -1,
+          "type": "driving",
+          "t_range": [
+            -3.0,
+            0.0
+          ]
+        },
+        {
+          "id": -2,
+          "type": "driving",
+          "t_range": [
+            -6.0,
+            -3.0
+          ]
+        }
+      ],
+      "distance_raw_xy_to_reported_st_m": 0.5314551071416007,
+      "classification": "outside_source_driving_lateral_extent"
+    },
+    {
+      "target": 115737,
+      "frame": 6252,
+      "raw_xy": [
+        562.5345923495637,
+        -400.38225419093624
+      ],
+      "reported_road": [
+        1690,
+        -2,
+        15.860746383666992,
+        -5.838223934173584,
+        -1.338224172592163
+      ],
+      "projected_source_s": 15.901423717371943,
+      "projected_source_t": -6.626518211071586,
+      "source_road_length_m": 62.437690274594594,
+      "beyond_source_s_range_m": 0,
+      "driving_lateral_gap_m": 0.6265182110715859,
+      "projected_source_types": [],
+      "driving_ranges": [
+        {
+          "id": -1,
+          "type": "driving",
+          "t_range": [
+            -3.0,
+            0.0
+          ]
+        },
+        {
+          "id": -2,
+          "type": "driving",
+          "t_range": [
+            -6.0,
+            -3.0
+          ]
+        }
+      ],
+      "distance_raw_xy_to_reported_st_m": 0.789418223689314,
+      "classification": "outside_source_driving_lateral_extent"
+    },
+    {
+      "target": 115737,
+      "frame": 6253,
+      "raw_xy": [
+        562.6852841683632,
+        -400.585114232801
+      ],
+      "reported_road": [
+        1690,
+        -2,
+        15.860746383666992,
+        -5.838223934173584,
+        -1.338224172592163
+      ],
+      "projected_source_s": 15.893862850164593,
+      "projected_source_t": -6.879102022390401,
+      "source_road_length_m": 62.437690274594594,
+      "beyond_source_s_range_m": 0,
+      "driving_lateral_gap_m": 0.8791020223904011,
+      "projected_source_types": [],
+      "driving_ranges": [
+        {
+          "id": -1,
+          "type": "driving",
+          "t_range": [
+            -3.0,
+            0.0
+          ]
+        },
+        {
+          "id": -2,
+          "type": "driving",
+          "t_range": [
+            -6.0,
+            -3.0
+          ]
+        }
+      ],
+      "distance_raw_xy_to_reported_st_m": 1.0414432424301516,
+      "classification": "outside_source_driving_lateral_extent"
+    },
+    {
+      "target": 115737,
+      "frame": 6254,
+      "raw_xy": [
+        562.8244400124837,
+        -400.7893671728156
+      ],
+      "reported_road": [
+        1690,
+        -2,
+        15.860746383666992,
+        -5.838223934173584,
+        -1.338224172592163
+      ],
+      "projected_source_s": 15.876798007923064,
+      "projected_source_t": -7.125615439939391,
+      "source_road_length_m": 62.437690274594594,
+      "beyond_source_s_range_m": 0,
+      "driving_lateral_gap_m": 1.1256154399393914,
+      "projected_source_types": [],
+      "driving_ranges": [
+        {
+          "id": -1,
+          "type": "driving",
+          "t_range": [
+            -3.0,
+            0.0
+          ]
+        },
+        {
+          "id": -2,
+          "type": "driving",
+          "t_range": [
+            -6.0,
+            -3.0
+          ]
+        }
+      ],
+      "distance_raw_xy_to_reported_st_m": 1.2874990023938553,
+      "classification": "outside_source_driving_lateral_extent"
+    }
+  ]
+}

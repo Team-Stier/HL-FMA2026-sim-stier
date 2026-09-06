@@ -1,0 +1,316 @@
+{
+  "binary_sha256": "758f2990e28374036725bc88be2938e5857e1f9a6035e3017a83692d78e6c718",
+  "corrections": [
+    {
+      "object": 5153,
+      "stop": 544017,
+      "attrs": {
+        "cell_assignment": "projected_to_approach_end",
+        "correction_evidence": "opposite_lane_source_error_osgb_mesh_125_at_positive_lane_end_including_0_15m_paint_offset",
+        "effective_t": "1.5",
+        "mesh_candidate_index": "125",
+        "source": "Rm_StopLine_300cm_JPN_01.flt",
+        "type": "stop_line",
+        "visual_z_offset_m": "8.0000000000000002e-03",
+        "xodr_object_id": "5153",
+        "xodr_road_id": "2802",
+        "xodr_s": "0.0",
+        "xodr_t": "-1.5074813431681902e+00"
+      },
+      "cells": [
+        {
+          "cell": 70784,
+          "parent": 398690
+        }
+      ],
+      "report": [
+        {
+          "id": 544017,
+          "road": 2802,
+          "object": "5153",
+          "lanelets": [
+            398690
+          ],
+          "mesh_candidate_index": 125
+        }
+      ]
+    },
+    {
+      "object": 5238,
+      "stop": 544081,
+      "attrs": {
+        "cell_assignment": "projected_to_approach_end",
+        "correction_evidence": "opposite_lane_source_error_osgb_mesh_317_overlaps_316_at_positive_lane_end",
+        "effective_t": "1.5",
+        "mesh_candidate_index": "317",
+        "source": "Rm_StopLine_300cm_JPN_01.flt",
+        "type": "stop_line",
+        "visual_z_offset_m": "8.0000000000000002e-03",
+        "xodr_object_id": "5238",
+        "xodr_road_id": "2805",
+        "xodr_s": "0.0",
+        "xodr_t": "-1.5074813431681862e+00"
+      },
+      "cells": [
+        {
+          "cell": 71428,
+          "parent": 402612
+        }
+      ],
+      "report": [
+        {
+          "id": 544081,
+          "road": 2805,
+          "object": "5238",
+          "lanelets": [
+            402612
+          ],
+          "mesh_candidate_index": 317
+        }
+      ]
+    },
+    {
+      "object": 5161,
+      "stop": 544025,
+      "attrs": {
+        "cell_assignment": "projected_to_lane",
+        "correction_evidence": "osgb_mesh_128_white_paint_and_lane_center_match_source_shifted_3m",
+        "effective_t": "1.5",
+        "source": "Rm_StopLine_300cm_JPN_01.flt",
+        "type": "stop_line",
+        "visual_z_offset_m": "8.0000000000000002e-03",
+        "xodr_object_id": "5161",
+        "xodr_road_id": "2802",
+        "xodr_s": "24.816875886375882",
+        "xodr_t": "-1.5000056509442925e+00"
+      },
+      "cells": [
+        {
+          "cell": 70759,
+          "parent": 398690
+        }
+      ],
+      "report": [
+        {
+          "id": 544025,
+          "road": 2802,
+          "object": "5161",
+          "lanelets": [
+            398690
+          ]
+        }
+      ]
+    },
+    {
+      "object": 1386,
+      "stop": 542789,
+      "attrs": {
+        "cell_assignment": "projected_to_lane",
+        "correction_evidence": "osgb_mesh_214_white_paint_and_lane_center_match_source_shifted_3m",
+        "effective_t": "1.5",
+        "source": "Rm_StopLine_300cm_JPN_01.flt",
+        "type": "stop_line",
+        "visual_z_offset_m": "8.0000000000000002e-03",
+        "xodr_object_id": "1386",
+        "xodr_road_id": "1529",
+        "xodr_s": "23.572102226928205",
+        "xodr_t": "-1.5000003620802593e+00"
+      },
+      "cells": [
+        {
+          "cell": 18526,
+          "parent": 104051
+        }
+      ],
+      "report": [
+        {
+          "id": 542789,
+          "road": 1529,
+          "object": "1386",
+          "lanelets": [
+            104051
+          ]
+        }
+      ]
+    },
+    {
+      "object": 2935,
+      "stop": 543333,
+      "attrs": {
+        "cell_assignment": "projected_to_lane",
+        "correction_evidence": "osgb_mesh_517_white_paint_and_lane_center_match_source_shifted_3m",
+        "effective_t": "-1.5",
+        "source": "Rm_StopLine_300cm_JPN_01.flt",
+        "type": "stop_line",
+        "visual_z_offset_m": "8.0000000000000002e-03",
+        "xodr_object_id": "2935",
+        "xodr_road_id": "2096",
+        "xodr_s": "21.493581514467458",
+        "xodr_t": "1.5000022214046775e+00"
+      },
+      "cells": [
+        {
+          "cell": 41646,
+          "parent": 233819
+        }
+      ],
+      "report": [
+        {
+          "id": 543333,
+          "road": 2096,
+          "object": "2935",
+          "lanelets": [
+            233819
+          ]
+        }
+      ]
+    },
+    {
+      "object": 5237,
+      "stop": 544078,
+      "attrs": {
+        "cell_assignment": "projected_to_lane",
+        "correction_evidence": "none",
+        "effective_t": "1.7066048165876904",
+        "source": "Rm_StopLine_300cm_JPN_01.flt",
+        "type": "stop_line",
+        "visual_z_offset_m": "8.0000000000000002e-03",
+        "xodr_object_id": "5237",
+        "xodr_road_id": "2805",
+        "xodr_s": "0.0",
+        "xodr_t": "1.7066048165876904e+00"
+      },
+      "cells": [
+        {
+          "cell": 71428,
+          "parent": 402612
+        }
+      ],
+      "report": [
+        {
+          "id": 544078,
+          "road": 2805,
+          "object": "5237",
+          "lanelets": [
+            402612
+          ]
+        }
+      ]
+    }
+  ],
+  "all_source_objects_preserved": 710,
+  "source_assignment_changes_by_source_lane_and_s_interval": {
+    "2935": {
+      "before": [
+        [
+          [
+            2096,
+            0,
+            1
+          ],
+          [
+            0.0,
+            21.5
+          ]
+        ]
+      ],
+      "after": [
+        [
+          [
+            2096,
+            0,
+            -1
+          ],
+          [
+            0.0,
+            21.5
+          ]
+        ]
+      ]
+    },
+    "5153": {
+      "before": [
+        [
+          [
+            2802,
+            0,
+            -1
+          ],
+          [
+            0.0,
+            36.97113726089477
+          ]
+        ]
+      ],
+      "after": [
+        [
+          [
+            2802,
+            0,
+            1
+          ],
+          [
+            0.0,
+            36.97113726089477
+          ]
+        ]
+      ]
+    },
+    "5161": {
+      "before": [
+        [
+          [
+            2802,
+            0,
+            -1
+          ],
+          [
+            0.0,
+            36.97113726089477
+          ]
+        ]
+      ],
+      "after": [
+        [
+          [
+            2802,
+            0,
+            1
+          ],
+          [
+            0.0,
+            36.97113726089477
+          ]
+        ]
+      ]
+    },
+    "5238": {
+      "before": [
+        [
+          [
+            2805,
+            0,
+            -2
+          ],
+          [
+            0.0,
+            39.10704989916315
+          ]
+        ]
+      ],
+      "after": [
+        [
+          [
+            2805,
+            0,
+            1
+          ],
+          [
+            0.0,
+            39.10704989916315
+          ]
+        ]
+      ]
+    }
+  }
+}

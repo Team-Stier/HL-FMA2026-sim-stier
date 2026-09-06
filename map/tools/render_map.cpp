@@ -93,6 +93,8 @@ int main(int argc, char** argv) {
     camera->setViewport(0, 0, traits->width, traits->height);
     camera->setClearColor(osg::Vec4(0.15, 0.15, 0.15, 1.));
     camera->setComputeNearFarMode(osg::CullSettings::DO_NOT_COMPUTE_NEAR_FAR);
+    // The aerial camera must use near road meshes; coarse LOD surfaces can cover road markings.
+    camera->setLODScale(0.001f);
     camera->setProjectionMatrixAsOrtho(xmin, xmax, ymin, ymax, 1., 2000.);
     camera->setViewMatrixAsLookAt(osg::Vec3d(0., 0., 1000.), osg::Vec3d(0., 0., 0.), osg::Vec3d(0., 1., 0.));
     camera->setDrawBuffer(GL_FRONT);

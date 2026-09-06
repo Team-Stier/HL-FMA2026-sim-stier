@@ -1,0 +1,1360 @@
+{
+  "source_roads": 651,
+  "generated_roads": 643,
+  "lanelets": 2847,
+  "source_coverage_gaps": [],
+  "non_driving_generated": [],
+  "invalid_lanelets": [],
+  "invalid_cells": [],
+  "missing_cells": [],
+  "cell_union_errors": [],
+  "cell_stopline_separation": [
+    {
+      "cell": 79106,
+      "lanelet": 446283,
+      "xodr": [
+        2819,
+        2,
+        -3
+      ],
+      "stopline": 544401,
+      "distance_m": 0.1495041044350435,
+      "source": {
+        "cell_assignment": "projected_to_approach_end",
+        "mesh_candidate_index": "508",
+        "source": "osgb_white_mesh",
+        "type": "stop_line",
+        "xodr_road_id": "2819"
+      }
+    },
+    {
+      "cell": 79072,
+      "lanelet": 446147,
+      "xodr": [
+        2819,
+        2,
+        -4
+      ],
+      "stopline": 544398,
+      "distance_m": 0.14949868293922652,
+      "source": {
+        "cell_assignment": "projected_to_approach_end",
+        "mesh_candidate_index": "507",
+        "source": "osgb_white_mesh",
+        "type": "stop_line",
+        "xodr_road_id": "2819"
+      }
+    },
+    {
+      "cell": 79038,
+      "lanelet": 446011,
+      "xodr": [
+        2819,
+        2,
+        -5
+      ],
+      "stopline": 544395,
+      "distance_m": 0.14947300242084374,
+      "source": {
+        "cell_assignment": "projected_to_approach_end",
+        "mesh_candidate_index": "512",
+        "source": "osgb_white_mesh",
+        "type": "stop_line",
+        "xodr_road_id": "2819"
+      }
+    },
+    {
+      "cell": 41073,
+      "lanelet": 230388,
+      "xodr": [
+        2077,
+        0,
+        -1
+      ],
+      "stopline": 544378,
+      "distance_m": 0.14930679701967692,
+      "source": {
+        "cell_assignment": "projected_to_approach_end",
+        "mesh_candidate_index": "171",
+        "source": "osgb_white_mesh",
+        "type": "stop_line",
+        "xodr_road_id": "2077"
+      }
+    },
+    {
+      "cell": 41053,
+      "lanelet": 230308,
+      "xodr": [
+        2077,
+        0,
+        -2
+      ],
+      "stopline": 544375,
+      "distance_m": 0.14928495554810772,
+      "source": {
+        "cell_assignment": "projected_to_approach_end",
+        "mesh_candidate_index": "172",
+        "source": "osgb_white_mesh",
+        "type": "stop_line",
+        "xodr_road_id": "2077"
+      }
+    },
+    {
+      "cell": 42034,
+      "lanelet": 235941,
+      "xodr": [
+        2115,
+        4,
+        -2
+      ],
+      "stopline": 544381,
+      "distance_m": 0.14980711390444323,
+      "source": {
+        "cell_assignment": "projected_to_approach_end",
+        "mesh_candidate_index": "2",
+        "source": "osgb_white_mesh",
+        "type": "stop_line",
+        "xodr_road_id": "2115"
+      }
+    },
+    {
+      "cell": 42069,
+      "lanelet": 236079,
+      "xodr": [
+        2115,
+        4,
+        -1
+      ],
+      "stopline": 544384,
+      "distance_m": 0.1497118937049762,
+      "source": {
+        "cell_assignment": "projected_to_approach_end",
+        "mesh_candidate_index": "3",
+        "source": "osgb_white_mesh",
+        "type": "stop_line",
+        "xodr_road_id": "2115"
+      }
+    },
+    {
+      "cell": 42118,
+      "lanelet": 236328,
+      "xodr": [
+        2116,
+        0,
+        -1
+      ],
+      "stopline": 544386,
+      "distance_m": 0.149629146098753,
+      "source": {
+        "cell_assignment": "projected_to_approach_end",
+        "mesh_candidate_index": "100",
+        "source": "osgb_white_mesh",
+        "type": "stop_line",
+        "xodr_road_id": "2116"
+      }
+    },
+    {
+      "cell": 43913,
+      "lanelet": 246721,
+      "xodr": [
+        2195,
+        4,
+        -2
+      ],
+      "stopline": 544389,
+      "distance_m": 0.14914539190445977,
+      "source": {
+        "cell_assignment": "projected_to_approach_end",
+        "mesh_candidate_index": "559",
+        "source": "osgb_white_mesh",
+        "type": "stop_line",
+        "xodr_road_id": "2195"
+      }
+    },
+    {
+      "cell": 43976,
+      "lanelet": 246972,
+      "xodr": [
+        2195,
+        4,
+        -1
+      ],
+      "stopline": 544392,
+      "distance_m": 0.1491315807001756,
+      "source": {
+        "cell_assignment": "projected_to_approach_end",
+        "mesh_candidate_index": "560",
+        "source": "osgb_white_mesh",
+        "type": "stop_line",
+        "xodr_road_id": "2195"
+      }
+    },
+    {
+      "cell": 79140,
+      "lanelet": 446419,
+      "xodr": [
+        2819,
+        2,
+        -2
+      ],
+      "stopline": 544403,
+      "distance_m": 0.14957050360003257,
+      "source": {
+        "cell_assignment": "projected_to_approach_end",
+        "mesh_candidate_index": "510",
+        "source": "osgb_white_mesh",
+        "type": "stop_line",
+        "xodr_road_id": "2819"
+      }
+    },
+    {
+      "cell": 79174,
+      "lanelet": 446555,
+      "xodr": [
+        2819,
+        2,
+        -1
+      ],
+      "stopline": 544406,
+      "distance_m": 0.14957592552837878,
+      "source": {
+        "cell_assignment": "projected_to_approach_end",
+        "mesh_candidate_index": "509",
+        "source": "osgb_white_mesh",
+        "type": "stop_line",
+        "xodr_road_id": "2819"
+      }
+    }
+  ],
+  "bad_previous_geometry": [],
+  "stopline_orientation_errors": [],
+  "cell_id_errors": [],
+  "cells": 94157,
+  "maximum_cell_parent_symmetric_difference_m2": [
+    1.5393016741338784e-07,
+    413903
+  ],
+  "maximum_sibling_cell_overlap_m2": [
+    5.1386450650170445e-11,
+    217962
+  ],
+  "cell_longitudinal_length_m": {
+    "min": 2.1183375320532605e-07,
+    "max": 1.0
+  },
+  "stoplines_without_cells": [
+    {
+      "id": 542832,
+      "attributes": {
+        "cell_assignment": "unresolved",
+        "source": "Rm_StopLine_300cm_JPN_01.flt",
+        "type": "stop_line",
+        "visual_z_offset_m": "8.0000000000000002e-03",
+        "xodr_object_id": "1477",
+        "xodr_road_id": "1603",
+        "xodr_s": "0.0"
+      },
+      "center": [
+        399.51912444871175,
+        -538.0134183279552
+      ]
+    },
+    {
+      "id": 542829,
+      "attributes": {
+        "cell_assignment": "unresolved",
+        "source": "Rm_StopLine_300cm_JPN_01.flt",
+        "type": "stop_line",
+        "visual_z_offset_m": "8.0000000000000002e-03",
+        "xodr_object_id": "1476",
+        "xodr_road_id": "1603",
+        "xodr_s": "0.0"
+      },
+      "center": [
+        399.03746411609126,
+        -538.3638567211024
+      ]
+    },
+    {
+      "id": 542775,
+      "attributes": {
+        "cell_assignment": "unresolved",
+        "source": "Rm_StopLine_300cm_JPN_01.flt",
+        "type": "stop_line",
+        "visual_z_offset_m": "1.5800000000000000e-01",
+        "xodr_object_id": "1374",
+        "xodr_road_id": "1492",
+        "xodr_s": "0.14881426572274706"
+      },
+      "center": [
+        409.9272198176595,
+        -347.64476867517186
+      ]
+    },
+    {
+      "id": 542713,
+      "attributes": {
+        "cell_assignment": "unresolved",
+        "source": "Rm_StopLine_300cm_JPN_01.flt",
+        "type": "stop_line",
+        "visual_z_offset_m": "8.0000000000000002e-03",
+        "xodr_object_id": "1216",
+        "xodr_road_id": "1043",
+        "xodr_s": "0.0"
+      },
+      "center": [
+        792.6984921806072,
+        -235.07170417388588
+      ]
+    },
+    {
+      "id": 542710,
+      "attributes": {
+        "cell_assignment": "unresolved",
+        "source": "Rm_StopLine_300cm_JPN_01.flt",
+        "type": "stop_line",
+        "visual_z_offset_m": "8.0000000000000002e-03",
+        "xodr_object_id": "1215",
+        "xodr_road_id": "1043",
+        "xodr_s": "0.0"
+      },
+      "center": [
+        702.1656126204784,
+        -306.25995134921493
+      ]
+    },
+    {
+      "id": 543430,
+      "attributes": {
+        "cell_assignment": "unresolved",
+        "source": "Rm_StopLine_300cm_JPN_01.flt",
+        "type": "stop_line",
+        "visual_z_offset_m": "8.0000000000000002e-03",
+        "xodr_object_id": "3204",
+        "xodr_road_id": "2195",
+        "xodr_s": "0.0"
+      },
+      "center": [
+        771.2367810883723,
+        -478.8611099827663
+      ]
+    },
+    {
+      "id": 543433,
+      "attributes": {
+        "cell_assignment": "unresolved",
+        "source": "Rm_StopLine_300cm_JPN_01.flt",
+        "type": "stop_line",
+        "visual_z_offset_m": "8.0000000000000002e-03",
+        "xodr_object_id": "3205",
+        "xodr_road_id": "2195",
+        "xodr_s": "0.0"
+      },
+      "center": [
+        943.9379264575967,
+        -342.53578684763187
+      ]
+    },
+    {
+      "id": 543445,
+      "attributes": {
+        "cell_assignment": "unresolved",
+        "source": "Rm_StopLine_300cm_JPN_01.flt",
+        "type": "stop_line",
+        "visual_z_offset_m": "8.0000000000000002e-03",
+        "xodr_object_id": "3246",
+        "xodr_road_id": "2241",
+        "xodr_s": "0.0"
+      },
+      "center": [
+        744.7818676452159,
+        -376.35028852890855
+      ]
+    },
+    {
+      "id": 543448,
+      "attributes": {
+        "cell_assignment": "unresolved",
+        "source": "Rm_StopLine_300cm_JPN_01.flt",
+        "type": "stop_line",
+        "visual_z_offset_m": "8.0000000000000002e-03",
+        "xodr_object_id": "3247",
+        "xodr_road_id": "2241",
+        "xodr_s": "0.0"
+      },
+      "center": [
+        850.6816849386023,
+        -292.9380625286072
+      ]
+    },
+    {
+      "id": 544301,
+      "attributes": {
+        "cell_assignment": "unresolved",
+        "source": "Rm_StopLine_300cm_JPN_01.flt",
+        "type": "stop_line",
+        "visual_z_offset_m": "8.0000000000000002e-03",
+        "xodr_object_id": "5959",
+        "xodr_road_id": "2819",
+        "xodr_s": "0.0"
+      },
+      "center": [
+        1263.5094158402144,
+        1141.6365133058155
+      ]
+    },
+    {
+      "id": 544304,
+      "attributes": {
+        "cell_assignment": "unresolved",
+        "source": "Rm_StopLine_300cm_JPN_01.flt",
+        "type": "stop_line",
+        "visual_z_offset_m": "8.0000000000000002e-03",
+        "xodr_object_id": "5960",
+        "xodr_road_id": "2819",
+        "xodr_s": "0.0"
+      },
+      "center": [
+        1606.6183434127024,
+        1156.0096224489519
+      ]
+    },
+    {
+      "id": 544307,
+      "attributes": {
+        "cell_assignment": "unresolved",
+        "source": "Rm_StopLine_300cm_JPN_01.flt",
+        "type": "stop_line",
+        "visual_z_offset_m": "8.0000000000000002e-03",
+        "xodr_object_id": "5961",
+        "xodr_road_id": "2819",
+        "xodr_s": "0.0"
+      },
+      "center": [
+        1606.662303098849,
+        1156.0114639555875
+      ]
+    },
+    {
+      "id": 544310,
+      "attributes": {
+        "cell_assignment": "unresolved",
+        "source": "Rm_StopLine_300cm_JPN_01.flt",
+        "type": "stop_line",
+        "visual_z_offset_m": "8.0000000000000002e-03",
+        "xodr_object_id": "5962",
+        "xodr_road_id": "2819",
+        "xodr_s": "0.0"
+      },
+      "center": [
+        1606.6141369156453,
+        1156.0094462354043
+      ]
+    },
+    {
+      "id": 544313,
+      "attributes": {
+        "cell_assignment": "unresolved",
+        "source": "Rm_StopLine_300cm_JPN_01.flt",
+        "type": "stop_line",
+        "visual_z_offset_m": "8.0000000000000002e-03",
+        "xodr_object_id": "5963",
+        "xodr_road_id": "2819",
+        "xodr_s": "0.0"
+      },
+      "center": [
+        1263.4005234556605,
+        1141.6319517161794
+      ]
+    },
+    {
+      "id": 544316,
+      "attributes": {
+        "cell_assignment": "unresolved",
+        "source": "Rm_StopLine_300cm_JPN_01.flt",
+        "type": "stop_line",
+        "visual_z_offset_m": "8.0000000000000002e-03",
+        "xodr_object_id": "5964",
+        "xodr_road_id": "2819",
+        "xodr_s": "0.0"
+      },
+      "center": [
+        1263.3772946332479,
+        1141.6309786421118
+      ]
+    },
+    {
+      "id": 543322,
+      "attributes": {
+        "cell_assignment": "unresolved",
+        "source": "Rm_StopLine_300cm_JPN_01.flt",
+        "type": "stop_line",
+        "visual_z_offset_m": "8.0000000000000002e-03",
+        "xodr_object_id": "2913",
+        "xodr_road_id": "2077",
+        "xodr_s": "0.0"
+      },
+      "center": [
+        1148.2856970296095,
+        -742.4840805549555
+      ]
+    },
+    {
+      "id": 543325,
+      "attributes": {
+        "cell_assignment": "unresolved",
+        "source": "Rm_StopLine_300cm_JPN_01.flt",
+        "type": "stop_line",
+        "visual_z_offset_m": "8.0000000000000002e-03",
+        "xodr_object_id": "2914",
+        "xodr_road_id": "2077",
+        "xodr_s": "0.0"
+      },
+      "center": [
+        1117.045178562643,
+        -767.2043381359122
+      ]
+    },
+    {
+      "id": 543343,
+      "attributes": {
+        "cell_assignment": "unresolved",
+        "source": "Rm_StopLine_300cm_JPN_01.flt",
+        "type": "stop_line",
+        "visual_z_offset_m": "8.0000000000000002e-03",
+        "xodr_object_id": "2948",
+        "xodr_road_id": "2096",
+        "xodr_s": "0.0"
+      },
+      "center": [
+        1130.2910151254393,
+        -680.9570848683604
+      ]
+    },
+    {
+      "id": 543352,
+      "attributes": {
+        "cell_assignment": "unresolved",
+        "source": "Rm_StopLine_300cm_JPN_01.flt",
+        "type": "stop_line",
+        "visual_z_offset_m": "8.0000000000000002e-03",
+        "xodr_object_id": "2960",
+        "xodr_road_id": "2097",
+        "xodr_s": "0.0"
+      },
+      "center": [
+        1085.830566387205,
+        -672.5741250155306
+      ]
+    },
+    {
+      "id": 543361,
+      "attributes": {
+        "cell_assignment": "unresolved",
+        "source": "Rm_StopLine_300cm_JPN_01.flt",
+        "type": "stop_line",
+        "visual_z_offset_m": "8.0000000000000002e-03",
+        "xodr_object_id": "2990",
+        "xodr_road_id": "2115",
+        "xodr_s": "0.0"
+      },
+      "center": [
+        1091.5873458913816,
+        -560.6114435847275
+      ]
+    },
+    {
+      "id": 543364,
+      "attributes": {
+        "cell_assignment": "unresolved",
+        "source": "Rm_StopLine_300cm_JPN_01.flt",
+        "type": "stop_line",
+        "visual_z_offset_m": "8.0000000000000002e-03",
+        "xodr_object_id": "2991",
+        "xodr_road_id": "2115",
+        "xodr_s": "0.0"
+      },
+      "center": [
+        1182.954774073785,
+        -677.371585178427
+      ]
+    },
+    {
+      "id": 543373,
+      "attributes": {
+        "cell_assignment": "unresolved",
+        "source": "Rm_StopLine_300cm_JPN_01.flt",
+        "type": "stop_line",
+        "visual_z_offset_m": "8.0000000000000002e-03",
+        "xodr_object_id": "3000",
+        "xodr_road_id": "2116",
+        "xodr_s": "0.0"
+      },
+      "center": [
+        1058.9262314448172,
+        -643.358096459595
+      ]
+    },
+    {
+      "id": 543382,
+      "attributes": {
+        "cell_assignment": "unresolved",
+        "source": "Rm_StopLine_300cm_JPN_01.flt",
+        "type": "stop_line",
+        "visual_z_offset_m": "8.0000000000000002e-03",
+        "xodr_object_id": "3022",
+        "xodr_road_id": "2139",
+        "xodr_s": "0.0"
+      },
+      "center": [
+        1043.3166336544662,
+        -584.4077803859351
+      ]
+    },
+    {
+      "id": 543391,
+      "attributes": {
+        "cell_assignment": "unresolved",
+        "source": "Rm_StopLine_300cm_JPN_01.flt",
+        "type": "stop_line",
+        "visual_z_offset_m": "8.0000000000000002e-03",
+        "xodr_object_id": "3042",
+        "xodr_road_id": "2152",
+        "xodr_s": "0.0"
+      },
+      "center": [
+        998.2871709498003,
+        -544.5126256523203
+      ]
+    },
+    {
+      "id": 543400,
+      "attributes": {
+        "cell_assignment": "unresolved",
+        "source": "Rm_StopLine_300cm_JPN_01.flt",
+        "type": "stop_line",
+        "visual_z_offset_m": "8.0000000000000002e-03",
+        "xodr_object_id": "3062",
+        "xodr_road_id": "2172",
+        "xodr_s": "0.0"
+      },
+      "center": [
+        964.1867234879544,
+        -519.2863274903036
+      ]
+    },
+    {
+      "id": 544217,
+      "attributes": {
+        "cell_assignment": "unresolved",
+        "source": "Rm_StopLine_300cm_JPN_01.flt",
+        "type": "stop_line",
+        "visual_z_offset_m": "8.0000000000000002e-03",
+        "xodr_object_id": "5568",
+        "xodr_road_id": "2814",
+        "xodr_s": "192.85101075519813"
+      },
+      "center": [
+        964.0398779263427,
+        650.1607279995841
+      ]
+    }
+  ],
+  "native_routing_errors": [],
+  "explicit_edges_missing_native": [],
+  "native_forward_edges_not_explicit": [
+    [
+      91721,
+      94824
+    ],
+    [
+      113557,
+      536141
+    ],
+    [
+      124048,
+      537172
+    ],
+    [
+      430703,
+      430619
+    ],
+    [
+      535839,
+      113518
+    ],
+    [
+      536656,
+      123856
+    ],
+    [
+      536914,
+      123952
+    ]
+  ],
+  "graph_stats": {
+    "edges_following_only": 2868,
+    "edges_with_lane_changes": 5416,
+    "weak_components_following_only": [
+      2541,
+      90,
+      24,
+      13,
+      9,
+      9,
+      7,
+      7,
+      6,
+      6,
+      6,
+      5,
+      5,
+      5,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      1,
+      1
+    ],
+    "weak_components_with_lane_changes": [
+      2846,
+      1
+    ],
+    "strong_components_with_lane_changes": [
+      2663,
+      4,
+      4,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ]
+  },
+  "isolated_weak_components_with_lane_changes": [
+    [
+      {
+        "lanelet": 410621,
+        "xodr": [
+          2810,
+          5,
+          1
+        ],
+        "s": [
+          113.80099999291575,
+          115.50099999353854
+        ],
+        "begin": [
+          1188.1640240677361,
+          576.7880596992757
+        ],
+        "end": [
+          1186.4930091866852,
+          576.2428791658834
+        ]
+      }
+    ]
+  ],
+  "dead_ends_with_lane_changes": [
+    {
+      "lanelet": 88551,
+      "xodr": [
+        1184,
+        0,
+        -1
+      ],
+      "s": [
+        0.0,
+        114.8297823820312
+      ],
+      "begin": [
+        225.9699910864876,
+        222.1373035012917
+      ],
+      "end": [
+        195.02969852357944,
+        332.7202009946487
+      ]
+    },
+    {
+      "lanelet": 536141,
+      "xodr": [
+        4738,
+        0,
+        1
+      ],
+      "s": [
+        0.0,
+        75.00000000000009
+      ],
+      "begin": [
+        420.0245309819232,
+        -494.15711206337977
+      ],
+      "end": [
+        360.77846181205035,
+        -540.1451897348661
+      ]
+    },
+    {
+      "lanelet": 127671,
+      "xodr": [
+        1790,
+        0,
+        -1
+      ],
+      "s": [
+        0.0,
+        31.23883364482592
+      ],
+      "begin": [
+        579.4491933462514,
+        -799.214282004772
+      ],
+      "end": [
+        604.2387136307202,
+        -780.2575046493032
+      ]
+    },
+    {
+      "lanelet": 537172,
+      "xodr": [
+        4740,
+        0,
+        1
+      ],
+      "s": [
+        0.0,
+        64.21285013649666
+      ],
+      "begin": [
+        557.5788961263142,
+        -809.2263695224033
+      ],
+      "end": [
+        507.706388166514,
+        -849.6741515685405
+      ]
+    },
+    {
+      "lanelet": 107175,
+      "xodr": [
+        1564,
+        0,
+        1
+      ],
+      "s": [
+        0.0,
+        9.541199999999991
+      ],
+      "begin": [
+        438.1814715982315,
+        -430.0288310405594
+      ],
+      "end": [
+        430.6843906219273,
+        -435.93037950471165
+      ]
+    },
+    {
+      "lanelet": 1608,
+      "xodr": [
+        30,
+        0,
+        1
+      ],
+      "s": [
+        0.0,
+        50.072789277272726
+      ],
+      "begin": [
+        -4.807422005431079,
+        24.62630285782425
+      ],
+      "end": [
+        1.8320131530954806,
+        -25.009201174745236
+      ]
+    },
+    {
+      "lanelet": 410621,
+      "xodr": [
+        2810,
+        5,
+        1
+      ],
+      "s": [
+        113.80099999291575,
+        115.50099999353854
+      ],
+      "begin": [
+        1188.1640240677361,
+        576.7880596992757
+      ],
+      "end": [
+        1186.4930091866852,
+        576.2428791658834
+      ]
+    }
+  ],
+  "unreachable_starts_with_lane_changes": [
+    {
+      "lanelet": 52578,
+      "xodr": [
+        429,
+        4,
+        -2
+      ],
+      "s": [
+        92.01000000000002,
+        96.01000000000002
+      ],
+      "begin": [
+        290.23275381389226,
+        26.632787703602837
+      ],
+      "end": [
+        288.7516718176072,
+        30.351088463064045
+      ]
+    },
+    {
+      "lanelet": 430703,
+      "xodr": [
+        2816,
+        2,
+        1
+      ],
+      "s": [
+        79.50099999979811,
+        80.20100000001423
+      ],
+      "begin": [
+        1289.5085173475684,
+        728.0518208873707
+      ],
+      "end": [
+        1289.3151576628848,
+        728.7245853087067
+      ]
+    },
+    {
+      "lanelet": 434231,
+      "xodr": [
+        2817,
+        1,
+        -1
+      ],
+      "s": [
+        79.90099999990784,
+        80.60100000014556
+      ],
+      "begin": [
+        1337.6259637795729,
+        875.8762663887906
+      ],
+      "end": [
+        1338.1840036018207,
+        876.306132450088
+      ]
+    },
+    {
+      "lanelet": 434237,
+      "xodr": [
+        2817,
+        1,
+        2
+      ],
+      "s": [
+        79.90099999990784,
+        80.60100000014556
+      ],
+      "begin": [
+        1336.5262351698207,
+        879.0441836669166
+      ],
+      "end": [
+        1335.9660146362903,
+        878.6179655597714
+      ]
+    },
+    {
+      "lanelet": 107134,
+      "xodr": [
+        1564,
+        0,
+        -1
+      ],
+      "s": [
+        0.0,
+        9.541199999999991
+      ],
+      "begin": [
+        432.53999006355485,
+        -438.2876556260499
+      ],
+      "end": [
+        440.03707103985903,
+        -432.38610716189766
+      ]
+    },
+    {
+      "lanelet": 141769,
+      "xodr": [
+        1869,
+        2,
+        1
+      ],
+      "s": [
+        62.00100000017077,
+        63.30100000001289
+      ],
+      "begin": [
+        924.8613344857047,
+        -977.761324634721
+      ],
+      "end": [
+        923.8760804766234,
+        -978.611922973358
+      ]
+    },
+    {
+      "lanelet": 517030,
+      "xodr": [
+        3186,
+        0,
+        -1
+      ],
+      "s": [
+        0.0,
+        88.13460131797957
+      ],
+      "begin": [
+        1428.0217807525746,
+        1240.315078624406
+      ],
+      "end": [
+        1415.4916224352583,
+        1165.8612657949334
+      ]
+    },
+    {
+      "lanelet": 111562,
+      "xodr": [
+        1603,
+        2,
+        2
+      ],
+      "s": [
+        29.01100000000003,
+        31.50100000000001
+      ],
+      "begin": [
+        473.2934201425002,
+        -523.7346679877388
+      ],
+      "end": [
+        471.479278571117,
+        -521.7834967155709
+      ]
+    },
+    {
+      "lanelet": 535839,
+      "xodr": [
+        4738,
+        0,
+        -1
+      ],
+      "s": [
+        0.0,
+        75.00000000000009
+      ],
+      "begin": [
+        362.61798491890977,
+        -542.5150325016609
+      ],
+      "end": [
+        421.8640540887826,
+        -496.52695483017465
+      ]
+    },
+    {
+      "lanelet": 1405,
+      "xodr": [
+        30,
+        0,
+        -1
+      ],
+      "s": [
+        0.0,
+        50.072789277272726
+      ],
+      "begin": [
+        4.8055292150501785,
+        -24.61145473629805
+      ],
+      "end": [
+        -0.3452310226027655,
+        25.208412497639372
+      ]
+    },
+    {
+      "lanelet": 410621,
+      "xodr": [
+        2810,
+        5,
+        1
+      ],
+      "s": [
+        113.80099999291575,
+        115.50099999353854
+      ],
+      "begin": [
+        1188.1640240677361,
+        576.7880596992757
+      ],
+      "end": [
+        1186.4930091866852,
+        576.2428791658834
+      ]
+    },
+    {
+      "lanelet": 89013,
+      "xodr": [
+        1184,
+        0,
+        1
+      ],
+      "s": [
+        0.0,
+        114.8297823820312
+      ],
+      "begin": [
+        192.14065105176275,
+        331.9118664688554
+      ],
+      "end": [
+        223.0809436146709,
+        221.32896897549844
+      ]
+    },
+    {
+      "lanelet": 246104,
+      "xodr": [
+        2195,
+        2,
+        2
+      ],
+      "s": [
+        41.001,
+        42.400999999999996
+      ],
+      "begin": [
+        886.09436731413,
+        -442.2154928950863
+      ],
+      "end": [
+        885.0111525263188,
+        -441.28691090142996
+      ]
+    },
+    {
+      "lanelet": 260288,
+      "xodr": [
+        2305,
+        1,
+        1
+      ],
+      "s": [
+        72.70000000006749,
+        81.89999999986506
+      ],
+      "begin": [
+        1405.9153251436935,
+        -289.60155643313965
+      ],
+      "end": [
+        1403.633878637485,
+        -280.5933871066389
+      ]
+    }
+  ],
+  "source_roadmark_lanechange_counts": {
+    "('solid', 'none')": 1752,
+    "('broken', 'both')": 1111,
+    "('solid solid', 'none')": 12,
+    "('none', 'both')": 125
+  },
+  "summary_counts": {
+    "source_coverage_gaps": 0,
+    "non_driving_generated": 0,
+    "invalid_lanelets": 0,
+    "invalid_cells": 0,
+    "missing_cells": 0,
+    "cell_union_errors": 0,
+    "cell_stopline_separation": 12,
+    "bad_previous_geometry": 0,
+    "stopline_orientation_errors": 0,
+    "cell_id_errors": 0,
+    "stoplines_without_cells": 26,
+    "native_routing_errors": 0,
+    "explicit_edges_missing_native": 0,
+    "native_forward_edges_not_explicit": 7,
+    "isolated_weak_components_with_lane_changes": 1,
+    "dead_ends_with_lane_changes": 7,
+    "unreachable_starts_with_lane_changes": 14
+  }
+}

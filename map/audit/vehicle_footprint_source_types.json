@@ -1,0 +1,3548 @@
+{
+  "xodr": "/home/stier/vtd \uc790\ub8cc/HL_FMA_VTD_LivingLab.xodr",
+  "xodr_sha256": "5a369c7b0609fc98b0034680473465db4273dd396ffb37980996cea70ec6ca2f",
+  "cases": "map/audit/vehicle_footprint_source_cases.json",
+  "cases_sha256": "4b38cf3caaac792846978b42211c21e02813485afe0e48a62803fbd08b350bbd",
+  "method": "For each representative point-passing moving bbox sample from the50 largest distinct reported road/lane pairs, independently project outside centroid on reported source road. Build original non-driving lane polygons with exact XML widths, independent road curve at0.1m s steps within6m of projected centroid; measure outside polygon intersection area. Source type area is XY corroboration on reported road only, not exclusive classification among overlapping junction roads; source sidewalk heights are not separately evaluated here. Driving union height filtering is in map/audit/vehicle_footprint_audit.json.",
+  "rows": [
+    {
+      "target": 370163,
+      "frame": 3012,
+      "reference_xyz": [
+        1351.3836998030165,
+        188.1656073768034,
+        55.15419611606154
+      ],
+      "reported_road": [
+        2746,
+        -1,
+        8.841041564941406,
+        -2.9201574325561523,
+        -1.3866945505142212
+      ],
+      "bbox_outside_area_m2": 5.457269964300035,
+      "yaw_outside_area_m2": 4.806020590499812,
+      "outside_area_after2cm_map_buffer_m2": 5.410389447699981,
+      "outside_centroid_source_projection": {
+        "road": 2746,
+        "raw_projected_s": 10.208489948515954,
+        "raw_projected_t": -4.043933042669137,
+        "road_length": 30.552716250398895,
+        "longitudinal_residual_m": 1.0313971898767704e-13,
+        "source_interval_hits": [
+          {
+            "lane": -3,
+            "type": "sidewalk",
+            "t_bounds": [
+              -7.421051392453456,
+              -3.421051392453456
+            ],
+            "width": 4.0
+          }
+        ],
+        "driving_intervals": [
+          {
+            "lane": -1,
+            "type": "driving",
+            "t_bounds": [
+              -3.085931044670061,
+              0.0
+            ],
+            "width": 3.085931044670061
+          }
+        ],
+        "signed_driving_lateral_margin_m": -0.9580019979990757,
+        "classification": "outside_original_driving"
+      },
+      "overlap_original_non_driving_area_m2": {
+        "border": 0.8762963536869819,
+        "sidewalk": 4.580972999380915
+      },
+      "height_sensitivity_outside_areas": [
+        6.713219345300056,
+        5.457269964300035,
+        5.457269964300035
+      ]
+    },
+    {
+      "target": 143742,
+      "frame": 5157,
+      "reference_xyz": [
+        981.9841156963879,
+        -953.6127584798081,
+        53.110145647486696
+      ],
+      "reported_road": [
+        1937,
+        -1,
+        6.288168430328369,
+        -2.8491010665893555,
+        -1.3134111166000366
+      ],
+      "bbox_outside_area_m2": 5.3733586469500025,
+      "yaw_outside_area_m2": 4.866608369949995,
+      "outside_area_after2cm_map_buffer_m2": 5.330293053949914,
+      "outside_centroid_source_projection": {
+        "road": 1937,
+        "raw_projected_s": 7.569631501149124,
+        "raw_projected_t": -4.160707059356156,
+        "road_length": 34.62238095709753,
+        "longitudinal_residual_m": 2.298428114499984e-11,
+        "source_interval_hits": [
+          {
+            "lane": -3,
+            "type": "sidewalk",
+            "t_bounds": [
+              -7.351864309854024,
+              -3.351864309854024
+            ],
+            "width": 4.0
+          }
+        ],
+        "driving_intervals": [
+          {
+            "lane": -1,
+            "type": "driving",
+            "t_bounds": [
+              -3.076007525969118,
+              0.0
+            ],
+            "width": 3.076007525969118
+          }
+        ],
+        "signed_driving_lateral_margin_m": -1.0846995333870377,
+        "classification": "outside_original_driving"
+      },
+      "overlap_original_non_driving_area_m2": {
+        "border": 0.6457634272964764,
+        "sidewalk": 4.727594367793889
+      },
+      "height_sensitivity_outside_areas": [
+        5.706050041049998,
+        5.3733586469500025,
+        5.3733586469500025
+      ]
+    },
+    {
+      "target": 259846,
+      "frame": 1260,
+      "reference_xyz": [
+        1383.0066940559057,
+        -199.5755941074375,
+        71.4826882334606
+      ],
+      "reported_road": [
+        2524,
+        -1,
+        5.534201145172119,
+        -2.7422237396240234,
+        -1.2621690034866333
+      ],
+      "bbox_outside_area_m2": 5.312742254549889,
+      "yaw_outside_area_m2": 5.0521683209497175,
+      "outside_area_after2cm_map_buffer_m2": 5.276438875499799,
+      "outside_centroid_source_projection": {
+        "road": 2524,
+        "raw_projected_s": 4.968248089127957,
+        "raw_projected_t": -4.425137727861502,
+        "road_length": 24.970781429852583,
+        "longitudinal_residual_m": 3.985700658404312e-14,
+        "source_interval_hits": [
+          {
+            "lane": -3,
+            "type": "sidewalk",
+            "t_bounds": [
+              -7.36034716572467,
+              -3.3603471657246704
+            ],
+            "width": 4.0
+          }
+        ],
+        "driving_intervals": [
+          {
+            "lane": -1,
+            "type": "driving",
+            "t_bounds": [
+              -2.958291975034064,
+              0.0
+            ],
+            "width": 2.958291975034064
+          }
+        ],
+        "signed_driving_lateral_margin_m": -1.466845752827438,
+        "classification": "outside_original_driving"
+      },
+      "overlap_original_non_driving_area_m2": {
+        "border": 0.7297824090953153,
+        "sidewalk": 4.582957877826539
+      },
+      "height_sensitivity_outside_areas": [
+        5.312742254549889,
+        5.312742254549889,
+        5.312742254549889
+      ]
+    },
+    {
+      "target": 153447,
+      "frame": 978,
+      "reference_xyz": [
+        1020.5642378596662,
+        -935.2699772465605,
+        53.11002045714807
+      ],
+      "reported_road": [
+        1943,
+        -1,
+        5.776968479156494,
+        -3.162700891494751,
+        -1.4724884033203125
+      ],
+      "bbox_outside_area_m2": 5.3041337328999765,
+      "yaw_outside_area_m2": 5.0415074561498745,
+      "outside_area_after2cm_map_buffer_m2": 5.265183491099933,
+      "outside_centroid_source_projection": {
+        "road": 1943,
+        "raw_projected_s": 6.793100973515381,
+        "raw_projected_t": -4.743623867942691,
+        "road_length": 32.25530712195305,
+        "longitudinal_residual_m": 2.6201263381153694e-14,
+        "source_interval_hits": [
+          {
+            "lane": -3,
+            "type": "sidewalk",
+            "t_bounds": [
+              -7.730716522846488,
+              -3.730716522846488
+            ],
+            "width": 4.0
+          }
+        ],
+        "driving_intervals": [
+          {
+            "lane": -1,
+            "type": "driving",
+            "t_bounds": [
+              -3.3735483954063437,
+              0.0
+            ],
+            "width": 3.3735483954063437
+          }
+        ],
+        "signed_driving_lateral_margin_m": -1.3700754725363478,
+        "classification": "outside_original_driving"
+      },
+      "overlap_original_non_driving_area_m2": {
+        "border": 0.6952105110599012,
+        "sidewalk": 4.608921427648593
+      },
+      "height_sensitivity_outside_areas": [
+        5.3041337328999765,
+        5.3041337328999765,
+        5.3041337328999765
+      ]
+    },
+    {
+      "target": 74654,
+      "frame": 387,
+      "reference_xyz": [
+        594.6665469561401,
+        -395.2007384759071,
+        41.699973777897036
+      ],
+      "reported_road": [
+        1035,
+        -1,
+        5.0079145431518555,
+        -2.989881753921509,
+        -1.3939058780670166
+      ],
+      "bbox_outside_area_m2": 5.2536573367998995,
+      "yaw_outside_area_m2": 4.953661696300115,
+      "outside_area_after2cm_map_buffer_m2": 5.21367278124986,
+      "outside_centroid_source_projection": {
+        "road": 1035,
+        "raw_projected_s": 6.31015504845676,
+        "raw_projected_t": -4.311718255064394,
+        "road_length": 38.45342548246467,
+        "longitudinal_residual_m": 1.2612133559741778e-13,
+        "source_interval_hits": [
+          {
+            "lane": -3,
+            "type": "sidewalk",
+            "t_bounds": [
+              -7.687512346022148,
+              -3.6875123460221477
+            ],
+            "width": 4.0
+          }
+        ],
+        "driving_intervals": [
+          {
+            "lane": -1,
+            "type": "driving",
+            "t_bounds": [
+              -3.1875123460221477,
+              0.0
+            ],
+            "width": 3.1875123460221477
+          }
+        ],
+        "signed_driving_lateral_margin_m": -1.1242059090422467,
+        "classification": "outside_original_driving"
+      },
+      "overlap_original_non_driving_area_m2": {
+        "border": 1.1707664773866444,
+        "sidewalk": 4.082890016259317
+      },
+      "height_sensitivity_outside_areas": [
+        5.2536573367998995,
+        5.2536573367998995,
+        5.2536573367998995
+      ]
+    },
+    {
+      "target": 159645,
+      "frame": 3977,
+      "reference_xyz": [
+        1113.0238194787592,
+        -1086.0773870346472,
+        56.18322253022973
+      ],
+      "reported_road": [
+        1926,
+        -3,
+        169.69200134277344,
+        -4.118232727050781,
+        0.6796703934669495
+      ],
+      "bbox_outside_area_m2": 5.24015282400016,
+      "yaw_outside_area_m2": 5.050656763499886,
+      "outside_area_after2cm_map_buffer_m2": 5.204483860149808,
+      "outside_centroid_source_projection": {
+        "road": 1926,
+        "raw_projected_s": 171.38406683956455,
+        "raw_projected_t": -4.58222488900237,
+        "road_length": 169.91171933056836,
+        "longitudinal_residual_m": 5.329070518200751e-15,
+        "source_interval_hits": [
+          {
+            "lane": -3,
+            "type": "driving",
+            "t_bounds": [
+              -6.35,
+              -3.25
+            ],
+            "width": 3.1
+          }
+        ],
+        "driving_intervals": [
+          {
+            "lane": 2,
+            "type": "driving",
+            "t_bounds": [
+              3.322737796482941,
+              6.322737796482941
+            ],
+            "width": 3.0
+          },
+          {
+            "lane": 3,
+            "type": "driving",
+            "t_bounds": [
+              6.322737796482941,
+              9.32273779648294
+            ],
+            "width": 3.0
+          },
+          {
+            "lane": 4,
+            "type": "driving",
+            "t_bounds": [
+              9.32273779648294,
+              12.32273779648294
+            ],
+            "width": 3.0
+          },
+          {
+            "lane": 5,
+            "type": "driving",
+            "t_bounds": [
+              12.32273779648294,
+              15.32273779648294
+            ],
+            "width": 3.0
+          },
+          {
+            "lane": -1,
+            "type": "driving",
+            "t_bounds": [
+              -0.1499999999999999,
+              2.85
+            ],
+            "width": 3.0
+          },
+          {
+            "lane": -2,
+            "type": "driving",
+            "t_bounds": [
+              -3.25,
+              -0.1499999999999999
+            ],
+            "width": 3.1
+          },
+          {
+            "lane": -3,
+            "type": "driving",
+            "t_bounds": [
+              -6.35,
+              -3.25
+            ],
+            "width": 3.1
+          },
+          {
+            "lane": -4,
+            "type": "driving",
+            "t_bounds": [
+              -9.35,
+              -6.35
+            ],
+            "width": 3.0
+          },
+          {
+            "lane": -5,
+            "type": "driving",
+            "t_bounds": [
+              -12.35,
+              -9.35
+            ],
+            "width": 3.0
+          }
+        ],
+        "signed_driving_lateral_margin_m": 1.3322248890023696,
+        "classification": "outside_road_s_extent"
+      },
+      "overlap_original_non_driving_area_m2": {
+        "none": 0.0,
+        "border": 0.0,
+        "sidewalk": 0.0
+      },
+      "height_sensitivity_outside_areas": [
+        5.24015282400016,
+        5.24015282400016,
+        5.24015282400016
+      ]
+    },
+    {
+      "target": 18239,
+      "frame": 320,
+      "reference_xyz": [
+        542.688141537915,
+        -376.10672642066044,
+        41.699279015789884
+      ],
+      "reported_road": [
+        1702,
+        -1,
+        5.631803512573242,
+        -2.9330904483795166,
+        -1.39676034450531
+      ],
+      "bbox_outside_area_m2": 5.229975283299993,
+      "yaw_outside_area_m2": 4.992130803250025,
+      "outside_area_after2cm_map_buffer_m2": 5.191315057699929,
+      "outside_centroid_source_projection": {
+        "road": 1702,
+        "raw_projected_s": 6.837188586340889,
+        "raw_projected_t": -4.190070658970374,
+        "road_length": 34.59570843175541,
+        "longitudinal_residual_m": -1.7763568394002505e-15,
+        "source_interval_hits": [
+          {
+            "lane": -3,
+            "type": "sidewalk",
+            "t_bounds": [
+              -7.570549130157078,
+              -3.5705491301570778
+            ],
+            "width": 4.0
+          }
+        ],
+        "driving_intervals": [
+          {
+            "lane": -1,
+            "type": "driving",
+            "t_bounds": [
+              -3.0607321735427706,
+              0.0
+            ],
+            "width": 3.0607321735427706
+          }
+        ],
+        "signed_driving_lateral_margin_m": -1.1293384854276032,
+        "classification": "outside_original_driving"
+      },
+      "overlap_original_non_driving_area_m2": {
+        "border": 1.1700312726573139,
+        "sidewalk": 4.0599300356175165
+      },
+      "height_sensitivity_outside_areas": [
+        5.229975283299993,
+        5.229975283299993,
+        5.229975283299993
+      ]
+    },
+    {
+      "target": 116670,
+      "frame": 3866,
+      "reference_xyz": [
+        568.5138586260108,
+        -363.5401142393139,
+        41.69968660395839
+      ],
+      "reported_road": [
+        1011,
+        -1,
+        22.232248306274414,
+        -0.2362457513809204,
+        1.2764878273010254
+      ],
+      "bbox_outside_area_m2": 5.195954113400199,
+      "yaw_outside_area_m2": 4.980895845249952,
+      "outside_area_after2cm_map_buffer_m2": 5.158151690750192,
+      "outside_centroid_source_projection": {
+        "road": 1011,
+        "raw_projected_s": 21.246268634111495,
+        "raw_projected_t": 1.231678745500118,
+        "road_length": 34.256260489097684,
+        "longitudinal_residual_m": 2.6054658430751942e-11,
+        "source_interval_hits": [],
+        "driving_intervals": [
+          {
+            "lane": -1,
+            "type": "driving",
+            "t_bounds": [
+              -3.0060770998176927,
+              0.0
+            ],
+            "width": 3.0060770998176927
+          }
+        ],
+        "signed_driving_lateral_margin_m": -1.231678745500118,
+        "classification": "outside_original_driving"
+      },
+      "overlap_original_non_driving_area_m2": {
+        "border": 0.0,
+        "sidewalk": 0.0
+      },
+      "height_sensitivity_outside_areas": [
+        5.195954113400199,
+        5.195954113400199,
+        5.195954113400199
+      ]
+    },
+    {
+      "target": 44181,
+      "frame": 532,
+      "reference_xyz": [
+        408.67550738580763,
+        -205.07423519016407,
+        44.158986293489406
+      ],
+      "reported_road": [
+        703,
+        -1,
+        5.097947597503662,
+        -2.09157657623291,
+        -0.9302981495857239
+      ],
+      "bbox_outside_area_m2": 5.1957756771500705,
+      "yaw_outside_area_m2": 4.933995103250025,
+      "outside_area_after2cm_map_buffer_m2": 5.155170061300027,
+      "outside_centroid_source_projection": {
+        "road": 703,
+        "raw_projected_s": 6.159962931272599,
+        "raw_projected_t": -3.535463447454896,
+        "road_length": 37.80423698496889,
+        "longitudinal_residual_m": -6.661338147750939e-15,
+        "source_interval_hits": [
+          {
+            "lane": -3,
+            "type": "sidewalk",
+            "t_bounds": [
+              -6.829827061341531,
+              -2.8298270613415304
+            ],
+            "width": 4.0
+          }
+        ],
+        "driving_intervals": [
+          {
+            "lane": -1,
+            "type": "driving",
+            "t_bounds": [
+              -2.332292373111964,
+              0.0
+            ],
+            "width": 2.332292373111964
+          }
+        ],
+        "signed_driving_lateral_margin_m": -1.203171074342932,
+        "classification": "outside_original_driving"
+      },
+      "overlap_original_non_driving_area_m2": {
+        "border": 1.0880706246216243,
+        "sidewalk": 4.107704690175075
+      },
+      "height_sensitivity_outside_areas": [
+        5.1957756771500705,
+        5.1957756771500705,
+        5.1957756771500705
+      ]
+    },
+    {
+      "target": 339720,
+      "frame": 1160,
+      "reference_xyz": [
+        1098.7715671488468,
+        -34.74128679240209,
+        64.8759493743595
+      ],
+      "reported_road": [
+        2621,
+        -1,
+        12.504182815551758,
+        -0.1059454157948494,
+        1.3856114149093628
+      ],
+      "bbox_outside_area_m2": 5.174307159750329,
+      "yaw_outside_area_m2": 5.1014121687502705,
+      "outside_area_after2cm_map_buffer_m2": 5.138545702450144,
+      "outside_centroid_source_projection": {
+        "road": 2621,
+        "raw_projected_s": 13.111611801777283,
+        "raw_projected_t": 1.3784416485282245,
+        "road_length": 21.93892554552568,
+        "longitudinal_residual_m": 6.894484982922222e-14,
+        "source_interval_hits": [],
+        "driving_intervals": [
+          {
+            "lane": -1,
+            "type": "driving",
+            "t_bounds": [
+              -2.9773510612716168,
+              0.0
+            ],
+            "width": 2.9773510612716168
+          }
+        ],
+        "signed_driving_lateral_margin_m": -1.3784416485282245,
+        "classification": "outside_original_driving"
+      },
+      "overlap_original_non_driving_area_m2": {
+        "border": 0.0,
+        "sidewalk": 0.0
+      },
+      "height_sensitivity_outside_areas": [
+        5.174307159750329,
+        5.174307159750329,
+        5.174307159750329
+      ]
+    },
+    {
+      "target": 115737,
+      "frame": 6269,
+      "reference_xyz": [
+        563.7967876998375,
+        -404.3481052264708,
+        41.69897236341152
+      ],
+      "reported_road": [
+        1693,
+        -1,
+        19.280845642089844,
+        -2.8536603450775146,
+        -1.279518723487854
+      ],
+      "bbox_outside_area_m2": 5.162537483250052,
+      "yaw_outside_area_m2": 4.895669931850029,
+      "outside_area_after2cm_map_buffer_m2": 5.125011087999887,
+      "outside_centroid_source_projection": {
+        "road": 1693,
+        "raw_projected_s": 20.33565258552594,
+        "raw_projected_t": -4.543630998028455,
+        "road_length": 38.192542467212064,
+        "longitudinal_residual_m": -1.0347278589506459e-13,
+        "source_interval_hits": [
+          {
+            "lane": -3,
+            "type": "sidewalk",
+            "t_bounds": [
+              -7.6604910954560355,
+              -3.6604910954560355
+            ],
+            "width": 4.0
+          }
+        ],
+        "driving_intervals": [
+          {
+            "lane": -1,
+            "type": "driving",
+            "t_bounds": [
+              -3.1604910954560355,
+              0.0
+            ],
+            "width": 3.1604910954560355
+          }
+        ],
+        "signed_driving_lateral_margin_m": -1.3831399025724194,
+        "classification": "outside_original_driving"
+      },
+      "overlap_original_non_driving_area_m2": {
+        "border": 0.9430654761807196,
+        "sidewalk": 4.219468620397426
+      },
+      "height_sensitivity_outside_areas": [
+        5.162537483250052,
+        5.162537483250052,
+        5.162537483250052
+      ]
+    },
+    {
+      "target": 145539,
+      "frame": 686,
+      "reference_xyz": [
+        863.939872776451,
+        -1031.8859074410223,
+        59.30518220566121
+      ],
+      "reported_road": [
+        1901,
+        -1,
+        18.547382354736328,
+        -0.18864183127880096,
+        1.325339913368225
+      ],
+      "bbox_outside_area_m2": 5.129105355249934,
+      "yaw_outside_area_m2": 4.988737703000055,
+      "outside_area_after2cm_map_buffer_m2": 5.0605366071998015,
+      "outside_centroid_source_projection": {
+        "road": 1901,
+        "raw_projected_s": 17.48481133487612,
+        "raw_projected_t": 1.2254374259375478,
+        "road_length": 42.59039802354067,
+        "longitudinal_residual_m": -1.2928547121759948e-13,
+        "source_interval_hits": [],
+        "driving_intervals": [
+          {
+            "lane": -1,
+            "type": "driving",
+            "t_bounds": [
+              -3.0296767550690724,
+              0.0
+            ],
+            "width": 3.0296767550690724
+          },
+          {
+            "lane": -2,
+            "type": "driving",
+            "t_bounds": [
+              -6.0185128607001985,
+              -3.0296767550690724
+            ],
+            "width": 2.9888361056311257
+          }
+        ],
+        "signed_driving_lateral_margin_m": -1.2254374259375478,
+        "classification": "outside_original_driving"
+      },
+      "overlap_original_non_driving_area_m2": {},
+      "height_sensitivity_outside_areas": [
+        5.129105355249934,
+        5.129105355249934,
+        5.129105355249934
+      ]
+    },
+    {
+      "target": 533149,
+      "frame": 1573,
+      "reference_xyz": [
+        996.2192705078988,
+        -900.7027613572064,
+        53.10689039925331
+      ],
+      "reported_road": [
+        1952,
+        -1,
+        15.684798240661621,
+        -2.8179423809051514,
+        -1.297835350036621
+      ],
+      "bbox_outside_area_m2": 5.096424332800016,
+      "yaw_outside_area_m2": 4.912294252549938,
+      "outside_area_after2cm_map_buffer_m2": 5.059699778849944,
+      "outside_centroid_source_projection": {
+        "road": 1952,
+        "raw_projected_s": 16.63008474957878,
+        "raw_projected_t": -4.447284340015275,
+        "road_length": 31.71557258542765,
+        "longitudinal_residual_m": 5.1708637371916666e-12,
+        "source_interval_hits": [
+          {
+            "lane": -3,
+            "type": "sidewalk",
+            "t_bounds": [
+              -7.487827772814973,
+              -3.487827772814973
+            ],
+            "width": 4.0
+          }
+        ],
+        "driving_intervals": [
+          {
+            "lane": -1,
+            "type": "driving",
+            "t_bounds": [
+              -3.0531777131086035,
+              0.0
+            ],
+            "width": 3.0531777131086035
+          }
+        ],
+        "signed_driving_lateral_margin_m": -1.3941066269066718,
+        "classification": "outside_original_driving"
+      },
+      "overlap_original_non_driving_area_m2": {
+        "border": 0.8042597184587335,
+        "sidewalk": 4.292161762696969
+      },
+      "height_sensitivity_outside_areas": [
+        5.096424332800016,
+        5.096424332800016,
+        5.096424332800016
+      ]
+    },
+    {
+      "target": 523643,
+      "frame": 2039,
+      "reference_xyz": [
+        428.7028893204105,
+        -226.45953277956292,
+        44.15640169237622
+      ],
+      "reported_road": [
+        3340,
+        -3,
+        34.23136901855469,
+        -9.792145729064941,
+        -1.5421456098556519
+      ],
+      "bbox_outside_area_m2": 5.092616647500113,
+      "yaw_outside_area_m2": 4.991782207549958,
+      "outside_area_after2cm_map_buffer_m2": 5.055393102300104,
+      "outside_centroid_source_projection": {
+        "road": 3340,
+        "raw_projected_s": 35.39722980503018,
+        "raw_projected_t": -11.02636435458541,
+        "road_length": 48.72097747197121,
+        "longitudinal_residual_m": 4.3520742565306136e-14,
+        "source_interval_hits": [],
+        "driving_intervals": [
+          {
+            "lane": -1,
+            "type": "driving",
+            "t_bounds": [
+              -3.3,
+              0.0
+            ],
+            "width": 3.3
+          },
+          {
+            "lane": -2,
+            "type": "driving",
+            "t_bounds": [
+              -6.6,
+              -3.3
+            ],
+            "width": 3.3
+          },
+          {
+            "lane": -3,
+            "type": "driving",
+            "t_bounds": [
+              -9.899999999999999,
+              -6.6
+            ],
+            "width": 3.3
+          }
+        ],
+        "signed_driving_lateral_margin_m": -1.1263643545854123,
+        "classification": "outside_original_driving"
+      },
+      "overlap_original_non_driving_area_m2": {},
+      "height_sensitivity_outside_areas": [
+        5.092616647500113,
+        5.092616647500113,
+        5.092616647500113
+      ]
+    },
+    {
+      "target": 376152,
+      "frame": 558,
+      "reference_xyz": [
+        1351.184740294005,
+        165.20021252150696,
+        55.15098370888309
+      ],
+      "reported_road": [
+        2728,
+        -1,
+        17.54851722717285,
+        -2.725672483444214,
+        -1.247346043586731
+      ],
+      "bbox_outside_area_m2": 5.062695332049702,
+      "yaw_outside_area_m2": 4.868378454499961,
+      "outside_area_after2cm_map_buffer_m2": 5.023303288799564,
+      "outside_centroid_source_projection": {
+        "road": 2728,
+        "raw_projected_s": 15.99369382082022,
+        "raw_projected_t": -4.231668046729395,
+        "road_length": 32.230468097918624,
+        "longitudinal_residual_m": -1.0627942970131699e-11,
+        "source_interval_hits": [
+          {
+            "lane": -3,
+            "type": "sidewalk",
+            "t_bounds": [
+              -7.4,
+              -3.4
+            ],
+            "width": 4.0
+          }
+        ],
+        "driving_intervals": [
+          {
+            "lane": -1,
+            "type": "driving",
+            "t_bounds": [
+              -2.9494343647600996,
+              0.0
+            ],
+            "width": 2.9494343647600996
+          }
+        ],
+        "signed_driving_lateral_margin_m": -1.282233681969295,
+        "classification": "outside_original_driving"
+      },
+      "overlap_original_non_driving_area_m2": {
+        "border": 0.8918115944875068,
+        "sidewalk": 4.1708798128221725
+      },
+      "height_sensitivity_outside_areas": [
+        5.062695332049702,
+        5.062695332049702,
+        5.062695332049702
+      ]
+    },
+    {
+      "target": 37246,
+      "frame": 5209,
+      "reference_xyz": [
+        392.53940392194573,
+        -256.2064383020824,
+        44.15885342492082
+      ],
+      "reported_road": [
+        1471,
+        -1,
+        1.262723445892334,
+        -3.06976580619812,
+        -1.468995213508606
+      ],
+      "bbox_outside_area_m2": 5.025721192999977,
+      "yaw_outside_area_m2": 4.89840170285008,
+      "outside_area_after2cm_map_buffer_m2": 4.985052688349983,
+      "outside_centroid_source_projection": {
+        "road": 1471,
+        "raw_projected_s": 2.5806379558657806,
+        "raw_projected_t": -4.216521255912992,
+        "road_length": 22.257138583586492,
+        "longitudinal_residual_m": -1.2434497875801753e-14,
+        "source_interval_hits": [
+          {
+            "lane": -3,
+            "type": "sidewalk",
+            "t_bounds": [
+              -7.703354806171729,
+              -3.703354806171729
+            ],
+            "width": 4.0
+          }
+        ],
+        "driving_intervals": [
+          {
+            "lane": -1,
+            "type": "driving",
+            "t_bounds": [
+              -3.2061882138797277,
+              0.0
+            ],
+            "width": 3.2061882138797277
+          }
+        ],
+        "signed_driving_lateral_margin_m": -1.0103330420332646,
+        "classification": "outside_original_driving"
+      },
+      "overlap_original_non_driving_area_m2": {
+        "border": 1.228949314903758,
+        "sidewalk": 3.796771736718939
+      },
+      "height_sensitivity_outside_areas": [
+        5.025721192999977,
+        5.025721192999977,
+        5.025721192999977
+      ]
+    },
+    {
+      "target": 159769,
+      "frame": 1553,
+      "reference_xyz": [
+        1115.3441161362919,
+        -1084.0955536625736,
+        56.183985803895666
+      ],
+      "reported_road": [
+        1926,
+        -2,
+        169.59268188476562,
+        -1.0641791820526123,
+        0.6327757835388184
+      ],
+      "bbox_outside_area_m2": 5.006960055099876,
+      "yaw_outside_area_m2": 4.845902039200251,
+      "outside_area_after2cm_map_buffer_m2": 4.970934709699705,
+      "outside_centroid_source_projection": {
+        "road": 1926,
+        "raw_projected_s": 171.3066619219095,
+        "raw_projected_t": -1.6104415613649803,
+        "road_length": 169.91171933056836,
+        "longitudinal_residual_m": 1.0680345496894006e-13,
+        "source_interval_hits": [
+          {
+            "lane": -2,
+            "type": "driving",
+            "t_bounds": [
+              -3.25,
+              -0.1499999999999999
+            ],
+            "width": 3.1
+          }
+        ],
+        "driving_intervals": [
+          {
+            "lane": 2,
+            "type": "driving",
+            "t_bounds": [
+              3.3225352298976487,
+              6.322535229897649
+            ],
+            "width": 3.0
+          },
+          {
+            "lane": 3,
+            "type": "driving",
+            "t_bounds": [
+              6.322535229897649,
+              9.32253522989765
+            ],
+            "width": 3.0
+          },
+          {
+            "lane": 4,
+            "type": "driving",
+            "t_bounds": [
+              9.32253522989765,
+              12.32253522989765
+            ],
+            "width": 3.0
+          },
+          {
+            "lane": 5,
+            "type": "driving",
+            "t_bounds": [
+              12.32253522989765,
+              15.32253522989765
+            ],
+            "width": 3.0
+          },
+          {
+            "lane": -1,
+            "type": "driving",
+            "t_bounds": [
+              -0.1499999999999999,
+              2.85
+            ],
+            "width": 3.0
+          },
+          {
+            "lane": -2,
+            "type": "driving",
+            "t_bounds": [
+              -3.25,
+              -0.1499999999999999
+            ],
+            "width": 3.1
+          },
+          {
+            "lane": -3,
+            "type": "driving",
+            "t_bounds": [
+              -6.35,
+              -3.25
+            ],
+            "width": 3.1
+          },
+          {
+            "lane": -4,
+            "type": "driving",
+            "t_bounds": [
+              -9.35,
+              -6.35
+            ],
+            "width": 3.0
+          },
+          {
+            "lane": -5,
+            "type": "driving",
+            "t_bounds": [
+              -12.35,
+              -9.35
+            ],
+            "width": 3.0
+          }
+        ],
+        "signed_driving_lateral_margin_m": 1.4604415613649804,
+        "classification": "outside_road_s_extent"
+      },
+      "overlap_original_non_driving_area_m2": {
+        "none": 0.0,
+        "border": 0.0,
+        "sidewalk": 0.0
+      },
+      "height_sensitivity_outside_areas": [
+        5.006960055099876,
+        5.006960055099876,
+        5.006960055099876
+      ]
+    },
+    {
+      "target": 435708,
+      "frame": 1186,
+      "reference_xyz": [
+        1424.5060602374595,
+        917.591744545365,
+        52.922835103922786
+      ],
+      "reported_road": [
+        3134,
+        -1,
+        4.858044624328613,
+        -2.7936720848083496,
+        -1.2857780456542969
+      ],
+      "bbox_outside_area_m2": 4.999555282599726,
+      "yaw_outside_area_m2": 4.914232252450045,
+      "outside_area_after2cm_map_buffer_m2": 4.959151556749788,
+      "outside_centroid_source_projection": {
+        "road": 3134,
+        "raw_projected_s": 6.256656243119053,
+        "raw_projected_t": -4.254760816677831,
+        "road_length": 64.37915119868003,
+        "longitudinal_residual_m": -5.728750807065808e-14,
+        "source_interval_hits": [
+          {
+            "lane": -4,
+            "type": "sidewalk",
+            "t_bounds": [
+              -7.606709564096583,
+              -3.606709564096583
+            ],
+            "width": 4.0
+          }
+        ],
+        "driving_intervals": [
+          {
+            "lane": -1,
+            "type": "driving",
+            "t_bounds": [
+              -3.017681054249536,
+              0.0
+            ],
+            "width": 3.017681054249536
+          }
+        ],
+        "signed_driving_lateral_margin_m": -1.2370797624282952,
+        "classification": "outside_original_driving"
+      },
+      "overlap_original_non_driving_area_m2": {
+        "border": 1.2111665291226474,
+        "sidewalk": 3.788385222276086
+      },
+      "height_sensitivity_outside_areas": [
+        4.999555282599726,
+        4.999555282599726,
+        4.999555282599726
+      ]
+    },
+    {
+      "target": 322831,
+      "frame": 2772,
+      "reference_xyz": [
+        1531.2169906747092,
+        -161.30162311114026,
+        60.201836911002786
+      ],
+      "reported_road": [
+        2551,
+        -1,
+        2.4585955142974854,
+        -2.908038854598999,
+        -1.3798774480819702
+      ],
+      "bbox_outside_area_m2": 4.987342229499777,
+      "yaw_outside_area_m2": 4.7531517231503395,
+      "outside_area_after2cm_map_buffer_m2": 4.941502583349762,
+      "outside_centroid_source_projection": {
+        "road": 2551,
+        "raw_projected_s": 3.9098464154598336,
+        "raw_projected_t": -3.943556849775193,
+        "road_length": 29.736071138871715,
+        "longitudinal_residual_m": -3.2751579226442118e-15,
+        "source_interval_hits": [
+          {
+            "lane": -3,
+            "type": "sidewalk",
+            "t_bounds": [
+              -7.5909646768706285,
+              -3.590964676870629
+            ],
+            "width": 4.0
+          }
+        ],
+        "driving_intervals": [
+          {
+            "lane": -1,
+            "type": "driving",
+            "t_bounds": [
+              -3.0504441688001687,
+              0.0
+            ],
+            "width": 3.0504441688001687
+          }
+        ],
+        "signed_driving_lateral_margin_m": -0.8931126809750243,
+        "classification": "outside_original_driving"
+      },
+      "overlap_original_non_driving_area_m2": {
+        "border": 1.5344097533087069,
+        "sidewalk": 3.452920112200079
+      },
+      "height_sensitivity_outside_areas": [
+        4.987342229499777,
+        4.987342229499777,
+        4.987342229499777
+      ]
+    },
+    {
+      "target": 533149,
+      "frame": 1526,
+      "reference_xyz": [
+        993.7299608081897,
+        -907.2334719821748,
+        53.106635431903804
+      ],
+      "reported_road": [
+        1964,
+        -3,
+        44.37819290161133,
+        -9.330927848815918,
+        -1.330927848815918
+      ],
+      "bbox_outside_area_m2": 4.940046429949944,
+      "yaw_outside_area_m2": 4.922788625650013,
+      "outside_area_after2cm_map_buffer_m2": 4.906860552899875,
+      "outside_centroid_source_projection": {
+        "road": 1964,
+        "raw_projected_s": 44.467744412365136,
+        "raw_projected_t": -11.088971939048625,
+        "road_length": 60.71843504658315,
+        "longitudinal_residual_m": 6.661338147750939e-14,
+        "source_interval_hits": [],
+        "driving_intervals": [
+          {
+            "lane": -1,
+            "type": "driving",
+            "t_bounds": [
+              -3.2,
+              0.0
+            ],
+            "width": 3.2
+          },
+          {
+            "lane": -2,
+            "type": "driving",
+            "t_bounds": [
+              -6.4,
+              -3.2
+            ],
+            "width": 3.2
+          },
+          {
+            "lane": -3,
+            "type": "driving",
+            "t_bounds": [
+              -9.600000000000001,
+              -6.4
+            ],
+            "width": 3.2
+          }
+        ],
+        "signed_driving_lateral_margin_m": -1.4889719390486231,
+        "classification": "outside_original_driving"
+      },
+      "overlap_original_non_driving_area_m2": {},
+      "height_sensitivity_outside_areas": [
+        4.940046429949944,
+        4.940046429949944,
+        4.940046429949944
+      ]
+    },
+    {
+      "target": 440091,
+      "frame": 5115,
+      "reference_xyz": [
+        1237.2442789768236,
+        1099.1756335048015,
+        44.55369739783342
+      ],
+      "reported_road": [
+        2818,
+        -1,
+        199.83949279785156,
+        -1.4570746421813965,
+        -0.004832441918551922
+      ],
+      "bbox_outside_area_m2": 4.939705498849846,
+      "yaw_outside_area_m2": 4.935341024700276,
+      "outside_area_after2cm_map_buffer_m2": 4.906645120100405,
+      "outside_centroid_source_projection": {
+        "road": 2818,
+        "raw_projected_s": 201.467332445793,
+        "raw_projected_t": -1.4505593971309345,
+        "road_length": 476.1175691147926,
+        "longitudinal_residual_m": 1.0458300891968975e-13,
+        "source_interval_hits": [
+          {
+            "lane": -1,
+            "type": "none",
+            "t_bounds": [
+              -2.8887205196477463,
+              0.0
+            ],
+            "width": 2.8887205196477463
+          }
+        ],
+        "driving_intervals": [
+          {
+            "lane": 1,
+            "type": "driving",
+            "t_bounds": [
+              0.0,
+              2.6906
+            ],
+            "width": 2.6906
+          },
+          {
+            "lane": -2,
+            "type": "driving",
+            "t_bounds": [
+              -5.827742201610553,
+              -2.8887205196477463
+            ],
+            "width": 2.939021681962806
+          }
+        ],
+        "signed_driving_lateral_margin_m": -1.4381611225168118,
+        "classification": "outside_original_driving"
+      },
+      "overlap_original_non_driving_area_m2": {
+        "border": 0.0,
+        "sidewalk": 0.0,
+        "none": 4.939702401567221
+      },
+      "height_sensitivity_outside_areas": [
+        4.939705498849846,
+        4.939705498849846,
+        4.939705498849846
+      ]
+    },
+    {
+      "target": 140618,
+      "frame": 5529,
+      "reference_xyz": [
+        861.9802491462785,
+        -1014.5897215064773,
+        59.305847459170295
+      ],
+      "reported_road": [
+        1908,
+        -1,
+        9.162481307983398,
+        -3.1209604740142822,
+        -1.4550162553787231
+      ],
+      "bbox_outside_area_m2": 4.917057364749789,
+      "yaw_outside_area_m2": 4.808661214700121,
+      "outside_area_after2cm_map_buffer_m2": 4.873683256149889,
+      "outside_centroid_source_projection": {
+        "road": 1908,
+        "raw_projected_s": 10.905710499008554,
+        "raw_projected_t": -4.35231115331578,
+        "road_length": 33.66144063850614,
+        "longitudinal_residual_m": -2.2870594307278225e-14,
+        "source_interval_hits": [
+          {
+            "lane": -3,
+            "type": "sidewalk",
+            "t_bounds": [
+              -7.675487065913494,
+              -3.6754870659134937
+            ],
+            "width": 4.0
+          }
+        ],
+        "driving_intervals": [
+          {
+            "lane": -1,
+            "type": "driving",
+            "t_bounds": [
+              -3.307373739430939,
+              0.0
+            ],
+            "width": 3.307373739430939
+          }
+        ],
+        "signed_driving_lateral_margin_m": -1.044937413884841,
+        "classification": "outside_original_driving"
+      },
+      "overlap_original_non_driving_area_m2": {
+        "border": 0.8720461242935159,
+        "sidewalk": 4.0450086382122645
+      },
+      "height_sensitivity_outside_areas": [
+        4.917057364749789,
+        4.917057364749789,
+        4.917057364749789
+      ]
+    },
+    {
+      "target": 523643,
+      "frame": 2078,
+      "reference_xyz": [
+        427.8749767134966,
+        -232.07835902345434,
+        44.15649159153554
+      ],
+      "reported_road": [
+        694,
+        -1,
+        17.4294490814209,
+        -2.2085585594177246,
+        -0.9503566026687622
+      ],
+      "bbox_outside_area_m2": 4.87979740789996,
+      "yaw_outside_area_m2": 4.767919361250051,
+      "outside_area_after2cm_map_buffer_m2": 4.844981672099956,
+      "outside_centroid_source_projection": {
+        "road": 694,
+        "raw_projected_s": 18.151405936872735,
+        "raw_projected_t": -3.910584813542094,
+        "road_length": 29.386580003474258,
+        "longitudinal_residual_m": 1.4876988529977098e-14,
+        "source_interval_hits": [
+          {
+            "lane": -3,
+            "type": "sidewalk",
+            "t_bounds": [
+              -6.995799935888817,
+              -2.9957999358888165
+            ],
+            "width": 4.0
+          }
+        ],
+        "driving_intervals": [
+          {
+            "lane": -1,
+            "type": "driving",
+            "t_bounds": [
+              -2.499692098341306,
+              0.0
+            ],
+            "width": 2.499692098341306
+          }
+        ],
+        "signed_driving_lateral_margin_m": -1.4108927152007884,
+        "classification": "outside_original_driving"
+      },
+      "overlap_original_non_driving_area_m2": {
+        "border": 0.8641798962586755,
+        "sidewalk": 4.015614832965498
+      },
+      "height_sensitivity_outside_areas": [
+        4.87979740789996,
+        4.87979740789996,
+        4.87979740789996
+      ]
+    },
+    {
+      "target": 390542,
+      "frame": 803,
+      "reference_xyz": [
+        1481.9383795226454,
+        189.39237009476096,
+        59.14115406839421
+      ],
+      "reported_road": [
+        2789,
+        -4,
+        30.728506088256836,
+        -9.324579238891602,
+        -1.3780194520950317
+      ],
+      "bbox_outside_area_m2": 4.873424425949933,
+      "yaw_outside_area_m2": 4.742643380399895,
+      "outside_area_after2cm_map_buffer_m2": 4.817227039500031,
+      "outside_centroid_source_projection": {
+        "road": 2789,
+        "raw_projected_s": 30.964524366654995,
+        "raw_projected_t": -10.97254300827332,
+        "road_length": 44.03945547043929,
+        "longitudinal_residual_m": -4.884981308350689e-15,
+        "source_interval_hits": [],
+        "driving_intervals": [
+          {
+            "lane": -1,
+            "type": "driving",
+            "t_bounds": [
+              -7.851255380719735e-06,
+              0.7867638240298882
+            ],
+            "width": 0.7867716752852689
+          },
+          {
+            "lane": -2,
+            "type": "driving",
+            "t_bounds": [
+              -3.180925726328627,
+              -7.851255380719735e-06
+            ],
+            "width": 3.180917875073246
+          },
+          {
+            "lane": -3,
+            "type": "driving",
+            "t_bounds": [
+              -6.3481862042134996,
+              -3.180925726328627
+            ],
+            "width": 3.1672604778848727
+          },
+          {
+            "lane": -4,
+            "type": "driving",
+            "t_bounds": [
+              -9.544388099270453,
+              -6.3481862042134996
+            ],
+            "width": 3.1962018950569533
+          }
+        ],
+        "signed_driving_lateral_margin_m": -1.428154909002867,
+        "classification": "outside_original_driving"
+      },
+      "overlap_original_non_driving_area_m2": {},
+      "height_sensitivity_outside_areas": [
+        4.873424425949933,
+        4.873424425949933,
+        4.873424425949933
+      ]
+    },
+    {
+      "target": 529297,
+      "frame": 3289,
+      "reference_xyz": [
+        527.7333071995461,
+        -406.612911995847,
+        41.69859096531468
+      ],
+      "reported_road": [
+        1666,
+        -2,
+        11.393139839172363,
+        -1.9481130838394165,
+        0.482311487197876
+      ],
+      "bbox_outside_area_m2": 4.803776084250083,
+      "yaw_outside_area_m2": 4.735162891200065,
+      "outside_area_after2cm_map_buffer_m2": 4.7015952938,
+      "outside_centroid_source_projection": {
+        "road": 1666,
+        "raw_projected_s": 12.576092506628127,
+        "raw_projected_t": -0.43721239651850763,
+        "road_length": 25.577279181458426,
+        "longitudinal_residual_m": -2.9698465908722937e-15,
+        "source_interval_hits": [
+          {
+            "lane": -1,
+            "type": "none",
+            "t_bounds": [
+              -1.5886379228446796,
+              0.0
+            ],
+            "width": 1.5886379228446796
+          }
+        ],
+        "driving_intervals": [
+          {
+            "lane": -2,
+            "type": "driving",
+            "t_bounds": [
+              -3.051246384607893,
+              -1.5886379228446796
+            ],
+            "width": 1.4626084617632134
+          },
+          {
+            "lane": -3,
+            "type": "driving",
+            "t_bounds": [
+              -5.276767682411108,
+              -3.051246384607893
+            ],
+            "width": 2.2255212978032146
+          }
+        ],
+        "signed_driving_lateral_margin_m": -1.1514255263261721,
+        "classification": "outside_original_driving"
+      },
+      "overlap_original_non_driving_area_m2": {
+        "none": 3.1323016376030077,
+        "border": 0.0,
+        "sidewalk": 0.0
+      },
+      "height_sensitivity_outside_areas": [
+        4.803776084250083,
+        4.803776084250083,
+        4.803776084250083
+      ]
+    },
+    {
+      "target": 140618,
+      "frame": 5467,
+      "reference_xyz": [
+        872.2534421605203,
+        -1015.0968082273217,
+        59.305547965935375
+      ],
+      "reported_road": [
+        1901,
+        -2,
+        1.0143091678619385,
+        -5.772328853607178,
+        -1.2255327701568604
+      ],
+      "bbox_outside_area_m2": 4.802326232950039,
+      "yaw_outside_area_m2": 4.795645816049948,
+      "outside_area_after2cm_map_buffer_m2": 4.760869933600054,
+      "outside_centroid_source_projection": {
+        "road": 1901,
+        "raw_projected_s": 2.0559692132834892,
+        "raw_projected_t": -7.211686843980421,
+        "road_length": 42.59039802354067,
+        "longitudinal_residual_m": 3.1086244689504383e-15,
+        "source_interval_hits": [],
+        "driving_intervals": [
+          {
+            "lane": -1,
+            "type": "driving",
+            "t_bounds": [
+              -3.0465826798954594,
+              0.0
+            ],
+            "width": 3.0465826798954594
+          },
+          {
+            "lane": -2,
+            "type": "driving",
+            "t_bounds": [
+              -6.04637699692791,
+              -3.0465826798954594
+            ],
+            "width": 2.999794317032451
+          }
+        ],
+        "signed_driving_lateral_margin_m": -1.1653098470525105,
+        "classification": "outside_original_driving"
+      },
+      "overlap_original_non_driving_area_m2": {},
+      "height_sensitivity_outside_areas": [
+        4.802326232950039,
+        4.802326232950039,
+        4.802326232950039
+      ]
+    },
+    {
+      "target": 115657,
+      "frame": 1384,
+      "reference_xyz": [
+        528.0277823607319,
+        -407.2523133463984,
+        41.69702916720947
+      ],
+      "reported_road": [
+        3424,
+        -2,
+        9.132806777954102,
+        -5.690915107727051,
+        -1.4355988502502441
+      ],
+      "bbox_outside_area_m2": 4.685841380199971,
+      "yaw_outside_area_m2": 4.590675431450077,
+      "outside_area_after2cm_map_buffer_m2": 4.6134203580499475,
+      "outside_centroid_source_projection": {
+        "road": 3424,
+        "raw_projected_s": 10.652679764660057,
+        "raw_projected_t": -6.6681702070279405,
+        "road_length": 31.751433642134256,
+        "longitudinal_residual_m": 3.2862601528904634e-14,
+        "source_interval_hits": [],
+        "driving_intervals": [
+          {
+            "lane": -1,
+            "type": "driving",
+            "t_bounds": [
+              -2.7262156405902664,
+              0.0
+            ],
+            "width": 2.7262156405902664
+          },
+          {
+            "lane": -2,
+            "type": "driving",
+            "t_bounds": [
+              -5.787678648922575,
+              -2.7262156405902664
+            ],
+            "width": 3.0614630083323084
+          }
+        ],
+        "signed_driving_lateral_margin_m": -0.8804915581053656,
+        "classification": "outside_original_driving"
+      },
+      "overlap_original_non_driving_area_m2": {},
+      "height_sensitivity_outside_areas": [
+        4.685841380199971,
+        4.685841380199971,
+        4.685841380199971
+      ]
+    },
+    {
+      "target": 354009,
+      "frame": 3122,
+      "reference_xyz": [
+        1055.7216160728897,
+        13.184929952305684,
+        63.524885418303
+      ],
+      "reported_road": [
+        2653,
+        -1,
+        16.317014694213867,
+        -2.659822940826416,
+        -1.2274755239486694
+      ],
+      "bbox_outside_area_m2": 4.679823411099743,
+      "yaw_outside_area_m2": 4.491144776250066,
+      "outside_area_after2cm_map_buffer_m2": 4.611282295599689,
+      "outside_centroid_source_projection": {
+        "road": 2653,
+        "raw_projected_s": 13.76820847166474,
+        "raw_projected_t": -3.646059773637662,
+        "road_length": 32.73841137448693,
+        "longitudinal_residual_m": -1.887379141862766e-14,
+        "source_interval_hits": [
+          {
+            "lane": -3,
+            "type": "sidewalk",
+            "t_bounds": [
+              -7.254450022950668,
+              -3.2544500229506683
+            ],
+            "width": 4.0
+          }
+        ],
+        "driving_intervals": [
+          {
+            "lane": -1,
+            "type": "driving",
+            "t_bounds": [
+              -2.8612759148973015,
+              0.0
+            ],
+            "width": 2.8612759148973015
+          }
+        ],
+        "signed_driving_lateral_margin_m": -0.7847838587403606,
+        "classification": "outside_original_driving"
+      },
+      "overlap_original_non_driving_area_m2": {
+        "border": 1.5465580808848962,
+        "sidewalk": 3.1332587803884158
+      },
+      "height_sensitivity_outside_areas": [
+        4.679823411099743,
+        4.679823411099743,
+        4.679823411099743
+      ]
+    },
+    {
+      "target": 229212,
+      "frame": 2970,
+      "reference_xyz": [
+        1170.4071152022402,
+        -764.0746098731686,
+        60.6157332403209
+      ],
+      "reported_road": [
+        2089,
+        -1,
+        2.152669668197632,
+        -3.0682077407836914,
+        -1.4696601629257202
+      ],
+      "bbox_outside_area_m2": 4.664504898250052,
+      "yaw_outside_area_m2": 4.453942506399947,
+      "outside_area_after2cm_map_buffer_m2": 4.606739716850074,
+      "outside_centroid_source_projection": {
+        "road": 2089,
+        "raw_projected_s": 3.746194701099292,
+        "raw_projected_t": -3.902970027924275,
+        "road_length": 36.44279613407186,
+        "longitudinal_residual_m": -1.2789769243681803e-13,
+        "source_interval_hits": [
+          {
+            "lane": -3,
+            "type": "sidewalk",
+            "t_bounds": [
+              -7.7265109434381705,
+              -3.7265109434381705
+            ],
+            "width": 4.0
+          }
+        ],
+        "driving_intervals": [
+          {
+            "lane": -1,
+            "type": "driving",
+            "t_bounds": [
+              -3.191465337201483,
+              0.0
+            ],
+            "width": 3.191465337201483
+          }
+        ],
+        "signed_driving_lateral_margin_m": -0.711504690722792,
+        "classification": "outside_original_driving"
+      },
+      "overlap_original_non_driving_area_m2": {
+        "border": 1.8944339884642458,
+        "sidewalk": 2.770058497883154
+      },
+      "height_sensitivity_outside_areas": [
+        4.664504898250052,
+        4.664504898250052,
+        4.664504898250052
+      ]
+    },
+    {
+      "target": 107529,
+      "frame": 8971,
+      "reference_xyz": [
+        448.85284672046834,
+        -427.64130291672484,
+        46.49994237874896
+      ],
+      "reported_road": [
+        1583,
+        -1,
+        9.902473449707031,
+        -2.7460708618164062,
+        -1.289065957069397
+      ],
+      "bbox_outside_area_m2": 4.633458108950043,
+      "yaw_outside_area_m2": 4.469048092050081,
+      "outside_area_after2cm_map_buffer_m2": 4.579705669550005,
+      "outside_centroid_source_projection": {
+        "road": 1583,
+        "raw_projected_s": 11.422429651387729,
+        "raw_projected_t": -3.648535873480493,
+        "road_length": 20.42627350160334,
+        "longitudinal_residual_m": -1.9539925233402755e-14,
+        "source_interval_hits": [
+          {
+            "lane": -2,
+            "type": "border",
+            "t_bounds": [
+              -3.6702307034623414,
+              -2.8939724568648084
+            ],
+            "width": 0.7762582465975328
+          }
+        ],
+        "driving_intervals": [
+          {
+            "lane": -1,
+            "type": "driving",
+            "t_bounds": [
+              -2.8939724568648084,
+              0.0
+            ],
+            "width": 2.8939724568648084
+          }
+        ],
+        "signed_driving_lateral_margin_m": -0.7545634166156847,
+        "classification": "outside_original_driving"
+      },
+      "overlap_original_non_driving_area_m2": {
+        "border": 2.5940650247710906,
+        "sidewalk": 2.039392705412676
+      },
+      "height_sensitivity_outside_areas": [
+        4.633458108950043,
+        4.633458108950043,
+        4.633458108950043
+      ]
+    },
+    {
+      "target": 343752,
+      "frame": 1599,
+      "reference_xyz": [
+        1339.982878753262,
+        161.41552390463173,
+        55.15543147664717
+      ],
+      "reported_road": [
+        2740,
+        -1,
+        31.065425872802734,
+        -0.25458353757858276,
+        1.2140580415725708
+      ],
+      "bbox_outside_area_m2": 4.620272456149826,
+      "yaw_outside_area_m2": 4.504582998999829,
+      "outside_area_after2cm_map_buffer_m2": 4.570199528449832,
+      "outside_centroid_source_projection": {
+        "road": 2740,
+        "raw_projected_s": 32.48378272630237,
+        "raw_projected_t": 0.8890589150217519,
+        "road_length": 42.90491056899115,
+        "longitudinal_residual_m": 5.1209037010835345e-14,
+        "source_interval_hits": [],
+        "driving_intervals": [
+          {
+            "lane": -1,
+            "type": "driving",
+            "t_bounds": [
+              -2.9296653233975314,
+              0.0
+            ],
+            "width": 2.9296653233975314
+          }
+        ],
+        "signed_driving_lateral_margin_m": -0.8890589150217519,
+        "classification": "outside_original_driving"
+      },
+      "overlap_original_non_driving_area_m2": {},
+      "height_sensitivity_outside_areas": [
+        4.620272456149826,
+        4.620272456149826,
+        4.620272456149826
+      ]
+    },
+    {
+      "target": 82300,
+      "frame": 2571,
+      "reference_xyz": [
+        374.076433572554,
+        -224.6219475755094,
+        44.156015869445845
+      ],
+      "reported_road": [
+        646,
+        -1,
+        7.857534885406494,
+        -2.5340921878814697,
+        -1.0340923070907593
+      ],
+      "bbox_outside_area_m2": 4.582723251499983,
+      "yaw_outside_area_m2": 4.453727600999901,
+      "outside_area_after2cm_map_buffer_m2": 4.543678548549968,
+      "outside_centroid_source_projection": {
+        "road": 646,
+        "raw_projected_s": 6.219709502470912,
+        "raw_projected_t": -4.183781608335692,
+        "road_length": 18.032961756398908,
+        "longitudinal_residual_m": -4.207745263329343e-14,
+        "source_interval_hits": [],
+        "driving_intervals": [
+          {
+            "lane": -1,
+            "type": "driving",
+            "t_bounds": [
+              -3.0,
+              0.0
+            ],
+            "width": 3.0
+          }
+        ],
+        "signed_driving_lateral_margin_m": -1.1837816083356918,
+        "classification": "outside_original_driving"
+      },
+      "overlap_original_non_driving_area_m2": {
+        "border": 0.8656145691315796
+      },
+      "height_sensitivity_outside_areas": [
+        4.582723251499983,
+        4.582723251499983,
+        4.582723251499983
+      ]
+    },
+    {
+      "target": 100086,
+      "frame": 1862,
+      "reference_xyz": [
+        392.29985707308913,
+        -234.15003489308364,
+        44.15620560766846
+      ],
+      "reported_road": [
+        1259,
+        -3,
+        18.833786010742188,
+        -3.427492141723633,
+        0.5233190655708313
+      ],
+      "bbox_outside_area_m2": 4.4974354575500035,
+      "yaw_outside_area_m2": 4.474210792999996,
+      "outside_area_after2cm_map_buffer_m2": 4.424519011999958,
+      "outside_centroid_source_projection": {
+        "road": 1259,
+        "raw_projected_s": 20.60769006876617,
+        "raw_projected_t": -3.7721095574073757,
+        "road_length": 19.077516004379294,
+        "longitudinal_residual_m": -1.4210854715202004e-14,
+        "source_interval_hits": [
+          {
+            "lane": -3,
+            "type": "driving",
+            "t_bounds": [
+              -4.861318227113676,
+              -2.939002272392485
+            ],
+            "width": 1.9223159547211908
+          }
+        ],
+        "driving_intervals": [
+          {
+            "lane": -2,
+            "type": "driving",
+            "t_bounds": [
+              -2.939002272392485,
+              0.0
+            ],
+            "width": 2.939002272392485
+          },
+          {
+            "lane": -3,
+            "type": "driving",
+            "t_bounds": [
+              -4.861318227113676,
+              -2.939002272392485
+            ],
+            "width": 1.9223159547211908
+          }
+        ],
+        "signed_driving_lateral_margin_m": 0.8331072850148908,
+        "classification": "outside_road_s_extent"
+      },
+      "overlap_original_non_driving_area_m2": {
+        "border": 0.0,
+        "sidewalk": 0.0
+      },
+      "height_sensitivity_outside_areas": [
+        4.4974354575500035,
+        4.4974354575500035,
+        4.4974354575500035
+      ]
+    },
+    {
+      "target": 114433,
+      "frame": 3141,
+      "reference_xyz": [
+        433.0887618851738,
+        -466.72606654970895,
+        47.4185623043189
+      ],
+      "reported_road": [
+        116,
+        -1,
+        1.900887131690979,
+        -2.4230916500091553,
+        -1.0190987586975098
+      ],
+      "bbox_outside_area_m2": 4.49253762430001,
+      "yaw_outside_area_m2": 4.28374496530008,
+      "outside_area_after2cm_map_buffer_m2": 4.439530417750034,
+      "outside_centroid_source_projection": {
+        "road": 116,
+        "raw_projected_s": 3.327029957988727,
+        "raw_projected_t": -3.6286820578374286,
+        "road_length": 106.60653063474314,
+        "longitudinal_residual_m": -1.532107773982716e-14,
+        "source_interval_hits": [
+          {
+            "lane": -3,
+            "type": "sidewalk",
+            "t_bounds": [
+              -7.145717274771679,
+              -3.145717274771678
+            ],
+            "width": 4.0
+          }
+        ],
+        "driving_intervals": [
+          {
+            "lane": 1,
+            "type": "driving",
+            "t_bounds": [
+              0.0,
+              3.0
+            ],
+            "width": 3.0
+          },
+          {
+            "lane": 2,
+            "type": "driving",
+            "t_bounds": [
+              3.0,
+              6.252367415433975
+            ],
+            "width": 3.2523674154339743
+          },
+          {
+            "lane": -1,
+            "type": "driving",
+            "t_bounds": [
+              -2.804681939188384,
+              0.0
+            ],
+            "width": 2.804681939188384
+          }
+        ],
+        "signed_driving_lateral_margin_m": -0.8240001186490447,
+        "classification": "outside_original_driving"
+      },
+      "overlap_original_non_driving_area_m2": {
+        "border": 1.0490833356568419,
+        "sidewalk": 3.4433010158417936
+      },
+      "height_sensitivity_outside_areas": [
+        4.49253762430001,
+        4.49253762430001,
+        4.49253762430001
+      ]
+    },
+    {
+      "target": 240840,
+      "frame": 2268,
+      "reference_xyz": [
+        1004.6991430103441,
+        -485.24390455319775,
+        60.3244255078442
+      ],
+      "reported_road": [
+        2192,
+        -2,
+        54.77149963378906,
+        -6.098872184753418,
+        -1.4896408319473267
+      ],
+      "bbox_outside_area_m2": 4.410547667950053,
+      "yaw_outside_area_m2": 3.9212739213499965,
+      "outside_area_after2cm_map_buffer_m2": 4.33465892905,
+      "outside_centroid_source_projection": {
+        "road": 2192,
+        "raw_projected_s": 56.48945230759774,
+        "raw_projected_t": -6.81360738938432,
+        "road_length": 170.9040739167006,
+        "longitudinal_residual_m": -4.796163466380676e-14,
+        "source_interval_hits": [
+          {
+            "lane": -4,
+            "type": "sidewalk",
+            "t_bounds": [
+              -10.642407784749022,
+              -6.642407784749021
+            ],
+            "width": 4.0
+          }
+        ],
+        "driving_intervals": [
+          {
+            "lane": 2,
+            "type": "driving",
+            "t_bounds": [
+              0.503227599324313,
+              3.3871328087639725
+            ],
+            "width": 2.8839052094396593
+          },
+          {
+            "lane": 3,
+            "type": "driving",
+            "t_bounds": [
+              3.3871328087639725,
+              6.449694938294093
+            ],
+            "width": 3.0625621295301206
+          },
+          {
+            "lane": -1,
+            "type": "driving",
+            "t_bounds": [
+              -3.046997286733808,
+              0.0
+            ],
+            "width": 3.046997286733808
+          },
+          {
+            "lane": -2,
+            "type": "driving",
+            "t_bounds": [
+              -6.200670068432973,
+              -3.046997286733808
+            ],
+            "width": 3.1536727816991648
+          }
+        ],
+        "signed_driving_lateral_margin_m": -0.6129373209513469,
+        "classification": "outside_original_driving"
+      },
+      "overlap_original_non_driving_area_m2": {
+        "none": 0.0,
+        "border": 1.6778073674242349,
+        "sidewalk": 2.7327369015979865
+      },
+      "height_sensitivity_outside_areas": [
+        6.093065268700074,
+        4.410547667950053,
+        4.410547667950053
+      ]
+    },
+    {
+      "target": 21720,
+      "frame": 984,
+      "reference_xyz": [
+        475.18864113621856,
+        -286.82984825451985,
+        43.568821659609604
+      ],
+      "reported_road": [
+        128,
+        4,
+        106.27808380126953,
+        10.4820556640625,
+        0.2689567506313324
+      ],
+      "bbox_outside_area_m2": 4.279140931500008,
+      "yaw_outside_area_m2": 3.8896935674999957,
+      "outside_area_after2cm_map_buffer_m2": 4.2065327926999885,
+      "outside_centroid_source_projection": {
+        "road": 128,
+        "raw_projected_s": 104.68384050596629,
+        "raw_projected_t": 10.741332510571226,
+        "road_length": 168.13104542115477,
+        "longitudinal_residual_m": 2.6414426201881724e-12,
+        "source_interval_hits": [
+          {
+            "lane": 6,
+            "type": "sidewalk",
+            "t_bounds": [
+              10.567854145465295,
+              14.567854145465295
+            ],
+            "width": 4.0
+          }
+        ],
+        "driving_intervals": [
+          {
+            "lane": 1,
+            "type": "driving",
+            "t_bounds": [
+              0.0,
+              3.3
+            ],
+            "width": 3.3
+          },
+          {
+            "lane": 2,
+            "type": "driving",
+            "t_bounds": [
+              3.3,
+              6.6
+            ],
+            "width": 3.3
+          },
+          {
+            "lane": 3,
+            "type": "driving",
+            "t_bounds": [
+              6.6,
+              9.899999999999999
+            ],
+            "width": 3.3
+          },
+          {
+            "lane": 4,
+            "type": "driving",
+            "t_bounds": [
+              9.899999999999999,
+              10.067854145465295
+            ],
+            "width": 0.16785414546529703
+          },
+          {
+            "lane": -2,
+            "type": "driving",
+            "t_bounds": [
+              -3.7,
+              -3.5029538292363904
+            ],
+            "width": 0.19704617076360958
+          },
+          {
+            "lane": -3,
+            "type": "driving",
+            "t_bounds": [
+              -6.9,
+              -3.7
+            ],
+            "width": 3.2
+          },
+          {
+            "lane": -4,
+            "type": "driving",
+            "t_bounds": [
+              -10.100000000000001,
+              -6.9
+            ],
+            "width": 3.2
+          },
+          {
+            "lane": -5,
+            "type": "driving",
+            "t_bounds": [
+              -13.3,
+              -10.100000000000001
+            ],
+            "width": 3.2
+          },
+          {
+            "lane": -6,
+            "type": "driving",
+            "t_bounds": [
+              -16.5,
+              -13.3
+            ],
+            "width": 3.2
+          }
+        ],
+        "signed_driving_lateral_margin_m": -0.6734783651059306,
+        "classification": "outside_original_driving"
+      },
+      "overlap_original_non_driving_area_m2": {
+        "border": 1.7558408104481305,
+        "sidewalk": 2.4998715029555507,
+        "none": 0.0
+      },
+      "height_sensitivity_outside_areas": [
+        5.649423740000088,
+        4.279140931500008,
+        4.279140931500008
+      ]
+    },
+    {
+      "target": 507735,
+      "frame": 2817,
+      "reference_xyz": [
+        1446.4014592618762,
+        934.37322179393,
+        45.84455261908224
+      ],
+      "reported_road": [
+        3018,
+        -3,
+        234.13658142089844,
+        -8.629638671875,
+        -1.0075191259384155
+      ],
+      "bbox_outside_area_m2": 4.2625060011000855,
+      "yaw_outside_area_m2": 4.223175483799938,
+      "outside_area_after2cm_map_buffer_m2": 4.227467506000144,
+      "outside_centroid_source_projection": {
+        "road": 3018,
+        "raw_projected_s": 234.72040690409506,
+        "raw_projected_t": -10.478451195728322,
+        "road_length": 547.5807647854285,
+        "longitudinal_residual_m": -4.440892098500626e-15,
+        "source_interval_hits": [],
+        "driving_intervals": [
+          {
+            "lane": 1,
+            "type": "driving",
+            "t_bounds": [
+              0.0,
+              2.9290317677887505
+            ],
+            "width": 2.9290317677887505
+          },
+          {
+            "lane": 2,
+            "type": "driving",
+            "t_bounds": [
+              2.9290317677887505,
+              6.213896207623266
+            ],
+            "width": 3.2848644398345153
+          },
+          {
+            "lane": -2,
+            "type": "driving",
+            "t_bounds": [
+              -5.989202393515365,
+              -2.7958173547368292
+            ],
+            "width": 3.193385038778535
+          },
+          {
+            "lane": -3,
+            "type": "driving",
+            "t_bounds": [
+              -9.256928950732714,
+              -5.989202393515365
+            ],
+            "width": 3.26772655721735
+          }
+        ],
+        "signed_driving_lateral_margin_m": -1.221522244995608,
+        "classification": "outside_original_driving"
+      },
+      "overlap_original_non_driving_area_m2": {
+        "border": 0.9941246544287144,
+        "none": 0.0
+      },
+      "height_sensitivity_outside_areas": [
+        4.2625060011000855,
+        4.2625060011000855,
+        4.2625060011000855
+      ]
+    },
+    {
+      "target": 115970,
+      "frame": 3309,
+      "reference_xyz": [
+        520.2935290388045,
+        -396.2772498921644,
+        41.69888834821662
+      ],
+      "reported_road": [
+        1666,
+        -3,
+        25.266925811767578,
+        -3.1885986328125,
+        0.6750495433807373
+      ],
+      "bbox_outside_area_m2": 4.2456079996000415,
+      "yaw_outside_area_m2": 4.051401612500007,
+      "outside_area_after2cm_map_buffer_m2": 4.160435308550012,
+      "outside_centroid_source_projection": {
+        "road": 1666,
+        "raw_projected_s": 27.175618677479186,
+        "raw_projected_t": -3.7027388510030503,
+        "road_length": 25.577279181458426,
+        "longitudinal_residual_m": 3.197442310920451e-14,
+        "source_interval_hits": [
+          {
+            "lane": -3,
+            "type": "driving",
+            "t_bounds": [
+              -4.739879309651428,
+              -3.0012203285824604
+            ],
+            "width": 1.7386589810689674
+          }
+        ],
+        "driving_intervals": [
+          {
+            "lane": -2,
+            "type": "driving",
+            "t_bounds": [
+              -3.0012203285824604,
+              -0.03783018605621846
+            ],
+            "width": 2.963390142526242
+          },
+          {
+            "lane": -3,
+            "type": "driving",
+            "t_bounds": [
+              -4.739879309651428,
+              -3.0012203285824604
+            ],
+            "width": 1.7386589810689674
+          }
+        ],
+        "signed_driving_lateral_margin_m": 0.70151852242059,
+        "classification": "outside_road_s_extent"
+      },
+      "overlap_original_non_driving_area_m2": {
+        "none": 0.0,
+        "border": 0.0,
+        "sidewalk": 0.0
+      },
+      "height_sensitivity_outside_areas": [
+        4.2456079996000415,
+        4.2456079996000415,
+        4.2456079996000415
+      ]
+    },
+    {
+      "target": 335544,
+      "frame": 1792,
+      "reference_xyz": [
+        1343.3060081712408,
+        121.43178840235932,
+        56.204336160632785
+      ],
+      "reported_road": [
+        2584,
+        -2,
+        9.366992950439453,
+        -5.435017108917236,
+        -1.317064642906189
+      ],
+      "bbox_outside_area_m2": 4.206297147950002,
+      "yaw_outside_area_m2": 4.109371022699969,
+      "outside_area_after2cm_map_buffer_m2": 4.138823323599962,
+      "outside_centroid_source_projection": {
+        "road": 2584,
+        "raw_projected_s": 11.085636052406823,
+        "raw_projected_t": -6.383690128410854,
+        "road_length": 40.47176814307584,
+        "longitudinal_residual_m": 3.064215547965432e-14,
+        "source_interval_hits": [],
+        "driving_intervals": [
+          {
+            "lane": -1,
+            "type": "driving",
+            "t_bounds": [
+              -2.7103876148006076,
+              0.0
+            ],
+            "width": 2.7103876148006076
+          },
+          {
+            "lane": -2,
+            "type": "driving",
+            "t_bounds": [
+              -5.573591743200405,
+              -2.7103876148006076
+            ],
+            "width": 2.8632041283997975
+          }
+        ],
+        "signed_driving_lateral_margin_m": -0.8100983852104493,
+        "classification": "outside_original_driving"
+      },
+      "overlap_original_non_driving_area_m2": {},
+      "height_sensitivity_outside_areas": [
+        4.206297147950002,
+        4.206297147950002,
+        4.206297147950002
+      ]
+    },
+    {
+      "target": 241980,
+      "frame": 5470,
+      "reference_xyz": [
+        998.9861478842467,
+        -487.39735146350813,
+        59.87645053624198
+      ],
+      "reported_road": [
+        2192,
+        -3,
+        48.44340515136719,
+        -6.5926737785339355,
+        -0.17495746910572052
+      ],
+      "bbox_outside_area_m2": 4.113351512600095,
+      "yaw_outside_area_m2": 3.6136531611999843,
+      "outside_area_after2cm_map_buffer_m2": 4.040131905250044,
+      "outside_centroid_source_projection": {
+        "road": 2192,
+        "raw_projected_s": 50.07473974739024,
+        "raw_projected_t": -6.93375235445664,
+        "road_length": 170.9040739167006,
+        "longitudinal_residual_m": -4.440892098500626e-14,
+        "source_interval_hits": [
+          {
+            "lane": -5,
+            "type": "sidewalk",
+            "t_bounds": [
+              -10.769153583068082,
+              -6.769153583068081
+            ],
+            "width": 4.0
+          }
+        ],
+        "driving_intervals": [
+          {
+            "lane": 2,
+            "type": "driving",
+            "t_bounds": [
+              0.49766050986912985,
+              3.469155297008495
+            ],
+            "width": 2.971494787139365
+          },
+          {
+            "lane": 3,
+            "type": "driving",
+            "t_bounds": [
+              3.469155297008495,
+              6.255596185756161
+            ],
+            "width": 2.786440888747667
+          },
+          {
+            "lane": -1,
+            "type": "driving",
+            "t_bounds": [
+              -3.0891277909918076,
+              0.0
+            ],
+            "width": 3.0891277909918076
+          },
+          {
+            "lane": -2,
+            "type": "driving",
+            "t_bounds": [
+              -6.2423164277829875,
+              -3.0891277909918076
+            ],
+            "width": 3.15318863679118
+          },
+          {
+            "lane": -3,
+            "type": "driving",
+            "t_bounds": [
+              -6.319415281732111,
+              -6.2423164277829875
+            ],
+            "width": 0.07709885394912352
+          }
+        ],
+        "signed_driving_lateral_margin_m": -0.6143370727245294,
+        "classification": "outside_original_driving"
+      },
+      "overlap_original_non_driving_area_m2": {
+        "none": 0.0,
+        "border": 1.5881206533773815,
+        "sidewalk": 2.4937167303875443
+      },
+      "height_sensitivity_outside_areas": [
+        6.261188034250023,
+        4.113351512600095,
+        4.113351512600095
+      ]
+    },
+    {
+      "target": 356804,
+      "frame": 3908,
+      "reference_xyz": [
+        968.362296688861,
+        154.10155725200633,
+        56.92298451576979
+      ],
+      "reported_road": [
+        2674,
+        4,
+        51.16915512084961,
+        6.312937259674072,
+        0.13926127552986145
+      ],
+      "bbox_outside_area_m2": 4.056291146349969,
+      "yaw_outside_area_m2": 3.6035033492000528,
+      "outside_area_after2cm_map_buffer_m2": 3.9823401370499445,
+      "outside_centroid_source_projection": {
+        "road": 2674,
+        "raw_projected_s": 49.661373077726736,
+        "raw_projected_t": 6.65483996165935,
+        "road_length": 86.53546777242127,
+        "longitudinal_residual_m": 4.796163466380676e-14,
+        "source_interval_hits": [
+          {
+            "lane": 6,
+            "type": "sidewalk",
+            "t_bounds": [
+              6.41555847447615,
+              10.41555847447615
+            ],
+            "width": 4.0
+          }
+        ],
+        "driving_intervals": [
+          {
+            "lane": 1,
+            "type": "driving",
+            "t_bounds": [
+              -1.2927875561765805,
+              0.0
+            ],
+            "width": 1.2927875561765805
+          },
+          {
+            "lane": 2,
+            "type": "driving",
+            "t_bounds": [
+              0.0,
+              3.0384007667117334
+            ],
+            "width": 3.0384007667117334
+          },
+          {
+            "lane": 3,
+            "type": "driving",
+            "t_bounds": [
+              3.0384007667117334,
+              5.982043676328944
+            ],
+            "width": 2.9436429096172105
+          },
+          {
+            "lane": 4,
+            "type": "driving",
+            "t_bounds": [
+              5.982043676328944,
+              6.0272949856541285
+            ],
+            "width": 0.045251309325184716
+          },
+          {
+            "lane": -2,
+            "type": "driving",
+            "t_bounds": [
+              -6.309245797255851,
+              -3.3
+            ],
+            "width": 3.009245797255851
+          },
+          {
+            "lane": -3,
+            "type": "driving",
+            "t_bounds": [
+              -9.373984535377046,
+              -6.309245797255851
+            ],
+            "width": 3.064738738121194
+          }
+        ],
+        "signed_driving_lateral_margin_m": -0.6275449760052219,
+        "classification": "outside_original_driving"
+      },
+      "overlap_original_non_driving_area_m2": {
+        "border": 1.4102942159843006,
+        "sidewalk": 2.5969923440017277,
+        "none": 0.0
+      },
+      "height_sensitivity_outside_areas": [
+        6.264670408949971,
+        4.056291146349969,
+        4.056291146349969
+      ]
+    },
+    {
+      "target": 115710,
+      "frame": 5232,
+      "reference_xyz": [
+        551.9672407616284,
+        -389.163740692282,
+        41.70020452199813
+      ],
+      "reported_road": [
+        3415,
+        -2,
+        47.71980285644531,
+        -5.056253433227539,
+        -0.7712283134460449
+      ],
+      "bbox_outside_area_m2": 3.9481252031999428,
+      "yaw_outside_area_m2": 3.8111614648000045,
+      "outside_area_after2cm_map_buffer_m2": 3.8830788468500477,
+      "outside_centroid_source_projection": {
+        "road": 3415,
+        "raw_projected_s": 48.29321339934123,
+        "raw_projected_t": -6.939098227677306,
+        "road_length": 62.407607164468345,
+        "longitudinal_residual_m": -4.529709940470639e-14,
+        "source_interval_hits": [],
+        "driving_intervals": [
+          {
+            "lane": -1,
+            "type": "driving",
+            "t_bounds": [
+              -2.739094317633376,
+              0.0
+            ],
+            "width": 2.739094317633376
+          },
+          {
+            "lane": -2,
+            "type": "driving",
+            "t_bounds": [
+              -5.826062878422251,
+              -2.739094317633376
+            ],
+            "width": 3.0869685607888746
+          }
+        ],
+        "signed_driving_lateral_margin_m": -1.113035349255055,
+        "classification": "outside_original_driving"
+      },
+      "overlap_original_non_driving_area_m2": {},
+      "height_sensitivity_outside_areas": [
+        3.9481252031999428,
+        3.9481252031999428,
+        3.9481252031999428
+      ]
+    },
+    {
+      "target": 345929,
+      "frame": 3591,
+      "reference_xyz": [
+        1254.191620840515,
+        133.85578312490085,
+        56.03157832560889
+      ],
+      "reported_road": [
+        2626,
+        4,
+        71.6969223022461,
+        6.293318748474121,
+        -0.13719016313552856
+      ],
+      "bbox_outside_area_m2": 3.9025576515500497,
+      "yaw_outside_area_m2": 3.491376898300029,
+      "outside_area_after2cm_map_buffer_m2": 3.8307966912000957,
+      "outside_centroid_source_projection": {
+        "road": 2626,
+        "raw_projected_s": 70.16425483583276,
+        "raw_projected_t": 6.668010262229054,
+        "road_length": 268.67550171999153,
+        "longitudinal_residual_m": 6.217248937900877e-14,
+        "source_interval_hits": [
+          {
+            "lane": 5,
+            "type": "sidewalk",
+            "t_bounds": [
+              6.415462646259292,
+              10.415462646259293
+            ],
+            "width": 4.0
+          }
+        ],
+        "driving_intervals": [
+          {
+            "lane": 1,
+            "type": "driving",
+            "t_bounds": [
+              0.0,
+              2.9406115298735576
+            ],
+            "width": 2.9406115298735576
+          },
+          {
+            "lane": 2,
+            "type": "driving",
+            "t_bounds": [
+              2.9406115298735576,
+              6.009415455564707
+            ],
+            "width": 3.068803925691149
+          },
+          {
+            "lane": 3,
+            "type": "driving",
+            "t_bounds": [
+              6.009415455564707,
+              6.095767347166506
+            ],
+            "width": 0.08635189160179954
+          },
+          {
+            "lane": -2,
+            "type": "driving",
+            "t_bounds": [
+              -6.382195957202516,
+              -3.3315936657064427
+            ],
+            "width": 3.050602291496073
+          },
+          {
+            "lane": -3,
+            "type": "driving",
+            "t_bounds": [
+              -9.489641683544605,
+              -6.382195957202516
+            ],
+            "width": 3.1074457263420894
+          },
+          {
+            "lane": -4,
+            "type": "driving",
+            "t_bounds": [
+              -12.46634050778367,
+              -9.489641683544605
+            ],
+            "width": 2.9766988242390653
+          }
+        ],
+        "signed_driving_lateral_margin_m": -0.5722429150625485,
+        "classification": "outside_original_driving"
+      },
+      "overlap_original_non_driving_area_m2": {
+        "border": 1.1210210275624997,
+        "sidewalk": 2.7376506556096594,
+        "none": 0.0
+      },
+      "height_sensitivity_outside_areas": [
+        6.198819204500009,
+        3.9025576515500497,
+        3.9025576515500497
+      ]
+    },
+    {
+      "target": 345929,
+      "frame": 3590,
+      "reference_xyz": [
+        1254.076523527441,
+        133.8006718477147,
+        56.033152305252166
+      ],
+      "reported_road": [
+        2626,
+        3,
+        71.8249740600586,
+        6.293237209320068,
+        0.13825806975364685
+      ],
+      "bbox_outside_area_m2": 3.8561461615498778,
+      "yaw_outside_area_m2": 3.4469933283001026,
+      "outside_area_after2cm_map_buffer_m2": 3.7844303362998524,
+      "outside_centroid_source_projection": {
+        "road": 2626,
+        "raw_projected_s": 70.28742260499442,
+        "raw_projected_t": 6.6738362166371585,
+        "road_length": 268.67550171999153,
+        "longitudinal_residual_m": -4.8405723873656825e-14,
+        "source_interval_hits": [
+          {
+            "lane": 5,
+            "type": "sidewalk",
+            "t_bounds": [
+              6.4266705662258685,
+              10.42667056622587
+            ],
+            "width": 4.0
+          }
+        ],
+        "driving_intervals": [
+          {
+            "lane": 1,
+            "type": "driving",
+            "t_bounds": [
+              0.0,
+              2.9407065220092505
+            ],
+            "width": 2.9407065220092505
+          },
+          {
+            "lane": 2,
+            "type": "driving",
+            "t_bounds": [
+              2.9407065220092505,
+              6.008991211026483
+            ],
+            "width": 3.0682846890172324
+          },
+          {
+            "lane": 3,
+            "type": "driving",
+            "t_bounds": [
+              6.008991211026483,
+              6.111378824153926
+            ],
+            "width": 0.10238761312744223
+          },
+          {
+            "lane": -2,
+            "type": "driving",
+            "t_bounds": [
+              -6.380324184588646,
+              -3.328779714954312
+            ],
+            "width": 3.0515444696343335
+          },
+          {
+            "lane": -3,
+            "type": "driving",
+            "t_bounds": [
+              -9.487270789601267,
+              -6.380324184588646
+            ],
+            "width": 3.106946605012621
+          },
+          {
+            "lane": -4,
+            "type": "driving",
+            "t_bounds": [
+              -12.466537608211045,
+              -9.487270789601267
+            ],
+            "width": 2.9792668186097786
+          }
+        ],
+        "signed_driving_lateral_margin_m": -0.5624573924832328,
+        "classification": "outside_original_driving"
+      },
+      "overlap_original_non_driving_area_m2": {
+        "border": 1.117637803572172,
+        "sidewalk": 2.7223063131188017,
+        "none": 0.0
+      },
+      "height_sensitivity_outside_areas": [
+        6.153086656849708,
+        3.8561461615498778,
+        3.8561461615498778
+      ]
+    },
+    {
+      "target": 198142,
+      "frame": 5014,
+      "reference_xyz": [
+        889.7009736335092,
+        -560.1249231917926,
+        54.115333226259445
+      ],
+      "reported_road": [
+        2012,
+        -2,
+        115.67821502685547,
+        -6.037559986114502,
+        -1.4354153871536255
+      ],
+      "bbox_outside_area_m2": 3.8544110171998858,
+      "yaw_outside_area_m2": 3.457558221000006,
+      "outside_area_after2cm_map_buffer_m2": 3.7810436505999356,
+      "outside_centroid_source_projection": {
+        "road": 2012,
+        "raw_projected_s": 117.30149980304455,
+        "raw_projected_t": -6.6415271733806875,
+        "road_length": 164.81506484375583,
+        "longitudinal_residual_m": 5.1514348342607263e-14,
+        "source_interval_hits": [
+          {
+            "lane": -4,
+            "type": "sidewalk",
+            "t_bounds": [
+              -10.518810323978073,
+              -6.518810323978074
+            ],
+            "width": 4.0
+          }
+        ],
+        "driving_intervals": [
+          {
+            "lane": 2,
+            "type": "driving",
+            "t_bounds": [
+              0.5,
+              3.6
+            ],
+            "width": 3.1
+          },
+          {
+            "lane": 3,
+            "type": "driving",
+            "t_bounds": [
+              3.6,
+              6.639948613455312
+            ],
+            "width": 3.0399486134553118
+          },
+          {
+            "lane": 4,
+            "type": "driving",
+            "t_bounds": [
+              6.639948613455312,
+              9.047759504297057
+            ],
+            "width": 2.4078108908417453
+          },
+          {
+            "lane": -1,
+            "type": "driving",
+            "t_bounds": [
+              -3.1,
+              0.0
+            ],
+            "width": 3.1
+          },
+          {
+            "lane": -2,
+            "type": "driving",
+            "t_bounds": [
+              -6.102617998970244,
+              -3.1
+            ],
+            "width": 3.002617998970244
+          }
+        ],
+        "signed_driving_lateral_margin_m": -0.5389091744104437,
+        "classification": "outside_original_driving"
+      },
+      "overlap_original_non_driving_area_m2": {
+        "none": 0.0,
+        "border": 1.5302725348368948,
+        "sidewalk": 2.3241348855909045
+      },
+      "height_sensitivity_outside_areas": [
+        5.3587467051998505,
+        3.8544110171998858,
+        3.8544110171998858
+      ]
+    },
+    {
+      "target": 265549,
+      "frame": 854,
+      "reference_xyz": [
+        1195.5378719314385,
+        -403.50886886602353,
+        70.63295224374781
+      ],
+      "reported_road": [
+        2312,
+        4,
+        58.053062438964844,
+        6.7807111740112305,
+        0.07584134489297867
+      ],
+      "bbox_outside_area_m2": 3.8300162906499207,
+      "yaw_outside_area_m2": 3.421886092149843,
+      "outside_area_after2cm_map_buffer_m2": 3.758465058600073,
+      "outside_centroid_source_projection": {
+        "road": 2312,
+        "raw_projected_s": 56.45974551698528,
+        "raw_projected_t": 7.191673622991159,
+        "road_length": 290.2708829673895,
+        "longitudinal_residual_m": 1.5942802633617248e-13,
+        "source_interval_hits": [
+          {
+            "lane": 6,
+            "type": "sidewalk",
+            "t_bounds": [
+              7.149604211118464,
+              11.149604211118465
+            ],
+            "width": 4.0
+          }
+        ],
+        "driving_intervals": [
+          {
+            "lane": 2,
+            "type": "driving",
+            "t_bounds": [
+              0.5681635345923364,
+              3.513006567224001
+            ],
+            "width": 2.9448430326316646
+          },
+          {
+            "lane": 3,
+            "type": "driving",
+            "t_bounds": [
+              3.513006567224001,
+              6.62856103349106
+            ],
+            "width": 3.115554466267059
+          },
+          {
+            "lane": 4,
+            "type": "driving",
+            "t_bounds": [
+              6.62856103349106,
+              6.634041719901786
+            ],
+            "width": 0.0054806864107262345
+          },
+          {
+            "lane": -1,
+            "type": "driving",
+            "t_bounds": [
+              -3.0000537932076967,
+              0.0
+            ],
+            "width": 3.0000537932076967
+          },
+          {
+            "lane": -2,
+            "type": "driving",
+            "t_bounds": [
+              -6.159670135896814,
+              -3.0000537932076967
+            ],
+            "width": 3.159616342689117
+          },
+          {
+            "lane": -3,
+            "type": "driving",
+            "t_bounds": [
+              -7.698744001386197,
+              -6.159670135896814
+            ],
+            "width": 1.539073865489383
+          }
+        ],
+        "signed_driving_lateral_margin_m": -0.5576319030893728,
+        "classification": "outside_original_driving"
+      },
+      "overlap_original_non_driving_area_m2": {
+        "none": 0.0,
+        "border": 1.8245534161900208,
+        "sidewalk": 1.9596997501605762
+      },
+      "height_sensitivity_outside_areas": [
+        6.432625408149971,
+        3.8300162906499207,
+        3.8300162906499207
+      ]
+    },
+    {
+      "target": 48656,
+      "frame": 3812,
+      "reference_xyz": [
+        315.5612852710034,
+        -71.37512037903217,
+        41.499985399915175
+      ],
+      "reported_road": [
+        601,
+        -1,
+        7.121667861938477,
+        -2.989058494567871,
+        -1.3783248662948608
+      ],
+      "bbox_outside_area_m2": 3.8044641018499004,
+      "yaw_outside_area_m2": 3.586100986800036,
+      "outside_area_after2cm_map_buffer_m2": 3.729679303549913,
+      "outside_centroid_source_projection": {
+        "road": 601,
+        "raw_projected_s": 8.811463767722563,
+        "raw_projected_t": -3.778547371994592,
+        "road_length": 34.92643758877411,
+        "longitudinal_residual_m": -4.440892098500626e-15,
+        "source_interval_hits": [
+          {
+            "lane": -3,
+            "type": "sidewalk",
+            "t_bounds": [
+              -7.737953715444361,
+              -3.7379537154443607
+            ],
+            "width": 4.0
+          }
+        ],
+        "driving_intervals": [
+          {
+            "lane": -1,
+            "type": "driving",
+            "t_bounds": [
+              -3.23169437160895,
+              0.0
+            ],
+            "width": 3.23169437160895
+          }
+        ],
+        "signed_driving_lateral_margin_m": -0.5468530003856422,
+        "classification": "outside_original_driving"
+      },
+      "overlap_original_non_driving_area_m2": {
+        "border": 1.8919562452649503,
+        "sidewalk": 1.9125058205584549
+      },
+      "height_sensitivity_outside_areas": [
+        4.412499540749899,
+        3.8044641018499004,
+        3.8044641018499004
+      ]
+    },
+    {
+      "target": 244224,
+      "frame": 4992,
+      "reference_xyz": [
+        1067.6942327573256,
+        -460.1796141357132,
+        65.43459579769458
+      ],
+      "reported_road": [
+        2192,
+        4,
+        122.26069641113281,
+        6.722506046295166,
+        0.07022504508495331
+      ],
+      "bbox_outside_area_m2": 3.7965137458498917,
+      "yaw_outside_area_m2": 3.6585837021999503,
+      "outside_area_after2cm_map_buffer_m2": 3.7226745760499194,
+      "outside_centroid_source_projection": {
+        "road": 2192,
+        "raw_projected_s": 120.55907668182314,
+        "raw_projected_t": 7.097207307313604,
+        "road_length": 170.9040739167006,
+        "longitudinal_residual_m": -1.2811973704174306e-13,
+        "source_interval_hits": [
+          {
+            "lane": 5,
+            "type": "border",
+            "t_bounds": [
+              6.524549836352149,
+              7.228518788608053
+            ],
+            "width": 0.7039689522559043
+          }
+        ],
+        "driving_intervals": [
+          {
+            "lane": 2,
+            "type": "driving",
+            "t_bounds": [
+              0.6051163308513707,
+              3.4655322911599367
+            ],
+            "width": 2.8604159603085657
+          },
+          {
+            "lane": 3,
+            "type": "driving",
+            "t_bounds": [
+              3.4655322911599367,
+              6.45788077904146
+            ],
+            "width": 2.9923484878815234
+          },
+          {
+            "lane": 4,
+            "type": "driving",
+            "t_bounds": [
+              6.45788077904146,
+              6.524549836352149
+            ],
+            "width": 0.06666905731068902
+          },
+          {
+            "lane": -1,
+            "type": "driving",
+            "t_bounds": [
+              -2.929102493534276,
+              0.0
+            ],
+            "width": 2.929102493534276
+          },
+          {
+            "lane": -2,
+            "type": "driving",
+            "t_bounds": [
+              -5.88602217828721,
+              -2.929102493534276
+            ],
+            "width": 2.9569196847529344
+          }
+        ],
+        "signed_driving_lateral_margin_m": -0.5726574709614551,
+        "classification": "outside_original_driving"
+      },
+      "overlap_original_non_driving_area_m2": {
+        "none": 0.0,
+        "border": 2.418316844951374,
+        "sidewalk": 1.3270982696834555
+      },
+      "height_sensitivity_outside_areas": [
+        3.7965137458498917,
+        3.7965137458498917,
+        3.7965137458498917
+      ]
+    },
+    {
+      "target": 119704,
+      "frame": 6934,
+      "reference_xyz": [
+        493.1468838863043,
+        -583.3829159084847,
+        48.761593510821776
+      ],
+      "reported_road": [
+        1712,
+        1,
+        0.23574581742286682,
+        1.8479448556900024,
+        0.4416547119617462
+      ],
+      "bbox_outside_area_m2": 3.779167458549958,
+      "yaw_outside_area_m2": 3.772537780150043,
+      "outside_area_after2cm_map_buffer_m2": 3.6891284133500566,
+      "outside_centroid_source_projection": {
+        "road": 1712,
+        "raw_projected_s": -1.2880842568812478,
+        "raw_projected_t": 2.133726641609387,
+        "road_length": 41.018410552051314,
+        "longitudinal_residual_m": -1.5890067039947553e-14,
+        "source_interval_hits": [
+          {
+            "lane": 1,
+            "type": "driving",
+            "t_bounds": [
+              0.0,
+              2.804304901284401
+            ],
+            "width": 2.804304901284401
+          }
+        ],
+        "driving_intervals": [
+          {
+            "lane": 1,
+            "type": "driving",
+            "t_bounds": [
+              0.0,
+              2.804304901284401
+            ],
+            "width": 2.804304901284401
+          },
+          {
+            "lane": 2,
+            "type": "driving",
+            "t_bounds": [
+              2.804304901284401,
+              5.492290919782915
+            ],
+            "width": 2.687986018498514
+          },
+          {
+            "lane": -1,
+            "type": "driving",
+            "t_bounds": [
+              -2.995423250595538,
+              0.0
+            ],
+            "width": 2.995423250595538
+          }
+        ],
+        "signed_driving_lateral_margin_m": 0.6705782596750138,
+        "classification": "outside_road_s_extent"
+      },
+      "overlap_original_non_driving_area_m2": {
+        "border": 0.0,
+        "sidewalk": 0.0
+      },
+      "height_sensitivity_outside_areas": [
+        3.779167458549958,
+        3.779167458549958,
+        3.779167458549958
+      ]
+    },
+    {
+      "target": 335544,
+      "frame": 1791,
+      "reference_xyz": [
+        1343.3688509609754,
+        121.64226702708024,
+        56.204247563024815
+      ],
+      "reported_road": [
+        2587,
+        -1,
+        10.179763793945312,
+        -0.037081945687532425,
+        1.368184208869934
+      ],
+      "bbox_outside_area_m2": 3.76115309464996,
+      "yaw_outside_area_m2": 3.680184723350096,
+      "outside_area_after2cm_map_buffer_m2": 3.6908471785498627,
+      "outside_centroid_source_projection": {
+        "road": 2587,
+        "raw_projected_s": 11.691884302899986,
+        "raw_projected_t": 1.2498754828396992,
+        "road_length": 22.285328970313778,
+        "longitudinal_residual_m": 8.004708007547379e-14,
+        "source_interval_hits": [],
+        "driving_intervals": [
+          {
+            "lane": -1,
+            "type": "driving",
+            "t_bounds": [
+              -2.7896552786011504,
+              0.0
+            ],
+            "width": 2.7896552786011504
+          }
+        ],
+        "signed_driving_lateral_margin_m": -1.2498754828396992,
+        "classification": "outside_original_driving"
+      },
+      "overlap_original_non_driving_area_m2": {
+        "border": 0.0,
+        "sidewalk": 0.0
+      },
+      "height_sensitivity_outside_areas": [
+        3.76115309464996,
+        3.76115309464996,
+        3.76115309464996
+      ]
+    }
+  ],
+  "summary": {
+    "additional_samples": 50,
+    "with_sidewalk_area_over_0_05": 29,
+    "with_border_area_over_0_05": 31
+  }
+}

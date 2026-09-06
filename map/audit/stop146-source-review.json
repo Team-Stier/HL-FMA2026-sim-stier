@@ -1,0 +1,2892 @@
+{
+  "native_geometry": {
+    "map_sha256": "e7a426f900813748747a39233f3678237fd7f849c335bae3bc3014b31ae678b0",
+    "source_xodr_sha256": "5a369c7b0609fc98b0034680473465db4273dd396ffb37980996cea70ec6ca2f",
+    "records": [
+      {
+        "object_id": 399,
+        "stopline_id": 542412,
+        "source": {
+          "type": "none",
+          "subtype": "",
+          "name": "Rm_StopLine_300cm_JPN_01.flt",
+          "id": "399",
+          "s": "1.1805393979090368e+02",
+          "t": "-1.8999852214464539e+00",
+          "zOffset": "8.0000000000000002e-03",
+          "validLength": "0.0000000000000000e+00",
+          "orientation": "none",
+          "length": "2.9999999999999999e-01",
+          "width": "3.0000000000000000e+00",
+          "height": "0.0000000000000000e+00",
+          "hdg": "-2.4694556806537094e-04",
+          "pitch": "-9.4460602090963158e-03",
+          "roll": "0.0000000000000000e+00"
+        },
+        "attributes": {
+          "cell_assignment": "projected_to_lane",
+          "correction_evidence": "none",
+          "effective_t": "-1.8999852214464539",
+          "source": "Rm_StopLine_300cm_JPN_01.flt",
+          "type": "stop_line",
+          "visual_z_offset_m": "8.0000000000000002e-03",
+          "xodr_object_id": "399",
+          "xodr_road_id": "146",
+          "xodr_s": "118.05393979090368",
+          "xodr_t": "-1.8999852214464539e+00"
+        },
+        "points": [
+          [
+            651.7262082965112,
+            -141.83781244625558,
+            45.444614026736936
+          ],
+          [
+            649.352257981287,
+            -143.67203159915053,
+            45.444614026736936
+          ]
+        ],
+        "center": [
+          650.5392331388991,
+          -142.75492202270306,
+          45.444614026736936
+        ],
+        "cells": [
+          {
+            "cell_id": "4700",
+            "centerline_length_m": "0.49296587504841227",
+            "index_in_lanelet": "83",
+            "parent_lanelet_id": "25462",
+            "previous_cell_id": "4699",
+            "stopline_ids": "542412,542415",
+            "type": "hdmap_cell"
+          }
+        ],
+        "lanelets": {
+          "25462": {
+            "xodr": [
+              146,
+              1,
+              -1
+            ],
+            "s": [
+              34.4985,
+              121.4985
+            ],
+            "cells": [
+              4617,
+              4704
+            ]
+          }
+        },
+        "regulations": [],
+        "mesh_match": {
+          "candidate": 343,
+          "xy_distance_m": 0.003924070997975364,
+          "height_difference_m": 0.007988359713060333,
+          "angle_difference_deg": 0.027042437720027537,
+          "length_difference_m": 0.0000014277898428005642,
+          "center": [
+            650.5368652345,
+            -142.7517929075,
+            45.452602386449996
+          ],
+          "along_stopline_m": -0.0000393985474789161,
+          "normal_to_stopline_m": 0.003923873207891396
+        }
+      },
+      {
+        "object_id": 400,
+        "stopline_id": 542415,
+        "source": {
+          "type": "none",
+          "subtype": "",
+          "name": "Rm_StopLine_300cm_JPN_01.flt",
+          "id": "400",
+          "s": "1.1805393979090368e+02",
+          "t": "-1.4999863566704039e+00",
+          "zOffset": "8.0000000000000002e-03",
+          "validLength": "0.0000000000000000e+00",
+          "orientation": "none",
+          "length": "2.9999999999999999e-01",
+          "width": "3.0000000000000000e+00",
+          "height": "0.0000000000000000e+00",
+          "hdg": "-2.4694556806537094e-04",
+          "pitch": "-9.4460602090963158e-03",
+          "roll": "0.0000000000000000e+00"
+        },
+        "attributes": {
+          "cell_assignment": "projected_to_lane",
+          "correction_evidence": "none",
+          "effective_t": "-1.499986356670404",
+          "source": "Rm_StopLine_300cm_JPN_01.flt",
+          "type": "stop_line",
+          "visual_z_offset_m": "8.0000000000000002e-03",
+          "xodr_object_id": "400",
+          "xodr_road_id": "146",
+          "xodr_s": "118.05393979090368",
+          "xodr_t": "-1.4999863566704039e+00"
+        },
+        "points": [
+          [
+            651.4097428892544,
+            -142.08245246308005,
+            45.444614026736936
+          ],
+          [
+            649.0357925740302,
+            -143.916671615975,
+            45.444614026736936
+          ]
+        ],
+        "center": [
+          650.2227677316423,
+          -142.99956203952752,
+          45.444614026736936
+        ],
+        "cells": [
+          {
+            "cell_id": "4700",
+            "centerline_length_m": "0.49296587504841227",
+            "index_in_lanelet": "83",
+            "parent_lanelet_id": "25462",
+            "previous_cell_id": "4699",
+            "stopline_ids": "542412,542415",
+            "type": "hdmap_cell"
+          }
+        ],
+        "lanelets": {
+          "25462": {
+            "xodr": [
+              146,
+              1,
+              -1
+            ],
+            "s": [
+              34.4985,
+              121.4985
+            ],
+            "cells": [
+              4617,
+              4704
+            ]
+          }
+        },
+        "regulations": [],
+        "mesh_match": {
+          "candidate": 344,
+          "xy_distance_m": 0.0042149181794946386,
+          "height_difference_m": 0.007988359713060333,
+          "angle_difference_deg": 0.027042437733505044,
+          "length_difference_m": 0.0000014277899329506738,
+          "center": [
+            650.220214844,
+            -142.996208191,
+            45.452602386449996
+          ],
+          "along_stopline_m": -0.00003042159396703147,
+          "normal_to_stopline_m": 0.004214808392614652
+        }
+      },
+      {
+        "object_id": 409,
+        "stopline_id": 542418,
+        "source": {
+          "type": "none",
+          "subtype": "",
+          "name": "Rm_StopLine_300cm_JPN_01.flt",
+          "id": "409",
+          "s": "1.4312406780517355e+02",
+          "t": "1.5000320561982561e+00",
+          "zOffset": "8.0000000000000002e-03",
+          "validLength": "0.0000000000000000e+00",
+          "orientation": "none",
+          "length": "2.9999999999999999e-01",
+          "width": "3.0000000000000000e+00",
+          "height": "0.0000000000000000e+00",
+          "hdg": "3.1419928507643706e+00",
+          "pitch": "0.0000000000000000e+00",
+          "roll": "0.0000000000000000e+00"
+        },
+        "attributes": {
+          "cell_assignment": "projected_to_lane",
+          "correction_evidence": "none",
+          "effective_t": "1.500032056198256",
+          "source": "Rm_StopLine_300cm_JPN_01.flt",
+          "type": "stop_line",
+          "visual_z_offset_m": "8.0000000000000002e-03",
+          "xodr_object_id": "409",
+          "xodr_road_id": "146",
+          "xodr_s": "143.12406780517355",
+          "xodr_t": "1.5000320561982561e+00"
+        },
+        "points": [
+          [
+            631.1506726580262,
+            -126.08652510270109,
+            45.4
+          ],
+          [
+            633.5099365224671,
+            -124.23345359357258,
+            45.4
+          ]
+        ],
+        "center": [
+          632.3303045902467,
+          -125.15998934813683,
+          45.4
+        ],
+        "cells": [
+          {
+            "cell_id": "4842",
+            "centerline_length_m": "0.1006282429534262",
+            "index_in_lanelet": "3",
+            "parent_lanelet_id": "26112",
+            "previous_cell_id": "4841",
+            "stopline_ids": "542418,542421",
+            "type": "hdmap_cell"
+          }
+        ],
+        "lanelets": {
+          "26112": {
+            "xodr": [
+              146,
+              1,
+              1
+            ],
+            "s": [
+              139.4985,
+              146.20814588237633
+            ],
+            "cells": [
+              4839,
+              4846
+            ]
+          }
+        },
+        "regulations": [],
+        "mesh_match": {
+          "candidate": 345,
+          "xy_distance_m": 0.0009028530733130544,
+          "height_difference_m": 0.008000946000002784,
+          "angle_difference_deg": 0.07045290546809699,
+          "length_difference_m": 0.00001418994375912419,
+          "center": [
+            632.329650879,
+            -125.159366608,
+            45.408000946
+          ],
+          "along_stopline_m": -0.00012943177226338887,
+          "normal_to_stopline_m": 0.0008935273293635656
+        }
+      },
+      {
+        "object_id": 410,
+        "stopline_id": 542421,
+        "source": {
+          "type": "none",
+          "subtype": "",
+          "name": "Rm_StopLine_300cm_JPN_01.flt",
+          "id": "410",
+          "s": "1.4312406780517355e+02",
+          "t": "1.9000314885097418e+00",
+          "zOffset": "8.0000000000000002e-03",
+          "validLength": "0.0000000000000000e+00",
+          "orientation": "none",
+          "length": "2.9999999999999999e-01",
+          "width": "3.0000000000000000e+00",
+          "height": "0.0000000000000000e+00",
+          "hdg": "3.1419928507643706e+00",
+          "pitch": "0.0000000000000000e+00",
+          "roll": "0.0000000000000000e+00"
+        },
+        "attributes": {
+          "cell_assignment": "projected_to_lane",
+          "correction_evidence": "none",
+          "effective_t": "1.9000314885097418",
+          "source": "Rm_StopLine_300cm_JPN_01.flt",
+          "type": "stop_line",
+          "visual_z_offset_m": "8.0000000000000002e-03",
+          "xodr_object_id": "410",
+          "xodr_road_id": "146",
+          "xodr_s": "143.12406780517355",
+          "xodr_t": "1.9000314885097418e+00"
+        },
+        "points": [
+          [
+            630.8360057353453,
+            -126.33347504422787,
+            45.4
+          ],
+          [
+            633.1952695997862,
+            -124.48040353509936,
+            45.4
+          ]
+        ],
+        "center": [
+          632.0156376675658,
+          -125.40693928966361,
+          45.4
+        ],
+        "cells": [
+          {
+            "cell_id": "4842",
+            "centerline_length_m": "0.1006282429534262",
+            "index_in_lanelet": "3",
+            "parent_lanelet_id": "26112",
+            "previous_cell_id": "4841",
+            "stopline_ids": "542418,542421",
+            "type": "hdmap_cell"
+          }
+        ],
+        "lanelets": {
+          "26112": {
+            "xodr": [
+              146,
+              1,
+              1
+            ],
+            "s": [
+              139.4985,
+              146.20814588237633
+            ],
+            "cells": [
+              4839,
+              4846
+            ]
+          }
+        },
+        "regulations": [],
+        "mesh_match": {
+          "candidate": 346,
+          "xy_distance_m": 0.0002806788660724298,
+          "height_difference_m": 0.008000946000002784,
+          "angle_difference_deg": 0.07045287864520879,
+          "length_difference_m": 0.000014190110752654306,
+          "center": [
+            632.0153808595,
+            -125.406826019,
+            45.408000946
+          ],
+          "along_stopline_m": -0.0001319931166661595,
+          "normal_to_stopline_m": 0.0002477063644972785
+        }
+      },
+      {
+        "object_id": 411,
+        "stopline_id": 542424,
+        "source": {
+          "type": "none",
+          "subtype": "",
+          "name": "Rm_StopLine_300cm_JPN_01.flt",
+          "id": "411",
+          "s": "1.4605736873193885e+02",
+          "t": "-1.8999953278851460e+00",
+          "zOffset": "8.0000000000000002e-03",
+          "validLength": "0.0000000000000000e+00",
+          "orientation": "none",
+          "length": "2.9999999999999999e-01",
+          "width": "3.0000000000000000e+00",
+          "height": "0.0000000000000000e+00",
+          "hdg": "-1.8793350887769122e-04",
+          "pitch": "0.0000000000000000e+00",
+          "roll": "0.0000000000000000e+00"
+        },
+        "attributes": {
+          "cell_assignment": "projected_to_lane",
+          "correction_evidence": "none",
+          "effective_t": "-1.899995327885146",
+          "source": "Rm_StopLine_300cm_JPN_01.flt",
+          "type": "stop_line",
+          "visual_z_offset_m": "8.0000000000000002e-03",
+          "xodr_object_id": "411",
+          "xodr_road_id": "146",
+          "xodr_s": "146.05736873193885",
+          "xodr_t": "-1.8999953278851460e+00"
+        },
+        "points": [
+          [
+            634.404302510116,
+            -119.84476745583751,
+            45.4
+          ],
+          [
+            632.0265737369192,
+            -121.67408587566271,
+            45.4
+          ]
+        ],
+        "center": [
+          633.2154381235176,
+          -120.75942666575011,
+          45.4
+        ],
+        "cells": [
+          {
+            "cell_id": "4730",
+            "centerline_length_m": "0.5294740194575134",
+            "index_in_lanelet": "6",
+            "parent_lanelet_id": "25662",
+            "previous_cell_id": "4729",
+            "stopline_ids": "542424,542427",
+            "type": "hdmap_cell"
+          }
+        ],
+        "lanelets": {
+          "25662": {
+            "xodr": [
+              146,
+              1,
+              -1
+            ],
+            "s": [
+              139.4985,
+              146.20814588237633
+            ],
+            "cells": [
+              4724,
+              4731
+            ]
+          }
+        },
+        "regulations": [
+          {
+            "controller": 137,
+            "lanelet": 25662,
+            "stopline": 542424,
+            "movement": "left",
+            "permitted_states": [
+              4,
+              5
+            ],
+            "source": "xodr_arrow_object:408",
+            "api_selected_controller_id": 137,
+            "api_observation": "selected_controller",
+            "lane_validity_source": "unverified_not_specified",
+            "distance_to_approach_end_m": 0.1507771504374773
+          },
+          {
+            "controller": 138,
+            "lanelet": 25662,
+            "stopline": 542424,
+            "movement": "left",
+            "permitted_states": [
+              4,
+              5
+            ],
+            "source": "xodr_arrow_object:408",
+            "api_selected_controller_id": 137,
+            "api_observation": "unavailable",
+            "lane_validity_source": "unverified_not_specified",
+            "distance_to_approach_end_m": 0.1507771504374773
+          }
+        ],
+        "mesh_match": {
+          "candidate": 347,
+          "xy_distance_m": 0.0037486530947655776,
+          "height_difference_m": 0.008000946000002784,
+          "angle_difference_deg": 0.10454976956926096,
+          "length_difference_m": 0.0000036120226032387848,
+          "center": [
+            633.2133789065,
+            -120.75629425049999,
+            45.408000946
+          ],
+          "along_stopline_m": -0.00027797512083645474,
+          "normal_to_stopline_m": 0.0037383324968616027
+        }
+      },
+      {
+        "object_id": 412,
+        "stopline_id": 542427,
+        "source": {
+          "type": "none",
+          "subtype": "",
+          "name": "Rm_StopLine_300cm_JPN_01.flt",
+          "id": "412",
+          "s": "1.4605736873193885e+02",
+          "t": "-1.4999953550718552e+00",
+          "zOffset": "8.0000000000000002e-03",
+          "validLength": "0.0000000000000000e+00",
+          "orientation": "none",
+          "length": "2.9999999999999999e-01",
+          "width": "3.0000000000000000e+00",
+          "height": "0.0000000000000000e+00",
+          "hdg": "-1.8793350887769122e-04",
+          "pitch": "0.0000000000000000e+00",
+          "roll": "0.0000000000000000e+00"
+        },
+        "attributes": {
+          "cell_assignment": "projected_to_lane",
+          "correction_evidence": "none",
+          "effective_t": "-1.4999953550718552",
+          "source": "Rm_StopLine_300cm_JPN_01.flt",
+          "type": "stop_line",
+          "visual_z_offset_m": "8.0000000000000002e-03",
+          "xodr_object_id": "412",
+          "xodr_road_id": "146",
+          "xodr_s": "146.05736873193885",
+          "xodr_t": "-1.4999953550718552e+00"
+        },
+        "points": [
+          [
+            634.0873178728632,
+            -120.08873613824632,
+            45.4
+          ],
+          [
+            631.7095890996663,
+            -121.91805455807152,
+            45.4
+          ]
+        ],
+        "center": [
+          632.8984534862648,
+          -121.00339534815892,
+          45.4
+        ],
+        "cells": [
+          {
+            "cell_id": "4730",
+            "centerline_length_m": "0.5294740194575134",
+            "index_in_lanelet": "6",
+            "parent_lanelet_id": "25662",
+            "previous_cell_id": "4729",
+            "stopline_ids": "542424,542427",
+            "type": "hdmap_cell"
+          }
+        ],
+        "lanelets": {
+          "25662": {
+            "xodr": [
+              146,
+              1,
+              -1
+            ],
+            "s": [
+              139.4985,
+              146.20814588237633
+            ],
+            "cells": [
+              4724,
+              4731
+            ]
+          }
+        },
+        "regulations": [
+          {
+            "controller": 137,
+            "lanelet": 25662,
+            "stopline": 542427,
+            "movement": "left",
+            "permitted_states": [
+              4,
+              5
+            ],
+            "source": "xodr_arrow_object:408",
+            "api_selected_controller_id": 137,
+            "api_observation": "selected_controller",
+            "lane_validity_source": "unverified_not_specified",
+            "distance_to_approach_end_m": 0.1507771504374773
+          },
+          {
+            "controller": 138,
+            "lanelet": 25662,
+            "stopline": 542427,
+            "movement": "left",
+            "permitted_states": [
+              4,
+              5
+            ],
+            "source": "xodr_arrow_object:408",
+            "api_selected_controller_id": 137,
+            "api_observation": "unavailable",
+            "lane_validity_source": "unverified_not_specified",
+            "distance_to_approach_end_m": 0.1507771504374773
+          }
+        ],
+        "mesh_match": {
+          "candidate": 348,
+          "xy_distance_m": 0.0031013153957010643,
+          "height_difference_m": 0.008000946000002784,
+          "angle_difference_deg": 0.10454978124750208,
+          "length_difference_m": 0.0000036112310506375422,
+          "center": [
+            632.8967895505,
+            -121.000778198,
+            45.408000946
+          ],
+          "along_stopline_m": -0.0002770710161575864,
+          "normal_to_stopline_m": 0.0030889138601809295
+        }
+      }
+    ],
+    "interpretation": {
+      "A_objects": [
+        409,
+        410
+      ],
+      "B_objects": [
+        411,
+        412
+      ],
+      "A_lane": 1,
+      "A_traffic_direction": "decreasing source s",
+      "A_road_terminal_distance_m": 3.0840780772027756,
+      "lane_width_m": 3.4358,
+      "pair_lateral_center_separation_m": 0.3999994323114857,
+      "pair_combined_across_width_m": 3.3999994323114855,
+      "visible_crosswalk_object": 6343,
+      "visible_crosswalk_source_road": 4477,
+      "visible_crosswalk_nearest_longitudinal_edge_behind_A_m": 4.564641644797697,
+      "downstream_source_crosswalk_object": 403,
+      "downstream_crosswalk_visibility": "Visible in same-source same-camera high-detail LOD render (.001); default LOD hides it behind coarse elevated road mesh.",
+      "caution": "No unconditional stopping duty follows solely from source object name or visible white paint.",
+      "aerial_lod_evidence_file": "/tmp/hdmap-audit/stop146-osgb-ray-heights.json"
+    }
+  },
+  "crosswalk_source": {
+    "stop_pos": [
+      632.1589147584393,
+      -125.29449572898716,
+      45.4
+    ],
+    "positive_heading_deg": 308.1247486104542,
+    "crosswalks": [
+      {
+        "road": 146,
+        "object": {
+          "type": "none",
+          "subtype": "",
+          "name": "RM_532_6_6.flt",
+          "id": "403",
+          "s": "1.2482520454708154e+02",
+          "t": "4.5464758799524918e-06",
+          "zOffset": "8.0000000000000002e-03",
+          "validLength": "0.0000000000000000e+00",
+          "orientation": "none",
+          "length": "6.0000000000000000e+00",
+          "width": "6.0000000000000000e+00",
+          "height": "0.0000000000000000e+00",
+          "hdg": "3.1415926391389424e+00",
+          "pitch": "-2.6747954529184586e-03",
+          "roll": "0.0000000000000000e+00"
+        },
+        "center": [
+          644.9085513266683,
+          -138.5490414599093,
+          45.41157726535748
+        ],
+        "corners": [
+          [
+            640.6984715548723,
+            -138.02441939106936,
+            45.41157726535748
+          ],
+          [
+            645.4331733955083,
+            -134.33896168811324,
+            45.41157726535748
+          ],
+          [
+            649.1186310984643,
+            -139.07366352874922,
+            45.41157726535748
+          ],
+          [
+            644.3839292578283,
+            -142.75912123170534,
+            45.41157726535748
+          ]
+        ],
+        "along_positive_146_travel_from_stop_m": [
+          15.286344085337857,
+          15.3102008907764,
+          21.310153461658416,
+          21.28629665621987
+        ],
+        "distance_m": 18.391199394140344
+      },
+      {
+        "road": 766,
+        "object": {
+          "type": "none",
+          "subtype": "",
+          "name": "RM_532_6_8.flt",
+          "id": "1061",
+          "s": "3.3051516357354247e+00",
+          "t": "1.8395001535624296e+00",
+          "zOffset": "8.0000000000000002e-03",
+          "validLength": "0.0000000000000000e+00",
+          "orientation": "none",
+          "length": "6.0000000000000000e+00",
+          "width": "8.0000000000000000e+00",
+          "height": "0.0000000000000000e+00",
+          "hdg": "3.1415926535897931e+00",
+          "pitch": "0.0000000000000000e+00",
+          "roll": "0.0000000000000000e+00"
+        },
+        "center": [
+          653.9492899980237,
+          -99.71455850795252,
+          45.408
+        ],
+        "corners": [
+          [
+            651.9580723099318,
+            -104.30095710801226,
+            45.408
+          ],
+          [
+            650.103888294632,
+            -96.51879791936756,
+            45.408
+          ],
+          [
+            655.9405076861156,
+            -95.12815990789278,
+            45.408
+          ],
+          [
+            657.7946917014153,
+            -102.91031909653748,
+            45.408
+          ]
+        ],
+        "along_positive_146_travel_from_stop_m": [
+          -4.291434576553019,
+          -11.558141684272032,
+          -9.048725538337397,
+          -1.7820184306183808
+        ],
+        "distance_m": 33.60288144361975
+      },
+      {
+        "road": 775,
+        "object": {
+          "type": "none",
+          "subtype": "",
+          "name": "RM_532_6_9.flt",
+          "id": "1068",
+          "s": "2.5720069871455074e+01",
+          "t": "1.4939008356532038e+00",
+          "zOffset": "8.0000000000000002e-03",
+          "validLength": "0.0000000000000000e+00",
+          "orientation": "none",
+          "length": "6.0000000000000000e+00",
+          "width": "9.0000000000000000e+00",
+          "height": "0.0000000000000000e+00",
+          "hdg": "3.1416064129862153e+00",
+          "pitch": "0.0000000000000000e+00",
+          "roll": "0.0000000000000000e+00"
+        },
+        "center": [
+          635.1703272117318,
+          -103.9798892243841,
+          45.408
+        ],
+        "corners": [
+          [
+            636.8346407367344,
+            -98.83401121470554,
+            45.408
+          ],
+          [
+            639.2802478648955,
+            -107.49536248195518,
+            45.408
+          ],
+          [
+            633.5060136867291,
+            -109.12576723406265,
+            45.408
+          ],
+          [
+            631.060406558568,
+            -100.46441596681301,
+            45.408
+          ]
+        ],
+        "along_positive_146_travel_from_stop_m": [
+          -17.928947889689255,
+          -9.605477859793105,
+          -11.887761965334839,
+          -20.21123199523099
+        ],
+        "distance_m": 21.526287543603797
+      },
+      {
+        "road": 4477,
+        "object": {
+          "type": "none",
+          "subtype": "",
+          "name": "RM_532_6_6.flt",
+          "id": "6343",
+          "s": "4.5093857312242607e+00",
+          "t": "1.7339470328539493e-02",
+          "zOffset": "8.0000000000000002e-03",
+          "validLength": "0.0000000000000000e+00",
+          "orientation": "none",
+          "length": "6.0000000000000000e+00",
+          "width": "6.0000000000000000e+00",
+          "height": "0.0000000000000000e+00",
+          "hdg": "3.1415926535897931e+00",
+          "pitch": "0.0000000000000000e+00",
+          "roll": "0.0000000000000000e+00"
+        },
+        "center": [
+          628.854369533969,
+          -118.23530580087242,
+          45.408
+        ],
+        "corners": [
+          [
+            624.6473223861952,
+            -117.68689510038563,
+            45.408
+          ],
+          [
+            629.4027802344559,
+            -114.02825865309863,
+            45.408
+          ],
+          [
+            633.0614166817428,
+            -118.78371650135922,
+            45.408
+          ],
+          [
+            628.3059588334821,
+            -122.44235294864622,
+            45.408
+          ]
+        ],
+        "along_positive_146_travel_from_stop_m": [
+          -10.622134014872591,
+          -10.564363519170335,
+          -4.564641644797697,
+          -4.622412140499953
+        ],
+        "distance_m": 7.794368581339093
+      }
+    ]
+  },
+  "source_semantics": {
+    "source_path": "/home/stier/vtd 자료/HL_FMA_VTD_LivingLab.xodr",
+    "source_sha256": "5a369c7b0609fc98b0034680473465db4273dd396ffb37980996cea70ec6ca2f",
+    "scope": "Read-only source semantics around road146 objects399/400/403/409/410/411/412; no map or runtime changes.",
+    "road146": {
+      "attributes": {
+        "name": "",
+        "length": "1.4620814588237633e+02",
+        "id": "146",
+        "junction": "-1",
+        "rule": "RHT"
+      },
+      "road_links": {
+        "predecessor": {
+          "elementType": "junction",
+          "elementId": "7"
+        },
+        "successor": {
+          "elementType": "junction",
+          "elementId": "9"
+        }
+      },
+      "last_section_s": "3.4498500000000000e+01",
+      "objects": {
+        "371": {
+          "attributes": {
+            "type": "none",
+            "subtype": "",
+            "name": "RM_532_6_6.flt",
+            "id": "371",
+            "s": "3.1526131455887352e+01",
+            "t": "-3.1452837457441010e-05",
+            "zOffset": "8.0000000000000002e-03",
+            "validLength": "0.0000000000000000e+00",
+            "orientation": "none",
+            "length": "6.0000000000000000e+00",
+            "width": "6.0000000000000000e+00",
+            "height": "0.0000000000000000e+00",
+            "hdg": "3.1955132762107041e-08",
+            "pitch": "-1.4999999999999999e-02",
+            "roll": "0.0000000000000000e+00"
+          },
+          "child_tags": []
+        },
+        "372": {
+          "attributes": {
+            "type": "none",
+            "subtype": "",
+            "name": "Rm_StopLine_300cm_JPN_01.flt",
+            "id": "372",
+            "s": "3.6145395064858668e+01",
+            "t": "1.5000217632720403e+00",
+            "zOffset": "8.0000000000000002e-03",
+            "validLength": "0.0000000000000000e+00",
+            "orientation": "none",
+            "length": "2.9999999999999999e-01",
+            "width": "3.0000000000000000e+00",
+            "height": "0.0000000000000000e+00",
+            "hdg": "3.1417943180395160e+00",
+            "pitch": "0.0000000000000000e+00",
+            "roll": "0.0000000000000000e+00"
+          },
+          "child_tags": []
+        },
+        "380": {
+          "attributes": {
+            "type": "none",
+            "subtype": "",
+            "name": "Rm_Warning_Crosswalk_JPN_03.flt",
+            "id": "380",
+            "s": "5.5440301316773485e+01",
+            "t": "-1.6762007618924475e+00",
+            "zOffset": "8.0000000000000002e-03",
+            "validLength": "0.0000000000000000e+00",
+            "orientation": "none",
+            "length": "5.0000000000000000e+00",
+            "width": "1.5000000000000000e+00",
+            "height": "0.0000000000000000e+00",
+            "hdg": "1.1891696578558708e-06",
+            "pitch": "-1.4999999999999999e-02",
+            "roll": "0.0000000000000000e+00"
+          },
+          "child_tags": []
+        },
+        "390": {
+          "attributes": {
+            "type": "none",
+            "subtype": "",
+            "name": "Rm_Warning_Crosswalk_JPN_03.flt",
+            "id": "390",
+            "s": "9.0950604747956902e+01",
+            "t": "1.7172032022531167e+00",
+            "zOffset": "8.0000000000000002e-03",
+            "validLength": "0.0000000000000000e+00",
+            "orientation": "none",
+            "length": "5.0000000000000000e+00",
+            "width": "1.5000000000000000e+00",
+            "height": "0.0000000000000000e+00",
+            "hdg": "3.1415926911453225e+00",
+            "pitch": "-1.4999999999999999e-02",
+            "roll": "0.0000000000000000e+00"
+          },
+          "child_tags": []
+        },
+        "399": {
+          "attributes": {
+            "type": "none",
+            "subtype": "",
+            "name": "Rm_StopLine_300cm_JPN_01.flt",
+            "id": "399",
+            "s": "1.1805393979090368e+02",
+            "t": "-1.8999852214464539e+00",
+            "zOffset": "8.0000000000000002e-03",
+            "validLength": "0.0000000000000000e+00",
+            "orientation": "none",
+            "length": "2.9999999999999999e-01",
+            "width": "3.0000000000000000e+00",
+            "height": "0.0000000000000000e+00",
+            "hdg": "-2.4694556806537094e-04",
+            "pitch": "-9.4460602090963158e-03",
+            "roll": "0.0000000000000000e+00"
+          },
+          "child_tags": []
+        },
+        "400": {
+          "attributes": {
+            "type": "none",
+            "subtype": "",
+            "name": "Rm_StopLine_300cm_JPN_01.flt",
+            "id": "400",
+            "s": "1.1805393979090368e+02",
+            "t": "-1.4999863566704039e+00",
+            "zOffset": "8.0000000000000002e-03",
+            "validLength": "0.0000000000000000e+00",
+            "orientation": "none",
+            "length": "2.9999999999999999e-01",
+            "width": "3.0000000000000000e+00",
+            "height": "0.0000000000000000e+00",
+            "hdg": "-2.4694556806537094e-04",
+            "pitch": "-9.4460602090963158e-03",
+            "roll": "0.0000000000000000e+00"
+          },
+          "child_tags": []
+        },
+        "403": {
+          "attributes": {
+            "type": "none",
+            "subtype": "",
+            "name": "RM_532_6_6.flt",
+            "id": "403",
+            "s": "1.2482520454708154e+02",
+            "t": "4.5464758799524918e-06",
+            "zOffset": "8.0000000000000002e-03",
+            "validLength": "0.0000000000000000e+00",
+            "orientation": "none",
+            "length": "6.0000000000000000e+00",
+            "width": "6.0000000000000000e+00",
+            "height": "0.0000000000000000e+00",
+            "hdg": "3.1415926391389424e+00",
+            "pitch": "-2.6747954529184586e-03",
+            "roll": "0.0000000000000000e+00"
+          },
+          "child_tags": []
+        },
+        "409": {
+          "attributes": {
+            "type": "none",
+            "subtype": "",
+            "name": "Rm_StopLine_300cm_JPN_01.flt",
+            "id": "409",
+            "s": "1.4312406780517355e+02",
+            "t": "1.5000320561982561e+00",
+            "zOffset": "8.0000000000000002e-03",
+            "validLength": "0.0000000000000000e+00",
+            "orientation": "none",
+            "length": "2.9999999999999999e-01",
+            "width": "3.0000000000000000e+00",
+            "height": "0.0000000000000000e+00",
+            "hdg": "3.1419928507643706e+00",
+            "pitch": "0.0000000000000000e+00",
+            "roll": "0.0000000000000000e+00"
+          },
+          "child_tags": []
+        },
+        "410": {
+          "attributes": {
+            "type": "none",
+            "subtype": "",
+            "name": "Rm_StopLine_300cm_JPN_01.flt",
+            "id": "410",
+            "s": "1.4312406780517355e+02",
+            "t": "1.9000314885097418e+00",
+            "zOffset": "8.0000000000000002e-03",
+            "validLength": "0.0000000000000000e+00",
+            "orientation": "none",
+            "length": "2.9999999999999999e-01",
+            "width": "3.0000000000000000e+00",
+            "height": "0.0000000000000000e+00",
+            "hdg": "3.1419928507643706e+00",
+            "pitch": "0.0000000000000000e+00",
+            "roll": "0.0000000000000000e+00"
+          },
+          "child_tags": []
+        },
+        "411": {
+          "attributes": {
+            "type": "none",
+            "subtype": "",
+            "name": "Rm_StopLine_300cm_JPN_01.flt",
+            "id": "411",
+            "s": "1.4605736873193885e+02",
+            "t": "-1.8999953278851460e+00",
+            "zOffset": "8.0000000000000002e-03",
+            "validLength": "0.0000000000000000e+00",
+            "orientation": "none",
+            "length": "2.9999999999999999e-01",
+            "width": "3.0000000000000000e+00",
+            "height": "0.0000000000000000e+00",
+            "hdg": "-1.8793350887769122e-04",
+            "pitch": "0.0000000000000000e+00",
+            "roll": "0.0000000000000000e+00"
+          },
+          "child_tags": []
+        },
+        "412": {
+          "attributes": {
+            "type": "none",
+            "subtype": "",
+            "name": "Rm_StopLine_300cm_JPN_01.flt",
+            "id": "412",
+            "s": "1.4605736873193885e+02",
+            "t": "-1.4999953550718552e+00",
+            "zOffset": "8.0000000000000002e-03",
+            "validLength": "0.0000000000000000e+00",
+            "orientation": "none",
+            "length": "2.9999999999999999e-01",
+            "width": "3.0000000000000000e+00",
+            "height": "0.0000000000000000e+00",
+            "hdg": "-1.8793350887769122e-04",
+            "pitch": "0.0000000000000000e+00",
+            "roll": "0.0000000000000000e+00"
+          },
+          "child_tags": []
+        },
+        "414": {
+          "attributes": {
+            "type": "pole",
+            "name": "SgTrafficLight01-ExtensionArm10m.flt",
+            "id": "414",
+            "s": "1.4620800000000000e+02",
+            "t": "-1.0000000000000000e+01",
+            "zOffset": "-1.4549999999999996e+00",
+            "validLength": "0.0000000000000000e+00",
+            "orientation": "none",
+            "length": "2.8000000000000003e-01",
+            "width": "1.0140000000000001e+01",
+            "height": "7.7699999999999996e+00",
+            "hdg": "0.0000000000000000e+00",
+            "pitch": "0.0000000000000000e+00",
+            "roll": "0.0000000000000000e+00"
+          },
+          "child_tags": []
+        }
+      },
+      "lanes_at_objects": {
+        "399": [
+          {
+            "lane_id": 1,
+            "type": "driving",
+            "width_m": 3.4358,
+            "t_inner_outer_m": [
+              0,
+              3.4358
+            ]
+          },
+          {
+            "lane_id": 2,
+            "type": "border",
+            "width_m": 0.4710247664313436,
+            "t_inner_outer_m": [
+              3.4358,
+              3.9068247664313436
+            ]
+          },
+          {
+            "lane_id": 3,
+            "type": "sidewalk",
+            "width_m": 4,
+            "t_inner_outer_m": [
+              3.9068247664313436,
+              7.906824766431344
+            ]
+          },
+          {
+            "lane_id": 4,
+            "type": "border",
+            "width_m": 0.0001,
+            "t_inner_outer_m": [
+              7.906824766431344,
+              7.906924766431343
+            ]
+          },
+          {
+            "lane_id": -1,
+            "type": "driving",
+            "width_m": 3.4358,
+            "t_inner_outer_m": [
+              0,
+              -3.4358
+            ]
+          },
+          {
+            "lane_id": -2,
+            "type": "border",
+            "width_m": 0.41361602602569963,
+            "t_inner_outer_m": [
+              -3.4358,
+              -3.8494160260256995
+            ]
+          },
+          {
+            "lane_id": -3,
+            "type": "sidewalk",
+            "width_m": 4,
+            "t_inner_outer_m": [
+              -3.8494160260256995,
+              -7.8494160260256995
+            ]
+          },
+          {
+            "lane_id": -4,
+            "type": "border",
+            "width_m": 0.0001,
+            "t_inner_outer_m": [
+              -7.8494160260256995,
+              -7.849516026025699
+            ]
+          }
+        ],
+        "403": [
+          {
+            "lane_id": 1,
+            "type": "driving",
+            "width_m": 3.4358,
+            "t_inner_outer_m": [
+              0,
+              3.4358
+            ]
+          },
+          {
+            "lane_id": 2,
+            "type": "border",
+            "width_m": 0.46558836494746547,
+            "t_inner_outer_m": [
+              3.4358,
+              3.9013883649474654
+            ]
+          },
+          {
+            "lane_id": 3,
+            "type": "sidewalk",
+            "width_m": 4,
+            "t_inner_outer_m": [
+              3.9013883649474654,
+              7.901388364947465
+            ]
+          },
+          {
+            "lane_id": 4,
+            "type": "border",
+            "width_m": 0.0001,
+            "t_inner_outer_m": [
+              7.901388364947465,
+              7.901488364947465
+            ]
+          },
+          {
+            "lane_id": -1,
+            "type": "driving",
+            "width_m": 3.4358,
+            "t_inner_outer_m": [
+              0,
+              -3.4358
+            ]
+          },
+          {
+            "lane_id": -2,
+            "type": "border",
+            "width_m": 0.41983913257004585,
+            "t_inner_outer_m": [
+              -3.4358,
+              -3.8556391325700456
+            ]
+          },
+          {
+            "lane_id": -3,
+            "type": "sidewalk",
+            "width_m": 4,
+            "t_inner_outer_m": [
+              -3.8556391325700456,
+              -7.855639132570046
+            ]
+          },
+          {
+            "lane_id": -4,
+            "type": "border",
+            "width_m": 0.0001,
+            "t_inner_outer_m": [
+              -7.855639132570046,
+              -7.855739132570045
+            ]
+          }
+        ],
+        "409": [
+          {
+            "lane_id": 1,
+            "type": "driving",
+            "width_m": 3.4358,
+            "t_inner_outer_m": [
+              0,
+              3.4358
+            ]
+          },
+          {
+            "lane_id": 2,
+            "type": "border",
+            "width_m": 0.45086095543168236,
+            "t_inner_outer_m": [
+              3.4358,
+              3.886660955431682
+            ]
+          },
+          {
+            "lane_id": 3,
+            "type": "sidewalk",
+            "width_m": 4,
+            "t_inner_outer_m": [
+              3.886660955431682,
+              7.886660955431682
+            ]
+          },
+          {
+            "lane_id": 4,
+            "type": "border",
+            "width_m": 0.0001,
+            "t_inner_outer_m": [
+              7.886660955431682,
+              7.886760955431682
+            ]
+          },
+          {
+            "lane_id": -1,
+            "type": "driving",
+            "width_m": 3.4358,
+            "t_inner_outer_m": [
+              0,
+              -3.4358
+            ]
+          },
+          {
+            "lane_id": -2,
+            "type": "border",
+            "width_m": 0.4366852003364033,
+            "t_inner_outer_m": [
+              -3.4358,
+              -3.872485200336403
+            ]
+          },
+          {
+            "lane_id": -3,
+            "type": "sidewalk",
+            "width_m": 4,
+            "t_inner_outer_m": [
+              -3.872485200336403,
+              -7.872485200336403
+            ]
+          },
+          {
+            "lane_id": -4,
+            "type": "border",
+            "width_m": 0.0001,
+            "t_inner_outer_m": [
+              -7.872485200336403,
+              -7.8725852003364025
+            ]
+          }
+        ],
+        "411": [
+          {
+            "lane_id": 1,
+            "type": "driving",
+            "width_m": 3.4358,
+            "t_inner_outer_m": [
+              0,
+              3.4358
+            ]
+          },
+          {
+            "lane_id": 2,
+            "type": "border",
+            "width_m": 0.44849733660730134,
+            "t_inner_outer_m": [
+              3.4358,
+              3.8842973366073013
+            ]
+          },
+          {
+            "lane_id": 3,
+            "type": "sidewalk",
+            "width_m": 4,
+            "t_inner_outer_m": [
+              3.8842973366073013,
+              7.884297336607301
+            ]
+          },
+          {
+            "lane_id": 4,
+            "type": "border",
+            "width_m": 0.0001,
+            "t_inner_outer_m": [
+              7.884297336607301,
+              7.884397336607301
+            ]
+          },
+          {
+            "lane_id": -1,
+            "type": "driving",
+            "width_m": 3.4358,
+            "t_inner_outer_m": [
+              0,
+              -3.4358
+            ]
+          },
+          {
+            "lane_id": -2,
+            "type": "border",
+            "width_m": 0.4393869010658119,
+            "t_inner_outer_m": [
+              -3.4358,
+              -3.875186901065812
+            ]
+          },
+          {
+            "lane_id": -3,
+            "type": "sidewalk",
+            "width_m": 4,
+            "t_inner_outer_m": [
+              -3.875186901065812,
+              -7.8751869010658115
+            ]
+          },
+          {
+            "lane_id": -4,
+            "type": "border",
+            "width_m": 0.0001,
+            "t_inner_outer_m": [
+              -7.8751869010658115,
+              -7.875286901065811
+            ]
+          }
+        ]
+      }
+    },
+    "crosswalk403_nominal_extent_s_m": [
+      121.82520454708154,
+      127.82520454708154
+    ],
+    "positive409_stop_to_crosswalk403_nominal_near_far_edge_m": [
+      15.298863258092013,
+      21.298863258092013
+    ],
+    "negative399_stop_to_crosswalk403_nominal_near_far_edge_m": [
+      3.7712647561778567,
+      9.771264756177857
+    ],
+    "nominal_extent_caveat": "Object length6 evaluated around source s, not independent OSGB geometry measurement. Geometry agent measured render visibility separately.",
+    "same_s_0_4m_separated_stop_pairs_in_source": {
+      "count": 13,
+      "examples": [
+        {
+          "road": 146,
+          "objects": [
+            399,
+            400
+          ]
+        },
+        {
+          "road": 146,
+          "objects": [
+            409,
+            410
+          ]
+        },
+        {
+          "road": 146,
+          "objects": [
+            411,
+            412
+          ]
+        },
+        {
+          "road": 420,
+          "objects": [
+            898,
+            899
+          ]
+        },
+        {
+          "road": 1778,
+          "objects": [
+            1687,
+            1688
+          ]
+        },
+        {
+          "road": 1825,
+          "objects": [
+            1771,
+            1772
+          ]
+        },
+        {
+          "road": 1926,
+          "objects": [
+            2038,
+            2039
+          ]
+        },
+        {
+          "road": 1926,
+          "objects": [
+            2137,
+            2138
+          ]
+        },
+        {
+          "road": 1978,
+          "objects": [
+            2351,
+            2352
+          ]
+        },
+        {
+          "road": 1999,
+          "objects": [
+            2360,
+            2362
+          ]
+        }
+      ],
+      "road146_pairs": [
+        {
+          "road": 146,
+          "objects": [
+            399,
+            400
+          ]
+        },
+        {
+          "road": 146,
+          "objects": [
+            409,
+            410
+          ]
+        },
+        {
+          "road": 146,
+          "objects": [
+            411,
+            412
+          ]
+        }
+      ]
+    },
+    "junction9_connections": [
+      {
+        "attributes": {
+          "id": "0",
+          "incomingRoad": "146",
+          "connectingRoad": "4474",
+          "contactPoint": "start"
+        },
+        "laneLinks": [
+          {
+            "from": "-1",
+            "to": "-1"
+          },
+          {
+            "from": "-2",
+            "to": "-2"
+          },
+          {
+            "from": "-3",
+            "to": "-3"
+          }
+        ]
+      },
+      {
+        "attributes": {
+          "id": "1",
+          "incomingRoad": "146",
+          "connectingRoad": "4477",
+          "contactPoint": "start"
+        },
+        "laneLinks": [
+          {
+            "from": "-1",
+            "to": "-1"
+          }
+        ]
+      },
+      {
+        "attributes": {
+          "id": "2",
+          "incomingRoad": "173",
+          "connectingRoad": "766",
+          "contactPoint": "start"
+        },
+        "laneLinks": [
+          {
+            "from": "2",
+            "to": "-1"
+          },
+          {
+            "from": "3",
+            "to": "-2"
+          },
+          {
+            "from": "4",
+            "to": "-3"
+          }
+        ]
+      },
+      {
+        "attributes": {
+          "id": "3",
+          "incomingRoad": "173",
+          "connectingRoad": "4480",
+          "contactPoint": "start"
+        },
+        "laneLinks": [
+          {
+            "from": "1",
+            "to": "-1"
+          }
+        ]
+      },
+      {
+        "attributes": {
+          "id": "4",
+          "incomingRoad": "174",
+          "connectingRoad": "4471",
+          "contactPoint": "start"
+        },
+        "laneLinks": [
+          {
+            "from": "1",
+            "to": "-1"
+          },
+          {
+            "from": "2",
+            "to": "-2"
+          },
+          {
+            "from": "3",
+            "to": "-3"
+          }
+        ]
+      },
+      {
+        "attributes": {
+          "id": "5",
+          "incomingRoad": "174",
+          "connectingRoad": "775",
+          "contactPoint": "start"
+        },
+        "laneLinks": [
+          {
+            "from": "1",
+            "to": "-1"
+          }
+        ]
+      }
+    ],
+    "connecting_roads": [
+      {
+        "road_id": 4471,
+        "link": {
+          "predecessor": {
+            "elementType": "road",
+            "elementId": "174",
+            "contactPoint": "start"
+          },
+          "successor": {
+            "elementType": "road",
+            "elementId": "146",
+            "contactPoint": "end"
+          }
+        },
+        "lane_links": [
+          {
+            "lane_id": 0,
+            "type": "driving",
+            "links": {}
+          },
+          {
+            "lane_id": -1,
+            "type": "driving",
+            "links": {
+              "predecessor": 1,
+              "successor": 1
+            }
+          },
+          {
+            "lane_id": -2,
+            "type": "border",
+            "links": {
+              "predecessor": 2,
+              "successor": 2
+            }
+          },
+          {
+            "lane_id": -3,
+            "type": "sidewalk",
+            "links": {
+              "predecessor": 3,
+              "successor": 3
+            }
+          },
+          {
+            "lane_id": -4,
+            "type": "border",
+            "links": {}
+          }
+        ],
+        "crosswalk_objects": []
+      },
+      {
+        "road_id": 4474,
+        "link": {
+          "predecessor": {
+            "elementType": "road",
+            "elementId": "146",
+            "contactPoint": "end"
+          },
+          "successor": {
+            "elementType": "road",
+            "elementId": "173",
+            "contactPoint": "start"
+          }
+        },
+        "lane_links": [
+          {
+            "lane_id": 0,
+            "type": "driving",
+            "links": {}
+          },
+          {
+            "lane_id": -1,
+            "type": "driving",
+            "links": {
+              "predecessor": -1,
+              "successor": -1
+            }
+          },
+          {
+            "lane_id": -2,
+            "type": "border",
+            "links": {
+              "predecessor": -2,
+              "successor": -2
+            }
+          },
+          {
+            "lane_id": -3,
+            "type": "sidewalk",
+            "links": {
+              "predecessor": -3,
+              "successor": -3
+            }
+          },
+          {
+            "lane_id": -4,
+            "type": "border",
+            "links": {}
+          }
+        ],
+        "crosswalk_objects": []
+      },
+      {
+        "road_id": 4477,
+        "link": {
+          "predecessor": {
+            "elementType": "road",
+            "elementId": "146",
+            "contactPoint": "end"
+          },
+          "successor": {
+            "elementType": "road",
+            "elementId": "174",
+            "contactPoint": "start"
+          }
+        },
+        "lane_links": [
+          {
+            "lane_id": 0,
+            "type": "driving",
+            "links": {}
+          },
+          {
+            "lane_id": -1,
+            "type": "driving",
+            "links": {
+              "predecessor": -1,
+              "successor": -2
+            }
+          }
+        ],
+        "crosswalk_objects": [
+          {
+            "type": "none",
+            "subtype": "",
+            "name": "RM_532_6_6.flt",
+            "id": "6343",
+            "s": "4.5093857312242607e+00",
+            "t": "1.7339470328539493e-02",
+            "zOffset": "8.0000000000000002e-03",
+            "validLength": "0.0000000000000000e+00",
+            "orientation": "none",
+            "length": "6.0000000000000000e+00",
+            "width": "6.0000000000000000e+00",
+            "height": "0.0000000000000000e+00",
+            "hdg": "3.1415926535897931e+00",
+            "pitch": "0.0000000000000000e+00",
+            "roll": "0.0000000000000000e+00"
+          }
+        ]
+      },
+      {
+        "road_id": 4480,
+        "link": {
+          "predecessor": {
+            "elementType": "road",
+            "elementId": "173",
+            "contactPoint": "start"
+          },
+          "successor": {
+            "elementType": "road",
+            "elementId": "146",
+            "contactPoint": "end"
+          }
+        },
+        "lane_links": [
+          {
+            "lane_id": 0,
+            "type": "driving",
+            "links": {}
+          },
+          {
+            "lane_id": -1,
+            "type": "driving",
+            "links": {
+              "predecessor": 1,
+              "successor": 1
+            }
+          }
+        ],
+        "crosswalk_objects": []
+      }
+    ],
+    "signal_logical_stations_on_146_m": [
+      0,
+      146.208
+    ],
+    "object_reference_elements_global_count": 0,
+    "metadata_observations": {
+      "selected_objects_have_child_elements": false,
+      "global_userData_count": 0,
+      "global_object_material_count": 0,
+      "explicit_lifecycle_or_retirement_marker_in_selected_objects": false,
+      "note": "Selected XML objects have no references, lane validity, userData, or retirement/active-state fields. validLength=0 and type=none are common source authoring values and do not establish retirement."
+    },
+    "source_directory_inventory": [
+      {
+        "name": "00_HL_VTD.tar.gz",
+        "suffix": ".gz",
+        "bytes": 28008756,
+        "is_directory": false
+      },
+      {
+        "name": "Data",
+        "suffix": "",
+        "bytes": 4096,
+        "is_directory": true
+      },
+      {
+        "name": "HL_FMA_VTD_LivingLab.osgb",
+        "suffix": ".osgb",
+        "bytes": 284505097,
+        "is_directory": false
+      },
+      {
+        "name": "HL_FMA_VTD_LivingLab.xml",
+        "suffix": ".xml",
+        "bytes": 397050,
+        "is_directory": false
+      },
+      {
+        "name": "HL_FMA_VTD_LivingLab.xodr",
+        "suffix": ".xodr",
+        "bytes": 8582316,
+        "is_directory": false
+      },
+      {
+        "name": "TCP, UDP 통신 예제",
+        "suffix": "",
+        "bytes": 4096,
+        "is_directory": true
+      },
+      {
+        "name": "VTD 실습 파일 설치 매뉴얼.pdf",
+        "suffix": ".pdf",
+        "bytes": 709272,
+        "is_directory": false
+      },
+      {
+        "name": "route_example.csv",
+        "suffix": ".csv",
+        "bytes": 148,
+        "is_directory": false
+      }
+    ],
+    "findings": [
+      {
+        "status": "confirmed",
+        "text": "At the target409/410 two overlapping3m wide models separated by0.4m span approximately3.4m, close to the source positive driving lane+1 width3.4358m. This supports an intended width-coverage construction rather than two separate longitudinal stop locations. The same construction occurs at399/400 and411/412 and elsewhere in the source."
+      },
+      {
+        "status": "confirmed",
+        "text": "Positive lane+1 leaves junction9 toward decreasing s, so crosswalk403 is forward of409/410 in the source coordinate direction. It is separated from them by about15.30m to the nominal near edge; negative399/400 approach the other side by3.77m."
+      },
+      {
+        "status": "confirmed",
+        "text": "Junction9 sidewalk lanes link along connecting road4471 to road146+3 and road146-3 to4474; these are longitudinal perimeter connections and do not independently establish a transverse crossing at403."
+      },
+      {
+        "status": "confirmed",
+        "text": "A separate crosswalk model6343 exists on junction connector4477 s4.509385731; it is not an object reference or successor of403."
+      },
+      {
+        "status": "unresolved",
+        "text": "Source XML does not associate409/410 with403 or with6343, and has no retirement metadata. A source-render discrepancy may indicate export/version/visibility/placement issues; it does not prove a retired facility or authorize deletion."
+      },
+      {
+        "status": "unresolved",
+        "text": "Road146 crossing-warning380 faces increasing s at55.44,390 faces decreasing s at90.95. Neither is explicitly linked to403, so these cannot establish its current use."
+      }
+    ],
+    "higher_level_source_inventory": {
+      "search_root": "/home/stier/vtd 자료/Data",
+      "road_authoring_extensions": [
+        ".rdp",
+        ".rod",
+        ".odr",
+        ".xodr",
+        ".prj",
+        ".proj"
+      ],
+      "files": [],
+      "setup_archive_matches": [],
+      "conclusion": "No higher-level road-authoring project found in the supplied directory Data tree or setup archive under the inspected extensions; this does not prove no such project exists elsewhere."
+    }
+  },
+  "lod_evidence": {
+    "method": "Barycentric XY ray hits in existing original OSGB ASCII export. ASCII vertices rounded to ~6 significant figures; no MatrixTransform present. No source/runtime mutation. Not a complete OSG state renderer. Height evidence is scoped to listed road and white-stop geometries; crossing403 visibility is established by the controlled near/far render, not by these stop-only triangle probes.",
+    "counts": {
+      "vertex_arrays": 18263,
+      "geometries_xy_near": 41,
+      "non_triangles_near": [
+        [
+          77187,
+          "QUADS"
+        ],
+        [
+          77292,
+          "QUADS"
+        ]
+      ]
+    },
+    "hits": [
+      {
+        "probe": "399",
+        "point": [
+          650.5368652345,
+          -142.7517929075
+        ],
+        "z": 45.44449295358002,
+        "geometry_id": 77069,
+        "state_set_id": 11302,
+        "texture_names": [],
+        "triangle": [
+          [
+            651.786,
+            -141.857,
+            45.445
+          ],
+          [
+            648.457,
+            -143.167,
+            45.436
+          ],
+          [
+            649.068,
+            -143.959,
+            45.445
+          ]
+        ],
+        "ascii_geometry_offset": 1428308185
+      },
+      {
+        "probe": "400",
+        "point": [
+          650.220214844,
+          -142.996208191
+        ],
+        "z": 45.444489606039674,
+        "geometry_id": 77069,
+        "state_set_id": 11302,
+        "texture_names": [],
+        "triangle": [
+          [
+            651.786,
+            -141.857,
+            45.445
+          ],
+          [
+            648.457,
+            -143.167,
+            45.436
+          ],
+          [
+            649.068,
+            -143.959,
+            45.445
+          ]
+        ],
+        "ascii_geometry_offset": 1428308185
+      },
+      {
+        "probe": "403center",
+        "point": [
+          644.9085513267,
+          -138.5490414599
+        ],
+        "z": 45.403522733561225,
+        "geometry_id": 77069,
+        "state_set_id": 11302,
+        "texture_names": [],
+        "triangle": [
+          [
+            648.132,
+            -137.098,
+            45.406
+          ],
+          [
+            644.801,
+            -138.412,
+            45.403
+          ],
+          [
+            645.415,
+            -139.201,
+            45.406
+          ]
+        ],
+        "ascii_geometry_offset": 1428308185
+      },
+      {
+        "probe": "A409410",
+        "point": [
+          632.1589147584,
+          -125.294495729
+        ],
+        "z": 45.4,
+        "geometry_id": 77069,
+        "state_set_id": 11302,
+        "texture_names": [],
+        "triangle": [
+          [
+            633.587,
+            -124.331,
+            45.4
+          ],
+          [
+            630.262,
+            -125.658,
+            45.4
+          ],
+          [
+            630.884,
+            -126.453,
+            45.4
+          ]
+        ],
+        "ascii_geometry_offset": 1428308185
+      },
+      {
+        "probe": "B411412",
+        "point": [
+          633.0569,
+          -120.8814
+        ],
+        "z": 45.4,
+        "geometry_id": 77069,
+        "state_set_id": 11302,
+        "texture_names": [],
+        "triangle": [
+          [
+            635.072,
+            -120.65,
+            45.4
+          ],
+          [
+            634.341,
+            -119.704,
+            45.4
+          ],
+          [
+            631.618,
+            -121.799,
+            45.4
+          ]
+        ],
+        "ascii_geometry_offset": 1428308185
+      },
+      {
+        "probe": "399",
+        "point": [
+          650.5368652345,
+          -142.7517929075
+        ],
+        "z": 45.45264777923021,
+        "geometry_id": 77302,
+        "state_set_id": 350,
+        "texture_names": [],
+        "triangle": [
+          [
+            651.633,
+            -141.717,
+            45.4513
+          ],
+          [
+            649.258,
+            -143.55,
+            45.4513
+          ],
+          [
+            649.441,
+            -143.787,
+            45.454
+          ]
+        ],
+        "ascii_geometry_offset": 1431087391
+      },
+      {
+        "probe": "399",
+        "point": [
+          650.5368652345,
+          -142.7517929075
+        ],
+        "z": 45.4526524710195,
+        "geometry_id": 77302,
+        "state_set_id": 350,
+        "texture_names": [],
+        "triangle": [
+          [
+            649.124,
+            -144.031,
+            45.454
+          ],
+          [
+            651.499,
+            -142.198,
+            45.454
+          ],
+          [
+            651.316,
+            -141.961,
+            45.4513
+          ]
+        ],
+        "ascii_geometry_offset": 1431087391
+      },
+      {
+        "probe": "400",
+        "point": [
+          650.220214844,
+          -142.996208191
+        ],
+        "z": 45.45264797800015,
+        "geometry_id": 77302,
+        "state_set_id": 350,
+        "texture_names": [],
+        "triangle": [
+          [
+            651.633,
+            -141.717,
+            45.4513
+          ],
+          [
+            649.258,
+            -143.55,
+            45.4513
+          ],
+          [
+            649.441,
+            -143.787,
+            45.454
+          ]
+        ],
+        "ascii_geometry_offset": 1431087391
+      },
+      {
+        "probe": "400",
+        "point": [
+          650.220214844,
+          -142.996208191
+        ],
+        "z": 45.45265266978944,
+        "geometry_id": 77302,
+        "state_set_id": 350,
+        "texture_names": [],
+        "triangle": [
+          [
+            649.124,
+            -144.031,
+            45.454
+          ],
+          [
+            651.499,
+            -142.198,
+            45.454
+          ],
+          [
+            651.316,
+            -141.961,
+            45.4513
+          ]
+        ],
+        "ascii_geometry_offset": 1431087391
+      },
+      {
+        "probe": "A409410",
+        "point": [
+          632.1589147584,
+          -125.294495729
+        ],
+        "z": 45.408,
+        "geometry_id": 77302,
+        "state_set_id": 350,
+        "texture_names": [],
+        "triangle": [
+          [
+            633.415,
+            -124.114,
+            45.408
+          ],
+          [
+            631.058,
+            -125.97,
+            45.408
+          ],
+          [
+            631.244,
+            -126.205,
+            45.408
+          ]
+        ],
+        "ascii_geometry_offset": 1431087391
+      },
+      {
+        "probe": "A409410",
+        "point": [
+          632.1589147584,
+          -125.294495729
+        ],
+        "z": 45.408,
+        "geometry_id": 77302,
+        "state_set_id": 350,
+        "texture_names": [],
+        "triangle": [
+          [
+            630.93,
+            -126.453,
+            45.408
+          ],
+          [
+            633.287,
+            -124.597,
+            45.408
+          ],
+          [
+            633.101,
+            -124.361,
+            45.408
+          ]
+        ],
+        "ascii_geometry_offset": 1431087391
+      },
+      {
+        "probe": "B411412",
+        "point": [
+          633.0569,
+          -120.8814
+        ],
+        "z": 45.408,
+        "geometry_id": 77302,
+        "state_set_id": 350,
+        "texture_names": [],
+        "triangle": [
+          [
+            634.309,
+            -119.721,
+            45.408
+          ],
+          [
+            631.935,
+            -121.554,
+            45.408
+          ],
+          [
+            632.118,
+            -121.792,
+            45.408
+          ]
+        ],
+        "ascii_geometry_offset": 1431087391
+      },
+      {
+        "probe": "B411412",
+        "point": [
+          633.0569,
+          -120.8814
+        ],
+        "z": 45.408,
+        "geometry_id": 77302,
+        "state_set_id": 350,
+        "texture_names": [],
+        "triangle": [
+          [
+            631.801,
+            -122.036,
+            45.408
+          ],
+          [
+            634.176,
+            -120.203,
+            45.408
+          ],
+          [
+            633.992,
+            -119.965,
+            45.408
+          ]
+        ],
+        "ascii_geometry_offset": 1431087391
+      },
+      {
+        "probe": "399",
+        "point": [
+          650.5368652345,
+          -142.7517929075
+        ],
+        "z": 45.45044793241525,
+        "geometry_id": 77352,
+        "state_set_id": 11302,
+        "texture_names": [],
+        "triangle": [
+          [
+            655.46,
+            -146.565,
+            45.52
+          ],
+          [
+            650.562,
+            -140.268,
+            45.428
+          ],
+          [
+            647.848,
+            -142.375,
+            45.428
+          ]
+        ],
+        "ascii_geometry_offset": 1432034668
+      },
+      {
+        "probe": "400",
+        "point": [
+          650.220214844,
+          -142.996208191
+        ],
+        "z": 45.450435046127986,
+        "geometry_id": 77352,
+        "state_set_id": 11302,
+        "texture_names": [],
+        "triangle": [
+          [
+            655.46,
+            -146.565,
+            45.52
+          ],
+          [
+            650.562,
+            -140.268,
+            45.428
+          ],
+          [
+            647.848,
+            -142.375,
+            45.428
+          ]
+        ],
+        "ascii_geometry_offset": 1432034668
+      },
+      {
+        "probe": "403center",
+        "point": [
+          644.9085513267,
+          -138.5490414599
+        ],
+        "z": 45.411230130920025,
+        "geometry_id": 77352,
+        "state_set_id": 11302,
+        "texture_names": [],
+        "triangle": [
+          [
+            649.641,
+            -139.08,
+            45.423
+          ],
+          [
+            642.948,
+            -136.053,
+            45.4
+          ],
+          [
+            646.93,
+            -141.191,
+            45.423
+          ]
+        ],
+        "ascii_geometry_offset": 1432034668
+      },
+      {
+        "probe": "A409410",
+        "point": [
+          632.1589147584,
+          -125.294495729
+        ],
+        "z": 45.4,
+        "geometry_id": 77352,
+        "state_set_id": 11302,
+        "texture_names": [],
+        "triangle": [
+          [
+            635.771,
+            -127.068,
+            45.4
+          ],
+          [
+            632.97,
+            -123.544,
+            45.4
+          ],
+          [
+            630.267,
+            -125.665,
+            45.4
+          ]
+        ],
+        "ascii_geometry_offset": 1432034668
+      },
+      {
+        "probe": "B411412",
+        "point": [
+          633.0569,
+          -120.8814
+        ],
+        "z": 45.4,
+        "geometry_id": 77352,
+        "state_set_id": 11302,
+        "texture_names": [],
+        "triangle": [
+          [
+            635.673,
+            -121.423,
+            45.4
+          ],
+          [
+            634.341,
+            -119.704,
+            45.4
+          ],
+          [
+            631.618,
+            -121.799,
+            45.4
+          ]
+        ],
+        "ascii_geometry_offset": 1432034668
+      },
+      {
+        "probe": "399",
+        "point": [
+          650.5368652345,
+          -142.7517929075
+        ],
+        "z": 45.64344425389258,
+        "geometry_id": 77385,
+        "state_set_id": 11302,
+        "texture_names": [],
+        "triangle": [
+          [
+            670.376,
+            -165.084,
+            45.923
+          ],
+          [
+            649.666,
+            -139.028,
+            45.611
+          ],
+          [
+            646.971,
+            -141.159,
+            45.611
+          ]
+        ],
+        "ascii_geometry_offset": 1432136871
+      },
+      {
+        "probe": "400",
+        "point": [
+          650.220214844,
+          -142.996208191
+        ],
+        "z": 45.643400374058686,
+        "geometry_id": 77385,
+        "state_set_id": 11302,
+        "texture_names": [],
+        "triangle": [
+          [
+            670.376,
+            -165.084,
+            45.923
+          ],
+          [
+            649.666,
+            -139.028,
+            45.611
+          ],
+          [
+            646.971,
+            -141.159,
+            45.611
+          ]
+        ],
+        "ascii_geometry_offset": 1432136871
+      },
+      {
+        "probe": "403center",
+        "point": [
+          644.9085513267,
+          -138.5490414599
+        ],
+        "z": 45.579767617942096,
+        "geometry_id": 77385,
+        "state_set_id": 11302,
+        "texture_names": [],
+        "triangle": [
+          [
+            649.666,
+            -139.028,
+            45.611
+          ],
+          [
+            635.771,
+            -127.068,
+            45.442
+          ],
+          [
+            646.971,
+            -141.159,
+            45.611
+          ]
+        ],
+        "ascii_geometry_offset": 1432136871
+      },
+      {
+        "probe": "A409410",
+        "point": [
+          632.1589147584,
+          -125.294495729
+        ],
+        "z": 45.40817737531794,
+        "geometry_id": 77385,
+        "state_set_id": 11302,
+        "texture_names": [],
+        "triangle": [
+          [
+            635.771,
+            -127.068,
+            45.442
+          ],
+          [
+            632.97,
+            -123.544,
+            45.4
+          ],
+          [
+            630.267,
+            -125.665,
+            45.4
+          ]
+        ],
+        "ascii_geometry_offset": 1432136871
+      },
+      {
+        "probe": "B411412",
+        "point": [
+          633.0569,
+          -120.8814
+        ],
+        "z": 45.4,
+        "geometry_id": 77385,
+        "state_set_id": 11302,
+        "texture_names": [],
+        "triangle": [
+          [
+            635.673,
+            -121.423,
+            45.4
+          ],
+          [
+            634.341,
+            -119.704,
+            45.4
+          ],
+          [
+            631.618,
+            -121.799,
+            45.4
+          ]
+        ],
+        "ascii_geometry_offset": 1432136871
+      }
+    ],
+    "lod_evidence": {
+      "parent_id": 77045,
+      "user_center": [
+        652.208,
+        -147.848,
+        45.5857
+      ],
+      "ranges": [
+        [
+          0,
+          700
+        ],
+        [
+          0,
+          1000
+        ],
+        [
+          0,
+          2400
+        ],
+        [
+          700,
+          1000
+        ],
+        [
+          1000,
+          2400
+        ]
+      ],
+      "top_children_ids": [
+        [
+          77046,
+          79
+        ],
+        [
+          77081,
+          1137271
+        ],
+        [
+          77088,
+          1272284
+        ],
+        [
+          77330,
+          4563044
+        ],
+        [
+          77363,
+          4754006
+        ]
+      ],
+      "camera_eye": [
+        0,
+        0,
+        1000
+      ],
+      "camera_distance_m": 1165.3930506110332,
+      "default_lod_scale": 1,
+      "diagnostic_lod_scale": 0.001,
+      "near_red_road_geometry": 77069,
+      "medium_red_road_geometry": 77352,
+      "far_red_road_geometry": 77385,
+      "red_texture": "StyleSrfBikeway.rgb",
+      "white_geometry": 77302,
+      "white_texture": "Tx_Rm_White_01.rgb",
+      "result": "Identical source and camera; only native camera LODScale changed. Near render reveals crossing403, stoplines399/400 and lane markings absent in default far render. This is aerial-render LOD visibility loss, not missing original geometry.",
+      "stopline399400_white_probes": [
+        {
+          "white_triangle": [
+            [
+              651.316,
+              -141.961,
+              45.4513
+            ],
+            [
+              648.941,
+              -143.794,
+              45.4513
+            ],
+            [
+              649.124,
+              -144.031,
+              45.454
+            ]
+          ],
+          "white_center": [
+            649.7936666666667,
+            -143.262,
+            45.452200000000005
+          ],
+          "road_lod_heights": {
+            "77069": [
+              45.444033496286565
+            ],
+            "77352": [
+              45.4498396906391
+            ],
+            "77385": [
+              45.642874711713006
+            ]
+          }
+        },
+        {
+          "white_triangle": [
+            [
+              651.633,
+              -141.717,
+              45.4513
+            ],
+            [
+              649.258,
+              -143.55,
+              45.4513
+            ],
+            [
+              649.441,
+              -143.787,
+              45.454
+            ]
+          ],
+          "white_center": [
+            650.1106666666667,
+            -143.01800000000003,
+            45.452200000000005
+          ],
+          "road_lod_heights": {
+            "77069": [
+              45.44404172386323
+            ],
+            "77352": [
+              45.44985883231162
+            ],
+            "77385": [
+              45.64292367779577
+            ]
+          }
+        },
+        {
+          "white_triangle": [
+            [
+              649.124,
+              -144.031,
+              45.454
+            ],
+            [
+              651.499,
+              -142.198,
+              45.454
+            ],
+            [
+              651.316,
+              -141.961,
+              45.4513
+            ]
+          ],
+          "white_center": [
+            650.6463333333334,
+            -142.73000000000002,
+            45.453100000000006
+          ],
+          "road_lod_heights": {
+            "77069": [
+              45.4449403871657
+            ],
+            "77352": [
+              45.45102356991144
+            ],
+            "77385": [
+              45.64392047648909
+            ]
+          }
+        },
+        {
+          "white_triangle": [
+            [
+              649.441,
+              -143.787,
+              45.454
+            ],
+            [
+              651.816,
+              -141.954,
+              45.454
+            ],
+            [
+              651.633,
+              -141.717,
+              45.4513
+            ]
+          ],
+          "white_center": [
+            650.9633333333334,
+            -142.486,
+            45.453100000000006
+          ],
+          "road_lod_heights": {
+            "77069": [
+              45.44494861474237
+            ],
+            "77352": [
+              45.45104271158396
+            ],
+            "77385": [
+              45.643969442571844
+            ]
+          }
+        }
+      ]
+    }
+  },
+  "aerial_regeneration": {
+    "bounds_xy_m": [
+      -500,
+      -1200,
+      2000,
+      1300
+    ],
+    "camera_lod_scale": 0.001,
+    "old_aerial_sha256": "662ea156a81319f2c95b0335bd8523c67f6042f76fbc7320d4c537ac42f3f9eb",
+    "new_aerial_sha256": "94a2873b95b0418ca3edd1dadc13d2f8885aad09a66c1e093e40c71309171662",
+    "map_sha256": "e7a426f900813748747a39233f3678237fd7f849c335bae3bc3014b31ae678b0",
+    "regions": {
+      "before": {
+        "object": 403,
+        "pixels": 412,
+        "white_pixels": 0,
+        "white_fraction": 0
+      },
+      "after": {
+        "object": 403,
+        "pixels": 412,
+        "white_pixels": 155,
+        "white_fraction": 0.3762135922330097
+      }
+    }
+  },
+  "live_refresh": {
+    "topic": "/visualization/aerial",
+    "subscribers": 1,
+    "dds_acknowledged": true,
+    "aerial_sha256": "94a2873b95b0418ca3edd1dadc13d2f8885aad09a66c1e093e40c71309171662",
+    "bytes": 34642755,
+    "scope": "one-time current RViz texture refresh; next normal launch reads updated PNG; old original publisher remains latched until restart",
+    "rviz_capture": "docs/assets/hdmap-audit/rviz-after-aerial-lod.png",
+    "visible_verification": "Inspected current RViz screenshot: crosswalk403 visible at upper right, HUD2845 lanelets/94154 cells; view X630.09,Y-119.206,scale28.8476 retained."
+  },
+  "status": {
+    "date": "2026-09-06",
+    "aerial_lod_bug": "confirmed_and_fixed",
+    "stop409_410_placement": "preserve_by_xodr_policy",
+    "stop409_410_deleted_or_moved": false,
+    "source_files_modified": false,
+    "hdmap_bin_modified": false,
+    "notes": "A is upstream of source crosswalk403 by about15.3m to its near edge; source has no explicit facility relationship or active/retired metadata. Geometry presence is not legal placement certification. Editing decision is now preservation by user policy; physical/legal placement certification remains outside this evidence.",
+    "user_policy": "2026-09-06: ambiguous features follow XODR existence; keep objects409/410 and native geometry."
+  },
+  "full_road_vision_audit": "docs/HDMapVisionAudit.md"
+}

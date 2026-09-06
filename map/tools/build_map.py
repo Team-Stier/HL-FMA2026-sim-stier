@@ -18,6 +18,8 @@ from shapely.strtree import STRtree
 from crdesigner.map_conversion.opendrive.odr2cr.opendrive_parser.parser import parse_opendrive
 import lanelet2.core as ll
 import lanelet2.io as llio
+import lanelet2.routing as llrouting
+import lanelet2.traffic_rules as llrules
 
 
 def number(element, key, default=0.):
@@ -48,8 +50,21 @@ class Builder:
     def __init__(self, args):
         self.args = args
         self.config = yaml.safe_load(args.config.read_text())
+        self.markings = json.loads(args.stopline_mesh.read_text())
         self.root = ET.parse(args.xodr).getroot()
         self.roads = {int(road.get("id")): road for road in self.root.findall("road")}
+        for override in self.config.get("object_lateral_overrides", []):
+            obj = self.roads[override["road_id"]].find(f"objects/object[@id='{override['object_id']}']")
+            if obj is None or not math.isclose(number(obj, "t"), override["source_t"], abs_tol=1e-7):
+                raise ValueError(f"Stopline override no longer matches source: {override}")
+            obj.set("source_t", obj.get("t"))
+            obj.set("t", str(override["t"]))
+            obj.set("correction_evidence", override["evidence"])
+            if "mesh_candidate_index" in override:
+                obj.set("mesh_candidate_index", str(override["mesh_candidate_index"]))
+        for override in self.config.get("non_driving_lane_overrides", []):
+            section = self.roads[override["road_id"]].findall("lanes/laneSection")[override["section_index"]]
+            section.find(f"./*/lane[@id='{override['lane_id']}']").set("type", "border")
         for override in self.config.get("width_start_overrides", []):
             section = self.roads[override["road_id"]].findall("lanes/laneSection")[override["section_index"]]
             width = section.find(f"./*/lane[@id='{override['lane_id']}']/width")
@@ -271,6 +286,37 @@ class Builder:
                 self.line(record["right"], record["right_attrs"]), ll.AttributeMap(attrs))
             self.map.add(record["lanelet"])
 
+        # Cell predecessors and movement inference must use the same graph as consumers.
+        rules = llrules.create(llrules.Locations.Germany, llrules.Participants.Vehicle)
+        graph = llrouting.RoutingGraph(self.map, rules)
+        native_links = sorted((lane.id, target.id) for lane in self.map.laneletLayer
+            for target in graph.following(lane, False))
+        source_links = set(self.links)
+        point_contacts = [(source, target) for source, target in native_links if (source, target) not in source_links
+            and self.records[source]["left"][-1].id == self.records[source]["right"][-1].id]
+        self.report["rejected_native_point_contacts"] = [{"from": source, "to": target,
+            "reason": "zero_width_point_contact_without_source_link"} for source, target in point_contacts]
+        for source in sorted({source for source, _ in point_contacts}):
+            record = self.records[source]
+            boundary = record["lanelet"].leftBound
+            if any(lane.id != source and boundary.id in (lane.leftBound.id, lane.rightBound.id)
+                    for lane in self.map.laneletLayer):
+                raise ValueError("Point-contact repair would break a shared lateral boundary")
+            # Equal coordinates at a taper tip must not create an implicit driving connection.
+            point = boundary[-1]
+            replacement = ll.Point3d(self.identifier(), point.x, point.y, point.z)
+            boundary[-1] = replacement
+            record["left"][-1] = replacement
+            self.map.add(replacement)
+        if point_contacts:
+            graph = llrouting.RoutingGraph(self.map, rules)
+            native_links = sorted((lane.id, target.id) for lane in self.map.laneletLayer
+                for target in graph.following(lane, False))
+        if source_links - set(native_links):
+            raise ValueError("Explicit lane links are missing from the native routing graph")
+        self.report["native_forward_links_without_source_link"] = sorted(set(native_links) - source_links)
+        self.links = native_links
+
     def locate_object(self, road_id, obj):
         position, lateral = number(obj, "s"), number(obj, "t")
         matches = []
@@ -295,10 +341,20 @@ class Builder:
                     center = self.road_point(road_id, position, lateral)
                     orientation = heading + number(obj, "hdg")
                     across = np.array([-math.sin(orientation), math.cos(orientation), 0.]) * width / 2
+                    mesh_index = obj.get("mesh_candidate_index")
+                    if mesh_index is not None:
+                        mark = self.markings[int(mesh_index)]
+                        center = np.array(mark["center"])
+                        corners = np.array(mark["corners"])
+                        across = max((corners[1] - corners[0], corners[3] - corners[0]), key=np.linalg.norm) / 2
                     stopline = ll.LineString3d(self.identifier(), [self.point(center - across), self.point(center + across)],
                         ll.AttributeMap({"type": "stop_line", "xodr_object_id": obj.get("id"), "xodr_road_id": str(road_id),
-                            "source": name, "xodr_s": str(position), "visual_z_offset_m": obj.get("zOffset", "0")}))
+                            "source": name, "xodr_s": str(position), "xodr_t": obj.get("source_t", obj.get("t")),
+                            "effective_t": str(lateral), "correction_evidence": obj.get("correction_evidence", "none"),
+                            "visual_z_offset_m": obj.get("zOffset", "0")}))
                     self.map.add(stopline)
+                    if mesh_index is not None:
+                        stopline.attributes["mesh_candidate_index"] = mesh_index
                     matches = self.locate_object(road_id, obj)
                     projected_positions = {identifier: position for identifier in matches}
                     if not matches:
@@ -310,6 +366,8 @@ class Builder:
                                 continue
                             midpoints = [((left.x + right.x) / 2, (left.y + right.y) / 2) for left, right in zip(record["left"], record["right"])]
                             centerline = LineString(midpoints)
+                            if not centerline.intersects(shape.buffer(0.01)):
+                                continue
                             station = centerline.project(Point(center[:2]))
                             tangent = np.array(centerline.interpolate(min(station + 0.1, centerline.length)).coords[0]) - np.array(centerline.interpolate(max(0., station - 0.1)).coords[0])
                             if np.dot(tangent, [math.cos(orientation), math.sin(orientation)]) <= 0.5 * np.linalg.norm(tangent):
@@ -324,7 +382,11 @@ class Builder:
                     for identifier in matches:
                         self.records[identifier]["stoplines"].append((projected_positions[identifier], stopline))
                     stopline.attributes["cell_assignment"] = "projected_to_lane" if matches else "unresolved"
-                    self.report["stoplines"].append({"id": stopline.id, "road": road_id, "object": obj.get("id"), "lanelets": matches})
+                    entry = {"id": stopline.id, "road": road_id, "object": obj.get("id"), "lanelets": matches}
+                    if mesh_index is not None:
+                        stopline.attributes["cell_assignment"] = "projected_to_approach_end" if matches else "unresolved"
+                        entry["mesh_candidate_index"] = int(mesh_index)
+                    self.report["stoplines"].append(entry)
                 elif name in ("roadmark_speed_30.flt", "RM_517_50.flt", "30.flt"):
                     matches = self.locate_object(road_id, obj)
                     self.report["speed_evidence"].append({"road": road_id, "object": obj.get("id"), "model": name,
@@ -342,14 +404,15 @@ class Builder:
                     record["lanelet"].attributes["speed_source"] = zone["evidence"]
 
     def asset_stoplines(self):
-        markings = json.loads(self.args.stopline_mesh.read_text())
+        markings = self.markings
         inserted = {}
         for road_id, sign in self.config["asset_stopline_approaches"]:
             candidates = [(identifier, record) for identifier, record in self.records.items()
                 if record["key"][0] == road_id and (1 if record["key"][2] > 0 else -1) == sign]
             exit_s = 0. if sign > 0 else number(self.roads[road_id], "length")
             for identifier, record in candidates:
-                if abs(float(record["stations"][-1]) - exit_s) > 1e-5 or record["stoplines"]:
+                if abs(float(record["stations"][-1]) - exit_s) > 1e-5 or any(
+                        abs(position - exit_s) <= 0.6 for position, _ in record["stoplines"]):
                     continue
                 end = np.array([(record["left"][-1].x + record["right"][-1].x) / 2,
                     (record["left"][-1].y + record["right"][-1].y) / 2,
@@ -388,6 +451,19 @@ class Builder:
         raw_signals = {int(signal.get("id")): (road_id, signal) for road_id, road in self.roads.items() for signal in road.findall("signals/signal")}
         api_controllers = {entry[2] for entry in entries}
         mapping_entries = list(entries)
+        api_by_approach = {(road, sign): controller for road, sign, controller, _ in entries}
+        approach_tolerance = float(self.config.get("signal_stopline_approach_tolerance_m", 0.6))
+        if not math.isfinite(approach_tolerance) or approach_tolerance <= 0.:
+            raise ValueError("signal_stopline_approach_tolerance_m must be finite and positive")
+        self.report["signal_mapping_rejections"] = []
+        self.report["signal_mapping_contract"] = {
+            "stopline_approach_tolerance_m": approach_tolerance,
+            "scope": "terminal_approaches_only; interior signal approaches require separate evidence",
+            "api_selection_is_physical_lane_validity": False,
+            "api_green_encoding": "raw_GO_or_GO_EXCL_to_static_plugin_code_3_or_5; never_4",
+            "api_blink_state": 6,
+            "unselected_physical_controllers": "unavailable; no sibling phase substitution",
+            "missing_source_lane_validity": "unverified; not inferred from API lane sign"}
         for controller_id, controller in sorted(controllers.items()):
             if controller_id in api_controllers:
                 continue
@@ -405,10 +481,19 @@ class Builder:
                     "xodr_type": signal.get("type"), "xodr_subtype": signal.get("subtype")}))
             lamps[signal_id] = lamp
             self.map.add(lamp)
+        self.report["source_controller_lamp_spans"] = []
+        for controller_id, controller in sorted(controllers.items()):
+            positions = [np.array([lamps[int(control.get("signalId"))][0].x,
+                lamps[int(control.get("signalId"))][0].y]) for control in controller.findall("control")]
+            span = max((float(np.linalg.norm(a - b)) for a in positions for b in positions), default=0.)
+            self.report["source_controller_lamp_spans"].append({"controller": controller_id,
+                "span_m": span, "coordinates": "source_positionRoad_or_signal_preserved",
+                "review_required": span > 100.})
         successors = collections.defaultdict(list)
         for source, target in self.links:
             successors[source].append(target)
         registered = set()
+        relation_distances = []
         for road_id, sign, controller_id, green_code in mapping_entries:
             controller = controllers.get(controller_id)
             if controller is None:
@@ -418,10 +503,24 @@ class Builder:
                         record["lanelet"].attributes["unresolved_controller_id"] = str(controller_id)
                 continue
             selected_lamps = [lamps[int(control.get("signalId"))] for control in controller.findall("control")]
+            validity = [valid for control in controller.findall("control")
+                for owner, signal in [raw_signals[int(control.get("signalId"))]] if owner == road_id
+                for valid in signal.findall("validity")]
+            exit_s = 0. if sign > 0 else number(self.roads[road_id], "length")
             for identifier, record in self.records.items():
                 if record["key"][0] != road_id or (1 if record["key"][2] > 0 else -1) != sign:
                     continue
                 for position, stopline in record["stoplines"]:
+                    # ponytail: only terminal approaches are supported; interior signals need explicit scope.
+                    reason = "outside_terminal_approach" if abs(position - exit_s) > approach_tolerance else None
+                    if validity and not any(min(int(valid.get("fromLane")), int(valid.get("toLane"))) <= record["key"][2]
+                            <= max(int(valid.get("fromLane")), int(valid.get("toLane"))) for valid in validity):
+                        reason = "outside_source_lane_validity"
+                    if reason:
+                        self.report["signal_mapping_rejections"].append({"controller": controller_id,
+                            "lanelet": identifier, "stopline": stopline.id, "reason": reason,
+                            "distance_to_approach_end_m": abs(position - exit_s)})
+                        continue
                     direction = -1 if sign > 0 else 1
                     arrows = []
                     arrow_types = {"RM_537_LT.flt": ["left"], "RM_537_RT.flt": ["right"], "RM_537_ST.flt": ["straight"],
@@ -453,7 +552,12 @@ class Builder:
                             movements.add("left" if delta > 0.4 else "right" if delta < -0.4 else "straight")
                     permissions = [{4, 5} if movement in ("left", "uturn") else {3, 5} for movement in movements]
                     allowed = set.intersection(*permissions) if permissions else set()
-                    attrs = {"controller_id": str(controller_id), "movement": "+".join(sorted(movements)) or "unresolved",
+                    attrs = {"controller_id": str(controller_id),
+                        "api_selected_controller_id": str(api_by_approach.get((road_id, sign), 0)),
+                        "api_observation": "selected_controller" if controller_id in api_controllers else "unavailable",
+                        "lane_validity_source": "xodr_signal_validity" if validity else "unverified_not_specified",
+                        "stopline_scope": "terminal_approach",
+                        "distance_to_approach_end_m": str(abs(position - exit_s)), "movement": "+".join(sorted(movements)) or "unresolved",
                         "movement_source": movement_source, "plugin_green_code": str(green_code),
                         "permitted_states": ",".join(map(str, sorted(allowed))),
                         "mapping_source": "plugin_road_lane_sign_and_xodr_control" if controller_id in api_controllers else "xodr_signal_approach"}
@@ -461,16 +565,30 @@ class Builder:
                     record["lanelet"].addRegulatoryElement(regulation)
                     self.map.add(regulation)
                     registered.add(controller_id)
+                    stop_center = np.mean([[point.x, point.y] for point in stopline], axis=0)
+                    relation_distances.extend(float(np.linalg.norm(stop_center - np.mean([[point.x, point.y] for point in lamp], axis=0)))
+                        for lamp in selected_lamps)
                     self.report["signal_regulations"].append({"controller": controller_id, "lanelet": identifier, "stopline": stopline.id,
-                        "movement": attrs["movement"], "permitted_states": sorted(allowed), "source": movement_source})
+                        "movement": attrs["movement"], "permitted_states": sorted(allowed), "source": movement_source,
+                        "api_selected_controller_id": api_by_approach.get((road_id, sign), 0),
+                        "api_observation": attrs["api_observation"], "lane_validity_source": attrs["lane_validity_source"],
+                        "distance_to_approach_end_m": abs(position - exit_s)})
         for controller_id, controller in sorted(controllers.items()):
             if controller_id not in registered:
                 selected_lamps = [lamps[int(control.get("signalId"))] for control in controller.findall("control")]
                 regulation = ll.TrafficLight(self.identifier(), ll.AttributeMap({"controller_id": str(controller_id),
-                    "movement": "unresolved", "permitted_states": "", "mapping_source": "xodr_control_no_resolved_stopline"}), selected_lamps)
+                    "movement": "unresolved", "permitted_states": "", "mapping_source": "xodr_control_no_resolved_stopline",
+                    "api_observation": "selected_controller" if controller_id in api_controllers else "unavailable"}), selected_lamps)
                 self.map.add(regulation)
         self.report["api_controllers_without_stopline"] = sorted(set(entry[2] for entry in entries) - registered)
         self.report["xodr_controllers_without_stopline"] = sorted(set(controllers) - registered)
+        self.report["signal_mapping_audit"] = {"regulation_count": len(self.report["signal_regulations"]),
+            "rejected_candidate_count": len(self.report["signal_mapping_rejections"]),
+            "lamp_stopline_relation_count": len(relation_distances),
+            "max_lamp_stopline_distance_m": max(relation_distances, default=0.),
+            "lamp_stopline_relations_over_100m": sum(distance > 100. for distance in relation_distances),
+            "unverified_lane_validity_count": sum(reg["lane_validity_source"] == "unverified_not_specified"
+                for reg in self.report["signal_regulations"])}
         self.report["physical_signal_count"] = len(lamps)
         self.report["controller_count"] = len(controllers)
 
@@ -545,7 +663,7 @@ class Builder:
             "api_controllers_without_stopline": self.report["api_controllers_without_stopline"],
             "unassigned_source_stoplines": [stop["id"] for stop in self.report["stoplines"] if not stop["lanelets"]],
             "unverified_legal_speed_extents": True,
-            "simulator_alignment_and_braking_not_measured": True}
+            "full_simulator_alignment_and_braking_not_validated": True}
         self.report["binary_sha256"] = digest(output / "hdmap.bin")
         self.report["binary_size_bytes"] = (output / "hdmap.bin").stat().st_size
         self.report["lanelets"] = {str(identifier): {"xodr": record["key"], "s": [record["begin"], record["end"]],

@@ -1,0 +1,5479 @@
+{
+  "reviewer": "signal_audit",
+  "assignment": "page_index % 4 == 2",
+  "files_actually_viewed": [
+    "/tmp/hdmap-audit/full-vision/atlas/pages/p002.jpg",
+    "/tmp/hdmap-audit/full-vision/atlas/pages/p006.jpg",
+    "/tmp/hdmap-audit/full-vision/atlas/pages/p010.jpg",
+    "/tmp/hdmap-audit/full-vision/atlas/pages/p014.jpg",
+    "/tmp/hdmap-audit/full-vision/atlas/pages/p018.jpg",
+    "/tmp/hdmap-audit/full-vision/atlas/pages/p022.jpg",
+    "/tmp/hdmap-audit/full-vision/atlas/pages/p026.jpg",
+    "/tmp/hdmap-audit/full-vision/atlas/pages/p030.jpg",
+    "/tmp/hdmap-audit/full-vision/atlas/pages/p034.jpg",
+    "/tmp/hdmap-audit/full-vision/atlas/pages/p038.jpg",
+    "/tmp/hdmap-audit/full-vision/atlas/pages/p042.jpg",
+    "/tmp/hdmap-audit/full-vision/atlas/pages/p046.jpg",
+    "/tmp/hdmap-audit/full-vision/atlas/pages/p050.jpg",
+    "/tmp/hdmap-audit/full-vision/atlas/pages/p054.jpg",
+    "/tmp/hdmap-audit/full-vision/atlas/pages/p058.jpg",
+    "/tmp/hdmap-audit/full-vision/atlas/pages/p062.jpg",
+    "/tmp/hdmap-audit/full-vision/atlas/pages/p066.jpg",
+    "/tmp/hdmap-audit/full-vision/atlas/pages/p070.jpg",
+    "/tmp/hdmap-audit/full-vision/atlas/pages/p074.jpg",
+    "/tmp/hdmap-audit/full-vision/atlas/pages/p078.jpg",
+    "/tmp/hdmap-audit/full-vision/atlas/pages/p082.jpg",
+    "/tmp/hdmap-audit/full-vision/atlas/pages/p086.jpg",
+    "/tmp/hdmap-audit/full-vision/atlas/pages/p090.jpg",
+    "/tmp/hdmap-audit/full-vision/atlas/pages/p094.jpg",
+    "/tmp/hdmap-audit/full-vision/atlas/pages/p098.jpg",
+    "/tmp/hdmap-audit/full-vision/atlas/pages/p102.jpg",
+    "/tmp/hdmap-audit/full-vision/atlas/pages/p106.jpg",
+    "/tmp/hdmap-audit/full-vision/atlas/pages/p110.jpg",
+    "/tmp/hdmap-audit/full-vision/atlas/pages/p114.jpg",
+    "/tmp/hdmap-audit/full-vision/atlas/pages/p118.jpg",
+    "/tmp/hdmap-audit/full-vision/atlas/pages/p122.jpg",
+    "/tmp/hdmap-audit/full-vision/atlas/pages/p126.jpg",
+    "/tmp/hdmap-audit/full-vision/atlas/pages/p130.jpg",
+    "/tmp/hdmap-audit/full-vision/atlas/pages/p134.jpg",
+    "/tmp/hdmap-audit/full-vision/atlas/pages/p138.jpg",
+    "/tmp/hdmap-audit/full-vision/atlas/pages/p142.jpg",
+    "/tmp/hdmap-audit/full-vision/atlas/pages/p146.jpg",
+    "/tmp/hdmap-audit/full-vision/atlas/pages/p150.jpg",
+    "/tmp/hdmap-audit/full-vision/atlas/tiles/t00_20_source.jpg",
+    "/tmp/hdmap-audit/full-vision/atlas/tiles/t00_20_overlay.jpg",
+    "/tmp/hdmap-audit/full-vision/atlas/tiles/t07_18_source.jpg",
+    "/tmp/hdmap-audit/full-vision/atlas/tiles/t07_18_overlay.jpg",
+    "/tmp/hdmap-audit/full-vision/atlas/tiles/t15_21_source.jpg",
+    "/tmp/hdmap-audit/full-vision/atlas/tiles/t15_21_overlay.jpg",
+    "/tmp/hdmap-audit/full-vision/atlas/tiles/t26_23_source.jpg",
+    "/tmp/hdmap-audit/full-vision/atlas/tiles/t26_23_overlay.jpg",
+    "/tmp/hdmap-audit/full-vision/atlas/tiles/t06_21_source.jpg",
+    "/tmp/hdmap-audit/full-vision/atlas/tiles/t06_21_overlay.jpg",
+    "/tmp/hdmap-audit/full-vision/atlas/tiles/t07_19_source.jpg",
+    "/tmp/hdmap-audit/full-vision/atlas/tiles/t07_19_overlay.jpg",
+    "/tmp/hdmap-audit/full-vision/atlas/tiles/t08_11_source.jpg",
+    "/tmp/hdmap-audit/full-vision/atlas/tiles/t08_11_overlay.jpg",
+    "/tmp/hdmap-audit/full-vision/atlas/tiles/t08_19_source.jpg",
+    "/tmp/hdmap-audit/full-vision/atlas/tiles/t08_19_overlay.jpg",
+    "/tmp/hdmap-audit/full-vision/atlas/tiles/t08_20_source.jpg",
+    "/tmp/hdmap-audit/full-vision/atlas/tiles/t08_20_overlay.jpg",
+    "/tmp/hdmap-audit/full-vision/atlas/tiles/t29_21_source.jpg",
+    "/tmp/hdmap-audit/full-vision/atlas/tiles/t29_21_overlay.jpg",
+    "/tmp/hdmap-audit/full-vision/atlas/tiles/t29_22_source.jpg",
+    "/tmp/hdmap-audit/full-vision/atlas/tiles/t29_22_overlay.jpg"
+  ],
+  "tiles": [
+    {
+      "tile_id": "t00_19",
+      "page": 2,
+      "observations": [
+        "Two-way curved approach and widened straight section remain continuously covered; magenta transverse stops coincide with the two visible painted approach bars. Pavement outside the road remains unfilled."
+      ],
+      "decision": "no_visible_conversion_error",
+      "source_keys": [
+        {
+          "road_id": 1909,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 1910,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 1922,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 1925,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 1976,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 1909,
+          "object_id": 2007,
+          "mesh_candidate_index": null,
+          "native_stopline": 543045,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 1909,
+          "object_id": 2006,
+          "mesh_candidate_index": null,
+          "native_stopline": 543042,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 1910,
+          "object_id": 2010,
+          "mesh_candidate_index": null,
+          "native_stopline": 543048,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 1910,
+          "object_id": 2012,
+          "mesh_candidate_index": null,
+          "native_stopline": 543054,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 1910,
+          "object_id": 2011,
+          "mesh_candidate_index": null,
+          "native_stopline": 543051,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 1910,
+          "object_id": 2013,
+          "mesh_candidate_index": null,
+          "native_stopline": 543057,
+          "kind": "xodr_stop_object"
+        }
+      ],
+      "zoomed_images": []
+    },
+    {
+      "tile_id": "t00_20",
+      "page": 2,
+      "observations": [
+        "Diagonal road edge and crosswalk remain covered; one transverse white line next to the cropped crosswalk needs full tile inspection to distinguish paint from a missing stop marker.",
+        "At 1280px both transverse source bars are exactly covered by magenta markers; the apparent page-scale missing bar is resolved."
+      ],
+      "decision": "clear_after_zoom",
+      "source_keys": [
+        {
+          "road_id": 1910,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 1922,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 1925,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 1973,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 1976,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 1910,
+          "object_id": 2010,
+          "mesh_candidate_index": null,
+          "native_stopline": 543048,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 1910,
+          "object_id": 2012,
+          "mesh_candidate_index": null,
+          "native_stopline": 543054,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 1910,
+          "object_id": 2011,
+          "mesh_candidate_index": null,
+          "native_stopline": 543051,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 1910,
+          "object_id": 2013,
+          "mesh_candidate_index": null,
+          "native_stopline": 543057,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 1910,
+          "object_id": 2026,
+          "mesh_candidate_index": null,
+          "native_stopline": 543060,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 1910,
+          "object_id": 2027,
+          "mesh_candidate_index": null,
+          "native_stopline": 543063,
+          "kind": "xodr_stop_object"
+        }
+      ],
+      "zoomed_images": [
+        "/tmp/hdmap-audit/full-vision/atlas/tiles/t00_20_source.jpg",
+        "/tmp/hdmap-audit/full-vision/atlas/tiles/t00_20_overlay.jpg"
+      ]
+    },
+    {
+      "tile_id": "t02_16",
+      "page": 6,
+      "observations": [
+        "Two adjacent T intersections have continuous turning cells on pavement; corner islands and the central building block remain outside lane coverage, and the displayed approach stops track the transverse paint."
+      ],
+      "decision": "no_visible_conversion_error",
+      "source_keys": [
+        {
+          "road_id": 1826,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 1845,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 1846,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 1849,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 1852,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 1855,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 1858,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 1861,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 1864,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 1869,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 1878,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 1892,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 1895,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 1901,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 1908,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 1846,
+          "object_id": 1827,
+          "mesh_candidate_index": null,
+          "native_stopline": 542970,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 1846,
+          "object_id": 1828,
+          "mesh_candidate_index": null,
+          "native_stopline": 542973,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 1846,
+          "object_id": 1829,
+          "mesh_candidate_index": null,
+          "native_stopline": 542976,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 1869,
+          "object_id": 1874,
+          "mesh_candidate_index": null,
+          "native_stopline": 543003,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 1846,
+          "object_id": 1816,
+          "mesh_candidate_index": null,
+          "native_stopline": 542967,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 1845,
+          "object_id": 1813,
+          "mesh_candidate_index": null,
+          "native_stopline": 542958,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 1826,
+          "object_id": 1792,
+          "mesh_candidate_index": null,
+          "native_stopline": 542949,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 1845,
+          "object_id": 1814,
+          "mesh_candidate_index": null,
+          "native_stopline": 542961,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 1826,
+          "object_id": 1793,
+          "mesh_candidate_index": null,
+          "native_stopline": 542952,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 1845,
+          "object_id": 1815,
+          "mesh_candidate_index": null,
+          "native_stopline": 542964,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 1826,
+          "object_id": 1794,
+          "mesh_candidate_index": null,
+          "native_stopline": 542955,
+          "kind": "xodr_stop_object"
+        }
+      ],
+      "zoomed_images": []
+    },
+    {
+      "tile_id": "t02_17",
+      "page": 6,
+      "observations": [
+        "Broad multi-lane junction and diagonal approaches show continuous turn coverage; the triangular hatched center divider stays between the lane groups and approach stops align with the source bars."
+      ],
+      "decision": "no_visible_conversion_error",
+      "source_keys": [
+        {
+          "road_id": 1845,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 1868,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 1869,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 1878,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 1892,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 1895,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 1898,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 1901,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 1908,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 1868,
+          "object_id": 1837,
+          "mesh_candidate_index": null,
+          "native_stopline": 542982,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 1869,
+          "object_id": 1871,
+          "mesh_candidate_index": null,
+          "native_stopline": 542994,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 1869,
+          "object_id": 1872,
+          "mesh_candidate_index": null,
+          "native_stopline": 542997,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 1869,
+          "object_id": 1875,
+          "mesh_candidate_index": null,
+          "native_stopline": 543006,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 1869,
+          "object_id": 1873,
+          "mesh_candidate_index": null,
+          "native_stopline": 543000,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 1869,
+          "object_id": 1876,
+          "mesh_candidate_index": null,
+          "native_stopline": 543009,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 1869,
+          "object_id": 1874,
+          "mesh_candidate_index": null,
+          "native_stopline": 543003,
+          "kind": "xodr_stop_object"
+        }
+      ],
+      "zoomed_images": []
+    },
+    {
+      "tile_id": "t03_17",
+      "page": 10,
+      "observations": [
+        "Tight S bend remains covered on both carriageways; the hatched taper between them remains outside the cells. Visible transverse stops on the narrow approach align with magenta markers."
+      ],
+      "decision": "no_visible_conversion_error",
+      "source_keys": [
+        {
+          "road_id": 1845,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 1869,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 1928,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 1977,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 1987,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 1990,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 1999,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 2002,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 1999,
+          "object_id": 2361,
+          "mesh_candidate_index": null,
+          "native_stopline": 543184,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 1999,
+          "object_id": 2362,
+          "mesh_candidate_index": null,
+          "native_stopline": 543187,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 1999,
+          "object_id": 2360,
+          "mesh_candidate_index": null,
+          "native_stopline": 543181,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 1977,
+          "object_id": 2334,
+          "mesh_candidate_index": null,
+          "native_stopline": 543163,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 1977,
+          "object_id": 2333,
+          "mesh_candidate_index": null,
+          "native_stopline": 543160,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 1977,
+          "object_id": 2321,
+          "mesh_candidate_index": null,
+          "native_stopline": 543151,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 1977,
+          "object_id": 2322,
+          "mesh_candidate_index": null,
+          "native_stopline": 543154,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 1977,
+          "object_id": 2323,
+          "mesh_candidate_index": null,
+          "native_stopline": 543157,
+          "kind": "xodr_stop_object"
+        }
+      ],
+      "zoomed_images": []
+    },
+    {
+      "tile_id": "t03_18",
+      "page": 10,
+      "observations": [
+        "Large four-arm intersection contains overlapping movement cells confined to paved approaches and turning routes. Four gray crosswalks remain visible under the overlay and transverse stops track their approach bars; no missing approach stripe is apparent at page resolution."
+      ],
+      "decision": "no_visible_conversion_error",
+      "source_keys": [
+        {
+          "road_id": 1869,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 1926,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 1927,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 1928,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 1931,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 1937,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 1940,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 1943,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 1946,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 1949,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 1952,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 1955,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 1961,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 1964,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 3229,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 4725,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 1869,
+          "object_id": 1936,
+          "mesh_candidate_index": null,
+          "native_stopline": 543015,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 1869,
+          "object_id": 1937,
+          "mesh_candidate_index": null,
+          "native_stopline": 543018,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 1869,
+          "object_id": 1938,
+          "mesh_candidate_index": null,
+          "native_stopline": 543021,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 1869,
+          "object_id": 1939,
+          "mesh_candidate_index": null,
+          "native_stopline": 543024,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 1926,
+          "object_id": 2042,
+          "mesh_candidate_index": null,
+          "native_stopline": 543078,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 1869,
+          "object_id": 1940,
+          "mesh_candidate_index": null,
+          "native_stopline": 543027,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 1926,
+          "object_id": 2040,
+          "mesh_candidate_index": null,
+          "native_stopline": 543072,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 1869,
+          "object_id": 1935,
+          "mesh_candidate_index": null,
+          "native_stopline": 543012,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 1926,
+          "object_id": 2044,
+          "mesh_candidate_index": null,
+          "native_stopline": 543084,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 1926,
+          "object_id": 2041,
+          "mesh_candidate_index": null,
+          "native_stopline": 543075,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 1926,
+          "object_id": 2043,
+          "mesh_candidate_index": null,
+          "native_stopline": 543081,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 1926,
+          "object_id": 2038,
+          "mesh_candidate_index": null,
+          "native_stopline": 543066,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 1926,
+          "object_id": 2039,
+          "mesh_candidate_index": null,
+          "native_stopline": 543069,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 1928,
+          "object_id": 2301,
+          "mesh_candidate_index": null,
+          "native_stopline": 543137,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 1928,
+          "object_id": 2302,
+          "mesh_candidate_index": null,
+          "native_stopline": 543140,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 1928,
+          "object_id": 2304,
+          "mesh_candidate_index": null,
+          "native_stopline": 543146,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 1927,
+          "object_id": null,
+          "mesh_candidate_index": 198,
+          "native_stopline": 544389,
+          "kind": "retained_osgb_repair"
+        },
+        {
+          "road_id": 1928,
+          "object_id": 2303,
+          "mesh_candidate_index": null,
+          "native_stopline": 543143,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 1927,
+          "object_id": 2232,
+          "mesh_candidate_index": null,
+          "native_stopline": 543122,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 1927,
+          "object_id": 2231,
+          "mesh_candidate_index": null,
+          "native_stopline": 543119,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 1928,
+          "object_id": 2305,
+          "mesh_candidate_index": null,
+          "native_stopline": 543147,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 1928,
+          "object_id": 2306,
+          "mesh_candidate_index": null,
+          "native_stopline": 543150,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 1928,
+          "object_id": null,
+          "mesh_candidate_index": 280,
+          "native_stopline": 544392,
+          "kind": "retained_osgb_repair"
+        },
+        {
+          "road_id": 1927,
+          "object_id": 2236,
+          "mesh_candidate_index": null,
+          "native_stopline": 543134,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 1927,
+          "object_id": 2235,
+          "mesh_candidate_index": null,
+          "native_stopline": 543131,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 1927,
+          "object_id": 2233,
+          "mesh_candidate_index": null,
+          "native_stopline": 543125,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 1927,
+          "object_id": 2234,
+          "mesh_candidate_index": null,
+          "native_stopline": 543128,
+          "kind": "xodr_stop_object"
+        }
+      ],
+      "zoomed_images": []
+    },
+    {
+      "tile_id": "t04_17",
+      "page": 14,
+      "observations": [
+        "Wide diagonal T junction and side-road mouth have continuous lane/cell paths; island and building areas are excluded. Stops on the main road and side approach coincide with transverse painted bars."
+      ],
+      "decision": "no_visible_conversion_error",
+      "source_keys": [
+        {
+          "road_id": 1928,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 1977,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 1978,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 1981,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 1987,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 1990,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 1993,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 1996,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 2003,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 2063,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 2075,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 3195,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 3372,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 1977,
+          "object_id": 2321,
+          "mesh_candidate_index": null,
+          "native_stopline": 543151,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 1977,
+          "object_id": 2322,
+          "mesh_candidate_index": null,
+          "native_stopline": 543154,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 1977,
+          "object_id": 2323,
+          "mesh_candidate_index": null,
+          "native_stopline": 543157,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 1978,
+          "object_id": 2337,
+          "mesh_candidate_index": null,
+          "native_stopline": 543172,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 1978,
+          "object_id": 2352,
+          "mesh_candidate_index": null,
+          "native_stopline": 543178,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 1978,
+          "object_id": 2351,
+          "mesh_candidate_index": null,
+          "native_stopline": 543175,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 3372,
+          "object_id": 6313,
+          "mesh_candidate_index": null,
+          "native_stopline": 544349,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 3372,
+          "object_id": 6312,
+          "mesh_candidate_index": null,
+          "native_stopline": 544346,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 2003,
+          "object_id": 2468,
+          "mesh_candidate_index": null,
+          "native_stopline": 543208,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 3372,
+          "object_id": 6315,
+          "mesh_candidate_index": null,
+          "native_stopline": 544354,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 2003,
+          "object_id": 2470,
+          "mesh_candidate_index": null,
+          "native_stopline": 543214,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 3372,
+          "object_id": 6314,
+          "mesh_candidate_index": null,
+          "native_stopline": 544351,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 2003,
+          "object_id": 2469,
+          "mesh_candidate_index": null,
+          "native_stopline": 543211,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 2003,
+          "object_id": 2471,
+          "mesh_candidate_index": null,
+          "native_stopline": 543216,
+          "kind": "xodr_stop_object"
+        }
+      ],
+      "zoomed_images": []
+    },
+    {
+      "tile_id": "t04_18",
+      "page": 14,
+      "observations": [
+        "Straight multi-lane carriageways at the tile margin remain within the yellow outer boundaries; the central road division is retained and buildings remain outside coverage."
+      ],
+      "decision": "no_visible_conversion_error",
+      "source_keys": [
+        {
+          "road_id": 1927,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 1928,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 1952,
+          "kind": "xodr_road_in_tile_context"
+        }
+      ],
+      "zoomed_images": []
+    },
+    {
+      "tile_id": "t05_15",
+      "page": 18,
+      "observations": [
+        "This tile is mostly buildings and unmarked ground; only the small upper-left road corner has lane/cell overlay, with no invented coverage through the buildings."
+      ],
+      "decision": "no_visible_conversion_error",
+      "source_keys": [
+        {
+          "road_id": 2004,
+          "kind": "xodr_road_in_tile_context"
+        }
+      ],
+      "zoomed_images": []
+    },
+    {
+      "tile_id": "t05_16",
+      "page": 18,
+      "observations": [
+        "Straight multi-lane road flanks a planted median. Cells remain on each paved carriageway and do not fill the median islands or adjacent buildings."
+      ],
+      "decision": "no_visible_conversion_error",
+      "source_keys": [
+        {
+          "road_id": 2003,
+          "kind": "xodr_road_in_tile_context"
+        }
+      ],
+      "zoomed_images": []
+    },
+    {
+      "tile_id": "t06_13",
+      "page": 22,
+      "observations": [
+        "Most of the tile contains buildings and open ground. The lower-left cropped red speed zone has continuous road cells and a transverse stop marker matching the visible painted bar."
+      ],
+      "decision": "no_visible_conversion_error",
+      "source_keys": [
+        {
+          "road_id": 1750,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 1769,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 1775,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 3317,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 1769,
+          "object_id": 1581,
+          "mesh_candidate_index": null,
+          "native_stopline": 542865,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 1750,
+          "object_id": 1565,
+          "mesh_candidate_index": null,
+          "native_stopline": 542862,
+          "kind": "xodr_stop_object"
+        }
+      ],
+      "zoomed_images": []
+    },
+    {
+      "tile_id": "t06_14",
+      "page": 22,
+      "observations": [
+        "Diagonal two-way approach has continuous cells past the crosswalk and along both sides of the hatched taper; the taper and adjacent buildings remain outside lane coverage."
+      ],
+      "decision": "no_visible_conversion_error",
+      "source_keys": [
+        {
+          "road_id": 2004,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 2007,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 2010,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 2004,
+          "object_id": null,
+          "mesh_candidate_index": 207,
+          "native_stopline": 544395,
+          "kind": "retained_osgb_repair"
+        },
+        {
+          "road_id": 2004,
+          "object_id": 2501,
+          "mesh_candidate_index": null,
+          "native_stopline": 543230,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 2004,
+          "object_id": 2500,
+          "mesh_candidate_index": null,
+          "native_stopline": 543227,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 2004,
+          "object_id": 2499,
+          "mesh_candidate_index": null,
+          "native_stopline": 543224,
+          "kind": "xodr_stop_object"
+        }
+      ],
+      "zoomed_images": []
+    },
+    {
+      "tile_id": "t06_21",
+      "page": 26,
+      "observations": [
+        "Straight multi-lane road remains inside yellow edges and clear of the houses. A solitary red stop primitive is visible on unmarked ground left of the houses; source identity and nonassignment need verification.",
+        "1280px source confirms the isolated red primitive lies in unmarked ground behind the houses, far from the visible paved corridor.",
+        "Every isolated red primitive is an unchanged XODR stop object, with cell_assignment=unresolved, zero lanelet/cell assignment, and no controller. Preserve the source primitive without forcing it onto a vehicle route or adding a signal."
+      ],
+      "decision": "preserve_by_xodr_policy",
+      "source_keys": [
+        {
+          "road_id": 2076,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 2115,
+          "object_id": 2991,
+          "mesh_candidate_index": null,
+          "native_stopline": 543360,
+          "kind": "xodr_stop_object"
+        }
+      ],
+      "zoomed_images": [
+        "/tmp/hdmap-audit/full-vision/atlas/tiles/t06_21_source.jpg",
+        "/tmp/hdmap-audit/full-vision/atlas/tiles/t06_21_overlay.jpg"
+      ],
+      "source_policy_evidence": [
+        {
+          "road_id": 2115,
+          "object_id": 2991,
+          "native_stopline": 543360,
+          "source_exists": true,
+          "source_s": 0,
+          "source_t": 74.0711563349202,
+          "unchanged_geometry": true,
+          "cell_assignment": "unresolved",
+          "cell_count": 0,
+          "source_lanes": [],
+          "controllers": [],
+          "all_prior_native_checks_pass": true
+        }
+      ]
+    },
+    {
+      "tile_id": "t06_22",
+      "page": 26,
+      "observations": [
+        "Long diagonal straight carriageways show continuous uniformly spaced cells across the tile; planted and building areas remain unfilled and no transverse stop is introduced on this open segment."
+      ],
+      "decision": "no_visible_conversion_error",
+      "source_keys": [
+        {
+          "road_id": 2076,
+          "kind": "xodr_road_in_tile_context"
+        }
+      ],
+      "zoomed_images": []
+    },
+    {
+      "tile_id": "t07_18",
+      "page": 30,
+      "observations": [
+        "Two small crosswalks and the intervening straight road remain continuously covered. Magenta lines appear at the crosswalk approaches; the separate middle white transverse bar needs full tile verification.",
+        "At 1280px all three white bars, including the isolated intermediate bar, have matching magenta stops; no stop omission is visible."
+      ],
+      "decision": "clear_after_zoom",
+      "source_keys": [
+        {
+          "road_id": 2139,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 2152,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 2165,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 2171,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 2183,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 2190,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 2139,
+          "object_id": 3008,
+          "mesh_candidate_index": null,
+          "native_stopline": 543375,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 2139,
+          "object_id": 3007,
+          "mesh_candidate_index": null,
+          "native_stopline": 543372,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 2152,
+          "object_id": null,
+          "mesh_candidate_index": 576,
+          "native_stopline": 544424,
+          "kind": "retained_osgb_repair"
+        },
+        {
+          "road_id": 2152,
+          "object_id": 3033,
+          "mesh_candidate_index": null,
+          "native_stopline": 543384,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 2152,
+          "object_id": 3032,
+          "mesh_candidate_index": null,
+          "native_stopline": 543381,
+          "kind": "xodr_stop_object"
+        }
+      ],
+      "zoomed_images": [
+        "/tmp/hdmap-audit/full-vision/atlas/tiles/t07_18_source.jpg",
+        "/tmp/hdmap-audit/full-vision/atlas/tiles/t07_18_overlay.jpg"
+      ]
+    },
+    {
+      "tile_id": "t07_19",
+      "page": 30,
+      "observations": [
+        "Cropped two-way road and crosswalk are covered on pavement, while three isolated red primitives appear on unmarked ground near buildings; these require source-preservation classification.",
+        "1280px view confirms three separate red primitives on unmarked ground; each visible on-road white bar still has an aligned magenta marker.",
+        "Every isolated red primitive is an unchanged XODR stop object, with cell_assignment=unresolved, zero lanelet/cell assignment, and no controller. Preserve the source primitive without forcing it onto a vehicle route or adding a signal."
+      ],
+      "decision": "preserve_by_xodr_policy",
+      "source_keys": [
+        {
+          "road_id": 2115,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 2116,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 2139,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 2148,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 2151,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 2165,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 2171,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 2139,
+          "object_id": null,
+          "mesh_candidate_index": 334,
+          "native_stopline": 544421,
+          "kind": "retained_osgb_repair"
+        },
+        {
+          "road_id": 2139,
+          "object_id": 3008,
+          "mesh_candidate_index": null,
+          "native_stopline": 543375,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 2139,
+          "object_id": 3007,
+          "mesh_candidate_index": null,
+          "native_stopline": 543372,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 2116,
+          "object_id": 2993,
+          "mesh_candidate_index": null,
+          "native_stopline": 543363,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 2116,
+          "object_id": 3000,
+          "mesh_candidate_index": null,
+          "native_stopline": 543369,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 2139,
+          "object_id": 3022,
+          "mesh_candidate_index": null,
+          "native_stopline": 543378,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 2115,
+          "object_id": 2990,
+          "mesh_candidate_index": null,
+          "native_stopline": 543357,
+          "kind": "xodr_stop_object"
+        }
+      ],
+      "zoomed_images": [
+        "/tmp/hdmap-audit/full-vision/atlas/tiles/t07_19_source.jpg",
+        "/tmp/hdmap-audit/full-vision/atlas/tiles/t07_19_overlay.jpg"
+      ],
+      "source_policy_evidence": [
+        {
+          "road_id": 2115,
+          "object_id": 2990,
+          "native_stopline": 543357,
+          "source_exists": true,
+          "source_s": 0,
+          "source_t": -74.18854013599339,
+          "unchanged_geometry": true,
+          "cell_assignment": "unresolved",
+          "cell_count": 0,
+          "source_lanes": [],
+          "controllers": [],
+          "all_prior_native_checks_pass": true
+        },
+        {
+          "road_id": 2116,
+          "object_id": 3000,
+          "native_stopline": 543369,
+          "source_exists": true,
+          "source_s": 0,
+          "source_t": 13.714278107139725,
+          "unchanged_geometry": true,
+          "cell_assignment": "unresolved",
+          "cell_count": 0,
+          "source_lanes": [],
+          "controllers": [],
+          "all_prior_native_checks_pass": true
+        },
+        {
+          "road_id": 2139,
+          "object_id": 3022,
+          "native_stopline": 543378,
+          "source_exists": true,
+          "source_s": 0,
+          "source_t": 37.86372348302619,
+          "unchanged_geometry": true,
+          "cell_assignment": "unresolved",
+          "cell_count": 0,
+          "source_lanes": [],
+          "controllers": [],
+          "all_prior_native_checks_pass": true
+        }
+      ]
+    },
+    {
+      "tile_id": "t08_11",
+      "page": 34,
+      "observations": [
+        "Intersection turn cells follow the paved corner and connect to the narrow straight road. Crosswalk and approach stop coverage is visible; one red primitive lies on unmarked ground away from the road and requires source lookup.",
+        "Full-resolution comparison confirms the red stop lies in unmarked ground between the narrow road and houses; intersection cells and visible painted stops remain aligned.",
+        "Every isolated red primitive is an unchanged XODR stop object, with cell_assignment=unresolved, zero lanelet/cell assignment, and no controller. Preserve the source primitive without forcing it onto a vehicle route or adding a signal.",
+        "The one red-looking cluster comprises the two nearby source objects 1476/1477 on road 1603."
+      ],
+      "decision": "preserve_by_xodr_policy",
+      "source_keys": [
+        {
+          "road_id": 116,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 1602,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 1603,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 1609,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 1612,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 1615,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 1618,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 1621,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 1622,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 1625,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 1628,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 1631,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 1634,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 1640,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 1643,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 1646,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 4738,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 1603,
+          "object_id": 1449,
+          "mesh_candidate_index": null,
+          "native_stopline": 542819,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 1603,
+          "object_id": 1450,
+          "mesh_candidate_index": null,
+          "native_stopline": 542822,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 116,
+          "object_id": 141,
+          "mesh_candidate_index": null,
+          "native_stopline": 542334,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 116,
+          "object_id": 140,
+          "mesh_candidate_index": null,
+          "native_stopline": 542331,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 116,
+          "object_id": 139,
+          "mesh_candidate_index": null,
+          "native_stopline": 542328,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 1602,
+          "object_id": 1444,
+          "mesh_candidate_index": null,
+          "native_stopline": 542810,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 1603,
+          "object_id": 1476,
+          "mesh_candidate_index": null,
+          "native_stopline": 542825,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 1603,
+          "object_id": 1477,
+          "mesh_candidate_index": null,
+          "native_stopline": 542828,
+          "kind": "xodr_stop_object"
+        }
+      ],
+      "zoomed_images": [
+        "/tmp/hdmap-audit/full-vision/atlas/tiles/t08_11_source.jpg",
+        "/tmp/hdmap-audit/full-vision/atlas/tiles/t08_11_overlay.jpg"
+      ],
+      "source_policy_evidence": [
+        {
+          "road_id": 1603,
+          "object_id": 1476,
+          "native_stopline": 542825,
+          "source_exists": true,
+          "source_s": 0,
+          "source_t": -65.53206650086601,
+          "unchanged_geometry": true,
+          "cell_assignment": "unresolved",
+          "cell_count": 0,
+          "source_lanes": [],
+          "controllers": [],
+          "all_prior_native_checks_pass": true
+        },
+        {
+          "road_id": 1603,
+          "object_id": 1477,
+          "native_stopline": 542828,
+          "source_exists": true,
+          "source_s": 0,
+          "source_t": -64.93641245411435,
+          "unchanged_geometry": true,
+          "cell_assignment": "unresolved",
+          "cell_count": 0,
+          "source_lanes": [],
+          "controllers": [],
+          "all_prior_native_checks_pass": true
+        }
+      ]
+    },
+    {
+      "tile_id": "t08_12",
+      "page": 34,
+      "observations": [
+        "Curving two-way road widens around a hatched taper; cells follow both carriageways while excluding the taper. The crosswalk approach and lower transverse painted line have magenta stops."
+      ],
+      "decision": "no_visible_conversion_error",
+      "source_keys": [
+        {
+          "road_id": 1602,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 1603,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 1609,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 1612,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 1618,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 1621,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 1625,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 1634,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 1640,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 1646,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 1725,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 1743,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 1603,
+          "object_id": null,
+          "mesh_candidate_index": 187,
+          "native_stopline": 544380,
+          "kind": "retained_osgb_repair"
+        },
+        {
+          "road_id": 1603,
+          "object_id": null,
+          "mesh_candidate_index": 186,
+          "native_stopline": 544383,
+          "kind": "retained_osgb_repair"
+        },
+        {
+          "road_id": 1603,
+          "object_id": 1449,
+          "mesh_candidate_index": null,
+          "native_stopline": 542819,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 1603,
+          "object_id": 1450,
+          "mesh_candidate_index": null,
+          "native_stopline": 542822,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 1602,
+          "object_id": 1444,
+          "mesh_candidate_index": null,
+          "native_stopline": 542810,
+          "kind": "xodr_stop_object"
+        }
+      ],
+      "zoomed_images": []
+    },
+    {
+      "tile_id": "t08_19",
+      "page": 38,
+      "observations": [
+        "Only the upper road strip is covered and remains within its yellow edges; a red primitive appears in the lower unmarked ground and requires source identity confirmation.",
+        "Full-resolution comparison confirms the red stop is far below the cropped road on unmarked bare ground.",
+        "Every isolated red primitive is an unchanged XODR stop object, with cell_assignment=unresolved, zero lanelet/cell assignment, and no controller. Preserve the source primitive without forcing it onto a vehicle route or adding a signal."
+      ],
+      "decision": "preserve_by_xodr_policy",
+      "source_keys": [
+        {
+          "road_id": 2192,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 2115,
+          "object_id": 2990,
+          "mesh_candidate_index": null,
+          "native_stopline": 543357,
+          "kind": "xodr_stop_object"
+        }
+      ],
+      "zoomed_images": [
+        "/tmp/hdmap-audit/full-vision/atlas/tiles/t08_19_source.jpg",
+        "/tmp/hdmap-audit/full-vision/atlas/tiles/t08_19_overlay.jpg"
+      ],
+      "source_policy_evidence": [
+        {
+          "road_id": 2115,
+          "object_id": 2990,
+          "native_stopline": 543357,
+          "source_exists": true,
+          "source_s": 0,
+          "source_t": -74.18854013599339,
+          "unchanged_geometry": true,
+          "cell_assignment": "unresolved",
+          "cell_count": 0,
+          "source_lanes": [],
+          "controllers": [],
+          "all_prior_native_checks_pass": true
+        }
+      ]
+    },
+    {
+      "tile_id": "t08_20",
+      "page": 38,
+      "observations": [
+        "Red two-lane approach and neighboring lane remain continuously covered without entering adjacent roofs. An isolated red primitive at the lower-left ground needs source-preservation classification.",
+        "Full-resolution red primitive is on unmarked ground at the lower-left edge; the red-pavement road is covered continuously.",
+        "Every isolated red primitive is an unchanged XODR stop object, with cell_assignment=unresolved, zero lanelet/cell assignment, and no controller. Preserve the source primitive without forcing it onto a vehicle route or adding a signal."
+      ],
+      "decision": "preserve_by_xodr_policy",
+      "source_keys": [
+        {
+          "road_id": 2192,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 2257,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 2264,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 2358,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 2361,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 2373,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 2382,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 2115,
+          "object_id": 2990,
+          "mesh_candidate_index": null,
+          "native_stopline": 543357,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 2264,
+          "object_id": 3294,
+          "mesh_candidate_index": null,
+          "native_stopline": 543456,
+          "kind": "xodr_stop_object"
+        }
+      ],
+      "zoomed_images": [
+        "/tmp/hdmap-audit/full-vision/atlas/tiles/t08_20_source.jpg",
+        "/tmp/hdmap-audit/full-vision/atlas/tiles/t08_20_overlay.jpg"
+      ],
+      "source_policy_evidence": [
+        {
+          "road_id": 2115,
+          "object_id": 2990,
+          "native_stopline": 543357,
+          "source_exists": true,
+          "source_s": 0,
+          "source_t": -74.18854013599339,
+          "unchanged_geometry": true,
+          "cell_assignment": "unresolved",
+          "cell_count": 0,
+          "source_lanes": [],
+          "controllers": [],
+          "all_prior_native_checks_pass": true
+        }
+      ]
+    },
+    {
+      "tile_id": "t09_12",
+      "page": 42,
+      "observations": [
+        "Long multi-lane boulevard, its narrow parallel road, and cropped junction approaches retain continuous lane/cell coverage; visible transverse bars and crosswalk approaches coincide with stops."
+      ],
+      "decision": "no_visible_conversion_error",
+      "source_keys": [
+        {
+          "road_id": 1562,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 1563,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 1567,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 1573,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 1576,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 1583,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 1592,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 1595,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 1598,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 1601,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 1602,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 1609,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 1612,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 1615,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 1621,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 1631,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 1640,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 1648,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 1666,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 1681,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 1687,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 1690,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 1693,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 1702,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 1708,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 3280,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 3392,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 3415,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 3424,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 1602,
+          "object_id": 1444,
+          "mesh_candidate_index": null,
+          "native_stopline": 542810,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 1602,
+          "object_id": 1445,
+          "mesh_candidate_index": null,
+          "native_stopline": 542813,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 1602,
+          "object_id": 1446,
+          "mesh_candidate_index": null,
+          "native_stopline": 542816,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 1563,
+          "object_id": 1398,
+          "mesh_candidate_index": null,
+          "native_stopline": 542804,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 1648,
+          "object_id": 1483,
+          "mesh_candidate_index": null,
+          "native_stopline": 542834,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 1648,
+          "object_id": 1484,
+          "mesh_candidate_index": null,
+          "native_stopline": 542837,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 1648,
+          "object_id": 1482,
+          "mesh_candidate_index": null,
+          "native_stopline": 542831,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 1562,
+          "object_id": 1397,
+          "mesh_candidate_index": null,
+          "native_stopline": 542801,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 1563,
+          "object_id": 1405,
+          "mesh_candidate_index": null,
+          "native_stopline": 542807,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 1562,
+          "object_id": 1394,
+          "mesh_candidate_index": null,
+          "native_stopline": 542798,
+          "kind": "xodr_stop_object"
+        }
+      ],
+      "zoomed_images": []
+    },
+    {
+      "tile_id": "t09_13",
+      "page": 42,
+      "observations": [
+        "Widening boulevard approaches a large junction; cells follow the taper and keep the planted median separate. White and gray crosswalks remain under the expected connecting paths and stop markers."
+      ],
+      "decision": "no_visible_conversion_error",
+      "source_keys": [
+        {
+          "road_id": 940,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 1035,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 1648,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 1666,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 1687,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 1690,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 1693,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 1702,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 1705,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 1708,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 3346,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 3392,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 3415,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 3424,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 4728,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 1648,
+          "object_id": 1483,
+          "mesh_candidate_index": null,
+          "native_stopline": 542834,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 940,
+          "object_id": 1091,
+          "mesh_candidate_index": null,
+          "native_stopline": 542667,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 940,
+          "object_id": 1092,
+          "mesh_candidate_index": null,
+          "native_stopline": 542670,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 1648,
+          "object_id": 1484,
+          "mesh_candidate_index": null,
+          "native_stopline": 542837,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 940,
+          "object_id": 1093,
+          "mesh_candidate_index": null,
+          "native_stopline": 542673,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 1648,
+          "object_id": 1482,
+          "mesh_candidate_index": null,
+          "native_stopline": 542831,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 940,
+          "object_id": 1094,
+          "mesh_candidate_index": null,
+          "native_stopline": 542676,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 940,
+          "object_id": 1095,
+          "mesh_candidate_index": null,
+          "native_stopline": 542679,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 940,
+          "object_id": 1096,
+          "mesh_candidate_index": null,
+          "native_stopline": 542682,
+          "kind": "xodr_stop_object"
+        }
+      ],
+      "zoomed_images": []
+    },
+    {
+      "tile_id": "t09_21",
+      "page": 46,
+      "observations": [
+        "Shallow road curve carries the red school-zone pavement and its parallel lanes continuously; broad dark off-road structures remain outside the overlay."
+      ],
+      "decision": "no_visible_conversion_error",
+      "source_keys": [
+        {
+          "road_id": 2264,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 2312,
+          "kind": "xodr_road_in_tile_context"
+        }
+      ],
+      "zoomed_images": []
+    },
+    {
+      "tile_id": "t09_22",
+      "page": 46,
+      "observations": [
+        "Cropped narrow road has two separated crosswalks and matching approach stop markers; cells continue between them within the road edges and avoid the large roof structure."
+      ],
+      "decision": "no_visible_conversion_error",
+      "source_keys": [
+        {
+          "road_id": 2265,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 2305,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 2311,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 3464,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 2265,
+          "object_id": 3329,
+          "mesh_candidate_index": null,
+          "native_stopline": 543468,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 2265,
+          "object_id": 3328,
+          "mesh_candidate_index": null,
+          "native_stopline": 543465,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 2265,
+          "object_id": null,
+          "mesh_candidate_index": 71,
+          "native_stopline": 544442,
+          "kind": "retained_osgb_repair"
+        },
+        {
+          "road_id": 2305,
+          "object_id": 3485,
+          "mesh_candidate_index": null,
+          "native_stopline": 543500,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 2305,
+          "object_id": 3484,
+          "mesh_candidate_index": null,
+          "native_stopline": 543497,
+          "kind": "xodr_stop_object"
+        }
+      ],
+      "zoomed_images": []
+    },
+    {
+      "tile_id": "t10_13",
+      "page": 50,
+      "observations": [
+        "Four-arm multi-lane junction shows overlapping turn paths within the paved intersection. White and gray crosswalks and their transverse approach stops remain aligned, and the rounded corner exclusion is respected."
+      ],
+      "decision": "no_visible_conversion_error",
+      "source_keys": [
+        {
+          "road_id": 126,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 128,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 940,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 1011,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 1032,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 1035,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 1648,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 1666,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 1687,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 1690,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 1693,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 1702,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 1705,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 1708,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 3346,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 3392,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 3415,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 3424,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 4728,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 1648,
+          "object_id": 1483,
+          "mesh_candidate_index": null,
+          "native_stopline": 542834,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 940,
+          "object_id": 1091,
+          "mesh_candidate_index": null,
+          "native_stopline": 542667,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 940,
+          "object_id": 1092,
+          "mesh_candidate_index": null,
+          "native_stopline": 542670,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 1648,
+          "object_id": 1484,
+          "mesh_candidate_index": null,
+          "native_stopline": 542837,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 940,
+          "object_id": 1093,
+          "mesh_candidate_index": null,
+          "native_stopline": 542673,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 1648,
+          "object_id": 1482,
+          "mesh_candidate_index": null,
+          "native_stopline": 542831,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 940,
+          "object_id": 1094,
+          "mesh_candidate_index": null,
+          "native_stopline": 542676,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 940,
+          "object_id": 1095,
+          "mesh_candidate_index": null,
+          "native_stopline": 542679,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 940,
+          "object_id": 1096,
+          "mesh_candidate_index": null,
+          "native_stopline": 542682,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 128,
+          "object_id": 260,
+          "mesh_candidate_index": null,
+          "native_stopline": 542382,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 128,
+          "object_id": 259,
+          "mesh_candidate_index": null,
+          "native_stopline": 542379,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 128,
+          "object_id": 258,
+          "mesh_candidate_index": null,
+          "native_stopline": 542376,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 128,
+          "object_id": 257,
+          "mesh_candidate_index": null,
+          "native_stopline": 542373,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 128,
+          "object_id": 256,
+          "mesh_candidate_index": null,
+          "native_stopline": 542370,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 126,
+          "object_id": 250,
+          "mesh_candidate_index": null,
+          "native_stopline": 542361,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 128,
+          "object_id": 255,
+          "mesh_candidate_index": null,
+          "native_stopline": 542367,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 126,
+          "object_id": 249,
+          "mesh_candidate_index": null,
+          "native_stopline": 542358,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 126,
+          "object_id": 248,
+          "mesh_candidate_index": null,
+          "native_stopline": 542355,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 126,
+          "object_id": 251,
+          "mesh_candidate_index": null,
+          "native_stopline": 542364,
+          "kind": "xodr_stop_object"
+        }
+      ],
+      "zoomed_images": []
+    },
+    {
+      "tile_id": "t10_14",
+      "page": 50,
+      "observations": [
+        "Straight road126 narrows beside planted median islands and a hatched taper; orange cells stay on the paved carriageways and do not fill the islands."
+      ],
+      "decision": "no_visible_conversion_error",
+      "source_keys": [
+        {
+          "road_id": 126,
+          "kind": "xodr_road_in_tile_context"
+        }
+      ],
+      "zoomed_images": []
+    },
+    {
+      "tile_id": "t10_21",
+      "page": 54,
+      "observations": [
+        "Broad bend on road2312 retains continuous parallel lane coverage through the change from red school-zone pavement to gray pavement, with no off-road expansion."
+      ],
+      "decision": "no_visible_conversion_error",
+      "source_keys": [
+        {
+          "road_id": 2312,
+          "kind": "xodr_road_in_tile_context"
+        }
+      ],
+      "zoomed_images": []
+    },
+    {
+      "tile_id": "t10_22",
+      "page": 54,
+      "observations": [
+        "Continuation of the same gentle bend has regular cell coverage on both carriageways and no unexpected stop or signal relation on the open curve."
+      ],
+      "decision": "no_visible_conversion_error",
+      "source_keys": [
+        {
+          "road_id": 2312,
+          "kind": "xodr_road_in_tile_context"
+        }
+      ],
+      "zoomed_images": []
+    },
+    {
+      "tile_id": "t11_11",
+      "page": 58,
+      "observations": [
+        "Narrow residential road connects two small intersections beside a larger boulevard; cells remain continuous at the bends, avoid black corner islands, and preserve visible approach stop bars."
+      ],
+      "decision": "no_visible_conversion_error",
+      "source_keys": [
+        {
+          "road_id": 100,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 128,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 208,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 209,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 211,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 670,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 676,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 679,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 691,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 694,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 700,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 703,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 842,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 1145,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 1259,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 1462,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 1471,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 1474,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 1476,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 1479,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 1488,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 3261,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 3264,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 3288,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 3291,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 3294,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 3304,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 3340,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 1476,
+          "object_id": 1371,
+          "mesh_candidate_index": null,
+          "native_stopline": 542768,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 3288,
+          "object_id": 6296,
+          "mesh_candidate_index": null,
+          "native_stopline": 544343,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 1462,
+          "object_id": 1368,
+          "mesh_candidate_index": null,
+          "native_stopline": 542762,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 1462,
+          "object_id": 1369,
+          "mesh_candidate_index": null,
+          "native_stopline": 542765,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 128,
+          "object_id": 355,
+          "mesh_candidate_index": null,
+          "native_stopline": 542400,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 1462,
+          "object_id": 1349,
+          "mesh_candidate_index": null,
+          "native_stopline": 542759,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 1462,
+          "object_id": 1348,
+          "mesh_candidate_index": null,
+          "native_stopline": 542756,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 209,
+          "object_id": 671,
+          "mesh_candidate_index": null,
+          "native_stopline": 542499,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 208,
+          "object_id": 668,
+          "mesh_candidate_index": null,
+          "native_stopline": 542493,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 208,
+          "object_id": 669,
+          "mesh_candidate_index": null,
+          "native_stopline": 542496,
+          "kind": "xodr_stop_object"
+        }
+      ],
+      "zoomed_images": []
+    },
+    {
+      "tile_id": "t11_12",
+      "page": 58,
+      "observations": [
+        "Divided multi-lane boulevard has a long planted center strip. Overlay boundaries follow the strip edges and taper while covering both carriageways without crossing into buildings."
+      ],
+      "decision": "no_visible_conversion_error",
+      "source_keys": [
+        {
+          "road_id": 128,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 1462,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 1476,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 1479,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 1488,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 3291,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 3294,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 1476,
+          "object_id": 1371,
+          "mesh_candidate_index": null,
+          "native_stopline": 542768,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 1462,
+          "object_id": 1368,
+          "mesh_candidate_index": null,
+          "native_stopline": 542762,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 1462,
+          "object_id": 1369,
+          "mesh_candidate_index": null,
+          "native_stopline": 542765,
+          "kind": "xodr_stop_object"
+        }
+      ],
+      "zoomed_images": []
+    },
+    {
+      "tile_id": "t11_22",
+      "page": 62,
+      "observations": [
+        "Long smooth road2312 curve has four continuous lane strips that follow the marked boundaries; no gaps, spurs, or building intrusion are visible."
+      ],
+      "decision": "no_visible_conversion_error",
+      "source_keys": [
+        {
+          "road_id": 2312,
+          "kind": "xodr_road_in_tile_context"
+        }
+      ],
+      "zoomed_images": []
+    },
+    {
+      "tile_id": "t11_23",
+      "page": 62,
+      "observations": [
+        "Narrow road2305 passes a crosswalk between two long hatched center tapers. Both tapers remain excluded while stop markers lie on the two opposite approach bars."
+      ],
+      "decision": "no_visible_conversion_error",
+      "source_keys": [
+        {
+          "road_id": 2305,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 2305,
+          "object_id": 3424,
+          "mesh_candidate_index": null,
+          "native_stopline": 543485,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 2305,
+          "object_id": 3418,
+          "mesh_candidate_index": null,
+          "native_stopline": 543482,
+          "kind": "xodr_stop_object"
+        }
+      ],
+      "zoomed_images": []
+    },
+    {
+      "tile_id": "t12_12",
+      "page": 66,
+      "observations": [
+        "Red-paved approach between closely spaced intersections retains the road-width changes and continuous turning coverage. Corner grass and houses are not filled by cells; stops and signal-location links remain local to the approaches."
+      ],
+      "decision": "no_visible_conversion_error",
+      "source_keys": [
+        {
+          "road_id": 128,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 207,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 465,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 688,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 791,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 836,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 842,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 845,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 851,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 1260,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 3261,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 3264,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 4737,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 6024,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 6027,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 128,
+          "object_id": 354,
+          "mesh_candidate_index": null,
+          "native_stopline": 542397,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 128,
+          "object_id": 353,
+          "mesh_candidate_index": null,
+          "native_stopline": 542394,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 128,
+          "object_id": 352,
+          "mesh_candidate_index": null,
+          "native_stopline": 542391,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 128,
+          "object_id": 351,
+          "mesh_candidate_index": null,
+          "native_stopline": 542388,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 128,
+          "object_id": 350,
+          "mesh_candidate_index": null,
+          "native_stopline": 542385,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 465,
+          "object_id": 1014,
+          "mesh_candidate_index": null,
+          "native_stopline": 542658,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 465,
+          "object_id": 1015,
+          "mesh_candidate_index": null,
+          "native_stopline": 542661,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 465,
+          "object_id": 1043,
+          "mesh_candidate_index": null,
+          "native_stopline": 542664,
+          "kind": "xodr_stop_object"
+        }
+      ],
+      "zoomed_images": []
+    },
+    {
+      "tile_id": "t12_13",
+      "page": 66,
+      "observations": [
+        "The tile is almost entirely grass and two buildings; only a small upper-left road corner and its nearby physical-signal location are overlaid. No invented driving coverage appears in the open land."
+      ],
+      "decision": "no_visible_conversion_error",
+      "source_keys": [
+        {
+          "road_id": 207,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 791,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 1260,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 4737,
+          "kind": "xodr_road_in_tile_context"
+        }
+      ],
+      "zoomed_images": []
+    },
+    {
+      "tile_id": "t12_23",
+      "page": 70,
+      "observations": [
+        "Small four-way intersection has three painted crosswalks and one unstriped arm; lane/cell routes connect all paved approaches and magenta stops stay on the source transverse bars."
+      ],
+      "decision": "no_visible_conversion_error",
+      "source_keys": [
+        {
+          "road_id": 2305,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 2467,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 2468,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 2469,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 2491,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 2494,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 2497,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 2500,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 2506,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 2509,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 2512,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 2515,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 2518,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 2521,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 2524,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 6045,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 2305,
+          "object_id": null,
+          "mesh_candidate_index": 315,
+          "native_stopline": 544445,
+          "kind": "retained_osgb_repair"
+        },
+        {
+          "road_id": 2305,
+          "object_id": 3383,
+          "mesh_candidate_index": null,
+          "native_stopline": 543479,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 2467,
+          "object_id": 3961,
+          "mesh_candidate_index": null,
+          "native_stopline": 543626,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 2467,
+          "object_id": 3962,
+          "mesh_candidate_index": null,
+          "native_stopline": 543629,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 2305,
+          "object_id": 3382,
+          "mesh_candidate_index": null,
+          "native_stopline": 543476,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 2469,
+          "object_id": 4057,
+          "mesh_candidate_index": null,
+          "native_stopline": 543659,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 2469,
+          "object_id": 4056,
+          "mesh_candidate_index": null,
+          "native_stopline": 543656,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 2468,
+          "object_id": 4030,
+          "mesh_candidate_index": null,
+          "native_stopline": 543644,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 2468,
+          "object_id": 4031,
+          "mesh_candidate_index": null,
+          "native_stopline": 543647,
+          "kind": "xodr_stop_object"
+        }
+      ],
+      "zoomed_images": []
+    },
+    {
+      "tile_id": "t12_24",
+      "page": 70,
+      "observations": [
+        "Nearly horizontal road changes lane allocation through a short taper; overlay follows the source lane curves and outer yellow edges, with a cropped intersection stop remaining at the left border."
+      ],
+      "decision": "no_visible_conversion_error",
+      "source_keys": [
+        {
+          "road_id": 2467,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 2497,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 2500,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 2506,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 2509,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 2521,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 6045,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 2467,
+          "object_id": 3961,
+          "mesh_candidate_index": null,
+          "native_stopline": 543626,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 2467,
+          "object_id": 3962,
+          "mesh_candidate_index": null,
+          "native_stopline": 543629,
+          "kind": "xodr_stop_object"
+        }
+      ],
+      "zoomed_images": []
+    },
+    {
+      "tile_id": "t13_13",
+      "page": 74,
+      "observations": [
+        "Red road174 approach between junctions has continuous lane/cell coverage and transverse stops at the painted bars. Longitudinal signal-location links remain near the road ends; the school ground is excluded."
+      ],
+      "decision": "no_visible_conversion_error",
+      "source_keys": [
+        {
+          "road_id": 146,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 174,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 207,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 766,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 775,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 781,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 791,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 1260,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 4471,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 4474,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 4477,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 4480,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 4737,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 174,
+          "object_id": 618,
+          "mesh_candidate_index": null,
+          "native_stopline": 542475,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 174,
+          "object_id": 619,
+          "mesh_candidate_index": null,
+          "native_stopline": 542478,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 174,
+          "object_id": 590,
+          "mesh_candidate_index": null,
+          "native_stopline": 542472,
+          "kind": "xodr_stop_object"
+        }
+      ],
+      "zoomed_images": []
+    },
+    {
+      "tile_id": "t13_14",
+      "page": 74,
+      "observations": [
+        "The previously questioned Y junction shows cells following the paved arms and several source crosswalks. Roughly48m signal relations join the opposite physical signal sites; the separate road146 outgoing stop is retained under the XODR-first rule."
+      ],
+      "decision": "preserve_by_xodr_policy",
+      "source_keys": [
+        {
+          "road_id": 146,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 173,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 174,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 766,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 775,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 4471,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 4474,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 4477,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 4480,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 146,
+          "object_id": 400,
+          "mesh_candidate_index": null,
+          "native_stopline": 542415,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 146,
+          "object_id": 399,
+          "mesh_candidate_index": null,
+          "native_stopline": 542412,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 146,
+          "object_id": 410,
+          "mesh_candidate_index": null,
+          "native_stopline": 542421,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 146,
+          "object_id": 409,
+          "mesh_candidate_index": null,
+          "native_stopline": 542418,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 146,
+          "object_id": 412,
+          "mesh_candidate_index": null,
+          "native_stopline": 542427,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 146,
+          "object_id": 411,
+          "mesh_candidate_index": null,
+          "native_stopline": 542424,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 174,
+          "object_id": 590,
+          "mesh_candidate_index": null,
+          "native_stopline": 542472,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 173,
+          "object_id": 415,
+          "mesh_candidate_index": null,
+          "native_stopline": 542430,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 173,
+          "object_id": 416,
+          "mesh_candidate_index": null,
+          "native_stopline": 542433,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 173,
+          "object_id": 417,
+          "mesh_candidate_index": null,
+          "native_stopline": 542436,
+          "kind": "xodr_stop_object"
+        }
+      ],
+      "zoomed_images": [],
+      "source_policy_evidence": [
+        {
+          "road_id": 146,
+          "object_ids": [
+            409,
+            410
+          ],
+          "source_exists": true,
+          "controllers": [],
+          "decision": "preserve_by_xodr_policy",
+          "evidence": "/tmp/hdmap-audit/stop146-source-semantics.json"
+        },
+        {
+          "road_id": 174,
+          "object_id": 590,
+          "controller": 136,
+          "lamp_ids": [
+            431,
+            432,
+            433
+          ],
+          "evidence": "/home/stier/HL-FMA2026-sim-stier/docs/HDMapSignalAudit.md"
+        }
+      ]
+    },
+    {
+      "tile_id": "t13_21",
+      "page": 78,
+      "observations": [
+        "Road2470 makes a broad hillside bend; lane strips stay continuous inside the yellow edge markings. Dark triangular terrain artifacts lie outside the carriageway and are not filled."
+      ],
+      "decision": "no_visible_conversion_error",
+      "source_keys": [
+        {
+          "road_id": 2470,
+          "kind": "xodr_road_in_tile_context"
+        }
+      ],
+      "zoomed_images": []
+    },
+    {
+      "tile_id": "t13_22",
+      "page": 78,
+      "observations": [
+        "Continuation of the hillside bend passes buildings and a yield triangle marking. Cells remain on the curved carriageways and do not add a stop at the yield symbol."
+      ],
+      "decision": "no_visible_conversion_error",
+      "source_keys": [
+        {
+          "road_id": 2470,
+          "kind": "xodr_road_in_tile_context"
+        }
+      ],
+      "zoomed_images": []
+    },
+    {
+      "tile_id": "t14_12",
+      "page": 82,
+      "observations": [
+        "Narrow red-paved road follows the building frontage through a rounded bend, with a crosswalk and matching transverse stop marker; coverage stays within the road edges."
+      ],
+      "decision": "no_visible_conversion_error",
+      "source_keys": [
+        {
+          "road_id": 190,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 794,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 797,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 190,
+          "object_id": 662,
+          "mesh_candidate_index": null,
+          "native_stopline": 542487,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 190,
+          "object_id": 663,
+          "mesh_candidate_index": null,
+          "native_stopline": 542490,
+          "kind": "xodr_stop_object"
+        }
+      ],
+      "zoomed_images": []
+    },
+    {
+      "tile_id": "t14_14",
+      "page": 82,
+      "observations": [
+        "Mostly school ground, roofs, and the edge of the source terrain. Only the cropped road along the bottom has lane/cell overlay, without coverage through the dark off-road region."
+      ],
+      "decision": "no_visible_conversion_error",
+      "source_keys": [
+        {
+          "road_id": 173,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 766,
+          "kind": "xodr_road_in_tile_context"
+        }
+      ],
+      "zoomed_images": []
+    },
+    {
+      "tile_id": "t14_21",
+      "page": 86,
+      "observations": [
+        "Gentle four-lane curve at the lower margin; cells follow the slight outer pavement bulge and stay off surrounding terrain."
+      ],
+      "decision": "no_visible_conversion_error",
+      "source_keys": [
+        {
+          "road_id": 2470,
+          "kind": "xodr_road_in_tile_context"
+        }
+      ],
+      "zoomed_images": []
+    },
+    {
+      "tile_id": "t14_23",
+      "page": 86,
+      "observations": [
+        "Narrow road with two crossings and a hatched lane-allocation taper; visible transverse bars coincide with magenta stops and the hatching is excluded."
+      ],
+      "decision": "no_visible_conversion_error",
+      "source_keys": [
+        {
+          "road_id": 2564,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 2567,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 2573,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 2564,
+          "object_id": 4367,
+          "mesh_candidate_index": null,
+          "native_stopline": 543725,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 2564,
+          "object_id": 4366,
+          "mesh_candidate_index": null,
+          "native_stopline": 543722,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 2564,
+          "object_id": 4345,
+          "mesh_candidate_index": null,
+          "native_stopline": 543719,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 2564,
+          "object_id": 4344,
+          "mesh_candidate_index": null,
+          "native_stopline": 543716,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 2564,
+          "object_id": 4340,
+          "mesh_candidate_index": null,
+          "native_stopline": 543713,
+          "kind": "xodr_stop_object"
+        }
+      ],
+      "zoomed_images": []
+    },
+    {
+      "tile_id": "t15_09",
+      "page": 90,
+      "observations": [
+        "Broad boulevard transitions from a long hatched triangular separator to a planted median; both carriageways remain covered and the separator stays outside cells."
+      ],
+      "decision": "no_visible_conversion_error",
+      "source_keys": [
+        {
+          "road_id": 429,
+          "kind": "xodr_road_in_tile_context"
+        }
+      ],
+      "zoomed_images": []
+    },
+    {
+      "tile_id": "t15_10",
+      "page": 90,
+      "observations": [
+        "Road occupies the left edge with a planted median at the lower corner; overlay remains on the cropped pavement and leaves the large ground area empty."
+      ],
+      "decision": "no_visible_conversion_error",
+      "source_keys": [
+        {
+          "road_id": 429,
+          "kind": "xodr_road_in_tile_context"
+        }
+      ],
+      "zoomed_images": []
+    },
+    {
+      "tile_id": "t15_21",
+      "page": 94,
+      "observations": [
+        "Diagonal two-way road has two crosswalks; lower approach marker is clear, while the upper approach transverse bar needs a full-resolution comparison.",
+        "Full-resolution view confirms both approach bars have matching magenta stops; the upper apparent omission was a page-scale visibility issue."
+      ],
+      "decision": "clear_after_zoom",
+      "source_keys": [
+        {
+          "road_id": 2574,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 2626,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 2574,
+          "object_id": 4416,
+          "mesh_candidate_index": null,
+          "native_stopline": 543734,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 2574,
+          "object_id": 4428,
+          "mesh_candidate_index": null,
+          "native_stopline": 543740,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 2574,
+          "object_id": 4427,
+          "mesh_candidate_index": null,
+          "native_stopline": 543737,
+          "kind": "xodr_stop_object"
+        }
+      ],
+      "zoomed_images": [
+        "/tmp/hdmap-audit/full-vision/atlas/tiles/t15_21_source.jpg",
+        "/tmp/hdmap-audit/full-vision/atlas/tiles/t15_21_overlay.jpg"
+      ]
+    },
+    {
+      "tile_id": "t15_22",
+      "page": 94,
+      "observations": [
+        "Buildings fill most of the tile; narrow road fragments on the upper margins have aligned cells without extension into the building plots."
+      ],
+      "decision": "no_visible_conversion_error",
+      "source_keys": [
+        {
+          "road_id": 2564,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 2574,
+          "kind": "xodr_road_in_tile_context"
+        }
+      ],
+      "zoomed_images": []
+    },
+    {
+      "tile_id": "t16_09",
+      "page": 98,
+      "observations": [
+        "Wide boulevard approaching a large crossing; each marked travel strip is covered, and the cross-road stop marker follows the white bar with no cells in the corner island."
+      ],
+      "decision": "no_visible_conversion_error",
+      "source_keys": [
+        {
+          "road_id": 72,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 429,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 568,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 1187,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 1193,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 1196,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 1199,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 1208,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 1218,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 1272,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 429,
+          "object_id": 1008,
+          "mesh_candidate_index": null,
+          "native_stopline": 542646,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 429,
+          "object_id": 1007,
+          "mesh_candidate_index": null,
+          "native_stopline": 542643,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 429,
+          "object_id": 1011,
+          "mesh_candidate_index": null,
+          "native_stopline": 542655,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 429,
+          "object_id": 1010,
+          "mesh_candidate_index": null,
+          "native_stopline": 542652,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 429,
+          "object_id": 1009,
+          "mesh_candidate_index": null,
+          "native_stopline": 542649,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 72,
+          "object_id": 97,
+          "mesh_candidate_index": null,
+          "native_stopline": 542298,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 72,
+          "object_id": 98,
+          "mesh_candidate_index": null,
+          "native_stopline": 542301,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 72,
+          "object_id": 99,
+          "mesh_candidate_index": null,
+          "native_stopline": 542304,
+          "kind": "xodr_stop_object"
+        }
+      ],
+      "zoomed_images": []
+    },
+    {
+      "tile_id": "t16_16",
+      "page": 98,
+      "observations": [
+        "Curved narrow road with a crossing and two offset transverse bars; both magenta bars match the source and the lane taper remains inside yellow edges."
+      ],
+      "decision": "no_visible_conversion_error",
+      "source_keys": [
+        {
+          "road_id": 173,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 173,
+          "object_id": 545,
+          "mesh_candidate_index": null,
+          "native_stopline": 542457,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 173,
+          "object_id": 556,
+          "mesh_candidate_index": null,
+          "native_stopline": 542463,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 173,
+          "object_id": 555,
+          "mesh_candidate_index": null,
+          "native_stopline": 542460,
+          "kind": "xodr_stop_object"
+        }
+      ],
+      "zoomed_images": []
+    },
+    {
+      "tile_id": "t16_23",
+      "page": 102,
+      "observations": [
+        "Two nearby side junctions on a straight corridor; crossing approach bars and intermediate marked stop are retained, with hatched divider and corner islands excluded."
+      ],
+      "decision": "no_visible_conversion_error",
+      "source_keys": [
+        {
+          "road_id": 2564,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 2574,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 2575,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 2578,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 2581,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 2584,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 2587,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 2718,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 2722,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 2725,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 2728,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 2734,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 2737,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 2740,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 2752,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 2564,
+          "object_id": 4300,
+          "mesh_candidate_index": null,
+          "native_stopline": 543707,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 2564,
+          "object_id": 4301,
+          "mesh_candidate_index": null,
+          "native_stopline": 543710,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 2574,
+          "object_id": 4465,
+          "mesh_candidate_index": null,
+          "native_stopline": 543743,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 2584,
+          "object_id": 4489,
+          "mesh_candidate_index": null,
+          "native_stopline": 543755,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 2584,
+          "object_id": 4488,
+          "mesh_candidate_index": null,
+          "native_stopline": 543752,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 2575,
+          "object_id": 4466,
+          "mesh_candidate_index": null,
+          "native_stopline": 543746,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 2575,
+          "object_id": 4467,
+          "mesh_candidate_index": null,
+          "native_stopline": 543749,
+          "kind": "xodr_stop_object"
+        }
+      ],
+      "zoomed_images": []
+    },
+    {
+      "tile_id": "t16_24",
+      "page": 102,
+      "observations": [
+        "Long multi-lane straight with turn-arrow lanes and a side hatched taper; cells follow the painted lane widths and avoid the tapered nontravel strip."
+      ],
+      "decision": "no_visible_conversion_error",
+      "source_keys": [
+        {
+          "road_id": 2533,
+          "kind": "xodr_road_in_tile_context"
+        }
+      ],
+      "zoomed_images": []
+    },
+    {
+      "tile_id": "t17_18",
+      "page": 106,
+      "observations": [
+        "Bent junction approaches beside a large building; curved turn paths remain on the road and stops align with the visible and gray crossing approaches."
+      ],
+      "decision": "no_visible_conversion_error",
+      "source_keys": [
+        {
+          "road_id": 1222,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 1225,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 1241,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 2674,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 2678,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 2681,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 2684,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 2687,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 2690,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 2693,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 2696,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 2674,
+          "object_id": null,
+          "mesh_candidate_index": 666,
+          "native_stopline": 544463,
+          "kind": "retained_osgb_repair"
+        },
+        {
+          "road_id": 2674,
+          "object_id": 4677,
+          "mesh_candidate_index": null,
+          "native_stopline": 543820,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 2674,
+          "object_id": 4676,
+          "mesh_candidate_index": null,
+          "native_stopline": 543817,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 2674,
+          "object_id": 4678,
+          "mesh_candidate_index": null,
+          "native_stopline": 543822,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 1222,
+          "object_id": 1274,
+          "mesh_candidate_index": null,
+          "native_stopline": 542727,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 1222,
+          "object_id": 1275,
+          "mesh_candidate_index": null,
+          "native_stopline": 542730,
+          "kind": "xodr_stop_object"
+        }
+      ],
+      "zoomed_images": []
+    },
+    {
+      "tile_id": "t17_21",
+      "page": 106,
+      "observations": [
+        "Almost entirely building plots and bare ground; a small diagonal road fragment at the lower edge is the only cell-covered area."
+      ],
+      "decision": "no_visible_conversion_error",
+      "source_keys": [
+        {
+          "road_id": 2626,
+          "kind": "xodr_road_in_tile_context"
+        }
+      ],
+      "zoomed_images": []
+    },
+    {
+      "tile_id": "t18_10",
+      "page": 110,
+      "observations": [
+        "Broad diagonal straight reaches the black source-scene edge; all visible lane strips are covered and overlay ends with the visible road."
+      ],
+      "decision": "no_visible_conversion_error",
+      "source_keys": [
+        {
+          "road_id": 1183,
+          "kind": "xodr_road_in_tile_context"
+        }
+      ],
+      "zoomed_images": []
+    },
+    {
+      "tile_id": "t18_16",
+      "page": 110,
+      "observations": [
+        "Ground and a large roof dominate; the small upper-right road fragment alone has cells, without invented routes through the empty area."
+      ],
+      "decision": "no_visible_conversion_error",
+      "source_keys": [
+        {
+          "road_id": 2675,
+          "kind": "xodr_road_in_tile_context"
+        }
+      ],
+      "zoomed_images": []
+    },
+    {
+      "tile_id": "t18_25",
+      "page": 114,
+      "observations": [
+        "Multi-lane road cropped along the left boundary includes a shoulder-side taper; coverage follows the travel strips while the large right ground area remains empty."
+      ],
+      "decision": "no_visible_conversion_error",
+      "source_keys": [
+        {
+          "road_id": 2756,
+          "kind": "xodr_road_in_tile_context"
+        }
+      ],
+      "zoomed_images": []
+    },
+    {
+      "tile_id": "t19_08",
+      "page": 114,
+      "observations": [
+        "Black scene area occupies most of the tile; a short road end between building roofs appears only at the bottom and its cells align with that visible strip."
+      ],
+      "decision": "no_visible_conversion_error",
+      "source_keys": [
+        {
+          "road_id": 1184,
+          "kind": "xodr_road_in_tile_context"
+        }
+      ],
+      "zoomed_images": []
+    },
+    {
+      "tile_id": "t19_25",
+      "page": 118,
+      "observations": [
+        "Straight road along the left margin widens into an edge lane near the bottom; cells follow the same taper and do not spread into surrounding ground."
+      ],
+      "decision": "no_visible_conversion_error",
+      "source_keys": [
+        {
+          "road_id": 2756,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 2933,
+          "kind": "xodr_road_in_tile_context"
+        }
+      ],
+      "zoomed_images": []
+    },
+    {
+      "tile_id": "t20_15",
+      "page": 118,
+      "observations": [
+        "Single building on bare ground with only a tiny upper-right road corner; the overlay leaves the ground and building empty."
+      ],
+      "decision": "no_visible_conversion_error",
+      "source_keys": [
+        {
+          "road_id": 2813,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 3093,
+          "kind": "xodr_road_in_tile_context"
+        }
+      ],
+      "zoomed_images": []
+    },
+    {
+      "tile_id": "t20_23",
+      "page": 122,
+      "observations": [
+        "T junction with three narrow approaches and a separate crossing to the west; cells cover paved turns, keep corner islands empty, and retain each visible transverse bar."
+      ],
+      "decision": "no_visible_conversion_error",
+      "source_keys": [
+        {
+          "road_id": 1447,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 2803,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 2805,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 2906,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 2909,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 2912,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 2915,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 2918,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 2921,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 2942,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 2945,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 2803,
+          "object_id": 5178,
+          "mesh_candidate_index": null,
+          "native_stopline": 544037,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 1447,
+          "object_id": 1336,
+          "mesh_candidate_index": null,
+          "native_stopline": 542748,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 1447,
+          "object_id": 1337,
+          "mesh_candidate_index": null,
+          "native_stopline": 542751,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 2803,
+          "object_id": 5192,
+          "mesh_candidate_index": null,
+          "native_stopline": 544043,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 2803,
+          "object_id": 5193,
+          "mesh_candidate_index": null,
+          "native_stopline": 544046,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 2803,
+          "object_id": null,
+          "mesh_candidate_index": 440,
+          "native_stopline": 544466,
+          "kind": "retained_osgb_repair"
+        },
+        {
+          "road_id": 2803,
+          "object_id": 5180,
+          "mesh_candidate_index": null,
+          "native_stopline": 544040,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 2805,
+          "object_id": 5252,
+          "mesh_candidate_index": null,
+          "native_stopline": 544087,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 2805,
+          "object_id": 5251,
+          "mesh_candidate_index": null,
+          "native_stopline": 544084,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 2805,
+          "object_id": 5250,
+          "mesh_candidate_index": null,
+          "native_stopline": 544081,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 2805,
+          "object_id": 5237,
+          "mesh_candidate_index": null,
+          "native_stopline": 544075,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 2805,
+          "object_id": 5238,
+          "mesh_candidate_index": 317,
+          "native_stopline": 544078,
+          "kind": "xodr_stop_object"
+        }
+      ],
+      "zoomed_images": []
+    },
+    {
+      "tile_id": "t20_24",
+      "page": 122,
+      "observations": [
+        "Minor road joins a divided boulevard; cells stay on both carriageways and around planted median gaps, with magenta bars aligned before the gray wide crossing."
+      ],
+      "decision": "no_visible_conversion_error",
+      "source_keys": [
+        {
+          "road_id": 1447,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 2756,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 2805,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 2806,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 2906,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 2909,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 2912,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 2915,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 2918,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 2930,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 2933,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 2939,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 2942,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 3450,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 2756,
+          "object_id": 4911,
+          "mesh_candidate_index": null,
+          "native_stopline": 543902,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 2756,
+          "object_id": 4915,
+          "mesh_candidate_index": null,
+          "native_stopline": 543914,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 2756,
+          "object_id": 4914,
+          "mesh_candidate_index": null,
+          "native_stopline": 543911,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 2756,
+          "object_id": 4912,
+          "mesh_candidate_index": null,
+          "native_stopline": 543905,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 2756,
+          "object_id": 4913,
+          "mesh_candidate_index": null,
+          "native_stopline": 543908,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 3450,
+          "object_id": 6337,
+          "mesh_candidate_index": null,
+          "native_stopline": 544362,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 3450,
+          "object_id": 6336,
+          "mesh_candidate_index": null,
+          "native_stopline": 544359,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 3450,
+          "object_id": 6338,
+          "mesh_candidate_index": null,
+          "native_stopline": 544365,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 3450,
+          "object_id": 6339,
+          "mesh_candidate_index": null,
+          "native_stopline": 544368,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 3450,
+          "object_id": 6335,
+          "mesh_candidate_index": null,
+          "native_stopline": 544356,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 1447,
+          "object_id": 1347,
+          "mesh_candidate_index": null,
+          "native_stopline": 542753,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 1447,
+          "object_id": 1336,
+          "mesh_candidate_index": null,
+          "native_stopline": 542748,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 1447,
+          "object_id": 1337,
+          "mesh_candidate_index": null,
+          "native_stopline": 542751,
+          "kind": "xodr_stop_object"
+        }
+      ],
+      "zoomed_images": []
+    },
+    {
+      "tile_id": "t21_22",
+      "page": 126,
+      "observations": [
+        "T junction on a straight four-strip corridor with a downstream crossing; turn paths follow the paved mouth and both crossing stop bars align."
+      ],
+      "decision": "no_visible_conversion_error",
+      "source_keys": [
+        {
+          "road_id": 2804,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 2808,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 2809,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 2957,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 2960,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 2963,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 2969,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 2972,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 2975,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 2984,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 2987,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 3005,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 3247,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 2804,
+          "object_id": 5207,
+          "mesh_candidate_index": null,
+          "native_stopline": 544049,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 2804,
+          "object_id": 5209,
+          "mesh_candidate_index": null,
+          "native_stopline": 544055,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 2804,
+          "object_id": 5215,
+          "mesh_candidate_index": null,
+          "native_stopline": 544064,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 2804,
+          "object_id": 5213,
+          "mesh_candidate_index": null,
+          "native_stopline": 544058,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 2804,
+          "object_id": 5214,
+          "mesh_candidate_index": null,
+          "native_stopline": 544061,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 2808,
+          "object_id": 5310,
+          "mesh_candidate_index": null,
+          "native_stopline": 544111,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 2808,
+          "object_id": 5309,
+          "mesh_candidate_index": null,
+          "native_stopline": 544108,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 2808,
+          "object_id": 5308,
+          "mesh_candidate_index": null,
+          "native_stopline": 544105,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 2808,
+          "object_id": 5299,
+          "mesh_candidate_index": null,
+          "native_stopline": 544099,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 2808,
+          "object_id": 5300,
+          "mesh_candidate_index": null,
+          "native_stopline": 544102,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 2804,
+          "object_id": 5208,
+          "mesh_candidate_index": null,
+          "native_stopline": 544052,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 2809,
+          "object_id": 5330,
+          "mesh_candidate_index": null,
+          "native_stopline": 544120,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 2809,
+          "object_id": 5331,
+          "mesh_candidate_index": null,
+          "native_stopline": 544123,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 2809,
+          "object_id": 5332,
+          "mesh_candidate_index": null,
+          "native_stopline": 544125,
+          "kind": "xodr_stop_object"
+        }
+      ],
+      "zoomed_images": []
+    },
+    {
+      "tile_id": "t21_23",
+      "page": 126,
+      "observations": [
+        "Right-angle residential bend with crossings on both legs; lane cells round the corner inside curbs and all four visible stop bars are retained."
+      ],
+      "decision": "no_visible_conversion_error",
+      "source_keys": [
+        {
+          "road_id": 2805,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 2807,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 2808,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 2942,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 2945,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 2948,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 2951,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 2808,
+          "object_id": 5310,
+          "mesh_candidate_index": null,
+          "native_stopline": 544111,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 2805,
+          "object_id": 5237,
+          "mesh_candidate_index": null,
+          "native_stopline": 544075,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 2805,
+          "object_id": 5238,
+          "mesh_candidate_index": 317,
+          "native_stopline": 544078,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 2807,
+          "object_id": 5298,
+          "mesh_candidate_index": null,
+          "native_stopline": 544096,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 2807,
+          "object_id": 5296,
+          "mesh_candidate_index": null,
+          "native_stopline": 544090,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 2807,
+          "object_id": 5297,
+          "mesh_candidate_index": null,
+          "native_stopline": 544093,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 2808,
+          "object_id": 5309,
+          "mesh_candidate_index": null,
+          "native_stopline": 544108,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 2808,
+          "object_id": 5308,
+          "mesh_candidate_index": null,
+          "native_stopline": 544105,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 2808,
+          "object_id": 5314,
+          "mesh_candidate_index": null,
+          "native_stopline": 544114,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 2808,
+          "object_id": 5315,
+          "mesh_candidate_index": null,
+          "native_stopline": 544117,
+          "kind": "xodr_stop_object"
+        }
+      ],
+      "zoomed_images": []
+    },
+    {
+      "tile_id": "t22_20",
+      "page": 130,
+      "observations": [
+        "Rural curve appears at the lower margin with a diamond-shaped hatched separator; the overlay excludes that hatch and follows the two travel sides."
+      ],
+      "decision": "no_visible_conversion_error",
+      "source_keys": [
+        {
+          "road_id": 2810,
+          "kind": "xodr_road_in_tile_context"
+        }
+      ],
+      "zoomed_images": []
+    },
+    {
+      "tile_id": "t22_21",
+      "page": 130,
+      "observations": [
+        "Same rural corridor straightens after a taper; cell strips follow the source lane allocation and keep the hatched tip empty."
+      ],
+      "decision": "no_visible_conversion_error",
+      "source_keys": [
+        {
+          "road_id": 2810,
+          "kind": "xodr_road_in_tile_context"
+        }
+      ],
+      "zoomed_images": []
+    },
+    {
+      "tile_id": "t23_20",
+      "page": 134,
+      "observations": [
+        "Grassland with a small diagonal road corner at upper left; overlay appears only on that road fragment."
+      ],
+      "decision": "no_visible_conversion_error",
+      "source_keys": [
+        {
+          "road_id": 2815,
+          "kind": "xodr_road_in_tile_context"
+        }
+      ],
+      "zoomed_images": []
+    },
+    {
+      "tile_id": "t23_22",
+      "page": 134,
+      "observations": [
+        "Narrow through-road between two crossings has continuous cells across the unmarked central section; both outer stop bars match the source."
+      ],
+      "decision": "no_visible_conversion_error",
+      "source_keys": [
+        {
+          "road_id": 2812,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 2816,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 3039,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 3051,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 2812,
+          "object_id": null,
+          "mesh_candidate_index": 237,
+          "native_stopline": 544469,
+          "kind": "retained_osgb_repair"
+        },
+        {
+          "road_id": 2812,
+          "object_id": 5436,
+          "mesh_candidate_index": null,
+          "native_stopline": 544168,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 2812,
+          "object_id": 5437,
+          "mesh_candidate_index": null,
+          "native_stopline": 544171,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 2816,
+          "object_id": 5707,
+          "mesh_candidate_index": null,
+          "native_stopline": 544246,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 2816,
+          "object_id": 5708,
+          "mesh_candidate_index": null,
+          "native_stopline": 544249,
+          "kind": "xodr_stop_object"
+        }
+      ],
+      "zoomed_images": []
+    },
+    {
+      "tile_id": "t25_20",
+      "page": 138,
+      "observations": [
+        "Almost entirely grassland; the small lower-right road fragment has aligned cells and no additional geometry in the open land."
+      ],
+      "decision": "no_visible_conversion_error",
+      "source_keys": [
+        {
+          "road_id": 2815,
+          "kind": "xodr_road_in_tile_context"
+        }
+      ],
+      "zoomed_images": []
+    },
+    {
+      "tile_id": "t25_21",
+      "page": 138,
+      "observations": [
+        "Large skewed four-arm junction with unequal approach widths; overlapping turn paths remain within the paved junction, gray and white crossings are covered, and visible stop bars align."
+      ],
+      "decision": "no_visible_conversion_error",
+      "source_keys": [
+        {
+          "road_id": 2815,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 2816,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 2817,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 2818,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 3054,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 3057,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 3060,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 3063,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 3066,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 3069,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 3072,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 3078,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 3081,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 3084,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 3087,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 3431,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 2816,
+          "object_id": null,
+          "mesh_candidate_index": 144,
+          "native_stopline": 544475,
+          "kind": "retained_osgb_repair"
+        },
+        {
+          "road_id": 2816,
+          "object_id": 5662,
+          "mesh_candidate_index": null,
+          "native_stopline": 544234,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 2816,
+          "object_id": 5663,
+          "mesh_candidate_index": null,
+          "native_stopline": 544237,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 2816,
+          "object_id": 5664,
+          "mesh_candidate_index": null,
+          "native_stopline": 544240,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 2815,
+          "object_id": 5657,
+          "mesh_candidate_index": null,
+          "native_stopline": 544228,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 2815,
+          "object_id": 5658,
+          "mesh_candidate_index": null,
+          "native_stopline": 544231,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 2815,
+          "object_id": 5656,
+          "mesh_candidate_index": null,
+          "native_stopline": 544225,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 2817,
+          "object_id": 5714,
+          "mesh_candidate_index": null,
+          "native_stopline": 544255,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 2817,
+          "object_id": 5715,
+          "mesh_candidate_index": null,
+          "native_stopline": 544258,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 2817,
+          "object_id": 5713,
+          "mesh_candidate_index": null,
+          "native_stopline": 544252,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 2818,
+          "object_id": 5921,
+          "mesh_candidate_index": null,
+          "native_stopline": 544294,
+          "kind": "xodr_stop_object"
+        }
+      ],
+      "zoomed_images": []
+    },
+    {
+      "tile_id": "t26_23",
+      "page": 142,
+      "observations": [
+        "Wide flared boulevard has a hatched central taper excluded from cells; a magenta terminal stop appears on faint or absent source paint near the upper-right approach, requiring source-key confirmation.",
+        "Full-resolution source shows no bright white transverse paint at the terminal magenta stop; physical signal assemblies are nearby, so source object provenance is needed before judging the semantic stop.",
+        "All four terminal objects 5782–5785 exist in original road 2817 at s≈171.63m with unchanged geometry and native source-lane/cell assignments. Existing controllers 219/220 are retained. Paint absence is a source-data/scene discrepancy, not evidence to remove the XODR stop under the user policy."
+      ],
+      "decision": "preserve_by_xodr_policy",
+      "source_keys": [
+        {
+          "road_id": 2817,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 3111,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 3119,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 3131,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 3134,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 3164,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 2817,
+          "object_id": 5783,
+          "mesh_candidate_index": null,
+          "native_stopline": 544264,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 2817,
+          "object_id": 5784,
+          "mesh_candidate_index": null,
+          "native_stopline": 544267,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 2817,
+          "object_id": 5782,
+          "mesh_candidate_index": null,
+          "native_stopline": 544261,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 2817,
+          "object_id": 5785,
+          "mesh_candidate_index": null,
+          "native_stopline": 544270,
+          "kind": "xodr_stop_object"
+        }
+      ],
+      "zoomed_images": [
+        "/tmp/hdmap-audit/full-vision/atlas/tiles/t26_23_source.jpg",
+        "/tmp/hdmap-audit/full-vision/atlas/tiles/t26_23_overlay.jpg"
+      ],
+      "source_policy_evidence": [
+        {
+          "road_id": 2817,
+          "object_id": 5782,
+          "native_stopline": 544261,
+          "source_exists": true,
+          "source_s": 171.6332197335248,
+          "source_t": -1.4999541974217931,
+          "unchanged_geometry": true,
+          "cell_assignment": "projected_to_lane",
+          "cell_count": 1,
+          "source_lanes": [
+            [
+              2817,
+              2,
+              -2
+            ]
+          ],
+          "controllers": [
+            219,
+            220
+          ],
+          "all_prior_native_checks_pass": true
+        },
+        {
+          "road_id": 2817,
+          "object_id": 5783,
+          "native_stopline": 544264,
+          "source_exists": true,
+          "source_s": 171.6385879688474,
+          "source_t": -7.300044380852766,
+          "unchanged_geometry": true,
+          "cell_assignment": "projected_to_lane",
+          "cell_count": 1,
+          "source_lanes": [
+            [
+              2817,
+              2,
+              -4
+            ]
+          ],
+          "controllers": [
+            219,
+            220
+          ],
+          "all_prior_native_checks_pass": true
+        },
+        {
+          "road_id": 2817,
+          "object_id": 5784,
+          "native_stopline": 544267,
+          "source_exists": true,
+          "source_s": 171.6385879688474,
+          "source_t": -4.500045474354026,
+          "unchanged_geometry": true,
+          "cell_assignment": "projected_to_lane",
+          "cell_count": 1,
+          "source_lanes": [
+            [
+              2817,
+              2,
+              -3
+            ]
+          ],
+          "controllers": [
+            219,
+            220
+          ],
+          "all_prior_native_checks_pass": true
+        },
+        {
+          "road_id": 2817,
+          "object_id": 5785,
+          "native_stopline": 544270,
+          "source_exists": true,
+          "source_s": 171.6359038511861,
+          "source_t": -1.5000461013563224,
+          "unchanged_geometry": true,
+          "cell_assignment": "projected_to_lane",
+          "cell_count": 1,
+          "source_lanes": [
+            [
+              2817,
+              2,
+              -2
+            ]
+          ],
+          "controllers": [
+            219,
+            220
+          ],
+          "all_prior_native_checks_pass": true
+        }
+      ]
+    },
+    {
+      "tile_id": "t26_24",
+      "page": 142,
+      "observations": [
+        "Broad skewed intersection with gray crossings and a large triangular terrain cutout; cell turn paths stay on pavement and the visible lower approach stop is aligned."
+      ],
+      "decision": "no_visible_conversion_error",
+      "source_keys": [
+        {
+          "road_id": 2817,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 2820,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 3018,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 3111,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 3113,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 3119,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 3125,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 3128,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 3131,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 3134,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 3142,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 3148,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 3164,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 3167,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 3170,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 2817,
+          "object_id": 5783,
+          "mesh_candidate_index": null,
+          "native_stopline": 544264,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 3167,
+          "object_id": 6243,
+          "mesh_candidate_index": null,
+          "native_stopline": 544334,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 3167,
+          "object_id": 6244,
+          "mesh_candidate_index": null,
+          "native_stopline": 544337,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 3167,
+          "object_id": 6242,
+          "mesh_candidate_index": null,
+          "native_stopline": 544331,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 2817,
+          "object_id": 5784,
+          "mesh_candidate_index": null,
+          "native_stopline": 544267,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 2817,
+          "object_id": 5782,
+          "mesh_candidate_index": null,
+          "native_stopline": 544261,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 2817,
+          "object_id": 5785,
+          "mesh_candidate_index": null,
+          "native_stopline": 544270,
+          "kind": "xodr_stop_object"
+        }
+      ],
+      "zoomed_images": []
+    },
+    {
+      "tile_id": "t27_26",
+      "page": 146,
+      "observations": [
+        "Wide diagonal boulevard spans the upper corner; its parallel lanes are continuously covered and the grassland remains empty."
+      ],
+      "decision": "no_visible_conversion_error",
+      "source_keys": [
+        {
+          "road_id": 3113,
+          "kind": "xodr_road_in_tile_context"
+        }
+      ],
+      "zoomed_images": []
+    },
+    {
+      "tile_id": "t28_21",
+      "page": 146,
+      "observations": [
+        "Narrow rural curve has two close crossings and a long central hatched taper; the hatch stays outside cells and both approach stop markers align."
+      ],
+      "decision": "no_visible_conversion_error",
+      "source_keys": [
+        {
+          "road_id": 2818,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 2818,
+          "object_id": 5847,
+          "mesh_candidate_index": null,
+          "native_stopline": 544282,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 2818,
+          "object_id": 5836,
+          "mesh_candidate_index": null,
+          "native_stopline": 544276,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 2818,
+          "object_id": 5837,
+          "mesh_candidate_index": null,
+          "native_stopline": 544279,
+          "kind": "xodr_stop_object"
+        }
+      ],
+      "zoomed_images": []
+    },
+    {
+      "tile_id": "t29_21",
+      "page": 150,
+      "observations": [
+        "Cropping includes a crossing approach and taper on a rural curve; one isolated red stop appears off-road beside a tree and needs source attribution.",
+        "Full-resolution view places the red primitive outside the yellow pavement boundary, on grass near a tree; the visible crossing stop and hatched separator remain correctly represented.",
+        "Every isolated red primitive is an unchanged XODR stop object, with cell_assignment=unresolved, zero lanelet/cell assignment, and no controller. Preserve the source primitive without forcing it onto a vehicle route or adding a signal.",
+        "The single red-looking cluster contains three nearby source objects 5959/5963/5964 on road 2819; the two tiles share this same cluster through overlap."
+      ],
+      "decision": "preserve_by_xodr_policy",
+      "source_keys": [
+        {
+          "road_id": 2818,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 2818,
+          "object_id": 5836,
+          "mesh_candidate_index": null,
+          "native_stopline": 544276,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 2818,
+          "object_id": 5837,
+          "mesh_candidate_index": null,
+          "native_stopline": 544279,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 2819,
+          "object_id": 5964,
+          "mesh_candidate_index": null,
+          "native_stopline": 544312,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 2819,
+          "object_id": 5963,
+          "mesh_candidate_index": null,
+          "native_stopline": 544309,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 2819,
+          "object_id": 5959,
+          "mesh_candidate_index": null,
+          "native_stopline": 544297,
+          "kind": "xodr_stop_object"
+        }
+      ],
+      "zoomed_images": [
+        "/tmp/hdmap-audit/full-vision/atlas/tiles/t29_21_source.jpg",
+        "/tmp/hdmap-audit/full-vision/atlas/tiles/t29_21_overlay.jpg"
+      ],
+      "source_policy_evidence": [
+        {
+          "road_id": 2819,
+          "object_id": 5959,
+          "native_stopline": 544297,
+          "source_exists": true,
+          "source_s": 0,
+          "source_t": -171.73323555690533,
+          "unchanged_geometry": true,
+          "cell_assignment": "unresolved",
+          "cell_count": 0,
+          "source_lanes": [],
+          "controllers": [],
+          "all_prior_native_checks_pass": true
+        },
+        {
+          "road_id": 2819,
+          "object_id": 5963,
+          "native_stopline": 544309,
+          "source_exists": true,
+          "source_s": 0,
+          "source_t": -171.8422234439103,
+          "unchanged_geometry": true,
+          "cell_assignment": "unresolved",
+          "cell_count": 0,
+          "source_lanes": [],
+          "controllers": [],
+          "all_prior_native_checks_pass": true
+        },
+        {
+          "road_id": 2819,
+          "object_id": 5964,
+          "native_stopline": 544312,
+          "source_exists": true,
+          "source_s": 0,
+          "source_t": -171.86547263881724,
+          "unchanged_geometry": true,
+          "cell_assignment": "unresolved",
+          "cell_count": 0,
+          "source_lanes": [],
+          "controllers": [],
+          "all_prior_native_checks_pass": true
+        }
+      ]
+    },
+    {
+      "tile_id": "t29_22",
+      "page": 150,
+      "observations": [
+        "Rural curve narrows beside a long hatched strip; cell coverage follows pavement, while a red off-road stop near the left tree needs source attribution.",
+        "Full-resolution view places the red primitive outside the yellow pavement boundary, on grass near a tree; the visible crossing stop and hatched separator remain correctly represented.",
+        "Every isolated red primitive is an unchanged XODR stop object, with cell_assignment=unresolved, zero lanelet/cell assignment, and no controller. Preserve the source primitive without forcing it onto a vehicle route or adding a signal.",
+        "The single red-looking cluster contains three nearby source objects 5959/5963/5964 on road 2819; the two tiles share this same cluster through overlap."
+      ],
+      "decision": "preserve_by_xodr_policy",
+      "source_keys": [
+        {
+          "road_id": 2818,
+          "kind": "xodr_road_in_tile_context"
+        },
+        {
+          "road_id": 2818,
+          "object_id": 5836,
+          "mesh_candidate_index": null,
+          "native_stopline": 544276,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 2819,
+          "object_id": 5964,
+          "mesh_candidate_index": null,
+          "native_stopline": 544312,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 2819,
+          "object_id": 5963,
+          "mesh_candidate_index": null,
+          "native_stopline": 544309,
+          "kind": "xodr_stop_object"
+        },
+        {
+          "road_id": 2819,
+          "object_id": 5959,
+          "mesh_candidate_index": null,
+          "native_stopline": 544297,
+          "kind": "xodr_stop_object"
+        }
+      ],
+      "zoomed_images": [
+        "/tmp/hdmap-audit/full-vision/atlas/tiles/t29_22_source.jpg",
+        "/tmp/hdmap-audit/full-vision/atlas/tiles/t29_22_overlay.jpg"
+      ],
+      "source_policy_evidence": [
+        {
+          "road_id": 2819,
+          "object_id": 5959,
+          "native_stopline": 544297,
+          "source_exists": true,
+          "source_s": 0,
+          "source_t": -171.73323555690533,
+          "unchanged_geometry": true,
+          "cell_assignment": "unresolved",
+          "cell_count": 0,
+          "source_lanes": [],
+          "controllers": [],
+          "all_prior_native_checks_pass": true
+        },
+        {
+          "road_id": 2819,
+          "object_id": 5963,
+          "native_stopline": 544309,
+          "source_exists": true,
+          "source_s": 0,
+          "source_t": -171.8422234439103,
+          "unchanged_geometry": true,
+          "cell_assignment": "unresolved",
+          "cell_count": 0,
+          "source_lanes": [],
+          "controllers": [],
+          "all_prior_native_checks_pass": true
+        },
+        {
+          "road_id": 2819,
+          "object_id": 5964,
+          "native_stopline": 544312,
+          "source_exists": true,
+          "source_s": 0,
+          "source_t": -171.86547263881724,
+          "unchanged_geometry": true,
+          "cell_assignment": "unresolved",
+          "cell_count": 0,
+          "source_lanes": [],
+          "controllers": [],
+          "all_prior_native_checks_pass": true
+        }
+      ]
+    }
+  ],
+  "input_hashes": {
+    "xodr": "5a369c7b0609fc98b0034680473465db4273dd396ffb37980996cea70ec6ca2f",
+    "osgb": "2d8f83fdc26cb7f8373e71cf850c70f7d90981362789fb474eb31b0d5b253296",
+    "map": "e7a426f900813748747a39233f3678237fd7f849c335bae3bc3014b31ae678b0",
+    "renderer": "056f2785f6d1e12d41859968427edb5244060317735a5a549846f2747846d05b",
+    "coverage": "ab35166c01cef60d8926470050c60bb42dc9bb4160aab853034409b248a1d619",
+    "lod_scale": 0.001,
+    "grid_origin": [
+      -500,
+      -1200
+    ],
+    "core_m": 80,
+    "context_m": 10,
+    "metres_per_pixel": 0.078125,
+    "block_pixels": 4352
+  },
+  "native_policy_evidence": "/tmp/hdmap-audit/full-vision/xodr-policy-review.json",
+  "method": "Every assigned atlas page was emitted as an image and visually compared source-left versus overlay-right; eleven suspicious tiles were additionally viewed as separate 1280px source and overlay images. Metadata checks were used only after visual review for source attribution.",
+  "policy": "Ambiguous visual/semantic source differences are preserved when XODR objects or driving lanes exist. Previously proven conversion/OSGB repairs stay; missing controllers are never invented.",
+  "confirmed_new_conversion_errors": [],
+  "limitations": [
+    "Visual coverage is a review at atlas resolution and selected 1280px enlargements, not a proof of all dynamic signal phases or all microscopic geometry properties.",
+    "Source-paint disagreement and off-road source primitives are documented separately; preserve_by_xodr_policy does not certify the source scene as physically correct.",
+    "Signal controller/lamp movement restrictions remain subject to the previously recorded API and physical-arrow limitations."
+  ],
+  "completeness": {
+    "assigned_page_count": 38,
+    "actually_viewed_page_count": 38,
+    "assigned_tile_count": 76,
+    "reviewed_tile_count": 76,
+    "missing_tiles": [],
+    "unexpected_tiles": [],
+    "duplicate_tile_count": 0,
+    "zoomed_tile_count": 11,
+    "files_actually_viewed_count": 60,
+    "duplicate_viewed_file_entries": 0,
+    "pending_decision_count": 0,
+    "decision_counts": {
+      "no_visible_conversion_error": 64,
+      "clear_after_zoom": 3,
+      "preserve_by_xodr_policy": 9
+    },
+    "missing_viewed_files": [],
+    "missing_page_file_evidence": []
+  },
+  "status": "complete"
+}

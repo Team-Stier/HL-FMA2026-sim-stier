@@ -1,0 +1,74 @@
+[
+  {
+    "candidate": 128,
+    "rectangle_area_m2": 0.8993191868848621,
+    "raw_white_mesh_supported_area_fraction": 0.9999999983335067,
+    "raw_triangles_with_three_actual_rectangle_corners": 2,
+    "nearest_source_stopline": 544026,
+    "same_footprint_translated_to_source_center_supported_fraction": 6.905611653654844e-07
+  },
+  {
+    "candidate": 203,
+    "rectangle_area_m2": 0.8998617389464655,
+    "raw_white_mesh_supported_area_fraction": 1.0,
+    "raw_triangles_with_three_actual_rectangle_corners": 2,
+    "nearest_source_stopline": 544015,
+    "same_footprint_translated_to_source_center_supported_fraction": 0.9888369392895402
+  },
+  {
+    "candidate": 214,
+    "rectangle_area_m2": 0.8999526939586049,
+    "raw_white_mesh_supported_area_fraction": 0.9999968418237856,
+    "raw_triangles_with_three_actual_rectangle_corners": 1,
+    "nearest_source_stopline": 542790,
+    "same_footprint_translated_to_source_center_supported_fraction": 1.512516642066113e-08
+  },
+  {
+    "candidate": 302,
+    "rectangle_area_m2": 0.7784325880828828,
+    "raw_white_mesh_supported_area_fraction": 0.9999999985919066,
+    "raw_triangles_with_three_actual_rectangle_corners": 2,
+    "nearest_source_stopline": 542820,
+    "same_footprint_translated_to_source_center_supported_fraction": 0.9779566159092
+  },
+  {
+    "candidate": 317,
+    "rectangle_area_m2": 0.9000361419936782,
+    "raw_white_mesh_supported_area_fraction": 0.9999999999999942,
+    "raw_triangles_with_three_actual_rectangle_corners": 2,
+    "nearest_source_stopline": 544079,
+    "same_footprint_translated_to_source_center_supported_fraction": 0.4991052605691038
+  },
+  {
+    "candidate": 361,
+    "rectangle_area_m2": 0.8999847209684406,
+    "raw_white_mesh_supported_area_fraction": 1.0,
+    "raw_triangles_with_three_actual_rectangle_corners": 2,
+    "nearest_source_stopline": 543794,
+    "same_footprint_translated_to_source_center_supported_fraction": 0.9895654956162808
+  },
+  {
+    "candidate": 469,
+    "rectangle_area_m2": 0.898329299993166,
+    "raw_white_mesh_supported_area_fraction": 0.9999928527025496,
+    "raw_triangles_with_three_actual_rectangle_corners": 1,
+    "nearest_source_stopline": 544002,
+    "same_footprint_translated_to_source_center_supported_fraction": 0.9963498323664326
+  },
+  {
+    "candidate": 511,
+    "rectangle_area_m2": 0.8998854930310696,
+    "raw_white_mesh_supported_area_fraction": 0.9999995612781247,
+    "raw_triangles_with_three_actual_rectangle_corners": 1,
+    "nearest_source_stopline": 544395,
+    "same_footprint_translated_to_source_center_supported_fraction": 0.999999997593974
+  },
+  {
+    "candidate": 517,
+    "rectangle_area_m2": 0.9001229802932844,
+    "raw_white_mesh_supported_area_fraction": 0.9997844979100367,
+    "raw_triangles_with_three_actual_rectangle_corners": 1,
+    "nearest_source_stopline": 543334,
+    "same_footprint_translated_to_source_center_supported_fraction": 9.159167264638172e-07
+  }
+]

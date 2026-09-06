@@ -1,0 +1,4779 @@
+[
+  {
+    "target_lanelet": 411727,
+    "source_road": 2810,
+    "source_section": 6,
+    "source_lane": -1,
+    "s_range": [
+      115.50099999353854,
+      206.69352018817193
+    ],
+    "placement_s": 202.6653334308242,
+    "plan_index": 32,
+    "placement_t": 1.41885,
+    "source_lane_width_m": 2.8377,
+    "name": "MapAudit000",
+    "samples": 150,
+    "distance_m": 30.80090654180785,
+    "target_distance_m": 3.323389109489227,
+    "lane_misses": 0,
+    "cell_misses": 0,
+    "source_lane_misses": 1,
+    "target_hits": 30,
+    "excluded_jumps": 0,
+    "placement": {
+      "name": "MapAudit000",
+      "id": 2,
+      "xyz": [
+        1276.2421436924812,
+        581.5371158238449,
+        51.86215300855739
+      ],
+      "hpr": [
+        0.04484224691987038,
+        -0.0038010841235518456,
+        -3.3144726785394596e-06
+      ],
+      "dimensions": [
+        3.5190000534057617,
+        1.6519999504089355,
+        1.5429999828338623
+      ],
+      "center_offset": [
+        1.284500002861023,
+        0.0,
+        0.0
+      ],
+      "coord_type": 0,
+      "parent": 0,
+      "frame": 668,
+      "sim_time": 26.67999999999961,
+      "road": [
+        2810,
+        -1,
+        203.11422729492188,
+        1.4188344478607178,
+        -1.549347143736668e-05
+      ],
+      "lanelet_hits": [
+        411727
+      ],
+      "cell_hits": [
+        73093,
+        73094
+      ]
+    },
+    "placement_s_delta_m": 0.44889386409766985,
+    "source_center_t_at_received_s": 1.41885,
+    "placement_verified": true,
+    "placement_blocked": false,
+    "first_drive": {
+      "name": "MapAudit000",
+      "id": 2,
+      "xyz": [
+        1276.3054280609695,
+        581.5399546647112,
+        51.862341519315784
+      ],
+      "hpr": [
+        0.04482848569750786,
+        -0.0036500326823443174,
+        -3.6760091006726725e-06
+      ],
+      "dimensions": [
+        3.5190000534057617,
+        1.6519999504089355,
+        1.5429999828338623
+      ],
+      "center_offset": [
+        1.284500002861023,
+        0.0,
+        0.0
+      ],
+      "coord_type": 0,
+      "parent": 0,
+      "frame": 669,
+      "sim_time": 26.719999999999608,
+      "road": null
+    },
+    "last_drive": {
+      "name": "MapAudit000",
+      "id": 2,
+      "xyz": [
+        1303.785366214575,
+        590.067808141568,
+        51.86670303578554
+      ],
+      "hpr": [
+        1.233983039855957,
+        -0.00015521972090937197,
+        0.021438831463456154
+      ],
+      "dimensions": [
+        3.5190000534057617,
+        1.6519999504089355,
+        1.5429999828338623
+      ],
+      "center_offset": [
+        1.284500002861023,
+        0.0,
+        0.0
+      ],
+      "coord_type": 0,
+      "parent": 0,
+      "frame": 818,
+      "sim_time": 32.67999999999948,
+      "road": [
+        2978,
+        -1,
+        25.664134979248047,
+        -1.171717882156372,
+        0.3821979761123657
+      ]
+    },
+    "sim_duration_s": 5.959999999999873,
+    "requested_duration_completed": true,
+    "status": "sampled_motion"
+  },
+  {
+    "target_lanelet": 30887,
+    "source_road": 173,
+    "source_section": 0,
+    "source_lane": 1,
+    "s_range": [
+      244.1,
+      359.3
+    ],
+    "placement_s": 300.81301263606724,
+    "plan_index": 5,
+    "placement_t": 1.5,
+    "source_lane_width_m": 3.0,
+    "name": "MapAudit000",
+    "samples": 150,
+    "distance_m": 33.167027200095845,
+    "target_distance_m": 10.551618834452016,
+    "lane_misses": 0,
+    "cell_misses": 0,
+    "source_lane_misses": 1,
+    "target_hits": 65,
+    "excluded_jumps": 0,
+    "placement": {
+      "name": "MapAudit000",
+      "id": 2,
+      "xyz": [
+        855.6378579643022,
+        50.55779274123532,
+        55.54880422344122
+      ],
+      "hpr": [
+        4.743036270141602,
+        -0.017849760130047798,
+        -7.914544767118059e-06
+      ],
+      "dimensions": [
+        3.5190000534057617,
+        1.6519999504089355,
+        1.5429999828338623
+      ],
+      "center_offset": [
+        1.284500002861023,
+        0.0,
+        0.0
+      ],
+      "coord_type": 0,
+      "parent": 0,
+      "frame": 923,
+      "sim_time": 36.87999999999939,
+      "road": [
+        173,
+        1,
+        300.36370849609375,
+        1.5000555515289307,
+        5.5519965826533735e-05
+      ],
+      "lanelet_hits": [
+        30887
+      ],
+      "cell_hits": [
+        5577,
+        5578
+      ]
+    },
+    "placement_s_delta_m": -0.44930413997349206,
+    "source_center_t_at_received_s": 1.5,
+    "placement_verified": true,
+    "placement_blocked": false,
+    "first_drive": {
+      "name": "MapAudit000",
+      "id": 2,
+      "xyz": [
+        855.6398004951059,
+        50.49433606784754,
+        55.54979249416463
+      ],
+      "hpr": [
+        4.7429914474487305,
+        -0.017768360674381256,
+        -8.528316357114818e-06
+      ],
+      "dimensions": [
+        3.5190000534057617,
+        1.6519999504089355,
+        1.5429999828338623
+      ],
+      "center_offset": [
+        1.284500002861023,
+        0.0,
+        0.0
+      ],
+      "coord_type": 0,
+      "parent": 0,
+      "frame": 924,
+      "sim_time": 36.91999999999939,
+      "road": null
+    },
+    "last_drive": {
+      "name": "MapAudit000",
+      "id": 2,
+      "xyz": [
+        854.0155989683291,
+        17.581334054394535,
+        55.51064018018574
+      ],
+      "hpr": [
+        4.700207233428955,
+        0.01901252381503582,
+        -0.0036712284199893475
+      ],
+      "dimensions": [
+        3.5190000534057617,
+        1.6519999504089355,
+        1.5429999828338623
+      ],
+      "center_offset": [
+        1.284500002861023,
+        0.0,
+        0.0
+      ],
+      "coord_type": 0,
+      "parent": 0,
+      "frame": 1073,
+      "sim_time": 42.879999999999264,
+      "road": [
+        173,
+        2,
+        267.5163269042969,
+        4.203790664672852,
+        -0.2962092161178589
+      ]
+    },
+    "sim_duration_s": 5.959999999999873,
+    "requested_duration_completed": true,
+    "status": "sampled_motion"
+  },
+  {
+    "target_lanelet": 155396,
+    "source_road": 1926,
+    "source_section": 1,
+    "source_lane": -1,
+    "s_range": [
+      31.801000000109813,
+      109.50100000000002
+    ],
+    "placement_s": 90.30098643655512,
+    "plan_index": 30,
+    "placement_t": -1.55,
+    "source_lane_width_m": 3.1,
+    "name": "MapAudit000",
+    "samples": 150,
+    "distance_m": 32.93856708465417,
+    "target_distance_m": 5.119619600530103,
+    "lane_misses": 0,
+    "cell_misses": 0,
+    "source_lane_misses": 1,
+    "target_hits": 40,
+    "excluded_jumps": 0,
+    "placement": {
+      "name": "MapAudit000",
+      "id": 2,
+      "xyz": [
+        1066.0687686548788,
+        -1022.348488994314,
+        54.79278188224203
+      ],
+      "hpr": [
+        -0.9351231455802917,
+        -0.027680443599820137,
+        -0.0008927042363211513
+      ],
+      "dimensions": [
+        3.5190000534057617,
+        1.6519999504089355,
+        1.5429999828338623
+      ],
+      "center_offset": [
+        1.284500002861023,
+        0.0,
+        0.0
+      ],
+      "coord_type": 0,
+      "parent": 0,
+      "frame": 1178,
+      "sim_time": 47.079999999999174,
+      "road": [
+        1926,
+        -1,
+        90.74995422363281,
+        -1.5545943975448608,
+        -0.004594405181705952
+      ],
+      "lanelet_hits": [
+        155396
+      ],
+      "cell_hits": [
+        27058,
+        27059
+      ]
+    },
+    "placement_s_delta_m": 0.4489677870776916,
+    "source_center_t_at_received_s": -1.55,
+    "placement_verified": true,
+    "placement_blocked": false,
+    "first_drive": {
+      "name": "MapAudit000",
+      "id": 2,
+      "xyz": [
+        1066.1060802495465,
+        -1022.3998667949174,
+        54.794311178486495
+      ],
+      "hpr": [
+        -0.9427024126052856,
+        -0.027660148218274117,
+        -0.0010760697769001126
+      ],
+      "dimensions": [
+        3.5190000534057617,
+        1.6519999504089355,
+        1.5429999828338623
+      ],
+      "center_offset": [
+        1.284500002861023,
+        0.0,
+        0.0
+      ],
+      "coord_type": 0,
+      "parent": 0,
+      "frame": 1179,
+      "sim_time": 47.11999999999917,
+      "road": null
+    },
+    "last_drive": {
+      "name": "MapAudit000",
+      "id": 2,
+      "xyz": [
+        1081.2894451126326,
+        -1051.2504666802795,
+        55.563187194641394
+      ],
+      "hpr": [
+        -0.8953006863594055,
+        -0.02372046187520027,
+        -0.000913758238311857
+      ],
+      "dimensions": [
+        3.5190000534057617,
+        1.6519999504089355,
+        1.5429999828338623
+      ],
+      "center_offset": [
+        1.284500002861023,
+        0.0,
+        0.0
+      ],
+      "coord_type": 0,
+      "parent": 0,
+      "frame": 1328,
+      "sim_time": 53.079999999999046,
+      "road": [
+        1926,
+        -4,
+        122.6613540649414,
+        -7.516780376434326,
+        0.22566422820091248
+      ]
+    },
+    "sim_duration_s": 5.959999999999873,
+    "requested_duration_completed": true,
+    "status": "sampled_motion"
+  },
+  {
+    "target_lanelet": 367165,
+    "source_road": 2702,
+    "source_section": 0,
+    "source_lane": -1,
+    "s_range": [
+      0.0,
+      8.0
+    ],
+    "placement_s": 6.499999258747529,
+    "plan_index": 0,
+    "placement_t": -1.4027232187991456,
+    "source_lane_width_m": 2.8054464375982913,
+    "name": "MapAudit000",
+    "samples": 150,
+    "distance_m": 30.13220187064157,
+    "target_distance_m": 0.8728754785621056,
+    "lane_misses": 0,
+    "cell_misses": 0,
+    "source_lane_misses": 0,
+    "target_hits": 12,
+    "excluded_jumps": 0,
+    "placement": {
+      "name": "MapAudit000",
+      "id": 2,
+      "xyz": [
+        907.6528198580569,
+        195.7257583716875,
+        53.39518685630803
+      ],
+      "hpr": [
+        0.6917259097099304,
+        -0.003856695257127285,
+        -1.0832107363967225e-05
+      ],
+      "dimensions": [
+        3.5190000534057617,
+        1.6519999504089355,
+        1.5429999828338623
+      ],
+      "center_offset": [
+        1.284500002861023,
+        0.0,
+        0.0
+      ],
+      "coord_type": 0,
+      "parent": 0,
+      "frame": 1433,
+      "sim_time": 57.27999999999896,
+      "road": [
+        2702,
+        -1,
+        6.948991775512695,
+        -1.4028273820877075,
+        0.0002625293273013085
+      ],
+      "lanelet_hits": [
+        367165
+      ],
+      "cell_hits": [
+        65065,
+        65066
+      ]
+    },
+    "placement_s_delta_m": 0.44899251676516627,
+    "source_center_t_at_received_s": -1.4030898890079688,
+    "placement_verified": true,
+    "placement_blocked": false,
+    "first_drive": {
+      "name": "MapAudit000",
+      "id": 2,
+      "xyz": [
+        907.7016973450498,
+        195.76623715338548,
+        53.39525959490197
+      ],
+      "hpr": [
+        0.6916825771331787,
+        -0.003798410762101412,
+        -1.1602777703956235e-05
+      ],
+      "dimensions": [
+        3.5190000534057617,
+        1.6519999504089355,
+        1.5429999828338623
+      ],
+      "center_offset": [
+        1.284500002861023,
+        0.0,
+        0.0
+      ],
+      "coord_type": 0,
+      "parent": 0,
+      "frame": 1434,
+      "sim_time": 57.319999999998956,
+      "road": null
+    },
+    "last_drive": {
+      "name": "MapAudit000",
+      "id": 2,
+      "xyz": [
+        919.7160929874134,
+        220.5298938743615,
+        53.40258987035813
+      ],
+      "hpr": [
+        1.9235928058624268,
+        0.002075218129903078,
+        0.006407323759049177
+      ],
+      "dimensions": [
+        3.5190000534057617,
+        1.6519999504089355,
+        1.5429999828338623
+      ],
+      "center_offset": [
+        1.284500002861023,
+        0.0,
+        0.0
+      ],
+      "coord_type": 0,
+      "parent": 0,
+      "frame": 1583,
+      "sim_time": 63.27999999999883,
+      "road": [
+        2702,
+        -1,
+        35.50737762451172,
+        -1.2564654350280762,
+        0.18677648901939392
+      ]
+    },
+    "sim_duration_s": 5.959999999999873,
+    "requested_duration_completed": true,
+    "status": "sampled_motion"
+  },
+  {
+    "target_lanelet": 17625,
+    "source_road": 128,
+    "source_section": 0,
+    "source_lane": -3,
+    "s_range": [
+      0.0,
+      30.100000000000037
+    ],
+    "placement_s": 23.504875761733217,
+    "plan_index": 7,
+    "placement_t": -8.5,
+    "source_lane_width_m": 3.2,
+    "name": "MapAudit000",
+    "samples": 150,
+    "distance_m": 27.700650926426814,
+    "target_distance_m": 5.184329262845485,
+    "lane_misses": 0,
+    "cell_misses": 0,
+    "source_lane_misses": 3,
+    "target_hits": 41,
+    "excluded_jumps": 0,
+    "placement": {
+      "name": "MapAudit000",
+      "id": 2,
+      "xyz": [
+        540.88587146767,
+        -339.79859422524396,
+        41.71476646647636
+      ],
+      "hpr": [
+        2.207350492477417,
+        -0.011334544979035854,
+        -0.0011482920963317156
+      ],
+      "dimensions": [
+        3.5190000534057617,
+        1.6519999504089355,
+        1.5429999828338623
+      ],
+      "center_offset": [
+        1.284500002861023,
+        0.0,
+        0.0
+      ],
+      "coord_type": 0,
+      "parent": 0,
+      "frame": 1688,
+      "sim_time": 67.47999999999935,
+      "road": [
+        128,
+        -3,
+        23.897647857666016,
+        -8.5030517578125,
+        -0.003051698673516512
+      ],
+      "lanelet_hits": [
+        17625
+      ],
+      "cell_hits": [
+        3133
+      ]
+    },
+    "placement_s_delta_m": 0.3927720959327985,
+    "source_center_t_at_received_s": -8.5,
+    "placement_verified": true,
+    "placement_blocked": false,
+    "first_drive": {
+      "name": "MapAudit000",
+      "id": 2,
+      "xyz": [
+        540.8507016758606,
+        -339.7503717166384,
+        41.71527607172806
+      ],
+      "hpr": [
+        2.200915813446045,
+        -0.01128446776419878,
+        -0.0014214019756764174
+      ],
+      "dimensions": [
+        3.5190000534057617,
+        1.6519999504089355,
+        1.5429999828338623
+      ],
+      "center_offset": [
+        1.284500002861023,
+        0.0,
+        0.0
+      ],
+      "coord_type": 0,
+      "parent": 0,
+      "frame": 1689,
+      "sim_time": 67.51999999999936,
+      "road": null
+    },
+    "last_drive": {
+      "name": "MapAudit000",
+      "id": 2,
+      "xyz": [
+        529.5471860040419,
+        -314.725331873778,
+        42.2082170725459
+      ],
+      "hpr": [
+        2.1625499725341797,
+        -0.024499667808413506,
+        0.004144114442169666
+      ],
+      "dimensions": [
+        3.5190000534057617,
+        1.6519999504089355,
+        1.5429999828338623
+      ],
+      "center_offset": [
+        1.284500002861023,
+        0.0,
+        0.0
+      ],
+      "coord_type": 0,
+      "parent": 0,
+      "frame": 1838,
+      "sim_time": 73.48000000000029,
+      "road": [
+        128,
+        -6,
+        50.45413589477539,
+        -14.981427192687988,
+        -0.08142726868391037
+      ]
+    },
+    "sim_duration_s": 5.960000000000932,
+    "requested_duration_completed": true,
+    "status": "sampled_motion"
+  },
+  {
+    "target_lanelet": 129795,
+    "source_road": 1818,
+    "source_section": 0,
+    "source_lane": -1,
+    "s_range": [
+      0.0,
+      25.900999991823575
+    ],
+    "placement_s": 0.01983174852612203,
+    "plan_index": 10,
+    "placement_t": -1.5,
+    "source_lane_width_m": 3.0,
+    "name": "MapAudit000",
+    "samples": 150,
+    "distance_m": 28.1486987238195,
+    "target_distance_m": 25.068752483845575,
+    "lane_misses": 0,
+    "cell_misses": 0,
+    "source_lane_misses": 1,
+    "target_hits": 136,
+    "excluded_jumps": 0,
+    "placement": {
+      "name": "MapAudit000",
+      "id": 2,
+      "xyz": [
+        675.1799639643898,
+        -863.2625082993412,
+        54.649252789406944
+      ],
+      "hpr": [
+        -0.407043993473053,
+        -0.003803863888606429,
+        0.00010785118502099067
+      ],
+      "dimensions": [
+        3.5190000534057617,
+        1.6519999504089355,
+        1.5429999828338623
+      ],
+      "center_offset": [
+        1.284500002861023,
+        0.0,
+        0.0
+      ],
+      "coord_type": 0,
+      "parent": 0,
+      "frame": 1943,
+      "sim_time": 77.68000000000094,
+      "road": [
+        1818,
+        -1,
+        0.409466415643692,
+        -1.499601125717163,
+        0.00039885335718281567
+      ],
+      "lanelet_hits": [
+        129795
+      ],
+      "cell_hits": [
+        22534
+      ]
+    },
+    "placement_s_delta_m": 0.38963466711757,
+    "source_center_t_at_received_s": -1.5,
+    "placement_verified": true,
+    "placement_blocked": false,
+    "first_drive": {
+      "name": "MapAudit000",
+      "id": 2,
+      "xyz": [
+        675.2347268345169,
+        -863.286087135623,
+        54.649438462775805
+      ],
+      "hpr": [
+        -0.406575471162796,
+        -0.003655086038634181,
+        0.0001179174505523406
+      ],
+      "dimensions": [
+        3.5190000534057617,
+        1.6519999504089355,
+        1.5429999828338623
+      ],
+      "center_offset": [
+        1.284500002861023,
+        0.0,
+        0.0
+      ],
+      "coord_type": 0,
+      "parent": 0,
+      "frame": 1944,
+      "sim_time": 77.72000000000095,
+      "road": null
+    },
+    "last_drive": {
+      "name": "MapAudit000",
+      "id": 2,
+      "xyz": [
+        700.9873141110373,
+        -874.6395555775692,
+        55.163547787601196
+      ],
+      "hpr": [
+        -0.4733694791793823,
+        -0.02719670534133911,
+        -0.0030254186131060123
+      ],
+      "dimensions": [
+        3.5190000534057617,
+        1.6519999504089355,
+        1.5429999828338623
+      ],
+      "center_offset": [
+        1.284500002861023,
+        0.0,
+        0.0
+      ],
+      "coord_type": 0,
+      "parent": 0,
+      "frame": 2093,
+      "sim_time": 83.68000000000188,
+      "road": [
+        1818,
+        -2,
+        28.597749710083008,
+        -1.5654155015945435,
+        -0.06541551649570465
+      ]
+    },
+    "sim_duration_s": 5.960000000000932,
+    "requested_duration_completed": true,
+    "status": "sampled_motion"
+  },
+  {
+    "target_lanelet": 177999,
+    "source_road": 1976,
+    "source_section": 0,
+    "source_lane": -2,
+    "s_range": [
+      0.0,
+      39.67605530151629
+    ],
+    "placement_s": 37.46470194983556,
+    "plan_index": 19,
+    "placement_t": -4.5,
+    "source_lane_width_m": 3.0,
+    "name": "MapAudit000",
+    "samples": 150,
+    "distance_m": 26.039854522957988,
+    "target_distance_m": 1.639303724840078,
+    "lane_misses": 0,
+    "cell_misses": 0,
+    "source_lane_misses": 1,
+    "target_hits": 19,
+    "excluded_jumps": 0,
+    "placement": {
+      "name": "MapAudit000",
+      "id": 2,
+      "xyz": [
+        1109.1810267398703,
+        -1115.4315529565781,
+        56.17967858431783
+      ],
+      "hpr": [
+        -2.450152635574341,
+        -0.0038633234798908234,
+        3.260596003265559e-12
+      ],
+      "dimensions": [
+        3.5190000534057617,
+        1.6519999504089355,
+        1.5429999828338623
+      ],
+      "center_offset": [
+        1.284500002861023,
+        0.0,
+        0.0
+      ],
+      "coord_type": 0,
+      "parent": 0,
+      "frame": 2198,
+      "sim_time": 87.88000000000254,
+      "road": [
+        1976,
+        -2,
+        37.85763931274414,
+        -4.5,
+        2.504485507870413e-11
+      ],
+      "lanelet_hits": [
+        177999
+      ],
+      "cell_hits": [
+        31509
+      ]
+    },
+    "placement_s_delta_m": 0.39293736290858305,
+    "source_center_t_at_received_s": -4.5,
+    "placement_verified": true,
+    "placement_blocked": false,
+    "first_drive": {
+      "name": "MapAudit000",
+      "id": 2,
+      "xyz": [
+        1109.1350024656685,
+        -1115.4696500045213,
+        56.17973418032807
+      ],
+      "hpr": [
+        -2.450152635574341,
+        -0.003818775061517954,
+        3.5882924236119162e-12
+      ],
+      "dimensions": [
+        3.5190000534057617,
+        1.6519999504089355,
+        1.5429999828338623
+      ],
+      "center_offset": [
+        1.284500002861023,
+        0.0,
+        0.0
+      ],
+      "coord_type": 0,
+      "parent": 0,
+      "frame": 2199,
+      "sim_time": 87.92000000000255,
+      "road": null
+    },
+    "last_drive": {
+      "name": "MapAudit000",
+      "id": 2,
+      "xyz": [
+        1089.1372068786138,
+        -1132.147409820643,
+        57.85720556028244
+      ],
+      "hpr": [
+        -2.443188190460205,
+        0.00016471176058985293,
+        -2.0485724235186353e-05
+      ],
+      "dimensions": [
+        3.5190000534057617,
+        1.6519999504089355,
+        1.5429999828338623
+      ],
+      "center_offset": [
+        1.284500002861023,
+        0.0,
+        0.0
+      ],
+      "coord_type": 0,
+      "parent": 0,
+      "frame": 2348,
+      "sim_time": 93.88000000000348,
+      "road": [
+        1925,
+        -2,
+        1.0641815662384033,
+        -4.40513277053833,
+        0.09539645165205002
+      ]
+    },
+    "sim_duration_s": 5.960000000000932,
+    "requested_duration_completed": true,
+    "status": "sampled_motion"
+  },
+  {
+    "target_lanelet": 172303,
+    "source_road": 1931,
+    "source_section": 0,
+    "source_lane": -1,
+    "s_range": [
+      0.0,
+      63.40769536033642
+    ],
+    "placement_s": 0.02000801485559491,
+    "plan_index": 9,
+    "placement_t": -1.6000000149322056,
+    "source_lane_width_m": 3.200000029864411,
+    "name": "MapAudit000",
+    "samples": 150,
+    "distance_m": 33.09006005050487,
+    "target_distance_m": 10.875229377415339,
+    "lane_misses": 0,
+    "cell_misses": 0,
+    "source_lane_misses": 1,
+    "target_hits": 67,
+    "excluded_jumps": 0,
+    "placement": {
+      "name": "MapAudit000",
+      "id": 2,
+      "xyz": [
+        970.3208341078488,
+        -948.5113749002728,
+        53.10516687193391
+      ],
+      "hpr": [
+        0.6674250364303589,
+        -0.0038727084174752235,
+        6.167547894619929e-07
+      ],
+      "dimensions": [
+        3.5190000534057617,
+        1.6519999504089355,
+        1.5429999828338623
+      ],
+      "center_offset": [
+        1.284500002861023,
+        0.0,
+        0.0
+      ],
+      "coord_type": 0,
+      "parent": 0,
+      "frame": 2453,
+      "sim_time": 98.08000000000413,
+      "road": [
+        1931,
+        -1,
+        0.41295769810676575,
+        -1.6000007390975952,
+        5.581697223533411e-06
+      ],
+      "lanelet_hits": [
+        172303,
+        532868
+      ],
+      "cell_hits": [
+        30502,
+        93281
+      ]
+    },
+    "placement_s_delta_m": 0.39294968325117086,
+    "source_center_t_at_received_s": -1.6000063347388935,
+    "placement_verified": true,
+    "placement_blocked": false,
+    "first_drive": {
+      "name": "MapAudit000",
+      "id": 2,
+      "xyz": [
+        970.3677832342511,
+        -948.4743753698893,
+        53.10517782583471
+      ],
+      "hpr": [
+        0.6674284934997559,
+        -0.00386393116787076,
+        8.823349162412342e-07
+      ],
+      "dimensions": [
+        3.5190000534057617,
+        1.6519999504089355,
+        1.5429999828338623
+      ],
+      "center_offset": [
+        1.284500002861023,
+        0.0,
+        0.0
+      ],
+      "coord_type": 0,
+      "parent": 0,
+      "frame": 2454,
+      "sim_time": 98.12000000000414,
+      "road": null
+    },
+    "last_drive": {
+      "name": "MapAudit000",
+      "id": 2,
+      "xyz": [
+        997.4692797286319,
+        -929.9815045430054,
+        53.10994047973977
+      ],
+      "hpr": [
+        0.6949136257171631,
+        -4.7692516091046855e-05,
+        -0.000301382620818913
+      ],
+      "dimensions": [
+        3.5190000534057617,
+        1.6519999504089355,
+        1.5429999828338623
+      ],
+      "center_offset": [
+        1.284500002861023,
+        0.0,
+        0.0
+      ],
+      "coord_type": 0,
+      "parent": 0,
+      "frame": 2603,
+      "sim_time": 104.08000000000507,
+      "road": [
+        1931,
+        -2,
+        32.8758659362793,
+        -4.477402687072754,
+        0.3857901692390442
+      ]
+    },
+    "sim_duration_s": 5.960000000000932,
+    "requested_duration_completed": true,
+    "status": "sampled_motion"
+  },
+  {
+    "target_lanelet": 183068,
+    "source_road": 2003,
+    "source_section": 0,
+    "source_lane": 6,
+    "s_range": [
+      0.0,
+      25.50100000000001
+    ],
+    "placement_s": 25.480999999999995,
+    "plan_index": 20,
+    "placement_t": 14.65,
+    "source_lane_width_m": 3.1,
+    "name": "MapAudit000",
+    "samples": 150,
+    "distance_m": 32.52738364466546,
+    "target_distance_m": 5.000668509658489,
+    "lane_misses": 0,
+    "cell_misses": 0,
+    "source_lane_misses": 4,
+    "target_hits": 40,
+    "excluded_jumps": 0,
+    "placement": {
+      "name": "MapAudit000",
+      "id": 2,
+      "xyz": [
+        813.8083471840845,
+        -676.0490142917293,
+        46.95804242065957
+      ],
+      "hpr": [
+        2.2654104232788086,
+        0.018631240352988243,
+        0.002072906354442239
+      ],
+      "dimensions": [
+        3.5190000534057617,
+        1.6519999504089355,
+        1.5429999828338623
+      ],
+      "center_offset": [
+        1.284500002861023,
+        0.0,
+        0.0
+      ],
+      "coord_type": 0,
+      "parent": 0,
+      "frame": 2708,
+      "sim_time": 108.28000000000573,
+      "road": [
+        2003,
+        6,
+        25.08807373046875,
+        14.646623611450195,
+        -0.0033761579543352127
+      ],
+      "lanelet_hits": [
+        183068
+      ],
+      "cell_hits": [
+        32321
+      ]
+    },
+    "placement_s_delta_m": -0.39292626953124454,
+    "source_center_t_at_received_s": 14.65,
+    "placement_verified": true,
+    "placement_blocked": false,
+    "first_drive": {
+      "name": "MapAudit000",
+      "id": 2,
+      "xyz": [
+        813.7697712838201,
+        -676.0033474848921,
+        46.95656140105711
+      ],
+      "hpr": [
+        2.2722344398498535,
+        0.01851537637412548,
+        0.002570707816630602
+      ],
+      "dimensions": [
+        3.5190000534057617,
+        1.6519999504089355,
+        1.5429999828338623
+      ],
+      "center_offset": [
+        1.284500002861023,
+        0.0,
+        0.0
+      ],
+      "coord_type": 0,
+      "parent": 0,
+      "frame": 2709,
+      "sim_time": 108.32000000000573,
+      "road": null
+    },
+    "last_drive": {
+      "name": "MapAudit000",
+      "id": 2,
+      "xyz": [
+        786.6799624323098,
+        -659.3515130839197,
+        46.80665128175855
+      ],
+      "hpr": [
+        2.4746146202087402,
+        0.00012121936015319079,
+        -0.04657110571861267
+      ],
+      "dimensions": [
+        3.5190000534057617,
+        1.6519999504089355,
+        1.5429999828338623
+      ],
+      "center_offset": [
+        1.284500002861023,
+        0.0,
+        0.0
+      ],
+      "coord_type": 0,
+      "parent": 0,
+      "frame": 2858,
+      "sim_time": 114.28000000000667,
+      "road": [
+        2051,
+        -1,
+        4.619675159454346,
+        -0.03143850713968277,
+        1.5685614347457886
+      ]
+    },
+    "sim_duration_s": 5.960000000000932,
+    "requested_duration_completed": true,
+    "status": "sampled_motion"
+  },
+  {
+    "target_lanelet": 266102,
+    "source_road": 2312,
+    "source_section": 3,
+    "source_lane": -1,
+    "s_range": [
+      68.80099999969565,
+      110.20100000000949
+    ],
+    "placement_s": 103.29033187557549,
+    "plan_index": 29,
+    "placement_t": -1.4865808359891617,
+    "source_lane_width_m": 2.9731616719783234,
+    "name": "MapAudit000",
+    "samples": 150,
+    "distance_m": 29.79770165093863,
+    "target_distance_m": 6.37584876693056,
+    "lane_misses": 0,
+    "cell_misses": 0,
+    "source_lane_misses": 0,
+    "target_hits": 47,
+    "excluded_jumps": 0,
+    "placement": {
+      "name": "MapAudit000",
+      "id": 2,
+      "xyz": [
+        1236.7418594489798,
+        -381.5957213669737,
+        72.00734344747835
+      ],
+      "hpr": [
+        0.6712018251419067,
+        -0.03385484591126442,
+        -0.00011656949209282175
+      ],
+      "dimensions": [
+        3.5190000534057617,
+        1.6519999504089355,
+        1.5429999828338623
+      ],
+      "center_offset": [
+        1.284500002861023,
+        0.0,
+        0.0
+      ],
+      "coord_type": 0,
+      "parent": 0,
+      "frame": 2963,
+      "sim_time": 118.48000000000732,
+      "road": [
+        2312,
+        -1,
+        103.68301391601562,
+        -1.486368179321289,
+        -0.0012791184708476067
+      ],
+      "lanelet_hits": [
+        266102
+      ],
+      "cell_hits": [
+        47288
+      ]
+    },
+    "placement_s_delta_m": 0.39268204044013544,
+    "source_center_t_at_received_s": -1.4850890701551582,
+    "placement_verified": true,
+    "placement_blocked": false,
+    "first_drive": {
+      "name": "MapAudit000",
+      "id": 2,
+      "xyz": [
+        1236.7886539062736,
+        -381.5585463529519,
+        72.00915224305767
+      ],
+      "hpr": [
+        0.6713356971740723,
+        -0.03384111449122429,
+        -0.00011755934974644333
+      ],
+      "dimensions": [
+        3.5190000534057617,
+        1.6519999504089355,
+        1.5429999828338623
+      ],
+      "center_offset": [
+        1.284500002861023,
+        0.0,
+        0.0
+      ],
+      "coord_type": 0,
+      "parent": 0,
+      "frame": 2964,
+      "sim_time": 118.52000000000733,
+      "road": null
+    },
+    "last_drive": {
+      "name": "MapAudit000",
+      "id": 2,
+      "xyz": [
+        1259.0502908489425,
+        -361.7849641207262,
+        72.90245746924089
+      ],
+      "hpr": [
+        0.8098005056381226,
+        -0.029848216101527214,
+        0.0010971658630296588
+      ],
+      "dimensions": [
+        3.5190000534057617,
+        1.6519999504089355,
+        1.5429999828338623
+      ],
+      "center_offset": [
+        1.284500002861023,
+        0.0,
+        0.0
+      ],
+      "coord_type": 0,
+      "parent": 0,
+      "frame": 3113,
+      "sim_time": 124.48000000000826,
+      "road": [
+        2312,
+        -1,
+        133.18667602539062,
+        -1.3725312948226929,
+        -0.004901404958218336
+      ]
+    },
+    "sim_duration_s": 5.960000000000932,
+    "requested_duration_completed": true,
+    "status": "sampled_motion"
+  },
+  {
+    "target_lanelet": 293213,
+    "source_road": 2444,
+    "source_section": 0,
+    "source_lane": -1,
+    "s_range": [
+      0.0,
+      28.733848493427402
+    ],
+    "placement_s": 24.5199182192601,
+    "plan_index": 14,
+    "placement_t": -1.685629197566712,
+    "source_lane_width_m": 3.371258395133424,
+    "name": "MapAudit000",
+    "samples": 0,
+    "distance_m": 0.0,
+    "target_distance_m": 0.0,
+    "lane_misses": 0,
+    "cell_misses": 0,
+    "source_lane_misses": 0,
+    "target_hits": 0,
+    "excluded_jumps": 0,
+    "placement": {
+      "name": "MapAudit000",
+      "id": 2,
+      "xyz": [
+        726.8287800765238,
+        -237.0159747012705,
+        46.895223890359055
+      ],
+      "hpr": [
+        -3.820312023162842,
+        -0.0038270202931016684,
+        -0.002022854285314679
+      ],
+      "dimensions": [
+        3.5190000534057617,
+        1.6519999504089355,
+        1.5429999828338623
+      ],
+      "center_offset": [
+        1.284500002861023,
+        0.0,
+        0.0
+      ],
+      "coord_type": 0,
+      "parent": 0,
+      "frame": 3218,
+      "sim_time": 128.68000000000868,
+      "road": [
+        1163,
+        -1,
+        33.41383743286133,
+        -2.0566084384918213,
+        -0.35233160853385925
+      ],
+      "lanelet_hits": [
+        83214,
+        83557,
+        293213
+      ],
+      "cell_hits": [
+        15097,
+        15141,
+        51912
+      ]
+    },
+    "placement_s_delta_m": 8.89391921360123,
+    "source_center_t_at_received_s": -1.7042767784595327,
+    "placement_verified": false,
+    "placement_blocked": true,
+    "sim_duration_s": 0.0,
+    "requested_duration_completed": false,
+    "status": "placement_mismatch"
+  },
+  {
+    "target_lanelet": 497928,
+    "source_road": 3119,
+    "source_section": 0,
+    "source_lane": -3,
+    "s_range": [
+      0.0,
+      100.00000000000004
+    ],
+    "placement_s": 0.020000000000000594,
+    "plan_index": 15,
+    "placement_t": -7.189889379603438,
+    "source_lane_width_m": 2.88048830899004,
+    "name": "MapAudit000",
+    "samples": 150,
+    "distance_m": 28.411806055312418,
+    "target_distance_m": 28.348594723493843,
+    "lane_misses": 0,
+    "cell_misses": 0,
+    "source_lane_misses": 0,
+    "target_hits": 150,
+    "excluded_jumps": 0,
+    "placement": {
+      "name": "MapAudit000",
+      "id": 2,
+      "xyz": [
+        1418.9132103772708,
+        919.9246134701888,
+        52.918977038333345
+      ],
+      "hpr": [
+        0.5439802408218384,
+        -0.003810048568993807,
+        5.199911612407959e-10
+      ],
+      "dimensions": [
+        3.5190000534057617,
+        1.6519999504089355,
+        1.5429999828338623
+      ],
+      "center_offset": [
+        1.284500002861023,
+        0.0,
+        0.0
+      ],
+      "coord_type": 0,
+      "parent": 0,
+      "frame": 3473,
+      "sim_time": 138.88000000000665,
+      "road": [
+        3119,
+        -3,
+        0.4129229187965393,
+        -7.189889430999756,
+        1.9589503352790416e-09
+      ],
+      "lanelet_hits": [
+        497928
+      ],
+      "cell_hits": [
+        87436
+      ]
+    },
+    "placement_s_delta_m": 0.39292291879653873,
+    "source_center_t_at_received_s": -7.1898893775993775,
+    "placement_verified": true,
+    "placement_blocked": false,
+    "first_drive": {
+      "name": "MapAudit000",
+      "id": 2,
+      "xyz": [
+        1418.9642377446557,
+        919.9554775276671,
+        52.91915318936973
+      ],
+      "hpr": [
+        0.5439802408218384,
+        -0.0036689010448753834,
+        5.704213212887055e-10
+      ],
+      "dimensions": [
+        3.5190000534057617,
+        1.6519999504089355,
+        1.5429999828338623
+      ],
+      "center_offset": [
+        1.284500002861023,
+        0.0,
+        0.0
+      ],
+      "coord_type": 0,
+      "parent": 0,
+      "frame": 3474,
+      "sim_time": 138.92000000000664,
+      "road": null
+    },
+    "last_drive": {
+      "name": "MapAudit000",
+      "id": 2,
+      "xyz": [
+        1443.3632301690927,
+        934.5075804527526,
+        52.92357172737953
+      ],
+      "hpr": [
+        0.5487995743751526,
+        -0.00012840511044487357,
+        1.149235413322458e-05
+      ],
+      "dimensions": [
+        3.5190000534057617,
+        1.6519999504089355,
+        1.5429999828338623
+      ],
+      "center_offset": [
+        1.284500002861023,
+        0.0,
+        0.0
+      ],
+      "coord_type": 0,
+      "parent": 0,
+      "frame": 3623,
+      "sim_time": 144.88000000000545,
+      "road": [
+        3119,
+        -3,
+        28.717355728149414,
+        -7.366957187652588,
+        -0.17707574367523193
+      ]
+    },
+    "sim_duration_s": 5.959999999998814,
+    "requested_duration_completed": true,
+    "status": "sampled_motion"
+  },
+  {
+    "target_lanelet": 178158,
+    "source_road": 1976,
+    "source_section": 0,
+    "source_lane": -1,
+    "s_range": [
+      0.0,
+      39.67605530151629
+    ],
+    "placement_s": 32.75332803099436,
+    "plan_index": 6,
+    "placement_t": -1.5,
+    "source_lane_width_m": 3.0,
+    "name": "MapAudit000",
+    "samples": 150,
+    "distance_m": 28.020803300981985,
+    "target_distance_m": 6.172329347145475,
+    "lane_misses": 0,
+    "cell_misses": 0,
+    "source_lane_misses": 1,
+    "target_hits": 46,
+    "excluded_jumps": 0,
+    "placement": {
+      "name": "MapAudit000",
+      "id": 2,
+      "xyz": [
+        1114.6549704954753,
+        -1114.7633408338972,
+        56.179676518167206
+      ],
+      "hpr": [
+        -2.418670415878296,
+        -0.003864979138597846,
+        -0.00035556391230784357
+      ],
+      "dimensions": [
+        3.5190000534057617,
+        1.6519999504089355,
+        1.5429999828338623
+      ],
+      "center_offset": [
+        1.284500002861023,
+        0.0,
+        0.0
+      ],
+      "coord_type": 0,
+      "parent": 0,
+      "frame": 3728,
+      "sim_time": 149.08000000000462,
+      "road": [
+        1976,
+        -1,
+        33.164794921875,
+        -1.5003243684768677,
+        -0.0003243641695007682
+      ],
+      "lanelet_hits": [
+        178158
+      ],
+      "cell_hits": [
+        31542
+      ]
+    },
+    "placement_s_delta_m": 0.41146689088063937,
+    "source_center_t_at_received_s": -1.5,
+    "placement_verified": true,
+    "placement_blocked": false,
+    "first_drive": {
+      "name": "MapAudit000",
+      "id": 2,
+      "xyz": [
+        1114.610101766688,
+        -1114.8028033279156,
+        56.179715922291344
+      ],
+      "hpr": [
+        -2.420203685760498,
+        -0.0038334049750119448,
+        -0.0003868578060064465
+      ],
+      "dimensions": [
+        3.5190000534057617,
+        1.6519999504089355,
+        1.5429999828338623
+      ],
+      "center_offset": [
+        1.284500002861023,
+        0.0,
+        0.0
+      ],
+      "coord_type": 0,
+      "parent": 0,
+      "frame": 3729,
+      "sim_time": 149.1200000000046,
+      "road": null
+    },
+    "last_drive": {
+      "name": "MapAudit000",
+      "id": 2,
+      "xyz": [
+        1093.1299734438446,
+        -1132.7961832359335,
+        57.858903050254035
+      ],
+      "hpr": [
+        -2.443779945373535,
+        0.001524880644865334,
+        -3.228509012842551e-05
+      ],
+      "dimensions": [
+        3.5190000534057617,
+        1.6519999504089355,
+        1.5429999828338623
+      ],
+      "center_offset": [
+        1.284500002861023,
+        0.0,
+        0.0
+      ],
+      "coord_type": 0,
+      "parent": 0,
+      "frame": 3878,
+      "sim_time": 155.08000000000342,
+      "road": [
+        1910,
+        2,
+        1.6098496913909912,
+        1.7593836784362793,
+        -0.14061634242534637
+      ]
+    },
+    "sim_duration_s": 5.959999999998814,
+    "requested_duration_completed": true,
+    "status": "sampled_motion"
+  },
+  {
+    "target_lanelet": 193929,
+    "source_road": 2011,
+    "source_section": 6,
+    "source_lane": 3,
+    "s_range": [
+      70.50100000003212,
+      78.501
+    ],
+    "placement_s": 72.00275455960424,
+    "plan_index": 18,
+    "placement_t": 8.5,
+    "source_lane_width_m": 3.3,
+    "name": "MapAudit000",
+    "samples": 150,
+    "distance_m": 33.14798096423131,
+    "target_distance_m": 0.9419690157401523,
+    "lane_misses": 0,
+    "cell_misses": 0,
+    "source_lane_misses": 1,
+    "target_hits": 13,
+    "excluded_jumps": 0,
+    "placement": {
+      "name": "MapAudit000",
+      "id": 2,
+      "xyz": [
+        736.2458169627315,
+        -587.5164475076361,
+        46.00786288843407
+      ],
+      "hpr": [
+        2.211137533187866,
+        0.036914896219968796,
+        -0.002410691464319825
+      ],
+      "dimensions": [
+        3.5190000534057617,
+        1.6519999504089355,
+        1.5429999828338623
+      ],
+      "center_offset": [
+        1.284500002861023,
+        0.0,
+        0.0
+      ],
+      "coord_type": 0,
+      "parent": 0,
+      "frame": 3983,
+      "sim_time": 159.2800000000026,
+      "road": [
+        2011,
+        3,
+        71.60992431640625,
+        8.503233909606934,
+        0.003234240924939513
+      ],
+      "lanelet_hits": [
+        193929
+      ],
+      "cell_hits": [
+        34375
+      ]
+    },
+    "placement_s_delta_m": -0.39283024319799154,
+    "source_center_t_at_received_s": 8.5,
+    "placement_verified": true,
+    "placement_blocked": false,
+    "first_drive": {
+      "name": "MapAudit000",
+      "id": 2,
+      "xyz": [
+        736.2104178529054,
+        -587.4682785976303,
+        46.005435145853006
+      ],
+      "hpr": [
+        2.204545259475708,
+        0.03691527247428894,
+        -0.003002159995958209
+      ],
+      "dimensions": [
+        3.5190000534057617,
+        1.6519999504089355,
+        1.5429999828338623
+      ],
+      "center_offset": [
+        1.284500002861023,
+        0.0,
+        0.0
+      ],
+      "coord_type": 0,
+      "parent": 0,
+      "frame": 3984,
+      "sim_time": 159.32000000000258,
+      "road": null
+    },
+    "last_drive": {
+      "name": "MapAudit000",
+      "id": 2,
+      "xyz": [
+        720.8057130835477,
+        -558.304152432866,
+        44.6860405985506
+      ],
+      "hpr": [
+        2.238304376602173,
+        0.04071662947535515,
+        0.04726097732782364
+      ],
+      "dimensions": [
+        3.5190000534057617,
+        1.6519999504089355,
+        1.5429999828338623
+      ],
+      "center_offset": [
+        1.284500002861023,
+        0.0,
+        0.0
+      ],
+      "coord_type": 0,
+      "parent": 0,
+      "frame": 4133,
+      "sim_time": 165.2800000000014,
+      "road": [
+        2011,
+        5,
+        39.32963562011719,
+        14.441338539123535,
+        -0.5233166217803955
+      ]
+    },
+    "sim_duration_s": 5.959999999998814,
+    "requested_duration_completed": true,
+    "status": "sampled_motion"
+  },
+  {
+    "target_lanelet": 153837,
+    "source_road": 1926,
+    "source_section": 0,
+    "source_lane": 6,
+    "s_range": [
+      0.0,
+      31.801000000109813
+    ],
+    "placement_s": 1.651289804253846,
+    "plan_index": 23,
+    "placement_t": 14.934519887162441,
+    "source_lane_width_m": 3.3948066935656214,
+    "name": "MapAudit000",
+    "samples": 151,
+    "distance_m": 32.481893094023484,
+    "target_distance_m": 1.0481504056536244,
+    "lane_misses": 4,
+    "cell_misses": 3,
+    "source_lane_misses": 11,
+    "target_hits": 14,
+    "excluded_jumps": 0,
+    "placement": {
+      "name": "MapAudit000",
+      "id": 2,
+      "xyz": [
+        1023.4880031964549,
+        -941.8014711760784,
+        53.1051657656312
+      ],
+      "hpr": [
+        2.3117995262145996,
+        -0.003873594803735614,
+        0.0025591887533664703
+      ],
+      "dimensions": [
+        3.5190000534057617,
+        1.6519999504089355,
+        1.5429999828338623
+      ],
+      "center_offset": [
+        1.284500002861023,
+        0.0,
+        0.0
+      ],
+      "coord_type": 0,
+      "parent": 0,
+      "frame": 4238,
+      "sim_time": 169.48000000000056,
+      "road": [
+        1926,
+        6,
+        1.258650302886963,
+        14.92288589477539,
+        -0.011343581601977348
+      ],
+      "lanelet_hits": [
+        153837
+      ],
+      "cell_hits": [
+        26763
+      ]
+    },
+    "placement_s_delta_m": -0.3926395013668831,
+    "source_center_t_at_received_s": 14.934229825487048,
+    "placement_verified": true,
+    "placement_blocked": false,
+    "first_drive": {
+      "name": "MapAudit000",
+      "id": 2,
+      "xyz": [
+        1023.447144339798,
+        -941.7578359160136,
+        53.10517573491541
+      ],
+      "hpr": [
+        2.3233041763305664,
+        -0.003865606617182493,
+        0.002903303364291787
+      ],
+      "dimensions": [
+        3.5190000534057617,
+        1.6519999504089355,
+        1.5429999828338623
+      ],
+      "center_offset": [
+        1.284500002861023,
+        0.0,
+        0.0
+      ],
+      "coord_type": 0,
+      "parent": 0,
+      "frame": 4239,
+      "sim_time": 169.52000000000055,
+      "road": null
+    },
+    "last_drive": {
+      "name": "MapAudit000",
+      "id": 2,
+      "xyz": [
+        1000.1892709365427,
+        -932.2939134942711,
+        53.11020629021457
+      ],
+      "hpr": [
+        2.3266706466674805,
+        0.00016529664571862668,
+        0.04548303037881851
+      ],
+      "dimensions": [
+        3.5190000534057617,
+        1.6519999504089355,
+        1.5429999828338623
+      ],
+      "center_offset": [
+        1.284500002861023,
+        0.0,
+        0.0
+      ],
+      "coord_type": 0,
+      "parent": 0,
+      "frame": 4389,
+      "sim_time": 175.51999999999936,
+      "road": [
+        1940,
+        -1,
+        19.62998390197754,
+        -3.2097291946411133,
+        -1.5955345630645752
+      ]
+    },
+    "sim_duration_s": 5.999999999998806,
+    "requested_duration_completed": true,
+    "status": "map_miss"
+  },
+  {
+    "target_lanelet": 537171,
+    "source_road": 4740,
+    "source_section": 0,
+    "source_lane": 1,
+    "s_range": [
+      0.0,
+      64.21285013649666
+    ],
+    "placement_s": 64.19285013649665,
+    "plan_index": 27,
+    "placement_t": -1.5,
+    "source_lane_width_m": 3.0,
+    "name": "MapAudit000",
+    "samples": 150,
+    "distance_m": 29.58985328548118,
+    "target_distance_m": 29.522824528910387,
+    "lane_misses": 0,
+    "cell_misses": 0,
+    "source_lane_misses": 0,
+    "target_hits": 150,
+    "excluded_jumps": 0,
+    "placement": {
+      "name": "MapAudit000",
+      "id": 2,
+      "xyz": [
+        557.1682328308669,
+        -809.5594271557189,
+        52.76820094083926
+      ],
+      "hpr": [
+        3.82301926612854,
+        -0.0038454094901680946,
+        -3.221122567504867e-16
+      ],
+      "dimensions": [
+        3.5190000534057617,
+        1.6519999504089355,
+        1.5429999828338623
+      ],
+      "center_offset": [
+        1.284500002861023,
+        0.0,
+        0.0
+      ],
+      "coord_type": 0,
+      "parent": 0,
+      "frame": 4494,
+      "sim_time": 179.71999999999852,
+      "road": [
+        4740,
+        1,
+        63.743865966796875,
+        -1.5,
+        0.0
+      ],
+      "lanelet_hits": [
+        537171
+      ],
+      "cell_hits": [
+        93961
+      ]
+    },
+    "placement_s_delta_m": -0.44898416969977006,
+    "source_center_t_at_received_s": -1.5,
+    "placement_verified": true,
+    "placement_blocked": false,
+    "first_drive": {
+      "name": "MapAudit000",
+      "id": 2,
+      "xyz": [
+        557.1189672196274,
+        -809.599382730189,
+        52.76831895159933
+      ],
+      "hpr": [
+        3.82301926612854,
+        -0.0037508488167077303,
+        -3.5590222743125326e-16
+      ],
+      "dimensions": [
+        3.5190000534057617,
+        1.6519999504089355,
+        1.5429999828338623
+      ],
+      "center_offset": [
+        1.284500002861023,
+        0.0,
+        0.0
+      ],
+      "coord_type": 0,
+      "parent": 0,
+      "frame": 4495,
+      "sim_time": 179.7599999999985,
+      "road": null
+    },
+    "last_drive": {
+      "name": "MapAudit000",
+      "id": 2,
+      "xyz": [
+        534.0313923355585,
+        -828.1067145558426,
+        52.77316605498508
+      ],
+      "hpr": [
+        3.8175477981567383,
+        0.00013305687753017992,
+        9.220568244927563e-06
+      ],
+      "dimensions": [
+        3.5190000534057617,
+        1.6519999504089355,
+        1.5429999828338623
+      ],
+      "center_offset": [
+        1.284500002861023,
+        0.0,
+        0.0
+      ],
+      "coord_type": 0,
+      "parent": 0,
+      "frame": 4644,
+      "sim_time": 185.71999999999733,
+      "road": [
+        4740,
+        1,
+        34.252166748046875,
+        -1.3324859142303467,
+        0.16751407086849213
+      ]
+    },
+    "sim_duration_s": 5.959999999998814,
+    "requested_duration_completed": true,
+    "status": "sampled_motion"
+  },
+  {
+    "target_lanelet": 524504,
+    "source_road": 3346,
+    "source_section": 0,
+    "source_lane": -3,
+    "s_range": [
+      0.0,
+      58.147657112179076
+    ],
+    "placement_s": 45.5027028745093,
+    "plan_index": 24,
+    "placement_t": -8.01360922604056,
+    "source_lane_width_m": 3.2757394840270395,
+    "name": "MapAudit000",
+    "samples": 150,
+    "distance_m": 27.618897234778604,
+    "target_distance_m": 11.818816176451152,
+    "lane_misses": 0,
+    "cell_misses": 0,
+    "source_lane_misses": 1,
+    "target_hits": 73,
+    "excluded_jumps": 0,
+    "placement": {
+      "name": "MapAudit000",
+      "id": 2,
+      "xyz": [
+        571.5243448745338,
+        -404.6119402515294,
+        41.695399628851234
+      ],
+      "hpr": [
+        -0.9017781615257263,
+        -0.0036862031556665897,
+        -8.505837467964739e-05
+      ],
+      "dimensions": [
+        3.5190000534057617,
+        1.6519999504089355,
+        1.5429999828338623
+      ],
+      "center_offset": [
+        1.284500002861023,
+        0.0,
+        0.0
+      ],
+      "coord_type": 0,
+      "parent": 0,
+      "frame": 4749,
+      "sim_time": 189.9199999999965,
+      "road": [
+        3346,
+        -3,
+        45.958099365234375,
+        -8.014242172241211,
+        0.0017341745551675558
+      ],
+      "lanelet_hits": [
+        524504
+      ],
+      "cell_hits": [
+        91847,
+        91848
+      ]
+    },
+    "placement_s_delta_m": 0.4553964907250716,
+    "source_center_t_at_received_s": -8.015976687675202,
+    "placement_verified": true,
+    "placement_blocked": false,
+    "first_drive": {
+      "name": "MapAudit000",
+      "id": 2,
+      "xyz": [
+        571.56347339416,
+        -404.6614636833994,
+        41.69573549134063
+      ],
+      "hpr": [
+        -0.9021182060241699,
+        -0.003417080966755748,
+        -9.050720109371468e-05
+      ],
+      "dimensions": [
+        3.5190000534057617,
+        1.6519999504089355,
+        1.5429999828338623
+      ],
+      "center_offset": [
+        1.284500002861023,
+        0.0,
+        0.0
+      ],
+      "coord_type": 0,
+      "parent": 0,
+      "frame": 4750,
+      "sim_time": 189.95999999999648,
+      "road": null
+    },
+    "last_drive": {
+      "name": "MapAudit000",
+      "id": 2,
+      "xyz": [
+        588.2966701743335,
+        -426.629055121746,
+        41.699990863329106
+      ],
+      "hpr": [
+        -0.9016410708427429,
+        -7.321050361497328e-06,
+        6.056321217329241e-05
+      ],
+      "dimensions": [
+        3.5190000534057617,
+        1.6519999504089355,
+        1.5429999828338623
+      ],
+      "center_offset": [
+        1.284500002861023,
+        0.0,
+        0.0
+      ],
+      "coord_type": 0,
+      "parent": 0,
+      "frame": 4899,
+      "sim_time": 195.9199999999953,
+      "road": [
+        940,
+        -3,
+        15.36038589477539,
+        -8.460412979125977,
+        -0.41041311621665955
+      ]
+    },
+    "sim_duration_s": 5.959999999998814,
+    "requested_duration_completed": true,
+    "status": "sampled_motion"
+  },
+  {
+    "target_lanelet": 311399,
+    "source_road": 2521,
+    "source_section": 0,
+    "source_lane": -1,
+    "s_range": [
+      0.0,
+      33.63939884132318
+    ],
+    "placement_s": 28.64222264265069,
+    "plan_index": 25,
+    "placement_t": -1.4223606577421821,
+    "source_lane_width_m": 2.8447213154843642,
+    "name": "MapAudit000",
+    "samples": 0,
+    "distance_m": 0.0,
+    "target_distance_m": 0.0,
+    "lane_misses": 0,
+    "cell_misses": 0,
+    "source_lane_misses": 0,
+    "target_hits": 0,
+    "excluded_jumps": 0,
+    "placement": {
+      "name": "MapAudit000",
+      "id": 2,
+      "xyz": [
+        1406.0615999356278,
+        -195.19103512048224,
+        71.47895093035802
+      ],
+      "hpr": [
+        0.035612210631370544,
+        -0.003686422249302268,
+        0.0004886070964857936
+      ],
+      "dimensions": [
+        3.5190000534057617,
+        1.6519999504089355,
+        1.5429999828338623
+      ],
+      "center_offset": [
+        1.284500002861023,
+        0.0,
+        0.0
+      ],
+      "coord_type": 0,
+      "parent": 0,
+      "frame": 5004,
+      "sim_time": 200.11999999999446,
+      "road": [
+        2497,
+        -1,
+        20.93046760559082,
+        -1.2122458219528198,
+        0.2186163067817688
+      ],
+      "lanelet_hits": [
+        309824,
+        310478,
+        311399
+      ],
+      "cell_hits": [
+        54885,
+        54971,
+        55086,
+        55087
+      ]
+    },
+    "placement_s_delta_m": -7.71175503705987,
+    "source_center_t_at_received_s": -1.4308621579966923,
+    "placement_verified": false,
+    "placement_blocked": true,
+    "sim_duration_s": 0.0,
+    "requested_duration_completed": false,
+    "status": "placement_mismatch"
+  },
+  {
+    "target_lanelet": 11278,
+    "source_road": 116,
+    "source_section": 0,
+    "source_lane": -1,
+    "s_range": [
+      0.0,
+      106.60653063474314
+    ],
+    "placement_s": 104.93009401188505,
+    "plan_index": 13,
+    "placement_t": -1.4060892507779224,
+    "source_lane_width_m": 2.8121785015558447,
+    "name": "MapAudit000",
+    "samples": 150,
+    "distance_m": 31.857476699414075,
+    "target_distance_m": 0.9795382246491497,
+    "lane_misses": 0,
+    "cell_misses": 0,
+    "source_lane_misses": 3,
+    "target_hits": 13,
+    "excluded_jumps": 0,
+    "placement": {
+      "name": "MapAudit000",
+      "id": 2,
+      "xyz": [
+        406.72500603380894,
+        -369.08689144250945,
+        47.79520078834567
+      ],
+      "hpr": [
+        1.7820067405700684,
+        -0.003845531726256013,
+        -0.00014636461855843663
+      ],
+      "dimensions": [
+        3.5190000534057617,
+        1.6519999504089355,
+        1.5429999828338623
+      ],
+      "center_offset": [
+        1.284500002861023,
+        0.0,
+        0.0
+      ],
+      "coord_type": 0,
+      "parent": 0,
+      "frame": 5259,
+      "sim_time": 210.31999999999243,
+      "road": [
+        116,
+        -1,
+        105.38520050048828,
+        -1.4065158367156982,
+        -0.0014223301550373435
+      ],
+      "lanelet_hits": [
+        11278
+      ],
+      "cell_hits": [
+        1881
+      ]
+    },
+    "placement_s_delta_m": 0.455106488603235,
+    "source_center_t_at_received_s": -1.4050935112169662,
+    "placement_verified": true,
+    "placement_blocked": false,
+    "first_drive": {
+      "name": "MapAudit000",
+      "id": 2,
+      "xyz": [
+        406.7117446271844,
+        -369.0248613294143,
+        47.79531626176764
+      ],
+      "hpr": [
+        1.7814195156097412,
+        -0.003753004129976034,
+        -0.00015717318456154317
+      ],
+      "dimensions": [
+        3.5190000534057617,
+        1.6519999504089355,
+        1.5429999828338623
+      ],
+      "center_offset": [
+        1.284500002861023,
+        0.0,
+        0.0
+      ],
+      "coord_type": 0,
+      "parent": 0,
+      "frame": 5260,
+      "sim_time": 210.35999999999243,
+      "road": null
+    },
+    "last_drive": {
+      "name": "MapAudit000",
+      "id": 2,
+      "xyz": [
+        392.0536213357798,
+        -341.38801399575703,
+        47.79982887207652
+      ],
+      "hpr": [
+        2.245516300201416,
+        -0.00013712173677049577,
+        -0.0007989353034645319
+      ],
+      "dimensions": [
+        3.5190000534057617,
+        1.6519999504089355,
+        1.5429999828338623
+      ],
+      "center_offset": [
+        1.284500002861023,
+        0.0,
+        0.0
+      ],
+      "coord_type": 0,
+      "parent": 0,
+      "frame": 5409,
+      "sim_time": 216.31999999999124,
+      "road": [
+        100,
+        -1,
+        5.5209269523620605,
+        -1.2438263893127441,
+        0.1383294314146042
+      ]
+    },
+    "sim_duration_s": 5.959999999998814,
+    "requested_duration_completed": true,
+    "status": "sampled_motion"
+  },
+  {
+    "target_lanelet": 303353,
+    "source_road": 2470,
+    "source_section": 3,
+    "source_lane": -4,
+    "s_range": [
+      65.60099999999088,
+      121.30099999496703
+    ],
+    "placement_s": 108.65946857504403,
+    "plan_index": 1,
+    "placement_t": -7.683194223135557,
+    "source_lane_width_m": 1.9616355698715644,
+    "name": "MapAudit000",
+    "samples": 150,
+    "distance_m": 33.35188368762644,
+    "target_distance_m": 3.1359505954740476,
+    "lane_misses": 0,
+    "cell_misses": 0,
+    "source_lane_misses": 2,
+    "target_hits": 29,
+    "excluded_jumps": 0,
+    "placement": {
+      "name": "MapAudit000",
+      "id": 2,
+      "xyz": [
+        1224.2353331876093,
+        -89.89834004144481,
+        71.96083180502106
+      ],
+      "hpr": [
+        -0.5234755277633667,
+        -0.08246980607509613,
+        -0.0079659977927804
+      ],
+      "dimensions": [
+        3.5190000534057617,
+        1.6519999504089355,
+        1.5429999828338623
+      ],
+      "center_offset": [
+        1.284500002861023,
+        0.0,
+        0.0
+      ],
+      "coord_type": 0,
+      "parent": 0,
+      "frame": 5514,
+      "sim_time": 220.5199999999904,
+      "road": [
+        2470,
+        -4,
+        109.10059356689453,
+        -7.671844482421875,
+        -0.015742577612400055
+      ],
+      "lanelet_hits": [
+        303353
+      ],
+      "cell_hits": [
+        53790,
+        53791
+      ]
+    },
+    "placement_s_delta_m": 0.4411249918505007,
+    "source_center_t_at_received_s": -7.656102046800083,
+    "placement_verified": true,
+    "placement_blocked": false,
+    "first_drive": {
+      "name": "MapAudit000",
+      "id": 2,
+      "xyz": [
+        1224.289578108867,
+        -89.92888331692795,
+        71.96590974715654
+      ],
+      "hpr": [
+        -0.5128313899040222,
+        -0.08232732862234116,
+        -0.008509062230587006
+      ],
+      "dimensions": [
+        3.5190000534057617,
+        1.6519999504089355,
+        1.5429999828338623
+      ],
+      "center_offset": [
+        1.284500002861023,
+        0.0,
+        0.0
+      ],
+      "coord_type": 0,
+      "parent": 0,
+      "frame": 5515,
+      "sim_time": 220.5599999999904,
+      "road": null
+    },
+    "last_drive": {
+      "name": "MapAudit000",
+      "id": 2,
+      "xyz": [
+        1252.2999643249937,
+        -107.01297541658087,
+        74.64504733926404
+      ],
+      "hpr": [
+        -0.8110352158546448,
+        -0.07931023091077805,
+        -0.005258588586002588
+      ],
+      "dimensions": [
+        3.5190000534057617,
+        1.6519999504089355,
+        1.5429999828338623
+      ],
+      "center_offset": [
+        1.284500002861023,
+        0.0,
+        0.0
+      ],
+      "coord_type": 0,
+      "parent": 0,
+      "frame": 5664,
+      "sim_time": 226.5199999999892,
+      "road": [
+        2470,
+        -2,
+        142.59341430664062,
+        -2.238323926925659,
+        -0.10480930656194687
+      ]
+    },
+    "sim_duration_s": 5.959999999998814,
+    "requested_duration_completed": true,
+    "status": "sampled_motion"
+  },
+  {
+    "target_lanelet": 365519,
+    "source_road": 2687,
+    "source_section": 0,
+    "source_lane": -2,
+    "s_range": [
+      0.0,
+      41.885550537845674
+    ],
+    "placement_s": 0.019999999990997545,
+    "plan_index": 35,
+    "placement_t": -4.488749956716912,
+    "source_lane_width_m": 2.900500104207622,
+    "name": "MapAudit000",
+    "samples": 150,
+    "distance_m": 31.662505757788846,
+    "target_distance_m": 31.59534700840123,
+    "lane_misses": 0,
+    "cell_misses": 0,
+    "source_lane_misses": 0,
+    "target_hits": 150,
+    "excluded_jumps": 0,
+    "placement": {
+      "name": "MapAudit000",
+      "id": 2,
+      "xyz": [
+        938.03071048098,
+        195.22534973317582,
+        53.39517666109956
+      ],
+      "hpr": [
+        2.1267030239105225,
+        -0.0038648645859211683,
+        5.022629011364188e-06
+      ],
+      "dimensions": [
+        3.5190000534057617,
+        1.6519999504089355,
+        1.5429999828338623
+      ],
+      "center_offset": [
+        1.284500002861023,
+        0.0,
+        0.0
+      ],
+      "coord_type": 0,
+      "parent": 0,
+      "frame": 5769,
+      "sim_time": 230.71999999998837,
+      "road": [
+        2687,
+        -2,
+        0.46900299191474915,
+        -4.488705158233643,
+        2.113438858941663e-05
+      ],
+      "lanelet_hits": [
+        365519,
+        365946
+      ],
+      "cell_hits": [
+        64774,
+        64858
+      ]
+    },
+    "placement_s_delta_m": 0.4490029919237516,
+    "source_center_t_at_received_s": -4.488726368372185,
+    "placement_verified": true,
+    "placement_blocked": false,
+    "first_drive": {
+      "name": "MapAudit000",
+      "id": 2,
+      "xyz": [
+        937.9972036113146,
+        195.2792808190511,
+        53.395195939618674
+      ],
+      "hpr": [
+        2.126723527908325,
+        -0.003849416971206665,
+        5.473542842082679e-06
+      ],
+      "dimensions": [
+        3.5190000534057617,
+        1.6519999504089355,
+        1.5429999828338623
+      ],
+      "center_offset": [
+        1.284500002861023,
+        0.0,
+        0.0
+      ],
+      "coord_type": 0,
+      "parent": 0,
+      "frame": 5770,
+      "sim_time": 230.75999999998837,
+      "road": null
+    },
+    "last_drive": {
+      "name": "MapAudit000",
+      "id": 2,
+      "xyz": [
+        922.1707397957776,
+        222.67097895642834,
+        53.404004052851796
+      ],
+      "hpr": [
+        2.0334484577178955,
+        0.003208381123840809,
+        -0.00024114869302138686
+      ],
+      "dimensions": [
+        3.5190000534057617,
+        1.6519999504089355,
+        1.5429999828338623
+      ],
+      "center_offset": [
+        1.284500002861023,
+        0.0,
+        0.0
+      ],
+      "coord_type": 0,
+      "parent": 0,
+      "frame": 5919,
+      "sim_time": 236.71999999998718,
+      "road": [
+        2687,
+        -2,
+        32.437591552734375,
+        -4.302170276641846,
+        0.13148896396160126
+      ]
+    },
+    "sim_duration_s": 5.959999999998814,
+    "requested_duration_completed": true,
+    "status": "sampled_motion"
+  },
+  {
+    "target_lanelet": 266102,
+    "source_road": 2312,
+    "source_section": 3,
+    "source_lane": -1,
+    "s_range": [
+      68.80099999969565,
+      110.20100000000949
+    ],
+    "placement_s": 83.29417434188137,
+    "plan_index": 3,
+    "placement_t": -1.510235343341792,
+    "source_lane_width_m": 3.020470686683584,
+    "name": "MapAudit000",
+    "samples": 150,
+    "distance_m": 29.08935478429598,
+    "target_distance_m": 10.653963660567138,
+    "lane_misses": 0,
+    "cell_misses": 0,
+    "source_lane_misses": 0,
+    "target_hits": 67,
+    "excluded_jumps": 0,
+    "placement": {
+      "name": "MapAudit000",
+      "id": 2,
+      "xyz": [
+        1221.0595771515027,
+        -394.0080143859043,
+        71.40746924338748
+      ],
+      "hpr": [
+        0.6673984527587891,
+        -0.033852312713861465,
+        1.2346669791440945e-05
+      ],
+      "dimensions": [
+        3.5190000534057617,
+        1.6519999504089355,
+        1.5429999828338623
+      ],
+      "center_offset": [
+        1.284500002861023,
+        0.0,
+        0.0
+      ],
+      "coord_type": 0,
+      "parent": 0,
+      "frame": 6024,
+      "sim_time": 240.91999999998635,
+      "road": [
+        2312,
+        -1,
+        83.68705749511719,
+        -1.5102475881576538,
+        0.00013950331776868552
+      ],
+      "lanelet_hits": [
+        266102
+      ],
+      "cell_hits": [
+        47268
+      ]
+    },
+    "placement_s_delta_m": 0.3928831532358146,
+    "source_center_t_at_received_s": -1.5103870638140913,
+    "placement_verified": true,
+    "placement_blocked": false,
+    "first_drive": {
+      "name": "MapAudit000",
+      "id": 2,
+      "xyz": [
+        1221.1065098553192,
+        -393.9710302414388,
+        71.40930181486175
+      ],
+      "hpr": [
+        0.6673963665962219,
+        -0.033820122480392456,
+        1.2443643754522782e-05
+      ],
+      "dimensions": [
+        3.5190000534057617,
+        1.6519999504089355,
+        1.5429999828338623
+      ],
+      "center_offset": [
+        1.284500002861023,
+        0.0,
+        0.0
+      ],
+      "coord_type": 0,
+      "parent": 0,
+      "frame": 6025,
+      "sim_time": 240.95999999998634,
+      "road": null
+    },
+    "last_drive": {
+      "name": "MapAudit000",
+      "id": 2,
+      "xyz": [
+        1245.5312572698374,
+        -378.5704093706954,
+        72.27193646941701
+      ],
+      "hpr": [
+        0.7090585231781006,
+        -0.029866615310311317,
+        0.001841462217271328
+      ],
+      "dimensions": [
+        3.5190000534057617,
+        1.6519999504089355,
+        1.5429999828338623
+      ],
+      "center_offset": [
+        1.284500002861023,
+        0.0,
+        0.0
+      ],
+      "coord_type": 0,
+      "parent": 0,
+      "frame": 6174,
+      "sim_time": 246.91999999998515,
+      "road": [
+        2312,
+        -2,
+        112.1807632446289,
+        -4.623289585113525,
+        -0.16124308109283447
+      ]
+    },
+    "sim_duration_s": 5.959999999998814,
+    "requested_duration_completed": true,
+    "status": "sampled_motion"
+  },
+  {
+    "target_lanelet": 327655,
+    "source_road": 2564,
+    "source_section": 0,
+    "source_lane": 2,
+    "s_range": [
+      0.0,
+      22.000999999999994
+    ],
+    "placement_s": 1.6572062477063731,
+    "plan_index": 22,
+    "placement_t": 4.238572809646497,
+    "source_lane_width_m": 2.9,
+    "name": "MapAudit000",
+    "samples": 150,
+    "distance_m": 27.464277238960964,
+    "target_distance_m": 1.0461705673415878,
+    "lane_misses": 0,
+    "cell_misses": 0,
+    "source_lane_misses": 1,
+    "target_hits": 14,
+    "excluded_jumps": 0,
+    "placement": {
+      "name": "MapAudit000",
+      "id": 2,
+      "xyz": [
+        1358.3845681076434,
+        91.42249163827836,
+        56.20165954312617
+      ],
+      "hpr": [
+        1.7622315883636475,
+        -0.003810204565525055,
+        0.0014473021728917956
+      ],
+      "dimensions": [
+        3.5190000534057617,
+        1.6519999504089355,
+        1.5429999828338623
+      ],
+      "center_offset": [
+        1.284500002861023,
+        0.0,
+        0.0
+      ],
+      "coord_type": 0,
+      "parent": 0,
+      "frame": 6279,
+      "sim_time": 251.11999999998432,
+      "road": [
+        2564,
+        2,
+        1.2630923986434937,
+        4.235117435455322,
+        -0.006173160392791033
+      ],
+      "lanelet_hits": [
+        327655
+      ],
+      "cell_hits": [
+        58197
+      ]
+    },
+    "placement_s_delta_m": -0.3941138490628795,
+    "source_center_t_at_received_s": 4.241290403778445,
+    "placement_verified": true,
+    "placement_blocked": false,
+    "first_drive": {
+      "name": "MapAudit000",
+      "id": 2,
+      "xyz": [
+        1358.3728076495208,
+        91.4809561686339,
+        56.20183677139975
+      ],
+      "hpr": [
+        1.7693179845809937,
+        -0.003668193705379963,
+        0.0017833655001595616
+      ],
+      "dimensions": [
+        3.5190000534057617,
+        1.6519999504089355,
+        1.5429999828338623
+      ],
+      "center_offset": [
+        1.284500002861023,
+        0.0,
+        0.0
+      ],
+      "coord_type": 0,
+      "parent": 0,
+      "frame": 6280,
+      "sim_time": 251.1599999999843,
+      "road": null
+    },
+    "last_drive": {
+      "name": "MapAudit000",
+      "id": 2,
+      "xyz": [
+        1351.5609116829498,
+        117.89383672284778,
+        56.206382581296744
+      ],
+      "hpr": [
+        1.7254196405410767,
+        -2.5709698093123734e-05,
+        9.799199688131921e-06
+      ],
+      "dimensions": [
+        3.5190000534057617,
+        1.6519999504089355,
+        1.5429999828338623
+      ],
+      "center_offset": [
+        1.284500002861023,
+        0.0,
+        0.0
+      ],
+      "coord_type": 0,
+      "parent": 0,
+      "frame": 6429,
+      "sim_time": 257.1199999999839,
+      "road": [
+        2578,
+        -1,
+        25.827238082885742,
+        -1.7327412366867065,
+        -0.29763856530189514
+      ]
+    },
+    "sim_duration_s": 5.95999999999961,
+    "requested_duration_completed": true,
+    "status": "sampled_motion"
+  },
+  {
+    "target_lanelet": 60475,
+    "source_road": 574,
+    "source_section": 0,
+    "source_lane": -1,
+    "s_range": [
+      0.0,
+      32.42056493765911
+    ],
+    "placement_s": 30.429339245434175,
+    "plan_index": 16,
+    "placement_t": -1.1549533939445171,
+    "source_lane_width_m": 2.3099067878890343,
+    "name": "MapAudit000",
+    "samples": 150,
+    "distance_m": 29.040418147096585,
+    "target_distance_m": 1.39021539932448,
+    "lane_misses": 0,
+    "cell_misses": 0,
+    "source_lane_misses": 1,
+    "target_hits": 17,
+    "excluded_jumps": 0,
+    "placement": {
+      "name": "MapAudit000",
+      "id": 2,
+      "xyz": [
+        338.97679032123176,
+        -107.78185331529085,
+        41.495224140205295
+      ],
+      "hpr": [
+        -0.9876329302787781,
+        -0.003826820058748126,
+        -4.805257844964217e-07
+      ],
+      "dimensions": [
+        3.5190000534057617,
+        1.6519999504089355,
+        1.5429999828338623
+      ],
+      "center_offset": [
+        1.284500002861023,
+        0.0,
+        0.0
+      ],
+      "coord_type": 0,
+      "parent": 0,
+      "frame": 6534,
+      "sim_time": 261.31999999998607,
+      "road": [
+        574,
+        -1,
+        30.822265625,
+        -1.154928207397461,
+        -0.0009330884204246104
+      ],
+      "lanelet_hits": [
+        60475
+      ],
+      "cell_hits": [
+        11366
+      ]
+    },
+    "placement_s_delta_m": 0.3929263795658251,
+    "source_center_t_at_received_s": -1.1539951653221177,
+    "placement_verified": true,
+    "placement_blocked": false,
+    "first_drive": {
+      "name": "MapAudit000",
+      "id": 2,
+      "xyz": [
+        339.0096470756784,
+        -107.83165957424072,
+        41.495373286106975
+      ],
+      "hpr": [
+        -0.9876386523246765,
+        -0.003707311348989606,
+        -1.4310470533018815e-06
+      ],
+      "dimensions": [
+        3.5190000534057617,
+        1.6519999504089355,
+        1.5429999828338623
+      ],
+      "center_offset": [
+        1.284500002861023,
+        0.0,
+        0.0
+      ],
+      "coord_type": 0,
+      "parent": 0,
+      "frame": 6535,
+      "sim_time": 261.3599999999861,
+      "road": null
+    },
+    "last_drive": {
+      "name": "MapAudit000",
+      "id": 2,
+      "xyz": [
+        354.7447717129611,
+        -132.239158607452,
+        41.733838766189464
+      ],
+      "hpr": [
+        -0.9883759617805481,
+        -0.03322448581457138,
+        0.00021622081112582237
+      ],
+      "dimensions": [
+        3.5190000534057617,
+        1.6519999504089355,
+        1.5429999828338623
+      ],
+      "center_offset": [
+        1.284500002861023,
+        0.0,
+        0.0
+      ],
+      "coord_type": 0,
+      "parent": 0,
+      "frame": 6684,
+      "sim_time": 267.31999999998914,
+      "road": [
+        418,
+        4,
+        84.42530059814453,
+        14.40129280090332,
+        0.05129285529255867
+      ]
+    },
+    "sim_duration_s": 5.960000000003049,
+    "requested_duration_completed": true,
+    "status": "sampled_motion"
+  },
+  {
+    "target_lanelet": 428758,
+    "source_road": 2815,
+    "source_section": 3,
+    "source_lane": 2,
+    "s_range": [
+      238.20099999999996,
+      268.9751835180276
+    ],
+    "placement_s": 252.3339414259505,
+    "plan_index": 4,
+    "placement_t": 4.653871303015289,
+    "source_lane_width_m": 2.947942606030578,
+    "name": "MapAudit000",
+    "samples": 150,
+    "distance_m": 31.985492548304904,
+    "target_distance_m": 10.563881631146716,
+    "lane_misses": 0,
+    "cell_misses": 0,
+    "source_lane_misses": 0,
+    "target_hits": 66,
+    "excluded_jumps": 0,
+    "placement": {
+      "name": "MapAudit000",
+      "id": 2,
+      "xyz": [
+        1210.7620518768072,
+        804.4825678219679,
+        45.81748747116603
+      ],
+      "hpr": [
+        3.678584575653076,
+        -0.0018704498652368784,
+        -1.208737648994429e-05
+      ],
+      "dimensions": [
+        3.5190000534057617,
+        1.6519999504089355,
+        1.5429999828338623
+      ],
+      "center_offset": [
+        1.284500002861023,
+        0.0,
+        0.0
+      ],
+      "coord_type": 0,
+      "parent": 0,
+      "frame": 6789,
+      "sim_time": 271.5199999999913,
+      "road": [
+        2815,
+        2,
+        251.94029235839844,
+        4.6539435386657715,
+        -0.00032633161754347384
+      ],
+      "lanelet_hits": [
+        428758
+      ],
+      "cell_hits": [
+        76008
+      ]
+    },
+    "placement_s_delta_m": -0.39364906755207585,
+    "source_center_t_at_received_s": 4.654269807746656,
+    "placement_verified": true,
+    "placement_blocked": false,
+    "first_drive": {
+      "name": "MapAudit000",
+      "id": 2,
+      "xyz": [
+        1210.710698384335,
+        804.4519982138062,
+        45.81750441900078
+      ],
+      "hpr": [
+        3.6785333156585693,
+        -0.001683951704762876,
+        -1.2958111256011762e-05
+      ],
+      "dimensions": [
+        3.5190000534057617,
+        1.6519999504089355,
+        1.5429999828338623
+      ],
+      "center_offset": [
+        1.284500002861023,
+        0.0,
+        0.0
+      ],
+      "coord_type": 0,
+      "parent": 0,
+      "frame": 6790,
+      "sim_time": 271.5599999999913,
+      "road": null
+    },
+    "last_drive": {
+      "name": "MapAudit000",
+      "id": 2,
+      "xyz": [
+        1182.268257672091,
+        790.3550534776841,
+        45.10445141727173
+      ],
+      "hpr": [
+        3.6877493858337402,
+        0.012004523538053036,
+        -0.0003191287978552282
+      ],
+      "dimensions": [
+        3.5190000534057617,
+        1.6519999504089355,
+        1.5429999828338623
+      ],
+      "center_offset": [
+        1.284500002861023,
+        0.0,
+        0.0
+      ],
+      "coord_type": 0,
+      "parent": 0,
+      "frame": 6939,
+      "sim_time": 277.51999999999435,
+      "road": [
+        2815,
+        3,
+        220.48663330078125,
+        7.438160419464111,
+        -0.23935402929782867
+      ]
+    },
+    "sim_duration_s": 5.960000000003049,
+    "requested_duration_completed": true,
+    "status": "sampled_motion"
+  },
+  {
+    "target_lanelet": 140013,
+    "source_road": 1869,
+    "source_section": 0,
+    "source_lane": -3,
+    "s_range": [
+      0.0,
+      49.800999999897535
+    ],
+    "placement_s": 0.020012380275467163,
+    "plan_index": 21,
+    "placement_t": -8.346859815304361,
+    "source_lane_width_m": 3.2,
+    "name": "MapAudit000",
+    "samples": 150,
+    "distance_m": 33.2177976147471,
+    "target_distance_m": 5.190878000769514,
+    "lane_misses": 0,
+    "cell_misses": 0,
+    "source_lane_misses": 1,
+    "target_hits": 41,
+    "excluded_jumps": 0,
+    "placement": {
+      "name": "MapAudit000",
+      "id": 2,
+      "xyz": [
+        880.4353153862186,
+        -1022.9569050035968,
+        59.30116542026312
+      ],
+      "hpr": [
+        0.6887771487236023,
+        -0.0038738716393709183,
+        0.0013209893368184566
+      ],
+      "dimensions": [
+        3.5190000534057617,
+        1.6519999504089355,
+        1.5429999828338623
+      ],
+      "center_offset": [
+        1.284500002861023,
+        0.0,
+        0.0
+      ],
+      "coord_type": 0,
+      "parent": 0,
+      "frame": 7044,
+      "sim_time": 281.7199999999965,
+      "road": [
+        1869,
+        -3,
+        0.4131859242916107,
+        -8.343684196472168,
+        0.0023858542554080486
+      ],
+      "lanelet_hits": [
+        140013
+      ],
+      "cell_hits": [
+        24199
+      ]
+    },
+    "placement_s_delta_m": 0.3931735440161436,
+    "source_center_t_at_received_s": -8.346070326049093,
+    "placement_verified": true,
+    "placement_blocked": false,
+    "first_drive": {
+      "name": "MapAudit000",
+      "id": 2,
+      "xyz": [
+        880.4812187687132,
+        -1022.9186109871085,
+        59.30117501831315
+      ],
+      "hpr": [
+        0.6952831149101257,
+        -0.0038661807775497437,
+        0.0016414874698966742
+      ],
+      "dimensions": [
+        3.5190000534057617,
+        1.6519999504089355,
+        1.5429999828338623
+      ],
+      "center_offset": [
+        1.284500002861023,
+        0.0,
+        0.0
+      ],
+      "coord_type": 0,
+      "parent": 0,
+      "frame": 7045,
+      "sim_time": 281.7599999999965,
+      "road": null
+    },
+    "last_drive": {
+      "name": "MapAudit000",
+      "id": 2,
+      "xyz": [
+        904.0752885362956,
+        -999.974572111625,
+        57.88685449505089
+      ],
+      "hpr": [
+        0.6609739065170288,
+        0.06097341701388359,
+        -3.3596563298488036e-05
+      ],
+      "dimensions": [
+        3.5190000534057617,
+        1.6519999504089355,
+        1.5429999828338623
+      ],
+      "center_offset": [
+        1.284500002861023,
+        0.0,
+        0.0
+      ],
+      "coord_type": 0,
+      "parent": 0,
+      "frame": 7194,
+      "sim_time": 287.7199999999996,
+      "road": [
+        1869,
+        -2,
+        32.97832107543945,
+        -4.750947952270508,
+        0.3628418445587158
+      ]
+    },
+    "sim_duration_s": 5.960000000003049,
+    "requested_duration_completed": true,
+    "status": "sampled_motion"
+  },
+  {
+    "target_lanelet": 12627,
+    "source_road": 126,
+    "source_section": 0,
+    "source_lane": -1,
+    "s_range": [
+      0.0,
+      30.100000000000033
+    ],
+    "placement_s": 28.499999999999744,
+    "plan_index": 28,
+    "placement_t": -1.5,
+    "source_lane_width_m": 3.0,
+    "name": "MapAudit000",
+    "samples": 150,
+    "distance_m": 31.882585285185424,
+    "target_distance_m": 0.9808842433751788,
+    "lane_misses": 0,
+    "cell_misses": 0,
+    "source_lane_misses": 0,
+    "target_hits": 13,
+    "excluded_jumps": 0,
+    "placement": {
+      "name": "MapAudit000",
+      "id": 2,
+      "xyz": [
+        692.2877922146411,
+        -282.5329538279954,
+        46.58245839869097
+      ],
+      "hpr": [
+        -2.47269868850708,
+        0.02238903008401394,
+        -3.7065105627642075e-16
+      ],
+      "dimensions": [
+        3.5190000534057617,
+        1.6519999504089355,
+        1.5429999828338623
+      ],
+      "center_offset": [
+        1.284500002861023,
+        0.0,
+        0.0
+      ],
+      "coord_type": 0,
+      "parent": 0,
+      "frame": 7300,
+      "sim_time": 291.96000000000174,
+      "road": [
+        126,
+        -1,
+        28.94900131225586,
+        -1.5,
+        3.5993430458347575e-13
+      ],
+      "lanelet_hits": [
+        12627
+      ],
+      "cell_hits": [
+        2194,
+        2195
+      ]
+    },
+    "placement_s_delta_m": 0.44900131225611517,
+    "source_center_t_at_received_s": -1.5,
+    "placement_verified": true,
+    "placement_blocked": false,
+    "first_drive": {
+      "name": "MapAudit000",
+      "id": 2,
+      "xyz": [
+        692.2379840596609,
+        -282.57232496288964,
+        46.580889101980375
+      ],
+      "hpr": [
+        -2.47269868850708,
+        0.022468920797109604,
+        -7.513462610051185e-15
+      ],
+      "dimensions": [
+        3.5190000534057617,
+        1.6519999504089355,
+        1.5429999828338623
+      ],
+      "center_offset": [
+        1.284500002861023,
+        0.0,
+        0.0
+      ],
+      "coord_type": 0,
+      "parent": 0,
+      "frame": 7301,
+      "sim_time": 292.00000000000176,
+      "road": null
+    },
+    "last_drive": {
+      "name": "MapAudit000",
+      "id": 2,
+      "xyz": [
+        667.285293685884,
+        -302.41448226817056,
+        45.29066596901304
+      ],
+      "hpr": [
+        -2.4780924320220947,
+        0.05210263654589653,
+        -0.00029003428062424064
+      ],
+      "dimensions": [
+        3.5190000534057617,
+        1.6519999504089355,
+        1.5429999828338623
+      ],
+      "center_offset": [
+        1.284500002861023,
+        0.0,
+        0.0
+      ],
+      "coord_type": 0,
+      "parent": 0,
+      "frame": 7450,
+      "sim_time": 297.9600000000048,
+      "road": [
+        126,
+        -1,
+        60.703269958496094,
+        -1.4059562683105469,
+        0.09404370188713074
+      ]
+    },
+    "sim_duration_s": 5.960000000003049,
+    "requested_duration_completed": true,
+    "status": "sampled_motion"
+  },
+  {
+    "target_lanelet": 118556,
+    "source_road": 1705,
+    "source_section": 0,
+    "source_lane": -3,
+    "s_range": [
+      0.0,
+      58.058595854888786
+    ],
+    "placement_s": 51.52947152527178,
+    "plan_index": 34,
+    "placement_t": -8.0,
+    "source_lane_width_m": 3.2,
+    "name": "MapAudit000",
+    "samples": 150,
+    "distance_m": 28.90682709834425,
+    "target_distance_m": 5.893677999226719,
+    "lane_misses": 0,
+    "cell_misses": 0,
+    "source_lane_misses": 0,
+    "target_hits": 44,
+    "excluded_jumps": 0,
+    "placement": {
+      "name": "MapAudit000",
+      "id": 2,
+      "xyz": [
+        561.8207041332389,
+        -361.4706175481019,
+        41.695235066476165
+      ],
+      "hpr": [
+        2.2335329055786133,
+        -0.0038180649280548096,
+        -6.0251104514463805e-06
+      ],
+      "dimensions": [
+        3.5190000534057617,
+        1.6519999504089355,
+        1.5429999828338623
+      ],
+      "center_offset": [
+        1.284500002861023,
+        0.0,
+        0.0
+      ],
+      "coord_type": 0,
+      "parent": 0,
+      "frame": 7555,
+      "sim_time": 302.16000000000696,
+      "road": [
+        1705,
+        -3,
+        51.97996139526367,
+        -8.00001335144043,
+        -1.319767125096405e-05
+      ],
+      "lanelet_hits": [
+        118556
+      ],
+      "cell_hits": [
+        20755,
+        20756
+      ]
+    },
+    "placement_s_delta_m": 0.4504898699918911,
+    "source_center_t_at_received_s": -8.0,
+    "placement_verified": true,
+    "placement_blocked": false,
+    "first_drive": {
+      "name": "MapAudit000",
+      "id": 2,
+      "xyz": [
+        561.7817086881354,
+        -361.42065284503894,
+        41.695400777642114
+      ],
+      "hpr": [
+        2.233508586883545,
+        -0.003685282776132226,
+        -6.459873929998139e-06
+      ],
+      "dimensions": [
+        3.5190000534057617,
+        1.6519999504089355,
+        1.5429999828338623
+      ],
+      "center_offset": [
+        1.284500002861023,
+        0.0,
+        0.0
+      ],
+      "coord_type": 0,
+      "parent": 0,
+      "frame": 7556,
+      "sim_time": 302.200000000007,
+      "road": null
+    },
+    "last_drive": {
+      "name": "MapAudit000",
+      "id": 2,
+      "xyz": [
+        544.2311127926788,
+        -338.45202584769663,
+        41.71397276948917
+      ],
+      "hpr": [
+        2.2271199226379395,
+        -0.006401356775313616,
+        5.166478149476461e-05
+      ],
+      "dimensions": [
+        3.5190000534057617,
+        1.6519999504089355,
+        1.5429999828338623
+      ],
+      "center_offset": [
+        1.284500002861023,
+        0.0,
+        0.0
+      ],
+      "coord_type": 0,
+      "parent": 0,
+      "frame": 7705,
+      "sim_time": 308.16000000001003,
+      "road": [
+        128,
+        -4,
+        22.747304916381836,
+        -11.969977378845215,
+        -0.269977331161499
+      ]
+    },
+    "sim_duration_s": 5.960000000003049,
+    "requested_duration_completed": true,
+    "status": "sampled_motion"
+  },
+  {
+    "target_lanelet": 455805,
+    "source_road": 2889,
+    "source_section": 0,
+    "source_lane": -1,
+    "s_range": [
+      0.0,
+      37.01167612562976
+    ],
+    "placement_s": 35.46217052415007,
+    "plan_index": 26,
+    "placement_t": -1.6147448519302117,
+    "source_lane_width_m": 3.2294897038604233,
+    "name": "MapAudit000",
+    "samples": 0,
+    "distance_m": 0.0,
+    "target_distance_m": 0.0,
+    "lane_misses": 0,
+    "cell_misses": 0,
+    "source_lane_misses": 0,
+    "target_hits": 0,
+    "excluded_jumps": 0,
+    "placement": {
+      "name": "MapAudit000",
+      "id": 2,
+      "xyz": [
+        1306.104485464139,
+        407.14628736927494,
+        56.238048810988744
+      ],
+      "hpr": [
+        -1.4982786178588867,
+        -0.0036545665934681892,
+        8.865111885825172e-05
+      ],
+      "dimensions": [
+        3.5190000534057617,
+        1.6519999504089355,
+        1.5429999828338623
+      ],
+      "center_offset": [
+        1.284500002861023,
+        0.0,
+        0.0
+      ],
+      "coord_type": 0,
+      "parent": 0,
+      "frame": 7810,
+      "sim_time": 312.3600000000122,
+      "road": [
+        2877,
+        -1,
+        32.00883102416992,
+        -1.6146235466003418,
+        -0.00027243749354965985
+      ],
+      "lanelet_hits": [
+        454531,
+        455805
+      ],
+      "cell_hits": [
+        80480,
+        80660,
+        80661
+      ]
+    },
+    "placement_s_delta_m": -3.453339499980146,
+    "source_center_t_at_received_s": -1.6143510833633636,
+    "placement_verified": false,
+    "placement_blocked": true,
+    "sim_duration_s": 0.0,
+    "requested_duration_completed": false,
+    "status": "placement_mismatch"
+  },
+  {
+    "target_lanelet": 309384,
+    "source_road": 2491,
+    "source_section": 0,
+    "source_lane": -1,
+    "s_range": [
+      0.0,
+      27.32432181613314
+    ],
+    "placement_s": 25.219359184624533,
+    "plan_index": 2,
+    "placement_t": -1.4500489792166482,
+    "source_lane_width_m": 2.9000979584332964,
+    "name": "MapAudit000",
+    "samples": 150,
+    "distance_m": 29.5360749821895,
+    "target_distance_m": 1.4384427849892734,
+    "lane_misses": 0,
+    "cell_misses": 0,
+    "source_lane_misses": 2,
+    "target_hits": 17,
+    "excluded_jumps": 0,
+    "placement": {
+      "name": "MapAudit000",
+      "id": 2,
+      "xyz": [
+        1378.31692185443,
+        -192.90466807941692,
+        71.47889770846304
+      ],
+      "hpr": [
+        -3.0214364528656006,
+        -0.0037290684413164854,
+        -1.403457872584113e-06
+      ],
+      "dimensions": [
+        3.5190000534057617,
+        1.6519999504089355,
+        1.5429999828338623
+      ],
+      "center_offset": [
+        1.284500002861023,
+        0.0,
+        0.0
+      ],
+      "coord_type": 0,
+      "parent": 0,
+      "frame": 8065,
+      "sim_time": 322.5600000000174,
+      "road": [
+        2491,
+        -1,
+        25.668312072753906,
+        -1.450058937072754,
+        -2.822811802616343e-05
+      ],
+      "lanelet_hits": [
+        309384,
+        310907,
+        537925
+      ],
+      "cell_hits": [
+        54835,
+        54836,
+        55025,
+        94118
+      ]
+    },
+    "placement_s_delta_m": 0.44895288812937295,
+    "source_center_t_at_received_s": -1.4500306644205991,
+    "placement_verified": true,
+    "placement_blocked": false,
+    "first_drive": {
+      "name": "MapAudit000",
+      "id": 2,
+      "xyz": [
+        1378.2541732471132,
+        -192.91224382516577,
+        71.47918097355412
+      ],
+      "hpr": [
+        -3.021442413330078,
+        -0.0035020916257053614,
+        -1.587897600074939e-06
+      ],
+      "dimensions": [
+        3.5190000534057617,
+        1.6519999504089355,
+        1.5429999828338623
+      ],
+      "center_offset": [
+        1.284500002861023,
+        0.0,
+        0.0
+      ],
+      "coord_type": 0,
+      "parent": 0,
+      "frame": 8066,
+      "sim_time": 322.6000000000174,
+      "road": null
+    },
+    "last_drive": {
+      "name": "MapAudit000",
+      "id": 2,
+      "xyz": [
+        1349.2264957735786,
+        -197.52657476151248,
+        74.75087844504809
+      ],
+      "hpr": [
+        -2.6790575981140137,
+        -0.17346148192882538,
+        -0.06278898566961288
+      ],
+      "dimensions": [
+        3.5190000534057617,
+        1.6519999504089355,
+        1.5429999828338623
+      ],
+      "center_offset": [
+        1.284500002861023,
+        0.0,
+        0.0
+      ],
+      "coord_type": 0,
+      "parent": 0,
+      "frame": 8215,
+      "sim_time": 328.56000000002047,
+      "road": [
+        2469,
+        2,
+        30.662263870239258,
+        3.127513885498047,
+        -1.0724860429763794
+      ]
+    },
+    "sim_duration_s": 5.960000000003049,
+    "requested_duration_completed": true,
+    "status": "sampled_motion"
+  },
+  {
+    "target_lanelet": 312804,
+    "source_road": 2533,
+    "source_section": 0,
+    "source_lane": -2,
+    "s_range": [
+      0.0,
+      74.80099999974495
+    ],
+    "placement_s": 0.019996070463305426,
+    "plan_index": 12,
+    "placement_t": -4.773690416321843,
+    "source_lane_width_m": 3.1419977811846946,
+    "name": "MapAudit000",
+    "samples": 150,
+    "distance_m": 32.456258930865594,
+    "target_distance_m": 10.742721826513502,
+    "lane_misses": 0,
+    "cell_misses": 0,
+    "source_lane_misses": 0,
+    "target_hits": 66,
+    "excluded_jumps": 0,
+    "placement": {
+      "name": "MapAudit000",
+      "id": 2,
+      "xyz": [
+        1488.8177204812548,
+        176.51243178760782,
+        59.13783672433835
+      ],
+      "hpr": [
+        -1.412345051765442,
+        -0.003856720868498087,
+        6.157559710118221e-06
+      ],
+      "dimensions": [
+        3.5190000534057617,
+        1.6519999504089355,
+        1.5429999828338623
+      ],
+      "center_offset": [
+        1.284500002861023,
+        0.0,
+        0.0
+      ],
+      "coord_type": 0,
+      "parent": 0,
+      "frame": 8320,
+      "sim_time": 332.7600000000226,
+      "road": [
+        2533,
+        -2,
+        0.4688993990421295,
+        -4.773635387420654,
+        -0.00015991389227565378
+      ],
+      "lanelet_hits": [
+        312804
+      ],
+      "cell_hits": [
+        55265
+      ]
+    },
+    "placement_s_delta_m": 0.4489033285788241,
+    "source_center_t_at_received_s": -4.773475266798721,
+    "placement_verified": true,
+    "placement_blocked": false,
+    "first_drive": {
+      "name": "MapAudit000",
+      "id": 2,
+      "xyz": [
+        1488.8277358203943,
+        176.44976393335259,
+        59.137907645845274
+      ],
+      "hpr": [
+        -1.4123204946517944,
+        -0.0037998922634869814,
+        6.590998964384198e-06
+      ],
+      "dimensions": [
+        3.5190000534057617,
+        1.6519999504089355,
+        1.5429999828338623
+      ],
+      "center_offset": [
+        1.284500002861023,
+        0.0,
+        0.0
+      ],
+      "coord_type": 0,
+      "parent": 0,
+      "frame": 8321,
+      "sim_time": 332.80000000002264,
+      "road": null
+    },
+    "last_drive": {
+      "name": "MapAudit000",
+      "id": 2,
+      "xyz": [
+        1491.1228765964252,
+        144.32248814641986,
+        59.13978611859107
+      ],
+      "hpr": [
+        -1.4060449600219727,
+        0.0009028822532854974,
+        -2.05198102776194e-05
+      ],
+      "dimensions": [
+        3.5190000534057617,
+        1.6519999504089355,
+        1.5429999828338623
+      ],
+      "center_offset": [
+        1.284500002861023,
+        0.0,
+        0.0
+      ],
+      "coord_type": 0,
+      "parent": 0,
+      "frame": 8470,
+      "sim_time": 338.7600000000257,
+      "road": [
+        2533,
+        -3,
+        32.40565872192383,
+        -7.58830451965332,
+        0.26641029119491577
+      ]
+    },
+    "sim_duration_s": 5.960000000003049,
+    "requested_duration_completed": true,
+    "status": "sampled_motion"
+  },
+  {
+    "target_lanelet": 99175,
+    "source_road": 1225,
+    "source_section": 0,
+    "source_lane": -1,
+    "s_range": [
+      0.0,
+      49.57258072391773
+    ],
+    "placement_s": 28.683772480403665,
+    "plan_index": 8,
+    "placement_t": -1.4953727953815465,
+    "source_lane_width_m": 2.990745590763093,
+    "name": "MapAudit000",
+    "samples": 150,
+    "distance_m": 33.176450682409424,
+    "target_distance_m": 20.283541438219032,
+    "lane_misses": 0,
+    "cell_misses": 0,
+    "source_lane_misses": 1,
+    "target_hits": 103,
+    "excluded_jumps": 0,
+    "placement": {
+      "name": "MapAudit000",
+      "id": 2,
+      "xyz": [
+        927.1152318488741,
+        206.5771413428047,
+        53.39516517283345
+      ],
+      "hpr": [
+        0.6381321549415588,
+        -0.0038740700110793114,
+        4.824228381039575e-05
+      ],
+      "dimensions": [
+        3.5190000534057617,
+        1.6519999504089355,
+        1.5429999828338623
+      ],
+      "center_offset": [
+        1.284500002861023,
+        0.0,
+        0.0
+      ],
+      "coord_type": 0,
+      "parent": 0,
+      "frame": 8575,
+      "sim_time": 342.96000000002783,
+      "road": [
+        1225,
+        -1,
+        29.075777053833008,
+        -1.495133399963379,
+        0.00015280558727681637
+      ],
+      "lanelet_hits": [
+        99175,
+        365687
+      ],
+      "cell_hits": [
+        17795,
+        64831
+      ]
+    },
+    "placement_s_delta_m": 0.39200457342934314,
+    "source_center_t_at_received_s": -1.4952862621460257,
+    "placement_verified": true,
+    "placement_blocked": false,
+    "first_drive": {
+      "name": "MapAudit000",
+      "id": 2,
+      "xyz": [
+        927.1632399108044,
+        206.61276206854856,
+        53.39517454641599
+      ],
+      "hpr": [
+        0.638343334197998,
+        -0.0038665588945150375,
+        5.330230123945512e-05
+      ],
+      "dimensions": [
+        3.5190000534057617,
+        1.6519999504089355,
+        1.5429999828338623
+      ],
+      "center_offset": [
+        1.284500002861023,
+        0.0,
+        0.0
+      ],
+      "coord_type": 0,
+      "parent": 0,
+      "frame": 8576,
+      "sim_time": 343.00000000002785,
+      "road": null
+    },
+    "last_drive": {
+      "name": "MapAudit000",
+      "id": 2,
+      "xyz": [
+        953.1141929809803,
+        227.27923852843622,
+        53.40005177210495
+      ],
+      "hpr": [
+        0.6677529215812683,
+        4.1484057874185964e-05,
+        -3.2510819437447935e-05
+      ],
+      "dimensions": [
+        3.5190000534057617,
+        1.6519999504089355,
+        1.5429999828338623
+      ],
+      "center_offset": [
+        1.284500002861023,
+        0.0,
+        0.0
+      ],
+      "coord_type": 0,
+      "parent": 0,
+      "frame": 8725,
+      "sim_time": 348.9600000000309,
+      "road": [
+        1222,
+        -1,
+        12.473811149597168,
+        -1.179970145225525,
+        0.31252986192703247
+      ]
+    },
+    "sim_duration_s": 5.960000000003049,
+    "requested_duration_completed": true,
+    "status": "sampled_motion"
+  },
+  {
+    "target_lanelet": 412857,
+    "source_road": 2811,
+    "source_section": 0,
+    "source_lane": 2,
+    "s_range": [
+      0.0,
+      24.5
+    ],
+    "placement_s": 1.6486934238716273,
+    "plan_index": 33,
+    "placement_t": 2.0148944965671074,
+    "source_lane_width_m": 3.1,
+    "name": "MapAudit000",
+    "samples": 150,
+    "distance_m": 31.37052667051217,
+    "target_distance_m": 1.0494430026769015,
+    "lane_misses": 0,
+    "cell_misses": 0,
+    "source_lane_misses": 1,
+    "target_hits": 14,
+    "excluded_jumps": 0,
+    "placement": {
+      "name": "MapAudit000",
+      "id": 2,
+      "xyz": [
+        1321.6229267106485,
+        585.6529973540564,
+        51.862064373592546
+      ],
+      "hpr": [
+        3.187451124191284,
+        -0.003872106084600091,
+        -4.757792339660227e-06
+      ],
+      "dimensions": [
+        3.5190000534057617,
+        1.6519999504089355,
+        1.5429999828338623
+      ],
+      "center_offset": [
+        1.284500002861023,
+        0.0,
+        0.0
+      ],
+      "coord_type": 0,
+      "parent": 0,
+      "frame": 8830,
+      "sim_time": 353.16000000003305,
+      "road": [
+        2811,
+        2,
+        1.2557443380355835,
+        2.0149223804473877,
+        0.0002647981746122241
+      ],
+      "lanelet_hits": [
+        412857
+      ],
+      "cell_hits": [
+        73287
+      ]
+    },
+    "placement_s_delta_m": -0.3929490858360438,
+    "source_center_t_at_received_s": 2.0146574685598058,
+    "placement_verified": true,
+    "placement_blocked": false,
+    "first_drive": {
+      "name": "MapAudit000",
+      "id": 2,
+      "xyz": [
+        1321.5632148581426,
+        585.6502584436749,
+        51.862076153184056
+      ],
+      "hpr": [
+        3.187429428100586,
+        -0.0038626673631370068,
+        -5.505969966179691e-06
+      ],
+      "dimensions": [
+        3.5190000534057617,
+        1.6519999504089355,
+        1.5429999828338623
+      ],
+      "center_offset": [
+        1.284500002861023,
+        0.0,
+        0.0
+      ],
+      "coord_type": 0,
+      "parent": 0,
+      "frame": 8831,
+      "sim_time": 353.20000000003307,
+      "road": null
+    },
+    "last_drive": {
+      "name": "MapAudit000",
+      "id": 2,
+      "xyz": [
+        1298.9754228687352,
+        571.2898496017417,
+        51.86708993501178
+      ],
+      "hpr": [
+        4.710011005401611,
+        0.00015479567809961736,
+        0.004756847396492958
+      ],
+      "dimensions": [
+        3.5190000534057617,
+        1.6519999504089355,
+        1.5429999828338623
+      ],
+      "center_offset": [
+        1.284500002861023,
+        0.0,
+        0.0
+      ],
+      "coord_type": 0,
+      "parent": 0,
+      "frame": 8980,
+      "sim_time": 359.1600000000361,
+      "road": [
+        2987,
+        -1,
+        28.007579803466797,
+        -1.5720536708831787,
+        0.11773156374692917
+      ]
+    },
+    "sim_duration_s": 5.960000000003049,
+    "requested_duration_completed": true,
+    "status": "sampled_motion"
+  },
+  {
+    "target_lanelet": 283130,
+    "source_road": 2410,
+    "source_section": 2,
+    "source_lane": -1,
+    "s_range": [
+      50.50100000000006,
+      115.98442188548412
+    ],
+    "placement_s": 109.0079282443271,
+    "plan_index": 31,
+    "placement_t": 1.4421,
+    "source_lane_width_m": 2.8842,
+    "name": "MapAudit000",
+    "samples": 150,
+    "distance_m": 28.45881488683871,
+    "target_distance_m": 5.1877431791662225,
+    "lane_misses": 0,
+    "cell_misses": 0,
+    "source_lane_misses": 1,
+    "target_hits": 41,
+    "excluded_jumps": 0,
+    "placement": {
+      "name": "MapAudit000",
+      "id": 2,
+      "xyz": [
+        1006.4871954673383,
+        -109.53909631075922,
+        64.21844764364796
+      ],
+      "hpr": [
+        -2.501389503479004,
+        -0.003861512988805771,
+        -0.0014698418090119958
+      ],
+      "dimensions": [
+        3.5190000534057617,
+        1.6519999504089355,
+        1.5429999828338623
+      ],
+      "center_offset": [
+        1.284500002861023,
+        0.0,
+        0.0
+      ],
+      "coord_type": 0,
+      "parent": 0,
+      "frame": 9085,
+      "sim_time": 363.36000000003827,
+      "road": [
+        2410,
+        -1,
+        109.40091705322266,
+        1.4385849237442017,
+        -0.0035151278134435415
+      ],
+      "lanelet_hits": [
+        283130
+      ],
+      "cell_hits": [
+        50124
+      ]
+    },
+    "placement_s_delta_m": 0.3929888088955522,
+    "source_center_t_at_received_s": 1.4421,
+    "placement_verified": true,
+    "placement_blocked": false,
+    "first_drive": {
+      "name": "MapAudit000",
+      "id": 2,
+      "xyz": [
+        1006.4390336727395,
+        -109.57443495426912,
+        64.2185240805608
+      ],
+      "hpr": [
+        -2.5085883140563965,
+        -0.0038002650253474712,
+        -0.0018151154508814216
+      ],
+      "dimensions": [
+        3.5190000534057617,
+        1.6519999504089355,
+        1.5429999828338623
+      ],
+      "center_offset": [
+        1.284500002861023,
+        0.0,
+        0.0
+      ],
+      "coord_type": 0,
+      "parent": 0,
+      "frame": 9086,
+      "sim_time": 363.4000000000383,
+      "road": null
+    },
+    "last_drive": {
+      "name": "MapAudit000",
+      "id": 2,
+      "xyz": [
+        984.4090234103118,
+        -126.7201575699863,
+        64.22338164080016
+      ],
+      "hpr": [
+        -2.179123640060425,
+        9.201987268170342e-05,
+        0.0036682141944766045
+      ],
+      "dimensions": [
+        3.5190000534057617,
+        1.6519999504089355,
+        1.5429999828338623
+      ],
+      "center_offset": [
+        1.284500002861023,
+        0.0,
+        0.0
+      ],
+      "coord_type": 0,
+      "parent": 0,
+      "frame": 9235,
+      "sim_time": 369.36000000004134,
+      "road": [
+        2422,
+        -3,
+        20.852975845336914,
+        -2.403632640838623,
+        0.0687161535024643
+      ]
+    },
+    "sim_duration_s": 5.960000000003049,
+    "requested_duration_completed": true,
+    "status": "sampled_motion"
+  },
+  {
+    "target_lanelet": 441733,
+    "source_road": 2818,
+    "source_section": 6,
+    "source_lane": -1,
+    "s_range": [
+      327.00099903142376,
+      334.00099903142376
+    ],
+    "placement_s": 332.4556786258497,
+    "plan_index": 36,
+    "placement_t": -1.3248169283995985,
+    "source_lane_width_m": 2.649633856799197,
+    "name": "MapAudit000",
+    "samples": 150,
+    "distance_m": 27.55424148781851,
+    "target_distance_m": 0.9385171789629972,
+    "lane_misses": 0,
+    "cell_misses": 0,
+    "source_lane_misses": 0,
+    "target_hits": 13,
+    "excluded_jumps": 0,
+    "placement": {
+      "name": "MapAudit000",
+      "id": 2,
+      "xyz": [
+        1192.0559900731048,
+        976.6005061396116,
+        44.195135336321194
+      ],
+      "hpr": [
+        -1.5555216073989868,
+        -0.0017394209280610085,
+        0.00010758735879790038
+      ],
+      "dimensions": [
+        3.5190000534057617,
+        1.6519999504089355,
+        1.5429999828338623
+      ],
+      "center_offset": [
+        1.284500002861023,
+        0.0,
+        0.0
+      ],
+      "coord_type": 0,
+      "parent": 0,
+      "frame": 9340,
+      "sim_time": 373.5600000000435,
+      "road": [
+        2818,
+        -1,
+        332.8414611816406,
+        -1.3249348402023315,
+        0.0027996895369142294
+      ],
+      "lanelet_hits": [
+        441733
+      ],
+      "cell_hits": [
+        78277
+      ]
+    },
+    "placement_s_delta_m": 0.3857825557909109,
+    "source_center_t_at_received_s": -1.3277345433585923,
+    "placement_verified": true,
+    "placement_blocked": false,
+    "first_drive": {
+      "name": "MapAudit000",
+      "id": 2,
+      "xyz": [
+        1192.0569339471042,
+        976.5408986749144,
+        44.19520723794343
+      ],
+      "hpr": [
+        -1.5549659729003906,
+        -0.0015850788913667202,
+        0.00011946762970183045
+      ],
+      "dimensions": [
+        3.5190000534057617,
+        1.6519999504089355,
+        1.5429999828338623
+      ],
+      "center_offset": [
+        1.284500002861023,
+        0.0,
+        0.0
+      ],
+      "coord_type": 0,
+      "parent": 0,
+      "frame": 9341,
+      "sim_time": 373.6000000000435,
+      "road": null
+    },
+    "last_drive": {
+      "name": "MapAudit000",
+      "id": 2,
+      "xyz": [
+        1194.3675342359268,
+        949.1154700321733,
+        44.14332429381584
+      ],
+      "hpr": [
+        -1.4327843189239502,
+        0.0019968131091445684,
+        -0.0003805614833254367
+      ],
+      "dimensions": [
+        3.5190000534057617,
+        1.6519999504089355,
+        1.5429999828338623
+      ],
+      "center_offset": [
+        1.284500002861023,
+        0.0,
+        0.0
+      ],
+      "coord_type": 0,
+      "parent": 0,
+      "frame": 9490,
+      "sim_time": 379.56000000004656,
+      "road": [
+        2818,
+        -1,
+        360.10009765625,
+        -1.5300251245498657,
+        -0.06115696206688881
+      ]
+    },
+    "sim_duration_s": 5.960000000003049,
+    "requested_duration_completed": true,
+    "status": "sampled_motion"
+  },
+  {
+    "target_lanelet": 81901,
+    "source_road": 1128,
+    "source_section": 0,
+    "source_lane": -3,
+    "s_range": [
+      0.0,
+      50.158362308876626
+    ],
+    "placement_s": 38.94180854152185,
+    "plan_index": 11,
+    "placement_t": -2.1949458461942157,
+    "source_lane_width_m": 3.4602415494265055,
+    "name": "MapAudit000",
+    "samples": 150,
+    "distance_m": 29.737449766500102,
+    "target_distance_m": 10.611223074819167,
+    "lane_misses": 0,
+    "cell_misses": 0,
+    "source_lane_misses": 3,
+    "target_hits": 67,
+    "excluded_jumps": 0,
+    "placement": {
+      "name": "MapAudit000",
+      "id": 2,
+      "xyz": [
+        322.7734970492998,
+        -86.14724059100145,
+        41.495201160958075
+      ],
+      "hpr": [
+        -2.6303153038024902,
+        -0.003845233004540205,
+        0.000824219489004463
+      ],
+      "dimensions": [
+        3.5190000534057617,
+        1.6519999504089355,
+        1.5429999828338623
+      ],
+      "center_offset": [
+        1.284500002861023,
+        0.0,
+        0.0
+      ],
+      "coord_type": 0,
+      "parent": 0,
+      "frame": 9595,
+      "sim_time": 383.7600000000487,
+      "road": [
+        1128,
+        -3,
+        39.3255615234375,
+        -2.189436435699463,
+        -0.02034018374979496
+      ],
+      "lanelet_hits": [
+        62560,
+        81901
+      ],
+      "cell_hits": [
+        11680,
+        14889
+      ]
+    },
+    "placement_s_delta_m": 0.38375298191564866,
+    "source_center_t_at_received_s": -2.169096244883624,
+    "placement_verified": true,
+    "placement_blocked": false,
+    "first_drive": {
+      "name": "MapAudit000",
+      "id": 2,
+      "xyz": [
+        322.7215337407163,
+        -86.17663781901744,
+        41.495317567140184
+      ],
+      "hpr": [
+        -2.626777410507202,
+        -0.003751958254724741,
+        0.0008918125531636178
+      ],
+      "dimensions": [
+        3.5190000534057617,
+        1.6519999504089355,
+        1.5429999828338623
+      ],
+      "center_offset": [
+        1.284500002861023,
+        0.0,
+        0.0
+      ],
+      "coord_type": 0,
+      "parent": 0,
+      "frame": 9596,
+      "sim_time": 383.8000000000487,
+      "road": null
+    },
+    "last_drive": {
+      "name": "MapAudit000",
+      "id": 2,
+      "xyz": [
+        297.48897862146595,
+        -101.9076153115113,
+        41.49980532746865
+      ],
+      "hpr": [
+        -2.576650857925415,
+        -0.00015598761092405766,
+        8.590234210714698e-05
+      ],
+      "dimensions": [
+        3.5190000534057617,
+        1.6519999504089355,
+        1.5429999828338623
+      ],
+      "center_offset": [
+        1.284500002861023,
+        0.0,
+        0.0
+      ],
+      "coord_type": 0,
+      "parent": 0,
+      "frame": 9745,
+      "sim_time": 389.7600000000518,
+      "road": [
+        800,
+        -1,
+        9.893756866455078,
+        -1.6868165731430054,
+        -0.040024008601903915
+      ]
+    },
+    "sim_duration_s": 5.960000000003049,
+    "requested_duration_completed": true,
+    "status": "sampled_motion"
+  },
+  {
+    "target_lanelet": 202823,
+    "source_road": 2039,
+    "source_section": 0,
+    "source_lane": -1,
+    "s_range": [
+      0.0,
+      36.751731740776165
+    ],
+    "placement_s": 33.97665274614038,
+    "plan_index": 17,
+    "placement_t": -1.6192804518635833,
+    "source_lane_width_m": 3.2385609037271665,
+    "name": "MapAudit000",
+    "samples": 0,
+    "distance_m": 0.0,
+    "target_distance_m": 0.0,
+    "lane_misses": 0,
+    "cell_misses": 0,
+    "source_lane_misses": 0,
+    "target_hits": 0,
+    "excluded_jumps": 0,
+    "placement": {
+      "name": "MapAudit000",
+      "id": 2,
+      "xyz": [
+        750.254935813876,
+        -656.7189154163514,
+        46.80168412467416
+      ],
+      "hpr": [
+        -2.4731853008270264,
+        -0.003858884098008275,
+        -3.988765911344672e-06
+      ],
+      "dimensions": [
+        3.5190000534057617,
+        1.6519999504089355,
+        1.5429999828338623
+      ],
+      "center_offset": [
+        1.284500002861023,
+        0.0,
+        0.0
+      ],
+      "coord_type": 0,
+      "parent": 0,
+      "frame": 9851,
+      "sim_time": 394.00000000005394,
+      "road": [
+        2015,
+        -1,
+        45.42394256591797,
+        -1.6193253993988037,
+        0.0017781914211809635
+      ],
+      "lanelet_hits": [
+        200512,
+        202823,
+        203270
+      ],
+      "cell_hits": [
+        35590,
+        35908,
+        35909,
+        35965
+      ]
+    },
+    "placement_s_delta_m": 11.447289819777588,
+    "source_center_t_at_received_s": -1.6211036320127064,
+    "placement_verified": false,
+    "placement_blocked": true,
+    "sim_duration_s": 0.0,
+    "requested_duration_completed": false,
+    "status": "placement_mismatch"
+  }
+]

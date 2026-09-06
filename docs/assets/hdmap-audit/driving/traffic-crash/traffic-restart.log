@@ -1,0 +1,1849 @@
+/home/stier/VIRES/VTD.2025.2/Runtime/Core/Traffic/ghostdriver: error while loading shared libraries: libdiguy_x64_gcc83_1360.so: cannot open shared object file: No such file or directory
+/home/stier/VIRES/VTD.2025.2/Runtime/Core/Traffic/ghostdriver: /home/stier/VIRES/VTD.2025.2/Runtime/Core/Traffic/lib/libjpeg.so.62: no version information available (required by /home/stier/VIRES/VTD.2025.2/Runtime/Core/Traffic/lib/libmak_IL180.so)
+/home/stier/VIRES/VTD.2025.2/Runtime/Core/Traffic/ghostdriver: /home/stier/VIRES/VTD.2025.2/Runtime/Core/Traffic/lib/libjpeg.so.62: no version information available (required by /home/stier/VIRES/VTD.2025.2/Runtime/Core/Traffic/lib/libtiff.so.5)
+RoadQuery::checkForRoadData: WARNING: Road Data is not (yet) initialized! Queries are not yet feasible.
+RoadQuery::checkForRoadData: WARNING: Road Data is not (yet) initialized! Queries are not yet feasible.
+RoadQuery::checkForRoadData: WARNING: Road Data is not (yet) initialized! Queries are not yet feasible.
+RoadQuery::checkForRoadData: WARNING: Road Data is not (yet) initialized! Queries are not yet feasible.
+RoadQuery::checkForRoadData: WARNING: Road Data is not (yet) initialized! Queries are not yet feasible.
+
++------------------------------------------------------+
+|   Version        : OpenDRIVE GhostDriver 2025.2.438  |
+|   Compiled       : Sep 29 2025 16:39:05              |
+|  --------------------------------------------------  |
+|   SVN Revisions                                      |
+|                                                      |
+|   GhostDriver    : 0                                 |
+|   OdrManager     : 0                                 |
+|   CommonLibs     : 0                                 |
+|   Tools          : 0                                 |
+|   PathShapes     : 0                                 |
+|   DynVehicleModel: 0                                 |
+|   TcInc          : 0                                 |
+|   VIRES Depend.  : 0                                 |
+|   DynObjLib      : 0                                 |
+|   OscManager     : 0                                 |
+|                                                      |
++------------------------------------------------------+
+
+ User Random Seed = 9
+static VTD::VtdEncryption* VTD::VtdEncryption::load(const string&): /home/stier/VIRES/VTD.2025.2/Data/Projects/Current/Plugins/Encryption/libExampleVtdEncryptionPlugin.so.cxx98: cannot open shared object file: No such file or directoryVtdEncryption:  could not open the shared library. 
+static VTD::VtdEncryption* VTD::VtdEncryption::load(const string&): /home/stier/VIRES/VTD.2025.2/Data/Projects/Current/Plugins/Encryption/libExampleVtdEncryptionPlugin.so.cxx98: cannot open shared object file: No such file or directoryVtdEncryption:  could not open the shared library. 
+static VTD::VtdEncryption* VTD::VtdEncryption::load(const string&): /home/stier/VIRES/VTD.2025.2/Data/Projects/Current/Plugins/Encryption/libExampleVtdEncryptionPlugin.so.cxx98: cannot open shared object file: No such file or directoryVtdEncryption:  could not open the shared library. 
+static VTD::VtdEncryption* VTD::VtdEncryption::load(const string&): /home/stier/VIRES/VTD.2025.2/Data/Projects/Current/Plugins/Encryption/libExampleVtdEncryptionPlugin.so.cxx98: cannot open shared object file: No such file or directoryVtdEncryption:  could not open the shared library. 
+ Communicator initialized.
+
+ +++ starting interface "vt_rev03"
+Licensing::initialize()
+ Date:          Sun Sep  6 08:40:58 2026
+ MSC Id:        b0a4606cceb0 (ethernet) (Linux)
+ Hostname:      stier (user stier, display /dev/tty)
+ License files: 27500@stier
+ CEID:          74D27349-AB933388
+ User:          stier
+ Display:       /dev/tty
+ LAPI Version:  LAPI 2025.1.0 (CL 81b1d9c5) (FLEXlm 11.19.6.3)
+  VTD_TRAFFIC_SCENARIO             VTD v-TRAFFIC/v-SCENARIO         15011
+  VTD_TaskControl                  VTD TaskControl                  15012
+  VTD_VtGUI                        VTD VtGUI / IOS                  15013
+  VTD_SCP_GUI                      VTD SCP_GUI                      15014
+  VTD_ModuleManager                VTD ModuleManager Core           15015
+  VTD_ImageGenerator               VTD ImageGenerator Core          15001
+  VTD_vIG_Pedestrians1             VTD ImageGenerator - Pedestrians 15005
+  VTD_vIG_Pedestrians2             VTD ImageGenerator - Pedestrians 15006
+  VTD_SmartDB                      VTD SmartDB Database             15026
+  VTD_Vehicle_Model_StandardDB     VTD Vehicle Model - Standard Dat 15027
+  VTD_ModuleManager_SDK            VTD Module Manager Development E 15016
+  VTD_Vehicle_Model_Dev_License    VTD Vehicle Model - Database Dev 15029
+  VTD_Vehicle_Model_Showroom       VTD Vehicle Model - Showroom     15030
+  VTD_RoadDesigner                 VTD RoadDesigner Core            15017
+  VTD_Pedestrian_Animation         VTD Pedestrian Animation         15034
+  VTD_Sound                        VTD Sound Core                   15022
+  VTD_OpenDRIVE_Gateway            VTD OpenDRIVE Gateway            15025
+  VTD_OpenDRIVE_SDK                VTD OpenDRIVE Manager - Developm 15024
+  VTD_vIG_OptiX_RunTime            VTD ImageGenerator - OptiX Runti 15010
+  VTD_ScenarioEngine               ScenarioEngine                   15143
+Using MSC_LICENSE_FILE: 27500@stier
+Licensing has been compiled with the c++ define VSM_DYNAMIC_LICENCE_CHECK being undefined.
+Continue by ignoring the environment variable VSM_DYNAMIC_LICENCE_CHECK and to not allow choosing the license features to test the license file against.
+
+Checked out feature (VTD_TRAFFIC_SCENARIO). LICENSING_STATE: 1(OK)
+Using Tools::FileFinder with primary   path list: ".:/home/stier/VIRES/VTD.2025.2/Data/Projects/Current:/home/stier/VIRES/VTD.2025.2/Data/Setups/Current:/home/stier/VIRES/VTD.2025.2/Data/Setups/Common:/home/stier/VIRES/VTD.2025.2/Data/Distros/Current:/home/stier/VIRES/VTD.2025.2/Data"
+                             secondary path list: ".:Databases:Scenarios:Scripts:Recordings:Config/TaskControl:Config/ImageGenerator:Config/ScenarioEditor:Config/ModuleManager:Config/Players:Plugins/ModuleManager"
+                             VTD root path      : "/home/stier/VIRES/VTD.2025.2"
+ [ Command "INIT" received ]
+>>>> setting DB_FILE to     "Data/../Runtime/Tools/ROD/DefaultProject/Database/HL_FMA_VTD_LivingLab.osgb"
+>>>> setting COURSE_FILE to "Data/../Runtime/Tools/ROD/DefaultProject/Odr/HL_FMA_VTD_LivingLab.xodr"
+ VehicleConfigReader: reading vehicles from directory "/home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/Players/Vehicles"
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/Players/Vehicles/AlfaRomeoBrera_10.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/Players/Vehicles/ApriliaSR50_05.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/Players/Vehicles/AudiA3SB_09.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/Players/Vehicles/AudiA4_09.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/Players/Vehicles/AudiA6_08.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/Players/Vehicles/AudiA6_10.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/Players/Vehicles/AudiA8L_08.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/Players/Vehicles/AudiQ5_09.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/Players/Vehicles/AudiS5_09.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/Players/Vehicles/BMW7_09.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/Players/Vehicles/BMWZ4_10.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/Players/Vehicles/ChevroletSilverado_06.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/Players/Vehicles/HorseTrailer.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/Players/Vehicles/HyundaiIoniq6_23.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/Players/Vehicles/LexusRX_12.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/Players/Vehicles/MANTGL_09.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/Players/Vehicles/MANTGL_09_Firetruck.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/Players/Vehicles/MANTGS_11.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/Players/Vehicles/MANTGX_11.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/Players/Vehicles/MANTGX_Trailer_11.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/Players/Vehicles/MercedesArocs_6x4Dumper_13.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/Players/Vehicles/MercedesC_11.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/Players/Vehicles/MercedesCitaro_07.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/Players/Vehicles/MercedesE_11_Taxi.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/Players/Vehicles/MercedesS_08.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/Players/Vehicles/MercedesS_09.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/Players/Vehicles/MercedesTravego_10.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/Players/Vehicles/MercedesV_14.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/Players/Vehicles/MiniClubman_10.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/Players/Vehicles/NissanMicra_11.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/Players/Vehicles/NissanZ350_08.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/Players/Vehicles/OpelAstra_10.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/Players/Vehicles/Peugeot207_11.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/Players/Vehicles/Segway.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/Players/Vehicles/SkodaSuperb_15.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/Players/Vehicles/SmartForTwo_14.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/Players/Vehicles/Smart_08.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/Players/Vehicles/SprinterCargo_08.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/Players/Vehicles/ToyotaCamry_06.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/Players/Vehicles/Trailer.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/Players/Vehicles/TruckDumper_08.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/Players/Vehicles/VWGolf_10.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/Players/Vehicles/VWGolf_12.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/Players/Vehicles/VWPassatVariant_11.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/Players/Vehicles/VWPassatVariant_11_Police.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/Players/Vehicles/VWTiguan_12.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/Players/Vehicles/VWTouareg_10.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/Players/Vehicles/VWTouran_09.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/Players/Vehicles/ViresTruck01.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/Players/Vehicles/ViresTruck01_cabin.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/Players/Vehicles/ViresTruck01_chassis.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/Players/Vehicles/VolvoV60_11.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/Players/Vehicles/Zx9r_08.xml
+ PedestrianConfigReader: reading pedestrians from directory "/home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/Players/Pedestrians"
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/Players/Pedestrians/AniCal3DCfg.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/Players/Pedestrians/MecCal3DCfg.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/Players/Pedestrians/PedCal3DCfg.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/Players/Pedestrians/PedDIGuyCfg.xml
+ ObjectDBReader: reading objects from directory "/home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/Players/Objects"
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/Players/Objects/Boards.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/Players/Objects/Cube.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/Players/Objects/DummyPedestrian.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/Players/Objects/OpenCRG_A.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/Players/Objects/OpenCRG_RoadDamages.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/Players/Objects/OptixDirtyCover.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/Players/Objects/Parking.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/Players/Objects/ParkingB.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/Players/Objects/Pylons.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/Players/Objects/Sg205Vorfahrt.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/Players/Objects/Sg274Hoechstgeschw100_02.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/Players/Objects/Sg274Hoechstgeschw100_03.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/Players/Objects/Sg274Hoechstgeschw130_03.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/Players/Objects/Sg274Hoechstgeschw30_02.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/Players/Objects/Sg274Hoechstgeschw50_02.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/Players/Objects/Sg274Hoechstgeschw60_02.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/Players/Objects/Sg274Hoechstgeschw80_02.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/Players/Objects/Sg274Hoechstgeschw80_03.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/Players/Objects/Sg278Hoechstgeschw100_02.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/Players/Objects/Sg278Hoechstgeschw100_03.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/Players/Objects/Sg278Hoechstgeschw130_03.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/Players/Objects/Sg278Hoechstgeschw30_02.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/Players/Objects/Sg278Hoechstgeschw50_02.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/Players/Objects/Sg278Hoechstgeschw60_02.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/Players/Objects/Sg278Hoechstgeschw80_02.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/Players/Objects/Sg278Hoechstgeschw80_03.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/Players/Objects/Sg282SignEnd_02.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/Players/Objects/Sg293RMZebra.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/Players/Objects/Sg301Vorfahrt.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/Players/Objects/Sg350ZebraLeft_02.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/Players/Objects/Sg350ZebraRight_02.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/Players/Objects/SignReplacementObject.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/Players/Objects/StreetBumps.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/Players/Objects/Targetplatte.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/Players/Objects/Targetplatte3D.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/Players/Objects/TestPattern.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/Players/Objects/WhiteObjects.xml
+DynObjectDBReader: reading dynamic objects from directory "/home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/DynObjects/Logic"
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/DynObjects/Logic/Barrier200001-2.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/DynObjects/Logic/LsRedGreen1000009-30.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/DynObjects/Logic/LsaArrowGreenCyclLeft1000013-70.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/DynObjects/Logic/LsaArrowGreenCyclRight1000013-100.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/DynObjects/Logic/LsaArrowGreenDown1000012-30.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/DynObjects/Logic/LsaArrowGreenLeft1000012-10.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/DynObjects/Logic/LsaArrowGreenLeftDiagonal1000012-60.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/DynObjects/Logic/LsaArrowGreenLeftRight1000012-100.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/DynObjects/Logic/LsaArrowGreenLeftStraight1000012-40.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/DynObjects/Logic/LsaArrowGreenLeftUTurn1000012-80.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/DynObjects/Logic/LsaArrowGreenRight1000012-20.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/DynObjects/Logic/LsaArrowGreenRightDiagonal1000012-70.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/DynObjects/Logic/LsaArrowGreenRightStraight1000012-50.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/DynObjects/Logic/LsaArrowGreenRightUTurn1000012-90.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/DynObjects/Logic/LsaArrowGreenStraight1000012-30.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/DynObjects/Logic/LsaArrowLeft1000011-10.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/DynObjects/Logic/LsaArrowRedCyclLeft1000013-50.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/DynObjects/Logic/LsaArrowRedCyclRight1000013-80.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/DynObjects/Logic/LsaArrowRedLeft1000020-10.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/DynObjects/Logic/LsaArrowRedLeftDiagonal1000020-60.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/DynObjects/Logic/LsaArrowRedLeftRight1000020-100.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/DynObjects/Logic/LsaArrowRedLeftStraight1000020-40.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/DynObjects/Logic/LsaArrowRedLeftUTurn1000020-80.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/DynObjects/Logic/LsaArrowRedRight1000020-20.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/DynObjects/Logic/LsaArrowRedRightDiagonal1000020-70.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/DynObjects/Logic/LsaArrowRedRightStraight1000020-50.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/DynObjects/Logic/LsaArrowRedRightUTurn1000020-90.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/DynObjects/Logic/LsaArrowRedStraight1000020-30.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/DynObjects/Logic/LsaArrowRight1000011-20.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/DynObjects/Logic/LsaArrowStraight1000011-30.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/DynObjects/Logic/LsaArrowStraightLeft1000011-40.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/DynObjects/Logic/LsaArrowStraightRight1000011-50.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/DynObjects/Logic/LsaArrowYellowCycl1000013-30.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/DynObjects/Logic/LsaArrowYellowCyclLeft1000013-60.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/DynObjects/Logic/LsaArrowYellowCyclRight1000013-90.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/DynObjects/Logic/LsaArrowYellowGreenLeft1000010-10.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/DynObjects/Logic/LsaArrowYellowGreenRight1000010-20.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/DynObjects/Logic/LsaArrowYellowLeft1000008-10.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/DynObjects/Logic/LsaArrowYellowLeft1000008-20.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/DynObjects/Logic/LsaArrowYellowLeftDiagonal1000008-60.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/DynObjects/Logic/LsaArrowYellowLeftRight1000008-100.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/DynObjects/Logic/LsaArrowYellowLeftStraight1000008-40.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/DynObjects/Logic/LsaArrowYellowLeftUTurn1000008-80.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/DynObjects/Logic/LsaArrowYellowRight1000008-20.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/DynObjects/Logic/LsaArrowYellowRightDiagonal1000008-70.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/DynObjects/Logic/LsaArrowYellowRightStaight1000008-50.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/DynObjects/Logic/LsaArrowYellowRightUTurn1000008-90.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/DynObjects/Logic/LsaArrowYellowStraight1000008-30.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/DynObjects/Logic/LsaCrossRed1000016.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/DynObjects/Logic/LsaGreen1000012.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/DynObjects/Logic/LsaGreenCycl1000013-40.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/DynObjects/Logic/LsaGreenPed1000002-20.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/DynObjects/Logic/LsaGreenPedCycl1000007-30.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/DynObjects/Logic/LsaRed1000020.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/DynObjects/Logic/LsaRedArrowLeft1000020-10.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/DynObjects/Logic/LsaRedArrowRight1000020-20.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/DynObjects/Logic/LsaRedBike1000013-20.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/DynObjects/Logic/LsaRedGreenCycl1000013.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/DynObjects/Logic/LsaRedGreenPed1000002.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/DynObjects/Logic/LsaRedGreenPedCycl1000007.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/DynObjects/Logic/LsaRedPed1000002-10.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/DynObjects/Logic/LsaRedPedCycl1000007-10.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/DynObjects/Logic/LsaRedYellow1000009-10.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/DynObjects/Logic/LsaRedYellowGreen1000001.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/DynObjects/Logic/LsaRedYellowGreenCycle1000013-10.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/DynObjects/Logic/LsaWarningPed1000015.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/DynObjects/Logic/LsaWarningYellowBus1000017.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/DynObjects/Logic/LsaWarningYellowCycl1000016.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/DynObjects/Logic/LsaWarningYellowHorse1000018.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/DynObjects/Logic/LsaWarningYellowPedCycl1000019.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/DynObjects/Logic/LsaYellow1000008.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/DynObjects/Logic/LsaYellowArrowLeft1000008-10.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/DynObjects/Logic/LsaYellowArrowRight1000008-20.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/DynObjects/Logic/LsaYellowCycl1000013-30.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/DynObjects/Logic/LsaYellowGreen1000009-20.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/DynObjects/Logic/LsaYellowPedCycl1000007-20.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/DynObjects/Logic/LsaYellowTram1000014.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/DynObjects/Logic/RailSwitch20000-1.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/DynObjects/Logic/SgTramA10002.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/DynObjects/Logic/SgTramF10000-0.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/DynObjects/Logic/SgTramF10000-1.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/DynObjects/Logic/SgTramF10000-2.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/DynObjects/Logic/SgTramF10000-3.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/DynObjects/Logic/SgTramF10000-4.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/DynObjects/Logic/SgTramF10000-5.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/DynObjects/Logic/SgTramW10001-0.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/DynObjects/Logic/SgTramW10001-11.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/DynObjects/Logic/SgTramW10001-12.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/DynObjects/Logic/SgTramW10001-13.xml
+static VTD::VtdEncryption* VTD::VtdEncryption::load(const string&): /home/stier/VIRES/VTD.2025.2/Data/Projects/Current/Plugins/Encryption/libExampleVtdEncryptionPlugin.so.cxx98: cannot open shared object file: No such file or directoryVtdEncryption:  could not open the shared library. 
+[0;32m..... add track 30 / 0[0;0m
+[0;32m..... add track 62 / 0[0;0m
+[0;32m..... add track 72 / 0[0;0m
+[0;32m..... add track 72 / 1[0;0m
+[0;32m..... add track 72 / 2[0;0m
+[0;32m..... add track 72 / 3[0;0m
+[0;32m..... add track 72 / 4[0;0m
+[0;32m..... add track 72 / 5[0;0m
+[0;32m..... add track 72 / 6[0;0m
+[0;32m..... add track 72 / 7[0;0m
+[0;32m..... add track 72 / 8[0;0m
+[0;32m..... add track 76 / 0[0;0m
+[0;32m..... add track 100 / 0[0;0m
+[0;32m..... add track 100 / 1[0;0m
+[0;32m..... add track 100 / 2[0;0m
+[0;32m..... add track 104 / 0[0;0m
+[0;32m..... add track 116 / 0[0;0m
+[0;32m..... add track 126 / 0[0;0m
+[0;32m..... add track 126 / 1[0;0m
+[0;32m..... add track 126 / 2[0;0m
+[0;32m..... add track 126 / 3[0;0m
+[0;32m..... add track 126 / 4[0;0m
+[0;32m..... add track 126 / 5[0;0m
+[0;32m..... add track 126 / 6[0;0m
+[0;32m..... add track 126 / 7[0;0m
+[0;32m..... add track 128 / 0[0;0m
+[0;32m..... add track 128 / 1[0;0m
+[0;32m..... add track 128 / 2[0;0m
+[0;32m..... add track 128 / 3[0;0m
+[0;32m..... add track 128 / 4[0;0m
+[0;32m..... add track 128 / 5[0;0m
+[0;32m..... add track 128 / 6[0;0m
+[0;32m..... add track 146 / 0[0;0m
+[0;32m..... add track 146 / 1[0;0m
+[0;32m..... add track 173 / 0[0;0m
+[0;32m..... add track 173 / 1[0;0m
+[0;32m..... add track 173 / 2[0;0m
+[0;32m..... add track 173 / 3[0;0m
+[0;32m..... add track 173 / 4[0;0m
+[0;32m..... add track 174 / 0[0;0m
+[0;32m..... add track 190 / 0[0;0m
+[0;32m..... add track 207 / 0[0;0m
+[0;32m..... add track 208 / 0[0;0m
+[0;32m..... add track 209 / 0[0;0m
+[0;32m..... add track 211 / 0[0;0m
+[0;32m..... add track 211 / 1[0;0m
+[0;32m..... add track 211 / 2[0;0m
+[0;32m..... add track 211 / 3[0;0m
+[0;32m..... add track 211 / 4[0;0m
+[0;32m..... add track 304 / 0[0;0m
+[0;32m..... add track 308 / 0[0;0m
+[0;32m..... add track 310 / 0[0;0m
+[0;32m..... add track 310 / 1[0;0m
+[0;32m..... add track 338 / 0[0;0m
+[0;32m..... add track 346 / 0[0;0m
+[0;32m..... add track 368 / 0[0;0m
+[0;32m..... add track 396 / 0[0;0m
+[0;32m..... add track 418 / 0[0;0m
+[0;32m..... add track 418 / 1[0;0m
+[0;32m..... add track 418 / 2[0;0m
+[0;32m..... add track 420 / 0[0;0m
+[0;32m..... add track 420 / 1[0;0m
+[0;32m..... add track 420 / 2[0;0m
+[0;32m..... add track 429 / 0[0;0m
+[0;32m..... add track 429 / 1[0;0m
+[0;32m..... add track 429 / 2[0;0m
+[0;32m..... add track 429 / 3[0;0m
+[0;32m..... add track 429 / 4[0;0m
+[0;32m..... add track 429 / 5[0;0m
+[0;32m..... add track 465 / 0[0;0m
+[0;32m..... add track 465 / 1[0;0m
+[0;32m..... add track 465 / 2[0;0m
+[0;32m..... add track 550 / 0[0;0m
+[0;32m..... add track 553 / 0[0;0m
+[0;32m..... add track 556 / 0[0;0m
+[0;32m..... add track 559 / 0[0;0m
+[0;32m..... add track 562 / 0[0;0m
+[0;32m..... add track 565 / 0[0;0m
+[0;32m..... add track 568 / 0[0;0m
+[0;32m..... add track 574 / 0[0;0m
+[0;32m..... add track 577 / 0[0;0m
+[0;32m..... add track 580 / 0[0;0m
+[0;32m..... add track 583 / 0[0;0m
+[0;32m..... add track 586 / 0[0;0m
+[0;32m..... add track 589 / 0[0;0m
+[0;32m..... add track 592 / 0[0;0m
+[0;32m..... add track 598 / 0[0;0m
+[0;32m..... add track 601 / 0[0;0m
+[0;32m..... add track 604 / 0[0;0m
+[0;32m..... add track 607 / 0[0;0m
+[0;32m..... add track 646 / 0[0;0m
+[0;32m..... add track 649 / 0[0;0m
+[0;32m..... add track 652 / 0[0;0m
+[0;32m..... add track 655 / 0[0;0m
+[0;32m..... add track 658 / 0[0;0m
+[0;32m..... add track 664 / 0[0;0m
+[0;32m..... add track 667 / 0[0;0m
+[0;32m..... add track 670 / 0[0;0m
+[0;32m..... add track 676 / 0[0;0m
+[0;32m..... add track 679 / 0[0;0m
+[0;32m..... add track 688 / 0[0;0m
+[0;32m..... add track 691 / 0[0;0m
+[0;32m..... add track 694 / 0[0;0m
+[0;32m..... add track 700 / 0[0;0m
+[0;32m..... add track 703 / 0[0;0m
+[0;32m..... add track 766 / 0[0;0m
+[0;32m..... add track 775 / 0[0;0m
+[0;32m..... add track 781 / 0[0;0m
+[0;32m..... add track 791 / 0[0;0m
+[0;32m..... add track 794 / 0[0;0m
+[0;32m..... add track 797 / 0[0;0m
+[0;32m..... add track 800 / 0[0;0m
+[0;32m..... add track 803 / 0[0;0m
+[0;32m..... add track 806 / 0[0;0m
+[0;32m..... add track 809 / 0[0;0m
+[0;32m..... add track 812 / 0[0;0m
+[0;32m..... add track 815 / 0[0;0m
+[0;32m..... add track 818 / 0[0;0m
+[0;32m..... add track 821 / 0[0;0m
+[0;32m..... add track 824 / 0[0;0m
+[0;32m..... add track 827 / 0[0;0m
+[0;32m..... add track 830 / 0[0;0m
+[0;32m..... add track 833 / 0[0;0m
+[0;32m..... add track 836 / 0[0;0m
+[0;32m..... add track 842 / 0[0;0m
+[0;32m..... add track 845 / 0[0;0m
+[0;32m..... add track 851 / 0[0;0m
+[0;32m..... add track 940 / 0[0;0m
+[0;32m..... add track 940 / 1[0;0m
+[0;32m..... add track 940 / 2[0;0m
+[0;32m..... add track 1011 / 0[0;0m
+[0;32m..... add track 1032 / 0[0;0m
+[0;32m..... add track 1035 / 0[0;0m
+[0;32m..... add track 1043 / 0[0;0m
+[0;32m..... add track 1043 / 1[0;0m
+[0;32m..... add track 1043 / 2[0;0m
+[0;32m..... add track 1043 / 3[0;0m
+[0;32m..... add track 1043 / 4[0;0m
+[0;32m..... add track 1094 / 0[0;0m
+[0;32m..... add track 1109 / 0[0;0m
+[0;32m..... add track 1128 / 0[0;0m
+[0;32m..... add track 1130 / 0[0;0m
+[0;32m..... add track 1139 / 0[0;0m
+[0;32m..... add track 1145 / 0[0;0m
+[0;32m..... add track 1154 / 0[0;0m
+[0;32m..... add track 1163 / 0[0;0m
+[0;32m..... add track 1166 / 0[0;0m
+[0;32m..... add track 1172 / 0[0;0m
+[0;32m..... add track 1173 / 0[0;0m
+[0;32m..... add track 1174 / 0[0;0m
+[0;32m..... add track 1180 / 0[0;0m
+[0;32m..... add track 1181 / 0[0;0m
+[0;32m..... add track 1182 / 0[0;0m
+[0;32m..... add track 1183 / 0[0;0m
+[0;32m..... add track 1184 / 0[0;0m
+[0;32m..... add track 1187 / 0[0;0m
+[0;32m..... add track 1190 / 0[0;0m
+[0;32m..... add track 1193 / 0[0;0m
+[0;32m..... add track 1196 / 0[0;0m
+[0;32m..... add track 1199 / 0[0;0m
+[0;32m..... add track 1202 / 0[0;0m
+[0;32m..... add track 1208 / 0[0;0m
+[0;32m..... add track 1211 / 0[0;0m
+[0;32m..... add track 1217 / 0[0;0m
+[0;32m..... add track 1218 / 0[0;0m
+[0;32m..... add track 1219 / 0[0;0m
+[0;32m..... add track 1222 / 0[0;0m
+[0;32m..... add track 1222 / 1[0;0m
+[0;32m..... add track 1225 / 0[0;0m
+[0;32m..... add track 1241 / 0[0;0m
+[0;32m..... add track 1244 / 0[0;0m
+[0;32m..... add track 1247 / 0[0;0m
+[0;32m..... add track 1251 / 0[0;0m
+[0;32m..... add track 1253 / 0[0;0m
+[0;32m..... add track 1259 / 0[0;0m
+[0;32m..... add track 1447 / 0[0;0m
+[0;32m..... add track 1462 / 0[0;0m
+[0;32m..... add track 1471 / 0[0;0m
+[0;32m..... add track 1474 / 0[0;0m
+[0;32m..... add track 1476 / 0[0;0m
+[0;32m..... add track 1479 / 0[0;0m
+[0;32m..... add track 1488 / 0[0;0m
+[0;32m..... add track 1492 / 0[0;0m
+[0;32m..... add track 1493 / 0[0;0m
+[0;32m..... add track 1496 / 0[0;0m
+[0;32m..... add track 1499 / 0[0;0m
+[0;32m..... add track 1502 / 0[0;0m
+[0;32m..... add track 1505 / 0[0;0m
+[0;32m..... add track 1508 / 0[0;0m
+[0;32m..... add track 1522 / 0[0;0m
+[0;32m..... add track 1525 / 0[0;0m
+[0;32m..... add track 1529 / 0[0;0m
+[0;32m..... add track 1530 / 0[0;0m
+[0;32m..... add track 1533 / 0[0;0m
+[0;32m..... add track 1536 / 0[0;0m
+[0;32m..... add track 1539 / 0[0;0m
+[0;32m..... add track 1542 / 0[0;0m
+[0;32m..... add track 1543 / 0[0;0m
+[0;32m..... add track 1546 / 0[0;0m
+[0;32m..... add track 1549 / 0[0;0m
+[0;32m..... add track 1552 / 0[0;0m
+[0;32m..... add track 1555 / 0[0;0m
+[0;32m..... add track 1558 / 0[0;0m
+[0;32m..... add track 1561 / 0[0;0m
+[0;32m..... add track 1562 / 0[0;0m
+[0;32m..... add track 1563 / 0[0;0m
+[0;32m..... add track 1564 / 0[0;0m
+[0;32m..... add track 1567 / 0[0;0m
+[0;32m..... add track 1570 / 0[0;0m
+[0;32m..... add track 1573 / 0[0;0m
+[0;32m..... add track 1576 / 0[0;0m
+[0;32m..... add track 1582 / 0[0;0m
+[0;32m..... add track 1583 / 0[0;0m
+[0;32m..... add track 1589 / 0[0;0m
+[0;32m..... add track 1592 / 0[0;0m
+[0;32m..... add track 1595 / 0[0;0m
+[0;32m..... add track 1598 / 0[0;0m
+[0;32m..... add track 1601 / 0[0;0m
+[0;32m..... add track 1602 / 0[0;0m
+[0;32m..... add track 1603 / 0[0;0m
+[0;32m..... add track 1603 / 1[0;0m
+[0;32m..... add track 1603 / 2[0;0m
+[0;32m..... add track 1603 / 3[0;0m
+[0;32m..... add track 1603 / 4[0;0m
+[0;32m..... add track 1609 / 0[0;0m
+[0;32m..... add track 1612 / 0[0;0m
+[0;32m..... add track 1615 / 0[0;0m
+[0;32m..... add track 1618 / 0[0;0m
+[0;32m..... add track 1621 / 0[0;0m
+[0;32m..... add track 1622 / 0[0;0m
+[0;32m..... add track 1625 / 0[0;0m
+[0;32m..... add track 1628 / 0[0;0m
+[0;32m..... add track 1631 / 0[0;0m
+[0;32m..... add track 1634 / 0[0;0m
+[0;32m..... add track 1640 / 0[0;0m
+[0;32m..... add track 1643 / 0[0;0m
+[0;32m..... add track 1646 / 0[0;0m
+[0;32m..... add track 1648 / 0[0;0m
+[0;32m..... add track 1666 / 0[0;0m
+[0;32m..... add track 1681 / 0[0;0m
+[0;32m..... add track 1687 / 0[0;0m
+[0;32m..... add track 1690 / 0[0;0m
+[0;32m..... add track 1693 / 0[0;0m
+[0;32m..... add track 1702 / 0[0;0m
+[0;32m..... add track 1705 / 0[0;0m
+[0;32m..... add track 1708 / 0[0;0m
+[0;32m..... add track 1712 / 0[0;0m
+[0;32m..... add track 1712 / 1[0;0m
+[0;32m..... add track 1712 / 2[0;0m
+[0;32m..... add track 1725 / 0[0;0m
+[0;32m..... add track 1734 / 0[0;0m
+[0;32m..... add track 1743 / 0[0;0m
+[0;32m..... add track 1750 / 0[0;0m
+[0;32m..... add track 1753 / 0[0;0m
+[0;32m..... add track 1756 / 0[0;0m
+[0;32m..... add track 1765 / 0[0;0m
+[0;32m..... add track 1768 / 0[0;0m
+[0;32m..... add track 1769 / 0[0;0m
+[0;32m..... add track 1769 / 1[0;0m
+[0;32m..... add track 1769 / 2[0;0m
+[0;32m..... add track 1769 / 3[0;0m
+[0;32m..... add track 1769 / 4[0;0m
+[0;32m..... add track 1769 / 5[0;0m
+[0;32m..... add track 1769 / 6[0;0m
+[0;32m..... add track 1769 / 7[0;0m
+[0;32m..... add track 1775 / 0[0;0m
+[0;32m..... add track 1776 / 0[0;0m
+[0;32m..... add track 1777 / 0[0;0m
+[0;32m..... add track 1777 / 1[0;0m
+[0;32m..... add track 1777 / 2[0;0m
+[0;32m..... add track 1777 / 3[0;0m
+[0;32m..... add track 1778 / 0[0;0m
+[0;32m..... add track 1778 / 1[0;0m
+[0;32m..... add track 1778 / 2[0;0m
+[0;32m..... add track 1778 / 3[0;0m
+[0;32m..... add track 1778 / 4[0;0m
+[0;32m..... add track 1781 / 0[0;0m
+[0;32m..... add track 1784 / 0[0;0m
+[0;32m..... add track 1787 / 0[0;0m
+[0;32m..... add track 1790 / 0[0;0m
+[0;32m..... add track 1793 / 0[0;0m
+[0;32m..... add track 1796 / 0[0;0m
+[0;32m..... add track 1799 / 0[0;0m
+[0;32m..... add track 1802 / 0[0;0m
+[0;32m..... add track 1805 / 0[0;0m
+[0;32m..... add track 1808 / 0[0;0m
+[0;32m..... add track 1808 / 1[0;0m
+[0;32m..... add track 1811 / 0[0;0m
+[0;32m..... add track 1814 / 0[0;0m
+[0;32m..... add track 1818 / 0[0;0m
+[0;32m..... add track 1818 / 1[0;0m
+[0;32m..... add track 1818 / 2[0;0m
+[0;32m..... add track 1821 / 0[0;0m
+[0;32m..... add track 1824 / 0[0;0m
+[0;32m..... add track 1825 / 0[0;0m
+[0;32m..... add track 1826 / 0[0;0m
+[0;32m..... add track 1829 / 0[0;0m
+[0;32m..... add track 1832 / 0[0;0m
+[0;32m..... add track 1835 / 0[0;0m
+[0;32m..... add track 1838 / 0[0;0m
+[0;32m..... add track 1841 / 0[0;0m
+[0;32m..... add track 1844 / 0[0;0m
+[0;32m..... add track 1845 / 0[0;0m
+[0;32m..... add track 1845 / 1[0;0m
+[0;32m..... add track 1846 / 0[0;0m
+[0;32m..... add track 1849 / 0[0;0m
+[0;32m..... add track 1852 / 0[0;0m
+[0;32m..... add track 1855 / 0[0;0m
+[0;32m..... add track 1858 / 0[0;0m
+[0;32m..... add track 1861 / 0[0;0m
+[0;32m..... add track 1864 / 0[0;0m
+[0;32m..... add track 1868 / 0[0;0m
+[0;32m..... add track 1869 / 0[0;0m
+[0;32m..... add track 1869 / 1[0;0m
+[0;32m..... add track 1869 / 2[0;0m
+[0;32m..... add track 1869 / 3[0;0m
+[0;32m..... add track 1869 / 4[0;0m
+[0;32m..... add track 1869 / 5[0;0m
+[0;32m..... add track 1869 / 6[0;0m
+[0;32m..... add track 1869 / 7[0;0m
+[0;32m..... add track 1878 / 0[0;0m
+[0;32m..... add track 1892 / 0[0;0m
+[0;32m..... add track 1895 / 0[0;0m
+[0;32m..... add track 1898 / 0[0;0m
+[0;32m..... add track 1901 / 0[0;0m
+[0;32m..... add track 1908 / 0[0;0m
+[0;32m..... add track 1909 / 0[0;0m
+[0;32m..... add track 1910 / 0[0;0m
+[0;32m..... add track 1916 / 0[0;0m
+[0;32m..... add track 1922 / 0[0;0m
+[0;32m..... add track 1925 / 0[0;0m
+[0;32m..... add track 1926 / 0[0;0m
+[0;32m..... add track 1926 / 1[0;0m
+[0;32m..... add track 1926 / 2[0;0m
+[0;32m..... add track 1926 / 3[0;0m
+[0;32m..... add track 1926 / 4[0;0m
+[0;32m..... add track 1926 / 5[0;0m
+[0;32m..... add track 1927 / 0[0;0m
+[0;32m..... add track 1927 / 1[0;0m
+[0;32m..... add track 1927 / 2[0;0m
+[0;32m..... add track 1927 / 3[0;0m
+[0;32m..... add track 1928 / 0[0;0m
+[0;32m..... add track 1928 / 1[0;0m
+[0;32m..... add track 1931 / 0[0;0m
+[0;32m..... add track 1937 / 0[0;0m
+[0;32m..... add track 1940 / 0[0;0m
+[0;32m..... add track 1943 / 0[0;0m
+[0;32m..... add track 1946 / 0[0;0m
+[0;32m..... add track 1949 / 0[0;0m
+[0;32m..... add track 1952 / 0[0;0m
+[0;32m..... add track 1955 / 0[0;0m
+[0;32m..... add track 1961 / 0[0;0m
+[0;32m..... add track 1964 / 0[0;0m
+[0;32m..... add track 1973 / 0[0;0m
+[0;32m..... add track 1976 / 0[0;0m
+[0;32m..... add track 1977 / 0[0;0m
+[0;32m..... add track 1978 / 0[0;0m
+[0;32m..... add track 1981 / 0[0;0m
+[0;32m..... add track 1984 / 0[0;0m
+[0;32m..... add track 1987 / 0[0;0m
+[0;32m..... add track 1990 / 0[0;0m
+[0;32m..... add track 1993 / 0[0;0m
+[0;32m..... add track 1996 / 0[0;0m
+[0;32m..... add track 1999 / 0[0;0m
+[0;32m..... add track 2002 / 0[0;0m
+[0;32m..... add track 2003 / 0[0;0m
+[0;32m..... add track 2003 / 1[0;0m
+[0;32m..... add track 2003 / 2[0;0m
+[0;32m..... add track 2003 / 3[0;0m
+[0;32m..... add track 2003 / 4[0;0m
+[0;32m..... add track 2003 / 5[0;0m
+[0;32m..... add track 2004 / 0[0;0m
+[0;32m..... add track 2004 / 1[0;0m
+[0;32m..... add track 2004 / 2[0;0m
+[0;32m..... add track 2007 / 0[0;0m
+[0;32m..... add track 2010 / 0[0;0m
+[0;32m..... add track 2011 / 0[0;0m
+[0;32m..... add track 2011 / 1[0;0m
+[0;32m..... add track 2011 / 2[0;0m
+[0;32m..... add track 2011 / 3[0;0m
+[0;32m..... add track 2011 / 4[0;0m
+[0;32m..... add track 2011 / 5[0;0m
+[0;32m..... add track 2011 / 6[0;0m
+[0;32m..... add track 2011 / 7[0;0m
+[0;32m..... add track 2012 / 0[0;0m
+[0;32m..... add track 2012 / 1[0;0m
+[0;32m..... add track 2012 / 2[0;0m
+[0;32m..... add track 2012 / 3[0;0m
+[0;32m..... add track 2012 / 4[0;0m
+[0;32m..... add track 2015 / 0[0;0m
+[0;32m..... add track 2018 / 0[0;0m
+[0;32m..... add track 2024 / 0[0;0m
+[0;32m..... add track 2027 / 0[0;0m
+[0;32m..... add track 2030 / 0[0;0m
+[0;32m..... add track 2036 / 0[0;0m
+[0;32m..... add track 2039 / 0[0;0m
+[0;32m..... add track 2042 / 0[0;0m
+[0;32m..... add track 2045 / 0[0;0m
+[0;32m..... add track 2048 / 0[0;0m
+[0;32m..... add track 2051 / 0[0;0m
+[0;32m..... add track 2063 / 0[0;0m
+[0;32m..... add track 2075 / 0[0;0m
+[0;32m..... add track 2076 / 0[0;0m
+[0;32m..... add track 2076 / 1[0;0m
+[0;32m..... add track 2076 / 2[0;0m
+[0;32m..... add track 2076 / 3[0;0m
+[0;32m..... add track 2076 / 4[0;0m
+[0;32m..... add track 2076 / 5[0;0m
+[0;32m..... add track 2076 / 6[0;0m
+[0;32m..... add track 2076 / 7[0;0m
+[0;32m..... add track 2076 / 8[0;0m
+[0;32m..... add track 2076 / 9[0;0m
+[0;32m..... add track 2076 / 10[0;0m
+[0;32m..... add track 2076 / 11[0;0m
+[0;32m..... add track 2077 / 0[0;0m
+[0;32m..... add track 2080 / 0[0;0m
+[0;32m..... add track 2083 / 0[0;0m
+[0;32m..... add track 2086 / 0[0;0m
+[0;32m..... add track 2089 / 0[0;0m
+[0;32m..... add track 2092 / 0[0;0m
+[0;32m..... add track 2095 / 0[0;0m
+[0;32m..... add track 2096 / 0[0;0m
+[0;32m..... add track 2097 / 0[0;0m
+[0;32m..... add track 2107 / 0[0;0m
+[0;32m..... add track 2107 / 1[0;0m
+[0;32m..... add track 2110 / 0[0;0m
+[0;32m..... add track 2110 / 1[0;0m
+[0;32m..... add track 2115 / 0[0;0m
+[0;32m..... add track 2115 / 1[0;0m
+[0;32m..... add track 2115 / 2[0;0m
+[0;32m..... add track 2115 / 3[0;0m
+[0;32m..... add track 2115 / 4[0;0m
+[0;32m..... add track 2116 / 0[0;0m
+[0;32m..... add track 2119 / 0[0;0m
+[0;32m..... add track 2122 / 0[0;0m
+[0;32m..... add track 2125 / 0[0;0m
+[0;32m..... add track 2128 / 0[0;0m
+[0;32m..... add track 2131 / 0[0;0m
+[0;32m..... add track 2134 / 0[0;0m
+[0;32m..... add track 2139 / 0[0;0m
+[0;32m..... add track 2148 / 0[0;0m
+[0;32m..... add track 2151 / 0[0;0m
+[0;32m..... add track 2152 / 0[0;0m
+[0;32m..... add track 2165 / 0[0;0m
+[0;32m..... add track 2171 / 0[0;0m
+[0;32m..... add track 2172 / 0[0;0m
+[0;32m..... add track 2183 / 0[0;0m
+[0;32m..... add track 2190 / 0[0;0m
+[0;32m..... add track 2192 / 0[0;0m
+[0;32m..... add track 2192 / 1[0;0m
+[0;32m..... add track 2192 / 2[0;0m
+[0;32m..... add track 2192 / 3[0;0m
+[0;32m..... add track 2192 / 4[0;0m
+[0;32m..... add track 2195 / 0[0;0m
+[0;32m..... add track 2195 / 1[0;0m
+[0;32m..... add track 2195 / 2[0;0m
+[0;32m..... add track 2195 / 3[0;0m
+[0;32m..... add track 2195 / 4[0;0m
+[0;32m..... add track 2198 / 0[0;0m
+[0;32m..... add track 2204 / 0[0;0m
+[0;32m..... add track 2207 / 0[0;0m
+[0;32m..... add track 2213 / 0[0;0m
+[0;32m..... add track 2216 / 0[0;0m
+[0;32m..... add track 2219 / 0[0;0m
+[0;32m..... add track 2222 / 0[0;0m
+[0;32m..... add track 2225 / 0[0;0m
+[0;32m..... add track 2228 / 0[0;0m
+[0;32m..... add track 2234 / 0[0;0m
+[0;32m..... add track 2237 / 0[0;0m
+[0;32m..... add track 2240 / 0[0;0m
+[0;32m..... add track 2241 / 0[0;0m
+[0;32m..... add track 2241 / 1[0;0m
+[0;32m..... add track 2241 / 2[0;0m
+[0;32m..... add track 2241 / 3[0;0m
+[0;32m..... add track 2241 / 4[0;0m
+[0;32m..... add track 2247 / 0[0;0m
+[0;32m..... add track 2253 / 0[0;0m
+[0;32m..... add track 2256 / 0[0;0m
+[0;32m..... add track 2257 / 0[0;0m
+[0;32m..... add track 2260 / 0[0;0m
+[0;32m..... add track 2263 / 0[0;0m
+[0;32m..... add track 2264 / 0[0;0m
+[0;32m..... add track 2265 / 0[0;0m
+[0;32m..... add track 2265 / 1[0;0m
+[0;32m..... add track 2265 / 2[0;0m
+[0;32m..... add track 2265 / 3[0;0m
+[0;32m..... add track 2265 / 4[0;0m
+[0;32m..... add track 2268 / 0[0;0m
+[0;32m..... add track 2268 / 1[0;0m
+[0;32m..... add track 2292 / 0[0;0m
+[0;32m..... add track 2295 / 0[0;0m
+[0;32m..... add track 2298 / 0[0;0m
+[0;32m..... add track 2301 / 0[0;0m
+[0;32m..... add track 2304 / 0[0;0m
+[0;32m..... add track 2305 / 0[0;0m
+[0;32m..... add track 2305 / 1[0;0m
+[0;32m..... add track 2305 / 2[0;0m
+[0;32m..... add track 2305 / 3[0;0m
+[0;32m..... add track 2305 / 4[0;0m
+[0;32m..... add track 2311 / 0[0;0m
+[0;32m..... add track 2312 / 0[0;0m
+[0;32m..... add track 2312 / 1[0;0m
+[0;32m..... add track 2312 / 2[0;0m
+[0;32m..... add track 2312 / 3[0;0m
+[0;32m..... add track 2312 / 4[0;0m
+[0;32m..... add track 2312 / 5[0;0m
+[0;32m..... add track 2312 / 6[0;0m
+[0;32m..... add track 2313 / 0[0;0m
+[0;32m..... add track 2352 / 0[0;0m
+[0;32m..... add track 2355 / 0[0;0m
+[0;32m..... add track 2358 / 0[0;0m
+[0;32m..... add track 2361 / 0[0;0m
+[0;32m..... add track 2364 / 0[0;0m
+[0;32m..... add track 2367 / 0[0;0m
+[0;32m..... add track 2370 / 0[0;0m
+[0;32m..... add track 2373 / 0[0;0m
+[0;32m..... add track 2376 / 0[0;0m
+[0;32m..... add track 2379 / 0[0;0m
+[0;32m..... add track 2382 / 0[0;0m
+[0;32m..... add track 2385 / 0[0;0m
+[0;32m..... add track 2386 / 0[0;0m
+[0;32m..... add track 2392 / 0[0;0m
+[0;32m..... add track 2395 / 0[0;0m
+[0;32m..... add track 2396 / 0[0;0m
+[0;32m..... add track 2396 / 1[0;0m
+[0;32m..... add track 2396 / 2[0;0m
+[0;32m..... add track 2396 / 3[0;0m
+[0;32m..... add track 2396 / 4[0;0m
+[0;32m..... add track 2399 / 0[0;0m
+[0;32m..... add track 2402 / 0[0;0m
+[0;32m..... add track 2403 / 0[0;0m
+[0;32m..... add track 2406 / 0[0;0m
+[0;32m..... add track 2409 / 0[0;0m
+[0;32m..... add track 2410 / 0[0;0m
+[0;32m..... add track 2410 / 1[0;0m
+[0;32m..... add track 2410 / 2[0;0m
+[0;32m..... add track 2419 / 0[0;0m
+[0;32m..... add track 2422 / 0[0;0m
+[0;32m..... add track 2423 / 0[0;0m
+[0;32m..... add track 2423 / 1[0;0m
+[0;32m..... add track 2423 / 2[0;0m
+[0;32m..... add track 2423 / 3[0;0m
+[0;32m..... add track 2423 / 4[0;0m
+[0;32m..... add track 2423 / 5[0;0m
+[0;32m..... add track 2423 / 6[0;0m
+[0;32m..... add track 2423 / 7[0;0m
+[0;32m..... add track 2426 / 0[0;0m
+[0;32m..... add track 2429 / 0[0;0m
+[0;32m..... add track 2432 / 0[0;0m
+[0;32m..... add track 2438 / 0[0;0m
+[0;32m..... add track 2444 / 0[0;0m
+[0;32m..... add track 2445 / 0[0;0m
+[0;32m..... add track 2445 / 1[0;0m
+[0;32m..... add track 2445 / 2[0;0m
+[0;32m..... add track 2445 / 3[0;0m
+[0;32m..... add track 2462 / 0[0;0m
+[0;32m..... add track 2467 / 0[0;0m
+[0;32m..... add track 2467 / 1[0;0m
+[0;32m..... add track 2467 / 2[0;0m
+[0;32m..... add track 2468 / 0[0;0m
+[0;32m..... add track 2468 / 1[0;0m
+[0;32m..... add track 2468 / 2[0;0m
+[0;32m..... add track 2468 / 3[0;0m
+[0;32m..... add track 2469 / 0[0;0m
+[0;32m..... add track 2469 / 1[0;0m
+[0;32m..... add track 2469 / 2[0;0m
+[0;32m..... add track 2470 / 0[0;0m
+[0;32m..... add track 2470 / 1[0;0m
+[0;32m..... add track 2470 / 2[0;0m
+[0;32m..... add track 2470 / 3[0;0m
+[0;32m..... add track 2470 / 4[0;0m
+[0;32m..... add track 2470 / 5[0;0m
+[0;32m..... add track 2473 / 0[0;0m
+[0;32m..... add track 2476 / 0[0;0m
+[0;32m..... add track 2479 / 0[0;0m
+[0;32m..... add track 2482 / 0[0;0m
+[0;32m..... add track 2485 / 0[0;0m
+[0;32m..... add track 2488 / 0[0;0m
+[0;32m..... add track 2491 / 0[0;0m
+[0;32m..... add track 2494 / 0[0;0m
+[0;32m..... add track 2497 / 0[0;0m
+[0;32m..... add track 2500 / 0[0;0m
+[0;32m..... add track 2506 / 0[0;0m
+[0;32m..... add track 2509 / 0[0;0m
+[0;32m..... add track 2512 / 0[0;0m
+[0;32m..... add track 2515 / 0[0;0m
+[0;32m..... add track 2518 / 0[0;0m
+[0;32m..... add track 2521 / 0[0;0m
+[0;32m..... add track 2524 / 0[0;0m
+[0;32m..... add track 2533 / 0[0;0m
+[0;32m..... add track 2533 / 1[0;0m
+[0;32m..... add track 2533 / 2[0;0m
+[0;32m..... add track 2533 / 3[0;0m
+[0;32m..... add track 2533 / 4[0;0m
+[0;32m..... add track 2533 / 5[0;0m
+[0;32m..... add track 2533 / 6[0;0m
+[0;32m..... add track 2533 / 7[0;0m
+[0;32m..... add track 2536 / 0[0;0m
+[0;32m..... add track 2542 / 0[0;0m
+[0;32m..... add track 2545 / 0[0;0m
+[0;32m..... add track 2551 / 0[0;0m
+[0;32m..... add track 2554 / 0[0;0m
+[0;32m..... add track 2559 / 0[0;0m
+[0;32m..... add track 2564 / 0[0;0m
+[0;32m..... add track 2564 / 1[0;0m
+[0;32m..... add track 2564 / 2[0;0m
+[0;32m..... add track 2564 / 3[0;0m
+[0;32m..... add track 2564 / 4[0;0m
+[0;32m..... add track 2564 / 5[0;0m
+[0;32m..... add track 2564 / 6[0;0m
+[0;32m..... add track 2564 / 7[0;0m
+[0;32m..... add track 2567 / 0[0;0m
+[0;32m..... add track 2573 / 0[0;0m
+[0;32m..... add track 2574 / 0[0;0m
+[0;32m..... add track 2574 / 1[0;0m
+[0;32m..... add track 2574 / 2[0;0m
+[0;32m..... add track 2575 / 0[0;0m
+[0;32m..... add track 2575 / 1[0;0m
+[0;32m..... add track 2575 / 2[0;0m
+[0;32m..... add track 2578 / 0[0;0m
+[0;32m..... add track 2581 / 0[0;0m
+[0;32m..... add track 2584 / 0[0;0m
+[0;32m..... add track 2587 / 0[0;0m
+[0;32m..... add track 2588 / 0[0;0m
+[0;32m..... add track 2609 / 0[0;0m
+[0;32m..... add track 2612 / 0[0;0m
+[0;32m..... add track 2615 / 0[0;0m
+[0;32m..... add track 2618 / 0[0;0m
+[0;32m..... add track 2621 / 0[0;0m
+[0;32m..... add track 2624 / 0[0;0m
+[0;32m..... add track 2625 / 0[0;0m
+[0;32m..... add track 2625 / 1[0;0m
+[0;32m..... add track 2625 / 2[0;0m
+[0;32m..... add track 2625 / 3[0;0m
+[0;32m..... add track 2626 / 0[0;0m
+[0;32m..... add track 2626 / 1[0;0m
+[0;32m..... add track 2626 / 2[0;0m
+[0;32m..... add track 2626 / 3[0;0m
+[0;32m..... add track 2626 / 4[0;0m
+[0;32m..... add track 2626 / 5[0;0m
+[0;32m..... add track 2626 / 6[0;0m
+[0;32m..... add track 2626 / 7[0;0m
+[0;32m..... add track 2626 / 8[0;0m
+[0;32m..... add track 2629 / 0[0;0m
+[0;32m..... add track 2635 / 0[0;0m
+[0;32m..... add track 2641 / 0[0;0m
+[0;32m..... add track 2644 / 0[0;0m
+[0;32m..... add track 2650 / 0[0;0m
+[0;32m..... add track 2653 / 0[0;0m
+[0;32m..... add track 2656 / 0[0;0m
+[0;32m..... add track 2659 / 0[0;0m
+[0;32m..... add track 2662 / 0[0;0m
+[0;32m..... add track 2665 / 0[0;0m
+[0;32m..... add track 2670 / 0[0;0m
+[0;32m..... add track 2674 / 0[0;0m
+[0;32m..... add track 2674 / 1[0;0m
+[0;32m..... add track 2674 / 2[0;0m
+[0;32m..... add track 2674 / 3[0;0m
+[0;32m..... add track 2675 / 0[0;0m
+[0;32m..... add track 2675 / 1[0;0m
+[0;32m..... add track 2675 / 2[0;0m
+[0;32m..... add track 2678 / 0[0;0m
+[0;32m..... add track 2681 / 0[0;0m
+[0;32m..... add track 2684 / 0[0;0m
+[0;32m..... add track 2687 / 0[0;0m
+[0;32m..... add track 2690 / 0[0;0m
+[0;32m..... add track 2693 / 0[0;0m
+[0;32m..... add track 2696 / 0[0;0m
+[0;32m..... add track 2699 / 0[0;0m
+[0;32m..... add track 2702 / 0[0;0m
+[0;32m..... add track 2705 / 0[0;0m
+[0;32m..... add track 2708 / 0[0;0m
+[0;32m..... add track 2711 / 0[0;0m
+[0;32m..... add track 2718 / 0[0;0m
+[0;32m..... add track 2718 / 1[0;0m
+[0;32m..... add track 2719 / 0[0;0m
+[0;32m..... add track 2722 / 0[0;0m
+[0;32m..... add track 2725 / 0[0;0m
+[0;32m..... add track 2728 / 0[0;0m
+[0;32m..... add track 2731 / 0[0;0m
+[0;32m..... add track 2734 / 0[0;0m
+[0;32m..... add track 2737 / 0[0;0m
+[0;32m..... add track 2740 / 0[0;0m
+[0;32m..... add track 2743 / 0[0;0m
+[0;32m..... add track 2746 / 0[0;0m
+[0;32m..... add track 2749 / 0[0;0m
+[0;32m..... add track 2752 / 0[0;0m
+[0;32m..... add track 2755 / 0[0;0m
+[0;32m..... add track 2756 / 0[0;0m
+[0;32m..... add track 2756 / 1[0;0m
+[0;32m..... add track 2756 / 2[0;0m
+[0;32m..... add track 2756 / 3[0;0m
+[0;32m..... add track 2759 / 0[0;0m
+[0;32m..... add track 2765 / 0[0;0m
+[0;32m..... add track 2771 / 0[0;0m
+[0;32m..... add track 2777 / 0[0;0m
+[0;32m..... add track 2783 / 0[0;0m
+[0;32m..... add track 2789 / 0[0;0m
+[0;32m..... add track 2790 / 0[0;0m
+[0;32m..... add track 2793 / 0[0;0m
+[0;32m..... add track 2796 / 0[0;0m
+[0;32m..... add track 2800 / 0[0;0m
+[0;32m..... add track 2801 / 0[0;0m
+[0;32m..... add track 2801 / 1[0;0m
+[0;32m..... add track 2801 / 2[0;0m
+[0;32m..... add track 2802 / 0[0;0m
+[0;32m..... add track 2803 / 0[0;0m
+[0;32m..... add track 2803 / 1[0;0m
+[0;32m..... add track 2803 / 2[0;0m
+[0;32m..... add track 2804 / 0[0;0m
+[0;32m..... add track 2805 / 0[0;0m
+[0;32m..... add track 2806 / 0[0;0m
+[0;32m..... add track 2807 / 0[0;0m
+[0;32m..... add track 2808 / 0[0;0m
+[0;32m..... add track 2809 / 0[0;0m
+[0;32m..... add track 2810 / 0[0;0m
+[0;32m..... add track 2810 / 1[0;0m
+[0;32m..... add track 2810 / 2[0;0m
+[0;32m..... add track 2810 / 3[0;0m
+[0;32m..... add track 2810 / 4[0;0m
+[0;32m..... add track 2810 / 5[0;0m
+[0;32m..... add track 2810 / 6[0;0m
+[0;32m..... add track 2811 / 0[0;0m
+[0;32m..... add track 2811 / 1[0;0m
+[0;32m..... add track 2812 / 0[0;0m
+[0;32m..... add track 2812 / 1[0;0m
+[0;32m..... add track 2812 / 2[0;0m
+[0;32m..... add track 2813 / 0[0;0m
+[0;32m..... add track 2813 / 1[0;0m
+[0;32m..... add track 2814 / 0[0;0m
+[0;32m..... add track 2814 / 1[0;0m
+[0;32m..... add track 2814 / 2[0;0m
+[0;32m..... add track 2815 / 0[0;0m
+[0;32m..... add track 2815 / 1[0;0m
+[0;32m..... add track 2815 / 2[0;0m
+[0;32m..... add track 2815 / 3[0;0m
+[0;32m..... add track 2816 / 0[0;0m
+[0;32m..... add track 2816 / 1[0;0m
+[0;32m..... add track 2816 / 2[0;0m
+[0;32m..... add track 2816 / 3[0;0m
+[0;32m..... add track 2817 / 0[0;0m
+[0;32m..... add track 2817 / 1[0;0m
+[0;32m..... add track 2817 / 2[0;0m
+[0;32m..... add track 2818 / 0[0;0m
+[0;32m..... add track 2818 / 1[0;0m
+[0;32m..... add track 2818 / 2[0;0m
+[0;32m..... add track 2818 / 3[0;0m
+[0;32m..... add track 2818 / 4[0;0m
+[0;32m..... add track 2818 / 5[0;0m
+[0;32m..... add track 2818 / 6[0;0m
+[0;32m..... add track 2819 / 0[0;0m
+[0;32m..... add track 2819 / 1[0;0m
+[0;32m..... add track 2819 / 2[0;0m
+[0;32m..... add track 2820 / 0[0;0m
+[0;32m..... add track 2820 / 1[0;0m
+[0;32m..... add track 2823 / 0[0;0m
+[0;32m..... add track 2826 / 0[0;0m
+[0;32m..... add track 2829 / 0[0;0m
+[0;32m..... add track 2832 / 0[0;0m
+[0;32m..... add track 2835 / 0[0;0m
+[0;32m..... add track 2838 / 0[0;0m
+[0;32m..... add track 2841 / 0[0;0m
+[0;32m..... add track 2844 / 0[0;0m
+[0;32m..... add track 2847 / 0[0;0m
+[0;32m..... add track 2850 / 0[0;0m
+[0;32m..... add track 2853 / 0[0;0m
+[0;32m..... add track 2862 / 0[0;0m
+[0;32m..... add track 2865 / 0[0;0m
+[0;32m..... add track 2868 / 0[0;0m
+[0;32m..... add track 2874 / 0[0;0m
+[0;32m..... add track 2877 / 0[0;0m
+[0;32m..... add track 2880 / 0[0;0m
+[0;32m..... add track 2883 / 0[0;0m
+[0;32m..... add track 2886 / 0[0;0m
+[0;32m..... add track 2889 / 0[0;0m
+[0;32m..... add track 2892 / 0[0;0m
+[0;32m..... add track 2898 / 0[0;0m
+[0;32m..... add track 2906 / 0[0;0m
+[0;32m..... add track 2909 / 0[0;0m
+[0;32m..... add track 2912 / 0[0;0m
+[0;32m..... add track 2915 / 0[0;0m
+[0;32m..... add track 2918 / 0[0;0m
+[0;32m..... add track 2921 / 0[0;0m
+[0;32m..... add track 2930 / 0[0;0m
+[0;32m..... add track 2933 / 0[0;0m
+[0;32m..... add track 2939 / 0[0;0m
+[0;32m..... add track 2942 / 0[0;0m
+[0;32m..... add track 2945 / 0[0;0m
+[0;32m..... add track 2948 / 0[0;0m
+[0;32m..... add track 2951 / 0[0;0m
+[0;32m..... add track 2957 / 0[0;0m
+[0;32m..... add track 2960 / 0[0;0m
+[0;32m..... add track 2963 / 0[0;0m
+[0;32m..... add track 2969 / 0[0;0m
+[0;32m..... add track 2972 / 0[0;0m
+[0;32m..... add track 2975 / 0[0;0m
+[0;32m..... add track 2978 / 0[0;0m
+[0;32m..... add track 2981 / 0[0;0m
+[0;32m..... add track 2984 / 0[0;0m
+[0;32m..... add track 2987 / 0[0;0m
+[0;32m..... add track 2990 / 0[0;0m
+[0;32m..... add track 2993 / 0[0;0m
+[0;32m..... add track 2996 / 0[0;0m
+[0;32m..... add track 3005 / 0[0;0m
+[0;32m..... add track 3011 / 0[0;0m
+[0;32m..... add track 3018 / 0[0;0m
+[0;32m..... add track 3021 / 0[0;0m
+[0;32m..... add track 3024 / 0[0;0m
+[0;32m..... add track 3027 / 0[0;0m
+[0;32m..... add track 3030 / 0[0;0m
+[0;32m..... add track 3033 / 0[0;0m
+[0;32m..... add track 3039 / 0[0;0m
+[0;32m..... add track 3051 / 0[0;0m
+[0;32m..... add track 3054 / 0[0;0m
+[0;32m..... add track 3057 / 0[0;0m
+[0;32m..... add track 3060 / 0[0;0m
+[0;32m..... add track 3063 / 0[0;0m
+[0;32m..... add track 3066 / 0[0;0m
+[0;32m..... add track 3069 / 0[0;0m
+[0;32m..... add track 3072 / 0[0;0m
+[0;32m..... add track 3078 / 0[0;0m
+[0;32m..... add track 3081 / 0[0;0m
+[0;32m..... add track 3084 / 0[0;0m
+[0;32m..... add track 3087 / 0[0;0m
+[0;32m..... add track 3090 / 0[0;0m
+[0;32m..... add track 3093 / 0[0;0m
+[0;32m..... add track 3096 / 0[0;0m
+[0;32m..... add track 3099 / 0[0;0m
+[0;32m..... add track 3102 / 0[0;0m
+[0;32m..... add track 3111 / 0[0;0m
+[0;32m..... add track 3113 / 0[0;0m
+[0;32m..... add track 3119 / 0[0;0m
+[0;32m..... add track 3125 / 0[0;0m
+[0;32m..... add track 3128 / 0[0;0m
+[0;32m..... add track 3131 / 0[0;0m
+[0;32m..... add track 3134 / 0[0;0m
+[0;32m..... add track 3142 / 0[0;0m
+[0;32m..... add track 3145 / 0[0;0m
+[0;32m..... add track 3148 / 0[0;0m
+[0;32m..... add track 3149 / 0[0;0m
+[0;32m..... add track 3152 / 0[0;0m
+[0;32m..... add track 3152 / 1[0;0m
+[0;32m..... add track 3164 / 0[0;0m
+[0;32m..... add track 3167 / 0[0;0m
+[0;32m..... add track 3170 / 0[0;0m
+[0;32m..... add track 3174 / 0[0;0m
+[0;32m..... add track 3177 / 0[0;0m
+[0;32m..... add track 3180 / 0[0;0m
+[0;32m..... add track 3183 / 0[0;0m
+[0;32m..... add track 3186 / 0[0;0m
+[0;32m..... add track 3192 / 0[0;0m
+[0;32m..... add track 3195 / 0[0;0m
+[0;32m..... add track 3229 / 0[0;0m
+[0;32m..... add track 3247 / 0[0;0m
+[0;32m..... add track 3258 / 0[0;0m
+[0;32m..... add track 3261 / 0[0;0m
+[0;32m..... add track 3264 / 0[0;0m
+[0;32m..... add track 3280 / 0[0;0m
+[0;32m..... add track 3288 / 0[0;0m
+[0;32m..... add track 3291 / 0[0;0m
+[0;32m..... add track 3294 / 0[0;0m
+[0;32m..... add track 3297 / 0[0;0m
+[0;32m..... add track 3300 / 0[0;0m
+[0;32m..... add track 3304 / 0[0;0m
+[0;32m..... add track 3307 / 0[0;0m
+[0;32m..... add track 3317 / 0[0;0m
+[0;32m..... add track 3337 / 0[0;0m
+[0;32m..... add track 3340 / 0[0;0m
+[0;32m..... add track 3346 / 0[0;0m
+[0;32m..... add track 3360 / 0[0;0m
+[0;32m..... add track 3372 / 0[0;0m
+[0;32m..... add track 3375 / 0[0;0m
+[0;32m..... add track 3382 / 0[0;0m
+[0;32m..... add track 3385 / 0[0;0m
+[0;32m..... add track 3386 / 0[0;0m
+[0;32m..... add track 3389 / 0[0;0m
+[0;32m..... add track 3392 / 0[0;0m
+[0;32m..... add track 3398 / 0[0;0m
+[0;32m..... add track 3405 / 0[0;0m
+[0;32m..... add track 3415 / 0[0;0m
+[0;32m..... add track 3424 / 0[0;0m
+[0;32m..... add track 3431 / 0[0;0m
+[0;32m..... add track 3450 / 0[0;0m
+[0;32m..... add track 3464 / 0[0;0m
+[0;32m..... add track 4471 / 0[0;0m
+[0;32m..... add track 4474 / 0[0;0m
+[0;32m..... add track 4477 / 0[0;0m
+[0;32m..... add track 4480 / 0[0;0m
+[0;32m..... add track 4725 / 0[0;0m
+[0;32m..... add track 4728 / 0[0;0m
+[0;32m..... add track 4731 / 0[0;0m
+[0;32m..... add track 4734 / 0[0;0m
+[0;32m..... add track 4737 / 0[0;0m
+[0;32m..... add track 4738 / 0[0;0m
+[0;32m..... add track 4740 / 0[0;0m
+[0;32m..... add track 4741 / 0[0;0m
+[0;32m..... add track 4744 / 0[0;0m
+[0;32m..... add track 1272 / 0[0;0m
+[0;32m..... add track 6024 / 0[0;0m
+[0;32m..... add track 6027 / 0[0;0m
+[0;32m..... add track 6045 / 0[0;0m
+[0;32m..... add intersection 2[0;0m
+[0;32m..... add intersection 3[0;0m
+[0;32m..... add intersection 4[0;0m
+[0;32m..... add intersection 6[0;0m
+[0;32m..... add intersection 7[0;0m
+[0;32m..... add intersection 8[0;0m
+[0;32m..... add intersection 9[0;0m
+[0;32m..... add intersection 10[0;0m
+[0;32m..... add intersection 11[0;0m
+[0;32m..... add intersection 12[0;0m
+[0;32m..... add intersection 13[0;0m
+[0;32m..... add intersection 14[0;0m
+[0;32m..... add intersection 15[0;0m
+[0;32m..... add intersection 16[0;0m
+[0;32m..... add intersection 17[0;0m
+[0;32m..... add intersection 18[0;0m
+[0;32m..... add intersection 19[0;0m
+[0;32m..... add intersection 20[0;0m
+[0;32m..... add intersection 21[0;0m
+[0;32m..... add intersection 1[0;0m
+[0;32m..... add intersection 22[0;0m
+[0;32m..... add intersection 23[0;0m
+[0;32m..... add intersection 24[0;0m
+[0;32m..... add intersection 25[0;0m
+[0;32m..... add intersection 26[0;0m
+[0;32m..... add intersection 5[0;0m
+[0;32m..... add intersection 27[0;0m
+[0;32m..... add intersection 28[0;0m
+[0;32m..... add intersection 29[0;0m
+[0;32m..... add intersection 30[0;0m
+[0;32m..... add intersection 31[0;0m
+[0;32m..... add intersection 32[0;0m
+[0;32m..... add intersection 33[0;0m
+[0;32m..... add intersection 34[0;0m
+[0;32m..... add intersection 35[0;0m
+[0;32m..... add intersection 36[0;0m
+[0;32m..... add intersection 37[0;0m
+[0;32m..... add intersection 38[0;0m
+[0;32m..... add intersection 39[0;0m
+[0;32m..... add intersection 40[0;0m
+[0;32m..... add intersection 41[0;0m
+[0;32m..... add intersection 42[0;0m
+[0;32m..... add intersection 43[0;0m
+[0;32m..... add intersection 44[0;0m
+[0;32m..... add intersection 45[0;0m
+[0;32m..... add intersection 46[0;0m
+[0;32m..... add intersection 47[0;0m
+[0;32m..... add intersection 48[0;0m
+[0;32m..... add intersection 49[0;0m
+[0;32m..... add intersection 50[0;0m
+[0;32m..... add intersection 51[0;0m
+[0;32m..... add intersection 52[0;0m
+[0;32m..... add intersection 53[0;0m
+[0;32m..... add intersection 54[0;0m
+[0;32m..... add intersection 55[0;0m
+[0;32m..... add intersection 56[0;0m
+[0;32m..... add intersection 57[0;0m
+[0;32m..... add intersection 58[0;0m
+[0;32m..... add intersection 59[0;0m
+[0;32m..... add intersection 60[0;0m
+[0;32m..... add intersection 61[0;0m
+[0;32m..... add intersection 62[0;0m
+[0;32m..... add intersection 63[0;0m
+[0;32m..... add intersection 64[0;0m
+[0;32m..... add intersection 65[0;0m
+[0;32m..... add intersection 66[0;0m
+[0;32m..... add intersection 67[0;0m
+[0;32m..... add intersection 68[0;0m
+[0;32m..... add intersection 69[0;0m
+[0;32m..... add intersection 70[0;0m
+[0;32m..... add intersection 71[0;0m
+[0;32m..... add intersection 72[0;0m
+[0;32m..... add intersection 73[0;0m
+[0;32m..... add intersection 74[0;0m
+[0;32m..... add intersection 75[0;0m
+[0;32m..... add intersection 76[0;0m
+[0;32m..... add intersection 77[0;0m
+[0;32m..... add intersection 78[0;0m
+[0;32m..... add intersection 79[0;0m
+[0;32m..... add intersection 80[0;0m
+[0;32m..... add intersection 81[0;0m
+[0;32m..... add intersection 82[0;0m
+[0;32m..... add intersection 83[0;0m
+[0;32m..... add intersection 84[0;0m
+[0;32m..... add intersection 85[0;0m
+[0;32m..... add intersection 86[0;0m
+[0;32m..... add intersection 87[0;0m
+[0;32m..... add intersection 88[0;0m
+[0;32m..... add intersection 89[0;0m
+[0;32m..... add intersection 90[0;0m
+[0;32m..... add intersection 91[0;0m
+[0;32m..... add intersection 92[0;0m
+[0;32m..... add intersection 93[0;0m
+[0;32m..... add intersection 94[0;0m
+[1;33m..... ERROR assignCtrlToIntersection: controller 21 is already assigned to intersection 11[0;0m
+[1;33m..... ERROR assignCtrlToIntersection: controller 22 is already assigned to intersection 11[0;0m
+[1;33m..... ERROR assignCtrlToIntersection: controller 32 is already assigned to intersection 6[0;0m
+[1;33m..... ERROR assignCtrlToIntersection: controller 33 is already assigned to intersection 6[0;0m
+[1;33m..... ERROR assignCtrlToIntersection: controller 92 is already assigned to intersection 46[0;0m
+[1;33m..... ERROR assignCtrlToIntersection: controller 93 is already assigned to intersection 46[0;0m
+[1;33m..... ERROR assignCtrlToIntersection: controller 105 is already assigned to intersection 48[0;0m
+[1;33m..... ERROR assignCtrlToIntersection: controller 104 is already assigned to intersection 49[0;0m
+[1;33m..... ERROR assignCtrlToIntersection: controller 100 is already assigned to intersection 52[0;0m
+[1;33m..... ERROR assignCtrlToIntersection: controller 101 is already assigned to intersection 52[0;0m
+[1;33m..... ERROR assignCtrlToIntersection: controller 130 is already assigned to intersection 71[0;0m
+[1;33m..... ERROR assignCtrlToIntersection: controller 131 is already assigned to intersection 71[0;0m
+[1;33m..... ERROR assignCtrlToIntersection: controller 183 is already assigned to intersection 70[0;0m
+[1;33m..... ERROR assignCtrlToIntersection: controller 184 is already assigned to intersection 70[0;0m
+[1;33m..... ERROR assignCtrlToIntersection: controller 213 is already assigned to intersection 70[0;0m
+[1;33m..... ERROR assignCtrlToIntersection: controller 167 is already assigned to intersection 85[0;0m
+[1;33m..... ERROR assignCtrlToIntersection: controller 168 is already assigned to intersection 85[0;0m
+[0;32m..... add track -4711 / 0[0;0m
+[0;32m..... calc overlapping for intersection 1[0;0m
+[0;32m..... calc overlapping for intersection 2[0;0m
+[0;32m..... calc overlapping for intersection 3[0;0m
+[0;32m..... calc overlapping for intersection 4[0;0m
+[0;32m..... calc overlapping for intersection 5[0;0m
+[0;32m..... calc overlapping for intersection 6[0;0m
+[0;32m..... calc overlapping for intersection 7[0;0m
+[0;32m..... calc overlapping for intersection 8[0;0m
+[0;32m..... calc overlapping for intersection 9[0;0m
+[0;32m..... calc overlapping for intersection 10[0;0m
+[0;32m..... calc overlapping for intersection 11[0;0m
+[0;32m..... calc overlapping for intersection 12[0;0m
+[0;32m..... calc overlapping for intersection 13[0;0m
+[0;32m..... calc overlapping for intersection 14[0;0m
+[0;32m..... calc overlapping for intersection 15[0;0m
+[0;32m..... calc overlapping for intersection 16[0;0m
+[0;32m..... calc overlapping for intersection 17[0;0m
+[0;32m..... calc overlapping for intersection 18[0;0m
+[0;32m..... calc overlapping for intersection 19[0;0m
+[0;32m..... calc overlapping for intersection 20[0;0m
+[0;32m..... calc overlapping for intersection 21[0;0m
+[0;32m..... calc overlapping for intersection 22[0;0m
+[0;32m..... calc overlapping for intersection 23[0;0m
+[0;32m..... calc overlapping for intersection 24[0;0m
+[0;32m..... calc overlapping for intersection 25[0;0m
+[0;32m..... calc overlapping for intersection 26[0;0m
+[0;32m..... calc overlapping for intersection 27[0;0m
+[0;32m..... calc overlapping for intersection 28[0;0m
+[0;32m..... calc overlapping for intersection 29[0;0m
+[0;32m..... calc overlapping for intersection 30[0;0m
+[0;32m..... calc overlapping for intersection 31[0;0m
+[0;32m..... calc overlapping for intersection 32[0;0m
+[0;32m..... calc overlapping for intersection 33[0;0m
+[0;32m..... calc overlapping for intersection 34[0;0m
+[0;32m..... calc overlapping for intersection 35[0;0m
+[0;32m..... calc overlapping for intersection 36[0;0m
+[0;32m..... calc overlapping for intersection 37[0;0m
+[0;32m..... calc overlapping for intersection 38[0;0m
+[0;32m..... calc overlapping for intersection 39[0;0m
+[0;32m..... calc overlapping for intersection 40[0;0m
+[0;32m..... calc overlapping for intersection 41[0;0m
+[0;32m..... calc overlapping for intersection 42[0;0m
+[0;32m..... calc overlapping for intersection 43[0;0m
+[0;32m..... calc overlapping for intersection 44[0;0m
+[0;32m..... calc overlapping for intersection 45[0;0m
+[0;32m..... calc overlapping for intersection 46[0;0m
+[0;32m..... calc overlapping for intersection 47[0;0m
+[0;32m..... calc overlapping for intersection 48[0;0m
+[0;32m..... calc overlapping for intersection 49[0;0m
+[0;32m..... calc overlapping for intersection 50[0;0m
+[0;32m..... calc overlapping for intersection 51[0;0m
+[0;32m..... calc overlapping for intersection 52[0;0m
+[0;32m..... calc overlapping for intersection 53[0;0m
+[0;32m..... calc overlapping for intersection 54[0;0m
+[0;32m..... calc overlapping for intersection 55[0;0m
+[0;32m..... calc overlapping for intersection 56[0;0m
+[0;32m..... calc overlapping for intersection 57[0;0m
+[0;32m..... calc overlapping for intersection 58[0;0m
+[0;32m..... calc overlapping for intersection 59[0;0m
+[0;32m..... calc overlapping for intersection 60[0;0m
+[0;32m..... calc overlapping for intersection 61[0;0m
+[0;32m..... calc overlapping for intersection 62[0;0m
+[0;32m..... calc overlapping for intersection 63[0;0m
+[0;32m..... calc overlapping for intersection 64[0;0m
+[0;32m..... calc overlapping for intersection 65[0;0m
+[0;32m..... calc overlapping for intersection 66[0;0m
+[0;32m..... calc overlapping for intersection 67[0;0m
+[0;32m..... calc overlapping for intersection 68[0;0m
+[0;32m..... calc overlapping for intersection 69[0;0m
+[0;32m..... calc overlapping for intersection 70[0;0m
+[0;32m..... calc overlapping for intersection 71[0;0m
+[0;32m..... calc overlapping for intersection 72[0;0m
+[0;32m..... calc overlapping for intersection 73[0;0m
+[0;32m..... calc overlapping for intersection 74[0;0m
+[0;32m..... calc overlapping for intersection 75[0;0m
+[0;32m..... calc overlapping for intersection 76[0;0m
+[0;32m..... calc overlapping for intersection 77[0;0m
+[0;32m..... calc overlapping for intersection 78[0;0m
+[0;32m..... calc overlapping for intersection 79[0;0m
+[0;32m..... calc overlapping for intersection 80[0;0m
+[0;32m..... calc overlapping for intersection 81[0;0m
+[0;32m..... calc overlapping for intersection 82[0;0m
+[0;32m..... calc overlapping for intersection 83[0;0m
+[0;32m..... calc overlapping for intersection 84[0;0m
+[0;32m..... calc overlapping for intersection 85[0;0m
+[0;32m..... calc overlapping for intersection 86[0;0m
+[0;32m..... calc overlapping for intersection 87[0;0m
+[0;32m..... calc overlapping for intersection 88[0;0m
+[0;32m..... calc overlapping for intersection 89[0;0m
+[0;32m..... calc overlapping for intersection 90[0;0m
+[0;32m..... calc overlapping for intersection 91[0;0m
+[0;32m..... calc overlapping for intersection 92[0;0m
+[0;32m..... calc overlapping for intersection 93[0;0m
+[0;32m..... calc overlapping for intersection 94[0;0m
+   user random seed = 9
+Scenario::reset
+Driver DB [Driver]: DefaultDriver
+Driver DB [Driver]: BriskDriver
+Driver DB [Driver]: ComfortableDriver
+Driver DB [Driver]: HastyDriver
+Driver DB [Driver]: InsecureDriver
+..... add external driver "Ego", Vehicle: HyundaiIoniq6_23_White, Driver: DefaultDriver, AdaptDriverToVehicleType: true
+
+Player selections:
+  "ALL_EXT_PLAYERS":	1 player
+  "ALL_PLAYERS":	1 player
+
+List of all player start positions
+[ name - (ID) : track, lane, s ( x / y / z, h ) ]
+
+Ego - (1) : 465, -1, 60.8965, ( 508.7997 / -168.2877 / 42.0000, 29.5743 )
+
+End of list
+
+ [ Command "RUN" received ]
+ +++ SCP: player "Ego": ctrlLatLong = "ghostdriver"
+     -> switch to ghostdriver ( frame: 0 )
+ +++ SCP: player "Ego": ctrlLatLong = "ghostdriver"
+     -> switch to ghostdriver ( frame: 0 )
+ Player "Ego" is authorised to drive.
+..... add moved object "MapAudit000", Vehicle: SmartForTwo_14_WhiteBlack, Driver: DefaultDriver, AdaptDriverToVehicleType: false
+ +++ SCP: player "MapAudit000": desiredSpeed = "0.0000"
+ +++ SCP: player "MapAudit000": obeyTrafficSigns = "yes"
+ +++ SCP: player "MapAudit000": obeyTrafficLights = "yes"
+ +++ SCP: set speed of player "MapAudit000" to 0.0000."
+ +++ SCP: set player "MapAudit000" to track coord 1628 / 10.7499 / -1, 0.0000deg
+ +++ SCP: player "MapAudit000": desiredSpeed = "6.0000"
+ +++ SCP: player "MapAudit000": obeyTrafficSigns = "yes"
+ +++ SCP: player "MapAudit000": obeyTrafficLights = "yes"
+..... add moved object "MapAudit000", Vehicle: SmartForTwo_14_WhiteBlack, Driver: DefaultDriver, AdaptDriverToVehicleType: false
+ +++ SCP: player "MapAudit000": desiredSpeed = "0.0000"
+ +++ SCP: player "MapAudit000": obeyTrafficSigns = "yes"
+ +++ SCP: player "MapAudit000": obeyTrafficLights = "yes"
+ +++ SCP: set speed of player "MapAudit000" to 0.0000."
+ +++ SCP: set player "MapAudit000" to track coord 2612 / 14.1711 / -1, 0.0000deg
+ +++ SCP: player "MapAudit000": desiredSpeed = "6.0000"
+ +++ SCP: player "MapAudit000": obeyTrafficSigns = "yes"
+ +++ SCP: player "MapAudit000": obeyTrafficLights = "yes"
+..... add moved object "MapAudit000", Vehicle: SmartForTwo_14_WhiteBlack, Driver: DefaultDriver, AdaptDriverToVehicleType: false
+ +++ SCP: player "MapAudit000": desiredSpeed = "0.0000"
+ +++ SCP: player "MapAudit000": obeyTrafficSigns = "yes"
+ +++ SCP: player "MapAudit000": obeyTrafficLights = "yes"
+ +++ SCP: set speed of player "MapAudit000" to 0.0000."
+ +++ SCP: set player "MapAudit000" to track coord 3087 / 17.0814 / -1, 0.0000deg
+ +++ SCP: player "MapAudit000": desiredSpeed = "6.0000"
+ +++ SCP: player "MapAudit000": obeyTrafficSigns = "yes"
+ +++ SCP: player "MapAudit000": obeyTrafficLights = "yes"
+..... add moved object "MapAudit000", Vehicle: SmartForTwo_14_WhiteBlack, Driver: DefaultDriver, AdaptDriverToVehicleType: false
+ +++ SCP: player "MapAudit000": desiredSpeed = "0.0000"
+ +++ SCP: player "MapAudit000": obeyTrafficSigns = "yes"
+ +++ SCP: player "MapAudit000": obeyTrafficLights = "yes"
+ +++ SCP: set speed of player "MapAudit000" to 0.0000."
+ +++ SCP: set player "MapAudit000" to track coord 1601 / 9.6703 / -1, 0.0000deg
+LaneCoord: track = 1601 (1601), lane = -1, offset = 0.0000, s = 9.6703, t = -1.4456, z = 0.0000, h = -0.0208
+ +++ SCP: player "MapAudit000": desiredSpeed = "6.0000"
+ +++ SCP: player "MapAudit000": obeyTrafficSigns = "yes"
+ +++ SCP: player "MapAudit000": obeyTrafficLights = "yes"
+..... add moved object "MapAudit000", Vehicle: SmartForTwo_14_WhiteBlack, Driver: DefaultDriver, AdaptDriverToVehicleType: false
+ +++ SCP: player "MapAudit000": desiredSpeed = "0.0000"
+ +++ SCP: player "MapAudit000": obeyTrafficSigns = "yes"
+ +++ SCP: player "MapAudit000": obeyTrafficLights = "yes"
+ +++ SCP: set speed of player "MapAudit000" to 0.0000."
+ +++ SCP: set player "MapAudit000" to track coord 1130 / 12.3274 / -1, 0.0000deg
+ +++ SCP: player "MapAudit000": desiredSpeed = "6.0000"
+ +++ SCP: player "MapAudit000": obeyTrafficSigns = "yes"
+ +++ SCP: player "MapAudit000": obeyTrafficLights = "yes"
+Player MapAudit000's path s changed by more than 2.200000m. Scheduling new path calculation.
+..... add moved object "MapAudit000", Vehicle: SmartForTwo_14_WhiteBlack, Driver: DefaultDriver, AdaptDriverToVehicleType: false
+ +++ SCP: player "MapAudit000": desiredSpeed = "0.0000"
+ +++ SCP: player "MapAudit000": obeyTrafficSigns = "yes"
+ +++ SCP: player "MapAudit000": obeyTrafficLights = "yes"
+ +++ SCP: set speed of player "MapAudit000" to 0.0000."
+ +++ SCP: set player "MapAudit000" to track coord 3148 / 65.3579 / -1, 0.0000deg
+ +++ SCP: player "MapAudit000": desiredSpeed = "6.0000"
+ +++ SCP: player "MapAudit000": obeyTrafficSigns = "yes"
+ +++ SCP: player "MapAudit000": obeyTrafficLights = "yes"
+Player MapAudit000's path s changed by more than 2.200000m. Scheduling new path calculation.
+..... add moved object "MapAudit000", Vehicle: SmartForTwo_14_WhiteBlack, Driver: DefaultDriver, AdaptDriverToVehicleType: false
+ +++ SCP: player "MapAudit000": desiredSpeed = "0.0000"
+ +++ SCP: player "MapAudit000": obeyTrafficSigns = "yes"
+ +++ SCP: player "MapAudit000": obeyTrafficLights = "yes"
+ +++ SCP: set speed of player "MapAudit000" to 0.0000."
+ +++ SCP: set player "MapAudit000" to track coord 1631 / 17.0242 / -1, 0.0000deg
+LaneCoord: track = 1618 (1618), lane = -1, offset = -0.2531, s = 24.2482, t = -1.6705, z = 0.0000, h = -4.7268
+ +++ SCP: player "MapAudit000": desiredSpeed = "6.0000"
+ +++ SCP: player "MapAudit000": obeyTrafficSigns = "yes"
+ +++ SCP: player "MapAudit000": obeyTrafficLights = "yes"
+Player MapAudit000's path s changed by more than 2.200000m. Scheduling new path calculation.
+..... add moved object "MapAudit000", Vehicle: SmartForTwo_14_WhiteBlack, Driver: DefaultDriver, AdaptDriverToVehicleType: false
+ +++ SCP: player "MapAudit000": desiredSpeed = "0.0000"
+ +++ SCP: player "MapAudit000": obeyTrafficSigns = "yes"
+ +++ SCP: player "MapAudit000": obeyTrafficLights = "yes"
+ +++ SCP: set speed of player "MapAudit000" to 0.0000."
+ +++ SCP: set player "MapAudit000" to track coord 1561 / 9.6788 / -1, 0.0000deg
+ +++ SCP: player "MapAudit000": desiredSpeed = "6.0000"
+ +++ SCP: player "MapAudit000": obeyTrafficSigns = "yes"
+ +++ SCP: player "MapAudit000": obeyTrafficLights = "yes"
+..... add moved object "MapAudit000", Vehicle: SmartForTwo_14_WhiteBlack, Driver: DefaultDriver, AdaptDriverToVehicleType: false
+ +++ SCP: player "MapAudit000": desiredSpeed = "0.0000"
+ +++ SCP: player "MapAudit000": obeyTrafficSigns = "yes"
+ +++ SCP: player "MapAudit000": obeyTrafficLights = "yes"
+ +++ SCP: set speed of player "MapAudit000" to 0.0000."
+ +++ SCP: set player "MapAudit000" to track coord 1996 / 13.3175 / -1, 0.0000deg
+ +++ SCP: player "MapAudit000": desiredSpeed = "6.0000"
+ +++ SCP: player "MapAudit000": obeyTrafficSigns = "yes"
+ +++ SCP: player "MapAudit000": obeyTrafficLights = "yes"
+..... add moved object "MapAudit000", Vehicle: SmartForTwo_14_WhiteBlack, Driver: DefaultDriver, AdaptDriverToVehicleType: false
+ +++ SCP: player "MapAudit000": desiredSpeed = "0.0000"
+ +++ SCP: player "MapAudit000": obeyTrafficSigns = "yes"
+ +++ SCP: player "MapAudit000": obeyTrafficLights = "yes"
+ +++ SCP: set speed of player "MapAudit000" to 0.0000."
+ +++ SCP: set player "MapAudit000" to track coord 781 / 24.6511 / -1, 0.0000deg
+ +++ SCP: player "MapAudit000": desiredSpeed = "6.0000"
+ +++ SCP: player "MapAudit000": obeyTrafficSigns = "yes"
+ +++ SCP: player "MapAudit000": obeyTrafficLights = "yes"
+..... add moved object "MapAudit000", Vehicle: SmartForTwo_14_WhiteBlack, Driver: DefaultDriver, AdaptDriverToVehicleType: false
+ +++ SCP: player "MapAudit000": desiredSpeed = "0.0000"
+ +++ SCP: player "MapAudit000": obeyTrafficSigns = "yes"
+ +++ SCP: player "MapAudit000": obeyTrafficLights = "yes"
+ +++ SCP: set speed of player "MapAudit000" to 0.0000."
+ +++ SCP: set player "MapAudit000" to track coord 2512 / 14.4527 / -1, 0.0000deg
+ +++ SCP: player "MapAudit000": desiredSpeed = "6.0000"
+ +++ SCP: player "MapAudit000": obeyTrafficSigns = "yes"
+ +++ SCP: player "MapAudit000": obeyTrafficLights = "yes"
+ Player "MapAudit000" is authorised to drive.
+..... add moved object "MapAudit000", Vehicle: SmartForTwo_14_WhiteBlack, Driver: DefaultDriver, AdaptDriverToVehicleType: false
+ +++ SCP: player "MapAudit000": desiredSpeed = "0.0000"
+ +++ SCP: player "MapAudit000": obeyTrafficSigns = "yes"
+ +++ SCP: player "MapAudit000": obeyTrafficLights = "yes"
+ +++ SCP: set speed of player "MapAudit000" to 0.0000."
+ +++ SCP: set player "MapAudit000" to track coord 851 / 14.8635 / -1, 0.0000deg
+ +++ SCP: player "MapAudit000": desiredSpeed = "6.0000"
+ +++ SCP: player "MapAudit000": obeyTrafficSigns = "yes"
+ +++ SCP: player "MapAudit000": obeyTrafficLights = "yes"
+..... add moved object "MapAudit000", Vehicle: SmartForTwo_14_WhiteBlack, Driver: DefaultDriver, AdaptDriverToVehicleType: false
+ +++ SCP: player "MapAudit000": desiredSpeed = "0.0000"
+ +++ SCP: player "MapAudit000": obeyTrafficSigns = "yes"
+ +++ SCP: player "MapAudit000": obeyTrafficLights = "yes"
+ +++ SCP: set speed of player "MapAudit000" to 0.0000."
+ +++ SCP: set player "MapAudit000" to track coord 3186 / 44.0673 / -1, 0.0000deg
+ +++ SCP: player "MapAudit000": desiredSpeed = "6.0000"
+ +++ SCP: player "MapAudit000": obeyTrafficSigns = "yes"
+ +++ SCP: player "MapAudit000": obeyTrafficLights = "yes"
+..... add moved object "MapAudit000", Vehicle: SmartForTwo_14_WhiteBlack, Driver: DefaultDriver, AdaptDriverToVehicleType: false
+ +++ SCP: player "MapAudit000": desiredSpeed = "0.0000"
+ +++ SCP: player "MapAudit000": obeyTrafficSigns = "yes"
+ +++ SCP: player "MapAudit000": obeyTrafficLights = "yes"
+ +++ SCP: set speed of player "MapAudit000" to 0.0000."
+ +++ SCP: set player "MapAudit000" to track coord 559 / 14.7008 / -1, 0.0000deg
+ +++ SCP: player "MapAudit000": desiredSpeed = "6.0000"
+ +++ SCP: player "MapAudit000": obeyTrafficSigns = "yes"
+ +++ SCP: player "MapAudit000": obeyTrafficLights = "yes"
+..... add moved object "MapAudit000", Vehicle: SmartForTwo_14_WhiteBlack, Driver: DefaultDriver, AdaptDriverToVehicleType: false
+ +++ SCP: player "MapAudit000": desiredSpeed = "0.0000"
+ +++ SCP: player "MapAudit000": obeyTrafficSigns = "yes"
+ +++ SCP: player "MapAudit000": obeyTrafficLights = "yes"
+ +++ SCP: set speed of player "MapAudit000" to 0.0000."
+ +++ SCP: set player "MapAudit000" to track coord 4471 / 12.1177 / -1, 0.0000deg
+ +++ SCP: player "MapAudit000": desiredSpeed = "6.0000"
+ +++ SCP: player "MapAudit000": obeyTrafficSigns = "yes"
+ +++ SCP: player "MapAudit000": obeyTrafficLights = "yes"
+ [ Command "STOP" received ]
+ +++ SCP: player "Ego": ctrlLatLong = "ghostdriver"
+     -> switch to ghostdriver ( frame: 5231 )
+ [ Command "INIT" received ]
+>>>> setting DB_FILE to     "Data/../Runtime/Tools/ROD/DefaultProject/Database/HL_FMA_VTD_LivingLab.osgb"
+>>>> setting COURSE_FILE to "Data/../Runtime/Tools/ROD/DefaultProject/Odr/HL_FMA_VTD_LivingLab.xodr"
+ VehicleConfigReader: reading vehicles from directory "/home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/Players/Vehicles"
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/Players/Vehicles/AlfaRomeoBrera_10.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/Players/Vehicles/ApriliaSR50_05.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/Players/Vehicles/AudiA3SB_09.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/Players/Vehicles/AudiA4_09.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/Players/Vehicles/AudiA6_08.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/Players/Vehicles/AudiA6_10.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/Players/Vehicles/AudiA8L_08.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/Players/Vehicles/AudiQ5_09.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/Players/Vehicles/AudiS5_09.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/Players/Vehicles/BMW7_09.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/Players/Vehicles/BMWZ4_10.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/Players/Vehicles/ChevroletSilverado_06.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/Players/Vehicles/HorseTrailer.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/Players/Vehicles/HyundaiIoniq6_23.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/Players/Vehicles/LexusRX_12.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/Players/Vehicles/MANTGL_09.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/Players/Vehicles/MANTGL_09_Firetruck.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/Players/Vehicles/MANTGS_11.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/Players/Vehicles/MANTGX_11.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/Players/Vehicles/MANTGX_Trailer_11.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/Players/Vehicles/MercedesArocs_6x4Dumper_13.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/Players/Vehicles/MercedesC_11.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/Players/Vehicles/MercedesCitaro_07.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/Players/Vehicles/MercedesE_11_Taxi.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/Players/Vehicles/MercedesS_08.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/Players/Vehicles/MercedesS_09.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/Players/Vehicles/MercedesTravego_10.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/Players/Vehicles/MercedesV_14.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/Players/Vehicles/MiniClubman_10.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/Players/Vehicles/NissanMicra_11.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/Players/Vehicles/NissanZ350_08.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/Players/Vehicles/OpelAstra_10.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/Players/Vehicles/Peugeot207_11.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/Players/Vehicles/Segway.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/Players/Vehicles/SkodaSuperb_15.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/Players/Vehicles/SmartForTwo_14.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/Players/Vehicles/Smart_08.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/Players/Vehicles/SprinterCargo_08.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/Players/Vehicles/ToyotaCamry_06.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/Players/Vehicles/Trailer.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/Players/Vehicles/TruckDumper_08.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/Players/Vehicles/VWGolf_10.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/Players/Vehicles/VWGolf_12.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/Players/Vehicles/VWPassatVariant_11.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/Players/Vehicles/VWPassatVariant_11_Police.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/Players/Vehicles/VWTiguan_12.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/Players/Vehicles/VWTouareg_10.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/Players/Vehicles/VWTouran_09.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/Players/Vehicles/ViresTruck01.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/Players/Vehicles/ViresTruck01_cabin.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/Players/Vehicles/ViresTruck01_chassis.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/Players/Vehicles/VolvoV60_11.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/Players/Vehicles/Zx9r_08.xml
+ PedestrianConfigReader: reading pedestrians from directory "/home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/Players/Pedestrians"
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/Players/Pedestrians/AniCal3DCfg.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/Players/Pedestrians/MecCal3DCfg.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/Players/Pedestrians/PedCal3DCfg.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/Players/Pedestrians/PedDIGuyCfg.xml
+ ObjectDBReader: reading objects from directory "/home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/Players/Objects"
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/Players/Objects/Boards.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/Players/Objects/Cube.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/Players/Objects/DummyPedestrian.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/Players/Objects/OpenCRG_A.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/Players/Objects/OpenCRG_RoadDamages.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/Players/Objects/OptixDirtyCover.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/Players/Objects/Parking.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/Players/Objects/ParkingB.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/Players/Objects/Pylons.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/Players/Objects/Sg205Vorfahrt.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/Players/Objects/Sg274Hoechstgeschw100_02.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/Players/Objects/Sg274Hoechstgeschw100_03.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/Players/Objects/Sg274Hoechstgeschw130_03.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/Players/Objects/Sg274Hoechstgeschw30_02.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/Players/Objects/Sg274Hoechstgeschw50_02.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/Players/Objects/Sg274Hoechstgeschw60_02.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/Players/Objects/Sg274Hoechstgeschw80_02.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/Players/Objects/Sg274Hoechstgeschw80_03.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/Players/Objects/Sg278Hoechstgeschw100_02.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/Players/Objects/Sg278Hoechstgeschw100_03.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/Players/Objects/Sg278Hoechstgeschw130_03.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/Players/Objects/Sg278Hoechstgeschw30_02.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/Players/Objects/Sg278Hoechstgeschw50_02.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/Players/Objects/Sg278Hoechstgeschw60_02.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/Players/Objects/Sg278Hoechstgeschw80_02.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/Players/Objects/Sg278Hoechstgeschw80_03.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/Players/Objects/Sg282SignEnd_02.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/Players/Objects/Sg293RMZebra.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/Players/Objects/Sg301Vorfahrt.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/Players/Objects/Sg350ZebraLeft_02.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/Players/Objects/Sg350ZebraRight_02.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/Players/Objects/SignReplacementObject.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/Players/Objects/StreetBumps.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/Players/Objects/Targetplatte.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/Players/Objects/Targetplatte3D.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/Players/Objects/TestPattern.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/Players/Objects/WhiteObjects.xml
+DynObjectDBReader: reading dynamic objects from directory "/home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/DynObjects/Logic"
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/DynObjects/Logic/Barrier200001-2.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/DynObjects/Logic/LsRedGreen1000009-30.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/DynObjects/Logic/LsaArrowGreenCyclLeft1000013-70.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/DynObjects/Logic/LsaArrowGreenCyclRight1000013-100.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/DynObjects/Logic/LsaArrowGreenDown1000012-30.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/DynObjects/Logic/LsaArrowGreenLeft1000012-10.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/DynObjects/Logic/LsaArrowGreenLeftDiagonal1000012-60.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/DynObjects/Logic/LsaArrowGreenLeftRight1000012-100.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/DynObjects/Logic/LsaArrowGreenLeftStraight1000012-40.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/DynObjects/Logic/LsaArrowGreenLeftUTurn1000012-80.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/DynObjects/Logic/LsaArrowGreenRight1000012-20.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/DynObjects/Logic/LsaArrowGreenRightDiagonal1000012-70.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/DynObjects/Logic/LsaArrowGreenRightStraight1000012-50.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/DynObjects/Logic/LsaArrowGreenRightUTurn1000012-90.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/DynObjects/Logic/LsaArrowGreenStraight1000012-30.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/DynObjects/Logic/LsaArrowLeft1000011-10.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/DynObjects/Logic/LsaArrowRedCyclLeft1000013-50.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/DynObjects/Logic/LsaArrowRedCyclRight1000013-80.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/DynObjects/Logic/LsaArrowRedLeft1000020-10.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/DynObjects/Logic/LsaArrowRedLeftDiagonal1000020-60.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/DynObjects/Logic/LsaArrowRedLeftRight1000020-100.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/DynObjects/Logic/LsaArrowRedLeftStraight1000020-40.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/DynObjects/Logic/LsaArrowRedLeftUTurn1000020-80.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/DynObjects/Logic/LsaArrowRedRight1000020-20.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/DynObjects/Logic/LsaArrowRedRightDiagonal1000020-70.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/DynObjects/Logic/LsaArrowRedRightStraight1000020-50.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/DynObjects/Logic/LsaArrowRedRightUTurn1000020-90.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/DynObjects/Logic/LsaArrowRedStraight1000020-30.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/DynObjects/Logic/LsaArrowRight1000011-20.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/DynObjects/Logic/LsaArrowStraight1000011-30.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/DynObjects/Logic/LsaArrowStraightLeft1000011-40.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/DynObjects/Logic/LsaArrowStraightRight1000011-50.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/DynObjects/Logic/LsaArrowYellowCycl1000013-30.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/DynObjects/Logic/LsaArrowYellowCyclLeft1000013-60.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/DynObjects/Logic/LsaArrowYellowCyclRight1000013-90.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/DynObjects/Logic/LsaArrowYellowGreenLeft1000010-10.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/DynObjects/Logic/LsaArrowYellowGreenRight1000010-20.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/DynObjects/Logic/LsaArrowYellowLeft1000008-10.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/DynObjects/Logic/LsaArrowYellowLeft1000008-20.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/DynObjects/Logic/LsaArrowYellowLeftDiagonal1000008-60.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/DynObjects/Logic/LsaArrowYellowLeftRight1000008-100.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/DynObjects/Logic/LsaArrowYellowLeftStraight1000008-40.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/DynObjects/Logic/LsaArrowYellowLeftUTurn1000008-80.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/DynObjects/Logic/LsaArrowYellowRight1000008-20.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/DynObjects/Logic/LsaArrowYellowRightDiagonal1000008-70.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/DynObjects/Logic/LsaArrowYellowRightStaight1000008-50.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/DynObjects/Logic/LsaArrowYellowRightUTurn1000008-90.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/DynObjects/Logic/LsaArrowYellowStraight1000008-30.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/DynObjects/Logic/LsaCrossRed1000016.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/DynObjects/Logic/LsaGreen1000012.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/DynObjects/Logic/LsaGreenCycl1000013-40.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/DynObjects/Logic/LsaGreenPed1000002-20.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/DynObjects/Logic/LsaGreenPedCycl1000007-30.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/DynObjects/Logic/LsaRed1000020.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/DynObjects/Logic/LsaRedArrowLeft1000020-10.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/DynObjects/Logic/LsaRedArrowRight1000020-20.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/DynObjects/Logic/LsaRedBike1000013-20.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/DynObjects/Logic/LsaRedGreenCycl1000013.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/DynObjects/Logic/LsaRedGreenPed1000002.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/DynObjects/Logic/LsaRedGreenPedCycl1000007.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/DynObjects/Logic/LsaRedPed1000002-10.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/DynObjects/Logic/LsaRedPedCycl1000007-10.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/DynObjects/Logic/LsaRedYellow1000009-10.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/DynObjects/Logic/LsaRedYellowGreen1000001.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/DynObjects/Logic/LsaRedYellowGreenCycle1000013-10.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/DynObjects/Logic/LsaWarningPed1000015.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/DynObjects/Logic/LsaWarningYellowBus1000017.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/DynObjects/Logic/LsaWarningYellowCycl1000016.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/DynObjects/Logic/LsaWarningYellowHorse1000018.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/DynObjects/Logic/LsaWarningYellowPedCycl1000019.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/DynObjects/Logic/LsaYellow1000008.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/DynObjects/Logic/LsaYellowArrowLeft1000008-10.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/DynObjects/Logic/LsaYellowArrowRight1000008-20.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/DynObjects/Logic/LsaYellowCycl1000013-30.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/DynObjects/Logic/LsaYellowGreen1000009-20.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/DynObjects/Logic/LsaYellowPedCycl1000007-20.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/DynObjects/Logic/LsaYellowTram1000014.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/DynObjects/Logic/RailSwitch20000-1.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/DynObjects/Logic/SgTramA10002.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/DynObjects/Logic/SgTramF10000-0.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/DynObjects/Logic/SgTramF10000-1.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/DynObjects/Logic/SgTramF10000-2.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/DynObjects/Logic/SgTramF10000-3.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/DynObjects/Logic/SgTramF10000-4.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/DynObjects/Logic/SgTramF10000-5.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/DynObjects/Logic/SgTramW10001-0.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/DynObjects/Logic/SgTramW10001-11.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/DynObjects/Logic/SgTramW10001-12.xml
+... loading /home/stier/VIRES/VTD.2025.2/Data/Distros/Current/Config/DynObjects/Logic/SgTramW10001-13.xml
+   user random seed = 9
+Scenario::reset
+Driver DB [Driver]: DefaultDriver
+Driver DB [Driver]: BriskDriver
+Driver DB [Driver]: ComfortableDriver
+Driver DB [Driver]: HastyDriver
+Driver DB [Driver]: InsecureDriver
+..... add external driver "Ego", Vehicle: HyundaiIoniq6_23_White, Driver: DefaultDriver, AdaptDriverToVehicleType: true
+
+Player selections:
+  "ALL_EXT_PLAYERS":	1 player
+  "ALL_PLAYERS":	1 player
+
+List of all player start positions
+[ name - (ID) : track, lane, s ( x / y / z, h ) ]
+
+Ego - (1) : 465, -1, 60.8965, ( 508.7997 / -168.2877 / 42.0000, 29.5743 )
+
+End of list
+
+ [ Command "RUN" received ]
+ +++ SCP: player "Ego": ctrlLatLong = "ghostdriver"
+     -> switch to ghostdriver ( frame: 0 )
+ +++ SCP: player "Ego": ctrlLatLong = "ghostdriver"
+     -> switch to ghostdriver ( frame: 0 )
+ Player "Ego" is authorised to drive.
+..... add moved object "MapAudit000", Vehicle: SmartForTwo_14_WhiteBlack, Driver: DefaultDriver, AdaptDriverToVehicleType: false
+ +++ SCP: player "MapAudit000": desiredSpeed = "0.0000"
+ +++ SCP: player "MapAudit000": obeyTrafficSigns = "yes"
+ +++ SCP: player "MapAudit000": obeyTrafficLights = "yes"
+ +++ SCP: set speed of player "MapAudit000" to 0.0000."
+ +++ SCP: set player "MapAudit000" to track coord 1869 / 104.0210 / -2, 0.0000deg
+LaneCoord: track = 1869 (1869), lane = -2, offset = 0.0000, s = 104.0210, t = -1.9500, z = -0.0000, h = 0.0000
+ +++ SCP: player "MapAudit000": desiredSpeed = "6.0000"
+ +++ SCP: player "MapAudit000": obeyTrafficSigns = "yes"
+ +++ SCP: player "MapAudit000": obeyTrafficLights = "yes"
+..... add moved object "MapAudit000", Vehicle: SmartForTwo_14_WhiteBlack, Driver: DefaultDriver, AdaptDriverToVehicleType: false
+ +++ SCP: player "MapAudit000": desiredSpeed = "0.0000"
+ +++ SCP: player "MapAudit000": obeyTrafficSigns = "yes"
+ +++ SCP: player "MapAudit000": obeyTrafficLights = "yes"
+ +++ SCP: set speed of player "MapAudit000" to 0.0000."
+ +++ SCP: set player "MapAudit000" to track coord 211 / 17.7000 / -2, 0.0000deg
+ +++ SCP: player "MapAudit000": desiredSpeed = "6.0000"
+ +++ SCP: player "MapAudit000": obeyTrafficSigns = "yes"
+ +++ SCP: player "MapAudit000": obeyTrafficLights = "yes"
+..... add moved object "MapAudit000", Vehicle: SmartForTwo_14_WhiteBlack, Driver: DefaultDriver, AdaptDriverToVehicleType: false
+ +++ SCP: player "MapAudit000": desiredSpeed = "0.0000"
+ +++ SCP: player "MapAudit000": obeyTrafficSigns = "yes"
+ +++ SCP: player "MapAudit000": obeyTrafficLights = "yes"
+ +++ SCP: set speed of player "MapAudit000" to 0.0000."
+ +++ SCP: set player "MapAudit000" to track coord 211 / 15.2100 / -1, 0.0000deg
+ +++ SCP: player "MapAudit000": desiredSpeed = "6.0000"
+ +++ SCP: player "MapAudit000": obeyTrafficSigns = "yes"
+ +++ SCP: player "MapAudit000": obeyTrafficLights = "yes"
+..... add moved object "MapAudit000", Vehicle: SmartForTwo_14_WhiteBlack, Driver: DefaultDriver, AdaptDriverToVehicleType: false
+ +++ SCP: player "MapAudit000": desiredSpeed = "0.0000"
+ +++ SCP: player "MapAudit000": obeyTrafficSigns = "yes"
+ +++ SCP: player "MapAudit000": obeyTrafficLights = "yes"
+ +++ SCP: set speed of player "MapAudit000" to 0.0000."
+ +++ SCP: set player "MapAudit000" to track coord 1666 / 1.0000 / -3, 0.0000deg
+ +++ SCP: player "MapAudit000": desiredSpeed = "6.0000"
+ +++ SCP: player "MapAudit000": obeyTrafficSigns = "yes"
+ +++ SCP: player "MapAudit000": obeyTrafficLights = "yes"
+..... add moved object "MapAudit000", Vehicle: SmartForTwo_14_WhiteBlack, Driver: DefaultDriver, AdaptDriverToVehicleType: false
+ +++ SCP: player "MapAudit000": desiredSpeed = "0.0000"
+ +++ SCP: player "MapAudit000": obeyTrafficSigns = "yes"
+ +++ SCP: player "MapAudit000": obeyTrafficLights = "yes"
+ +++ SCP: set speed of player "MapAudit000" to 0.0000."
+ +++ SCP: set player "MapAudit000" to track coord 2192 / 134.4010 / 4, 180.0000deg
+ +++ SCP: player "MapAudit000": desiredSpeed = "6.0000"
+ +++ SCP: player "MapAudit000": obeyTrafficSigns = "yes"
+ +++ SCP: player "MapAudit000": obeyTrafficLights = "yes"
+..... add moved object "MapAudit000", Vehicle: SmartForTwo_14_WhiteBlack, Driver: DefaultDriver, AdaptDriverToVehicleType: false
+ +++ SCP: player "MapAudit000": desiredSpeed = "0.0000"
+ +++ SCP: player "MapAudit000": obeyTrafficSigns = "yes"
+ +++ SCP: player "MapAudit000": obeyTrafficLights = "yes"
+ +++ SCP: set speed of player "MapAudit000" to 0.0000."
+ +++ SCP: set player "MapAudit000" to track coord 2012 / 110.8010 / 4, 180.0000deg
+ +++ SCP: player "MapAudit000": desiredSpeed = "6.0000"
+ +++ SCP: player "MapAudit000": obeyTrafficSigns = "yes"
+ +++ SCP: player "MapAudit000": obeyTrafficLights = "yes"
+..... add moved object "MapAudit000", Vehicle: SmartForTwo_14_WhiteBlack, Driver: DefaultDriver, AdaptDriverToVehicleType: false
+ +++ SCP: player "MapAudit000": desiredSpeed = "0.0000"
+ +++ SCP: player "MapAudit000": obeyTrafficSigns = "yes"
+ +++ SCP: player "MapAudit000": obeyTrafficLights = "yes"
+ +++ SCP: set speed of player "MapAudit000" to 0.0000."
+ +++ SCP: set player "MapAudit000" to track coord 2674 / 52.4610 / 4, 180.0000deg
+ +++ SCP: player "MapAudit000": desiredSpeed = "6.0000"
+ +++ SCP: player "MapAudit000": obeyTrafficSigns = "yes"
+ +++ SCP: player "MapAudit000": obeyTrafficLights = "yes"
+..... add moved object "MapAudit000", Vehicle: SmartForTwo_14_WhiteBlack, Driver: DefaultDriver, AdaptDriverToVehicleType: false
+ +++ SCP: player "MapAudit000": desiredSpeed = "0.0000"
+ +++ SCP: player "MapAudit000": obeyTrafficSigns = "yes"
+ +++ SCP: player "MapAudit000": obeyTrafficLights = "yes"
+ +++ SCP: set speed of player "MapAudit000" to 0.0000."
+ +++ SCP: set player "MapAudit000" to track coord 2818 / 198.2010 / -1, 0.0000deg
+ +++ SCP: player "MapAudit000": desiredSpeed = "6.0000"
+ +++ SCP: player "MapAudit000": obeyTrafficSigns = "yes"
+ +++ SCP: player "MapAudit000": obeyTrafficLights = "yes"
+..... add moved object "MapAudit000", Vehicle: SmartForTwo_14_WhiteBlack, Driver: DefaultDriver, AdaptDriverToVehicleType: false
+ +++ SCP: player "MapAudit000": desiredSpeed = "0.0000"
+ +++ SCP: player "MapAudit000": obeyTrafficSigns = "yes"
+ +++ SCP: player "MapAudit000": obeyTrafficLights = "yes"
+ +++ SCP: set speed of player "MapAudit000" to 0.0000."
+ +++ SCP: set player "MapAudit000" to track coord 2810 / 115.3310 / 1, 180.0000deg
+ +++ SCP: player "MapAudit000": desiredSpeed = "6.0000"
+ +++ SCP: player "MapAudit000": obeyTrafficSigns = "yes"
+ +++ SCP: player "MapAudit000": obeyTrafficLights = "yes"
+..... add moved object "MapAudit000", Vehicle: SmartForTwo_14_WhiteBlack, Driver: DefaultDriver, AdaptDriverToVehicleType: false
+ +++ SCP: player "MapAudit000": desiredSpeed = "0.0000"
+ +++ SCP: player "MapAudit000": obeyTrafficSigns = "yes"
+ +++ SCP: player "MapAudit000": obeyTrafficLights = "yes"
+ +++ SCP: set speed of player "MapAudit000" to 0.0000."
+ +++ SCP: set player "MapAudit000" to track coord 1869 / 104.0210 / -3, 0.0000deg
+LaneCoord: track = 1869 (1869), lane = -3, offset = 0.0000, s = 104.0210, t = -5.0000, z = -0.0000, h = 0.0000
+ +++ SCP: player "MapAudit000": desiredSpeed = "6.0000"
+ +++ SCP: player "MapAudit000": obeyTrafficSigns = "yes"
+ +++ SCP: player "MapAudit000": obeyTrafficLights = "yes"

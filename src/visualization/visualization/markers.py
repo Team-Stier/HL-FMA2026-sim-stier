@@ -65,17 +65,23 @@ def arrow(header, namespace, index, position, yaw, color=(1, 0.7, 0, 1)):
     return result
 
 
-def bounds(header, namespace, index, points, color):
+def bounds_points(points):
     lower = [min(getattr(value, axis) for value in points) for axis in ('x', 'y', 'z')]
     upper = [max(getattr(value, axis) for value in points) for axis in ('x', 'y', 'z')]
     corners = [point(upper[0] if mask & 1 else lower[0],
                      upper[1] if mask & 2 else lower[1],
                      upper[2] if mask & 4 else lower[2]) for mask in range(8)]
-    result = marker(header, namespace, index, Marker.LINE_LIST, color)
+    result = []
     for mask in range(8):
         for bit in (1, 2, 4):
             if not mask & bit:
-                result.points.extend((corners[mask], corners[mask | bit]))
+                result.extend((corners[mask], corners[mask | bit]))
+    return result
+
+
+def bounds(header, namespace, index, points, color):
+    result = marker(header, namespace, index, Marker.LINE_LIST, color)
+    result.points = bounds_points(points)
     return result
 
 
@@ -165,10 +171,10 @@ def batch_lines(markers):
         if item.type not in (Marker.LINE_LIST, Marker.LINE_STRIP):
             result.append(item)
             continue
-        key = (item.ns, item.scale.x)
+        color = (item.color.r, item.color.g, item.color.b, item.color.a)
+        key = (item.ns, item.scale.x, color)
         if key not in groups:
-            groups[key] = marker(item.header, item.ns, 0, Marker.LINE_LIST,
-                                 (item.color.r, item.color.g, item.color.b, item.color.a))
+            groups[key] = marker(item.header, item.ns, len(groups), Marker.LINE_LIST, color)
             groups[key].scale.x = item.scale.x
         points = item.points if item.type == Marker.LINE_LIST else [
             value for pair in zip(item.points, item.points[1:]) for value in pair]
