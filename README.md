@@ -176,6 +176,44 @@ search는 3D 축 정렬 box와 겹친 후보 ID를 반환한다. queryOverlaps�
 
 두 조회 메서드는 결과가 없어도 연결된 debug sink를 호출한다. `hdmap_init(path, sink)`의 sink에는 `(operation, vector<const Cell*>)`가 전달되며 실제 조회한 프로세스의 Cell geometry/bounding box다. callback은 동기 호출이고 포인터는 HdMap 수명 내에서만 유효하다. 기본 코어는 ROS를 요구하지 않으며 Python publisher 연결과 MarkerArray 집계/삭제 adapter는 `visualization.query_debug`에 구현했다. C++용 ROS adapter는 미구현이다. 따라서 sink를 연결하지 않은 조회가 이미 RViz에 표시된다고 보지 않는다.
 
+
+**레지스트리 — 구현된 C++ API**
+
+`hdmap_init`이 신호 레지스트리와 정지선 역색인을 함께 구성한다. `signalRegistry()`는 API controller ID → TrafficLight 목록, `stoplineCells()`는 정지선 ID → Cell ID 목록을 반환한다.
+
+```cpp
+const auto& registry = static_map->signalRegistry();
+const auto& stopline_cells = static_map->stoplineCells();
+const auto entry = registry.find(api_controller_id);
+if (entry != registry.end()) {
+    for (const auto& signal : entry->second) {
+        const auto lamps = signal->trafficLights();
+        const auto stopline = signal->stopLine();
+        if (stopline) {
+            const auto found = stopline_cells.find(stopline->id());
+            if (found != stopline_cells.end()) {
+                const auto& cell_ids = found->second;
+                // cells.at(cell_id)로 각 Cell 조회
+            }
+        }
+    }
+}
+```
+
+**Python — 같은 레지스트리 조회**
+
+```python
+registry = static_map.signalRegistry()
+stopline_cells = static_map.stoplineCells()
+for signal in registry.get(api_controller_id, []):
+    lamps = signal.trafficLights
+    stopline = signal.stopLine
+    cell_ids = stopline_cells.get(stopline.id, []) if stopline is not None else []
+    matched_cells = [cells[cell_id] for cell_id in cell_ids]
+```
+
+같은 controller에 여러 신호 규칙이 연결될 수 있다. controller ID와 정지선 ID는 서로 다른 ID이며, 미등록 ID는 위 예제처럼 빈 결과로 처리한다. Python의 `trafficLights`·`stopLine`은 메서드가 아닌 property다. `signalRegistry()`·`stoplineCells()`는 Python 컨테이너 복사본을 반환하므로 초기화 후 한 번 받아 재사용한다. 신호 객체는 원본 지도와 공유하므로 읽기 전용으로 사용한다. 레지스트리 조회 자체는 신호 상태나 통행 허용 여부를 판단하지 않는다.
+
 ## ROS architecture
 
 노드는 원, 토픽은 사각형. Visualizer와 TF 노드는 별도 그림으로 분리한다.
@@ -247,36 +285,30 @@ controller는 여러 lamp의 상태를 제어하는 단위이며 교차로 ID가
 상태기는 controller+접근로+movement별. 별도 stop_constraint 토픽 없이 cell cap으로 반영한다.
 
 ```mermaid
-flowchart TD
-    START((시작))
-    UNKNOWN((UNKNOWN))
-    GO((GO))
-    STOP_REQUIRED((STOP_REQUIRED))
-    HOLD((HOLD))
-    COMMITTED((COMMITTED))
-    CLEARING((CLEARING))
+stateDiagram-v2
+    direction TB
 
-    START -->|"초기화 / 접근 제한 설정"| UNKNOWN
-    UNKNOWN -->|"허용 신호 수신 / 신호 cap 해제"| GO
-    UNKNOWN -->|"적색 또는 통행 미허용 / 상류 감속장 설정"| STOP_REQUIRED
-    UNKNOWN -->|"최초 황색 [정지 가능] / 정지 판단 고정·감속장 설정"| STOP_REQUIRED
-    UNKNOWN -->|"최초 황색 [정지 불가능] / 통과 판단 고정·가속 돌파 금지"| COMMITTED
-    GO -->|"적색 또는 통행 미허용 / 상류 감속장 설정"| STOP_REQUIRED
-    GO -->|"황색 전환 [정지 가능] / 정지 판단 고정·감속장 설정"| STOP_REQUIRED
-    GO -->|"황색 전환 [정지 불가능] / 통과 판단 고정·가속 돌파 금지"| COMMITTED
-    GO -->|"미선택 또는 관측 만료 / 접근 제한 설정"| UNKNOWN
-    STOP_REQUIRED -->|"정지 영역에서 정지 / cap 0 유지"| HOLD
-    STOP_REQUIRED -->|"허용 신호 수신 / 신호 cap 해제"| GO
-    STOP_REQUIRED -->|"미선택 또는 관측 만료 / 접근 제한 설정"| UNKNOWN
-    HOLD -->|"허용 신호 수신 / 신호 cap 해제"| GO
-    HOLD -->|"미선택 또는 관측 만료 / cap 0 유지"| UNKNOWN
-    GO -->|"정지선 통과 / 통과한 정지선 제약 종료"| CLEARING
-    COMMITTED -->|"정지선 통과 / 통과한 정지선 제약 종료"| CLEARING
-    COMMITTED -->|"신호 변경 / 최초 통과 판단 유지"| COMMITTED
-    CLEARING -->|"교차로 이탈 / 이전 접근 종료·다음 접근 초기화"| UNKNOWN
+    [*] --> UNKNOWN: 초기화 / 접근 제한 설정
+    UNKNOWN --> GO: 허용 신호 수신 / 신호 cap 해제
+    UNKNOWN --> STOP_REQUIRED: 적색 또는 통행 미허용 / 상류 감속장 설정
+    UNKNOWN --> STOP_REQUIRED: 최초 황색 [정지 가능] / 정지 판단 고정·감속장 설정
+    UNKNOWN --> COMMITTED: 최초 황색 [정지 불가능] / 통과 판단 고정·가속 돌파 금지
+    GO --> STOP_REQUIRED: 적색 또는 통행 미허용 / 상류 감속장 설정
+    GO --> STOP_REQUIRED: 황색 전환 [정지 가능] / 정지 판단 고정·감속장 설정
+    GO --> COMMITTED: 황색 전환 [정지 불가능] / 통과 판단 고정·가속 돌파 금지
+    GO --> UNKNOWN: 미선택 또는 관측 만료 / 접근 제한 설정
+    STOP_REQUIRED --> HOLD: 정지 영역에서 정지 / cap 0 유지
+    STOP_REQUIRED --> GO: 허용 신호 수신 / 신호 cap 해제
+    STOP_REQUIRED --> UNKNOWN: 미선택 또는 관측 만료 / 접근 제한 설정
+    HOLD --> GO: 허용 신호 수신 / 신호 cap 해제
+    HOLD --> UNKNOWN: 미선택 또는 관측 만료 / cap 0 유지
+    GO --> CLEARING: 정지선 통과 / 통과한 정지선 제약 종료
+    COMMITTED --> CLEARING: 정지선 통과 / 통과한 정지선 제약 종료
+    COMMITTED --> COMMITTED: 신호 변경 / 최초 통과 판단 유지
+    CLEARING --> UNKNOWN: 교차로 이탈 / 이전 접근 종료·다음 접근 초기화
 ```
 
-도식은 구현 예정 설계다. 상태는 원, 간선은 `이벤트 [조건] / 액션`으로 표시한다. 신호 cap 해제는 객체·정적 속도 제한까지 해제한다는 뜻이 아니다. UNKNOWN에서도 접근 제한을 유지한다. STOP_REQUIRED/HOLD에서 황색이 계속되면 정지 판단을 유지하고, COMMITTED는 최초 황색 판단을 해당 접근 동안 유지한다. COMMITTED/CLEARING에서도 객체 충돌 제약은 해제하지 않는다. 차량 재배치나 새 시나리오는 현재 접근 상태를 초기화한다.
+도식은 구현 예정 상태 머신 설계다. `[*]`는 초기 상태 진입점이며, 상태 간 전이는 `이벤트 [조건] / 액션`으로 표시한다. 신호 cap 해제는 객체·정적 속도 제한까지 해제한다는 뜻이 아니다. UNKNOWN에서도 접근 제한을 유지한다. STOP_REQUIRED/HOLD에서 황색이 계속되면 정지 판단을 유지하고, COMMITTED는 최초 황색 판단을 해당 접근 동안 유지한다. COMMITTED/CLEARING에서도 객체 충돌 제약은 해제하지 않는다. 차량 재배치나 새 시나리오는 현재 접근 상태를 초기화한다.
 
 | 상태 | 규칙 |
 |---|---|
