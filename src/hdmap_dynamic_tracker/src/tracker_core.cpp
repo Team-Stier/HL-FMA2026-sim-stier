@@ -101,36 +101,111 @@ void EgoSpeedEstimator::reset() {
     y_ = 0.0;
 }
 
+bool validBrakingDistanceTable(const std::vector<BrakingDistanceSample>& samples) {
+    if (samples.empty()) {
+        return false;
+    }
+    double previous_speed = 0.0;
+    double previous_distance = 0.0;
+    for (const auto& sample : samples) {
+        if (!std::isfinite(sample.speed_mps) || sample.speed_mps <= previous_speed ||
+            !std::isfinite(sample.braking_distance_m) ||
+            sample.braking_distance_m <= 0.0 ||
+            sample.braking_distance_m < previous_distance) {
+            return false;
+        }
+        previous_speed = sample.speed_mps;
+        previous_distance = sample.braking_distance_m;
+    }
+    return true;
+}
+
+std::optional<double> conservativeBrakingDistance(
+    double speed_mps,
+    const std::vector<BrakingDistanceSample>& samples) {
+    if (!std::isfinite(speed_mps) || speed_mps < 0.0 ||
+        !validBrakingDistanceTable(samples)) {
+        return std::nullopt;
+    }
+    if (speed_mps == 0.0) {
+        return 0.0;
+    }
+    const auto sample = std::lower_bound(
+        samples.begin(), samples.end(), speed_mps,
+        [](const BrakingDistanceSample& candidate, double speed) {
+            return candidate.speed_mps < speed;
+        });
+    if (sample == samples.end()) {
+        return std::nullopt;
+    }
+    // Use the next measured speed bin rather than extrapolating or interpolating
+    // below it. With a monotone worst-case table this never understates a measured
+    // braking distance between calibration speeds.
+    return sample->braking_distance_m;
+}
+
 bool validStopRamp(const StopRampParameters& parameters) {
-    return std::isfinite(parameters.entry_speed_mps) && parameters.entry_speed_mps >= 0.0 &&
-        std::isfinite(parameters.design_deceleration_mps2) && parameters.design_deceleration_mps2 > 0.0 &&
-        std::isfinite(parameters.braking_distance_factor) && parameters.braking_distance_factor >= 1.0 &&
-        std::isfinite(parameters.latency_budget_s) && parameters.latency_budget_s >= 0.0 &&
-        std::isfinite(parameters.stop_margin_m) && parameters.stop_margin_m >= 0.0;
+    if (!std::isfinite(parameters.entry_speed_mps) || parameters.entry_speed_mps < 0.0 ||
+        !std::isfinite(parameters.design_deceleration_mps2) ||
+        parameters.design_deceleration_mps2 <= 0.0 ||
+        !std::isfinite(parameters.braking_distance_factor) ||
+        parameters.braking_distance_factor < 1.0 ||
+        !std::isfinite(parameters.latency_budget_s) || parameters.latency_budget_s < 0.0 ||
+        !std::isfinite(parameters.stop_margin_m) || parameters.stop_margin_m < 0.0 ||
+        (parameters.calibrated_braking_distance_m &&
+            (!std::isfinite(*parameters.calibrated_braking_distance_m) ||
+                *parameters.calibrated_braking_distance_m < 0.0 ||
+                (parameters.entry_speed_mps > 0.0 &&
+                    *parameters.calibrated_braking_distance_m == 0.0)))) {
+        return false;
+    }
+    const double theoretical_linear_distance =
+        parameters.entry_speed_mps * parameters.entry_speed_mps /
+        parameters.design_deceleration_mps2;
+    const double measured_linear_distance = parameters.calibrated_braking_distance_m
+        ? 2.0 * *parameters.calibrated_braking_distance_m
+        : 0.0;
+    const double braking_span = parameters.braking_distance_factor *
+        std::max(theoretical_linear_distance, measured_linear_distance);
+    const double latency_span = parameters.entry_speed_mps * parameters.latency_budget_s;
+    return std::isfinite(theoretical_linear_distance) &&
+        std::isfinite(measured_linear_distance) && std::isfinite(braking_span) &&
+        std::isfinite(latency_span) && std::isfinite(braking_span + latency_span) &&
+        std::isfinite(braking_span + latency_span + parameters.stop_margin_m);
+}
+
+double stopRampProfileLength(const StopRampParameters& parameters) {
+    if (!validStopRamp(parameters)) {
+        return 0.0;
+    }
+    const double theoretical_linear_distance =
+        parameters.entry_speed_mps * parameters.entry_speed_mps /
+        parameters.design_deceleration_mps2;
+    const double measured_linear_distance = parameters.calibrated_braking_distance_m
+        ? 2.0 * *parameters.calibrated_braking_distance_m
+        : 0.0;
+    return parameters.braking_distance_factor *
+        std::max(theoretical_linear_distance, measured_linear_distance) +
+        parameters.entry_speed_mps * parameters.latency_budget_s;
 }
 
 double stopRampStartDistance(const StopRampParameters& parameters) {
     if (!validStopRamp(parameters)) {
         return 0.0;
     }
-    const double linear_base = parameters.entry_speed_mps * parameters.entry_speed_mps /
-        parameters.design_deceleration_mps2;
-    const double ramp = parameters.braking_distance_factor * linear_base;
-    return parameters.entry_speed_mps * parameters.latency_budget_s + parameters.stop_margin_m + ramp;
+    return parameters.stop_margin_m + stopRampProfileLength(parameters);
 }
 
 double stopRampCap(double distance_to_stop_m, const StopRampParameters& parameters) {
-    if (!validStopRamp(parameters)) {
+    if (!std::isfinite(distance_to_stop_m) || !validStopRamp(parameters)) {
         return 0.0;
     }
-    const double linear_base = parameters.entry_speed_mps * parameters.entry_speed_mps /
-        parameters.design_deceleration_mps2;
-    const double ramp = parameters.braking_distance_factor * linear_base;
-    if (ramp <= std::numeric_limits<double>::epsilon()) {
+    const double profile_length = stopRampProfileLength(parameters);
+    if (profile_length <= std::numeric_limits<double>::epsilon()) {
         return 0.0;
     }
     const double ratio = std::clamp(
-        (distance_to_stop_m - parameters.stop_margin_m) / ramp, 0.0, 1.0);
+        (distance_to_stop_m - parameters.stop_margin_m) / profile_length, 0.0, 1.0);
     return parameters.entry_speed_mps * ratio;
 }
 

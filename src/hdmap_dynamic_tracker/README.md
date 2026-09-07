@@ -14,9 +14,9 @@
 - 정적 speed cap: 부모 Lanelet의 명시적 `speed_limit`을 Cell별로 캐시한다. 속성이 없거나
   파싱할 수 없으면 안전하게 0m/s다.
 - 신호 speed cap: `signalRegistry()`의 controller ID와 `permitted_states`, `stoplineCells()`를
-  사용한다. 정지선 Cell에서 `previous()`를 거슬러 `centerline_length_m`을 누적하고 선형 감속장을
-  정적 cap과 `min` 결합한다. 미관측/unknown/red/yellow/flashing/미허용 상태는 통과 허용으로
-  추정하지 않는다.
+  사용한다. 정지선 Cell에서 `previous()`를 거슬러 `centerline_length_m`을 누적하고 아이오닉 6
+  앞범퍼 여유를 반영한 선형 감속장을 정적 cap과 `min` 결합한다. 미관측/unknown/red/yellow/
+  flashing/미허용 상태는 통과 허용으로 추정하지 않는다.
 - 객체 점유: 현재 OBB와 `[min_z, min_z + height]`를 CellTree의 실제 polygon 교차로 계산한다.
   ID별 Cartesian constant-velocity Kalman filter(선형 운동에서는 EKF의 특수형)로 6초를 예측하고,
   각 0.5초 구간의 시작·중간·끝 OBB의 convex hull을 swept footprint로 조회한다. 위치 공분산은
@@ -44,6 +44,38 @@
 Header를 계승한다. `occupancy[cell_id * 13 + 0]`은 현재, bin 1..12는 각각
 `((bin-1)*0.5, bin*0.5]`초다.
 
+## 정지선 선형 speed cap
+
+실행 설정은 `config/tracker.yaml`의 `signals`다. `v_entry`는 모든 신호 접근로의 정적 제한을
+덮는 `maximum_approach_speed_mps`로 지도 초기화 때 고정한다. 지도에 이보다 높은 정적 cap이
+하나라도 있으면 시작을 거부한다. 현재 Ego 속도가 내려갔다고 profile을 짧게 만들지 않는다.
+
+```text
+B_cal(v)   = VTD HyundaiIoniq6_23_Dyn의 감속 시작→완전 정지 거리
+d_linear   = max(v² / a_design, 2 × B_cal(v))
+d_profile  = braking_distance_factor × d_linear + v × latency_budget
+d_start    = stop_margin + d_profile
+cap(d)     = v × clamp((d - stop_margin) / d_profile, 0, 1)
+```
+
+선형 `v(d)`의 최대 요구 감속은 `v²/d_profile`이므로 물리 정지거리 `B`를 그대로 쓰지 않고
+`2B`로 환산한다. 실측표는 속도 오름차순·거리 비감소여야 하며 표 사이에는 다음 상위 속도 bin을
+사용한다. 최고 속도를 넘는 외삽은 하지 않는다. `calibration_verified=true`이면 표가 비었거나
+모든 신호 접근속도를 덮지 못할 때 시작을 거부한다.
+
+현재 개발값 `v=8.2m/s`, `a_design=2m/s²`, `latency=0.25s`, `margin=1m`에서는 실측표가
+비어 있으므로 `d_profile=35.67m`, `d_start=36.67m`다. 아이오닉 6 후륜축→앞범퍼 3.808m까지
+더해 정지선 쪽 edge에서 약 40.478m 상류까지 Cell을 순회하며, 1m Cell 해상도에서 cap은
+계단형으로 직선을 근사한다. 8.2m/s는 8.0m/s 정적 cap과 설계상 0.2m/s 허용오차만 반영한
+임시 상한이다. 속도 추정 오차 여유와 실제 제동표는 아직 없고 `calibration_verified=false`이므로
+이는 대회 운용 보정값이 아니다.
+
+루트 `config/vehicle.yaml`과 `config/runtime.yaml`은 전체 시스템 설계/SimBridge 설정이고,
+Tracker 실행값은 ROS parameter 파일인 `src/hdmap_dynamic_tracker/config/tracker.yaml`에서 읽는다.
+VTD 보정 후 세 파일의 값과 검증 플래그를 함께 갱신해야 한다. 또한 현재 레포에는 speed cap을
+현재 Cell의 `/speed_limit`로 바꾸는 Annotator와 이를 추종하는 Controller/HOLD가 아직 없으므로,
+`/dynamic_status`에 이 profile이 생기는 것만으로 실제 차량이 제동하지는 않는다.
+
 ## 실행
 
 루트 `run.sh`가 HDMap 코어를 먼저 설치한 뒤 이 패키지를 colcon으로 빌드하고 통합 launch에
@@ -58,8 +90,9 @@ ros2 launch hdmap_dynamic_tracker tracker.launch.py
 
 이 구현은 통신·배열·기하·예측 파이프라인을 검증하기 위한 1차 버전이다.
 
-- `config/runtime.yaml`의 실제 설계 감속도와 제동표가 아직 `null`이다. tracker ROS 설정의
-  2.0m/s²는 시뮬레이션 개발용이며 `signals.calibration_verified=false`다.
+- `config/runtime.yaml`의 실제 설계 감속도와 `config/vehicle.yaml`의 제동표가 아직
+  `null`/빈 배열이다. tracker ROS 설정의 2.0m/s²는 시뮬레이션 개발용이며
+  `signals.calibration_verified=false`다.
 - 전체 UNKNOWN/GO/STOP_REQUIRED/HOLD/COMMITTED/CLEARING 상태기 중 현재는 보수적인
   permitted/stop 판단만 구현했다. 황색 통과 latch, 현재 접근로/movement 선택, 정지선 통과와
   clearing 판정은 경로 입력 또는 접근 Cell 판정 계약이 확정된 뒤 추가해야 한다.

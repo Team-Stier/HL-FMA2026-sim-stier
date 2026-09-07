@@ -341,15 +341,16 @@ Tracker가 정지선 상류 cell에 거리 기준 선형 감소장을 기록한�
 확인된 어린이 보호구역의 운용 cap은 `speed.school_zone_speed_cap_mps=8.0` 기본값으로 설정한다. 원본 제한이 30km/h라면 지도 규칙의 출처 값과 운용 여유 cap을 구분하고 더 낮은 제한이 있으면 최솟값을 사용한다. 모든 도로의 기본 제한을 8로 바꾸는 설정이 아니다. 정적 Cell에는 제한속도를 중복 저장하지 않고 부모 Lanelet2 규칙과 구역 설정에서 조회한다.
 
 ```text
-d_brake(v_entry) = 실측 제동거리 표 또는 초기 v_entry² / (2 × a_design)
-d_linear_base    = max(d_brake(v_entry), v_entry² / a_design)
-d_ramp           = braking_distance_factor × d_linear_base
-d_start          = v_entry × latency_budget + stop_margin + d_ramp
-speed_cap(d)     = v_entry × clamp((d - stop_margin) / d_ramp, 0, 1)
+B_cal(v_entry) = VTD 실측 감속 시작→완전 정지 거리(다음 상위 속도 bin의 보수값)
+d_linear       = max(v_entry² / a_design, 2 × B_cal(v_entry))
+d_profile      = braking_distance_factor × d_linear + v_entry × latency_budget
+d_start        = stop_margin + d_profile
+speed_cap(d)   = v_entry × clamp((d - stop_margin) / d_profile, 0, 1)
 ```
 
-`d`는 cell 내 가장 정지선에 가까운 후륜축 위치에서 앞범퍼까지 반영한 경로상 여유 거리. v_entry는 접근 episode 기준값으로 고정하고 매 frame 현재 속도로 감속장을 축소하지 않는다. 지연 여유 동안 v_entry가 유지될 수 있도록 d_start를 확보한다.
-factor>=1, 1이 가장 늦고 적극적인 감속이다. **최대제동거리 v²/(2a)에서 선형 v(d)를 시작하면 초입 요구 감속이 2a라서 불가능하다.** 선형장 base 거리를 별도 산정하고 보정을 config/표시에 공개한다. 0에 점근하는 선형장은 stop_margin 영역 cap=0과 저속 HOLD로 마무리한다. 실제 feasibility는 cell 이산화·지연·경사까지 시험한다.
+`d`는 Cell의 정지선 쪽 edge에서 아이오닉 6 앞범퍼까지의 경로상 여유 거리다. `v_entry`는 모든 신호 접근로의 정적 제한, Controller 허용 초과속도, 속도 추정 오차를 덮도록 검증한 `maximum_approach_speed_mps`로 고정하고 매 frame 현재 속도로 감속장을 축소하지 않는다. 더 높은 정적 cap이 지도에 있으면 Tracker는 시작을 거부한다. 현재 임시값 8.2m/s는 지도 cap 8.0m/s와 설계상 overspeed tolerance 0.2m/s만 합한 값이며, 추정 오차 여유는 VTD 보정 후 추가해야 한다. 실측표의 거리는 명령 시점이 아니라 **실제 감속이 시작된 위치부터 완전히 멈춘 위치까지**이며, 송신·구동 지연은 별도의 latency budget으로 더한다. 표 사이 속도는 다음 상위 bin을 사용하고 최고 bin 밖은 외삽하지 않는다. `calibration_verified=true`인데 접근속도를 표가 덮지 못하면 Tracker는 시작에 실패한다.
+
+factor>=1이며 1이 가장 늦고 적극적인 감속이다. **물리 제동거리 `v²/(2a)` 또는 실측 `B`를 그대로 선형 `v(d)` 구간으로 사용하면 초입 요구 감속이 `2a`가 되므로 불가능하다.** 그래서 이론 선형거리는 `v²/a`, 실측 선형거리는 `2B` 이상으로 잡는다. 지연거리도 profile에 포함해 적용 시작점부터 stop margin까지 하나의 직선으로 감소시킨다. 0에 점근하는 선형장은 stop-margin 영역 cap=0과 저속 HOLD로 마무리한다. 실제 feasibility는 1m Cell 이산화, 통신·제어 지연, 경사, Controller 추종오차까지 VTD에서 시험한다.
 Controller는 `v_actual > v_cap + overspeed_tolerance`이면 설정한 최대 음의 targetAccel로 override한다. 페달 답력 명령이 아니다. MPC 제동과 override를 구분해 기록하고 작은 초과로 가속/최대제동이 교대하지 않도록 hysteresis를 검증한다. 가속도 0은 정지 명령이 아니다.
 
 #### Control 최대제동 override 계약

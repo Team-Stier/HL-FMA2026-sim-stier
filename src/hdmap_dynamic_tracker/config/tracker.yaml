@@ -32,11 +32,24 @@ hdmap_dynamic_tracker:
     signals:
       restrict_unobserved: true
       # Development-only values. config/runtime.yaml intentionally has null until
-      # competition-vehicle braking calibration is completed.
+      # the VTD HyundaiIoniq6_23_Dyn braking calibration is completed.
       calibration_verified: false
+      # Provisional actual-entry upper bound: current 8.0 m/s map cap plus the
+      # designed 0.2 m/s Controller tolerance. Add speed-estimator error margin
+      # from VTD calibration before verification. A higher map cap is rejected.
+      maximum_approach_speed_mps: 8.2
       design_deceleration_mps2: 2.0
       braking_distance_factor: 1.0
       latency_budget_s: 0.25
       stop_margin_m: 1.0
+      # After VTD calibration, add paired arrays as shown below. Omit them while
+      # empty because ROS parameter YAML cannot portably infer an empty array type.
+      # braking_calibration:
+      #   speed_mps: [2.0, 4.0, 6.0, 8.2]
+      #   distance_m: [MEASURED_VALUES_IN_METRES]
+      # Speeds must strictly increase and worst-case distances must be positive
+      # and nondecreasing. Distance is measured from actual deceleration onset
+      # to full stop; command latency belongs in latency_budget_s. Values between
+      # bins use the next higher bin, and values above the table never extrapolate.
     vehicle:
       rear_axle_to_front_m: 3.808

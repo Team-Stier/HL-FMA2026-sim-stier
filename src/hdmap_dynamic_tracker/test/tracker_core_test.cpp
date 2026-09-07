@@ -88,15 +88,66 @@ void testParsersAndRamp() {
     assert(parseIntegerCsv("3,bad").empty());
     assert(parseIntegerCsv("3,,5").empty());
 
-    StopRampParameters ramp{8.0, 2.0, 1.0, 0.25, 1.0};
+    const std::vector<BrakingDistanceSample> calibration{
+        {2.0, 1.2}, {4.0, 4.5}, {8.0, 18.0}};
+    assert(validBrakingDistanceTable(calibration));
+    expectNear(*conservativeBrakingDistance(0.0, calibration), 0.0);
+    expectNear(*conservativeBrakingDistance(1.0, calibration), 1.2);
+    expectNear(*conservativeBrakingDistance(2.0, calibration), 1.2);
+    expectNear(*conservativeBrakingDistance(3.0, calibration), 4.5);
+    expectNear(*conservativeBrakingDistance(8.0, calibration), 18.0);
+    assert(!conservativeBrakingDistance(8.01, calibration));
+    assert(!conservativeBrakingDistance(-1.0, calibration));
+    assert(!validBrakingDistanceTable({}));
+    assert(!validBrakingDistanceTable({{2.0, 1.0}, {2.0, 2.0}}));
+    assert(!validBrakingDistanceTable({{2.0, 2.0}, {4.0, 1.0}}));
+    assert(!validBrakingDistanceTable({{2.0, 0.0}}));
+
+    StopRampParameters ramp{8.0, 2.0, 1.0, 0.25, 1.0, std::nullopt};
+    expectNear(stopRampProfileLength(ramp), 34.0);
     expectNear(stopRampStartDistance(ramp), 35.0);
     expectNear(stopRampCap(0.0, ramp), 0.0);
-    expectNear(stopRampCap(17.0, ramp), 4.0);
-    expectNear(stopRampCap(33.0, ramp), 8.0);
-    assert(stopRampCap(10.0, ramp) <= stopRampCap(20.0, ramp));
+    expectNear(stopRampCap(18.0, ramp), 4.0);
+    expectNear(stopRampCap(35.0, ramp), 8.0);
+    for (int metre = -5; metre <= 50; ++metre) {
+        const double cap = stopRampCap(static_cast<double>(metre), ramp);
+        assert(cap >= 0.0 && cap <= ramp.entry_speed_mps);
+        if (metre > -5) {
+            assert(cap >= stopRampCap(static_cast<double>(metre - 1), ramp));
+        }
+    }
+    assert(ramp.entry_speed_mps * ramp.entry_speed_mps /
+        stopRampProfileLength(ramp) <= ramp.design_deceleration_mps2);
+
+    StopRampParameters no_latency = ramp;
+    no_latency.latency_budget_s = 0.0;
+    expectNear(stopRampProfileLength(no_latency), 32.0);
+    expectNear(stopRampStartDistance(no_latency), 33.0);
+    expectNear(stopRampCap(17.0, no_latency), 4.0);
+    assert(stopRampCap(20.0, ramp) < stopRampCap(20.0, no_latency));
+
+    StopRampParameters calibrated = ramp;
+    calibrated.calibrated_braking_distance_m = 20.0;
+    expectNear(stopRampProfileLength(calibrated), 42.0);
+    expectNear(stopRampStartDistance(calibrated), 43.0);
+    expectNear(stopRampCap(22.0, calibrated), 4.0);
+    calibrated.calibrated_braking_distance_m = 10.0;
+    expectNear(stopRampProfileLength(calibrated), 34.0);
+
+    assert(stopRampCap(std::numeric_limits<double>::quiet_NaN(), ramp) == 0.0);
+    assert(stopRampCap(std::numeric_limits<double>::infinity(), ramp) == 0.0);
+    calibrated.calibrated_braking_distance_m = 0.0;
+    assert(!validStopRamp(calibrated));
     ramp.design_deceleration_mps2 = 0.0;
     assert(!validStopRamp(ramp));
     expectNear(stopRampCap(100.0, ramp), 0.0);
+    ramp = StopRampParameters{
+        std::numeric_limits<double>::max(), 0.1, 1.0, 1.0, 1.0, std::nullopt};
+    assert(!validStopRamp(ramp));
+    ramp = StopRampParameters{
+        std::sqrt(std::numeric_limits<double>::max() / 2.0), 1.0, 1.0, 0.0,
+        std::numeric_limits<double>::max(), std::nullopt};
+    assert(!validStopRamp(ramp));
 }
 
 void testGeometry() {

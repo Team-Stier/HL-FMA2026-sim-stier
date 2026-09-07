@@ -112,6 +112,20 @@ public:
             declare_parameter<bool>("signals.restrict_unobserved", true);
         signal_calibration_verified_ =
             declare_parameter<bool>("signals.calibration_verified", false);
+        maximum_approach_speed_mps_ =
+            declare_parameter<double>("signals.maximum_approach_speed_mps", 8.2);
+        const auto braking_speeds = declare_parameter<std::vector<double>>(
+            "signals.braking_calibration.speed_mps", std::vector<double>{});
+        const auto braking_distances = declare_parameter<std::vector<double>>(
+            "signals.braking_calibration.distance_m", std::vector<double>{});
+        if (braking_speeds.size() != braking_distances.size()) {
+            throw std::invalid_argument(
+                "Signal braking calibration speed and distance arrays must have equal length");
+        }
+        braking_distance_table_.reserve(braking_speeds.size());
+        for (std::size_t index = 0; index < braking_speeds.size(); ++index) {
+            braking_distance_table_.push_back({braking_speeds[index], braking_distances[index]});
+        }
         rear_axle_to_front_m_ = declare_parameter<double>("vehicle.rear_axle_to_front_m", 3.808);
 
         PredictorConfig predictor_config;
@@ -198,6 +212,10 @@ public:
         if (!signal_calibration_verified_) {
             RCLCPP_WARN(get_logger(),
                 "Signal braking parameters are marked unverified; keep allow_motion=false until calibrated");
+        } else {
+            RCLCPP_INFO(get_logger(),
+                "Signal braking calibration verified: %zu samples through %.2f m/s",
+                braking_distance_table_.size(), braking_distance_table_.back().speed_mps);
         }
         if (known_free_radius_m_ <= 0.0) {
             RCLCPP_WARN(get_logger(),
@@ -219,7 +237,8 @@ private:
         if (!std::isfinite(known_free_radius_m_) || known_free_radius_m_ < 0.0 ||
             known_free_radius_m_ > 80.0 ||
             !std::isfinite(uncertainty_sigma_multiplier_) || uncertainty_sigma_multiplier_ <= 0.0 ||
-            !std::isfinite(rear_axle_to_front_m_) || rear_axle_to_front_m_ < 0.0) {
+            !std::isfinite(rear_axle_to_front_m_) || rear_axle_to_front_m_ < 0.0 ||
+            !std::isfinite(maximum_approach_speed_mps_) || maximum_approach_speed_mps_ <= 0.0) {
             throw std::invalid_argument("Invalid occupancy or vehicle parameter");
         }
         if ((known_free_radius_m_ > 0.0 || allow_free_when_object_list_full_) &&
@@ -227,12 +246,25 @@ private:
             throw std::invalid_argument(
                 "Free-space assertions require occupancy.free_space_assumption_verified=true");
         }
-        if (!validStopRamp(StopRampParameters{1.0,
-                ramp_template_.design_deceleration_mps2,
-                ramp_template_.braking_distance_factor,
-                ramp_template_.latency_budget_s,
-                ramp_template_.stop_margin_m})) {
+        StopRampParameters validation_ramp = ramp_template_;
+        validation_ramp.entry_speed_mps = maximum_approach_speed_mps_;
+        if (!validStopRamp(validation_ramp) ||
+            !std::isfinite(stopRampStartDistance(validation_ramp) + rear_axle_to_front_m_)) {
             throw std::invalid_argument("Invalid signal stop-ramp parameters");
+        }
+        if (!braking_distance_table_.empty() &&
+            !validBrakingDistanceTable(braking_distance_table_)) {
+            throw std::invalid_argument(
+                "Signal braking calibration speeds must increase and distances must be positive and nondecreasing");
+        }
+        if (signal_calibration_verified_ && braking_distance_table_.empty()) {
+            throw std::invalid_argument(
+                "Verified signal braking calibration requires a nonempty braking-distance table");
+        }
+        if (signal_calibration_verified_ && !braking_distance_table_.empty() &&
+            braking_distance_table_.back().speed_mps < maximum_approach_speed_mps_) {
+            throw std::invalid_argument(
+                "Verified braking-distance table must cover maximum_approach_speed_mps");
         }
     }
 
@@ -292,6 +324,13 @@ private:
                 "%zu lanelets have missing/invalid explicit speed_limit and are capped at 0 m/s",
                 missing_speed_limits);
         }
+        const auto highest_static_cap = std::max_element(
+            static_speed_caps_.begin(), static_speed_caps_.end());
+        if (highest_static_cap != static_speed_caps_.end() &&
+            static_cast<double>(*highest_static_cap) > maximum_approach_speed_mps_) {
+            throw std::invalid_argument(
+                "signals.maximum_approach_speed_mps must cover every static map speed cap");
+        }
         buildSignalConstraints();
     }
 
@@ -318,6 +357,7 @@ private:
         std::size_t missing_stoplines = 0;
         std::size_t broken_previous_chains = 0;
         std::size_t unscoped_signal_rules = 0;
+        std::size_t braking_table_fallbacks = 0;
         std::unordered_map<lanelet::Id, std::unordered_set<hdmap::LaneletId>> rule_lanelets;
         for (const auto& lane : static_map_->laneletMap().laneletLayer) {
             for (const auto& rule : lane.regulatoryElements()) {
@@ -358,24 +398,40 @@ private:
                         continue;
                     }
                     StopRampParameters ramp = ramp_template_;
-                    ramp.entry_speed_mps = static_speed_caps_.at(stop_cell_id);
+                    ramp.entry_speed_mps = maximum_approach_speed_mps_;
+                    if (!braking_distance_table_.empty()) {
+                        ramp.calibrated_braking_distance_m = conservativeBrakingDistance(
+                            ramp.entry_speed_mps, braking_distance_table_);
+                        if (!ramp.calibrated_braking_distance_m) {
+                            if (signal_calibration_verified_) {
+                                throw std::invalid_argument(
+                                    "Verified braking-distance table does not cover a signal approach speed");
+                            }
+                            ++braking_table_fallbacks;
+                        }
+                    }
+                    if (!validStopRamp(ramp)) {
+                        throw std::invalid_argument(
+                            "Signal braking calibration produced an invalid stop ramp");
+                    }
                     const double traversal_limit = stopRampStartDistance(ramp) + rear_axle_to_front_m_;
                     const hdmap::Cell* cell = &static_map_->cells().at(stop_cell_id);
-                    double center_distance = 0.0;
+                    double distance_from_stop_edge = 0.0;
                     std::unordered_set<hdmap::CellId> visited;
-                    while (cell != nullptr && center_distance <= traversal_limit &&
+                    while (cell != nullptr && distance_from_stop_edge <= traversal_limit &&
                         visited.insert(cell->id()).second) {
-                        const double rear_axle_distance =
-                            std::max(0.0, center_distance - rear_axle_to_front_m_);
-                        const float cap = static_cast<float>(stopRampCap(rear_axle_distance, ramp));
+                        const double front_bumper_clearance =
+                            std::max(0.0, distance_from_stop_edge - rear_axle_to_front_m_);
+                        const float cap = static_cast<float>(
+                            stopRampCap(front_bumper_clearance, ramp));
                         const auto [iterator, inserted] = minimum_caps.emplace(cell->id(), cap);
                         if (!inserted) {
                             iterator->second = std::min(iterator->second, cap);
                         }
-                        center_distance += cellLength(*cell);
+                        distance_from_stop_edge += cellLength(*cell);
                         cell = cell->previous();
                     }
-                    if (center_distance <= traversal_limit) {
+                    if (distance_from_stop_edge <= traversal_limit) {
                         ++broken_previous_chains;
                         incomplete_previous_chain = true;
                     }
@@ -404,6 +460,11 @@ private:
             RCLCPP_WARN(get_logger(),
                 "%zu stopline traversals ended before the requested ramp distance; merge predecessors require RoutingGraph",
                 broken_previous_chains);
+        }
+        if (braking_table_fallbacks > 0) {
+            RCLCPP_WARN(get_logger(),
+                "%zu stopline ramps exceed the unverified braking table; theoretical design-deceleration fallback was used",
+                braking_table_fallbacks);
         }
         if (cell_length_fallback_count_ > 0) {
             RCLCPP_WARN(get_logger(),
@@ -789,8 +850,10 @@ private:
     double uncertainty_sigma_multiplier_ = 2.0;
     bool restrict_unobserved_signals_ = true;
     bool signal_calibration_verified_ = false;
+    double maximum_approach_speed_mps_ = 8.2;
     double rear_axle_to_front_m_ = 3.808;
     StopRampParameters ramp_template_;
+    std::vector<BrakingDistanceSample> braking_distance_table_;
 
     std::unique_ptr<hdmap::HdMap> static_map_;
     std::vector<float> static_speed_caps_;

@@ -40,9 +40,22 @@ struct StopRampParameters {
     double braking_distance_factor = 1.0;
     double latency_budget_s = 0.0;
     double stop_margin_m = 0.0;
+    // Distance travelled from measured deceleration onset to full stop. The
+    // command/actuation latency is represented separately by latency_budget_s.
+    std::optional<double> calibrated_braking_distance_m;
 };
 
+struct BrakingDistanceSample {
+    double speed_mps = 0.0;
+    double braking_distance_m = 0.0;
+};
+
+bool validBrakingDistanceTable(const std::vector<BrakingDistanceSample>& samples);
+std::optional<double> conservativeBrakingDistance(
+    double speed_mps,
+    const std::vector<BrakingDistanceSample>& samples);
 bool validStopRamp(const StopRampParameters& parameters);
+double stopRampProfileLength(const StopRampParameters& parameters);
 double stopRampStartDistance(const StopRampParameters& parameters);
 double stopRampCap(double distance_to_stop_m, const StopRampParameters& parameters);
 

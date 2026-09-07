@@ -23,5 +23,8 @@ model_parameters_not_measured_limits:
     max_steering_rad: 0.48
     steering_ratio: 16.8
 calibration:
-    braking_distance_table: []
+    braking_distance_definition: deceleration_onset_to_full_stop_excluding_command_latency
+    braking_distance_table:
+        speed_mps: []
+        distance_m: []
     object_reference_offsets_verified: false
