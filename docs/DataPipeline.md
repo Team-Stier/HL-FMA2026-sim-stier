@@ -136,7 +136,7 @@ flowchart TD
     CURRENT --> NOW["현재 bin 0<br/>교차 Cell 점유 1"]
     OBJECTS --> PREDICT(("motion_predictor / EKF<br/>ID별 위치 이력·운동 모델·오차 모델"))
     HISTORY["과거 객체 관측·Header 시간 차"] --> PREDICT
-    PREDICT --> SWEEP(("Tracker<br/>0.5초 구간별 swept footprint 구성"))
+    PREDICT --> SWEEP(("Tracker<br/>0.5초 구간별 swept footprint<br/>무절단 kσ·속도벡터 잔차·yaw 외접 여유"))
     SWEEP --> FUTURE(("Tracker CellTree<br/>각 시간 구간과 Cell 교차"))
     MAP --> FUTURE
     FUTURE --> BINS["미래 bin 1..12"]
@@ -149,7 +149,19 @@ flowchart TD
     DISPLAY --> MARKERS["/visualization/occupancy<br/>occupancy/local_reference/bin_N<br/>LINE_LIST·TEXT_VIEW_FACING"]
 ```
 
-bin 0은 현재, bin 1..12는 `((bin-1)*0.5, bin*0.5]`초다. Visualizer는 예측을 다시 계산하지 않는다. 점유값은 Tracker 출력이고 표시 기하는 Visualizer 맵에서 복원한다. 객체별 예측 footprint는 주행 토픽에 없으므로 별도 예측 궤적 마커를 만들지 않는다.
+bin 0은 현재, bin 1..12는 `((bin-1)*0.5, bin*0.5]`초다. 미래 envelope는 위치 공분산의 설정된
+sigma 배수를 hard cap 없이 적용하고, 최근 위치차에서 얻은 속도 벡터와 필터 상태의 잔차를 시간만큼
+더한다. 단, 그 속도 방향은 여러 위치차가 최소 관측 수·시간·누적 변위·벡터 일관성·API 속력 일치 조건을 모두
+통과한 뒤에만 확정한다. 확정 전이나 관측된 방향 급변 직후에는 API·위치차 속력 중 큰 값과 필터
+속력의 합으로 계산한 임의 방향 도달 반경을 쓴다. 수용된 위치 innovation 뒤에 평활화 중심이 raw
+관측보다 뒤처지지 않도록 매 관측 시 예측 중심을 raw XY에 다시 고정한다. 미래 yaw와 높이 경로를
+예측하지 않는 동안에는 임의 yaw 형상 회전을 포함하는 외접 여유와 2D Cell 교차를 사용해 그 두
+요소로 인한 누락을 피한다. 아직 관측되지 않은 미래
+중심 궤적의 선회는 CV 공분산·잔차 범위 밖일 수 있으므로 결정론적으로 보장하지 않는다. 이는 선택한
+운동·오차 envelope의 binary risk mask이지 현실 점유확률 100% 보증은 아니다. envelope 밖 `-1`은
+free가 아니다. Visualizer는 예측을 다시 계산하지 않는다. 점유값은 Tracker 출력이고 표시 기하는
+Visualizer 맵에서 복원한다. 객체별 예측 footprint는 주행 토픽에 없으므로 별도 예측 궤적 마커를
+만들지 않는다.
 
 선택한 bin의 Cell 선 마커에 `color.a = p * (13 - bin) / 13`을 적용한다. 같은 bin에서는 확률이 높을수록, 같은 확률에서는 현재에 가까울수록 불투명하다. `p=0`은 투명하며 unknown 값 `-1`은 이 식에 넣지 않고 별도 회색으로 표시한다. 텍스트에는 원본 확률과 bin을 그대로 표시한다. alpha는 표시 변환일 뿐 점유확률 자체를 변경하지 않는다.
 

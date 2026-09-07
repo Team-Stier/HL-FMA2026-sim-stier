@@ -51,6 +51,11 @@ std::optional<double> parsePositiveMetres(const std::string& text);
 std::vector<int> parseIntegerCsv(const std::string& text);
 
 double normalizeAngle(double angle);
+double predictionUncertaintyInflation(
+    double position_sigma_m,
+    double direction_uncertainty_m,
+    double sigma_multiplier);
+double yawIndependentRotationInflation(double length_m, double width_m);
 std::vector<Point2d> orientedBox(const ObjectPrediction& object, double inflation_m = 0.0);
 std::vector<Point2d> sweptFootprint(
     const ObjectPrediction& start,

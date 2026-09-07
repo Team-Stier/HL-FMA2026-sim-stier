@@ -20,9 +20,17 @@
 - 객체 점유: 현재 OBB와 `[min_z, min_z + height]`를 CellTree의 실제 polygon 교차로 계산한다.
   ID별 Cartesian constant-velocity Kalman filter(선형 운동에서는 EKF의 특수형)로 6초를 예측하고,
   각 0.5초 구간의 시작·중간·끝 OBB의 convex hull을 swept footprint로 조회한다. 위치 공분산은
-  설정한 sigma 배수만큼 footprint를 팽창한다. `heading`을 속도 방향으로 간주하지 않는다.
-  두 위치 관측 전에는 속력×시간의 전방위 도달 반경을 점유시키고, 이후 위치 차이로 XY 속도를
-  갱신한다.
+  설정한 sigma 배수를 hard cap 없이 모두 적용한다. 최근 위치차에서 얻은 속도 벡터와 필터 상태가
+  다르면 그 잔차×예측시간도 추가한다. 위치 기반 방향은 기본 4개 속도 관측이 0.15초·누적 1m 이상
+  이어지고 연속 벡터와 API 속력이 설정 오차 안에서 일치한 뒤에만 확정한다. 확정 전이나 관측된 방향 급변
+  직후에는 API·위치차 속력 중 큰 값과 필터 속력의 합으로 임의 방향 도달 범위를 유지한다.
+  수용한 위치 innovation 뒤의 KF 평활화 중심은 raw XY에 다시 고정해 이후 bin이 과거 궤적에
+  남지 않게 한다. `heading`을 속도 방향으로 간주하지 않는다.
+- 미래 객체의 yaw를 등속 모델이 예측하지 않으므로 L/W 반대각을 포함하는 외접 여유를 추가한다.
+  미래 min-Z도 고정값으로 추정하지 않고 2D Cell 교차를 사용한다. 이로써 예측 중심 주위의 형상
+  회전과 Z 변화로 인한 누락은 피하지만, 아직 관측되지 않은 미래 중심 궤적의 선회까지 결정론적으로
+  보장하는 것은 아니다. 그 부분은 CV 공분산과 속도 잔차가 정한 통계적 envelope에 의존한다.
+  현재 관측 bin 0만 실제 OBB와 Z 범위를 그대로 사용한다.
 - 관측 소실 객체는 기본 0.5초 동안 유지한다. 객체 API는 80m/최대 30개이므로 기본 설정은
   객체가 없다는 이유만으로 Cell을 free=0으로 만들지 않고 unknown=-1을 유지한다.
   free 반경을 켜려면 80m 이하 값과 `free_space_assumption_verified=true`를 함께 명시해야 한다.
@@ -65,7 +73,11 @@ ros2 launch hdmap_dynamic_tracker tracker.launch.py
   `restrict_unobserved=true`에서는 관측 controller가 허용이어도 sibling UNKNOWN 제한이 남을 수
   있으며 노드가 throttle warning을 낸다. 주최측의 phase/movement 규칙 없이는 이를 임의 해제하지 않는다.
 - DynamicStatus의 원시 배열은 현재 지도에서 프레임당 약 5.03MiB, 20Hz에서 구독자당 약
-  100.6MiB/s다. 대상 Ubuntu/VTD 장비에서 p95 계산시간, DDS 지연/drop을 계측해야 한다.
+  100.6MiB/s다. 미래 불확실성은 더 이상 5m로 잘리지 않으므로 CellTree 후보 수도 늘 수 있다.
+  계산이 입력 주기보다 계속 길면 superseded 정상 결과를 폐기하는 현재 정책상 `/dynamic_status`가
+  연속 무발행될 수 있다. 대상 Ubuntu/VTD 장비에서 p95 계산시간과 DDS 지연/drop을 계측하고,
+  명시적 상태 필드·소비자 watchdog·취소 가능한 Cell 조회를 포함한 fail-closed deadline 경로를
+  추가해야 한다. 오래된 정상 배열의 stamp만 바꿔 발행해서는 안 된다.
 
 위 항목이 해결되고 `config/runtime.yaml: allow_motion`을 별도로 승인하기 전에는 차량 구동을
 허용하지 않는다.
@@ -73,6 +85,10 @@ ros2 launch hdmap_dynamic_tracker tracker.launch.py
 ## 테스트
 
 ROS/Lanelet과 무관한 코어는 표준 C++17만으로 검사할 수 있다.
+테스트에는 두 번째 관측 직후 10m/s 객체의 12개 미래 bin 실제 OBB가 모두 예측 envelope에
+포함되는지, 방향이 한 관측만으로 확정되지 않는지, 급격히 바뀐 관측 방향에서 다시 전방위 범위로
+돌아가는지, 수용된 14m position innovation 뒤에도 12개 bin이 raw 궤적을 포함하는지, sigma 범위가
+5m로 절단되지 않는지에 대한 회귀 검사가 포함된다.
 
 ```bash
 clang++ -std=c++17 -Wall -Wextra -Wpedantic -Werror \

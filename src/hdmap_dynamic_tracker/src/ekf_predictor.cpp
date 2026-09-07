@@ -3,6 +3,7 @@
 #include <algorithm>
 #include <array>
 #include <cmath>
+#include <limits>
 #include <stdexcept>
 #include <unordered_map>
 #include <unordered_set>
@@ -11,6 +12,8 @@ namespace hdmap_dynamic_tracker {
 namespace {
 
 using Matrix4 = std::array<double, 16>;
+constexpr double kRequiredPredictionHorizonS = 6.0;
+constexpr double kTimestampToleranceS = 1.0e-9;
 
 double& matrixAt(Matrix4& matrix, std::size_t row, std::size_t column) {
     return matrix[row * 4 + column];
@@ -51,6 +54,13 @@ struct Track {
     double last_observation_y = 0.0;
     double reported_speed_mps = 0.0;
     bool velocity_from_position_history = false;
+    bool velocity_candidate_initialized = false;
+    std::size_t consistent_velocity_observations = 0;
+    double velocity_confirmation_start_stamp_s = 0.0;
+    double velocity_confirmation_start_x = 0.0;
+    double velocity_confirmation_start_y = 0.0;
+    double observed_velocity_x_mps = 0.0;
+    double observed_velocity_y_mps = 0.0;
     double min_z = 0.0;
     double heading = 0.0;
     double length = 0.0;
@@ -61,6 +71,23 @@ struct Track {
 class EkfPredictor final : public MotionPredictor {
 public:
     explicit EkfPredictor(PredictorConfig config) : config_(config) {
+        const double process_variance = config_.process_acceleration_sigma_mps2 *
+            config_.process_acceleration_sigma_mps2;
+        const double position_variance = config_.position_measurement_sigma_m *
+            config_.position_measurement_sigma_m;
+        const double velocity_variance = config_.initial_velocity_sigma_mps *
+            config_.initial_velocity_sigma_mps;
+        const double minimum_frame_dt_squared =
+            config_.minimum_frame_dt_s * config_.minimum_frame_dt_s;
+        const double maximum_velocity_measurement_variance =
+            2.0 * position_variance / minimum_frame_dt_squared;
+        const double maximum_propagation_s =
+            std::max(kRequiredPredictionHorizonS, config_.maximum_frame_dt_s);
+        const double propagation_squared = maximum_propagation_s * maximum_propagation_s;
+        const double propagation_fourth = propagation_squared * propagation_squared;
+        const double propagated_position_variance = position_variance +
+            propagation_squared * velocity_variance +
+            0.25 * propagation_fourth * process_variance;
         if (!std::isfinite(config_.process_acceleration_sigma_mps2) ||
             config_.process_acceleration_sigma_mps2 < 0.0 ||
             !std::isfinite(config_.position_measurement_sigma_m) ||
@@ -68,9 +95,26 @@ public:
             !std::isfinite(config_.initial_velocity_sigma_mps) ||
             config_.initial_velocity_sigma_mps <= 0.0 ||
             !std::isfinite(config_.track_retention_s) || config_.track_retention_s < 0.0 ||
+            !std::isfinite(config_.minimum_frame_dt_s) ||
+            config_.minimum_frame_dt_s <= 0.0 ||
             !std::isfinite(config_.maximum_frame_dt_s) || config_.maximum_frame_dt_s <= 0.0 ||
+            config_.minimum_frame_dt_s > config_.maximum_frame_dt_s ||
             !std::isfinite(config_.maximum_position_innovation_m) ||
-            config_.maximum_position_innovation_m <= 0.0) {
+            config_.maximum_position_innovation_m <= 0.0 ||
+            config_.minimum_velocity_observations < 2U ||
+            !std::isfinite(config_.minimum_velocity_observation_span_s) ||
+            config_.minimum_velocity_observation_span_s <= 0.0 ||
+            !std::isfinite(config_.minimum_velocity_displacement_m) ||
+            config_.minimum_velocity_displacement_m <= 0.0 ||
+            !std::isfinite(config_.maximum_velocity_innovation_mps) ||
+            config_.maximum_velocity_innovation_mps <= 0.0 ||
+            !std::isfinite(process_variance) ||
+            !std::isfinite(position_variance) || position_variance <= 0.0 ||
+            !std::isfinite(velocity_variance) || velocity_variance <= 0.0 ||
+            !std::isfinite(minimum_frame_dt_squared) ||
+            minimum_frame_dt_squared <= 0.0 ||
+            !std::isfinite(maximum_velocity_measurement_variance) ||
+            !std::isfinite(propagated_position_variance)) {
             throw std::invalid_argument("Invalid EKF predictor configuration");
         }
     }
@@ -88,7 +132,8 @@ public:
         }
         if (initialized_) {
             const double frame_dt = stamp_s - frame_stamp_s_;
-            if (frame_dt <= 0.0 || frame_dt > config_.maximum_frame_dt_s) {
+            if (frame_dt < config_.minimum_frame_dt_s ||
+                frame_dt > config_.maximum_frame_dt_s) {
                 reset();
             }
         }
@@ -115,19 +160,90 @@ public:
             updatePosition(iterator->second, 1, observation.y);
             const double observation_dt = stamp_s - iterator->second.observation_stamp_s;
             if (observation_dt > 0.0) {
+                const double displacement_x =
+                    observation.x - iterator->second.last_observation_x;
+                const double displacement_y =
+                    observation.y - iterator->second.last_observation_y;
+                const double displacement = std::hypot(displacement_x, displacement_y);
                 const double velocity_variance = std::max(
                     config_.position_measurement_sigma_m *
                         config_.position_measurement_sigma_m * 2.0 /
                         (observation_dt * observation_dt),
                     0.25);
-                updateCoordinate(iterator->second, 2,
-                    (observation.x - iterator->second.last_observation_x) / observation_dt,
-                    velocity_variance);
-                updateCoordinate(iterator->second, 3,
-                    (observation.y - iterator->second.last_observation_y) / observation_dt,
-                    velocity_variance);
-                iterator->second.velocity_from_position_history = true;
+                bool velocity_sample_available = false;
+                double observed_velocity_x_mps = 0.0;
+                double observed_velocity_y_mps = 0.0;
+                double position_derived_speed_mps = 0.0;
+                if (displacement > std::numeric_limits<double>::epsilon()) {
+                    position_derived_speed_mps = displacement / observation_dt;
+                    const double observed_speed_mps =
+                        std::max(observation.speed, position_derived_speed_mps);
+                    observed_velocity_x_mps =
+                        displacement_x / displacement * observed_speed_mps;
+                    observed_velocity_y_mps =
+                        displacement_y / displacement * observed_speed_mps;
+                    velocity_sample_available = true;
+                } else if (observation.speed <= std::numeric_limits<double>::epsilon()) {
+                    velocity_sample_available = true;
+                }
+                const bool scalar_speed_agrees = velocity_sample_available &&
+                    std::abs(position_derived_speed_mps - observation.speed) <=
+                        config_.maximum_velocity_innovation_mps;
+                if (!scalar_speed_agrees) {
+                    // A displacement that disagrees with scalar speed does not establish direction.
+                    // Still retain its magnitude for the arbitrary-direction reach bound.
+                    iterator->second.observed_velocity_x_mps = observed_velocity_x_mps;
+                    iterator->second.observed_velocity_y_mps = observed_velocity_y_mps;
+                    iterator->second.velocity_candidate_initialized = false;
+                    iterator->second.consistent_velocity_observations = 0U;
+                    iterator->second.velocity_from_position_history = false;
+                } else {
+                    const bool vector_agrees =
+                        !iterator->second.velocity_candidate_initialized ||
+                        std::hypot(
+                            observed_velocity_x_mps -
+                                iterator->second.observed_velocity_x_mps,
+                            observed_velocity_y_mps -
+                                iterator->second.observed_velocity_y_mps) <=
+                            config_.maximum_velocity_innovation_mps;
+                    if (!iterator->second.velocity_candidate_initialized || !vector_agrees) {
+                        iterator->second.consistent_velocity_observations = 1U;
+                        iterator->second.velocity_confirmation_start_stamp_s =
+                            iterator->second.observation_stamp_s;
+                        iterator->second.velocity_confirmation_start_x =
+                            iterator->second.last_observation_x;
+                        iterator->second.velocity_confirmation_start_y =
+                            iterator->second.last_observation_y;
+                    } else if (iterator->second.consistent_velocity_observations <
+                        std::numeric_limits<std::size_t>::max()) {
+                        ++iterator->second.consistent_velocity_observations;
+                    }
+                    iterator->second.velocity_candidate_initialized = true;
+                    iterator->second.observed_velocity_x_mps = observed_velocity_x_mps;
+                    iterator->second.observed_velocity_y_mps = observed_velocity_y_mps;
+                    updateCoordinate(iterator->second, 2,
+                        observed_velocity_x_mps, velocity_variance);
+                    updateCoordinate(iterator->second, 3,
+                        observed_velocity_y_mps, velocity_variance);
+                    const double confirmation_span_s =
+                        stamp_s - iterator->second.velocity_confirmation_start_stamp_s;
+                    const double confirmation_displacement_m = std::hypot(
+                        observation.x - iterator->second.velocity_confirmation_start_x,
+                        observation.y - iterator->second.velocity_confirmation_start_y);
+                    iterator->second.velocity_from_position_history =
+                        iterator->second.consistent_velocity_observations >=
+                            config_.minimum_velocity_observations &&
+                        confirmation_span_s + kTimestampToleranceS >=
+                            config_.minimum_velocity_observation_span_s &&
+                        confirmation_displacement_m >=
+                            config_.minimum_velocity_displacement_m;
+                }
             }
+            // Occupancy prediction must start at the accepted raw observation. A
+            // smoothed posterior position can remain metres behind after a valid
+            // innovation and leave every later future bin on the wrong trajectory.
+            iterator->second.state[0] = observation.x;
+            iterator->second.state[1] = observation.y;
             iterator->second.observation_stamp_s = stamp_s;
             iterator->second.last_observation_x = observation.x;
             iterator->second.last_observation_y = observation.y;
@@ -170,6 +286,19 @@ public:
                 2.0 * dt * matrixAt(track.covariance, 1, 3) +
                 dt * dt * matrixAt(track.covariance, 3, 3) +
                 0.25 * dt * dt * dt * dt * process_variance;
+            if (!std::isfinite(x_variance) || !std::isfinite(y_variance)) {
+                throw std::overflow_error("EKF prediction covariance overflow");
+            }
+            const double prediction_age =
+                std::max(0.0, stamp_s - track.observation_stamp_s) + future_s;
+            const double estimated_speed_mps = std::hypot(track.state[2], track.state[3]);
+            const double position_derived_speed_mps =
+                std::hypot(track.observed_velocity_x_mps, track.observed_velocity_y_mps);
+            const double unresolved_speed_mps = track.velocity_from_position_history ?
+                std::hypot(track.observed_velocity_x_mps - track.state[2],
+                    track.observed_velocity_y_mps - track.state[3]) :
+                std::max(track.reported_speed_mps, position_derived_speed_mps) +
+                    estimated_speed_mps;
             output.push_back({entry.first,
                 track.state[0] + track.state[2] * dt,
                 track.state[1] + track.state[3] * dt,
@@ -179,8 +308,7 @@ public:
                 track.width,
                 track.height,
                 std::sqrt(std::max(0.0, std::max(x_variance, y_variance))),
-                track.velocity_from_position_history ? 0.0 :
-                    track.reported_speed_mps * (std::max(0.0, stamp_s - track.observation_stamp_s) + future_s),
+                unresolved_speed_mps * prediction_age,
                 std::max(0.0, stamp_s - track.observation_stamp_s)});
         }
         return output;
@@ -190,7 +318,7 @@ private:
     Track initializeTrack(const ObjectObservation& observation, double stamp_s) const {
         Track track;
         // The packet heading is body orientation, not a guaranteed velocity direction.
-        // Keep velocity neutral until two positions establish a Cartesian direction.
+        // Keep velocity neutral until position history passes the convergence gate.
         track.state = {observation.x, observation.y, 0.0, 0.0};
         const double position_variance = config_.position_measurement_sigma_m *
             config_.position_measurement_sigma_m;

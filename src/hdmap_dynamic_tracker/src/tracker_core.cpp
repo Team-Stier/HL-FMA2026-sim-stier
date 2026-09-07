@@ -210,6 +210,33 @@ double normalizeAngle(double angle) {
     return std::remainder(angle, 2.0 * kPi);
 }
 
+double predictionUncertaintyInflation(
+    double position_sigma_m,
+    double direction_uncertainty_m,
+    double sigma_multiplier) {
+    if (!std::isfinite(position_sigma_m) || position_sigma_m < 0.0 ||
+        !std::isfinite(direction_uncertainty_m) || direction_uncertainty_m < 0.0 ||
+        !std::isfinite(sigma_multiplier) || sigma_multiplier <= 0.0) {
+        throw std::invalid_argument(
+            "Prediction uncertainty values must be finite and non-negative, with a positive multiplier");
+    }
+    const double inflation = sigma_multiplier * position_sigma_m + direction_uncertainty_m;
+    if (!std::isfinite(inflation)) {
+        throw std::overflow_error("Prediction uncertainty inflation overflowed");
+    }
+    return inflation;
+}
+
+double yawIndependentRotationInflation(double length_m, double width_m) {
+    if (!std::isfinite(length_m) || length_m <= 0.0 ||
+        !std::isfinite(width_m) || width_m <= 0.0) {
+        throw std::invalid_argument("Object dimensions must be finite and positive");
+    }
+    const double half_length = length_m * 0.5;
+    const double half_width = width_m * 0.5;
+    return std::hypot(half_length, half_width) - std::min(half_length, half_width);
+}
+
 std::vector<Point2d> orientedBox(const ObjectPrediction& object, double inflation_m) {
     const double half_length = std::max(0.0, object.length * 0.5 + inflation_m);
     const double half_width = std::max(0.0, object.width * 0.5 + inflation_m);

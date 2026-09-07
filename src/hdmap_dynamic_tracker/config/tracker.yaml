@@ -12,14 +12,23 @@ hdmap_dynamic_tracker:
       free_space_assumption_verified: false
       allow_free_when_object_list_full: false
       unknown_probability: -1.0
+      # Safety envelope: apply the full configured sigma range. Do not hard-cap
+      # it here; doing so can turn likely occupied future cells into unknown.
       uncertainty_sigma_multiplier: 2.0
-      maximum_uncertainty_inflation_m: 5.0
     prediction:
       process_acceleration_sigma_mps2: 2.0
       position_measurement_sigma_m: 0.5
       initial_velocity_sigma_mps: 5.0
       track_retention_s: 0.5
+      minimum_frame_dt_s: 0.0001
       maximum_position_innovation_m: 15.0
+      # Do not trust a direction inferred from one noisy position delta. At 20 Hz,
+      # four mutually consistent deltas must span at least 0.15 s, move farther
+      # than the configured noise floor, and agree with the API scalar speed.
+      minimum_velocity_observations: 4
+      minimum_velocity_observation_span_s: 0.15
+      minimum_velocity_displacement_m: 1.0
+      maximum_velocity_innovation_mps: 3.0
     signals:
       restrict_unobserved: true
       # Development-only values. config/runtime.yaml intentionally has null until

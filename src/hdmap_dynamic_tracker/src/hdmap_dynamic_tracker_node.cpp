@@ -36,6 +36,7 @@ namespace {
 constexpr std::size_t kOccupancyBinCount = 13;
 constexpr double kPredictionIntervalS = 0.5;
 constexpr std::size_t kSnapshotHistory = 4;
+constexpr double kUnlimitedZ = std::numeric_limits<double>::max();
 
 template<typename Message>
 std::int64_t stampKey(const Message& message) {
@@ -107,8 +108,6 @@ public:
             declare_parameter<bool>("occupancy.allow_free_when_object_list_full", false);
         uncertainty_sigma_multiplier_ =
             declare_parameter<double>("occupancy.uncertainty_sigma_multiplier", 2.0);
-        maximum_uncertainty_inflation_m_ =
-            declare_parameter<double>("occupancy.maximum_uncertainty_inflation_m", 5.0);
         restrict_unobserved_signals_ =
             declare_parameter<bool>("signals.restrict_unobserved", true);
         signal_calibration_verified_ =
@@ -124,10 +123,28 @@ public:
             declare_parameter<double>("prediction.initial_velocity_sigma_mps", 5.0);
         predictor_config.track_retention_s =
             declare_parameter<double>("prediction.track_retention_s", 0.5);
+        predictor_config.minimum_frame_dt_s =
+            declare_parameter<double>("prediction.minimum_frame_dt_s", 1.0e-4);
         predictor_config.maximum_frame_dt_s =
             get_parameter("ego.maximum_dt_s").as_double();
         predictor_config.maximum_position_innovation_m =
             declare_parameter<double>("prediction.maximum_position_innovation_m", 15.0);
+        const auto minimum_velocity_observations = declare_parameter<std::int64_t>(
+            "prediction.minimum_velocity_observations", 4);
+        if (minimum_velocity_observations < 2 ||
+            static_cast<std::uint64_t>(minimum_velocity_observations) >
+                std::numeric_limits<std::size_t>::max()) {
+            throw std::invalid_argument(
+                "prediction.minimum_velocity_observations must be at least 2");
+        }
+        predictor_config.minimum_velocity_observations =
+            static_cast<std::size_t>(minimum_velocity_observations);
+        predictor_config.minimum_velocity_observation_span_s = declare_parameter<double>(
+            "prediction.minimum_velocity_observation_span_s", 0.15);
+        predictor_config.minimum_velocity_displacement_m = declare_parameter<double>(
+            "prediction.minimum_velocity_displacement_m", 1.0);
+        predictor_config.maximum_velocity_innovation_mps = declare_parameter<double>(
+            "prediction.maximum_velocity_innovation_mps", 3.0);
         predictor_ = makeEkfPredictor(predictor_config);
 
         ramp_template_.design_deceleration_mps2 =
@@ -201,8 +218,7 @@ private:
         }
         if (!std::isfinite(known_free_radius_m_) || known_free_radius_m_ < 0.0 ||
             known_free_radius_m_ > 80.0 ||
-            !std::isfinite(uncertainty_sigma_multiplier_) || uncertainty_sigma_multiplier_ < 0.0 ||
-            !std::isfinite(maximum_uncertainty_inflation_m_) || maximum_uncertainty_inflation_m_ < 0.0 ||
+            !std::isfinite(uncertainty_sigma_multiplier_) || uncertainty_sigma_multiplier_ <= 0.0 ||
             !std::isfinite(rear_axle_to_front_m_) || rear_axle_to_front_m_ < 0.0) {
             throw std::invalid_argument("Invalid occupancy or vehicle parameter");
         }
@@ -613,11 +629,12 @@ private:
             if (observed_ids.count(object.id) != 0U) {
                 continue;
             }
-            const double inflation = std::min(maximum_uncertainty_inflation_m_,
-                uncertainty_sigma_multiplier_ * object.position_sigma_m) +
-                object.direction_uncertainty_m;
+            const double inflation = predictionUncertaintyInflation(
+                object.position_sigma_m, object.direction_uncertainty_m,
+                uncertainty_sigma_multiplier_) +
+                yawIndependentRotationInflation(object.length, object.width);
             markFootprint(occupancy, 0, orientedBox(object, inflation),
-                object.min_z, object.min_z + object.height);
+                -kUnlimitedZ, kUnlimitedZ);
         }
         for (std::size_t bin = 1; bin < kOccupancyBinCount; ++bin) {
             const double start_time = static_cast<double>(bin - 1) * kPredictionIntervalS;
@@ -655,16 +672,19 @@ private:
                     continue;
                 }
                 const auto& end_prediction = iterator->second;
-                const double inflation = std::min(maximum_uncertainty_inflation_m_,
-                    uncertainty_sigma_multiplier_ * std::max(
-                        start_prediction.position_sigma_m, end_prediction.position_sigma_m)) +
+                const double maximum_length =
+                    std::max(start_prediction.length, end_prediction.length);
+                const double maximum_width =
+                    std::max(start_prediction.width, end_prediction.width);
+                const double inflation = predictionUncertaintyInflation(
+                    std::max(start_prediction.position_sigma_m, end_prediction.position_sigma_m),
                     std::max(start_prediction.direction_uncertainty_m,
-                        end_prediction.direction_uncertainty_m);
+                        end_prediction.direction_uncertainty_m),
+                    uncertainty_sigma_multiplier_) +
+                    yawIndependentRotationInflation(maximum_length, maximum_width);
                 markFootprint(occupancy, bin,
                     sweptFootprint(start_prediction, end_prediction, inflation),
-                    std::min(start_prediction.min_z, end_prediction.min_z),
-                    std::max(start_prediction.min_z + start_prediction.height,
-                        end_prediction.min_z + end_prediction.height));
+                    -kUnlimitedZ, kUnlimitedZ);
             }
         }
     }
@@ -767,7 +787,6 @@ private:
     bool free_space_assumption_verified_ = false;
     bool allow_free_when_object_list_full_ = false;
     double uncertainty_sigma_multiplier_ = 2.0;
-    double maximum_uncertainty_inflation_m_ = 5.0;
     bool restrict_unobserved_signals_ = true;
     bool signal_calibration_verified_ = false;
     double rear_axle_to_front_m_ = 3.808;
