@@ -16,12 +16,27 @@ hdmap_dynamic_tracker:
       # it here; doing so can turn likely occupied future cells into unknown.
       uncertainty_sigma_multiplier: 2.0
     prediction:
+      # Six-state CTRA EKF: x/y, speed, course, turn rate, acceleration.
+      # Body heading remains separate because it is not guaranteed to be the
+      # velocity direction in the supplied Objects interface.
       process_acceleration_sigma_mps2: 2.0
+      process_jerk_sigma_mps3: 2.0
+      process_turn_acceleration_sigma_radps2: 0.6
       position_measurement_sigma_m: 0.5
+      speed_measurement_sigma_mps: 1.0
+      course_measurement_sigma_rad: 0.20
       initial_velocity_sigma_mps: 5.0
+      initial_acceleration_sigma_mps2: 2.0
+      initial_turn_rate_sigma_radps: 0.5
       track_retention_s: 0.5
       minimum_frame_dt_s: 0.0001
+      # Nonlinear propagation and each 0.5 s occupancy interval are subdivided.
+      # Five sweep substeps sample the actual EKF curve every 0.1 s.
+      maximum_prediction_step_s: 0.05
+      sweep_substeps_per_bin: 5
       maximum_position_innovation_m: 15.0
+      maximum_abs_acceleration_mps2: 8.0
+      maximum_abs_turn_rate_radps: 1.5
       # Do not trust a direction inferred from one noisy position delta. At 20 Hz,
       # four mutually consistent deltas must span at least 0.15 s, move farther
       # than the configured noise floor, and agree with the API scalar speed.

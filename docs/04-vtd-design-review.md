@@ -126,7 +126,7 @@ KeepLast(1)은 DDS 대기 sample 한 개이지 계산 중 작업 취소/결과 �
 
 점유 bin 0은 현재, bin k=1..12는 `((k-1)*0.5, k*0.5]`다. 경계 순간은 중복 저장하지 않는다. 구간 내부를 잠깐이라도 점유하면 해당 bin을 점유 처리한다. endpoint 두 장만 보는 방식은 불충분하며 swept volume 또는 보수적 연속시간 bound가 필요하다. 미래 1.0은 선택한 예측/불확실성 envelope의 점유이지 현실 확률 100% 보증이 아니다. unknown은 free=0과 구별한다.
 
-EKF는 별도 파일/인터페이스로 분리한다. CV는 Constant Velocity이며 카메라가 아니다. Hybrid A*는 각 primitive의 속도 제한과 동역학으로 도달 시간을 적분해 위 bin과 충돌 검사한다. 표준 Path는 실행 도착 시간을 담지 않으므로 실제 추종 오차에 대한 시간 여유와 재계획이 필요하다. Annotator와 별도 시간 profile 공유를 요구하지 않는다.
+EKF는 별도 파일/인터페이스로 분리한다. 현재 예측기는 CTRA EKF이며 위치·속력·진행방향·회전율·가속도를 추정하고, body heading은 진행방향과 분리한다. 0.5초 bin 내부도 실제 비선형 예측을 여러 번 평가한다. Hybrid A*는 각 primitive의 속도 제한과 동역학으로 도달 시간을 적분해 위 bin과 충돌 검사한다. 표준 Path는 실행 도착 시간을 담지 않으므로 실제 추종 오차에 대한 시간 여유와 재계획이 필요하다. Annotator와 별도 시간 profile 공유를 요구하지 않는다.
 
 선형 `v(d)=v_entry*d/D`의 초입 감속은 `v_entry²/D`다. 따라서 `D=v_entry²/(2*a)`로 놓으면 요구 감속이 2a다. 사용자가 원하는 선형장에 factor를 적용하되 물리적으로 가능한 base distance를 먼저 산정해야 한다. README는 `max(실측 제동거리, v_entry²/a_design)`를 base로 제안한다. factor=1이 가장 적극적이며 임의로 원래 제동거리와 동일하다고 속이지 않는다. 저속 점근·1m 이산화·전방 끝 기준·지연·정지 유지까지 실측 검증 전 motion enable을 막는다.
 

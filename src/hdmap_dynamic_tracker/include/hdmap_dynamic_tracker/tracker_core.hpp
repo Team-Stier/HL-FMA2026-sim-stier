@@ -68,11 +68,17 @@ double predictionUncertaintyInflation(
     double position_sigma_m,
     double direction_uncertainty_m,
     double sigma_multiplier);
+double trajectorySweepDiscretizationInflation(
+    const std::vector<ObjectPrediction>& samples,
+    double maximum_sample_interval_s);
 double yawIndependentRotationInflation(double length_m, double width_m);
 std::vector<Point2d> orientedBox(const ObjectPrediction& object, double inflation_m = 0.0);
 std::vector<Point2d> sweptFootprint(
     const ObjectPrediction& start,
     const ObjectPrediction& end,
+    double inflation_m = 0.0);
+std::vector<Point2d> sweptFootprint(
+    const std::vector<ObjectPrediction>& samples,
     double inflation_m = 0.0);
 
 }  // namespace hdmap_dynamic_tracker

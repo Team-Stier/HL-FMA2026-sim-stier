@@ -131,18 +131,36 @@ public:
         PredictorConfig predictor_config;
         predictor_config.process_acceleration_sigma_mps2 =
             declare_parameter<double>("prediction.process_acceleration_sigma_mps2", 2.0);
+        predictor_config.process_jerk_sigma_mps3 =
+            declare_parameter<double>("prediction.process_jerk_sigma_mps3", 2.0);
+        predictor_config.process_turn_acceleration_sigma_radps2 = declare_parameter<double>(
+            "prediction.process_turn_acceleration_sigma_radps2", 0.6);
         predictor_config.position_measurement_sigma_m =
             declare_parameter<double>("prediction.position_measurement_sigma_m", 0.5);
+        predictor_config.speed_measurement_sigma_mps =
+            declare_parameter<double>("prediction.speed_measurement_sigma_mps", 1.0);
+        predictor_config.course_measurement_sigma_rad =
+            declare_parameter<double>("prediction.course_measurement_sigma_rad", 0.20);
         predictor_config.initial_velocity_sigma_mps =
             declare_parameter<double>("prediction.initial_velocity_sigma_mps", 5.0);
+        predictor_config.initial_acceleration_sigma_mps2 = declare_parameter<double>(
+            "prediction.initial_acceleration_sigma_mps2", 2.0);
+        predictor_config.initial_turn_rate_sigma_radps = declare_parameter<double>(
+            "prediction.initial_turn_rate_sigma_radps", 0.5);
         predictor_config.track_retention_s =
             declare_parameter<double>("prediction.track_retention_s", 0.5);
         predictor_config.minimum_frame_dt_s =
             declare_parameter<double>("prediction.minimum_frame_dt_s", 1.0e-4);
         predictor_config.maximum_frame_dt_s =
             get_parameter("ego.maximum_dt_s").as_double();
+        predictor_config.maximum_prediction_step_s =
+            declare_parameter<double>("prediction.maximum_prediction_step_s", 0.05);
         predictor_config.maximum_position_innovation_m =
             declare_parameter<double>("prediction.maximum_position_innovation_m", 15.0);
+        predictor_config.maximum_abs_acceleration_mps2 = declare_parameter<double>(
+            "prediction.maximum_abs_acceleration_mps2", 8.0);
+        predictor_config.maximum_abs_turn_rate_radps = declare_parameter<double>(
+            "prediction.maximum_abs_turn_rate_radps", 1.5);
         const auto minimum_velocity_observations = declare_parameter<std::int64_t>(
             "prediction.minimum_velocity_observations", 4);
         if (minimum_velocity_observations < 2 ||
@@ -159,6 +177,13 @@ public:
             "prediction.minimum_velocity_displacement_m", 1.0);
         predictor_config.maximum_velocity_innovation_mps = declare_parameter<double>(
             "prediction.maximum_velocity_innovation_mps", 3.0);
+        const auto sweep_substeps_per_bin = declare_parameter<std::int64_t>(
+            "prediction.sweep_substeps_per_bin", 5);
+        if (sweep_substeps_per_bin < 1 || sweep_substeps_per_bin > 20) {
+            throw std::invalid_argument(
+                "prediction.sweep_substeps_per_bin must be between 1 and 20");
+        }
+        sweep_substeps_per_bin_ = static_cast<std::size_t>(sweep_substeps_per_bin);
         predictor_ = makeEkfPredictor(predictor_config);
 
         ramp_template_.design_deceleration_mps2 =
@@ -685,7 +710,23 @@ private:
                 exact.min_z, exact.min_z + exact.height);
         }
 
-        const auto current = predictor_->predict(stamp_s, 0.0);
+        const std::size_t future_sample_count =
+            (kOccupancyBinCount - 1U) * sweep_substeps_per_bin_ + 1U;
+        const double future_sample_interval_s =
+            kPredictionIntervalS / static_cast<double>(sweep_substeps_per_bin_);
+        std::vector<double> future_times_s;
+        future_times_s.reserve(future_sample_count);
+        for (std::size_t index = 0; index < future_sample_count; ++index) {
+            future_times_s.push_back(
+                static_cast<double>(index) * future_sample_interval_s);
+        }
+        const auto prediction_sequence =
+            predictor_->predictSequence(stamp_s, future_times_s);
+        if (prediction_sequence.size() != future_sample_count) {
+            throw std::runtime_error("EKF failed to produce the requested prediction sequence");
+        }
+
+        const auto& current = prediction_sequence.front();
         for (const auto& object : current) {
             if (observed_ids.count(object.id) != 0U) {
                 continue;
@@ -697,54 +738,61 @@ private:
             markFootprint(occupancy, 0, orientedBox(object, inflation),
                 -kUnlimitedZ, kUnlimitedZ);
         }
+        std::unordered_map<std::uint32_t, const ObjectObservation*> observed_by_id;
+        observed_by_id.reserve(observations.size());
+        for (const auto& observation : observations) {
+            observed_by_id.emplace(observation.id, &observation);
+        }
         for (std::size_t bin = 1; bin < kOccupancyBinCount; ++bin) {
-            const double start_time = static_cast<double>(bin - 1) * kPredictionIntervalS;
-            const double end_time = static_cast<double>(bin) * kPredictionIntervalS;
-            auto start = predictor_->predict(stamp_s, start_time);
-            const auto end = predictor_->predict(stamp_s, end_time);
-            if (bin == 1) {
-                std::unordered_map<std::uint32_t, const ObjectObservation*> observed_by_id;
-                observed_by_id.reserve(observations.size());
-                for (const auto& observation : observations) {
-                    observed_by_id.emplace(observation.id, &observation);
-                }
-                for (auto& prediction : start) {
-                    const auto observation = observed_by_id.find(prediction.id);
-                    if (observation == observed_by_id.end()) {
-                        continue;
+            std::unordered_map<std::uint32_t, std::vector<ObjectPrediction>> samples_by_id;
+            samples_by_id.reserve(current.size());
+            for (std::size_t step = 0; step <= sweep_substeps_per_bin_; ++step) {
+                const std::size_t sample_index =
+                    (bin - 1U) * sweep_substeps_per_bin_ + step;
+                for (auto prediction : prediction_sequence.at(sample_index)) {
+                    if (bin == 1 && step == 0U) {
+                        const auto observation = observed_by_id.find(prediction.id);
+                        if (observation != observed_by_id.end()) {
+                            prediction.x = observation->second->x;
+                            prediction.y = observation->second->y;
+                            prediction.min_z = observation->second->min_z;
+                            prediction.heading = observation->second->heading;
+                            prediction.length = observation->second->length;
+                            prediction.width = observation->second->width;
+                            prediction.height = observation->second->height;
+                        }
                     }
-                    prediction.x = observation->second->x;
-                    prediction.y = observation->second->y;
-                    prediction.min_z = observation->second->min_z;
-                    prediction.heading = observation->second->heading;
-                    prediction.length = observation->second->length;
-                    prediction.width = observation->second->width;
-                    prediction.height = observation->second->height;
+                    samples_by_id[prediction.id].push_back(prediction);
                 }
             }
-            std::unordered_map<std::uint32_t, ObjectPrediction> end_by_id;
-            end_by_id.reserve(end.size());
-            for (const auto& prediction : end) {
-                end_by_id.emplace(prediction.id, prediction);
-            }
-            for (const auto& start_prediction : start) {
-                const auto iterator = end_by_id.find(start_prediction.id);
-                if (iterator == end_by_id.end()) {
+            for (auto& entry : samples_by_id) {
+                auto& samples = entry.second;
+                if (samples.empty()) {
                     continue;
                 }
-                const auto& end_prediction = iterator->second;
-                const double maximum_length =
-                    std::max(start_prediction.length, end_prediction.length);
-                const double maximum_width =
-                    std::max(start_prediction.width, end_prediction.width);
+                double maximum_length = 0.0;
+                double maximum_width = 0.0;
+                double maximum_position_sigma_m = 0.0;
+                double maximum_direction_uncertainty_m = 0.0;
+                for (const auto& sample : samples) {
+                    maximum_length = std::max(maximum_length, sample.length);
+                    maximum_width = std::max(maximum_width, sample.width);
+                    maximum_position_sigma_m =
+                        std::max(maximum_position_sigma_m, sample.position_sigma_m);
+                    maximum_direction_uncertainty_m = std::max(
+                        maximum_direction_uncertainty_m,
+                        sample.direction_uncertainty_m);
+                }
                 const double inflation = predictionUncertaintyInflation(
-                    std::max(start_prediction.position_sigma_m, end_prediction.position_sigma_m),
-                    std::max(start_prediction.direction_uncertainty_m,
-                        end_prediction.direction_uncertainty_m),
+                    maximum_position_sigma_m,
+                    maximum_direction_uncertainty_m,
                     uncertainty_sigma_multiplier_) +
+                    trajectorySweepDiscretizationInflation(
+                        samples,
+                        future_sample_interval_s) +
                     yawIndependentRotationInflation(maximum_length, maximum_width);
                 markFootprint(occupancy, bin,
-                    sweptFootprint(start_prediction, end_prediction, inflation),
+                    sweptFootprint(samples, inflation),
                     -kUnlimitedZ, kUnlimitedZ);
             }
         }
@@ -848,6 +896,7 @@ private:
     bool free_space_assumption_verified_ = false;
     bool allow_free_when_object_list_full_ = false;
     double uncertainty_sigma_multiplier_ = 2.0;
+    std::size_t sweep_substeps_per_bin_ = 5U;
     bool restrict_unobserved_signals_ = true;
     bool signal_calibration_verified_ = false;
     double maximum_approach_speed_mps_ = 8.2;

@@ -258,9 +258,10 @@ flowchart TD
 - `/ego_status`는 Header와 x/y/z/heading/pitch/roll/speed만 담는다. 위치는 map 기준 후륜축 위치다.
 - 속도는 연속 pose의 XY 이동 거리를 Header 시각 차이로 나눈 값이다. 첫 입력·0 이하 시간 차이·설정한 300km/h 초과 점프는 0으로 처리한다. 별도 상태 플래그는 추가하지 않는다.
 - 현재 객체와 교차한 cell은 점유 1.0. 미래는 0.5초 구간 중 잠깐이라도 교차하면 점유 처리한다.
-- 예측기는 `motion_predictor.hpp / ekf_predictor.cpp`로 분리했다. 현재 구현은 Cartesian constant-velocity Kalman filter이며 선형 운동에서 EKF의 특수형이다. CV는 등속도 모델이며 카메라가 아니다.
+- 예측기는 `motion_predictor.hpp / ekf_predictor.cpp`로 분리했다. 현재 구현은 위치·속력·진행방향·회전율·가속도를 추정하는 6상태 CTRA EKF다. 객체 body `heading`과 속도 진행방향은 별도 상태로 취급한다.
 - 객체 API가 80m 내 최근접 최대 30개뿐이므로 미관측 Cell은 기본 unknown=-1이다. 현재 OBB와
-  0.5초 구간별 swept footprint가 교차한 Cell만 1로 갱신한다. 미래 footprint는 EKF의 설정된
+  0.5초 구간별 swept footprint가 교차한 Cell만 1로 갱신한다. 각 구간은 기본 0.1초 간격의
+  실제 비선형 EKF 예측 OBB를 합치고 표본 사이 곡률의 chord 오차 bound도 팽창에 더한다. 미래 footprint는 EKF의 설정된
   sigma 범위를 자르지 않는다. 위치 기반 속도 방향은 여러 관측의 시간·벡터·API 속력 일관성을
   통과한 뒤에만 사용하고, 그 전이나 방향 급변 직후에는 임의 방향 도달 반경을 적용한다.
   이 반경은 API·위치차 속력 중 큰 값과 필터 속력의 합을 사용한다. yaw 형상 회전을 포함하는

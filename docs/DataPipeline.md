@@ -134,9 +134,9 @@ flowchart TD
     BOX --> CURRENT(("Tracker CellTree<br/>AABB 후보·높이 범위·polygon 교차"))
     MAP[("Tracker 자신의 Cell map·R-tree")] --> CURRENT
     CURRENT --> NOW["현재 bin 0<br/>교차 Cell 점유 1"]
-    OBJECTS --> PREDICT(("motion_predictor / EKF<br/>ID별 위치 이력·운동 모델·오차 모델"))
+    OBJECTS --> PREDICT(("motion_predictor / CTRA EKF<br/>ID별 x/y·속력·진행방향·회전율·가속도·오차 모델"))
     HISTORY["과거 객체 관측·Header 시간 차"] --> PREDICT
-    PREDICT --> SWEEP(("Tracker<br/>0.5초 구간별 swept footprint<br/>무절단 kσ·속도벡터 잔차·yaw 외접 여유"))
+    PREDICT --> SWEEP(("Tracker<br/>0.5초 구간 안의 실제 곡선 다중 표본 swept footprint<br/>chord 오차 bound·무절단 kσ·속도벡터 잔차·yaw 외접 여유"))
     SWEEP --> FUTURE(("Tracker CellTree<br/>각 시간 구간과 Cell 교차"))
     MAP --> FUTURE
     FUTURE --> BINS["미래 bin 1..12"]
@@ -155,9 +155,9 @@ sigma 배수를 hard cap 없이 적용하고, 최근 위치차에서 얻은 속�
 통과한 뒤에만 확정한다. 확정 전이나 관측된 방향 급변 직후에는 API·위치차 속력 중 큰 값과 필터
 속력의 합으로 계산한 임의 방향 도달 반경을 쓴다. 수용된 위치 innovation 뒤에 평활화 중심이 raw
 관측보다 뒤처지지 않도록 매 관측 시 예측 중심을 raw XY에 다시 고정한다. 미래 yaw와 높이 경로를
-예측하지 않는 동안에는 임의 yaw 형상 회전을 포함하는 외접 여유와 2D Cell 교차를 사용해 그 두
-요소로 인한 누락을 피한다. 아직 관측되지 않은 미래
-중심 궤적의 선회는 CV 공분산·잔차 범위 밖일 수 있으므로 결정론적으로 보장하지 않는다. 이는 선택한
+각각 body yaw rate와 2D Cell 교차로 처리하고, 임의 yaw 형상 회전을 포함하는 외접 여유도 유지한다.
+CTRA가 관측된 선회·가속을 추정하지만 아직 관측되지 않은 새로운 돌발 기동은 공분산·잔차 범위 밖일 수
+있으므로 결정론적으로 보장하지 않는다. 이는 선택한
 운동·오차 envelope의 binary risk mask이지 현실 점유확률 100% 보증은 아니다. envelope 밖 `-1`은
 free가 아니다. Visualizer는 예측을 다시 계산하지 않는다. 점유값은 Tracker 출력이고 표시 기하는
 Visualizer 맵에서 복원한다. 객체별 예측 footprint는 주행 토픽에 없으므로 별도 예측 궤적 마커를

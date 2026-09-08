@@ -31,16 +31,30 @@ struct ObjectPrediction {
     double position_sigma_m = 0.0;
     double direction_uncertainty_m = 0.0;
     double age_since_observation_s = 0.0;
+    double speed_mps = 0.0;
+    double course_rad = 0.0;
+    double turn_rate_radps = 0.0;
+    double acceleration_mps2 = 0.0;
+    bool motion_state_converged = false;
 };
 
 struct PredictorConfig {
     double process_acceleration_sigma_mps2 = 2.0;
+    double process_jerk_sigma_mps3 = 2.0;
+    double process_turn_acceleration_sigma_radps2 = 0.6;
     double position_measurement_sigma_m = 0.5;
+    double speed_measurement_sigma_mps = 1.0;
+    double course_measurement_sigma_rad = 0.20;
     double initial_velocity_sigma_mps = 5.0;
+    double initial_acceleration_sigma_mps2 = 2.0;
+    double initial_turn_rate_sigma_radps = 0.5;
     double track_retention_s = 0.5;
     double minimum_frame_dt_s = 1.0e-4;
     double maximum_frame_dt_s = 0.25;
+    double maximum_prediction_step_s = 0.05;
     double maximum_position_innovation_m = 15.0;
+    double maximum_abs_acceleration_mps2 = 8.0;
+    double maximum_abs_turn_rate_radps = 1.5;
     std::size_t minimum_velocity_observations = 4;
     double minimum_velocity_observation_span_s = 0.15;
     double minimum_velocity_displacement_m = 1.0;
@@ -54,6 +68,9 @@ public:
     virtual void reset() = 0;
     virtual void updateFrame(double stamp_s, const std::vector<ObjectObservation>& observations) = 0;
     virtual std::vector<ObjectPrediction> predict(double stamp_s, double future_s) const = 0;
+    virtual std::vector<std::vector<ObjectPrediction>> predictSequence(
+        double stamp_s,
+        const std::vector<double>& future_times_s) const = 0;
 };
 
 std::unique_ptr<MotionPredictor> makeEkfPredictor(const PredictorConfig& config);

@@ -196,6 +196,29 @@ void testGeometry() {
             assert(containsPoint(yaw_independent_envelope, corner));
         }
     }
+
+    ObjectPrediction curve_start;
+    curve_start.x = 0.0;
+    curve_start.y = 0.0;
+    curve_start.length = 0.2;
+    curve_start.width = 0.2;
+    ObjectPrediction curve_middle = curve_start;
+    curve_middle.x = 1.0;
+    curve_middle.y = 2.0;
+    ObjectPrediction curve_end = curve_start;
+    curve_end.x = 2.0;
+    const auto endpoint_only = sweptFootprint(curve_start, curve_end);
+    const auto sampled_curve = sweptFootprint(
+        std::vector<ObjectPrediction>{curve_start, curve_middle, curve_end});
+    assert(!containsPoint(endpoint_only, {1.0, 2.0}));
+    assert(containsPoint(sampled_curve, {1.0, 2.0}));
+
+    curve_middle.speed_mps = 8.0;
+    curve_middle.turn_rate_radps = 0.25;
+    curve_middle.acceleration_mps2 = 1.5;
+    const double planar_acceleration = std::hypot(1.5, 2.0);
+    expectNear(trajectorySweepDiscretizationInflation({curve_middle}, 0.1),
+        1.01 * planar_acceleration * 0.01 / 8.0);
 }
 
 void testPredictor() {
@@ -225,6 +248,14 @@ void testPredictor() {
     assert(prediction.front().x > 0.0 && prediction.front().x < 1.01);
     expectNear(prediction.front().direction_uncertainty_m, 0.0);
     assert(predictor->predict(10.1, 0.5).front().direction_uncertainty_m >= 5.0);
+    const auto sequence = predictor->predictSequence(10.1, {0.0, 0.5, 1.0});
+    assert(sequence.size() == 3U);
+    assert(sequence.at(0).size() == 1U);
+    assert(sequence.at(1).size() == 1U);
+    assert(sequence.at(2).size() == 1U);
+    expectNear(sequence.at(1).front().x, predictor->predict(10.1, 0.5).front().x);
+    expectNear(sequence.at(2).front().x, predictor->predict(10.1, 1.0).front().x);
+    assert(predictor->predictSequence(10.1, {1.0, 0.5}).empty());
 
     predictor->updateFrame(10.2, {});
     assert(predictor->predict(10.2, 0.0).size() == 1);
@@ -329,6 +360,27 @@ void testPredictorRejectsUnsafeNumerics() {
     rejected = false;
     try {
         static_cast<void>(makeEkfPredictor(unsafe_velocity_variance));
+    } catch (const std::invalid_argument&) {
+        rejected = true;
+    }
+    assert(rejected);
+
+    PredictorConfig invalid_prediction_step;
+    invalid_prediction_step.maximum_prediction_step_s = 0.0;
+    rejected = false;
+    try {
+        static_cast<void>(makeEkfPredictor(invalid_prediction_step));
+    } catch (const std::invalid_argument&) {
+        rejected = true;
+    }
+    assert(rejected);
+
+    PredictorConfig invalid_turn_rate;
+    invalid_turn_rate.maximum_abs_turn_rate_radps =
+        std::numeric_limits<double>::infinity();
+    rejected = false;
+    try {
+        static_cast<void>(makeEkfPredictor(invalid_turn_rate));
     } catch (const std::invalid_argument&) {
         rejected = true;
     }
@@ -506,6 +558,134 @@ void testFutureEnvelopeContainsObservedDirectionChange() {
     assert(unresolved.direction_uncertainty_m >= 60.0 - 1.0e-6);
 }
 
+void testCtraEkfLearnsTurningMotion() {
+    PredictorConfig config;
+    auto predictor = makeEkfPredictor(config);
+    ObjectObservation observation;
+    observation.id = 123;
+    observation.heading = 0.0;  // Body yaw is intentionally not the velocity course.
+    observation.speed = 8.0;
+    observation.length = 4.0;
+    observation.width = 2.0;
+    observation.height = 1.5;
+    constexpr double turn_rate = 0.25;
+    constexpr double radius = 8.0 / turn_rate;
+    constexpr double dt = 0.05;
+    for (int index = 0; index <= 100; ++index) {
+        const double elapsed = static_cast<double>(index) * dt;
+        observation.x = radius * std::sin(turn_rate * elapsed);
+        observation.y = radius * (1.0 - std::cos(turn_rate * elapsed));
+        predictor->updateFrame(100.0 + elapsed, {observation});
+    }
+    const auto now = predictor->predict(105.0, 0.0).at(0);
+    const auto future = predictor->predict(105.0, 1.0).at(0);
+    const double truth_x = radius * std::sin(turn_rate * 6.0);
+    const double truth_y = radius * (1.0 - std::cos(turn_rate * 6.0));
+    const double cv_x = observation.x + observation.speed * std::cos(turn_rate * 5.0);
+    const double cv_y = observation.y + observation.speed * std::sin(turn_rate * 5.0);
+    const double ctra_error = std::hypot(future.x - truth_x, future.y - truth_y);
+    const double cv_error = std::hypot(cv_x - truth_x, cv_y - truth_y);
+    assert(now.motion_state_converged);
+    assert(std::abs(now.turn_rate_radps - turn_rate) < 0.05);
+    assert(now.course_rad > 1.0);
+    expectNear(future.heading, 0.0, 1.0e-6);
+    assert(ctra_error < 0.5);
+    assert(ctra_error < cv_error);
+
+    // Verify the exact occupancy construction used by the node: six nonlinear
+    // samples per 0.5 s bin, covariance/direction envelope, chord-error bound,
+    // and yaw-independent box inflation.
+    for (std::size_t bin = 1; bin <= 12; ++bin) {
+        const double start_s = static_cast<double>(bin - 1U) * 0.5;
+        std::vector<ObjectPrediction> samples;
+        for (std::size_t step = 0; step <= 5; ++step) {
+            samples.push_back(predictor->predict(
+                105.0, start_s + 0.1 * static_cast<double>(step)).at(0));
+        }
+        double maximum_sigma_m = 0.0;
+        double maximum_direction_uncertainty_m = 0.0;
+        for (const auto& sample : samples) {
+            maximum_sigma_m = std::max(maximum_sigma_m, sample.position_sigma_m);
+            maximum_direction_uncertainty_m = std::max(
+                maximum_direction_uncertainty_m,
+                sample.direction_uncertainty_m);
+        }
+        const double inflation = predictionUncertaintyInflation(
+            maximum_sigma_m, maximum_direction_uncertainty_m, 2.0) +
+            trajectorySweepDiscretizationInflation(samples, 0.1) +
+            yawIndependentRotationInflation(observation.length, observation.width);
+        const auto envelope = sweptFootprint(samples, inflation);
+        for (std::size_t step = 0; step <= 50; ++step) {
+            const double future_s = start_s + 0.01 * static_cast<double>(step);
+            const double elapsed = 5.0 + future_s;
+            ObjectPrediction truth;
+            truth.x = radius * std::sin(turn_rate * elapsed);
+            truth.y = radius * (1.0 - std::cos(turn_rate * elapsed));
+            truth.heading = 0.0;
+            truth.length = observation.length;
+            truth.width = observation.width;
+            for (const auto& corner : orientedBox(truth)) {
+                assert(containsPoint(envelope, corner));
+            }
+        }
+    }
+}
+
+void testCtraEkfLearnsAcceleration() {
+    PredictorConfig config;
+    auto predictor = makeEkfPredictor(config);
+    ObjectObservation observation;
+    observation.id = 124;
+    observation.heading = 0.0;
+    observation.length = 4.0;
+    observation.width = 2.0;
+    observation.height = 1.5;
+    constexpr double initial_speed = 1.0;
+    constexpr double acceleration = 1.5;
+    constexpr double dt = 0.05;
+    for (int index = 0; index <= 100; ++index) {
+        const double elapsed = static_cast<double>(index) * dt;
+        observation.x = initial_speed * elapsed + 0.5 * acceleration * elapsed * elapsed;
+        observation.speed = initial_speed + acceleration * elapsed;
+        predictor->updateFrame(200.0 + elapsed, {observation});
+    }
+    const auto now = predictor->predict(205.0, 0.0).at(0);
+    const auto future = predictor->predict(205.0, 1.0).at(0);
+    const double truth_x = initial_speed * 6.0 + 0.5 * acceleration * 36.0;
+    const double constant_velocity_x = observation.x + observation.speed;
+    assert(now.motion_state_converged);
+    assert(std::abs(now.acceleration_mps2 - acceleration) < 0.2);
+    assert(std::abs(future.x - truth_x) < 0.2);
+    assert(std::abs(future.x - truth_x) < std::abs(constant_velocity_x - truth_x));
+}
+
+void testCtraEkfDoesNotReverseAfterStopping() {
+    auto predictor = makeEkfPredictor(PredictorConfig{});
+    ObjectObservation observation;
+    observation.id = 125;
+    observation.heading = 0.0;
+    observation.length = 4.0;
+    observation.width = 2.0;
+    observation.height = 1.5;
+    constexpr double initial_speed = 10.0;
+    constexpr double deceleration = 2.0;
+    constexpr double dt = 0.05;
+    for (int index = 0; index <= 80; ++index) {
+        const double elapsed = static_cast<double>(index) * dt;
+        observation.x = initial_speed * elapsed -
+            0.5 * deceleration * elapsed * elapsed;
+        observation.speed = initial_speed - deceleration * elapsed;
+        predictor->updateFrame(300.0 + elapsed, {observation});
+    }
+    const auto now = predictor->predict(304.0, 0.0).at(0);
+    const auto future = predictor->predict(304.0, 6.0).at(0);
+    assert(now.motion_state_converged);
+    assert(now.acceleration_mps2 < -1.5);
+    assert(future.speed_mps < 1.0e-6);
+    assert(future.x >= now.x - 1.0e-6);
+    assert(future.x < now.x + 2.0);
+}
+
 }  // namespace
 
 int main() {
@@ -518,6 +698,9 @@ int main() {
     testFutureEnvelopeContainsColdStartTrajectory();
     testAcceptedPositionInnovationStaysAnchored();
     testFutureEnvelopeContainsObservedDirectionChange();
+    testCtraEkfLearnsTurningMotion();
+    testCtraEkfLearnsAcceleration();
+    testCtraEkfDoesNotReverseAfterStopping();
     std::cout << "tracker_core_test passed\n";
     return 0;
 }
