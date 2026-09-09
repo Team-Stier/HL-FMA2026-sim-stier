@@ -12,7 +12,7 @@ from pathlib import Path
 import numpy as np
 import yaml
 from scipy.integrate import cumulative_trapezoid
-from shapely.geometry import LineString, Point, Polygon
+from shapely.geometry import LineString, Point, Polygon, shape
 from shapely.validation import explain_validity
 from shapely.strtree import STRtree
 from crdesigner.map_conversion.opendrive.odr2cr.opendrive_parser.parser import parse_opendrive
@@ -51,6 +51,17 @@ class Builder:
         self.args = args
         self.config = yaml.safe_load(args.config.read_text())
         self.markings = json.loads(args.stopline_mesh.read_text())
+        school_mesh = json.loads(args.school_zone_mesh.read_text())
+        if school_mesh['source_osgb_sha256'] != digest(args.osgb):
+            raise ValueError('School pavement mesh does not match the source OSGB')
+        school_surface = shape(school_mesh['geometry'])
+        if school_surface.is_empty or not school_surface.is_valid:
+            raise ValueError('Invalid school pavement surface')
+        self.school_surfaces = list(school_surface.geoms) if school_surface.geom_type == 'MultiPolygon' else [school_surface]
+        self.school_tree = STRtree(self.school_surfaces)
+        if any(not math.isfinite(self.config[k]) or self.config[k] < 0
+               for k in ('unverified_speed_cap_mps', 'school_zone_speed_cap_mps')):
+            raise ValueError('Speed caps must be finite and nonnegative')
         self.root = ET.parse(args.xodr).getroot()
         self.roads = {int(road.get("id")): road for road in self.root.findall("road")}
         for override in self.config.get("object_lateral_overrides", []):
@@ -82,7 +93,7 @@ class Builder:
         self.cell_ranges = {}
         self.links = []
         self.width_clamps = {}
-        self.report = {"inputs": {str(path): digest(path) for path in (args.xodr, args.osgb, args.plugin, args.stopline_mesh)},
+        self.report = {"inputs": {str(path): digest(path) for path in (args.xodr, args.osgb, args.plugin, args.stopline_mesh, args.school_zone_mesh)},
             "parser": "commonroad-scenario-designer " + importlib.metadata.version("commonroad-scenario-designer"),
             "map_frame": "VTD inertial XYZ in metres; no translation, rotation or geodetic reprojection",
             "geometry_rejections": [], "topology_gaps": [], "stoplines": [], "speed_evidence": [],
@@ -279,9 +290,10 @@ class Builder:
                 record[side] = [root(point) for point in record[side]]
             attrs = {"type": "lanelet", "subtype": "road", "location": "urban", "one_way": "yes",
                 "participant:vehicle": "yes", "xodr_road_id": str(record["key"][0]),
+                "intersection": "yes" if self.roads[record["key"][0]].get("junction", "-1") != "-1" else "no",
                 "xodr_section_index": str(record["key"][1]), "xodr_lane_id": str(record["key"][2]),
                 "xodr_s_begin": str(record["begin"]), "xodr_s_end": str(record["end"]),
-                "speed_limit": str(self.config["unverified_speed_cap_mps"]) + " m/s", "speed_source": "conservative_config_not_verified_legal_limit"}
+                "speed_limit": str(self.config["unverified_speed_cap_mps"]) + " m/s", "speed_source": "user_config_operational_cap_not_legal_limit"}
             record["lanelet"] = ll.Lanelet(identifier, self.line(record["left"], record["left_attrs"]),
                 self.line(record["right"], record["right_attrs"]), ll.AttributeMap(attrs))
             self.map.add(record["lanelet"])
@@ -396,12 +408,6 @@ class Builder:
                         lanelet = self.records[identifier]["lanelet"]
                         lanelet.attributes["observed_speed_mark_kph"] = "50" if name == "RM_517_50.flt" else "30"
                         lanelet.attributes["speed_mark_object_id"] = obj.get("id")
-        for zone in self.config["school_zones"]:
-            for record in self.records.values():
-                if record["key"][0] in zone["road_ids"]:
-                    record["lanelet"].attributes["school_zone"] = "yes"
-                    record["lanelet"].attributes["speed_limit"] = str(self.config["school_zone_speed_cap_mps"]) + " m/s"
-                    record["lanelet"].attributes["speed_source"] = zone["evidence"]
 
     def asset_stoplines(self):
         markings = self.markings
@@ -648,6 +654,39 @@ class Builder:
                 self.cells[first].attributes["previous_cell_id"] = str(self.cell_ranges[upstream[0]][1])
         self.report["cell_count"] = cell_index
 
+    def speed_limits(self):
+        school_cells = 0
+        partial_cells = 0
+        for identifier, (first, last) in self.cell_ranges.items():
+            children = self.cells[first:last + 1]
+            school_count = 0
+            for cell in children:
+                polygon = Polygon([(point.x, point.y) for point in cell])
+                overlap = sum(polygon.intersection(self.school_surfaces[int(i)]).area
+                    for i in self.school_tree.query(polygon, predicate='intersects'))
+                # Ignore sub-0.1% overlaps from the OSGB float boundary precision.
+                school = overlap > max(1e-9, polygon.area * 0.001)
+                cap = self.config['school_zone_speed_cap_mps' if school else 'unverified_speed_cap_mps']
+                cell.attributes['school_zone'] = 'yes' if school else 'no'
+                cell.attributes['speed_limit'] = str(cap) + ' m/s'
+                cell.attributes['speed_source'] = 'osgb_red_pavement' if school else 'user_config_operational_cap_not_legal_limit'
+                school_count += school
+                partial_cells += school and overlap < polygon.area - 1e-6
+            lane = self.records[identifier]['lanelet']
+            lane.attributes['school_zone'] = 'yes' if school_count == len(children) else 'partial' if school_count else 'no'
+            lane.attributes['speed_limit'] = str(min(float(c.attributes['speed_limit'].split()[0]) for c in children)) + ' m/s'
+            lane.attributes['speed_source'] = 'minimum_child_cell_cap'
+            school_cells += school_count
+        self.report['cell_speed_policy'] = {
+            'school_source': str(self.args.school_zone_mesh),
+            'school_cell_rule': 'red_overlap_gt_max_1e-9_m2_and_0.001_cell_area',
+            'school_cells': school_cells, 'non_school_cells': len(self.cells) - school_cells,
+            'school_boundary_cells': partial_cells,
+            'school_speed_mps': self.config['school_zone_speed_cap_mps'],
+            'non_school_speed_mps': self.config['unverified_speed_cap_mps'],
+            'lanelet_speed_rule': 'minimum_child_cell_cap; cell speed_limit is authoritative',
+            'intersection_lanelets': sum(r['lanelet'].attributes['intersection'] == 'yes' for r in self.records.values())}
+
     def write(self):
         output = self.args.output
         output.mkdir(parents=True, exist_ok=True)
@@ -678,11 +717,12 @@ if __name__ == "__main__":
     parser.add_argument("--osgb", type=Path, required=True)
     parser.add_argument("--plugin", type=Path, required=True)
     parser.add_argument("--stopline-mesh", type=Path, required=True)
+    parser.add_argument("--school-zone-mesh", type=Path, default=Path("map/school_zone_mesh.json"))
     parser.add_argument("--config", type=Path, default=Path("config/map.yaml"))
     parser.add_argument("--output", type=Path, default=Path("map"))
     arguments = parser.parse_args()
     builder = Builder(arguments)
-    for phase in (builder.lanes, builder.connect, builder.objects, builder.asset_stoplines, builder.signals, builder.subdivide, builder.write):
+    for phase in (builder.lanes, builder.connect, builder.objects, builder.asset_stoplines, builder.signals, builder.subdivide, builder.speed_limits, builder.write):
         start = time.monotonic()
         phase()
         print(f"{phase.__name__}: {time.monotonic() - start:.2f}s", flush=True)

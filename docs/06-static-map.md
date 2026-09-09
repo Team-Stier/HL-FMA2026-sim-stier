@@ -9,7 +9,8 @@
 - `map/build_report.json`: 입력/바이너리 SHA-256, XODR 원본 도로·차선과 생성 Lanelet/Cell 대응, 보정 내역, 누락 목록.
 - `map/native_check.json`: 실제 C++ 로더·RoutingGraph·example checkpoint 검사 결과. 실행 환경에 따라 시간은 달라진다.
 - `map/stopline_mesh.json`: 원본 OSGB의 흰색 도색 삼각형에서 추출한 사각형 후보. **모든 후보를 정지선으로 채택한 것이 아니다.**
-- `config/map.yaml`: 오프라인 분할·표본 간격, 보수적 제한속도, 확인한 수동 보강 항목. 변경 후에는 지도를 다시 생성한다.
+- `map/school_zone_mesh.json`: 원본 OSGB의 붉은 도로 포장 영역과 원본 SHA-256. 셀별 어린이 보호구역 판정에 사용한다.
+- `config/map.yaml`: 오프라인 분할·표본 간격, 운용 제한속도, 확인한 수동 보강 항목. 변경 후에는 지도를 다시 생성한다.
 
 **개발용 정적 지도이며 대회 주행 승인본은 아니다.** `config/runtime.yaml`의 `allow_motion: false`를 유지했다. VTD 내부 운전자 차량의 전역 표본 주행과 후속 단독 재검증을 수행했다. 프로젝트 planner/controller 폐루프와 제동 보정 완료를 뜻하지 않는다. 전수 진단·보강 및 남은 입력 모순은 [HDMapAudit.md](HDMapAudit.md), 실측 범위는 [HDMapDrivingAudit.md](HDMapDrivingAudit.md)에 있다.
 
@@ -82,9 +83,11 @@ OSGB에 포함된 텍스처 106개를 추출하고 원본 장면을 정지 상�
 
 ![원본 OSGB 어린이 보호구역](../map/school_source.png)
 
-road `174, 190, 420, 465` 전체에 **보수적으로 확장한 범위**로 `school_zone=yes`, `speed_limit=8.0 m/s`를 기록했다. 실제 표시는 30km/h지만 운용 cap은 요청한 8m/s다. 이것이 법정 보호구역 시작·종료 좌표를 정확하게 복원했다는 뜻은 아니다.
+2026-09-09 요청에 따라 붉은 도로 포장을 어린이 보호구역으로 삼고 **일반 Cell은 `speed_limit=30.0 m/s`, 보호구역 Cell은 기존 `8.0 m/s`**로 기록한다. OSGB 근거리 LOD의 도로 재질 `StyleSrfBikeway.rgb`를 추출한 25개 영역을 사용한다. 지붕의 붉은색이나 횡단보도·글자 위의 흰색 픽셀로 판정하지 않는다. 이전의 4개 road 전체 지정은 이 셀별 범위로 대체했다.
 
-다른 도로도 미확인 법정 속도를 추측하지 않고 기본 운용 cap 8m/s를 쓴다. `speed_source=conservative_config_not_verified_legal_limit`로 구분한다. 30/50 노면 모델 142개는 발견 지점의 증거로 별도 기록하며, 그 숫자가 도로 전체에 적용된다고 자동 확대하지 않는다. 보호구역 cap과 미확인 기본 cap은 각각 config에서 변경할 수 있다. 현재 Native Lanelet2 traffic rules에서도 실제 8m/s로 읽힌다. Germany/Vehicle 규칙은 그래프 구성용 구현이며 한국 교통법규를 완전 구현했다는 의미가 아니다.
+셀 면적의 0.1%를 초과하는 붉은 포장 겹침이 있으면 `school_zone=yes`로 기록한다. 이 허용오차는 OSGB 경계의 부동소수점 오차 때문에 인접한 회색 차로까지 보호구역으로 들어가는 것을 막는다. 경계에 걸친 셀은 보호구역 속도를 유지한다. 각 셀의 `speed_source`는 `osgb_red_pavement` 또는 `user_config_operational_cap_not_legal_limit`다. 부모 Lanelet에는 자식 Cell 속도의 최솟값과 보호구역 포함 상태(`yes/partial/no`)를 기록한다. 30/50 노면 표기의 법정 적용 범위를 추정한 값이 아니라 요청된 지도 운용 값이다.
+
+XODR의 `road@junction != -1`인 499개 도로는 전체 `junction/connection@connectingRoad` 집합과 일치한다. 해당 도로에서 생성한 모든 Lanelet에 `intersection=yes`, 나머지에는 `intersection=no`를 기록한다. 지도 형상·ID·연결·신호 매핑은 이 속성 변경 전후에 동일하다. 전수 검사는 [speed_attributes.json](../map/audit/speed_attributes.json)에 기록한다.
 
 ### 정지선과 신호
 
@@ -140,11 +143,17 @@ LD_LIBRARY_PATH="$VTD/Runtime/Core/IG64/lib" /tmp/hdmap-render \
 /tmp/hdmap-build-env/bin/python map/tools/extract_assets.py \
     /tmp/hdmap-white-triangles.txt map/stopline_mesh.json --white-mesh
 
+LD_LIBRARY_PATH="$VTD/Runtime/Core/IG64/lib" /tmp/hdmap-render \
+    "$SOURCE/HL_FMA_VTD_LivingLab.osgb" --school-mesh /tmp/hdmap-red-triangles.txt
+/tmp/hdmap-build-env/bin/python map/tools/extract_assets.py \
+    /tmp/hdmap-red-triangles.txt map/school_zone_mesh.json --school-mesh \
+    --source-osgb "$SOURCE/HL_FMA_VTD_LivingLab.osgb"
+
 /tmp/hdmap-build-env/bin/python map/tools/build_map.py \
     --xodr "$SOURCE/HL_FMA_VTD_LivingLab.xodr" \
     --osgb "$SOURCE/HL_FMA_VTD_LivingLab.osgb" \
     --plugin "$VTD/Data/Setups/00_HL_VTD/Plugins/ModuleManager/libHLVTD.so.1.0.0" \
-    --stopline-mesh map/stopline_mesh.json \
+    --stopline-mesh map/stopline_mesh.json --school-zone-mesh map/school_zone_mesh.json \
     --config config/map.yaml --output map
 ```
 
@@ -178,10 +187,12 @@ cmake --build /tmp/hdmap-audit/native-check
 /tmp/hdmap-audit/native-check/hdmap_check map/hdmap.bin "$SOURCE/route_example.csv" \
     > map/native_check.json
 python3 src/hdmap/python/check_api.py
+/tmp/hdmap-build-env/bin/python map/tools/check_speed_attributes.py map \
+    --xodr "$SOURCE/HL_FMA_VTD_LivingLab.xodr"
 ```
 
 마지막 명령은 빌드한 `hdmap` Python 확장을 PYTHONPATH에서 찾을 수 있어야 한다. 검사 실행 파일은 실제 map 로드, Cell 자기 ID의 R-tree 조회, previous 소유권 및 native predecessor 일치, RoutingGraph 오류, 8개 example checkpoint 경유 경로를 확인한다. `route_example.csv`는 제공된 예제이며 확정 대회 checkpoint라고 간주하지 않았다.
 
 이번 환경에서 `shortestPathVia`의 예제 경로 100회 평균은 약 0.03ms, 지도+Cell+R-tree 로드는 약 2.3초였다. 경로 계산 결과는 28개 Lanelet이다. 이 측정은 **현재 맵의 해당 예제 경로**에 한정하며, 전체 planner 10Hz·모든 경로·시공간 충돌 회피 성능을 보장하지 않는다.
 
-추가로 Python 로드 약 4.8초, 모든 부모 polygon의 유효성, 부모별 Cell 합집합을 검사했다. 부모와 Cell 합집합의 대칭차 면적 최대값은 `1.54e-7 m²`였다. 수정 전과 최종 보강 지도 모두 동일 원본·설정 재생성에서 byte 단위 일치를 확인했다. [재현성 기록](../map/audit/reproducibility.json)에 최종 재생성의 두 SHA를 보존했다. 현재 보강 바이너리 SHA-256은 `e7a426f900813748747a39233f3678237fd7f849c335bae3bc3014b31ae678b0`이며 최신 검사 수치는 `map/native_check.json`과 `map/audit/`에 있다. 이러한 오프라인 검사는 미확정 신호·속도 규칙을 검증된 것으로 바꾸지 않는다.
+추가로 Python 로드 약 4.8초, 모든 부모 polygon의 유효성, 부모별 Cell 합집합을 검사했다. 부모와 Cell 합집합의 대칭차 면적 최대값은 `1.54e-7 m²`였다. 수정 전과 최종 보강 지도 모두 동일 원본·설정 재생성에서 byte 단위 일치를 확인했다. [재현성 기록](../map/audit/reproducibility.json)에 최종 재생성의 두 SHA를 보존했다. 해당 형상 감사의 바이너리 SHA-256은 `e7a426f900813748747a39233f3678237fd7f849c335bae3bc3014b31ae678b0`이다. 이후 속도·교차로 속성 변경본의 SHA와 형상 보존 검사는 `map/audit/speed_attributes.json`, 최신 native 검사 수치는 `map/native_check.json`에 있다. 이러한 오프라인 검사는 미확정 신호·속도 규칙을 검증된 것으로 바꾸지 않는다.

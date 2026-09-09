@@ -1,1 +1,1 @@
-{"load_ms":2908.92,"lanelets":2845,"cells":94154,"controllers":214,"minimum_speed_mps":8,"maximum_speed_mps":8,"graph_errors":0,"invalid_cells":0,"invalid_previous_links":0,"checkpoint_route_found":true,"path_lanelets":28,"shortest_path_via_mean_ms":0.029664}
+{"load_ms":2406.96,"lanelets":2845,"cells":94154,"controllers":214,"minimum_speed_mps":8,"maximum_speed_mps":30,"graph_errors":0,"invalid_cells":0,"invalid_previous_links":0,"checkpoint_route_found":true,"path_lanelets":28,"shortest_path_via_mean_ms":0.0279072}

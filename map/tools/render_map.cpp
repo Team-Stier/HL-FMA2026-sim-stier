@@ -2,6 +2,7 @@
 #include <osg/GraphicsContext>
 #include <osg/Geode>
 #include <osg/Geometry>
+#include <osg/LOD>
 #include <osg/Texture2D>
 #include <osg/TriangleFunctor>
 #include <osgDB/ReadFile>
@@ -26,9 +27,22 @@ struct TriangleWriter {
     }
 };
 
-struct WhiteMeshVisitor : osg::NodeVisitor {
-    explicit WhiteMeshVisitor(std::ostream& destination)
-        : osg::NodeVisitor(TRAVERSE_ALL_CHILDREN), output(destination) {}
+struct MeshVisitor : osg::NodeVisitor {
+    MeshVisitor(std::ostream& destination, bool school)
+        : osg::NodeVisitor(TRAVERSE_ALL_CHILDREN), output(destination), school_mesh(school) {}
+
+    void apply(osg::LOD& lod) override {
+        if (!school_mesh) {
+            traverse(lod);
+            return;
+        }
+        // School pavement uses the detailed, zero-distance LOD surface only.
+        for (unsigned int index = 0; index < lod.getNumChildren() && index < lod.getNumRanges(); ++index) {
+            if (lod.getMinRange(index) == 0.f && lod.getMaxRange(index) > 0.f) {
+                lod.getChild(index)->accept(*this);
+            }
+        }
+    }
 
     void apply(osg::Geode& geode) override {
         for (unsigned int index = 0; index < geode.getNumDrawables(); ++index) {
@@ -37,7 +51,8 @@ struct WhiteMeshVisitor : osg::NodeVisitor {
                 continue;
             }
             auto* texture = dynamic_cast<osg::Texture2D*>(geometry->getStateSet()->getTextureAttribute(0, osg::StateAttribute::TEXTURE));
-            if (!texture || (texture->getName() != "Tx_Rm_White_01.rgb" && texture->getName() != "roadmark_White.rgb")) {
+            if (!texture || (school_mesh ? texture->getName() != "StyleSrfBikeway.rgb"
+                                        : texture->getName() != "Tx_Rm_White_01.rgb" && texture->getName() != "roadmark_White.rgb")) {
                 continue;
             }
             osg::TriangleFunctor<TriangleWriter> writer;
@@ -48,12 +63,13 @@ struct WhiteMeshVisitor : osg::NodeVisitor {
     }
 
     std::ostream& output;
+    bool school_mesh;
 };
 
 int main(int argc, char** argv) {
     if (argc != 7 && argc != 8 && argc != 4) {
         std::cerr << "render_map input.osgb output.png xmin ymin xmax ymax [pixels]\n"
-            << "render_map input.osgb --white-mesh output.txt\n";
+            << "render_map input.osgb --white-mesh|--school-mesh output.txt\n";
         return 1;
     }
     const auto scene = osgDB::readRefNodeFile(argv[1]);
@@ -61,14 +77,18 @@ int main(int argc, char** argv) {
         return 2;
     }
     if (argc == 4) {
-        if (std::string(argv[2]) != "--white-mesh") {
+        const bool school_mesh = std::string(argv[2]) == "--school-mesh";
+        if (!school_mesh && std::string(argv[2]) != "--white-mesh") {
             return 1;
         }
         std::ofstream output(argv[3]);
+        if (!output) {
+            return 4;
+        }
         output << std::setprecision(12);
-        WhiteMeshVisitor visitor(output);
+        MeshVisitor visitor(output, school_mesh);
         scene->accept(visitor);
-        return output ? 0 : 4;
+        return output && (!school_mesh || output.tellp() > 0) ? 0 : 4;
     }
     const double xmin = std::stod(argv[3]);
     const double ymin = std::stod(argv[4]);

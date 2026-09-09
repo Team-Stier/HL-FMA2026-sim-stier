@@ -2,11 +2,8 @@ cell_length_m: 1.0
 boundary_sample_m: 0.25
 endpoint_join_tolerance_m: 0.15
 coordinate_merge_m: 0.000001
-unverified_speed_cap_mps: 8.0
+unverified_speed_cap_mps: 30.0
 school_zone_speed_cap_mps: 8.0
-school_zones:
-    - road_ids: [174, 190, 420, 465]
-      evidence: osgb_school_overhead_30_and_school_zone_text_conservative_whole_road
 asset_stopline_approaches:
     # OSGB paint and native approach endpoints verified in docs/HDMapAudit.md.
     - [1043, -1]

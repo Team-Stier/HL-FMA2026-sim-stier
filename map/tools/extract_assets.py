@@ -1,6 +1,7 @@
 import argparse
 import base64
 import json
+import hashlib
 import re
 from pathlib import Path
 
@@ -27,6 +28,26 @@ def extract_stopline_mesh(source, output):
     output.parent.mkdir(parents=True, exist_ok=True)
     output.write_text(json.dumps(list(markings.values()), indent=4) + "\n")
     print(f"Extracted {len(markings)} rectangular road-marking candidates; not all are certified stoplines")
+
+
+def extract_school_mesh(source, output, osgb):
+    import numpy as np
+    from shapely.geometry import Polygon, mapping
+    from shapely.ops import unary_union
+
+    triangles = np.loadtxt(source).reshape(-1, 3, 3)
+    assert np.isfinite(triangles).all() and len(triangles), 'Invalid school pavement mesh'
+    polygons = [Polygon(t[:, :2]) for t in triangles]
+    surface = unary_union([p for p in polygons if p.is_valid and p.area > 1e-9])
+    assert surface.is_valid and not surface.is_empty
+    with osgb.open('rb') as stream:
+        source_sha = hashlib.file_digest(stream, 'sha256').hexdigest()
+    result = {'source_osgb_sha256': source_sha, 'texture': 'StyleSrfBikeway.rgb',
+        'lod': 'min_range_zero', 'triangles': len(triangles),
+        'mesh_sha256': hashlib.sha256(source.read_bytes()).hexdigest(),
+        'area_m2': surface.area, 'geometry': mapping(surface)}
+    output.write_text(json.dumps(result, indent=2) + '\n')
+    print(f'Extracted red road surface: {surface.area:.3f} m2')
 
 
 def extract(source, output):
@@ -81,8 +102,14 @@ if __name__ == "__main__":
     parser.add_argument("osgt", type=Path)
     parser.add_argument("output", type=Path)
     parser.add_argument("--white-mesh", action="store_true")
+    parser.add_argument("--school-mesh", action="store_true")
+    parser.add_argument("--source-osgb", type=Path)
     arguments = parser.parse_args()
-    if arguments.white_mesh:
+    if arguments.school_mesh:
+        if arguments.source_osgb is None or arguments.white_mesh:
+            parser.error("--school-mesh requires --source-osgb and excludes --white-mesh")
+        extract_school_mesh(arguments.osgt, arguments.output, arguments.source_osgb)
+    elif arguments.white_mesh:
         extract_stopline_mesh(arguments.osgt, arguments.output)
     else:
         extract(arguments.osgt, arguments.output)

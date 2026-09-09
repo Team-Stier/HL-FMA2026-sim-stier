@@ -3,7 +3,8 @@
         "/home/stier/vtd \uc790\ub8cc/HL_FMA_VTD_LivingLab.xodr": "5a369c7b0609fc98b0034680473465db4273dd396ffb37980996cea70ec6ca2f",
         "/home/stier/vtd \uc790\ub8cc/HL_FMA_VTD_LivingLab.osgb": "2d8f83fdc26cb7f8373e71cf850c70f7d90981362789fb474eb31b0d5b253296",
         "/home/stier/VIRES/VTD.2025.2/Data/Setups/00_HL_VTD/Plugins/ModuleManager/libHLVTD.so.1.0.0": "6059d5466def4821a243835c52c116b86f613db83729f113fb8e766aab6eca4e",
-        "map/stopline_mesh.json": "250fc3683047303698ff70094ed21675c2d2f3b081e2e467d31c4b0e1bf85aad"
+        "map/stopline_mesh.json": "250fc3683047303698ff70094ed21675c2d2f3b081e2e467d31c4b0e1bf85aad",
+        "map/school_zone_mesh.json": "53a3bb39ed27337ab7c08385029fc9836f7eac2dce36e43dac21c0c8e09002f7"
     },
     "parser": "commonroad-scenario-designer 0.8.5",
     "map_frame": "VTD inertial XYZ in metres; no translation, rotation or geodetic reprojection",
@@ -25897,19 +25898,8 @@
         "boundary_sample_m": 0.25,
         "endpoint_join_tolerance_m": 0.15,
         "coordinate_merge_m": 1e-06,
-        "unverified_speed_cap_mps": 8.0,
+        "unverified_speed_cap_mps": 30.0,
         "school_zone_speed_cap_mps": 8.0,
-        "school_zones": [
-            {
-                "road_ids": [
-                    174,
-                    190,
-                    420,
-                    465
-                ],
-                "evidence": "osgb_school_overhead_30_and_school_zone_text_conservative_whole_road"
-            }
-        ],
         "asset_stopline_approaches": [
             [
                 1043,
@@ -29616,6 +29606,17 @@
     "physical_signal_count": 646,
     "controller_count": 214,
     "cell_count": 94154,
+    "cell_speed_policy": {
+        "school_source": "map/school_zone_mesh.json",
+        "school_cell_rule": "red_overlap_gt_max_1e-9_m2_and_0.001_cell_area",
+        "school_cells": 4210,
+        "non_school_cells": 89944,
+        "school_boundary_cells": 2416,
+        "school_speed_mps": 8.0,
+        "non_school_speed_mps": 30.0,
+        "lanelet_speed_rule": "minimum_child_cell_cap; cell speed_limit is authoritative",
+        "intersection_lanelets": 904
+    },
     "lanelet_count": 2845,
     "negative_width_clamps_m": {
         "72:40.01:2": -1.7763568394002505e-15,
@@ -41186,8 +41187,8 @@
         "unverified_legal_speed_extents": true,
         "full_simulator_alignment_and_braking_not_validated": true
     },
-    "binary_sha256": "e7a426f900813748747a39233f3678237fd7f849c335bae3bc3014b31ae678b0",
-    "binary_size_bytes": 74241478,
+    "binary_sha256": "6476363713399389428b3409eff87788b250577ab0d398db9123f16cf978272f",
+    "binary_size_bytes": 86950494,
     "lanelets": {
         "1405": {
             "xodr": [

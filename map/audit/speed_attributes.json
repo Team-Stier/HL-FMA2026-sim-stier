@@ -1,0 +1,293 @@
+{
+  "binary_sha256": "6476363713399389428b3409eff87788b250577ab0d398db9123f16cf978272f",
+  "non_school_cells": 89944,
+  "school_cells": 4210,
+  "non_intersection_lanelets": 1941,
+  "intersection_lanelets": 904,
+  "mixed_school_lanelets": 19,
+  "non_school_speed_mps": 30.0,
+  "school_speed_mps": 8.0,
+  "geometry_ids_topology_signals_unchanged": true,
+  "errors": 0,
+  "baseline_binary_sha256": "e7a426f900813748747a39233f3678237fd7f849c335bae3bc3014b31ae678b0",
+  "cell_speed_policy": {
+    "school_source": "map/school_zone_mesh.json",
+    "school_cell_rule": "red_overlap_gt_max_1e-9_m2_and_0.001_cell_area",
+    "school_cells": 4210,
+    "non_school_cells": 89944,
+    "school_boundary_cells": 2416,
+    "school_speed_mps": 8.0,
+    "non_school_speed_mps": 30.0,
+    "lanelet_speed_rule": "minimum_child_cell_cap; cell speed_limit is authoritative",
+    "intersection_lanelets": 904
+  },
+  "regression_checks": {
+    "repairs": {
+      "binary_sha256": "6476363713399389428b3409eff87788b250577ab0d398db9123f16cf978272f",
+      "lateral_corrections": [
+        {
+          "object": 5153,
+          "mesh": 125,
+          "center_error_m": 0.0
+        },
+        {
+          "object": 5238,
+          "mesh": 317,
+          "center_error_m": 0.0
+        },
+        {
+          "object": 5161,
+          "mesh": 128,
+          "center_error_m": 0.008386671925242067
+        },
+        {
+          "object": 1386,
+          "mesh": 214,
+          "center_error_m": 0.008048878732918898
+        },
+        {
+          "object": 2935,
+          "mesh": 517,
+          "center_error_m": 0.008398361830145553
+        }
+      ],
+      "restored_stoplines_verified": 30,
+      "crosswalk_false_positives": 0,
+      "implicit_zero_width_connections_rejected": 1,
+      "non_driving_overrides_verified": 2
+    },
+    "signals": {
+      "after": {
+        "regulations": 603,
+        "violations": {},
+        "stops_with_multiple_controllers": 184,
+        "lamp_stopline_relations": 1817,
+        "max_lamp_stopline_distance_m": 292.75089597941127,
+        "lamp_stopline_relations_over_100m": 16
+      }
+    }
+  },
+  "source_image_review": {
+    "map_sha256": "e7a426f900813748747a39233f3678237fd7f849c335bae3bc3014b31ae678b0",
+    "method": "All 94154 native cell polygons raster checked against near-LOD source atlas; 39 tiles with >50% red inside at least one cell were visually reviewed on five contact sheets. Image thresholds are independent validation, exact OSGB red geometry determines final classification.",
+    "all_native_cells_raster_checked": 94154,
+    "files_actually_viewed": [
+      "map/audit/school-speed/red-contact-0.jpg",
+      "map/audit/school-speed/red-contact-1.jpg",
+      "map/audit/school-speed/red-contact-2.jpg",
+      "map/audit/school-speed/red-contact-3.jpg",
+      "map/audit/school-speed/red-contact-4.jpg",
+      "map/audit/school-speed/raster-mesh-differences.jpg",
+      "map/audit/school-speed/tolerance-boundary-differences.jpg"
+    ],
+    "reviews": [
+      {
+        "tile_id": "t03_15",
+        "observation": "상단 도로 한쪽의 짧은 빨간 끝부분과 나머지 회색 교차로 접근부가 분리된다."
+      },
+      {
+        "tile_id": "t04_12",
+        "observation": "남동 모서리 도로의 한 방향 여러 차로에 붉은 표면이 이어진다."
+      },
+      {
+        "tile_id": "t04_13",
+        "observation": "굽은 도로의 양쪽 접근부 빨간 면이 중앙 회색 횡단보도 구간과 나뉜다."
+      },
+      {
+        "tile_id": "t04_14",
+        "observation": "중앙 빗금 분리대 양쪽에 방향별 빨간 면이 있으며 횡단보도 구간은 회색이다."
+      },
+      {
+        "tile_id": "t04_15",
+        "observation": "한 방향 빨간 노면이 테이퍼에서 끝나고 다른 방향은 회색이다."
+      },
+      {
+        "tile_id": "t05_12",
+        "observation": "북동 모서리 도로의 30 표시를 포함한 빨간 끝부분을 확인한다."
+      },
+      {
+        "tile_id": "t05_13",
+        "observation": "교차로 접근부마다 빨간 표면의 길이와 방향이 다르며 교차로 내부는 회색이다."
+      },
+      {
+        "tile_id": "t05_14",
+        "observation": "한쪽 방향 빨간 면과 반대편 회색 면, 중간 테이퍼 경계가 뚜렷하다."
+      },
+      {
+        "tile_id": "t05_20",
+        "observation": "큰 교차로 동쪽 가지에만 빨간 면이 있으며 다른 가지와 내부는 회색이다."
+      },
+      {
+        "tile_id": "t05_21",
+        "observation": "넓은 도로 한쪽 차로군만 빨갛고 반대 차로군은 회색이다."
+      },
+      {
+        "tile_id": "t06_12",
+        "observation": "남북 도로의 두 빨간 블록 사이 횡단보도와 접속부는 회색이다."
+      },
+      {
+        "tile_id": "t06_21",
+        "observation": "남쪽 모서리 도로 한쪽 차로군의 빨간 끝부분이 확인된다."
+      },
+      {
+        "tile_id": "t07_12",
+        "observation": "짧은 한 차로 빨간 구간이 빗금 분리대에 인접하며 반대편은 회색이다."
+      },
+      {
+        "tile_id": "t08_11",
+        "observation": "남동쪽 교차로 접근부의 한 차로에 빨간 면이 있고 나머지 차로는 회색이다."
+      },
+      {
+        "tile_id": "t08_12",
+        "observation": "서쪽 경계 도로의 한 차로 빨간 면과 회색 테이퍼를 확인한다."
+      },
+      {
+        "tile_id": "t08_20",
+        "observation": "대각선 양방향 도로 전폭 빨간 면이 연속한다."
+      },
+      {
+        "tile_id": "t08_21",
+        "observation": "빨간 전폭 도로가 회색 교차로 앞에서 끝난다."
+      },
+      {
+        "tile_id": "t09_19",
+        "observation": "동쪽/남쪽 도로에 빨간 면이 있으며 남쪽 도로는 방향별 시작 위치가 다르다."
+      },
+      {
+        "tile_id": "t09_20",
+        "observation": "네 접근부의 빨간 면이 큰 회색 교차로 내부와 분리된다."
+      },
+      {
+        "tile_id": "t09_21",
+        "observation": "한 방향 차로군 빨간 면과 반대편 회색 차로군을 확인한다."
+      },
+      {
+        "tile_id": "t10_19",
+        "observation": "대각선 도로 전폭 빨간 면이 이어지며 횡단보도를 포함한다."
+      },
+      {
+        "tile_id": "t10_21",
+        "observation": "곡선 도로 한 방향 빨간 면이 직선 경계에서 회색으로 바뀐다."
+      },
+      {
+        "tile_id": "t11_10",
+        "observation": "회색 회전교차로 바깥 동쪽 도로 접근 차로에만 빨간 면이 있다."
+      },
+      {
+        "tile_id": "t11_11",
+        "observation": "두 교차로 사이 도로에 방향별 짧은 빨간 접근 블록이 존재한다."
+      },
+      {
+        "tile_id": "t11_18",
+        "observation": "남쪽 도로 전폭 빨간 블록과 북쪽 회색 횡단보도/테이퍼가 분리된다."
+      },
+      {
+        "tile_id": "t11_19",
+        "observation": "남서쪽 도로 빨간 블록과 주변 붉은 지붕을 구분할 수 있다."
+      },
+      {
+        "tile_id": "t12_11",
+        "observation": "대로 자체는 회색이고 소로 접근부에 빨간 짧은 면이 있다."
+      },
+      {
+        "tile_id": "t12_12",
+        "observation": "동서 도로 한쪽 빨간 차로 면과 반대 방향 회색이 혼재한다."
+      },
+      {
+        "tile_id": "t12_14",
+        "observation": "대각선 도로 전폭 빨간 면이 연속한다."
+      },
+      {
+        "tile_id": "t12_15",
+        "observation": "북서쪽 빨간 도로는 횡단보도에서 끝나며 교차로 접근부는 회색이다."
+      },
+      {
+        "tile_id": "t13_12",
+        "observation": "학교 옆 도로 전폭 빨간 면과 회색 T자 교차로가 분리된다."
+      },
+      {
+        "tile_id": "t13_13",
+        "observation": "학교 앞 도로에 방향별 빨간 범위와 회색 테이퍼 차이가 있다."
+      },
+      {
+        "tile_id": "t13_14",
+        "observation": "T자 접속부는 회색이고 좌우 및 남쪽 도로의 빨간 면이 그 바깥에 있다."
+      },
+      {
+        "tile_id": "t13_15",
+        "observation": "동서 도로 양방향 빨간 면이 이어진다."
+      },
+      {
+        "tile_id": "t13_16",
+        "observation": "곡선 도로 전폭 빨간 면과 주변 붉은 지붕이 공간적으로 구분된다."
+      },
+      {
+        "tile_id": "t14_10",
+        "observation": "넓은 대로는 회색이고 동쪽 소로 한 방향에 빨간 면이 있다."
+      },
+      {
+        "tile_id": "t14_11",
+        "observation": "굽은 도로는 전폭 빨갛지만 서쪽 직선의 반대방향 일부는 회색이다."
+      },
+      {
+        "tile_id": "t14_12",
+        "observation": "학교 건물 옆 남북 도로 전폭 빨간 면이 연속한다."
+      },
+      {
+        "tile_id": "t14_16",
+        "observation": "곡선 도로 전폭 빨간 면이 상단 횡단보도에서 종료된다."
+      }
+    ],
+    "roads_majority_red": [
+      146,
+      173,
+      174,
+      190,
+      208,
+      211,
+      420,
+      465,
+      794,
+      797,
+      1603,
+      1712,
+      1734,
+      1750,
+      1769,
+      1776,
+      1777,
+      1778,
+      1818,
+      2076,
+      2192,
+      2264,
+      2312,
+      2313,
+      2386,
+      2392,
+      2395,
+      4740
+    ],
+    "prior_school_roads": [
+      174,
+      190,
+      420,
+      465
+    ],
+    "prior_whole_road_classification_rejected": "174/420/465 contain visible gray lanes or partial s extents; many red roads were absent from original four-road list.",
+    "tolerance_recommendation": {
+      "rule": "red_overlap_area > max(1e-9, 0.001 * cell_area)",
+      "school_cells": 4210,
+      "non_school_cells": 89944,
+      "relative_only_vs_absolute_0_001_m2": [
+        45867,
+        8973,
+        18209,
+        11419
+      ],
+      "four_short_boundary_cell_review": "All four lie on a red pavement/gray or white-painted edge. Tiny true source intersections remain above relative 0.1%; retain conservative school speed at these boundary cells. They do not justify keeping whole gray adjacent lanes at school speed.",
+      "absolute_only_vs_relative_20_cells": "Representative cells 10944,8851,21434,18175 visibly gray; relative tolerance excludes these seam artifacts.",
+      "erosion_0_0001_m_not_recommended": "378 extra cells versus relative policy; 369 visually low red. Insufficient for source/native seams."
+    }
+  }
+}
