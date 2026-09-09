@@ -176,10 +176,7 @@ private:
                       QString::fromStdString(error));
             return;
         }
-        if (!geometry_ || geometry_->geometry_id != colors_->geometry_id) {
-            clearLines();
-            setStatus(rviz_common::properties::StatusProperty::Warn, "Cells",
-                      "Waiting for matching cell geometry");
+        if (!geometry_) {
             return;
         }
         if (colors_->colors.size() + 1 != geometry_->offsets.size()) {

@@ -154,7 +154,7 @@ int main(int argc,char**argv) {
     Colors empty=c;empty.colors.clear();cp->publish(empty);pump();assert(vertices(compact->getSceneNode()).empty());send();
     auto bad=c;bad.colors.pop_back();cp->publish(bad);pump();assert(vertices(compact->getSceneNode()).empty());send();
     bad=c;bad.colors[0].r=std::numeric_limits<float>::quiet_NaN();cp->publish(bad);pump();assert(vertices(compact->getSceneNode()).empty());send();
-    bad=c;bad.geometry_id="map-B";cp->publish(bad);pump();assert(vertices(compact->getSceneNode()).empty());
+    bad=c;bad.geometry_id="map-B";cp->publish(bad);pump();equal();
     g.geometry_id="map-B";gp->publish(g);c.geometry_id="map-B";np->publish(legacy(g,c));pump();equal();
     compact->reset();pump();assert(vertices(compact->getSceneNode()).empty());send();
     compact->setEnabled(false);assert(vertices(compact->getSceneNode()).empty());compact->setEnabled(true);pump();send();

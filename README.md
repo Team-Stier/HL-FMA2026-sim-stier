@@ -252,8 +252,8 @@ flowchart TD
 
 #### HDMap Dynamic Tracker
 
-- 같은 시각의 pose·objects·traffic light를 받아 cell의 speed cap과 occupancy를 갱신한다.
-- 세 입력은 exact stamp로만 결합하고 최신 완성 snapshot 하나만 계산한다. `/ego_status`는 pose마다 즉시 발행한다.
+- 가장 최근에 도착한 pose와 objects로 cell의 speed cap과 occupancy를 갱신한다.
+- pose와 objects의 stamp는 같을 필요가 없고 traffic light 입력도 현재 필수 조건이 아니다. `/ego_status`는 pose마다 즉시 발행한다.
 - `/dynamic_status`는 Header와 모든 cell의 speed cap/occupancy 배열만 담는다.
 - `/ego_status`는 Header와 x/y/z/heading/pitch/roll/speed만 담는다. 위치는 map 기준 후륜축 위치다.
 - 속도는 연속 pose의 XY 이동 거리를 Header 시각 차이로 나눈 값이다. 첫 입력·0 이하 시간 차이·설정한 300km/h 초과 점프는 0으로 처리한다. 별도 상태 플래그는 추가하지 않는다.
@@ -261,11 +261,9 @@ flowchart TD
 - 예측기는 `motion_predictor.hpp / ekf_predictor.cpp`로 분리했다. 현재 구현은 위치·속력·진행방향·회전율·가속도를 추정하는 6상태 CTRA EKF다. 객체 body `heading`과 속도 진행방향은 별도 상태로 취급한다.
 - 객체 API가 80m 내 최근접 최대 30개뿐이므로 미관측 Cell은 기본 unknown=-1이다. 현재 OBB와
   0.5초 구간별 swept footprint가 교차한 Cell만 1로 갱신한다. 각 구간은 기본 0.1초 간격의
-  실제 비선형 EKF 예측 OBB를 합치고 표본 사이 곡률의 chord 오차 bound도 팽창에 더한다. 미래 footprint는 EKF의 설정된
-  sigma 범위를 자르지 않는다. 위치 기반 속도 방향은 여러 관측의 시간·벡터·API 속력 일관성을
-  통과한 뒤에만 사용하고, 그 전이나 방향 급변 직후에는 임의 방향 도달 반경을 적용한다.
-  이 반경은 API·위치차 속력 중 큰 값과 필터 속력의 합을 사용한다. yaw 형상 회전을 포함하는
-  외접 여유도 함께 반영하며, 예측 중심은 매번 수용한 raw 객체 위치에 다시 고정한다.
+  실제 비선형 EKF 예측 OBB를 합친다. 별도의 sigma·방향 미확정·yaw 외접·chord 오차 팽창은
+  적용하지 않는다. 첫 관측은 API speed와 heading으로 시작하고 이후 위치차의 진행방향을 즉시 반영한다.
+- `/traffic_light`는 구독만 하며, 상태 계약이 확정될 때까지 speed cap에는 정적 지도 값만 사용한다.
 - 상세 구현·실행법·현재 안전 한계는 [Tracker README](src/hdmap_dynamic_tracker/README.md)를 따른다.
 - 객체 reference point를 box 중심으로 바꾸는 작업은 [별도 조사](docs/05-object-reference-resolution.md)를 따른다. 실행 비교는 지도 제작 단계에서 함께 한다.
 
@@ -632,7 +630,7 @@ ros2 run visualization visualizer_node --ros-args -p map_path:=/absolute/path/to
 - 지도는 Visualizer 자신의 `hdmap_init` 결과다. Lanelet 경계·중심선·진행 방향·선종류 라벨·물리 신호·모든 정지선·Cell AABB와 원본 polygon·글로벌 중심선 강조를 표시한다. 하늘색은 중심선, 흰색은 차선 경계, 회색은 virtual 경계, 빨간색은 정지선, 주황색은 물리 신호, 초록색은 Cell polygon이다. 보라색 연결선은 같은 TrafficLight regulatory element의 물리 신호와 stopLine 꼭짓점 평균을 잇는 **관계 표시**이지 도로/주행 경로가 아니다. 매핑이 없는 정지선에도 형상은 표시하지만 연결은 만들지 않는다. dashed는 표시용 1m 선/1m 공백이며 solid_solid는 원본 선분 양쪽 0.12m의 표시용 두 획이다. 획 간격은 실측값이 아니며 지도 경계와 Cell 기하를 바꾸지 않는다.
 - 시각화 입력은 독립적이다. 지도·셀·신호 연결은 자기 맵만, 객체는 `/objects`만, 글로벌 경로는 `/global_path`와 자기 맵만, 점유/cap은 `/dynamic_status`와 자기 맵만 사용한다. Ego는 다른 스트림의 필터나 갱신 트리거가 아니다. 최신 리팩토링 요청에 따라 Ego 기반 ROI를 적용하지 않고 전체 입력을 표시한다. DataPipeline 다이어그램은 변경하지 않았으며 12절의 공통 Ego ROI는 현재 적용하지 않는다. 원본 좌표·stamp·값·신호 매핑은 유지한다.
 - 정적 map/cells 선분은 namespace별 LINE_LIST로 묶어 한 번 발행하고 DDS의 RELIABLE/TRANSIENT_LOCAL/KEEP_LAST(1)에 보관한다. 늦게 켠 RViz도 받으며 매 5초마다 수백만 정점을 재업로드하지 않는다. 정적 Cell polygon/AABB는 원본 선분을 100m 공간 배치에 직접 쌓아 중간 마커 생성과 화면 밖 도형 처리를 줄인다. 선분 생략·평활화는 없고 배치 마커 ID는 Cell ID가 아니다.
-- 동적 Cell은 `/visualization/cell_geometry`의 `interfaces/CellGeometry`에 원본 float64 polygon 정점과 Cell별 offsets를 최초 유효 입력 때 한 번 발행한다(RELIABLE/TRANSIENT_LOCAL/KEEP_LAST(1)). 기본 RViz의 `visualization/CellColors` 두 표시가 이를 보관한다. 이후 `/visualization/occupancy_colors`, `/visualization/cell_cap_colors`에는 `interfaces/CellColors`로 매 유효 입력의 전체 Cell RGBA와 원본 stamp를 보낸다(BEST_EFFORT/VOLATILE/KEEP_LAST(1)). 색상은 기존 float32 정밀도이며 확률·값의 양자화나 Cell 생략은 없다. 로드된 지도마다 부여한 geometry_id가 일치할 때만 적용하며, 좌표보다 먼저 도착한 최신 색상은 좌표 도착 후 적용한다. 빈 색상은 표시와 대기 중인 색상을 지운다. TF는 매 색상 메시지의 원본 stamp로 조회한다.
+- 동적 Cell은 `/visualization/cell_geometry`의 `interfaces/CellGeometry`에 원본 float64 polygon 정점과 Cell별 offsets를 최초 유효 입력 때 한 번 발행한다(RELIABLE/TRANSIENT_LOCAL/KEEP_LAST(1)). 기본 RViz의 `visualization/CellColors` 두 표시가 이를 보관한다. 이후 `/visualization/occupancy_colors`, `/visualization/cell_cap_colors`에는 `interfaces/CellColors`로 매 유효 입력의 전체 Cell RGBA와 원본 stamp를 보낸다(BEST_EFFORT/VOLATILE/KEEP_LAST(1)). 색상은 기존 float32 정밀도이며 확률·값의 양자화나 Cell 생략은 없다. geometry_id는 맵 절대경로로 고정하며 표시기는 ID가 아니라 Cell 개수와 frame으로 호환성을 확인한다. 좌표보다 먼저 도착한 최신 색상은 좌표 도착 후 적용하고, 빈 색상은 표시와 대기 중인 색상을 지운다. TF는 매 색상 메시지의 원본 stamp로 조회한다.
 - `CellColors`는 기존 RViz LINE_LIST의 선폭·색상·투명/불투명 재질을 유지한다. 색상 변경 시 기존 billboard chain의 해당 Cell 색상만 갱신하고, alpha blending 경계(0.9998)를 넘어 배치 분류가 바뀔 때만 보관한 좌표로 배치를 재구성한다. Ogre의 GPU 정점 버퍼는 좌표와 색상이 함께 저장되므로 색상 변경이 GPU의 색상 바이트만 업로드한다는 뜻은 아니다. 기존 `/visualization/occupancy`, `/visualization/cell_cap`의 전체 MarkerArray도 구독자가 있을 때 발행해 호환성을 유지한다. 이 토픽을 추가 구독하면 기존 좌표 전송 비용이 발생한다.
 - HUD에는 모든 Cell ID와 원본 값을 유지한다. 값이 같으면 색상과 HUD를 재사용하되 색상 snapshot의 stamp는 매 입력마다 갱신한다. 생산자의 query 마커는 별개이며 HUD는 독립적으로 5Hz 발행한다. 가짜 Ego/TF는 발행하지 않으며, 카메라만 실제 TF를 이용해 10초 유휴 후 Ego 위치를 추적한다.
 - 기본 RViz의 Signals 그룹은 `/visualization/signals_static`의 정적 형상(1회 발행, RELIABLE/TRANSIENT_LOCAL)과 `/visualization/signals_observed`의 관측 강조(BEST_EFFORT/VOLATILE)를 함께 표시한다. 기존 `/visualization/signals`의 전체 정적·관측 snapshot 계약도 유지하며, 해당 토픽의 구독자가 있을 때 수신/5초 timer에 맞춰 발행한다. HUD의 신호 라벨·ID/state·원본 stamp와 controller 매핑은 그대로다.

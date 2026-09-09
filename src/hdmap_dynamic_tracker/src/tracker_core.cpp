@@ -302,37 +302,6 @@ double predictionUncertaintyInflation(
     return inflation;
 }
 
-double trajectorySweepDiscretizationInflation(
-    const std::vector<ObjectPrediction>& samples,
-    double maximum_sample_interval_s) {
-    if (!std::isfinite(maximum_sample_interval_s) || maximum_sample_interval_s <= 0.0) {
-        throw std::invalid_argument("Trajectory sample interval must be finite and positive");
-    }
-    double maximum_planar_acceleration_mps2 = 0.0;
-    for (const auto& sample : samples) {
-        if (!std::isfinite(sample.speed_mps) || sample.speed_mps < 0.0 ||
-            !std::isfinite(sample.turn_rate_radps) ||
-            !std::isfinite(sample.acceleration_mps2)) {
-            throw std::invalid_argument("Trajectory motion state must be finite");
-        }
-        const double tangential_acceleration_mps2 = std::abs(sample.acceleration_mps2);
-        const double normal_acceleration_mps2 =
-            sample.speed_mps * std::abs(sample.turn_rate_radps);
-        maximum_planar_acceleration_mps2 = std::max(
-            maximum_planar_acceleration_mps2,
-            std::hypot(tangential_acceleration_mps2, normal_acceleration_mps2));
-    }
-    // For a twice-differentiable trajectory with |p''| <= M, deviation from
-    // its endpoint chord is bounded by M*h^2/8. The small factor protects the
-    // bound from floating-point rounding at rasterization boundaries.
-    const double inflation = 1.01 * maximum_planar_acceleration_mps2 *
-        maximum_sample_interval_s * maximum_sample_interval_s / 8.0;
-    if (!std::isfinite(inflation)) {
-        throw std::overflow_error("Trajectory discretization inflation overflowed");
-    }
-    return inflation;
-}
-
 double yawIndependentRotationInflation(double length_m, double width_m) {
     if (!std::isfinite(length_m) || length_m <= 0.0 ||
         !std::isfinite(width_m) || width_m <= 0.0) {

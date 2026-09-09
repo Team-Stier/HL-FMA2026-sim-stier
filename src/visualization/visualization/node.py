@@ -1,7 +1,6 @@
 import math
 import time
 from pathlib import Path
-from uuid import uuid4
 
 import rclpy
 import yaml
@@ -48,13 +47,14 @@ class Visualizer(Node):
         self.registry = {}
         self.lanes = []
         self.map_drawn = False
-        self.cell_geometry_id = uuid4().hex
+        self.cell_geometry_id = "cells"
         self.cell_geometry = None
         self.cell_edges = None
         self.cell_value_cache = {}
         self.cell_marker_cache = {}
         map_path = self.declare_parameter("map_path", "").value
         if map_path:
+            self.cell_geometry_id = str(Path(map_path).resolve())
             from hdmap import hdmap_init
             self.map = hdmap_init(map_path)
             self.cells = self.map.cells()

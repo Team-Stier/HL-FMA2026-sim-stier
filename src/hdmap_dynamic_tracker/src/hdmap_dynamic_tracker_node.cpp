@@ -12,14 +12,12 @@
 #include <rclcpp/executors/multi_threaded_executor.hpp>
 
 #include <algorithm>
-#include <atomic>
 #include <chrono>
 #include <cmath>
 #include <cstdio>
 #include <cstdint>
 #include <cstdlib>
 #include <limits>
-#include <map>
 #include <memory>
 #include <mutex>
 #include <optional>
@@ -35,30 +33,12 @@ namespace {
 
 constexpr std::size_t kOccupancyBinCount = 13;
 constexpr double kPredictionIntervalS = 0.5;
-constexpr std::size_t kSnapshotHistory = 4;
 constexpr double kUnlimitedZ = std::numeric_limits<double>::max();
-
-template<typename Message>
-std::int64_t stampKey(const Message& message) {
-    return static_cast<std::int64_t>(message.header.stamp.sec) * 1000000000LL +
-        static_cast<std::int64_t>(message.header.stamp.nanosec);
-}
 
 template<typename Message>
 double stampSeconds(const Message& message) {
     return static_cast<double>(message.header.stamp.sec) +
         static_cast<double>(message.header.stamp.nanosec) * 1.0e-9;
-}
-
-bool finite(float value) {
-    return std::isfinite(static_cast<double>(value));
-}
-
-template<typename Map>
-void pruneSnapshotMap(Map& values) {
-    while (values.size() > kSnapshotHistory) {
-        values.erase(values.begin());
-    }
 }
 
 lanelet::BasicPolygon2d toLaneletPolygon(const std::vector<Point2d>& points) {
@@ -71,11 +51,8 @@ lanelet::BasicPolygon2d toLaneletPolygon(const std::vector<Point2d>& points) {
 }
 
 struct Snapshot {
-    std::int64_t stamp = 0;
-    std::uint64_t revision = 0;
     interfaces::msg::EgoPose::SharedPtr ego;
     interfaces::msg::Objects::SharedPtr objects;
-    interfaces::msg::TrafficLight::SharedPtr traffic_light;
 };
 
 struct SignalCellCap {
@@ -106,8 +83,6 @@ public:
             declare_parameter<bool>("occupancy.free_space_assumption_verified", false);
         allow_free_when_object_list_full_ =
             declare_parameter<bool>("occupancy.allow_free_when_object_list_full", false);
-        uncertainty_sigma_multiplier_ =
-            declare_parameter<double>("occupancy.uncertainty_sigma_multiplier", 2.0);
         restrict_unobserved_signals_ =
             declare_parameter<bool>("signals.restrict_unobserved", true);
         signal_calibration_verified_ =
@@ -118,12 +93,10 @@ public:
             "signals.braking_calibration.speed_mps", std::vector<double>{});
         const auto braking_distances = declare_parameter<std::vector<double>>(
             "signals.braking_calibration.distance_m", std::vector<double>{});
-        if (braking_speeds.size() != braking_distances.size()) {
-            throw std::invalid_argument(
-                "Signal braking calibration speed and distance arrays must have equal length");
-        }
-        braking_distance_table_.reserve(braking_speeds.size());
-        for (std::size_t index = 0; index < braking_speeds.size(); ++index) {
+        const auto braking_sample_count =
+            std::min(braking_speeds.size(), braking_distances.size());
+        braking_distance_table_.reserve(braking_sample_count);
+        for (std::size_t index = 0; index < braking_sample_count; ++index) {
             braking_distance_table_.push_back({braking_speeds[index], braking_distances[index]});
         }
         rear_axle_to_front_m_ = declare_parameter<double>("vehicle.rear_axle_to_front_m", 3.808);
@@ -155,35 +128,10 @@ public:
             get_parameter("ego.maximum_dt_s").as_double();
         predictor_config.maximum_prediction_step_s =
             declare_parameter<double>("prediction.maximum_prediction_step_s", 0.05);
-        predictor_config.maximum_position_innovation_m =
-            declare_parameter<double>("prediction.maximum_position_innovation_m", 15.0);
-        predictor_config.maximum_abs_acceleration_mps2 = declare_parameter<double>(
-            "prediction.maximum_abs_acceleration_mps2", 8.0);
-        predictor_config.maximum_abs_turn_rate_radps = declare_parameter<double>(
-            "prediction.maximum_abs_turn_rate_radps", 1.5);
-        const auto minimum_velocity_observations = declare_parameter<std::int64_t>(
-            "prediction.minimum_velocity_observations", 4);
-        if (minimum_velocity_observations < 2 ||
-            static_cast<std::uint64_t>(minimum_velocity_observations) >
-                std::numeric_limits<std::size_t>::max()) {
-            throw std::invalid_argument(
-                "prediction.minimum_velocity_observations must be at least 2");
-        }
-        predictor_config.minimum_velocity_observations =
-            static_cast<std::size_t>(minimum_velocity_observations);
-        predictor_config.minimum_velocity_observation_span_s = declare_parameter<double>(
-            "prediction.minimum_velocity_observation_span_s", 0.15);
-        predictor_config.minimum_velocity_displacement_m = declare_parameter<double>(
-            "prediction.minimum_velocity_displacement_m", 1.0);
-        predictor_config.maximum_velocity_innovation_mps = declare_parameter<double>(
-            "prediction.maximum_velocity_innovation_mps", 3.0);
         const auto sweep_substeps_per_bin = declare_parameter<std::int64_t>(
             "prediction.sweep_substeps_per_bin", 5);
-        if (sweep_substeps_per_bin < 1 || sweep_substeps_per_bin > 20) {
-            throw std::invalid_argument(
-                "prediction.sweep_substeps_per_bin must be between 1 and 20");
-        }
-        sweep_substeps_per_bin_ = static_cast<std::size_t>(sweep_substeps_per_bin);
+        sweep_substeps_per_bin_ = static_cast<std::size_t>(
+            std::max<std::int64_t>(1, sweep_substeps_per_bin));
         predictor_ = makeEkfPredictor(predictor_config);
 
         ramp_template_.design_deceleration_mps2 =
@@ -195,7 +143,6 @@ public:
         ramp_template_.stop_margin_m =
             declare_parameter<double>("signals.stop_margin_m", 1.0);
 
-        validateParameters();
         const auto map_path = resolveMapPath(declare_parameter<std::string>("map_path", ""));
         static_map_ = hdmap::hdmap_init(map_path);
         initializeStaticMapState();
@@ -234,14 +181,6 @@ public:
             static_cast<double>((static_speed_caps_.size() +
                 static_speed_caps_.size() * kOccupancyBinCount) * sizeof(float)) /
                 (1024.0 * 1024.0));
-        if (!signal_calibration_verified_) {
-            RCLCPP_WARN(get_logger(),
-                "Signal braking parameters are marked unverified; keep allow_motion=false until calibrated");
-        } else {
-            RCLCPP_INFO(get_logger(),
-                "Signal braking calibration verified: %zu samples through %.2f m/s",
-                braking_distance_table_.size(), braking_distance_table_.back().speed_mps);
-        }
         if (known_free_radius_m_ <= 0.0) {
             RCLCPP_WARN(get_logger(),
                 "No region is asserted free: unoccupied cells remain unknown (-1); occupied cells are still published");
@@ -261,7 +200,6 @@ private:
         }
         if (!std::isfinite(known_free_radius_m_) || known_free_radius_m_ < 0.0 ||
             known_free_radius_m_ > 80.0 ||
-            !std::isfinite(uncertainty_sigma_multiplier_) || uncertainty_sigma_multiplier_ <= 0.0 ||
             !std::isfinite(rear_axle_to_front_m_) || rear_axle_to_front_m_ < 0.0 ||
             !std::isfinite(maximum_approach_speed_mps_) || maximum_approach_speed_mps_ <= 0.0) {
             throw std::invalid_argument("Invalid occupancy or vehicle parameter");
@@ -349,14 +287,6 @@ private:
                 "%zu lanelets have missing/invalid explicit speed_limit and are capped at 0 m/s",
                 missing_speed_limits);
         }
-        const auto highest_static_cap = std::max_element(
-            static_speed_caps_.begin(), static_speed_caps_.end());
-        if (highest_static_cap != static_speed_caps_.end() &&
-            static_cast<double>(*highest_static_cap) > maximum_approach_speed_mps_) {
-            throw std::invalid_argument(
-                "signals.maximum_approach_speed_mps must cover every static map speed cap");
-        }
-        buildSignalConstraints();
     }
 
     double cellLength(const hdmap::Cell& cell) const {
@@ -503,52 +433,9 @@ private:
         }
     }
 
-    bool validEgo(const interfaces::msg::EgoPose& message) const {
-        return stampKey(message) > 0 && message.header.frame_id == frame_id_ &&
-            finite(message.x) && finite(message.y) && finite(message.z) &&
-            finite(message.heading) && finite(message.pitch) && finite(message.roll);
-    }
-
-    bool validObjects(const interfaces::msg::Objects& message) const {
-        if (stampKey(message) <= 0 || message.header.frame_id != frame_id_ ||
-            message.length < 0 || message.length > 30) {
-            return false;
-        }
-        std::unordered_set<std::uint32_t> ids;
-        for (std::int32_t index = 0; index < message.length; ++index) {
-            const auto i = static_cast<std::size_t>(index);
-            if (!ids.insert(message.id[i]).second ||
-                !finite(message.x[i]) || !finite(message.y[i]) || !finite(message.z[i]) ||
-                !finite(message.heading[i]) || !finite(message.speed[i]) ||
-                !finite(message.size_x[i]) || !finite(message.size_y[i]) || !finite(message.size_z[i]) ||
-                message.speed[i] < 0.0F || message.size_x[i] <= 0.0F ||
-                message.size_y[i] <= 0.0F || message.size_z[i] <= 0.0F) {
-                return false;
-            }
-        }
-        return true;
-    }
-
-    bool validTrafficLight(const interfaces::msg::TrafficLight& message) const {
-        return stampKey(message) > 0 && message.header.frame_id.empty() && message.state <= 6;
-    }
-
     void receiveEgo(interfaces::msg::EgoPose::SharedPtr message) {
-        if (!validEgo(*message)) {
-            RCLCPP_WARN(get_logger(), "Rejected invalid /ego_pose sample");
-            return;
-        }
-        const auto key = stampKey(*message);
-        if (key == last_ego_status_stamp_) {
-            return;
-        }
-        last_ego_status_stamp_ = key;
         const auto speed = ego_speed_estimator_.update(
             stampSeconds(*message), message->x, message->y);
-        if (speed.history_reset) {
-            std::lock_guard<std::mutex> lock(tracker_state_mutex_);
-            predictor_->reset();
-        }
 
         interfaces::msg::EgoStatus status;
         status.header = message->header;
@@ -562,85 +449,41 @@ private:
         ego_status_publisher_->publish(std::move(status));
 
         std::lock_guard<std::mutex> lock(snapshot_mutex_);
-        if (key < last_taken_stamp_) {
-            ego_messages_.clear();
-            object_messages_.clear();
-            traffic_light_messages_.clear();
-            last_taken_stamp_ = 0;
-        } else if (key == last_taken_stamp_) {
-            return;
-        }
-        ego_messages_[key] = std::move(message);
-        pruneSnapshotMap(ego_messages_);
-        updateNewestCompleteStampLocked();
+        latest_ego_ = std::move(message);
+        markSnapshotUpdatedLocked();
     }
 
     void receiveObjects(interfaces::msg::Objects::SharedPtr message) {
-        if (!validObjects(*message)) {
-            RCLCPP_WARN(get_logger(), "Rejected invalid /objects sample");
-            return;
-        }
         std::lock_guard<std::mutex> lock(snapshot_mutex_);
-        object_messages_[stampKey(*message)] = std::move(message);
-        pruneSnapshotMap(object_messages_);
-        updateNewestCompleteStampLocked();
+        latest_objects_ = std::move(message);
+        markSnapshotUpdatedLocked();
     }
 
-    void receiveTrafficLight(interfaces::msg::TrafficLight::SharedPtr message) {
-        if (!validTrafficLight(*message)) {
-            RCLCPP_WARN(get_logger(), "Rejected invalid /traffic_light sample");
-            return;
-        }
-        std::lock_guard<std::mutex> lock(snapshot_mutex_);
-        traffic_light_messages_[stampKey(*message)] = std::move(message);
-        pruneSnapshotMap(traffic_light_messages_);
-        updateNewestCompleteStampLocked();
-    }
+    void receiveTrafficLight(interfaces::msg::TrafficLight::SharedPtr) {}
 
-    std::int64_t newestCompleteStampLocked() const {
-        for (auto iterator = ego_messages_.rbegin(); iterator != ego_messages_.rend(); ++iterator) {
-            if (object_messages_.count(iterator->first) != 0U &&
-                traffic_light_messages_.count(iterator->first) != 0U) {
-                return iterator->first;
-            }
-        }
-        return 0;
-    }
-
-    void updateNewestCompleteStampLocked() {
-        const auto complete_stamp = newestCompleteStampLocked();
-        if (complete_stamp != 0 && complete_stamp != announced_complete_stamp_) {
-            announced_complete_stamp_ = complete_stamp;
-            newest_complete_revision_.fetch_add(1, std::memory_order_release);
-        } else if (complete_stamp == 0) {
-            announced_complete_stamp_ = 0;
+    void markSnapshotUpdatedLocked() {
+        if (latest_ego_ && latest_objects_) {
+            ++newest_complete_revision_;
         }
     }
 
     std::optional<Snapshot> takeLatestCompleteSnapshot() {
         std::lock_guard<std::mutex> lock(snapshot_mutex_);
-        const auto key = newestCompleteStampLocked();
-        if (key <= last_taken_stamp_) {
+        if (!latest_ego_ || !latest_objects_) {
             return std::nullopt;
         }
-        Snapshot snapshot{key, newest_complete_revision_.load(std::memory_order_acquire),
-            ego_messages_.at(key), object_messages_.at(key),
-            traffic_light_messages_.at(key)};
-        last_taken_stamp_ = key;
-        auto erase_through = [key](auto& values) {
-            values.erase(values.begin(), values.upper_bound(key));
-        };
-        erase_through(ego_messages_);
-        erase_through(object_messages_);
-        erase_through(traffic_light_messages_);
-        updateNewestCompleteStampLocked();
-        return snapshot;
+        if (newest_complete_revision_ == last_taken_revision_) {
+            return std::nullopt;
+        }
+        last_taken_revision_ = newest_complete_revision_;
+        return Snapshot{latest_ego_, latest_objects_};
     }
 
     std::vector<ObjectObservation> makeObservations(const interfaces::msg::Objects& message) const {
         std::vector<ObjectObservation> observations;
-        observations.reserve(static_cast<std::size_t>(message.length));
-        for (std::int32_t index = 0; index < message.length; ++index) {
+        const auto length = std::clamp(message.length, 0, 30);
+        observations.reserve(static_cast<std::size_t>(length));
+        for (std::int32_t index = 0; index < length; ++index) {
             const auto i = static_cast<std::size_t>(index);
             observations.push_back({message.id[i], message.x[i], message.y[i], message.z[i],
                 normalizeAngle(message.heading[i]), message.speed[i], message.size_x[i], message.size_y[i],
@@ -722,20 +565,12 @@ private:
         }
         const auto prediction_sequence =
             predictor_->predictSequence(stamp_s, future_times_s);
-        if (prediction_sequence.size() != future_sample_count) {
-            throw std::runtime_error("EKF failed to produce the requested prediction sequence");
-        }
-
         const auto& current = prediction_sequence.front();
         for (const auto& object : current) {
             if (observed_ids.count(object.id) != 0U) {
                 continue;
             }
-            const double inflation = predictionUncertaintyInflation(
-                object.position_sigma_m, object.direction_uncertainty_m,
-                uncertainty_sigma_multiplier_) +
-                yawIndependentRotationInflation(object.length, object.width);
-            markFootprint(occupancy, 0, orientedBox(object, inflation),
+            markFootprint(occupancy, 0, orientedBox(object),
                 -kUnlimitedZ, kUnlimitedZ);
         }
         std::unordered_map<std::uint32_t, const ObjectObservation*> observed_by_id;
@@ -770,29 +605,8 @@ private:
                 if (samples.empty()) {
                     continue;
                 }
-                double maximum_length = 0.0;
-                double maximum_width = 0.0;
-                double maximum_position_sigma_m = 0.0;
-                double maximum_direction_uncertainty_m = 0.0;
-                for (const auto& sample : samples) {
-                    maximum_length = std::max(maximum_length, sample.length);
-                    maximum_width = std::max(maximum_width, sample.width);
-                    maximum_position_sigma_m =
-                        std::max(maximum_position_sigma_m, sample.position_sigma_m);
-                    maximum_direction_uncertainty_m = std::max(
-                        maximum_direction_uncertainty_m,
-                        sample.direction_uncertainty_m);
-                }
-                const double inflation = predictionUncertaintyInflation(
-                    maximum_position_sigma_m,
-                    maximum_direction_uncertainty_m,
-                    uncertainty_sigma_multiplier_) +
-                    trajectorySweepDiscretizationInflation(
-                        samples,
-                        future_sample_interval_s) +
-                    yawIndependentRotationInflation(maximum_length, maximum_width);
                 markFootprint(occupancy, bin,
-                    sweptFootprint(samples, inflation),
+                    sweptFootprint(samples),
                     -kUnlimitedZ, kUnlimitedZ);
             }
         }
@@ -860,7 +674,6 @@ private:
         status.occupancy_probability.assign(
             static_speed_caps_.size() * kOccupancyBinCount,
             static_cast<float>(unknown_probability_));
-        updateSignalCaps(status.speed_cap_mps, *snapshot.traffic_light);
         std::lock_guard<std::mutex> lock(tracker_state_mutex_);
         updateOccupancy(status.occupancy_probability, stampSeconds(*snapshot.ego),
             *snapshot.ego, *snapshot.objects);
@@ -874,18 +687,14 @@ private:
         }
         const auto started = std::chrono::steady_clock::now();
         auto status = buildDynamicStatus(*snapshot);
-        if (newest_complete_revision_.load(std::memory_order_acquire) > snapshot->revision) {
-            ++discarded_stale_results_;
-            return;
-        }
         dynamic_status_publisher_->publish(std::move(status));
         ++published_snapshots_;
         const auto elapsed = std::chrono::duration<double, std::milli>(
             std::chrono::steady_clock::now() - started).count();
         if (elapsed > 1000.0 / target_rate_hz_) {
             RCLCPP_WARN_THROTTLE(get_logger(), *get_clock(), 5000,
-                "Tracker frame took %.1f ms (budget %.1f ms); published=%zu stale_discarded=%zu",
-                elapsed, 1000.0 / target_rate_hz_, published_snapshots_, discarded_stale_results_);
+                "Tracker frame took %.1f ms (budget %.1f ms); published=%zu",
+                elapsed, 1000.0 / target_rate_hz_, published_snapshots_);
         }
     }
 
@@ -895,7 +704,6 @@ private:
     double known_free_radius_m_ = 0.0;
     bool free_space_assumption_verified_ = false;
     bool allow_free_when_object_list_full_ = false;
-    double uncertainty_sigma_multiplier_ = 2.0;
     std::size_t sweep_substeps_per_bin_ = 5U;
     bool restrict_unobserved_signals_ = true;
     bool signal_calibration_verified_ = false;
@@ -917,16 +725,12 @@ private:
     std::mutex tracker_state_mutex_;
 
     std::mutex snapshot_mutex_;
-    std::map<std::int64_t, interfaces::msg::EgoPose::SharedPtr> ego_messages_;
-    std::map<std::int64_t, interfaces::msg::Objects::SharedPtr> object_messages_;
-    std::map<std::int64_t, interfaces::msg::TrafficLight::SharedPtr> traffic_light_messages_;
-    std::int64_t last_taken_stamp_ = 0;
-    std::int64_t last_ego_status_stamp_ = 0;
-    std::int64_t announced_complete_stamp_ = 0;
-    std::atomic<std::uint64_t> newest_complete_revision_{0};
+    interfaces::msg::EgoPose::SharedPtr latest_ego_;
+    interfaces::msg::Objects::SharedPtr latest_objects_;
+    std::uint64_t last_taken_revision_ = 0;
+    std::uint64_t newest_complete_revision_ = 0;
 
     std::size_t published_snapshots_ = 0;
-    std::size_t discarded_stale_results_ = 0;
 
     rclcpp::Publisher<interfaces::msg::EgoStatus>::SharedPtr ego_status_publisher_;
     rclcpp::Publisher<interfaces::msg::DynamicStatus>::SharedPtr dynamic_status_publisher_;
