@@ -1,0 +1,25 @@
+path_planner:
+  ros__parameters:
+    map_path: ""
+    checkpoint_file: ""
+    route_update_hz: 10.0
+    hybrid_astar_hz: 20.0
+    max_path_length: 20.0
+    max_node_count: 10000
+    primitive_length_m: 1.0
+    checkpoint_radius_m: 2.0
+    heading_tolerance_deg: 10.0
+    alignment_duration_s: 3.0
+    steering_candidates_deg: [-18.0, -9.0, 0.0, 9.0, 18.0]
+    xy_resolution_m: 0.5
+    yaw_resolution_deg: 5.0
+    time_resolution_s: 0.25
+    speed_resolution_mps: 0.5
+    acceleration_mps2: 2.0
+    deceleration_mps2: 2.0
+    wheelbase_m: 2.944
+    rear_axle_to_front_m: 3.808
+    rear_axle_to_rear_m: 1.040
+    left_extent_m: 0.943
+    right_extent_m: 0.943
+    vehicle_height_m: 1.507
