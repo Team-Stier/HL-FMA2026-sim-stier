@@ -43,7 +43,8 @@ struct Primitive {
     std::vector<double> speed_mps;
     std::vector<double> eta_s;
     double g{};
-    double h{};
+    double h_goal{};
+    double h_snap{};
     std::shared_ptr<const Primitive> parent;
 };
 
@@ -101,7 +102,8 @@ struct PlannerConfig {
     double max_path_length;
     std::size_t max_node_count;
     double g_weight;
-    double h_weight;
+    double h_goal_weight;
+    double h_snap_weight;
     double primitive_length_m;
     double checkpoint_radius_m;
     double heading_tolerance_rad;
@@ -391,13 +393,42 @@ public:
     }
 };
 
+static std::pair<lanelet::BasicPoints2d, lanelet::BasicPoints2d> centerlinePoints(
+    const lanelet::LaneletMap& map, const lanelet::routing::RoutingGraph& graph,
+    const std::vector<lanelet::Id>& goals) {
+    lanelet::BasicPoints2d goal_points, snap_points;
+    std::set<lanelet::Id> goal_ids(goals.begin(), goals.end());
+    auto snap_ids = goal_ids;
+    for (const auto id : goal_ids) {
+        const auto lane = map.laneletLayer.get(id);
+        for (const auto& point : lane.centerline2d()) goal_points.push_back(point.basicPoint());
+        if (const auto left = graph.left(lane)) snap_ids.insert(left->id());
+        if (const auto right = graph.right(lane)) snap_ids.insert(right->id());
+    }
+    for (const auto id : snap_ids) {
+        for (const auto& point : map.laneletLayer.get(id).centerline2d()) {
+            snap_points.push_back(point.basicPoint());
+        }
+    }
+    return {std::move(goal_points), std::move(snap_points)};
+}
+
+static double nearestPointSquared(const lanelet::BasicPoint2d& point,
+    const lanelet::BasicPoints2d& centers) {
+    double distance = std::numeric_limits<double>::infinity();
+    // ponytail: linear point scan; use a spatial index if profiling shows this dominates planning.
+    for (const auto& center : centers) distance = std::min(distance, (point - center).squaredNorm());
+    return distance;
+}
+
 struct QueueCompare {
     double g_weight;
-    double h_weight;
+    double h_goal_weight;
+    double h_snap_weight;
 
     bool operator()(const PrimitivePtr& left, const PrimitivePtr& right) const {
-        return g_weight * left->g + h_weight * left->h >
-            g_weight * right->g + h_weight * right->h;
+        return g_weight * left->g + h_goal_weight * left->h_goal + h_snap_weight * left->h_snap >
+            g_weight * right->g + h_goal_weight * right->h_goal + h_snap_weight * right->h_snap;
     }
 };
 
@@ -406,20 +437,27 @@ public:
     using PathPublisher = rclcpp::Publisher<nav_msgs::msg::Path>;
     using TreePublisher = rclcpp::Publisher<interfaces::msg::SearchTree>;
 
-    HybridAStarPlanner(const hdmap::HdMap& map, const PlannerConfig& config,
+    HybridAStarPlanner(const hdmap::HdMap& map, const lanelet::routing::RoutingGraph& graph,
+        const PlannerConfig& config,
         PathPublisher::SharedPtr path_publisher, TreePublisher::SharedPtr tree_publisher)
-        : map_(map), config_(config), validator_(map, config),
-          open_(QueueCompare{config.g_weight, config.h_weight}),
-          store_(QueueCompare{config.g_weight, config.h_weight}), path_publisher_(std::move(path_publisher)), tree_publisher_(std::move(tree_publisher)) {}
+        : map_(map), graph_(graph), config_(config), validator_(map, config),
+          open_(QueueCompare{config.g_weight, config.h_goal_weight, config.h_snap_weight}),
+          store_(QueueCompare{config.g_weight, config.h_goal_weight, config.h_snap_weight}), path_publisher_(std::move(path_publisher)), tree_publisher_(std::move(tree_publisher)) {}
 
     void tick(const PlanningSnapshot& snapshot) {
+        if (snapshot.goal_lanes.empty()) return;
+        if (snapshot.goal_lanes != cached_goals_) {
+            centers_ = centerlinePoints(map_.laneletMap(), graph_, snapshot.goal_lanes);
+            cached_goals_ = snapshot.goal_lanes;
+        }
+        if (centers_.first.empty() || centers_.second.empty()) return;
         primitives_.clear();
-        open_ = decltype(open_)(QueueCompare{config_.g_weight, config_.h_weight});
-        store_ = decltype(store_)(QueueCompare{config_.g_weight, config_.h_weight});
+        open_ = decltype(open_)(QueueCompare{config_.g_weight, config_.h_goal_weight, config_.h_snap_weight});
+        store_ = decltype(store_)(QueueCompare{config_.g_weight, config_.h_goal_weight, config_.h_snap_weight});
         auto root = std::make_shared<Primitive>();
         root->x_m = {0.}; root->y_m = {0.}; root->yaw_rad = {0.};
         root->speed_mps = {snapshot.ego.speed}; root->eta_s = {0.};
-        root->h = heuristic(*root, snapshot);
+        heuristic(*root, snapshot);
         primitives_.push_back(root);
         open_.push(root);
         visited_.clear();
@@ -433,7 +471,7 @@ public:
                     continue;
                 }
                 has_valid_child = true;
-                primitive->h = heuristic(*primitive, snapshot);
+                heuristic(*primitive, snapshot);
                 if (!visited_.insert(key(*primitive)).second) {
                     continue;
                 }
@@ -486,17 +524,16 @@ private:
             std::llround(primitive.speed_mps.back() / config_.speed_resolution_mps)};
     }
 
-    double heuristic(const Primitive& primitive, const PlanningSnapshot& snapshot) const {
+    void heuristic(Primitive& primitive, const PlanningSnapshot& snapshot) const {
         const auto point = mapPoint(snapshot.ego, primitive.x_m.back(), primitive.y_m.back());
-        double distance = std::numeric_limits<double>::infinity();
-        for (const auto lane_id : snapshot.goal_lanes) {
-            distance = std::min(distance, lanelet::geometry::distance2d(
-                map_.laneletMap().laneletLayer.get(lane_id), point));
-        }
-        return distance;
+        primitive.h_goal = std::sqrt(nearestPointSquared(point, centers_.first));
+        primitive.h_snap = nearestPointSquared(point, centers_.second);
     }
 
     const hdmap::HdMap& map_;
+    const lanelet::routing::RoutingGraph& graph_;
+    std::vector<lanelet::Id> cached_goals_;
+    std::pair<lanelet::BasicPoints2d, lanelet::BasicPoints2d> centers_;
     const PlannerConfig& config_;
     CollisionValidator validator_;
     PathBuilder path_builder_;
@@ -522,7 +559,8 @@ public:
             declare_parameter<double>("max_path_length", 20.),
             static_cast<std::size_t>(declare_parameter<int>("max_node_count", 10000)),
             declare_parameter<double>("g_weight", 1.),
-            declare_parameter<double>("h_weight", 1.),
+            declare_parameter<double>("h_goal_weight", 10.),
+            declare_parameter<double>("h_snap_weight", 1.),
             declare_parameter<double>("primitive_length_m", 1.),
             declare_parameter<double>("checkpoint_radius_m", 2.),
             declare_parameter<double>("heading_tolerance_deg", 10.) * pi / 180.,
@@ -539,6 +577,11 @@ public:
             declare_parameter<double>("left_extent_m", .943),
             declare_parameter<double>("right_extent_m", .943),
             declare_parameter<double>("vehicle_height_m", 1.507)};
+        for (const double weight : {config_.g_weight, config_.h_goal_weight, config_.h_snap_weight}) {
+            if (!std::isfinite(weight) || weight < 0.) {
+                throw std::invalid_argument("Planner cost weights must be finite and nonnegative");
+            }
+        }
         for (const auto degree : degrees) config_.steering_candidates_rad.push_back(degree * pi / 180.);
         map_ = hdmap::hdmap_init(declare_parameter<std::string>("map_path", ""));
         rules_ = lanelet::traffic_rules::TrafficRulesFactory::create(
@@ -556,7 +599,7 @@ public:
             declare_parameter<std::string>("checkpoint_file", ""), global_publisher_);
         route_updater_->setRegistry(registry_);
         planner_ = std::make_unique<HybridAStarPlanner>(
-            *map_, config_, local_publisher_, tree_publisher_);
+            *map_, *graph_, config_, local_publisher_, tree_publisher_);
 
         route_timer_ = create_wall_timer(std::chrono::duration_cast<std::chrono::nanoseconds>(
             std::chrono::duration<double>(1. / route_hz)), [this] {
@@ -591,4 +634,5 @@ int main(int argc, char** argv) {
     rclcpp::init(argc, argv);
     rclcpp::spin(std::make_shared<path_planner::PathPlannerNode>());
     rclcpp::shutdown();
+    return 0;
 }

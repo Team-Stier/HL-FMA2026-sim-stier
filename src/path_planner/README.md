@@ -162,7 +162,8 @@ classDiagram
         +speedMps
         +etaS
         +g
-        +h
+        +h_goal
+        +h_snap
         +parent
     }
 
@@ -312,8 +313,11 @@ sequenceDiagram
 - 후륜축 기준 kinematic bicycle model로 전진 primitive를 생성한다.
 - 조향 후보는 `[-18, -9, 0, 9, 18]`도다.
 - `g(x)`는 누적 이동거리다.
-- `h(x)`는 goal lane 중심선 polyline까지의 최단 직선거리다. goal이 둘이면 작은 값을 사용한다.
-- `f(x)=g_weight*g(x)+h_weight*h(x)`가 가장 작은 primitive부터 확장한다.
+- `h_goal(x)`는 goal lane 중심선 **점 집합**까지의 최소 유클리드 거리(m)다. 선분 투영은 하지 않는다.
+- `h_snap(x)`는 goal lane들과 각 goal의 `RoutingGraph::left/right()`로 얻은 바로 좌우 변경 허용 lane 중심선 점 집합까지의 최소 제곱 거리(m²)다. 재귀 확장이나 단순 인접 차선 추가는 하지 않는다.
+- goal 목록이 바뀌면 lane ID를 중복 제거하고 두 점 집합을 다시 만든다. 빈 goal에서는 탐색하지 않는다.
+- `f(x)=g_weight*g(x)+h_goal_weight*h_goal(x)+h_snap_weight*h_snap(x)`를 탐색·선택 큐 모두에 사용한다. 기존 `h_weight` 설정은 `h_goal_weight`로 이름을 변경했다.
+- 두 휴리스틱은 primitive 끝점에서 계산하며 누적하지 않는다. 스냅 정규화 기준은 1m이고 가중치로 강도를 조절한다. 가중치는 유한한 음이 아닌 값이어야 한다.
 - 누적 거리가 `max_path_length` 이상인 통과 후보는 `pathStore`에 넣는다. `max_node_count`에 도달하거나 `openQueue`가 비면 두 priority queue의 규칙에 따라 발행한다.
 - 한 parent에서 생성한 조향 후보가 모두 collision이면 parent를 `pathStore`에 넣어 장애물 직전의 유효 경로를 보존한다.
 - 탐색 key는 이산화한 `x`, `y`, `yaw`, `arrivalTime`, `speed`다.
@@ -335,7 +339,8 @@ struct Primitive {
   std::vector<double> speed_mps;
   std::vector<double> eta_s;
   double g;
-  double h;
+  double h_goal;
+  double h_snap;
   std::shared_ptr<const Primitive> parent;
 };
 ```
@@ -362,7 +367,8 @@ planner:
   max_path_length: 50.0
   max_node_count: 500
   g_weight: 1.0
-  h_weight: 1.0
+  h_goal_weight: 10.0
+  h_snap_weight: 1.0
   primitive_length_m: 1.0
   checkpoint_radius_m: 2.0
   heading_tolerance_deg: 10.0
@@ -387,9 +393,11 @@ planner:
 - primitive 중간의 차량 footprint가 시간별 점유 cell과 겹치면 후보를 버리는지 확인한다.
 - 완성 경로가 입력 stamp 기준 `base_link`의 `/local_path`로 발행되는지 확인한다.
 - `/local_path` 발행 후 `SearchTreeBuilder`가 전체 primitive의 부모 관계와 최종 primitive를 `parent_index`, `final_node_index`로 변환한 `/search_tree`가 같은 stamp로 발행되는지 확인한다.
-- 중심선 거리는 휴리스틱일 뿐 중앙 추종 비용이 아니다.
+- 스냅은 탐색 중 중앙을 선호하지만 경로 전체의 이탈 이력을 누적하지 않으며, 변경·추월·복귀 성공을 보장하지 않는다.
 - 차선 경계와 실선 횡단을 제한하지 않는다.
 - `max_path_length`에 도달한 후보는 `pathStore`에 들어가며, `max_node_count` 도달 또는 `openQueue` 소진 뒤 최상위 후보를 발행한다.
 - `unknown=-1` cell은 통과시키고 양의 occupancy probability만 충돌로 처리한다.
 
 - `PlanningRegistry::ready()`는 `/ego_status`와 `/dynamic_status`를 모두 수신한 뒤 두 주기 루프의 연산을 허용한다.
+
+비용·라우팅 회귀 검증: 빌드 후 `ctest --test-dir build/path_planner --output-on-failure` (`BUILD_TESTING=ON`).
