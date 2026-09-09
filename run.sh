@@ -74,11 +74,11 @@ cmake --build build/hdmap_core --parallel 2
 cmake --install build/hdmap_core
 export CMAKE_PREFIX_PATH="$ROOT/install/hdmap_core${CMAKE_PREFIX_PATH:+:$CMAKE_PREFIX_PATH}"
 colcon build --base-paths src/interfaces src/sim_bridge src/tf_broadcasting \
-    src/hdmap_dynamic_tracker src/path_planner src/visualization --cmake-clean-cache \
+    src/hdmap_dynamic_tracker src/path_planner src/control src/visualization --cmake-clean-cache \
     --cmake-args -DCMAKE_BUILD_TYPE=Release
 source install/setup.bash
 export PYTHONPATH="$ROOT/install/hdmap_core/lib/python3.12/site-packages${PYTHONPATH:+:$PYTHONPATH}"
 export HDMAP_PATH="${HDMAP_PATH:-$ROOT/map/hdmap.bin}"
 test -r "$HDMAP_PATH" || { echo "Missing map: $HDMAP_PATH" >&2; exit 1; }
-echo "Starting SimBridge + TF + HDMap Dynamic Tracker + Path Planner + Visualizer + RViz."
+echo "Starting SimBridge + TF + HDMap Dynamic Tracker + Path Planner + Control + Visualizer + RViz."
 exec python3 scripts/bringup.py run

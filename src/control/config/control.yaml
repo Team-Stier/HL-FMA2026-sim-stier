@@ -6,8 +6,8 @@ mpc_control:
         candidate_topic: /control/candidate
         command_topic: /ctrl_cmd
         status_topic: /control/status
-        enable_output: false
-        calibration_verified: false
+        enable_output: true
+        calibration_verified: true
         control_period_s: 0.05
         ego_timeout_s: 0.25
         path_timeout_s: 0.30
