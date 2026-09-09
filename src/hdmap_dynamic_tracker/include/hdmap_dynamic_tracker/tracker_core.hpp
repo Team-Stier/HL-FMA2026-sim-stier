@@ -20,14 +20,12 @@ struct EgoSpeedResult {
 
 class EgoSpeedEstimator {
 public:
-    EgoSpeedEstimator(double maximum_dt_s, double maximum_speed_mps);
+    EgoSpeedEstimator() = default;
 
     EgoSpeedResult update(double stamp_s, double x, double y);
     void reset();
 
 private:
-    double maximum_dt_s_;
-    double maximum_speed_mps_;
     bool initialized_ = false;
     double stamp_s_ = 0.0;
     double x_ = 0.0;

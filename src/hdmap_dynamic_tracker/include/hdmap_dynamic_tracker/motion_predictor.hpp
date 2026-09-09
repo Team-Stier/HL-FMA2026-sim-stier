@@ -37,14 +37,7 @@ struct PredictorConfig {
     double process_acceleration_sigma_mps2 = 2.0;
     double position_measurement_sigma_m = 0.5;
     double initial_velocity_sigma_mps = 5.0;
-    double track_retention_s = 0.5;
     double minimum_frame_dt_s = 1.0e-4;
-    double maximum_frame_dt_s = 0.25;
-    double maximum_position_innovation_m = 15.0;
-    std::size_t minimum_velocity_observations = 4;
-    double minimum_velocity_observation_span_s = 0.15;
-    double minimum_velocity_displacement_m = 1.0;
-    double maximum_velocity_innovation_mps = 3.0;
 };
 
 class MotionPredictor {

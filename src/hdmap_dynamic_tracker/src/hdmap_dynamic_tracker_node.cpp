@@ -12,7 +12,6 @@
 #include <rclcpp/executors/multi_threaded_executor.hpp>
 
 #include <algorithm>
-#include <atomic>
 #include <chrono>
 #include <cmath>
 #include <cstdio>
@@ -72,7 +71,6 @@ lanelet::BasicPolygon2d toLaneletPolygon(const std::vector<Point2d>& points) {
 
 struct Snapshot {
     std::int64_t stamp = 0;
-    std::uint64_t revision = 0;
     interfaces::msg::EgoPose::SharedPtr ego;
     interfaces::msg::Objects::SharedPtr objects;
     interfaces::msg::TrafficLight::SharedPtr traffic_light;
@@ -95,23 +93,13 @@ class HdMapDynamicTrackerNode final : public rclcpp::Node {
 public:
     HdMapDynamicTrackerNode()
         : Node("hdmap_dynamic_tracker"),
-          ego_speed_estimator_(
-              declare_parameter<double>("ego.maximum_dt_s", 0.25),
-              declare_parameter<double>("ego.maximum_speed_kph", 300.0) / 3.6) {
+          ego_speed_estimator_() {
         frame_id_ = declare_parameter<std::string>("frame_id", "map");
         target_rate_hz_ = declare_parameter<double>("target_rate_hz", 20.0);
         unknown_probability_ = declare_parameter<double>("occupancy.unknown_probability", -1.0);
         known_free_radius_m_ = declare_parameter<double>("occupancy.known_free_radius_m", 0.0);
-        free_space_assumption_verified_ =
-            declare_parameter<bool>("occupancy.free_space_assumption_verified", false);
-        allow_free_when_object_list_full_ =
-            declare_parameter<bool>("occupancy.allow_free_when_object_list_full", false);
         uncertainty_sigma_multiplier_ =
             declare_parameter<double>("occupancy.uncertainty_sigma_multiplier", 2.0);
-        restrict_unobserved_signals_ =
-            declare_parameter<bool>("signals.restrict_unobserved", true);
-        signal_calibration_verified_ =
-            declare_parameter<bool>("signals.calibration_verified", false);
         const auto braking_speeds = declare_parameter<std::vector<double>>(
             "signals.braking_calibration.speed_mps", std::vector<double>{});
         const auto braking_distances = declare_parameter<std::vector<double>>(
@@ -133,30 +121,8 @@ public:
             declare_parameter<double>("prediction.position_measurement_sigma_m", 0.5);
         predictor_config.initial_velocity_sigma_mps =
             declare_parameter<double>("prediction.initial_velocity_sigma_mps", 5.0);
-        predictor_config.track_retention_s =
-            declare_parameter<double>("prediction.track_retention_s", 0.5);
         predictor_config.minimum_frame_dt_s =
             declare_parameter<double>("prediction.minimum_frame_dt_s", 1.0e-4);
-        predictor_config.maximum_frame_dt_s =
-            get_parameter("ego.maximum_dt_s").as_double();
-        predictor_config.maximum_position_innovation_m =
-            declare_parameter<double>("prediction.maximum_position_innovation_m", 15.0);
-        const auto minimum_velocity_observations = declare_parameter<std::int64_t>(
-            "prediction.minimum_velocity_observations", 4);
-        if (minimum_velocity_observations < 2 ||
-            static_cast<std::uint64_t>(minimum_velocity_observations) >
-                std::numeric_limits<std::size_t>::max()) {
-            throw std::invalid_argument(
-                "prediction.minimum_velocity_observations must be at least 2");
-        }
-        predictor_config.minimum_velocity_observations =
-            static_cast<std::size_t>(minimum_velocity_observations);
-        predictor_config.minimum_velocity_observation_span_s = declare_parameter<double>(
-            "prediction.minimum_velocity_observation_span_s", 0.15);
-        predictor_config.minimum_velocity_displacement_m = declare_parameter<double>(
-            "prediction.minimum_velocity_displacement_m", 1.0);
-        predictor_config.maximum_velocity_innovation_mps = declare_parameter<double>(
-            "prediction.maximum_velocity_innovation_mps", 3.0);
         predictor_ = makeEkfPredictor(predictor_config);
 
         ramp_template_.design_deceleration_mps2 =
@@ -207,14 +173,6 @@ public:
             static_cast<double>((static_speed_caps_.size() +
                 static_speed_caps_.size() * kOccupancyBinCount) * sizeof(float)) /
                 (1024.0 * 1024.0));
-        if (!signal_calibration_verified_) {
-            RCLCPP_WARN(get_logger(),
-                "Signal braking parameters are marked unverified; keep allow_motion=false until calibrated");
-        } else {
-            RCLCPP_INFO(get_logger(),
-                "Signal braking calibration verified: %zu samples through %.2f m/s",
-                braking_distance_table_.size(), braking_distance_table_.back().speed_mps);
-        }
         if (known_free_radius_m_ <= 0.0) {
             RCLCPP_WARN(get_logger(),
                 "No region is asserted free: unoccupied cells remain unknown (-1); occupied cells are still published");
@@ -238,11 +196,6 @@ private:
             !std::isfinite(rear_axle_to_front_m_) || rear_axle_to_front_m_ < 0.0) {
             throw std::invalid_argument("Invalid occupancy or vehicle parameter");
         }
-        if ((known_free_radius_m_ > 0.0 || allow_free_when_object_list_full_) &&
-            !free_space_assumption_verified_) {
-            throw std::invalid_argument(
-                "Free-space assertions require occupancy.free_space_assumption_verified=true");
-        }
         StopRampParameters validation_ramp = ramp_template_;
         validation_ramp.entry_speed_mps = 1.0;
         if (!validStopRamp(validation_ramp) ||
@@ -253,10 +206,6 @@ private:
             !validBrakingDistanceTable(braking_distance_table_)) {
             throw std::invalid_argument(
                 "Signal braking calibration speeds must increase and distances must be positive and nondecreasing");
-        }
-        if (signal_calibration_verified_ && braking_distance_table_.empty()) {
-            throw std::invalid_argument(
-                "Verified signal braking calibration requires a nonempty braking-distance table");
         }
     }
 
@@ -275,15 +224,9 @@ private:
         const auto& cells = static_map_->cells();
         static_speed_caps_.assign(cells.size(), 0.0F);
         cell_centers_.resize(cells.size());
-        std::size_t missing_speed_limits = 0;
         for (const auto& cell : cells) {
-            const auto parsed = parseSpeedLimitMps(
-                cell.polygon3d().attributeOr<std::string>("speed_limit", ""));
-            if (parsed && *parsed <= std::numeric_limits<float>::max()) {
-                static_speed_caps_.at(cell.id()) = static_cast<float>(*parsed);
-            } else {
-                ++missing_speed_limits;
-            }
+            static_speed_caps_.at(cell.id()) = static_cast<float>(parseSpeedLimitMps(
+                cell.polygon3d().attributeOr<std::string>("speed_limit", "")).value());
 
             const auto polygon = cell.polygon2d();
             Point2d center;
@@ -297,38 +240,15 @@ private:
             }
             cell_centers_.at(cell.id()) = center;
         }
-        if (missing_speed_limits > 0) {
-            RCLCPP_WARN(get_logger(),
-                "%zu cells have missing/invalid explicit speed_limit and are capped at 0 m/s",
-                missing_speed_limits);
-        }
         buildSignalConstraints();
     }
 
     double cellLength(const hdmap::Cell& cell) const {
-        const auto parsed = parsePositiveMetres(
-            cell.polygon3d().attributeOr<std::string>("centerline_length_m", ""));
-        if (parsed) {
-            return *parsed;
-        }
-        ++cell_length_fallback_count_;
-        const auto* previous = cell.previous();
-        if (previous != nullptr) {
-            const auto& here = cell_centers_.at(cell.id());
-            const auto& before = cell_centers_.at(previous->id());
-            const double distance = std::hypot(here.x - before.x, here.y - before.y);
-            if (std::isfinite(distance) && distance > 0.0) {
-                return distance;
-            }
-        }
-        return 1.0;
+        return parsePositiveMetres(
+            cell.polygon3d().attributeOr<std::string>("centerline_length_m", "")).value();
     }
 
     void buildSignalConstraints() {
-        std::size_t missing_stoplines = 0;
-        std::size_t broken_previous_chains = 0;
-        std::size_t unscoped_signal_rules = 0;
-        std::size_t braking_table_fallbacks = 0;
         double maximum_ramp_distance = 0.0;
         for (const float static_cap : static_speed_caps_) {
             StopRampParameters ramp = ramp_template_;
@@ -346,7 +266,6 @@ private:
             }
         }
         for (const auto& registry_entry : static_map_->signalRegistry()) {
-            registry_controller_ids_.insert(registry_entry.first);
             for (const auto& signal : registry_entry.second) {
                 SignalConstraint constraint;
                 constraint.controller_id = registry_entry.first;
@@ -354,14 +273,10 @@ private:
                     signal->attributeOr<std::string>("permitted_states", ""));
                 const auto stop_line = signal->stopLine();
                 if (!stop_line) {
-                    ++missing_stoplines;
-                    unresolved_controller_ids_.insert(registry_entry.first);
                     continue;
                 }
                 const auto stop_cells = static_map_->stoplineCells().find(stop_line->id());
                 if (stop_cells == static_map_->stoplineCells().end() || stop_cells->second.empty()) {
-                    ++missing_stoplines;
-                    unresolved_controller_ids_.insert(registry_entry.first);
                     continue;
                 }
 
@@ -369,10 +284,6 @@ private:
                 const auto scoped_lanelets = rule_lanelets.find(signal->id());
                 const bool has_lane_scope = scoped_lanelets != rule_lanelets.end() &&
                     !scoped_lanelets->second.empty();
-                if (!has_lane_scope) {
-                    ++unscoped_signal_rules;
-                }
-                bool incomplete_previous_chain = false;
                 for (const auto stop_cell_id : stop_cells->second) {
                     if (has_lane_scope && scoped_lanelets->second.count(
                         static_map_->cells().at(stop_cell_id).parent().lanelet_id) == 0U) {
@@ -389,13 +300,6 @@ private:
                         if (!braking_distance_table_.empty()) {
                             ramp.calibrated_braking_distance_m = conservativeBrakingDistance(
                                 ramp.entry_speed_mps, braking_distance_table_);
-                            if (!ramp.calibrated_braking_distance_m) {
-                                if (signal_calibration_verified_) {
-                                    throw std::invalid_argument(
-                                        "Verified braking-distance table does not cover a signal approach speed");
-                                }
-                                ++braking_table_fallbacks;
-                            }
                         }
                         if (!validStopRamp(ramp)) {
                             throw std::invalid_argument(
@@ -412,50 +316,16 @@ private:
                         distance_from_stop_edge += cellLength(*cell);
                         cell = cell->previous();
                     }
-                    if (distance_from_stop_edge <= traversal_limit) {
-                        ++broken_previous_chains;
-                        incomplete_previous_chain = true;
-                    }
                 }
                 constraint.restricted_caps.reserve(minimum_caps.size());
                 for (const auto& cap : minimum_caps) {
                     constraint.restricted_caps.push_back({cap.first, cap.second});
                 }
                 if (constraint.restricted_caps.empty()) {
-                    ++missing_stoplines;
-                    unresolved_controller_ids_.insert(registry_entry.first);
                     continue;
-                }
-                if (incomplete_previous_chain) {
-                    unresolved_controller_ids_.insert(registry_entry.first);
                 }
                 signal_constraints_.push_back(std::move(constraint));
             }
-        }
-        if (missing_stoplines > 0) {
-            RCLCPP_WARN(get_logger(),
-                "%zu signal rules have no resolved stopline cells; they remain unresolved, never inferred green",
-                missing_stoplines);
-        }
-        if (broken_previous_chains > 0) {
-            RCLCPP_WARN(get_logger(),
-                "%zu stopline traversals ended before the requested ramp distance; merge predecessors require RoutingGraph",
-                broken_previous_chains);
-        }
-        if (braking_table_fallbacks > 0) {
-            RCLCPP_WARN(get_logger(),
-                "%zu stopline ramps exceed the unverified braking table; theoretical design-deceleration fallback was used",
-                braking_table_fallbacks);
-        }
-        if (cell_length_fallback_count_ > 0) {
-            RCLCPP_WARN(get_logger(),
-                "%zu cells lacked valid centerline_length_m; geometry distance (or 1 m last resort) was used",
-                cell_length_fallback_count_);
-        }
-        if (unscoped_signal_rules > 0) {
-            RCLCPP_WARN(get_logger(),
-                "%zu signal rules were not attached to lanelets; their full stopline cell set was used",
-                unscoped_signal_rules);
         }
     }
 
@@ -528,7 +398,6 @@ private:
         }
         ego_messages_[key] = std::move(message);
         pruneSnapshotMap(ego_messages_);
-        updateNewestCompleteStampLocked();
     }
 
     void receiveObjects(interfaces::msg::Objects::SharedPtr message) {
@@ -539,7 +408,6 @@ private:
         std::lock_guard<std::mutex> lock(snapshot_mutex_);
         object_messages_[stampKey(*message)] = std::move(message);
         pruneSnapshotMap(object_messages_);
-        updateNewestCompleteStampLocked();
     }
 
     void receiveTrafficLight(interfaces::msg::TrafficLight::SharedPtr message) {
@@ -550,7 +418,6 @@ private:
         std::lock_guard<std::mutex> lock(snapshot_mutex_);
         traffic_light_messages_[stampKey(*message)] = std::move(message);
         pruneSnapshotMap(traffic_light_messages_);
-        updateNewestCompleteStampLocked();
     }
 
     std::int64_t newestCompleteStampLocked() const {
@@ -563,23 +430,13 @@ private:
         return 0;
     }
 
-    void updateNewestCompleteStampLocked() {
-        const auto complete_stamp = newestCompleteStampLocked();
-        if (complete_stamp != 0 && complete_stamp != announced_complete_stamp_) {
-            announced_complete_stamp_ = complete_stamp;
-            newest_complete_revision_.fetch_add(1, std::memory_order_release);
-        } else if (complete_stamp == 0) {
-            announced_complete_stamp_ = 0;
-        }
-    }
-
     std::optional<Snapshot> takeLatestCompleteSnapshot() {
         std::lock_guard<std::mutex> lock(snapshot_mutex_);
         const auto key = newestCompleteStampLocked();
         if (key <= last_taken_stamp_) {
             return std::nullopt;
         }
-        Snapshot snapshot{key, newest_complete_revision_.load(std::memory_order_acquire),
+        Snapshot snapshot{key,
             ego_messages_.at(key), object_messages_.at(key),
             traffic_light_messages_.at(key)};
         last_taken_stamp_ = key;
@@ -589,7 +446,6 @@ private:
         erase_through(ego_messages_);
         erase_through(object_messages_);
         erase_through(traffic_light_messages_);
-        updateNewestCompleteStampLocked();
         return snapshot;
     }
 
@@ -607,10 +463,8 @@ private:
 
     void markKnownFreeCurrent(
         std::vector<float>& occupancy,
-        const interfaces::msg::EgoPose& ego,
-        const interfaces::msg::Objects& objects) const {
-        if (known_free_radius_m_ <= 0.0 ||
-            (!allow_free_when_object_list_full_ && objects.length == 30)) {
+        const interfaces::msg::EgoPose& ego) const {
+        if (known_free_radius_m_ <= 0.0) {
             return;
         }
         const lanelet::BoundingBox2d query_box(
@@ -645,7 +499,7 @@ private:
         double stamp_s,
         const interfaces::msg::EgoPose& ego,
         const interfaces::msg::Objects& objects) {
-        markKnownFreeCurrent(occupancy, ego, objects);
+        markKnownFreeCurrent(occupancy, ego);
         const auto observations = makeObservations(objects);
         predictor_->updateFrame(stamp_s, observations);
 
@@ -743,46 +597,15 @@ private:
     void updateSignalCaps(
         std::vector<float>& speed_caps,
         const interfaces::msg::TrafficLight& traffic_light) const {
-        if (traffic_light.id != 0 &&
-            (registry_controller_ids_.count(traffic_light.id) == 0U ||
-                unresolved_controller_ids_.count(traffic_light.id) != 0U)) {
-            std::fill(speed_caps.begin(), speed_caps.end(), 0.0F);
-            RCLCPP_ERROR_THROTTLE(get_logger(), *get_clock(), 5000,
-                "Observed controller %d has no complete stopline mapping; applying global 0 m/s cap",
-                traffic_light.id);
-            return;
-        }
         for (const auto& constraint : signal_constraints_) {
-            const bool observed_controller = traffic_light.id == constraint.controller_id;
-            const bool should_restrict = observed_controller ? !permitted(constraint, traffic_light) :
-                restrict_unobserved_signals_;
-            if (!should_restrict) {
+            if (traffic_light.id != constraint.controller_id ||
+                permitted(constraint, traffic_light)) {
                 continue;
             }
             for (const auto& restriction : constraint.restricted_caps) {
                 auto& cap = speed_caps.at(restriction.cell_id);
                 cap = std::min(cap, restriction.cap_mps);
             }
-        }
-        bool permitted_rule_seen = false;
-        bool shared_unknown_still_restricts = false;
-        for (const auto& constraint : signal_constraints_) {
-            if (!permitted(constraint, traffic_light)) {
-                continue;
-            }
-            permitted_rule_seen = true;
-            for (const auto& restriction : constraint.restricted_caps) {
-                if (speed_caps.at(restriction.cell_id) <
-                    static_speed_caps_.at(restriction.cell_id)) {
-                    shared_unknown_still_restricts = true;
-                    break;
-                }
-            }
-        }
-        if (permitted_rule_seen && shared_unknown_still_restricts) {
-            RCLCPP_WARN_THROTTLE(get_logger(), *get_clock(), 5000,
-                "Controller %d is permitted but a shared unobserved signal constraint still caps its approach",
-                traffic_light.id);
         }
     }
 
@@ -807,18 +630,14 @@ private:
         }
         const auto started = std::chrono::steady_clock::now();
         auto status = buildDynamicStatus(*snapshot);
-        if (newest_complete_revision_.load(std::memory_order_acquire) > snapshot->revision) {
-            ++discarded_stale_results_;
-            return;
-        }
         dynamic_status_publisher_->publish(std::move(status));
         ++published_snapshots_;
         const auto elapsed = std::chrono::duration<double, std::milli>(
             std::chrono::steady_clock::now() - started).count();
         if (elapsed > 1000.0 / target_rate_hz_) {
             RCLCPP_WARN_THROTTLE(get_logger(), *get_clock(), 5000,
-                "Tracker frame took %.1f ms (budget %.1f ms); published=%zu stale_discarded=%zu",
-                elapsed, 1000.0 / target_rate_hz_, published_snapshots_, discarded_stale_results_);
+                "Tracker frame took %.1f ms (budget %.1f ms); published=%zu",
+                elapsed, 1000.0 / target_rate_hz_, published_snapshots_);
         }
     }
 
@@ -826,11 +645,7 @@ private:
     double target_rate_hz_ = 20.0;
     double unknown_probability_ = -1.0;
     double known_free_radius_m_ = 0.0;
-    bool free_space_assumption_verified_ = false;
-    bool allow_free_when_object_list_full_ = false;
     double uncertainty_sigma_multiplier_ = 2.0;
-    bool restrict_unobserved_signals_ = true;
-    bool signal_calibration_verified_ = false;
     double rear_axle_to_front_m_ = 3.808;
     StopRampParameters ramp_template_;
     std::vector<BrakingDistanceSample> braking_distance_table_;
@@ -839,9 +654,6 @@ private:
     std::vector<float> static_speed_caps_;
     std::vector<Point2d> cell_centers_;
     std::vector<SignalConstraint> signal_constraints_;
-    std::unordered_set<std::int32_t> registry_controller_ids_;
-    std::unordered_set<std::int32_t> unresolved_controller_ids_;
-    mutable std::size_t cell_length_fallback_count_ = 0;
 
     EgoSpeedEstimator ego_speed_estimator_;
     std::unique_ptr<MotionPredictor> predictor_;
@@ -853,11 +665,8 @@ private:
     std::map<std::int64_t, interfaces::msg::TrafficLight::SharedPtr> traffic_light_messages_;
     std::int64_t last_taken_stamp_ = 0;
     std::int64_t last_ego_status_stamp_ = 0;
-    std::int64_t announced_complete_stamp_ = 0;
-    std::atomic<std::uint64_t> newest_complete_revision_{0};
 
     std::size_t published_snapshots_ = 0;
-    std::size_t discarded_stale_results_ = 0;
 
     rclcpp::Publisher<interfaces::msg::EgoStatus>::SharedPtr ego_status_publisher_;
     rclcpp::Publisher<interfaces::msg::DynamicStatus>::SharedPtr dynamic_status_publisher_;

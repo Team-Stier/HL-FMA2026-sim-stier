@@ -9,7 +9,7 @@ import sys
 import time
 
 ROOT = Path(__file__).resolve().parents[1]
-PACKAGES = ('visualization',)
+PACKAGES = ('visualization', 'path_planner')
 
 
 def launch_commands():

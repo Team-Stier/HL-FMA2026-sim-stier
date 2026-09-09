@@ -61,11 +61,18 @@ public:
     void onEgo(const EgoStatus& message) {
         std::lock_guard lock(mutex_);
         snapshot_.ego = message;
+        has_ego_ = true;
     }
 
     void onDynamic(const DynamicStatus& message) {
         std::lock_guard lock(mutex_);
         snapshot_.dynamic = message;
+        has_dynamic_ = true;
+    }
+
+    bool ready() const {
+        std::lock_guard lock(mutex_);
+        return has_ego_ && has_dynamic_;
     }
 
     PlanningSnapshot snapshot() const {
@@ -85,12 +92,16 @@ public:
 private:
     mutable std::mutex mutex_;
     PlanningSnapshot snapshot_;
+    bool has_ego_{};
+    bool has_dynamic_{};
 };
 
 struct PlannerConfig {
     double route_update_hz;
     double max_path_length;
     std::size_t max_node_count;
+    double g_weight;
+    double h_weight;
     double primitive_length_m;
     double checkpoint_radius_m;
     double heading_tolerance_rad;
@@ -317,7 +328,7 @@ public:
             const auto bin = static_cast<std::size_t>(std::min(12.,
                 std::ceil((snapshot_time + eta - dynamic_time) / .5)));
             for (const auto cell : cells) {
-                if (snapshot.dynamic.occupancy_probability[cell * 13 + bin] != 0.F) {
+                if (snapshot.dynamic.occupancy_probability[cell * 13 + bin] > 0.F) {
                     return false;
                 }
             }
@@ -381,8 +392,12 @@ public:
 };
 
 struct QueueCompare {
+    double g_weight;
+    double h_weight;
+
     bool operator()(const PrimitivePtr& left, const PrimitivePtr& right) const {
-        return left->g + left->h > right->g + right->h;
+        return g_weight * left->g + h_weight * left->h >
+            g_weight * right->g + h_weight * right->h;
     }
 };
 
@@ -394,12 +409,13 @@ public:
     HybridAStarPlanner(const hdmap::HdMap& map, const PlannerConfig& config,
         PathPublisher::SharedPtr path_publisher, TreePublisher::SharedPtr tree_publisher)
         : map_(map), config_(config), validator_(map, config),
-          path_publisher_(std::move(path_publisher)), tree_publisher_(std::move(tree_publisher)) {}
+          open_(QueueCompare{config.g_weight, config.h_weight}),
+          store_(QueueCompare{config.g_weight, config.h_weight}), path_publisher_(std::move(path_publisher)), tree_publisher_(std::move(tree_publisher)) {}
 
     void tick(const PlanningSnapshot& snapshot) {
         primitives_.clear();
-        open_ = {};
-        store_ = {};
+        open_ = decltype(open_)(QueueCompare{config_.g_weight, config_.h_weight});
+        store_ = decltype(store_)(QueueCompare{config_.g_weight, config_.h_weight});
         auto root = std::make_shared<Primitive>();
         root->x_m = {0.}; root->y_m = {0.}; root->yaw_rad = {0.};
         root->speed_mps = {snapshot.ego.speed}; root->eta_s = {0.};
@@ -408,7 +424,7 @@ public:
         open_.push(root);
         visited_.clear();
         visited_.insert(key(*root));
-        for (std::size_t expanded = 0; expanded < config_.max_node_count; ++expanded) {
+        for (std::size_t expanded = 0; expanded < config_.max_node_count && !open_.empty(); ++expanded) {
             const auto parent = open_.top();
             open_.pop();
             for (auto& primitive : generate(parent)) {
@@ -500,6 +516,8 @@ public:
             route_hz,
             declare_parameter<double>("max_path_length", 20.),
             static_cast<std::size_t>(declare_parameter<int>("max_node_count", 10000)),
+            declare_parameter<double>("g_weight", 1.),
+            declare_parameter<double>("h_weight", 1.),
             declare_parameter<double>("primitive_length_m", 1.),
             declare_parameter<double>("checkpoint_radius_m", 2.),
             declare_parameter<double>("heading_tolerance_deg", 10.) * pi / 180.,
@@ -537,11 +555,11 @@ public:
 
         route_timer_ = create_wall_timer(std::chrono::duration_cast<std::chrono::nanoseconds>(
             std::chrono::duration<double>(1. / route_hz)), [this] {
-                route_updater_->tick(registry_.snapshot());
+                if (registry_.ready()) route_updater_->tick(registry_.snapshot());
             });
         planner_timer_ = create_wall_timer(std::chrono::duration_cast<std::chrono::nanoseconds>(
             std::chrono::duration<double>(1. / planner_hz)), [this] {
-                planner_->tick(registry_.snapshot());
+                if (registry_.ready()) planner_->tick(registry_.snapshot());
             });
     }
 

@@ -28,7 +28,7 @@ while time.monotonic() < end and len(received) != 3:
     dynamic = DynamicStatus()
     dynamic.header = ego.header
     dynamic.speed_cap_mps = [8.0] * 94154
-    dynamic.occupancy_probability = [0.0] * (94154 * 13)
+    dynamic.occupancy_probability = [-1.0] * (94154 * 13)
     ego_pub.publish(ego)
     dynamic_pub.publish(dynamic)
     rclpy.spin_once(node, timeout_sec=0.1)

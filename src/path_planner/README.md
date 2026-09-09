@@ -129,6 +129,7 @@ classDiagram
     class PlanningRegistry {
         +onEgo(message)
         +onDynamic(message)
+        +ready()
         +snapshot()
         +updateRoute(currentLane, intersection, globalPath)
     }
@@ -224,27 +225,34 @@ sequenceDiagram
     end
 
     loop config.route_update_hz = 10Hz
-        U->>R: snapshot()
-        R-->>U: route input snapshot
-        U->>I: inspect(snapshot.ego)
+        U->>R: ready()
+        R-->>U: ego and dynamic received
+        alt ready
+            U->>R: snapshot()
+            R-->>U: route input snapshot
+            U->>I: inspect(snapshot.ego)
         I-->>U: current lane, intersection flag
         U->>RG: shortestPathVia(current lane, via lanes, destination lane)
         RG-->>U: global path
         U->>R: updateRoute(current lane, intersection, global path)
-        U->>G: publish(global path)
+            U->>G: publish(global path)
+        end
     end
 
     loop config.hybrid_astar_hz = 20Hz
-        H->>R: snapshot()
-        R-->>H: immutable planning snapshot
-        Note over H: 이번 탐색 전체에서 같은 snapshot 사용
-        H->>O: clear()
+        H->>R: ready()
+        R-->>H: ego and dynamic received
+        alt ready
+            H->>R: snapshot()
+            R-->>H: immutable planning snapshot
+            Note over H: 이번 탐색 전체에서 같은 snapshot 사용
+            H->>O: clear()
         H->>S: clear()
         H->>H: createStartPrimitive(parent = nullptr)
         H->>H: primitives.push_back(start primitive)
         H->>O: push(start primitive)
 
-        loop expandedNodeCount < config.max_node_count
+        loop expandedNodeCount < config.max_node_count and openQueue not empty
             H->>O: pop()
             O-->>H: parent primitive
             H->>H: incrementExpandedNodeCount()
@@ -276,7 +284,8 @@ sequenceDiagram
         H->>L: publish(local path)
         H->>B: build(primitives, final primitive)
         B-->>H: search tree
-        H->>T: publish(search tree)
+            H->>T: publish(search tree)
+        end
     end
 ```
 
@@ -286,9 +295,11 @@ sequenceDiagram
 - `HybridAStarPlanner`가 config의 조향 후보로 primitive를 생성한다.
 - `CollisionValidator`는 sample footprint와 겹친 cell을 한 번 조회한다. 해당 cell들의 `speed_cap_mps` 최솟값으로 속도와 ETA를 적분한 뒤 같은 cell의 ETA time bin occupancy를 검사한다.
 - 통과한 primitive 중 누적 거리가 `max_path_length` 미만이면 `openQueue`, 이상이면 `pathStore`에 넣는다.
-- `max_node_count`에 도달하면 `pathStore`의 최상위 primitive를 선택한다. `pathStore`가 비어 있으면 `openQueue`의 최상위 primitive를 선택한다.
+- `max_node_count`에 도달하거나 `openQueue`가 비면 `pathStore`의 최상위 primitive를 선택한다. `pathStore`가 비어 있으면 `openQueue`의 최상위 primitive를 선택한다.
 - `PathBuilder::build()`가 최종 primitive의 `parent` 체인을 따라 `/local_path`를 만든다.
 - `/local_path` 발행 후 `SearchTreeBuilder::build()`가 전체 primitive 객체를 메시지 인덱스로 매핑해 `parent_index`와 `final_node_index`를 만든다.
+- 루트 `run.sh`는 `path_planner`를 빌드하고 `scripts/bringup.py`가 visualization과 path planner launch를 별도 프로세스로 실행한다.
+- 루트 `run.sh`는 HDMap 코어와 colcon 패키지를 `CMAKE_BUILD_TYPE=Release`로 빌드한다.
 - 모든 Hz 값은 config에서 읽는다.
 
 ## Hybrid A*와 시간 점유
@@ -298,13 +309,13 @@ sequenceDiagram
 - 조향 후보는 `[-18, -9, 0, 9, 18]`도다.
 - `g(x)`는 누적 이동거리다.
 - `h(x)`는 goal lane 중심선 polyline까지의 최단 직선거리다. goal이 둘이면 작은 값을 사용한다.
-- `f(x)=g(x)+h(x)`가 가장 작은 primitive부터 확장한다.
-- 누적 거리가 `max_path_length` 이상인 통과 후보는 `pathStore`에 넣는다. `max_node_count`까지 확장한 뒤 두 priority queue의 규칙에 따라 발행한다.
+- `f(x)=g_weight*g(x)+h_weight*h(x)`가 가장 작은 primitive부터 확장한다.
+- 누적 거리가 `max_path_length` 이상인 통과 후보는 `pathStore`에 넣는다. `max_node_count`에 도달하거나 `openQueue`가 비면 두 priority queue의 규칙에 따라 발행한다.
 - 탐색 key는 이산화한 `x`, `y`, `yaw`, `arrivalTime`, `speed`다.
 - `CollisionValidator`가 현재 ego 속도에서 시작해 sample별 overlap cell의 `speed_cap_mps` 최솟값과 설정 가감속으로 `speed_mps`, `eta_s`를 적분한다.
 - 차량 전체 footprint가 primitive를 따라 이동하며 만드는 swept polygon을 `CellTree::queryOverlaps()`로 조회한다.
 - 각 cell의 통과 시간 bin에서 `occupancy_probability[cell_id * 13 + bin]`을 읽는다.
-- 값이 `1`, `-1` 또는 양의 확률인 cell과 겹치는 primitive는 버린다.
+- 값이 양수인 cell과 겹치는 primitive는 버린다. `0`과 `-1`은 통과시킨다.
 - 완성된 경로는 계획 입력 stamp의 `base_link` 좌표로 변환해 `/local_path`로 발행한다. 이어서 같은 stamp와 frame으로 `/search_tree`를 발행한다.
 
 ### Primitive
@@ -343,8 +354,10 @@ struct Primitive {
 planner:
   route_update_hz: 10.0
   hybrid_astar_hz: 20.0
-  max_path_length: 20.0
-  max_node_count: 10000
+  max_path_length: 50.0
+  max_node_count: 500
+  g_weight: 1.0
+  h_weight: 1.0
   primitive_length_m: 1.0
   checkpoint_radius_m: 2.0
   heading_tolerance_deg: 10.0
@@ -365,11 +378,13 @@ planner:
 - `/global_path.data[0]`이 현재 lanelet이고, 발행 데이터와 내부 참조가 같은 객체인지 확인한다.
 - 후속 lanelet에서는 즉시 `[1]`, 옆 차선에서는 heading 정렬 3초 후 `[1]`이 goal인지 확인한다.
 - 교차로에서는 `[0]`, `[1]`을 동시에 goal로 사용하는지 확인한다.
-- 다섯 조향각만으로 primitive를 확장하고 `max_node_count`에서 탐색을 종료하는지 확인한다.
+- 다섯 조향각만으로 primitive를 확장하고 `max_node_count` 도달 또는 `openQueue` 소진 시 탐색을 종료하는지 확인한다.
 - primitive 중간의 차량 footprint가 시간별 점유 cell과 겹치면 후보를 버리는지 확인한다.
 - 완성 경로가 입력 stamp 기준 `base_link`의 `/local_path`로 발행되는지 확인한다.
 - `/local_path` 발행 후 `SearchTreeBuilder`가 전체 primitive의 부모 관계와 최종 primitive를 `parent_index`, `final_node_index`로 변환한 `/search_tree`가 같은 stamp로 발행되는지 확인한다.
 - 중심선 거리는 휴리스틱일 뿐 중앙 추종 비용이 아니다.
 - 차선 경계와 실선 횡단을 제한하지 않는다.
-- `max_path_length`에 도달한 후보는 `pathStore`에 들어가며, `max_node_count`까지 탐색한 뒤 최상위 후보를 발행한다.
-- `unknown=-1` cell은 점유로 취급하므로 주변 cell이 unknown이면 모든 primitive가 제거될 수 있다.
+- `max_path_length`에 도달한 후보는 `pathStore`에 들어가며, `max_node_count` 도달 또는 `openQueue` 소진 뒤 최상위 후보를 발행한다.
+- `unknown=-1` cell은 통과시키고 양의 occupancy probability만 충돌로 처리한다.
+
+- `PlanningRegistry::ready()`는 `/ego_status`와 `/dynamic_status`를 모두 수신한 뒤 두 주기 루프의 연산을 허용한다.

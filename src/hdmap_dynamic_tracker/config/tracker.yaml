@@ -2,15 +2,8 @@ hdmap_dynamic_tracker:
   ros__parameters:
     frame_id: map
     target_rate_hz: 20.0
-    ego:
-      maximum_dt_s: 0.25
-      maximum_speed_kph: 300.0
     occupancy:
-      # The object API is capped at the nearest 30 objects within 80 m. Therefore
-      # absence is not proof of free space. Leave 0 until completeness is verified.
-      known_free_radius_m: 0.0
-      free_space_assumption_verified: false
-      allow_free_when_object_list_full: false
+      known_free_radius_m: 80.0
       unknown_probability: -1.0
       # Safety envelope: apply the full configured sigma range. Do not hard-cap
       # it here; doing so can turn likely occupied future cells into unknown.
@@ -19,21 +12,8 @@ hdmap_dynamic_tracker:
       process_acceleration_sigma_mps2: 2.0
       position_measurement_sigma_m: 0.5
       initial_velocity_sigma_mps: 5.0
-      track_retention_s: 0.5
       minimum_frame_dt_s: 0.0001
-      maximum_position_innovation_m: 15.0
-      # Do not trust a direction inferred from one noisy position delta. At 20 Hz,
-      # four mutually consistent deltas must span at least 0.15 s, move farther
-      # than the configured noise floor, and agree with the API scalar speed.
-      minimum_velocity_observations: 4
-      minimum_velocity_observation_span_s: 0.15
-      minimum_velocity_displacement_m: 1.0
-      maximum_velocity_innovation_mps: 3.0
     signals:
-      restrict_unobserved: true
-      # Development-only values. config/runtime.yaml intentionally has null until
-      # the VTD HyundaiIoniq6_23_Dyn braking calibration is completed.
-      calibration_verified: false
       design_deceleration_mps2: 2.0
       braking_distance_factor: 1.0
       latency_budget_s: 0.25

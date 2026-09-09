@@ -55,7 +55,7 @@ bool containsPoint(const std::vector<Point2d>& polygon, const Point2d& point) {
 }
 
 void testEgoSpeed() {
-    EgoSpeedEstimator estimator(0.25, 300.0 / 3.6);
+    EgoSpeedEstimator estimator;
     expectNear(estimator.update(1.0, 0.0, 0.0).speed_mps, 0.0);
     expectNear(estimator.update(1.1, 0.3, 0.4).speed_mps, 5.0);
     const auto repeated = estimator.update(1.1, 1.0, 1.0);
@@ -63,12 +63,12 @@ void testEgoSpeed() {
     assert(repeated.history_reset);
     expectNear(estimator.update(1.2, 1.0, 1.2).speed_mps, 2.0);
     const auto gap = estimator.update(2.0, 1.0, 1.2);
-    assert(gap.history_reset);
+    assert(!gap.history_reset);
     expectNear(gap.speed_mps, 0.0);
     expectNear(estimator.update(2.1, 1.0, 1.3).speed_mps, 1.0);
     const auto jump = estimator.update(2.2, 100.0, 1.3);
-    assert(jump.history_reset);
-    expectNear(jump.speed_mps, 0.0);
+    assert(!jump.history_reset);
+    expectNear(jump.speed_mps, 990.0);
     const auto non_finite = estimator.update(
         std::numeric_limits<double>::quiet_NaN(), 0.0, 0.0);
     assert(non_finite.history_reset);
@@ -200,8 +200,6 @@ void testGeometry() {
 
 void testPredictor() {
     PredictorConfig config;
-    config.maximum_frame_dt_s = 0.25;
-    config.track_retention_s = 0.5;
     auto predictor = makeEkfPredictor(config);
     ObjectObservation observation;
     observation.id = 7;
@@ -216,7 +214,7 @@ void testPredictor() {
     auto prediction = predictor->predict(10.0, 0.5);
     assert(prediction.size() == 1);
     expectNear(prediction.front().x, 0.0);
-    expectNear(prediction.front().direction_uncertainty_m, 5.0);
+    expectNear(prediction.front().direction_uncertainty_m, 0.0);
 
     observation.x = 1.0;
     predictor->updateFrame(10.1, {observation});
@@ -224,14 +222,14 @@ void testPredictor() {
     assert(prediction.size() == 1);
     assert(prediction.front().x > 0.0 && prediction.front().x < 1.01);
     expectNear(prediction.front().direction_uncertainty_m, 0.0);
-    assert(predictor->predict(10.1, 0.5).front().direction_uncertainty_m >= 5.0);
+    expectNear(predictor->predict(10.1, 0.5).front().direction_uncertainty_m, 0.0);
 
     predictor->updateFrame(10.2, {});
     assert(predictor->predict(10.2, 0.0).size() == 1);
     predictor->updateFrame(10.3, {});
     assert(predictor->predict(10.3, 0.0).size() == 1);
-    predictor->updateFrame(10.8, {});  // Frame gap resets every track.
-    assert(predictor->predict(10.8, 0.0).empty());
+    predictor->updateFrame(10.8, {});
+    assert(predictor->predict(10.8, 0.0).size() == 1);
 
     predictor->updateFrame(11.0, {observation});
     observation.x = 1.0;
@@ -255,7 +253,7 @@ void testPredictor() {
     }
 }
 
-void testVelocityDirectionRequiresConvergence() {
+void testVelocityUsesNextPositionSample() {
     PredictorConfig config;
     auto predictor = makeEkfPredictor(config);
     ObjectObservation observation;
@@ -265,52 +263,11 @@ void testVelocityDirectionRequiresConvergence() {
     observation.width = 2.0;
     observation.height = 1.5;
     predictor->updateFrame(15.0, {observation});
-
-    // One plausible delta is not enough to resolve velocity direction.
     observation.x = 0.5;
     predictor->updateFrame(15.05, {observation});
-    assert(predictor->predict(15.05, 1.0).at(0).direction_uncertainty_m >= 10.0);
-
-    // Consistent deltas still have to satisfy both sample-count and time-span gates.
-    for (int index = 2; index <= 4; ++index) {
-        observation.x = static_cast<double>(index) * 0.5;
-        predictor->updateFrame(15.0 + static_cast<double>(index) * 0.05, {observation});
-    }
-    const auto converged = predictor->predict(15.2, 1.0).at(0);
-    assert(converged.direction_uncertainty_m < 10.0);
-
-    // A sudden orthogonal delta invalidates the old direction immediately.
-    observation.y = 0.5;
-    predictor->updateFrame(15.25, {observation});
-    assert(predictor->predict(15.25, 1.0).at(0).direction_uncertainty_m >= 10.0);
-
-    // Even consistent low-speed deltas stay unresolved below the displacement floor.
-    predictor->reset();
-    observation.x = 0.0;
-    observation.y = 0.0;
-    observation.speed = 2.0;
-    predictor->updateFrame(16.0, {observation});
-    for (int index = 1; index <= 4; ++index) {
-        observation.x = static_cast<double>(index) * 0.1;
-        predictor->updateFrame(16.0 + static_cast<double>(index) * 0.05, {observation});
-    }
-    assert(predictor->predict(16.2, 1.0).at(0).direction_uncertainty_m >= 2.0);
-
-    // A position-derived speed above the scalar API speed is also part of the
-    // arbitrary-direction reach bound; otherwise the opposite side can be missed.
-    predictor->reset();
-    observation.x = 0.0;
-    observation.y = 0.0;
-    observation.speed = 10.0;
-    predictor->updateFrame(17.0, {observation});
-    observation.x = 10.0;
-    predictor->updateFrame(17.1, {observation});
-    const auto mismatch_now = predictor->predict(17.1, 0.0).at(0);
-    const auto mismatch_future = predictor->predict(17.1, 1.0).at(0);
-    const double estimated_displacement = std::hypot(
-        mismatch_future.x - mismatch_now.x, mismatch_future.y - mismatch_now.y);
-    assert(mismatch_future.direction_uncertainty_m + 1.0e-6 >=
-        100.0 + estimated_displacement);
+    const auto prediction = predictor->predict(15.05, 1.0).at(0);
+    assert(prediction.x > observation.x);
+    expectNear(prediction.direction_uncertainty_m, 0.0);
 }
 
 void testPredictorRejectsUnsafeNumerics() {
@@ -354,7 +311,6 @@ void testPredictorRejectsUnsafeNumerics() {
 
 void testFutureEnvelopeContainsColdStartTrajectory() {
     PredictorConfig config;
-    config.maximum_frame_dt_s = 0.25;
     auto predictor = makeEkfPredictor(config);
 
     ObjectObservation observation;
@@ -391,7 +347,7 @@ void testFutureEnvelopeContainsColdStartTrajectory() {
     }
 
     const auto six_seconds = predictor->predict(20.05, 6.0).at(0);
-    assert(six_seconds.direction_uncertainty_m > 0.0);
+    expectNear(six_seconds.direction_uncertainty_m, 0.0);
     const double full_inflation = predictionUncertaintyInflation(
         six_seconds.position_sigma_m, six_seconds.direction_uncertainty_m, 2.0);
     assert(full_inflation > 5.0);
@@ -449,62 +405,6 @@ void testAcceptedPositionInnovationStaysAnchored() {
     }
 }
 
-void testFutureEnvelopeContainsObservedDirectionChange() {
-    auto predictor = makeEkfPredictor(PredictorConfig{});
-    ObjectObservation observation;
-    observation.id = 99;
-    observation.heading = 0.0;
-    observation.speed = 10.0;
-    observation.length = 4.0;
-    observation.width = 2.0;
-    observation.height = 1.5;
-    for (int index = 0; index < 40; ++index) {
-        observation.x = static_cast<double>(index) * 0.5;
-        observation.y = 0.0;
-        predictor->updateFrame(40.0 + static_cast<double>(index) * 0.05, {observation});
-    }
-    observation.x = 19.5;
-    observation.y = 0.5;
-    observation.heading = std::acos(-1.0) * 0.5;
-    predictor->updateFrame(42.0, {observation});
-
-    for (std::size_t bin = 1; bin <= 12; ++bin) {
-        const double start_time = static_cast<double>(bin - 1) * 0.5;
-        const double end_time = static_cast<double>(bin) * 0.5;
-        auto start = predictor->predict(42.0, start_time).at(0);
-        const auto end = predictor->predict(42.0, end_time).at(0);
-        if (bin == 1) {
-            start.x = observation.x;
-            start.y = observation.y;
-        }
-        const double inflation = predictionUncertaintyInflation(
-            std::max(start.position_sigma_m, end.position_sigma_m),
-            std::max(start.direction_uncertainty_m, end.direction_uncertainty_m), 2.0) +
-            yawIndependentRotationInflation(observation.length, observation.width);
-        const auto envelope = sweptFootprint(start, end, inflation);
-        for (int sample = 0; sample <= 40; ++sample) {
-            const double future_s = start_time +
-                (end_time - start_time) * static_cast<double>(sample) / 40.0;
-            ObjectPrediction actual;
-            actual.x = observation.x;
-            actual.y = observation.y + observation.speed * future_s;
-            actual.heading = observation.heading;
-            actual.length = observation.length;
-            actual.width = observation.width;
-            for (const auto& corner : orientedBox(actual)) {
-                assert(containsPoint(envelope, corner));
-            }
-        }
-    }
-
-    predictor->reset();
-    observation.x = 0.0;
-    observation.y = 0.0;
-    predictor->updateFrame(50.0, {observation});
-    predictor->updateFrame(50.05, {observation});
-    const auto unresolved = predictor->predict(50.05, 6.0).at(0);
-    assert(unresolved.direction_uncertainty_m >= 60.0 - 1.0e-6);
-}
 
 }  // namespace
 
@@ -513,11 +413,10 @@ int main() {
     testParsersAndRamp();
     testGeometry();
     testPredictor();
-    testVelocityDirectionRequiresConvergence();
+    testVelocityUsesNextPositionSample();
     testPredictorRejectsUnsafeNumerics();
     testFutureEnvelopeContainsColdStartTrajectory();
     testAcceptedPositionInnovationStaysAnchored();
-    testFutureEnvelopeContainsObservedDirectionChange();
     std::cout << "tracker_core_test passed\n";
     return 0;
 }

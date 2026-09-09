@@ -116,6 +116,68 @@ VTD 2025.2를 실행하고 SCP로 내부 운전자 차량을 생성·배치·가
 
 정지선이 보이지 않는다는 이유로 빨간 신호에서 자유 통과로 해석하지 않는다. 정지 위치는 정지선·횡단보도·교차로 관계를 함께 판단해야 한다. [도로교통법 시행규칙 별표 2](https://law.go.kr/flDownload.do?flSeq=137368467)의 신호 의미를 검토 기준으로 삼았으며, 이 지도가 한국 도로교통법 전체를 구현했다는 주장은 하지 않는다. OpenDRIVE의 signal 적용 범위와 물리 위치 역시 [ASAM 공식 규격](https://www.asam.net/fileadmin/Standards/OpenDRIVE/ASAM_OpenDRIVE_BS_V1-7-0.html)에 따라 분리해서 검토했다.
 
+## hdmap_dynamic_tracker 방어코드 전수 조사와 분기 제거 적용 기록
+
+조사 범위는 `src/hdmap_dynamic_tracker/`의 C++·설정·테스트·README다. 지도·Lanelet·Cell·정지선·신호 매핑 데이터의 재조사나 수정은 포함하지 않았다. 아래 위치는 제거 전 소스 기준이다.
+
+### 제거 대상: 출력 제한·입력 폐기·상태 초기화 정책
+
+| 위치 | 실제 조건 | 제거 전 동작 | 적용 내용 |
+|---|---|---|---|
+| `hdmap_dynamic_tracker_node.cpp:746-753` | 관측 controller가 registry에 없거나 `unresolved_controller_ids_`에 있음 | 94,154개 전체 `speed_cap_mps`를 0m/s로 덮고 즉시 반환 | 조건·전역 덮어쓰기·로그·즉시 반환과 두 controller set을 전부 제거 |
+| `hdmap_dynamic_tracker_node.cpp:755-766` | 제약의 controller가 이번 관측 대상이 아님 | `signals.restrict_unobserved=true`이면 미관측 신호의 감속 cap까지 전부 적용 | 관측 controller와 ID가 같은 제약만 평가. 파라미터와 멤버 제거 |
+| `hdmap_dynamic_tracker_node.cpp:767-786` | 관측 신호는 허용인데 미관측 sibling 제약이 cap을 낮춤 | 낮아진 cap을 유지하고 경고만 출력 | 미관측 제약 제거와 함께 이 사후 경고 루프 전체 삭제 |
+| `hdmap_dynamic_tracker_node.cpp:276-303` | Cell `speed_limit`가 없거나 파싱 실패 | 초기값 0m/s를 그대로 사용 | 0m/s 대체와 누락 카운터 제거. 필수 속도를 직접 읽어 정적 cap 구성 |
+| `hdmap_dynamic_tracker_node.cpp:308-324` | `centerline_length_m`가 없거나 파싱 실패 | 이전 Cell 중심거리, 그것도 실패하면 1m로 대체 | 두 fallback과 카운터 제거. 정상 속성값만 감속거리 누적에 사용 |
+| `hdmap_dynamic_tracker_node.cpp:392-398` | 실측 제동표가 접근속도를 덮지 못함 | verified이면 시작 중단, 아니면 이론식으로 fallback | verified 분기와 fallback 카운터 제거. 표가 실제로 값을 제공할 때만 실측값 사용하고 기존 감속식은 독립 계산으로 유지 |
+| `hdmap_dynamic_tracker_node.cpp:241-245` | free 반경을 설정했지만 `free_space_assumption_verified=false` | 노드 시작 중단 | 검증 플래그와 시작 차단 제거 |
+| `hdmap_dynamic_tracker_node.cpp:608-615` | 객체가 30개이고 `allow_free_when_object_list_full=false` | 설정한 free 반경 전체를 무시 | 객체 수 조건 제거. `known_free_radius_m` 설정만 따름 |
+| `tracker_core.cpp:61-94` 및 `hdmap_dynamic_tracker_node.cpp:502-507` | 자차 표본 간격이 0.25초 초과이거나 계산 속도가 300km/h 초과 | 속도를 0으로 만들고 객체 predictor 전체 초기화 | 두 상한 파라미터, `history_reset`, predictor 연쇄 초기화 제거. 양수 시간차로 계산한 값을 그대로 발행 |
+| `ekf_predictor.cpp:132-140` | frame 간격이 0.0001초 미만 또는 0.25초 초과 | 모든 객체 track 초기화 | 양수 timestamp 순서만 요구하고 간격 상·하한 초기화 제거 |
+| `ekf_predictor.cpp:152-158` | 관측 위치가 예측 위치와 15m 초과 | 해당 객체 track을 새 track으로 초기화 | innovation 상한과 재초기화 분기 제거. 새 관측을 기존 track 갱신에 사용 |
+| `ekf_predictor.cpp:189-239` | 위치 유도 속도와 API 속도 차이가 3m/s 초과, 벡터 변화가 3m/s 초과, 4표본·0.15초·1m 조건 미달 | 속도 방향을 미확정으로 되돌리고 전방위 도달거리 팽창 | 네 개의 신뢰도 gate와 관련 상태 제거. 양수 시간차의 위치 변화로 속도 벡터를 바로 갱신 |
+| `ekf_predictor.cpp:258-266` | 마지막 관측 후 0.5초 초과 | 객체 track 삭제 | `track_retention_s` 만료 삭제 제거. 현재 Objects 입력에 없는 ID의 유지 여부는 입력 프레임 내용만 따르도록 단순화 |
+| `hdmap_dynamic_tracker_node.cpp:566-574, 582` 및 `803-813` | 계산 중 더 최신 exact-stamp snapshot이 완성됨 | 계산을 마친 결과를 stale로 간주해 폐기 | revision 추적, stale 비교, 폐기 카운터 제거. 완성 결과를 원래 입력 timestamp로 발행 |
+
+### 제거 대상과 함께 없어지는 설정·상태
+
+| 파일 | 제거 항목 |
+|---|---|
+| `config/tracker.yaml:5-7` | `ego.maximum_dt_s`, `ego.maximum_speed_kph` |
+| `config/tracker.yaml:12-13` | `free_space_assumption_verified`, `allow_free_when_object_list_full` |
+| `config/tracker.yaml:22-31` | `track_retention_s`, `maximum_position_innovation_m`, 방향 확정용 네 임계값. 수치 계산용 `minimum_frame_dt_s`는 유지 |
+| `config/tracker.yaml:33,36` | `restrict_unobserved`, `calibration_verified` |
+| `motion_predictor.hpp:40-47` | 위 predictor 정책을 전달하는 `PredictorConfig` 필드 |
+| `hdmap_dynamic_tracker_node.cpp:829-860` | 제거된 정책의 bool/set/revision/counter 멤버 |
+| `tracker_core_test.cpp:57-76, 201-234, 260-313` | 0m/s 대체, frame reset, 방향 gate를 성공으로 기대하는 검사 |
+| `README.md:10-18, 35-38, 63-70, 91-107` | 위 방어 동작을 정상 설계로 설명하는 문단 |
+
+### 유지 대상: 계산과 메모리 접근에 필요한 검사
+
+| 위치 | 유지 이유 |
+|---|---|
+| `hdmap_dynamic_tracker_node.cpp:119-126` | 제동 표의 두 배열 길이가 다르면 같은 index로 묶을 수 없음 |
+| `hdmap_dynamic_tracker_node.cpp:225-260` 중 유한수·양수·배열 계약 검사 | 0으로 나누기, 무한 루프, 잘못된 배열 생성을 막는 계산 전제 |
+| `hdmap_dynamic_tracker_node.cpp:462-489` | 고정 길이 Objects 배열의 `length 0..30`, 유한 좌표, 양의 크기 및 메시지 타입 범위 보장 |
+| `hdmap_dynamic_tracker_node.cpp:498-499, 521-527, 556-590` | 중복·역행 timestamp와 서로 다른 시각의 세 메시지를 섞지 않음 |
+| `tracker_core.cpp:104-120, 147-175, 212-278` | 제동식과 문자열 파서가 계산 가능한 값을 생성하도록 보장 |
+| `tracker_core.cpp:288-312`, `ekf_predictor.cpp:289-291` | NaN·overflow가 polygon 좌표와 공분산으로 전파되는 것을 차단 |
+| `hdmap_dynamic_tracker_node.cpp:384-386` | `previous` 순환 시 무한 루프 방지 |
+| 모든 `.at()` 접근 | Cell ID와 출력 배열의 범위를 벗어난 메모리 접근 방지 |
+
+### 적용 후 회귀 조건
+
+1. controller 27의 허용 상태에서 전체 Cell이 정적 30/8m/s 분포를 유지한다.
+2. 미등록 controller와 제약을 만들 수 없는 controller가 다른 Cell cap을 바꾸지 않는다.
+3. 관측 controller의 적색·황색·미허용 상태는 그 controller에 이미 구성된 접근 Cell만 감속한다.
+4. 객체 30개 입력에서도 설정된 free 반경을 적용한다.
+5. 양수 timestamp의 지연·고속·큰 위치 변화로 자차 또는 객체 추적이 초기화되지 않는다.
+6. 방향 벡터는 gate 대기 없이 연속 위치 표본으로 갱신된다.
+7. 처리 중 새 snapshot이 도착해도 완료한 `DynamicStatus`를 원래 timestamp로 발행한다.
+8. malformed 배열, NaN, 음수 크기, timestamp 역행과 `previous` 순환 검사는 계속 실패 또는 거부한다.
+
+2026-09-09 적용 완료했다. 제거 대상 조건을 로그로 치환하지 않았고 관련 분기·설정·상태를 삭제했다. 별도 빌드에서 `hdmap_dynamic_tracker_node` 링크와 `tracker_core_test` 1/1 통과를 확인했으며 실행 중 설치본과 프로세스는 변경하지 않았다.
+
 ## road 6024의 VTD Traffic 종료 조사
 
 `drive-midpoint`에서 road 6024/lane −1의 s=15.988404m 배치 요청 직후 Traffic이 종료했다. 실제 좌표 `(524.331301, -154.853851, 42)`는 원본 reference line의 **t=0과 정확히 일치**하며, 폭 2.9351m인 해당 차로 중심 `(525.758214, -155.196813, 42)`과는 1.46755m 떨어져 있다. 따라서 이 실행은 **s 구간 중앙 배치 요청**이며 실제 차로 중앙 배치 성공으로 세지 않는다. 해당 좌표는 같은 교차로의 road 207/lane −2 영역과도 겹치며, 배치 직후 RDB는 207/−2를 보고하고 Traffic 로그 마지막에도 road 207이 나타난다.

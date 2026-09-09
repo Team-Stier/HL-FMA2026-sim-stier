@@ -58,14 +58,6 @@ std::string compactLower(std::string value) {
 
 }  // namespace
 
-EgoSpeedEstimator::EgoSpeedEstimator(double maximum_dt_s, double maximum_speed_mps)
-    : maximum_dt_s_(maximum_dt_s), maximum_speed_mps_(maximum_speed_mps) {
-    if (!std::isfinite(maximum_dt_s_) || maximum_dt_s_ <= 0.0 ||
-        !std::isfinite(maximum_speed_mps_) || maximum_speed_mps_ <= 0.0) {
-        throw std::invalid_argument("Ego speed estimator limits must be finite and positive");
-    }
-}
-
 EgoSpeedResult EgoSpeedEstimator::update(double stamp_s, double x, double y) {
     if (!std::isfinite(stamp_s) || !std::isfinite(x) || !std::isfinite(y)) {
         reset();
@@ -84,11 +76,11 @@ EgoSpeedResult EgoSpeedEstimator::update(double stamp_s, double x, double y) {
     stamp_s_ = stamp_s;
     x_ = x;
     y_ = y;
-    if (!std::isfinite(dt) || dt <= 0.0 || dt > maximum_dt_s_) {
+    if (!std::isfinite(dt) || dt <= 0.0) {
         return {0.0, true};
     }
     const double speed = distance / dt;
-    if (!std::isfinite(speed) || speed > maximum_speed_mps_) {
+    if (!std::isfinite(speed)) {
         return {0.0, true};
     }
     return {speed, false};

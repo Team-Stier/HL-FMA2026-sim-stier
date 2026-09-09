@@ -4,8 +4,10 @@ path_planner:
     checkpoint_file: ""
     route_update_hz: 10.0
     hybrid_astar_hz: 20.0
-    max_path_length: 20.0
-    max_node_count: 10000
+    max_path_length: 50.0
+    max_node_count: 500
+    g_weight: 1.0
+    h_weight: 10.0
     primitive_length_m: 1.0
     checkpoint_radius_m: 2.0
     heading_tolerance_deg: 10.0
