@@ -8,7 +8,8 @@ find_package(hdmap_core CONFIG REQUIRED)
 
 add_library(tracker_core
     src/tracker_core.cpp
-    src/ekf_predictor.cpp)
+    src/ekf_predictor.cpp
+    src/signal_state_manager.cpp)
 target_compile_features(tracker_core PUBLIC cxx_std_17)
 target_include_directories(tracker_core PUBLIC
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
