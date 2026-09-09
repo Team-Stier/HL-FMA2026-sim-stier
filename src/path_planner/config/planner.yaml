@@ -8,7 +8,7 @@ path_planner:
     max_node_count: 500
     g_weight: 1.0
     h_goal_weight: 1.0
-    h_snap_weight: 10.0
+    h_snap_weight: 100.0
     primitive_length_m: 1.0
     checkpoint_radius_m: 2.0
     heading_tolerance_deg: 10.0

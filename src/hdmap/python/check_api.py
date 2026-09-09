@@ -59,6 +59,7 @@ def check():
         footprint = [core.BasicPoint2d(.8, 1.7), core.BasicPoint2d(.9, 1.7), core.BasicPoint2d(.8, 1.8)]
         assert tree.queryOverlaps(footprint, -.1, .1) == []
         assert tree.queryOverlaps(cells[0].polygon2d(), -.1, .1)
+        assert tree.queryOverlaps(cells[0].polygon2d(), 0.25, 0.3)
         assert tree.queryOverlaps(cells[0].polygon2d(), 5, 6) == []
         assert events[-1][0] == "overlaps"
         loaded_osm = hdmap.hdmap_init(osm, projector)
