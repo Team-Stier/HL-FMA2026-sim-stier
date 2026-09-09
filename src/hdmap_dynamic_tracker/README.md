@@ -11,7 +11,7 @@
 - `/dynamic_status`: 같은 exact stamp의 세 입력만 결합한다. 최대 4개 stamp만 잠시 보관하고
   최신 완성 snapshot을 20Hz worker가 처리한다. 계산 중 더 최신 완성 snapshot이 생기면 이전
   결과는 발행하지 않는다.
-- 정적 speed cap: 부모 Lanelet의 명시적 `speed_limit`을 Cell별로 캐시한다. 속성이 없거나
+- 정적 speed cap: 각 Cell의 명시적 `speed_limit`을 Cell ID별로 캐시한다. 속성이 없거나
   파싱할 수 없으면 안전하게 0m/s다.
 - 신호 speed cap: `signalRegistry()`의 controller ID와 `permitted_states`, `stoplineCells()`를
   사용한다. 정지선 Cell에서 `previous()`를 거슬러 `centerline_length_m`을 누적하고 아이오닉 6
@@ -46,9 +46,8 @@ Header를 계승한다. `occupancy[cell_id * 13 + 0]`은 현재, bin 1..12는 �
 
 ## 정지선 선형 speed cap
 
-실행 설정은 `config/tracker.yaml`의 `signals`다. `v_entry`는 모든 신호 접근로의 정적 제한을
-덮는 `maximum_approach_speed_mps`로 지도 초기화 때 고정한다. 지도에 이보다 높은 정적 cap이
-하나라도 있으면 시작을 거부한다. 현재 Ego 속도가 내려갔다고 profile을 짧게 만들지 않는다.
+실행 설정은 `config/tracker.yaml`의 `signals`다. 각 Cell의 `v_entry`는 그 Cell의 정적
+`speed_limit`이며, 출력 cap은 정적 cap과 신호 감속 cap 중 작은 값이다.
 
 ```text
 B_cal(v)   = VTD HyundaiIoniq6_23_Dyn의 감속 시작→완전 정지 거리
@@ -63,12 +62,8 @@ cap(d)     = v × clamp((d - stop_margin) / d_profile, 0, 1)
 사용한다. 최고 속도를 넘는 외삽은 하지 않는다. `calibration_verified=true`이면 표가 비었거나
 모든 신호 접근속도를 덮지 못할 때 시작을 거부한다.
 
-현재 개발값 `v=8.2m/s`, `a_design=2m/s²`, `latency=0.25s`, `margin=1m`에서는 실측표가
-비어 있으므로 `d_profile=35.67m`, `d_start=36.67m`다. 아이오닉 6 후륜축→앞범퍼 3.808m까지
-더해 정지선 쪽 edge에서 약 40.478m 상류까지 Cell을 순회하며, 1m Cell 해상도에서 cap은
-계단형으로 직선을 근사한다. 8.2m/s는 8.0m/s 정적 cap과 설계상 0.2m/s 허용오차만 반영한
-임시 상한이다. 속도 추정 오차 여유와 실제 제동표는 아직 없고 `calibration_verified=false`이므로
-이는 대회 운용 보정값이 아니다.
+각 Cell은 자신의 정적 제한속도로 감속 profile을 계산한다. 속도 추정 오차 여유와 실제 제동표는
+아직 없고 `calibration_verified=false`이므로 이는 대회 운용 보정값이 아니다.
 
 루트 `config/vehicle.yaml`과 `config/runtime.yaml`은 전체 시스템 설계/SimBridge 설정이고,
 Tracker 실행값은 ROS parameter 파일인 `src/hdmap_dynamic_tracker/config/tracker.yaml`에서 읽는다.

@@ -37,7 +37,6 @@ prediction:
 speed:
     static_limit_fallback_mps: null
     school_zone_speed_cap_mps: 8.0
-    maximum_approach_speed_mps: 8.2
     braking_distance_factor: 1.0
     minimum_braking_distance_factor: 1.0
     linear_base_distance: max_twice_measured_braking_distance_and_v_squared_over_design_deceleration

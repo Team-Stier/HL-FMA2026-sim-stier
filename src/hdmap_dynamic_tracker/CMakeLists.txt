@@ -18,7 +18,7 @@ target_compile_options(tracker_core PRIVATE -Wall -Wextra -Wpedantic)
 add_executable(hdmap_dynamic_tracker_node src/hdmap_dynamic_tracker_node.cpp)
 target_compile_features(hdmap_dynamic_tracker_node PRIVATE cxx_std_17)
 target_compile_options(hdmap_dynamic_tracker_node PRIVATE -Wall -Wextra -Wpedantic)
-target_link_libraries(hdmap_dynamic_tracker_node PRIVATE tracker_core hdmap::core)
+target_link_libraries(hdmap_dynamic_tracker_node tracker_core hdmap::core)
 ament_target_dependencies(hdmap_dynamic_tracker_node rclcpp interfaces)
 
 install(TARGETS tracker_core hdmap_dynamic_tracker_node
