@@ -269,6 +269,9 @@ sequenceDiagram
                     H->>S: push(primitive)
                 end
             end
+            alt all generated primitives collide
+                H->>S: push(parent primitive)
+            end
         end
 
         alt pathStore is not empty
@@ -295,6 +298,7 @@ sequenceDiagram
 - `HybridAStarPlanner`가 config의 조향 후보로 primitive를 생성한다.
 - `CollisionValidator`는 sample footprint와 겹친 cell을 한 번 조회한다. 해당 cell들의 `speed_cap_mps` 최솟값으로 속도와 ETA를 적분한 뒤 같은 cell의 ETA time bin occupancy를 검사한다.
 - 통과한 primitive 중 누적 거리가 `max_path_length` 미만이면 `openQueue`, 이상이면 `pathStore`에 넣는다.
+- 생성한 primitive가 모두 collision이면 확장 직전의 유효한 parent primitive를 `pathStore`에 넣는다.
 - `max_node_count`에 도달하거나 `openQueue`가 비면 `pathStore`의 최상위 primitive를 선택한다. `pathStore`가 비어 있으면 `openQueue`의 최상위 primitive를 선택한다.
 - `PathBuilder::build()`가 최종 primitive의 `parent` 체인을 따라 `/local_path`를 만든다.
 - `/local_path` 발행 후 `SearchTreeBuilder::build()`가 전체 primitive 객체를 메시지 인덱스로 매핑해 `parent_index`와 `final_node_index`를 만든다.
@@ -311,6 +315,7 @@ sequenceDiagram
 - `h(x)`는 goal lane 중심선 polyline까지의 최단 직선거리다. goal이 둘이면 작은 값을 사용한다.
 - `f(x)=g_weight*g(x)+h_weight*h(x)`가 가장 작은 primitive부터 확장한다.
 - 누적 거리가 `max_path_length` 이상인 통과 후보는 `pathStore`에 넣는다. `max_node_count`에 도달하거나 `openQueue`가 비면 두 priority queue의 규칙에 따라 발행한다.
+- 한 parent에서 생성한 조향 후보가 모두 collision이면 parent를 `pathStore`에 넣어 장애물 직전의 유효 경로를 보존한다.
 - 탐색 key는 이산화한 `x`, `y`, `yaw`, `arrivalTime`, `speed`다.
 - `CollisionValidator`가 현재 ego 속도에서 시작해 sample별 overlap cell의 `speed_cap_mps` 최솟값과 설정 가감속으로 `speed_mps`, `eta_s`를 적분한다.
 - 차량 전체 footprint가 primitive를 따라 이동하며 만드는 swept polygon을 `CellTree::queryOverlaps()`로 조회한다.

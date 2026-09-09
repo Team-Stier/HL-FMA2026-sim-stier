@@ -427,10 +427,12 @@ public:
         for (std::size_t expanded = 0; expanded < config_.max_node_count && !open_.empty(); ++expanded) {
             const auto parent = open_.top();
             open_.pop();
+            bool has_valid_child = false;
             for (auto& primitive : generate(parent)) {
                 if (!validator_.validate(*primitive, snapshot)) {
                     continue;
                 }
+                has_valid_child = true;
                 primitive->h = heuristic(*primitive, snapshot);
                 if (!visited_.insert(key(*primitive)).second) {
                     continue;
@@ -441,6 +443,9 @@ public:
                 } else {
                     store_.push(primitive);
                 }
+            }
+            if (!has_valid_child) {
+                store_.push(parent);
             }
         }
         const auto final = store_.empty() ? open_.top() : store_.top();
