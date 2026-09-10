@@ -41,15 +41,17 @@ Header를 계승한다. `occupancy[cell_id * 13 + 0]`은 현재, bin 1..12는 �
 
 ```text
 B_cal(v)   = VTD HyundaiIoniq6_23_Dyn의 감속 시작→완전 정지 거리
-d_linear   = max(v² / a_design, 2 × B_cal(v))
-d_profile  = braking_distance_factor × d_linear + v × latency_budget
+d_brake    = max(v² / (2 × a_design), B_cal(v))
+d_profile  = braking_distance_factor × d_brake + v × latency_budget
 d_start    = stop_margin + d_profile
 cap(d)     = v × clamp((d - stop_margin) / d_profile, 0, 1)
 ```
 
-선형 `v(d)`의 최대 요구 감속은 `v²/d_profile`이므로 물리 정지거리 `B`를 그대로 쓰지 않고
-`2B`로 환산한다. 실측표는 속도 오름차순·거리 비감소여야 하며 표 사이에는 다음 상위 속도 bin을 사용한다.
+기본 `a_design=11.0 m/s²`은 아이오닉 6의 최단 실측 100→0 km/h 제동거리 35.1m에서 얻은 값이다.
+`braking_distance_factor=1`이 이 최단 제동거리이고, 값을 키우면 감속 구간이 같은 비율로 길어진다.
+실측표는 속도 오름차순·거리 비감소여야 하며 표 사이에는 다음 상위 속도 bin을 사용한다.
 표가 비었거나 범위를 벗어나면 설계 감속도 식을 사용한다.
+기본 `stop_margin_m=7.0`이므로 정지선 전 7m부터는 0m/s cap을 적용한다.
 
 각 Cell은 자신의 정적 제한속도로 감속 profile을 계산한다.
 

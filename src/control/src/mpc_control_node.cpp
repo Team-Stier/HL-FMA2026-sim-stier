@@ -56,12 +56,6 @@ public:
             throw std::invalid_argument(
                 "enable_output requires calibration_verified=true");
         }
-        if (!(emergency_acceleration_mps2_ < 0.0) ||
-            !std::isfinite(emergency_acceleration_mps2_)) {
-            throw std::invalid_argument(
-                "emergency_acceleration_mps2 must be finite and negative");
-        }
-
         const rclcpp::QoS qos = rclcpp::QoS(rclcpp::KeepLast(1))
             .best_effort().durability_volatile();
         ego_subscription_ = create_subscription<interfaces::msg::EgoStatus>(
@@ -117,8 +111,6 @@ private:
             "path_end_buffer_m", 2.0);
         speed_policy_config_.maximum_lateral_acceleration_mps2 =
             declare_parameter("maximum_lateral_acceleration_mps2", 2.0);
-        emergency_acceleration_mps2_ = declare_parameter(
-            "emergency_acceleration_mps2", -3.0);
         longitudinal_config_.maximum_acceleration_mps2 = declare_parameter(
             "maximum_acceleration_mps2", 2.0);
         longitudinal_config_.maximum_deceleration_mps2 = declare_parameter(
@@ -292,14 +284,34 @@ private:
         reset_detected_ = false;
     }
 
-    void publishSafe(const std::string &reason) {
+    void publishStop(const std::string &reason) {
         previous_steering_rad_ = approach(
             previous_steering_rad_, 0.0,
             mpc_config_.maximum_steering_rate_radps * mpc_config_.dt_seconds);
         warm_start_.clear();
         longitudinal_->reset();
-        publishCommand(previous_steering_rad_, emergency_acceleration_mps2_,
+        publishCommand(previous_steering_rad_,
+                       -longitudinal_config_.maximum_deceleration_mps2,
                        reason, false);
+    }
+
+    void publishFallback(const std::string &reason,
+                         bool maximum_steering = false) {
+        const double steering_target = maximum_steering && previous_steering_rad_ != 0.0
+            ? std::copysign(mpc_config_.maximum_steering_rad, previous_steering_rad_)
+            : 0.0;
+        previous_steering_rad_ = maximum_steering
+            ? steering_target
+            : approach(previous_steering_rad_, steering_target,
+                       mpc_config_.maximum_steering_rate_radps * mpc_config_.dt_seconds);
+        warm_start_.clear();
+        // ponytail: simulator fallback is capped at 8 m/s; restore fail-safe braking
+        // before using this controller outside the simulator.
+        const double fallback_speed = std::min(
+            {cruise_speed_mps_, 8.0, have_speed_limit_ ? speed_limit_mps_ : 8.0});
+        const double acceleration = longitudinal_->update(
+            fallback_speed, speed_mps_, mpc_config_.dt_seconds);
+        publishCommand(previous_steering_rad_, acceleration, reason, false);
     }
 
     void onTimer() {
@@ -308,20 +320,20 @@ private:
         if (!have_ego_ || !(ros_now - ego_stamp_seconds_ >= 0.0) ||
             ros_now - ego_stamp_seconds_ > ego_timeout_s_ ||
             steady_now - ego_received_steady_seconds_ > ego_timeout_s_) {
-            publishSafe("STALE_EGO");
+            publishFallback("FORWARD_STALE_EGO");
             return;
         }
         if (!have_path_ || require_new_path_ ||
             !(ros_now - path_stamp_seconds_ >= 0.0) ||
             ros_now - path_stamp_seconds_ > path_timeout_s_ ||
             steady_now - path_received_steady_seconds_ > path_timeout_s_) {
-            publishSafe("STALE_PATH");
+            publishStop("STOP_NO_LOCAL_PATH");
             return;
         }
         if (!have_speed_limit_ ||
             steady_now - speed_limit_received_steady_seconds_ >
                 speed_limit_timeout_s_) {
-            publishSafe("STALE_SPEED_LIMIT");
+            publishFallback("FORWARD_STALE_SPEED_LIMIT");
             return;
         }
 
@@ -329,7 +341,7 @@ private:
             path_, ego_pose_, speed_mps_, mpc_config_.dt_seconds,
             mpc_config_.horizon_steps);
         if (!reference.valid) {
-            publishSafe("INVALID_PATH:" + reference.error);
+            publishFallback("FORWARD_INVALID_PATH:" + reference.error, true);
             return;
         }
         const bool warm_start_valid = !warm_start_.empty() &&
@@ -339,7 +351,7 @@ private:
             reference.curvature, previous_steering_rad_,
             warm_start_valid ? &warm_start_ : nullptr);
         if (!lateral.success) {
-            publishSafe("MPC_FAILURE:" + lateral.reason);
+            publishFallback("FORWARD_MPC_FAILURE:" + lateral.reason);
             return;
         }
 
@@ -353,7 +365,7 @@ private:
             speed_policy_config_, cruise_speed_mps_, speed_limit_mps_,
             maximum_curvature, reference.remaining_length_m, requested_preview);
         if (!speed.valid) {
-            publishSafe("SPEED_POLICY_FAILURE:" + speed.error);
+            publishFallback("FORWARD_SPEED_POLICY_FAILURE:" + speed.error);
             return;
         }
 
@@ -399,7 +411,6 @@ private:
     double capture_pose_tolerance_s_{0.10};
     double respawn_jump_m_{5.0};
     double cruise_speed_mps_{8.0};
-    double emergency_acceleration_mps2_{-3.0};
     double overspeed_tolerance_mps_{0.2};
     double overspeed_release_tolerance_mps_{0.1};
     ReferenceConfig reference_config_;

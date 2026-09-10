@@ -134,9 +134,9 @@ classDiagram
     class RouteUpdater { +tick() }
     class IntersectionMonitor { +inspect(ego) }
     class FrenetPlanner { +tick(snapshot) }
-    class ReferenceBuilder { +build(currentLane, globalPath) }
+    class ReferenceBuilder { +build(currentLane, globalPath): ReferenceSet }
     class VelocityPlanner { +plan(primitive, snapshot, stopAtEnd) }
-    class CollisionValidator { +firstCollision(primitive, snapshot) }
+    class CollisionValidator { +firstCollision(primitive, snapshot, allowed_lanes) }
     class CostEvaluator { +evaluate(primitive, goalPoints) }
     class Primitive {
         +xM
@@ -172,11 +172,14 @@ classDiagram
 
 ```mermaid
 sequenceDiagram
-    participant R as RouteUpdater<br/>기존 상태 머신
+    participant ES as /ego_status
+    participant DS as /dynamic_status
     participant S as PlanningRegistry
+    participant R as RouteUpdater<br/>기존 상태 머신
     participant B as ReferenceBuilder
     participant M as LaneletMap / HdMap
     participant G as RoutingGraph
+    participant GP as /global_path
     participant F as FrenetPlanner
     participant V as VelocityPlanner
     participant C as CollisionValidator
@@ -186,16 +189,32 @@ sequenceDiagram
     participant ST as /search_tree
     participant LP as /local_path
 
-    R->>S: snapshot()
-    S-->>R: ego, dynamic
-    R->>M: ego footprint와 겹치는 lanelet 조회
-    M-->>R: 겹침 면적이 가장 큰 current_lane
-    R->>G: shortestPathVia(current_lane, checkpoints)
-    G-->>R: global_path
-    R->>R: 기존 상태 머신으로 goal_lanes 결정
-    R->>S: updateRoute(current_lane, global_path, goal_lanes)
+    ES->>S: ego 갱신
+    DS->>S: dynamic cells 갱신
 
-    loop planner tick
+    loop route tick: ego 수신 후 실행
+        R->>S: ego snapshot()
+        S-->>R: ego
+        R->>M: ego footprint와 겹치는 lanelet 조회
+        alt 겹치는 lanelet 존재
+            M-->>R: 겹침 면적이 가장 큰 current_lane
+        else 차량이 모든 lanelet 밖에 있음
+            R->>M: ego 기준 nearest 주행 가능 lanelet 조회
+            M-->>R: 가장 가까운 current_lane
+        end
+        alt current_lane이 intersection
+            R->>S: 기존 global_path와 goal_lanes 유지
+            R-->>GP: 변경 없는 ordered lanelet IDs
+        else 일반 차선
+            R->>G: shortestPathVia(current_lane, checkpoints)
+            G-->>R: global_path
+            R->>R: 기존 상태 머신으로 goal_lanes 결정
+            R->>S: updateRoute(current_lane, global_path, goal_lanes)
+            R-->>GP: ordered lanelet IDs
+        end
+    end
+
+    loop planner tick: ego와 dynamic 수신 후 실행
         F->>S: snapshot()
         S-->>F: ego, current_lane, global_path,<br/>goal_lanes, dynamic cells
         F->>B: build(current_lane, global_path)
@@ -218,7 +237,7 @@ sequenceDiagram
             B->>M: right 전체 centerline 조회
             M-->>B: right reference
         end
-        B-->>F: current+successor, left, right references
+        B-->>F: references와 current·모든 predecessor·<br/>successor·left/right allowed lane IDs
 
         loop 각 reference
             F->>F: ego 투영으로 s0, d0, reference yaw 계산
@@ -245,17 +264,22 @@ sequenceDiagram
             V->>V: speed[]로 eta[] 적분
             V-->>F: speed[], eta[]가 채워진 Primitive
 
-            F->>C: firstCollision(candidate, occupancy)
-            C->>C: eta별 occupancy bin 검사
-            alt 충돌 없음
-                C-->>F: candidate 끝 index
-            else 충돌
-                C-->>F: 최초 충돌 index
-                F->>F: 충돌 전 safe prefix로 축소
-                F->>V: terminal speed=0으로 재계획
-                V-->>F: stopped prefix 또는 정지 불가
-                F->>C: 변경된 eta로 재검증
-                C-->>F: valid prefix 또는 reject
+            F->>C: firstCollision(candidate, occupancy, allowed lanes)
+            C->>C: eta가 설정 지연 이상이면<br/>intersection을 제외한 parent 검사
+            alt 일반 도로의 허용 차선 밖 cell과 겹침
+                C-->>F: candidate 전체 reject
+            else 허용 차선 또는 intersection cell
+                C->>C: eta별 occupancy bin 검사
+                alt 충돌 없음
+                    C-->>F: candidate 끝 index
+                else 충돌
+                    C-->>F: 최초 충돌 index
+                    F->>F: 충돌 전 safe prefix로 축소
+                    F->>V: terminal speed=0으로 재계획
+                    V-->>F: stopped prefix 또는 정지 불가
+                    F->>C: 변경된 eta로 재검증
+                    C-->>F: valid prefix 또는 reject
+                end
             end
         end
 
@@ -284,7 +308,7 @@ Reference는 다음 세 종류다.
 - `RoutingGraph::left(current)`가 반환한 차선의 전체 centerline
 - `RoutingGraph::right(current)`가 반환한 차선의 전체 centerline
 
-`goal_lanes`는 reference 생성에 사용하지 않고 비용 계산에만 사용한다. 좌우 결과가 없는 실선 경계에는 후보를 만들지 않는다. reference 자체는 자르지 않는다. 다항식의 `s(t)`가 reference 끝에 도달하면 그때까지 만든 waypoint를 짧은 후보로 보관한다.
+`goal_lanes`는 reference 생성에 사용하지 않고 비용 계산에만 사용한다. 허용 차선 집합은 현재 차선, 모든 `previous(current)`, 선택한 successor 하나와 `left/right(current)`로 구성한다. 후보 footprint가 이 집합 밖 일반 도로 parent lanelet의 cell과 하나라도 겹치면 후보 전체를 버린다. `intersection=yes` lanelet의 cell은 이 검사에서 제외한다. 좌우 결과가 없는 실선 경계에는 후보를 만들지 않는다. reference 자체는 자르지 않는다. 다항식의 `s(t)`가 reference 끝에 도달하면 그때까지 만든 waypoint를 짧은 후보로 보관한다.
 
 시작 횡상태는 다음과 같다.
 
@@ -346,14 +370,14 @@ v_i\leftarrow\min\left(v_i,\sqrt{v_{i-1}^2+2a_{max}\Delta s_i}\right)
 \eta_i=\eta_{i-1}+\frac{2\Delta s_i}{v_{i-1}+v_i}
 \]
 
-`CollisionValidator`는 속도를 수정하지 않는다. map 좌표 footprint와 최종 ETA의 occupancy bin만 검사한다. occupancy가 양수인 최초 sample index를 반환한다.
+`CollisionValidator`는 속도를 수정하지 않는다. `lane_overlap_check_delay_s` 이후부터 map 좌표 footprint가 허용 차선 밖 일반 도로 parent lanelet의 cell과 겹치는지 검사한다. `intersection=yes` lanelet은 차선 검사 대상에서 제외하고, 모든 overlap cell의 occupancy는 0초부터 그대로 검사한다. occupancy가 양수인 최초 sample index를 반환한다.
 
 충돌한 후보는 직전 안전 sample까지 줄이고 종단 속도를 0으로 설정한다. `VelocityPlanner`로 정지 프로파일과 ETA를 다시 만든 뒤 `CollisionValidator`로 재검증한다. full 후보, reference 끝 후보와 valid safe prefix를 같은 비용함수로 평가한다.
 
 ## 비용함수
 
 \[
-J=w_{lat}J_{lat}+w_tJ_t+w_gJ_g+w_pJ_p+w_aJ_a
+J=w_{lat}J_{lat}+w_tJ_t+w_gJ_g+w_pJ_p+w_aJ_a+w_cJ_c
 \]
 
 - `J_lat`: nominal `d(t)`의 횡가속도와 jerk 제곱 적분
@@ -361,6 +385,11 @@ J=w_{lat}J_{lat}+w_tJ_t+w_gJ_g+w_pJ_p+w_aJ_a
 - `J_g`: 후보 종점과 goal lane 중심선 점 집합 사이의 최소 제곱거리
 - `J_p = (L_desired-L_candidate)^2`: 짧은 경로의 진행량 부족
 - `J_a`: 후보 종단 yaw와 가장 가까운 goal 중심선 구간 방향의 제곱 오차
+- `J_c`: reference 중심선으로부터의 평균 제곱 횡오프셋. 중심선에서 0이고 멀어질수록 증가
+
+\[
+J_c=\frac{1}{N}\sum_{i=1}^{N}d_i^2
+\]
 
 \[
 J_g=\min_{q\in C_{goal}}\|p_{end}-q\|^2
@@ -391,15 +420,22 @@ path_planner:
     goal_cost_weight: 10.0
     progress_cost_weight: 1.0
     alignment_cost_weight: 10.0
+    centerline_deviation_cost_weight: 1.0
     checkpoint_radius_m: 2.0
     heading_tolerance_deg: 10.0
     alignment_duration_s: 3.0
-    frenet_horizon_candidates_s: [2.0, 3.0, 4.0]
+    frenet_horizon_candidates_s: [1.0, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2.0, 2.1, 2.2, 2.3, 2.4, 2.5, 2.6, 2.7, 2.8, 2.9, 3.0, 3.1, 3.2, 3.3, 3.4, 3.5, 3.6, 3.7, 3.8, 3.9, 4.0]
     xy_resolution_m: 0.5
     time_resolution_s: 0.5
+    lane_overlap_check_delay_s: 1.0
     planning_accel_limit_mps2: 5.45
     planning_decel_limit_mps2: 10.37
+    wheelbase_m: 2.95
+    maximum_curvature_per_m: 0.169492
+    maximum_steering_deg: 26.565
 ```
+
+`maximum_curvature_per_m`과 `maximum_steering_deg`는 최소 회전반경 5.9 m와 축거 2.95 m를 기준으로 한 후보 제한이다. 첫 segment와 ego heading의 불연속을 포함해 |Δyaw|/Δs로 이산 곡률을 계산하고, 한계를 넘는 후보는 비용 평가 전에 제외한다. current lane이 교차로이면 기존 global path와 goal lane을 유지한다.
 
 `alignment_duration_s`는 기존 goal lane 상태 머신에만 사용한다. `time_resolution_s`는 nominal 다항식 결합 간격이고 `xy_resolution_m`은 그 사이 공간 보간 간격이다. 가감속 기본값은 각각 아이오닉 6 AWD의 공식 0–100 km/h 평균가속도와 아이오닉 6 N의 공식 100–0 km/h 제동거리에서 환산한 값이며 조정 가능한 planner parameter다.
 

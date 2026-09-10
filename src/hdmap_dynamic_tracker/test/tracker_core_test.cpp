@@ -103,12 +103,12 @@ void testParsersAndRamp() {
     assert(!validBrakingDistanceTable({{2.0, 2.0}, {4.0, 1.0}}));
     assert(!validBrakingDistanceTable({{2.0, 0.0}}));
 
-    StopRampParameters ramp{8.0, 2.0, 1.0, 0.25, 1.0, std::nullopt};
-    expectNear(stopRampProfileLength(ramp), 34.0);
-    expectNear(stopRampStartDistance(ramp), 35.0);
+    StopRampParameters ramp{8.0, 2.0, 1.0, 0.0, 7.0, std::nullopt};
+    expectNear(stopRampProfileLength(ramp), 16.0);
+    expectNear(stopRampStartDistance(ramp), 23.0);
     expectNear(stopRampCap(0.0, ramp), 0.0);
-    expectNear(stopRampCap(18.0, ramp), 4.0);
-    expectNear(stopRampCap(35.0, ramp), 8.0);
+    expectNear(stopRampCap(15.0, ramp), 4.0);
+    expectNear(stopRampCap(23.0, ramp), 8.0);
     for (int metre = -5; metre <= 50; ++metre) {
         const double cap = stopRampCap(static_cast<double>(metre), ramp);
         assert(cap >= 0.0 && cap <= ramp.entry_speed_mps);
@@ -116,23 +116,21 @@ void testParsersAndRamp() {
             assert(cap >= stopRampCap(static_cast<double>(metre - 1), ramp));
         }
     }
-    assert(ramp.entry_speed_mps * ramp.entry_speed_mps /
-        stopRampProfileLength(ramp) <= ramp.design_deceleration_mps2);
+    expectNear(stopRampCap(7.0, ramp), 0.0);
 
-    StopRampParameters no_latency = ramp;
-    no_latency.latency_budget_s = 0.0;
-    expectNear(stopRampProfileLength(no_latency), 32.0);
-    expectNear(stopRampStartDistance(no_latency), 33.0);
-    expectNear(stopRampCap(17.0, no_latency), 4.0);
-    assert(stopRampCap(20.0, ramp) < stopRampCap(20.0, no_latency));
+    StopRampParameters longer = ramp;
+    longer.braking_distance_factor = 2.0;
+    expectNear(stopRampProfileLength(longer), 32.0);
+    expectNear(stopRampStartDistance(longer), 39.0);
+    expectNear(stopRampCap(23.0, longer), 4.0);
 
     StopRampParameters calibrated = ramp;
     calibrated.calibrated_braking_distance_m = 20.0;
-    expectNear(stopRampProfileLength(calibrated), 42.0);
-    expectNear(stopRampStartDistance(calibrated), 43.0);
-    expectNear(stopRampCap(22.0, calibrated), 4.0);
+    expectNear(stopRampProfileLength(calibrated), 20.0);
+    expectNear(stopRampStartDistance(calibrated), 27.0);
+    expectNear(stopRampCap(17.0, calibrated), 4.0);
     calibrated.calibrated_braking_distance_m = 10.0;
-    expectNear(stopRampProfileLength(calibrated), 34.0);
+    expectNear(stopRampProfileLength(calibrated), 16.0);
 
     assert(stopRampCap(std::numeric_limits<double>::quiet_NaN(), ramp) == 0.0);
     assert(stopRampCap(std::numeric_limits<double>::infinity(), ramp) == 0.0);

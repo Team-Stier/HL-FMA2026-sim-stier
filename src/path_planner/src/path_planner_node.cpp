@@ -37,6 +37,7 @@ struct Primitive {
     std::vector<double> yaw_rad;
     std::vector<double> speed_mps;
     std::vector<double> eta_s;
+    std::vector<double> centerline_offset_m;
     double lateral_cost{};
     double cost{};
 };
@@ -62,6 +63,11 @@ public:
         std::lock_guard lock(mutex_);
         snapshot_.dynamic = message;
         has_dynamic_ = true;
+    }
+
+    bool hasEgo() const {
+        std::lock_guard lock(mutex_);
+        return has_ego_;
     }
 
     bool ready() const {
@@ -98,14 +104,19 @@ struct PlannerConfig {
     double goal_cost_weight;
     double progress_cost_weight;
     double alignment_cost_weight;
+    double centerline_deviation_cost_weight;
     double checkpoint_radius_m;
     double heading_tolerance_rad;
     double alignment_duration_s;
     std::vector<double> frenet_horizon_candidates_s;
     double xy_resolution_m;
     double time_resolution_s;
+    double lane_overlap_check_delay_s;
     double planning_accel_limit_mps2;
     double planning_decel_limit_mps2;
+    double wheelbase_m;
+    double maximum_curvature_per_m;
+    double maximum_steering_rad;
     double rear_axle_to_front_m;
     double rear_axle_to_rear_m;
     double left_extent_m;
@@ -157,6 +168,10 @@ public:
                 current = lane;
             }
         }
+        if (best_area < 0.) {
+            current = lanelet::geometry::findNearest(
+                map_.laneletLayer, {ego.x, ego.y}, 1).front().second;
+        }
         return {current, current.attribute("intersection").value() == "yes"};
     }
 
@@ -193,6 +208,13 @@ public:
 
     void tick(const PlanningSnapshot& input) {
         const auto [current, intersection] = monitor_.inspect(input.ego);
+        if (intersection && !input.global_path.empty()) {
+            registry_->updateRoute(current.id(), true, input.global_path, input.goal_lanes);
+            std_msgs::msg::Int64MultiArray message;
+            message.data = input.global_path;
+            publisher_->publish(message);
+            return;
+        }
         if (checkpoint_index_ + 1 < checkpoints_.size() &&
             std::hypot(input.ego.x - checkpoints_[checkpoint_index_].x,
                 input.ego.y - checkpoints_[checkpoint_index_].y) <= config_.checkpoint_radius_m) {
@@ -202,13 +224,17 @@ public:
         for (std::size_t index = checkpoint_index_; index + 1 < checkpoints_.size(); ++index) {
             via.push_back(checkpoints_[index].lane);
         }
-        const auto path = graph_.shortestPathVia(current, via, checkpoints_.back().lane).value();
+        const auto path = graph_.shortestPathVia(current, via, checkpoints_.back().lane);
         std::vector<lanelet::Id> ids;
-        ids.reserve(path.size());
-        for (const auto& lane : path) {
-            ids.push_back(lane.id());
+        if (path) {
+            ids.reserve(path->size());
+            for (const auto& lane : *path) {
+                ids.push_back(lane.id());
+            }
         }
-        const auto goals = updateGoals(input, current, intersection, ids);
+        const auto goals = ids.size() > 1
+            ? updateGoals(input, current, intersection, ids)
+            : std::vector<lanelet::Id>{};
         registry_->updateRoute(current.id(), intersection, ids, goals);
         std_msgs::msg::Int64MultiArray message;
         message.data = ids;
@@ -258,6 +284,7 @@ private:
             return {route[1]};
         }
         const auto following = graph_.following(current, false);
+        if (following.empty()) return {route[0], route[1]};
         const auto selected = std::find_if(following.begin(), following.end(),
             [&](const auto& lane) { return lane.id() == route[1]; });
         return {route[0], (selected == following.end() ? following.front() : *selected).id()};
@@ -342,36 +369,60 @@ static ReferenceSample sample(const Reference& reference, double station) {
         std::atan2(delta.y(), delta.x())};
 }
 
+struct ReferenceSet {
+    std::vector<Reference> references;
+    std::set<lanelet::Id> allowed_lanes;
+};
+
+static lanelet::Id upcomingMatch(const std::vector<lanelet::Id>& path,
+    lanelet::Id current, const std::set<lanelet::Id>& candidates) {
+    const auto current_it = std::find(path.begin(), path.end(), current);
+    if (current_it == path.end()) return 0;
+    const auto begin = std::next(current_it);
+    const auto end = std::next(begin, std::min<std::size_t>(10, std::distance(begin, path.end())));
+    const auto match = std::find_if(begin, end,
+        [&](lanelet::Id id) { return candidates.count(id) != 0U; });
+    return match == end ? 0 : *match;
+}
+
 class ReferenceBuilder {
 public:
     ReferenceBuilder(const lanelet::LaneletMap& map,
         const lanelet::routing::RoutingGraph& graph) : map_(map), graph_(graph) {}
 
-    std::vector<Reference> build(lanelet::Id current_id,
+    ReferenceSet build(lanelet::Id current_id,
         const std::vector<lanelet::Id>& global_path) const {
         const auto current = map_.laneletLayer.get(current_id);
+        ReferenceSet result;
+        result.allowed_lanes.insert(current_id);
+        for (const auto& predecessor : graph_.previous(current, false)) {
+            result.allowed_lanes.insert(predecessor.id());
+        }
         Reference current_reference;
         appendCenterline(current_reference, current);
         const auto following = graph_.following(current, false);
         if (!following.empty()) {
             auto selected = following.begin();
-            if (global_path.size() > 1) {
-                const auto match = std::find_if(following.begin(), following.end(), [&](const auto& lane) {
-                    return lane.id() == global_path[1];
-                });
-                if (match != following.end()) selected = match;
-            }
+            std::set<lanelet::Id> following_ids;
+            for (const auto& lane : following) following_ids.insert(lane.id());
+            const auto desired = upcomingMatch(global_path, current_id, following_ids);
+            const auto match = std::find_if(following.begin(), following.end(),
+                [&](const auto& lane) { return lane.id() == desired; });
+            if (match != following.end()) selected = match;
             appendCenterline(current_reference, *selected);
+            result.allowed_lanes.insert(selected->id());
         }
-        std::vector<Reference> references;
-        if (current_reference.points.size() > 1) references.push_back(std::move(current_reference));
+        if (current_reference.points.size() > 1) {
+            result.references.push_back(std::move(current_reference));
+        }
         for (const auto& adjacent : {graph_.left(current), graph_.right(current)}) {
             if (!adjacent) continue;
+            result.allowed_lanes.insert(adjacent->id());
             Reference reference;
             appendCenterline(reference, *adjacent);
-            if (reference.points.size() > 1) references.push_back(std::move(reference));
+            if (reference.points.size() > 1) result.references.push_back(std::move(reference));
         }
-        return references;
+        return result;
     }
 
 private:
@@ -432,10 +483,34 @@ static double pathLength(const Primitive& primitive) {
     return result;
 }
 
-static void appendWaypoint(Primitive& primitive, double x, double y, double resolution) {
+static bool kinematicallyFeasible(const Primitive& primitive, double initial_heading,
+    double wheelbase, double maximum_curvature, double maximum_steering) {
+    double previous_yaw = initial_heading;
+    double previous_length = 0.;
+    for (std::size_t index = 1; index < primitive.x_m.size(); ++index) {
+        const double dx = primitive.x_m[index] - primitive.x_m[index - 1];
+        const double dy = primitive.y_m[index] - primitive.y_m[index - 1];
+        const double length = std::hypot(dx, dy);
+        if (length <= 1e-6) return false;
+        const double yaw = std::atan2(dy, dx);
+        const double delta = std::abs(std::atan2(
+            std::sin(yaw - previous_yaw), std::cos(yaw - previous_yaw)));
+        const double distance = previous_length > 0. ? .5 * (previous_length + length) : length;
+        const double curvature = delta / distance;
+        if (curvature > maximum_curvature ||
+            std::atan(wheelbase * curvature) > maximum_steering) return false;
+        previous_yaw = yaw;
+        previous_length = length;
+    }
+    return true;
+}
+
+static void appendWaypoint(Primitive& primitive, double x, double y, double offset,
+    double resolution) {
     if (primitive.x_m.empty()) {
         primitive.x_m.push_back(x);
         primitive.y_m.push_back(y);
+        primitive.centerline_offset_m.push_back(offset);
         return;
     }
     const double dx = x - primitive.x_m.back();
@@ -444,11 +519,20 @@ static void appendWaypoint(Primitive& primitive, double x, double y, double reso
         static_cast<std::size_t>(std::ceil(std::hypot(dx, dy) / resolution)));
     const double start_x = primitive.x_m.back();
     const double start_y = primitive.y_m.back();
+    const double start_offset = primitive.centerline_offset_m.back();
     for (std::size_t step = 1; step <= steps; ++step) {
         const double ratio = static_cast<double>(step) / static_cast<double>(steps);
         primitive.x_m.push_back(start_x + ratio * dx);
         primitive.y_m.push_back(start_y + ratio * dy);
+        primitive.centerline_offset_m.push_back(start_offset + ratio * (offset - start_offset));
     }
+}
+
+static double centerlineDeviationCost(const Primitive& primitive) {
+    double cost = 0.;
+    for (const double offset : primitive.centerline_offset_m) cost += offset * offset;
+    return primitive.centerline_offset_m.empty() ? 0. :
+        cost / static_cast<double>(primitive.centerline_offset_m.size());
 }
 
 class VelocityPlanner {
@@ -505,13 +589,18 @@ private:
     const PlannerConfig& config_;
 };
 
+struct CollisionResult {
+    std::size_t index{};
+    bool forbidden_lane{};
+};
+
 class CollisionValidator {
 public:
     CollisionValidator(const hdmap::HdMap& map, const PlannerConfig& config)
         : map_(map), config_(config) {}
 
-    std::size_t firstCollision(const Primitive& primitive,
-        const PlanningSnapshot& snapshot) const {
+    CollisionResult firstCollision(const Primitive& primitive,
+        const PlanningSnapshot& snapshot, const std::set<lanelet::Id>& allowed_lanes) const {
         const double snapshot_time = rclcpp::Time(snapshot.ego.header.stamp).seconds();
         const double dynamic_time = rclcpp::Time(snapshot.dynamic.header.stamp).seconds();
         for (std::size_t index = 0; index < primitive.x_m.size(); ++index) {
@@ -521,12 +610,21 @@ public:
             const auto bin = static_cast<std::size_t>(std::clamp(
                 std::ceil((snapshot_time + primitive.eta_s[index] - dynamic_time) / .5), 0., 12.));
             for (const auto cell : cells) {
+                if (cell >= map_.cells().size()) return {index, true};
+                const auto parent_id = map_.cells()[cell].parent().lanelet_id;
+                const auto parent = map_.laneletMap().laneletLayer.get(parent_id);
+                const bool intersection =
+                    parent.attributeOr<std::string>("intersection", "") == "yes";
+                if (primitive.eta_s[index] >= config_.lane_overlap_check_delay_s &&
+                    !intersection && allowed_lanes.count(parent_id) == 0U) {
+                    return {index, true};
+                }
                 const auto offset = cell * 13 + bin;
                 if (offset < snapshot.dynamic.occupancy_probability.size() &&
-                    snapshot.dynamic.occupancy_probability[offset] > 0.F) return index;
+                    snapshot.dynamic.occupancy_probability[offset] > 0.F) return {index, false};
             }
         }
-        return primitive.x_m.size();
+        return {primitive.x_m.size(), false};
     }
 
 private:
@@ -579,7 +677,8 @@ public:
             config_.time_cost_weight * primitive.eta_s.back() +
             config_.goal_cost_weight * goal_distance +
             config_.progress_cost_weight * progress * progress +
-            config_.alignment_cost_weight * std::pow(wrap(primitive.yaw_rad.back() - goal_yaw), 2);
+            config_.alignment_cost_weight * std::pow(wrap(primitive.yaw_rad.back() - goal_yaw), 2) +
+            config_.centerline_deviation_cost_weight * centerlineDeviationCost(primitive);
         return primitive.cost;
     }
 
@@ -655,16 +754,21 @@ public:
 
     void tick(const PlanningSnapshot& snapshot) {
         if (snapshot.current_lane == 0 || snapshot.goal_lanes.empty()) return;
-        auto candidates = generate(snapshot);
+        const auto reference_set = references_.build(snapshot.current_lane, snapshot.global_path);
+        auto candidates = generate(snapshot, reference_set.references);
         std::vector<Primitive> valid;
         for (auto& candidate : candidates) {
             if (!velocity_.plan(candidate, snapshot)) continue;
-            const auto collision = validator_.firstCollision(candidate, snapshot);
-            if (collision < candidate.x_m.size()) {
-                if (collision < 2) continue;
-                resize(candidate, collision);
-                if (!velocity_.plan(candidate, snapshot, true) ||
-                    validator_.firstCollision(candidate, snapshot) < candidate.x_m.size()) continue;
+            const auto collision = validator_.firstCollision(
+                candidate, snapshot, reference_set.allowed_lanes);
+            if (collision.forbidden_lane) continue;
+            if (collision.index < candidate.x_m.size()) {
+                if (collision.index < 2) continue;
+                resize(candidate, collision.index);
+                if (!velocity_.plan(candidate, snapshot, true)) continue;
+                const auto recheck = validator_.firstCollision(
+                    candidate, snapshot, reference_set.allowed_lanes);
+                if (recheck.forbidden_lane || recheck.index < candidate.x_m.size()) continue;
             }
             valid.push_back(std::move(candidate));
         }
@@ -681,9 +785,10 @@ public:
     }
 
 private:
-    std::vector<Primitive> generate(const PlanningSnapshot& snapshot) const {
+    std::vector<Primitive> generate(const PlanningSnapshot& snapshot,
+        const std::vector<Reference>& references) const {
         std::vector<Primitive> result;
-        for (const auto& reference : references_.build(snapshot.current_lane, snapshot.global_path)) {
+        for (const auto& reference : references) {
             const auto initial = project(reference, {snapshot.ego.x, snapshot.ego.y});
             const double heading_error = wrap(snapshot.ego.heading - initial.yaw);
             const double longitudinal_speed = std::max(0., snapshot.ego.speed * std::cos(heading_error));
@@ -712,6 +817,7 @@ private:
                         appendWaypoint(primitive,
                             center.point.x() - std::sin(center.yaw) * offset,
                             center.point.y() + std::cos(center.yaw) * offset,
+                            offset,
                             config_.xy_resolution_m);
                         primitive.lateral_cost += (std::pow(lateral.acceleration(nominal_time), 2) +
                             std::pow(lateral.jerk(nominal_time), 2)) * (nominal_time - previous_t);
@@ -729,6 +835,9 @@ private:
                             primitive.x_m[index] - primitive.x_m[index - 1]);
                     }
                     primitive.yaw_rad.back() = primitive.yaw_rad[primitive.yaw_rad.size() - 2];
+                    if (!kinematicallyFeasible(primitive, snapshot.ego.heading,
+                            config_.wheelbase_m, config_.maximum_curvature_per_m,
+                            config_.maximum_steering_rad)) continue;
                     result.push_back(std::move(primitive));
                 }
             }
@@ -742,6 +851,7 @@ private:
         primitive.yaw_rad.resize(count);
         primitive.speed_mps.resize(count);
         primitive.eta_s.resize(count);
+        primitive.centerline_offset_m.resize(count);
     }
 
     const hdmap::HdMap& map_;
@@ -770,14 +880,19 @@ public:
             declare_parameter<double>("goal_cost_weight", 10.),
             declare_parameter<double>("progress_cost_weight", 1.),
             declare_parameter<double>("alignment_cost_weight", 10.),
+            declare_parameter<double>("centerline_deviation_cost_weight", 1.),
             declare_parameter<double>("checkpoint_radius_m", 2.),
             declare_parameter<double>("heading_tolerance_deg", 10.) * pi / 180.,
             declare_parameter<double>("alignment_duration_s", 3.),
             declare_parameter<std::vector<double>>("frenet_horizon_candidates_s", {2., 3., 4.}),
             declare_parameter<double>("xy_resolution_m", .5),
             declare_parameter<double>("time_resolution_s", .5),
+            declare_parameter<double>("lane_overlap_check_delay_s", 1.),
             declare_parameter<double>("planning_accel_limit_mps2", 5.45),
             declare_parameter<double>("planning_decel_limit_mps2", 10.37),
+            declare_parameter<double>("wheelbase_m", 2.95),
+            declare_parameter<double>("maximum_curvature_per_m", 1. / 5.9),
+            declare_parameter<double>("maximum_steering_deg", 26.565) * pi / 180.,
             declare_parameter<double>("rear_axle_to_front_m", 3.808),
             declare_parameter<double>("rear_axle_to_rear_m", 1.040),
             declare_parameter<double>("left_extent_m", .943),
@@ -785,13 +900,15 @@ public:
             declare_parameter<double>("vehicle_height_m", 1.507)};
         for (const double weight : {config_.lateral_cost_weight, config_.time_cost_weight,
                  config_.goal_cost_weight, config_.progress_cost_weight,
-                 config_.alignment_cost_weight}) {
+                 config_.alignment_cost_weight, config_.centerline_deviation_cost_weight}) {
             if (!std::isfinite(weight) || weight < 0.) {
                 throw std::invalid_argument("Planner cost weights must be finite and nonnegative");
             }
         }
         if (config_.frenet_horizon_candidates_s.empty() || config_.xy_resolution_m <= 0. ||
             config_.time_resolution_s <= 0. || config_.max_path_length <= 0. ||
+            !std::isfinite(config_.lane_overlap_check_delay_s) ||
+            config_.lane_overlap_check_delay_s < 0. ||
             config_.planning_accel_limit_mps2 <= 0. || config_.planning_decel_limit_mps2 <= 0.) {
             throw std::invalid_argument("Frenet horizons and planner resolutions must be positive");
         }
@@ -820,7 +937,7 @@ public:
 
         route_timer_ = create_wall_timer(std::chrono::duration_cast<std::chrono::nanoseconds>(
             std::chrono::duration<double>(1. / route_hz)), [this] {
-                if (registry_.ready()) route_updater_->tick(registry_.snapshot());
+                if (registry_.hasEgo()) route_updater_->tick(registry_.snapshot());
             });
         planner_timer_ = create_wall_timer(std::chrono::duration_cast<std::chrono::nanoseconds>(
             std::chrono::duration<double>(1. / planner_hz)), [this] {

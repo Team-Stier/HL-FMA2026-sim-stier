@@ -626,7 +626,7 @@ ros2 run visualization visualizer_node --ros-args -p map_path:=/absolute/path/to
 
 ### 구현된 시각화
 
-- `src/visualization/rviz/default.rviz`: Fixed Frame=map, 초기 지도 전체 보기와 10초 유휴 Ego 추적 TopDownOrtho, 위 +x/왼쪽 +y, 기본 Path display와 각 MarkerArray·CellColors/QoS 설정. `/local_path`는 Visualizer를 거치지 않는다.
+- `src/visualization/rviz/default.rviz`: Fixed Frame=map, 초기 Ego 확대 보기와 10초 유휴 Ego 추적 TopDownOrtho, 위 +x/왼쪽 +y, 기본 Path display와 각 MarkerArray·CellColors/QoS 설정. `/local_path`는 Visualizer를 거치지 않는다.
 - 차체 CUBE·SearchTree는 base_link의 원본 stamp로 발행해 RViz가 TF를 적용한다. 객체는 Bridge가 XY 중심·min Z를 보낸다는 계약이며 box 중심 Z에만 H/2를 더한다.
 - 지도는 Visualizer 자신의 `hdmap_init` 결과다. Lanelet 경계·중심선·진행 방향·선종류 라벨·물리 신호·모든 정지선·Cell AABB와 원본 polygon·글로벌 중심선 강조를 표시한다. 하늘색은 중심선, 흰색은 차선 경계, 회색은 virtual 경계, 빨간색은 정지선, 주황색은 물리 신호, 초록색은 Cell polygon이다. 보라색 연결선은 같은 TrafficLight regulatory element의 물리 신호와 stopLine 꼭짓점 평균을 잇는 **관계 표시**이지 도로/주행 경로가 아니다. 매핑이 없는 정지선에도 형상은 표시하지만 연결은 만들지 않는다. dashed는 표시용 1m 선/1m 공백이며 solid_solid는 원본 선분 양쪽 0.12m의 표시용 두 획이다. 획 간격은 실측값이 아니며 지도 경계와 Cell 기하를 바꾸지 않는다.
 - 시각화 입력은 독립적이다. 지도·셀·신호 연결은 자기 맵만, 객체는 `/objects`만, 글로벌 경로는 `/global_path`와 자기 맵만, 점유/cap은 `/dynamic_status`와 자기 맵만 사용한다. Ego는 다른 스트림의 필터나 갱신 트리거가 아니다. 최신 리팩토링 요청에 따라 Ego 기반 ROI를 적용하지 않고 전체 입력을 표시한다. DataPipeline 다이어그램은 변경하지 않았으며 12절의 공통 Ego ROI는 현재 적용하지 않는다. 원본 좌표·stamp·값·신호 매핑은 유지한다.
@@ -658,6 +658,8 @@ static_map = hdmap_init(map_path, debug_sink=sink)
 ### RViz 마우스 조작·자동 추적
 
 기본 View Controller는 `visualization/IdleFollow`다. RViz의 TopDownOrtho를 재사용한다.
+
+- 시작 시 첫 base_link TF를 받는 즉시 Ego를 중심으로 확대한다.
 
 - 왼쪽/가운데 버튼 드래그: 화면 이동. 휠/오른쪽 버튼 드래그: 확대·축소.
 - 조작 중에는 화면을 map 기준으로 유지해 Ego 이동에 끌려가지 않는다.

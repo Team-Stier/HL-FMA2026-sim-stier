@@ -27,6 +27,31 @@ int main() {
     const auto endpoint = sample(reference, 25.);
     assert((endpoint.point - lanelet::BasicPoint2d(20., 0.)).norm() < tolerance);
 
+    const std::vector<lanelet::Id> route{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12};
+    assert(upcomingMatch(route, 1, {8, 12}) == 8);
+    assert(upcomingMatch(route, 1, {12}) == 0);
+
+    Primitive centered;
+    centered.centerline_offset_m = {0., 0., 0.};
+    Primitive offset;
+    offset.centerline_offset_m = {2., 2., 2.};
+    assert(centerlineDeviationCost(centered) < centerlineDeviationCost(offset));
+
+    Primitive straight;
+    straight.x_m = {0., 1., 2.};
+    straight.y_m = {0., 0., 0.};
+    assert(kinematicallyFeasible(straight, 0., 2.95, 1. / 5.9, 26.565 * std::acos(-1.) / 180.));
+    Primitive corner;
+    corner.x_m = {0., 1., 1.};
+    corner.y_m = {0., 0., 1.};
+    assert(!kinematicallyFeasible(corner, 0., 2.95, 1. / 5.9, 26.565 * std::acos(-1.) / 180.));
+
+    Primitive reverse;
+    reverse.x_m = {0., 1., 0.};
+    reverse.y_m = {0., 0., 0.};
+    assert(!kinematicallyFeasible(
+        reverse, 0., 2.95, 1. / 5.9, 26.565 * std::acos(-1.) / 180.));
+
     EgoStatus ego;
     ego.x = 10.;
     ego.y = 20.;

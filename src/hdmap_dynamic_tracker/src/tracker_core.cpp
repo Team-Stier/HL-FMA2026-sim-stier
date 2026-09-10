@@ -151,17 +151,17 @@ bool validStopRamp(const StopRampParameters& parameters) {
                     *parameters.calibrated_braking_distance_m == 0.0)))) {
         return false;
     }
-    const double theoretical_linear_distance =
+    const double theoretical_braking_distance =
         parameters.entry_speed_mps * parameters.entry_speed_mps /
-        parameters.design_deceleration_mps2;
-    const double measured_linear_distance = parameters.calibrated_braking_distance_m
-        ? 2.0 * *parameters.calibrated_braking_distance_m
+        (2.0 * parameters.design_deceleration_mps2);
+    const double measured_braking_distance = parameters.calibrated_braking_distance_m
+        ? *parameters.calibrated_braking_distance_m
         : 0.0;
     const double braking_span = parameters.braking_distance_factor *
-        std::max(theoretical_linear_distance, measured_linear_distance);
+        std::max(theoretical_braking_distance, measured_braking_distance);
     const double latency_span = parameters.entry_speed_mps * parameters.latency_budget_s;
-    return std::isfinite(theoretical_linear_distance) &&
-        std::isfinite(measured_linear_distance) && std::isfinite(braking_span) &&
+    return std::isfinite(theoretical_braking_distance) &&
+        std::isfinite(measured_braking_distance) && std::isfinite(braking_span) &&
         std::isfinite(latency_span) && std::isfinite(braking_span + latency_span) &&
         std::isfinite(braking_span + latency_span + parameters.stop_margin_m);
 }
@@ -170,14 +170,14 @@ double stopRampProfileLength(const StopRampParameters& parameters) {
     if (!validStopRamp(parameters)) {
         return 0.0;
     }
-    const double theoretical_linear_distance =
+    const double theoretical_braking_distance =
         parameters.entry_speed_mps * parameters.entry_speed_mps /
-        parameters.design_deceleration_mps2;
-    const double measured_linear_distance = parameters.calibrated_braking_distance_m
-        ? 2.0 * *parameters.calibrated_braking_distance_m
+        (2.0 * parameters.design_deceleration_mps2);
+    const double measured_braking_distance = parameters.calibrated_braking_distance_m
+        ? *parameters.calibrated_braking_distance_m
         : 0.0;
     return parameters.braking_distance_factor *
-        std::max(theoretical_linear_distance, measured_linear_distance) +
+        std::max(theoretical_braking_distance, measured_braking_distance) +
         parameters.entry_speed_mps * parameters.latency_budget_s;
 }
 

@@ -32,6 +32,19 @@ def check():
         assert [(p.x, p.y, p.z) for p in item.points] == expected
     assert sum(item.type == Marker.TEXT_VIEW_FACING for item in batched) == 3
 
+    centers = [line(Header(frame_id="map"), "map/local_reference/center", lane_id,
+                    [point(0, lane_id), point(1, lane_id)], (0.3, 0.7, 1, 0.6))
+               for lane_id in (7, 8)]
+    flashes = []
+    visualizer = SimpleNamespace(map_roads=centers, current_lane_flash=False,
+                                 emit=lambda topic, markers: flashes.append((topic, markers)))
+    Visualizer.flash_current_lane(visualizer, 7)
+    assert (centers[0].color.r, centers[0].color.g) == (1.0, 0.2)
+    assert (centers[1].color.r, centers[1].color.g) == (0.3, 0.7)
+    Visualizer.flash_current_lane(visualizer, 7)
+    assert (centers[0].color.r, centers[0].color.g) == (0.3, 0.7)
+    assert all(topic == "map" for topic, _ in flashes)
+
 
 if __name__ == "__main__":
     check()

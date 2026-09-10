@@ -53,6 +53,8 @@ class Visualizer(Node):
         self.cell_edges = None
         self.cell_value_cache = {}
         self.cell_marker_cache = {}
+        self.current_lane_flash = False
+        self.map_roads = []
         map_path = self.declare_parameter("map_path", "").value
         if map_path:
             from hdmap import hdmap_init
@@ -368,6 +370,18 @@ class Visualizer(Node):
             result.append(line(header, "global_path/local_reference", index, points, (0.2, 1, 0.2, 1), 0.3))
         self.emit("global_path", result)
         self.hud_groups["global_path"] = labels
+        if message.data:
+            self.flash_current_lane(message.data[0])
+
+    def flash_current_lane(self, lane_id):
+        if not self.map_roads:
+            return
+        self.current_lane_flash = not self.current_lane_flash
+        for item in self.map_roads:
+            if item.ns == "map/local_reference/center":
+                color = (1, 0.2, 0.1, 1) if item.id == lane_id and self.current_lane_flash else (0.3, 0.7, 1, 0.6)
+                item.color.r, item.color.g, item.color.b, item.color.a = color
+        self.emit("map", batch_lines(self.map_roads))
 
     def speed_limit(self, message):
         self.hud_groups["speed_limit"] = [f"speed/current_limit/0: cap={message.data!r} m/s (unstamped)"]
@@ -422,6 +436,7 @@ class Visualizer(Node):
         if not self.map_drawn:
             header = Header(stamp=self.get_clock().now().to_msg(), frame_id="map")
             roads, cells = self.static_markers(header)
+            self.map_roads = roads
             self.emit("map", batch_lines(roads))
             self.emit("cells", cells)
             self.map_drawn = True

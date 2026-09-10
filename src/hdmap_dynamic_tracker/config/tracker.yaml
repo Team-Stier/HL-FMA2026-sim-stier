@@ -14,10 +14,12 @@ hdmap_dynamic_tracker:
       initial_velocity_sigma_mps: 5.0
       minimum_frame_dt_s: 0.0001
     signals:
-      design_deceleration_mps2: 2.0
+      # IONIQ 6 shortest measured 100-0 km/h stop: 35.1 m (~11.0 m/s^2).
+      design_deceleration_mps2: 11.0
       braking_distance_factor: 1.0
-      latency_budget_s: 0.25
-      stop_margin_m: 1.0
+      latency_budget_s: 0.0
+      # Cells covering this distance before the stop line receive a 0 m/s cap.
+      stop_margin_m: 7.0
       # After VTD calibration, add paired arrays as shown below. Omit them while
       # empty because ROS parameter YAML cannot portably infer an empty array type.
       # braking_calibration:
