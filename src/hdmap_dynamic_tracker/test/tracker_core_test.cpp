@@ -1,4 +1,5 @@
 #include "hdmap_dynamic_tracker/motion_predictor.hpp"
+#include "hdmap_dynamic_tracker/signal_state_manager.hpp"
 #include "hdmap_dynamic_tracker/tracker_core.hpp"
 
 #include <algorithm>
@@ -146,6 +147,100 @@ void testParsersAndRamp() {
         std::sqrt(std::numeric_limits<double>::max() / 2.0), 1.0, 1.0, 0.0,
         std::numeric_limits<double>::max(), std::nullopt};
     assert(!validStopRamp(ramp));
+}
+
+void testYellowSignalStateManager() {
+    SignalStateManagerConfig config;
+    config.yellow_decision_deceleration_mps2 = 3.0;
+    config.braking_distance_factor = 1.0;
+    config.latency_budget_s = 0.25;
+    config.stop_margin_m = 1.0;
+    config.hold_speed_mps = 0.2;
+    config.hold_distance_m = 1.0;
+
+    const double fifty_kph_mps = 50.0 / 3.6;
+    expectNear(ioniq6StoppingDistance(fifty_kph_mps, config),
+        fifty_kph_mps * fifty_kph_mps / 6.0 +
+            fifty_kph_mps * 0.25 + 1.0);
+    expectNear(ioniq6StoppingDistance(fifty_kph_mps, config), 36.622427983539097);
+
+    SignalStateInput input;
+    input.controller_id = 27;
+    input.approach_id = 4;
+    input.signal_state = 2;
+    input.on_approach = true;
+    input.ego_speed_mps = fifty_kph_mps;
+    input.front_axle_to_stopline_m = 40.0;
+    input.static_speed_cap_mps = fifty_kph_mps;
+
+    SignalStateManager stop_manager(config);
+    input.signal_state = 3;
+    input.permitted = true;
+    auto result = stop_manager.update(input);
+    assert(result.state == SignalApproachState::Go);
+
+    input.signal_state = 2;
+    input.permitted = false;
+    result = stop_manager.update(input);
+    assert(result.state == SignalApproachState::StopRequired);
+    assert(result.apply_stop_cap);
+    assert(result.transitioned);
+
+    input.front_axle_to_stopline_m = 20.0;
+    result = stop_manager.update(input);
+    assert(result.state == SignalApproachState::StopRequired);
+    assert(result.apply_stop_cap);
+
+    input.signal_state = 1;
+
+    input.ego_speed_mps = 0.1;
+    input.front_axle_to_stopline_m = 0.8;
+    result = stop_manager.update(input);
+    assert(result.state == SignalApproachState::Hold);
+    assert(result.apply_stop_cap);
+
+    input.signal_state = 3;
+    input.permitted = true;
+    result = stop_manager.update(input);
+    assert(result.state == SignalApproachState::Go);
+    assert(!result.apply_stop_cap);
+
+    SignalStateManager committed_manager(config);
+    input.ego_speed_mps = fifty_kph_mps;
+    input.front_axle_to_stopline_m = 30.0;
+    input.signal_state = 3;
+    input.permitted = true;
+    result = committed_manager.update(input);
+    assert(result.state == SignalApproachState::Go);
+
+    input.signal_state = 2;
+    input.permitted = false;
+    result = committed_manager.update(input);
+    assert(result.state == SignalApproachState::Committed);
+    assert(!result.apply_stop_cap);
+    expectNear(result.target_speed_cap_mps, fifty_kph_mps);
+
+    input.signal_state = 1;
+    input.front_axle_to_stopline_m = 100.0;
+    result = committed_manager.update(input);
+    assert(result.state == SignalApproachState::Committed);
+    assert(!result.apply_stop_cap);
+
+    input.on_approach = false;
+    result = committed_manager.update(input);
+    assert(result.state == SignalApproachState::Clearing);
+    assert(!result.apply_stop_cap);
+    result = committed_manager.update(input);
+    assert(result.state == SignalApproachState::Clearing);
+
+    input.controller_id = 28;
+    result = committed_manager.update(input);
+    assert(result.state == SignalApproachState::Unknown);
+
+    const std::vector<BrakingDistanceSample> calibration{
+        {10.0, 20.0}, {15.0, 40.0}};
+    expectNear(ioniq6StoppingDistance(fifty_kph_mps, config, calibration),
+        40.0 + fifty_kph_mps * 0.25 + 1.0);
 }
 
 void testGeometry() {
@@ -409,6 +504,7 @@ void testAcceptedPositionInnovationStaysAnchored() {
 int main() {
     testEgoSpeed();
     testParsersAndRamp();
+    testYellowSignalStateManager();
     testGeometry();
     testPredictor();
     testVelocityUsesNextPositionSample();
