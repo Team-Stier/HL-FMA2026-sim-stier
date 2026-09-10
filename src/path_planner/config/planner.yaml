@@ -3,24 +3,21 @@ path_planner:
     map_path: ""
     checkpoint_file: ""
     route_update_hz: 10.0
-    hybrid_astar_hz: 20.0
+    frenet_planner_hz: 20.0
     max_path_length: 50.0
-    max_node_count: 500
-    g_weight: 1.0
-    h_goal_weight: 1.0
-    h_snap_weight: 100.0
-    primitive_length_m: 1.0
+    lateral_cost_weight: 1.0
+    time_cost_weight: 1.0
+    goal_cost_weight: 10.0
+    progress_cost_weight: 1.0
+    alignment_cost_weight: 10.0
     checkpoint_radius_m: 2.0
     heading_tolerance_deg: 10.0
     alignment_duration_s: 3.0
-    steering_candidates_deg: [-18.0, -9.0, 0.0, 9.0, 18.0]
+    frenet_horizon_candidates_s: [2.0, 3.0, 4.0]
     xy_resolution_m: 0.5
-    yaw_resolution_deg: 5.0
-    time_resolution_s: 0.25
-    speed_resolution_mps: 0.5
-    acceleration_mps2: 2.0
-    deceleration_mps2: 2.0
-    wheelbase_m: 2.944
+    time_resolution_s: 0.5
+    planning_accel_limit_mps2: 5.45
+    planning_decel_limit_mps2: 10.37
     rear_axle_to_front_m: 3.808
     rear_axle_to_rear_m: 1.040
     left_extent_m: 0.943

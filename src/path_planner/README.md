@@ -2,7 +2,7 @@
 
 ## 목표와 입출력
 
-`path_planner`는 `/ego_status`와 `/dynamic_status`를 받아 Lanelet2 글로벌 경로와 시간 점유를 반영한 Hybrid A* 로컬 경로를 생성한다.
+`path_planner`는 `/ego_status`와 `/dynamic_status`를 받아 Lanelet2 글로벌 경로와 시간 점유를 반영한 Frenet 로컬 경로를 생성한다.
 
 | 방향 | 토픽 | 타입 |
 |---|---|---|
@@ -13,7 +13,7 @@
 | 출력 | `/search_tree` | `interfaces/msg/SearchTree` |
 
 - `/global_path.data`는 순서 있는 lanelet ID 목록이며 `[0]`은 현재 lanelet이다.
-- 글로벌 경로를 발행하기 위해 만든 `global_path.data`를 상태 머신과 Hybrid A*가 그대로 참조한다. 이 노드는 `/global_path`를 자기 구독하지 않는다.
+- 글로벌 경로를 발행하기 위해 만든 `global_path.data`를 상태 머신과 Frenet planner가 그대로 참조한다. 이 노드는 `/global_path`를 자기 구독하지 않는다.
 - `/local_path`는 `base_link` 기준 `nav_msgs/Path`이며 stamp는 계획에 사용한 ego 입력 시각이다.
 - QoS는 `BEST_EFFORT / VOLATILE / KEEP_LAST(1)`이다.
 - 이 문서의 클래스·메서드·분기에 나타나지 않은 방어 코드, validator, fallback, watchdog, 이전 결과 재사용은 구현하지 않는다. 설계를 바꿀 때는 이 README와 세 다이어그램을 먼저 갱신한다.
@@ -122,8 +122,6 @@ heading과 교차로는 다음 이벤트로 변환한다.
 
 ## 클래스 다이어그램
 
-확정된 시퀀스 다이어그램의 패키지 객체를 그대로 표현한다. 토픽과 STL queue는 클래스에서 생략한다.
-
 ```mermaid
 classDiagram
     class PlanningRegistry {
@@ -131,205 +129,186 @@ classDiagram
         +onDynamic(message)
         +ready()
         +snapshot()
-        +updateRoute(currentLane, intersection, globalPath)
+        +updateRoute(currentLane, intersection, globalPath, goalLanes)
     }
-
-    class RouteUpdater {
-        +tick()
-        +publishGlobalPath(globalPath)
-    }
-
-    class IntersectionMonitor {
-        +inspect(ego)
-    }
-
-    class HybridAStarPlanner {
-        +tick()
-        +publishLocalPath(localPath)
-        +publishSearchTree(searchTree)
-        -createStartPrimitive(parent)
-        -generatePrimitives(parentPrimitive, steeringCandidates)
-        -incrementExpandedNodeCount()
-        -primitives
-        -openQueue
-        -pathStore
-    }
-
+    class RouteUpdater { +tick() }
+    class IntersectionMonitor { +inspect(ego) }
+    class FrenetPlanner { +tick(snapshot) }
+    class ReferenceBuilder { +build(currentLane, globalPath) }
+    class VelocityPlanner { +plan(primitive, snapshot, stopAtEnd) }
+    class CollisionValidator { +firstCollision(primitive, snapshot) }
+    class CostEvaluator { +evaluate(primitive, goalPoints) }
     class Primitive {
         +xM
         +yM
         +yawRad
         +speedMps
         +etaS
-        +g
-        +h_goal
-        +h_snap
-        +parent
+        +lateralCost
+        +cost
     }
-
-    class CollisionValidator {
-        +validate(primitive, snapshot)
-    }
-
-    class PathBuilder {
-        +build(finalPrimitive)
-    }
-
-    class SearchTreeBuilder {
-        +build(primitives, finalPrimitive)
-    }
+    class PathBuilder { +build(primitive, ego) }
+    class SearchTreeBuilder { +build(candidates, selected, ego) }
 
     RouteUpdater --> PlanningRegistry
     RouteUpdater *-- IntersectionMonitor
     RouteUpdater --> RoutingGraph
-    HybridAStarPlanner --> PlanningRegistry
-    HybridAStarPlanner *-- CollisionValidator
-    HybridAStarPlanner *-- PathBuilder
-    HybridAStarPlanner *-- SearchTreeBuilder
-    HybridAStarPlanner *-- Primitive
-    PathBuilder --> Primitive
-    SearchTreeBuilder --> Primitive
+    FrenetPlanner *-- ReferenceBuilder
+    FrenetPlanner *-- VelocityPlanner
+    FrenetPlanner *-- CollisionValidator
+    FrenetPlanner *-- CostEvaluator
+    FrenetPlanner *-- PathBuilder
+    FrenetPlanner *-- SearchTreeBuilder
+    FrenetPlanner *-- Primitive
+    ReferenceBuilder --> LaneletMap
+    ReferenceBuilder --> RoutingGraph
+    VelocityPlanner --> HdMap
+    CollisionValidator --> HdMap
 ```
 
-별도 checkpoint 클래스, route 클래스, global path planner와 publisher wrapper는 만들지 않는다.
+계획 후보는 별도 계층이나 factory 없이 `std::vector<Primitive>`에 보관한다.
 
 ## 객체 시퀀스 다이어그램
 
-Publisher 객체는 생략한다. 토픽 열은 토픽 이름만 표시하고 생산자가 토픽에 `publish()`를 호출하는 것으로 발행을 나타낸다. 구독 callback은 메시지를 객체 멤버에 복사하기만 하며 계산을 시작하지 않는다. 계산은 config의 10Hz·20Hz timer loop가 시작한다.
-
-`KEEP_LAST(1)`은 DDS queue에 최신 한 건만 남기는 설정이다. 메시지의 시간상 freshness를 판정하지는 않는다. 이 설계는 별도 stale 판정을 추가하지 않고 timer가 callback이 보관한 최신 값을 사용한다.
-
 ```mermaid
 sequenceDiagram
-    participant E as /ego_status
-    participant D as /dynamic_status
-    participant G as /global_path
-    participant L as /local_path
-    participant T as /search_tree
-    participant R as registry:PlanningRegistry
-    participant U as routeUpdater:RouteUpdater
-    participant I as intersectionMonitor:IntersectionMonitor
-    participant RG as routingGraph:RoutingGraph
-    participant H as hybridPlanner:HybridAStarPlanner
-    participant V as collisionValidator:CollisionValidator
-    participant PB as pathBuilder:PathBuilder
-    participant B as searchTreeBuilder:SearchTreeBuilder
-    participant O as openQueue:priority_queue
-    participant S as pathStore:priority_queue
+    participant R as RouteUpdater<br/>기존 상태 머신
+    participant S as PlanningRegistry
+    participant B as ReferenceBuilder
+    participant M as LaneletMap / HdMap
+    participant G as RoutingGraph
+    participant F as FrenetPlanner
+    participant V as VelocityPlanner
+    participant C as CollisionValidator
+    participant E as CostEvaluator
+    participant T as SearchTreeBuilder
+    participant P as PathBuilder
+    participant ST as /search_tree
+    participant LP as /local_path
 
-    par 최소 callback
-        E->>R: onEgo(message)
-        Note over R: ego message 복사
-    and
-        D->>R: onDynamic(message)
-        Note over R: dynamic message 복사
-    end
+    R->>S: snapshot()
+    S-->>R: ego, dynamic
+    R->>M: ego footprint와 겹치는 lanelet 조회
+    M-->>R: 겹침 면적이 가장 큰 current_lane
+    R->>G: shortestPathVia(current_lane, checkpoints)
+    G-->>R: global_path
+    R->>R: 기존 상태 머신으로 goal_lanes 결정
+    R->>S: updateRoute(current_lane, global_path, goal_lanes)
 
-    loop config.route_update_hz = 10Hz
-        U->>R: ready()
-        R-->>U: ego and dynamic received
-        alt ready
-            U->>R: snapshot()
-            R-->>U: route input snapshot
-            U->>I: inspect(snapshot.ego)
-        I-->>U: current lane, intersection flag
-        U->>RG: shortestPathVia(current lane, via lanes, destination lane)
-        RG-->>U: global path
-        U->>R: updateRoute(current lane, intersection, global path)
-            U->>G: publish(global path)
+    loop planner tick
+        F->>S: snapshot()
+        S-->>F: ego, current_lane, global_path,<br/>goal_lanes, dynamic cells
+        F->>B: build(current_lane, global_path)
+        B->>M: current_lane 전체 centerline 조회
+        M-->>B: current centerline
+
+        opt 종방향 successor 하나 존재
+            B->>M: successor 전체 centerline 조회
+            M-->>B: successor centerline
+            B->>B: current + successor 연결
         end
-    end
 
-    loop config.hybrid_astar_hz = 20Hz
-        H->>R: ready()
-        R-->>H: ego and dynamic received
-        alt ready
-            H->>R: snapshot()
-            R-->>H: immutable planning snapshot
-            Note over H: 이번 탐색 전체에서 같은 snapshot 사용
-            H->>O: clear()
-        H->>S: clear()
-        H->>H: createStartPrimitive(parent = nullptr)
-        H->>H: primitives.push_back(start primitive)
-        H->>O: push(start primitive)
+        B->>G: left/right(current_lane)
+        G-->>B: 변경 가능한 좌우 lane
+        opt left lane 존재
+            B->>M: left 전체 centerline 조회
+            M-->>B: left reference
+        end
+        opt right lane 존재
+            B->>M: right 전체 centerline 조회
+            M-->>B: right reference
+        end
+        B-->>F: current+successor, left, right references
 
-        loop expandedNodeCount < config.max_node_count and openQueue not empty
-            H->>O: pop()
-            O-->>H: parent primitive
-            H->>H: incrementExpandedNodeCount()
-            H->>H: generatePrimitives(parent primitive, steering candidates)
-            Note over H: 생성되는 모든 primitive.parent = parent primitive
-            loop generated primitive
-                H->>V: validate(primitive, planning snapshot)
-                V-->>H: speedMps와 etaS가 채워진 primitive, pass 또는 collision
-                alt pass and distance < config.max_path_length
-                    H->>H: primitives.push_back(primitive)
-                    H->>O: push(primitive)
-                else pass and distance >= config.max_path_length
-                    H->>H: primitives.push_back(primitive)
-                    H->>S: push(primitive)
+        loop 각 reference
+            F->>F: ego 투영으로 s0, d0, reference yaw 계산
+            F->>F: d_dot0 계산, d_ddot0=0
+            loop 각 종단시간 T와 nominal 종단속도
+                F->>F: nominal s(t)와 d(t)를 독립 생성
+                loop nominal t, 간격 0.5초
+                    F->>F: reference(s(t))+d(t)로 map waypoint 생성
+                    opt reference 끝 도달
+                        F->>F: waypoint 생성 종료
+                    end
                 end
-            end
-            alt all generated primitives collide
-                H->>S: push(parent primitive)
+                F->>F: candidates.push_back(Primitive)
             end
         end
 
-        alt pathStore is not empty
-            H->>S: pop()
-            S-->>H: final primitive
-        else pathStore is empty
-            H->>O: pop()
-            O-->>H: final primitive
+        loop 각 Primitive
+            F->>V: 공간 Primitive, ego.speed
+            loop 각 waypoint
+                V->>M: map footprint overlap cell 조회
+                M-->>V: speed caps
+            end
+            V->>V: 낮은 speed cap을 기준으로 높은 속도 삭감
+            V->>V: speed[]로 eta[] 적분
+            V-->>F: speed[], eta[]가 채워진 Primitive
+
+            F->>C: firstCollision(candidate, occupancy)
+            C->>C: eta별 occupancy bin 검사
+            alt 충돌 없음
+                C-->>F: candidate 끝 index
+            else 충돌
+                C-->>F: 최초 충돌 index
+                F->>F: 충돌 전 safe prefix로 축소
+                F->>V: terminal speed=0으로 재계획
+                V-->>F: stopped prefix 또는 정지 불가
+                F->>C: 변경된 eta로 재검증
+                C-->>F: valid prefix 또는 reject
+            end
         end
 
-        H->>PB: build(final primitive)
-        PB-->>H: local path
-        H->>L: publish(local path)
-        H->>B: build(primitives, final primitive)
-        B-->>H: search tree
-            H->>T: publish(search tree)
+        F->>M: goal_lanes centerline 조회
+        M-->>F: goal 점과 진행 방향
+        loop full, reference-end, valid prefix 후보
+            F->>E: evaluate(candidate, goal geometry)
+            E->>E: lateral, time, goal,<br/>progress, alignment 비용
+            E-->>F: total cost
         end
+        F->>F: 최소 비용 후보 선택
+        F->>T: candidates, selected
+        T->>T: map → base_link
+        T-->>ST: SearchTree
+        F->>P: selected Primitive
+        P->>P: map → base_link
+        P-->>LP: Path
     end
 ```
 
-- `RouteUpdater`가 10Hz마다 intersection 검사와 `RoutingGraph::shortestPathVia()`를 직접 호출한다.
-- registry에 넣은 global path 리스트를 그대로 `/global_path`에 발행한다. 자기 구독은 두지 않는다.
-- `HybridAStarPlanner`는 20Hz tick 시작 시 snapshot을 한 번 받아 탐색 종료까지 유지한다.
-- `HybridAStarPlanner`가 config의 조향 후보로 primitive를 생성한다.
-- `CollisionValidator`는 sample footprint와 겹친 cell을 한 번 조회한다. 해당 cell들의 `speed_cap_mps` 최솟값으로 속도와 ETA를 적분한 뒤 같은 cell의 ETA time bin occupancy를 검사한다.
-- 통과한 primitive 중 누적 거리가 `max_path_length` 미만이면 `openQueue`, 이상이면 `pathStore`에 넣는다.
-- 생성한 primitive가 모두 collision이면 확장 직전의 유효한 parent primitive를 `pathStore`에 넣는다.
-- `max_node_count`에 도달하거나 `openQueue`가 비면 `pathStore`의 최상위 primitive를 선택한다. `pathStore`가 비어 있으면 `openQueue`의 최상위 primitive를 선택한다.
-- `PathBuilder::build()`가 최종 primitive의 `parent` 체인을 따라 `/local_path`를 만든다.
-- `/local_path` 발행 후 `SearchTreeBuilder::build()`가 전체 primitive 객체를 메시지 인덱스로 매핑해 `parent_index`와 `final_node_index`를 만든다.
-- 루트 `run.sh`는 `path_planner`를 빌드하고 `scripts/bringup.py`가 visualization과 path planner launch를 별도 프로세스로 실행한다.
-- 루트 `run.sh`는 HDMap 코어와 colcon 패키지를 `CMAKE_BUILD_TYPE=Release`로 빌드한다.
-- 모든 Hz 값은 config에서 읽는다.
+## Frenet 후보 생성
 
-## Hybrid A*와 시간 점유
+Reference는 다음 세 종류다.
 
-- 시작 pose는 `/ego_status`의 후륜축 중심 `x`, `y`, `heading`이다.
-- 후륜축 기준 kinematic bicycle model로 전진 primitive를 생성한다.
-- 조향 후보는 `[-18, -9, 0, 9, 18]`도다.
-- `g(x)`는 누적 이동거리다.
-- `h_goal(x)`는 goal lane 중심선 **점 집합**까지의 최소 유클리드 거리(m)다. 선분 투영은 하지 않는다.
-- `h_snap(x)`는 goal lane들과 각 goal의 `RoutingGraph::left/right()`로 얻은 바로 좌우 변경 허용 lane 중심선 점 집합까지의 최소 제곱 거리(m²)다. 재귀 확장이나 단순 인접 차선 추가는 하지 않는다.
-- goal 목록이 바뀌면 lane ID를 중복 제거하고 두 점 집합을 다시 만든다. 빈 goal에서는 탐색하지 않는다.
-- `f(x)=g_weight*g(x)+h_goal_weight*h_goal(x)+h_snap_weight*h_snap(x)`를 탐색·선택 큐 모두에 사용한다. 기존 `h_weight` 설정은 `h_goal_weight`로 이름을 변경했다.
-- 두 휴리스틱은 primitive 끝점에서 계산하며 누적하지 않는다. 스냅 정규화 기준은 1m이고 가중치로 강도를 조절한다. 가중치는 유한한 음이 아닌 값이어야 한다.
-- 누적 거리가 `max_path_length` 이상인 통과 후보는 `pathStore`에 넣는다. `max_node_count`에 도달하거나 `openQueue`가 비면 두 priority queue의 규칙에 따라 발행한다.
-- 한 parent에서 생성한 조향 후보가 모두 collision이면 parent를 `pathStore`에 넣어 장애물 직전의 유효 경로를 보존한다.
-- 탐색 key는 이산화한 `x`, `y`, `yaw`, `arrivalTime`, `speed`다.
-- `CollisionValidator`가 현재 ego 속도에서 시작해 sample별 overlap cell의 `speed_cap_mps` 최솟값과 설정 가감속으로 `speed_mps`, `eta_s`를 적분한다.
-- 차량 전체 footprint가 primitive를 따라 이동하며 만드는 swept polygon을 `CellTree::queryOverlaps()`로 조회한다.
-- 각 cell의 통과 시간 bin에서 `occupancy_probability[cell_id * 13 + bin]`을 읽는다.
-- 값이 양수인 cell과 겹치는 primitive는 버린다. `0`과 `-1`은 통과시킨다.
-- 완성된 경로는 계획 입력 stamp의 `base_link` 좌표로 변환해 `/local_path`로 발행한다. 이어서 같은 stamp와 frame으로 `/search_tree`를 발행한다.
+- 현재 lanelet 전체 centerline과 종방향 successor 하나를 순서대로 연결한 reference
+- `RoutingGraph::left(current)`가 반환한 차선의 전체 centerline
+- `RoutingGraph::right(current)`가 반환한 차선의 전체 centerline
+
+`goal_lanes`는 reference 생성에 사용하지 않고 비용 계산에만 사용한다. 좌우 결과가 없는 실선 경계에는 후보를 만들지 않는다. reference 자체는 자르지 않는다. 다항식의 `s(t)`가 reference 끝에 도달하면 그때까지 만든 waypoint를 짧은 후보로 보관한다.
+
+시작 횡상태는 다음과 같다.
+
+\[
+d_0=\operatorname{signedOffset}(p_{ego},r),\qquad
+\dot d_0=v_{ego}\sin(\psi_{ego}-\psi_r),\qquad
+\ddot d_0=0
+\]
+
+종단은 각 reference 중심에 정렬한다.
+
+\[
+d(T)=0,\qquad \dot d(T)=0,\qquad \ddot d(T)=0
+\]
+
+`d(t)`는 5차, 종단 위치를 고정하지 않는 nominal `s(t)`는 4차 다항식이다. 두 다항식은 독립적으로 생성하고 같은 nominal `t`에서 결합한다.
+
+\[
+p(t)=r(s(t))+d(t)n(s(t))
+\]
+
+이 시간은 공간 후보를 만들기 위한 nominal parameter다. 최종 `speed_mps`와 `eta_s`는 `VelocityPlanner`가 다시 계산한다.
 
 ### Primitive
-
-탐색 노드와 한 조향 구간을 `Primitive` 하나로 표현한다.
 
 ```cpp
 struct Primitive {
@@ -338,66 +317,97 @@ struct Primitive {
   std::vector<double> yaw_rad;
   std::vector<double> speed_mps;
   std::vector<double> eta_s;
-  double g;
-  double h_goal;
-  double h_snap;
-  std::shared_ptr<const Primitive> parent;
+  double lateral_cost;
+  double cost;
 };
 ```
 
-- 각 배열 원소는 primitive 내부의 같은 시점 sample이다.
-- 조향각은 `generatePrimitives()` 입력으로만 사용하고 생성 후 저장하지 않는다.
-- 구간 길이는 sample 좌표의 누적 거리로 계산해 `g`에 반영하므로 별도 저장하지 않는다.
-- `generatePrimitives()`는 `x_m`, `y_m`, `yaw_rad`만 채운다.
-- `CollisionValidator`는 sample footprint와 겹친 cell을 한 번 조회해 `speed_mps`, `eta_s`를 채우고 같은 조회 결과로 occupancy를 검사한다.
-- `DynamicStatus.speed_cap_mps[cell_id]`는 이미 lanelet 정적 제한속도와 동적 제한의 최솟값이다. 여러 cell이 겹치면 그 값들 중 최솟값을 사용한다.
-- `eta_s`는 planning snapshot의 stamp부터 해당 sample까지의 예상 도달 시간이다.
-- root의 `parent`는 `nullptr`이고, 나머지는 생성 시 부모 primitive 객체를 넣는다.
-- `HybridAStarPlanner`는 `std::vector<std::shared_ptr<Primitive>> primitives`에 root와 충돌 검사를 통과한 primitive를 `push_back()`한다.
-- `openQueue`와 `pathStore`에는 같은 `std::shared_ptr<Primitive>` 객체를 넣는다.
-- `PathBuilder`는 `parent` 체인을 따라 primitive 배열을 이어 붙여 local path를 만든다.
-- `SearchTreeBuilder`는 전체 primitive의 객체 주소를 메시지 인덱스로 매핑한 뒤 각 `parent`를 `parent_index`로 변환한다.
+모든 좌표는 내부에서 map 기준이다. 한 `Primitive`가 한 다항식 후보 전체를 가진다. Hybrid A*의 parent, open queue, path store와 visited key는 사용하지 않는다.
 
-초기 설정은 다음과 같다.
+## 속도 계획과 충돌 검사
+
+`VelocityPlanner`는 각 waypoint footprint와 겹치는 cell의 `speed_cap_mps` 최솟값으로 상한 배열을 만든다. 첫 점은 현재 ego 속도로 고정한다. 이후 낮은 값을 기준으로 높은 값만 줄인다.
+
+후방 감속 전파:
+
+\[
+v_i\leftarrow\min\left(v_i,\sqrt{v_{i+1}^2+2b_{max}\Delta s_i}\right)
+\]
+
+전방 가속 전파:
+
+\[
+v_i\leftarrow\min\left(v_i,\sqrt{v_{i-1}^2+2a_{max}\Delta s_i}\right)
+\]
+
+거리와 평균속도로 ETA를 적분한다.
+
+\[
+\eta_i=\eta_{i-1}+\frac{2\Delta s_i}{v_{i-1}+v_i}
+\]
+
+`CollisionValidator`는 속도를 수정하지 않는다. map 좌표 footprint와 최종 ETA의 occupancy bin만 검사한다. occupancy가 양수인 최초 sample index를 반환한다.
+
+충돌한 후보는 직전 안전 sample까지 줄이고 종단 속도를 0으로 설정한다. `VelocityPlanner`로 정지 프로파일과 ETA를 다시 만든 뒤 `CollisionValidator`로 재검증한다. full 후보, reference 끝 후보와 valid safe prefix를 같은 비용함수로 평가한다.
+
+## 비용함수
+
+\[
+J=w_{lat}J_{lat}+w_tJ_t+w_gJ_g+w_pJ_p+w_aJ_a
+\]
+
+- `J_lat`: nominal `d(t)`의 횡가속도와 jerk 제곱 적분
+- `J_t = eta_end`: `VelocityPlanner`가 만든 최종 도착시간
+- `J_g`: 후보 종점과 goal lane 중심선 점 집합 사이의 최소 제곱거리
+- `J_p = (L_desired-L_candidate)^2`: 짧은 경로의 진행량 부족
+- `J_a`: 후보 종단 yaw와 가장 가까운 goal 중심선 구간 방향의 제곱 오차
+
+\[
+J_g=\min_{q\in C_{goal}}\|p_{end}-q\|^2
+\]
+
+\[
+J_a=\operatorname{wrap}(\psi_{end}-\psi_{goal})^2
+\]
+
+장애물 비용, 목표 속도 비용, reference 종류에 따른 고정 차선 변경 비용은 두지 않는다. 장애물은 hard collision과 safe prefix로 처리한다. `J_p`가 정지와 우회 진행의 균형을, `J_a`가 차선 변경 도중 잘린 비스듬한 prefix의 선택을 억제한다.
+
+## 좌표계와 SearchTree
+
+`Primitive`와 footprint query는 map 좌표를 사용한다. `PathBuilder`와 `SearchTreeBuilder`만 계획 시각의 ego pose로 map 좌표를 `base_link`로 변환한다.
+
+`SearchTree` 메시지는 바꾸지 않는다. 각 후보의 waypoint를 독립 parent chain으로 펼치고 선택 후보 마지막 waypoint를 `final_node_index`로 표시한다.
+
+## 초기 설정
 
 ```yaml
-planner:
-  route_update_hz: 10.0
-  hybrid_astar_hz: 20.0
-  max_path_length: 50.0
-  max_node_count: 500
-  g_weight: 1.0
-  h_goal_weight: 10.0
-  h_snap_weight: 1.0
-  primitive_length_m: 1.0
-  checkpoint_radius_m: 2.0
-  heading_tolerance_deg: 10.0
-  alignment_duration_s: 3.0
-  steering_candidates_deg: [-18.0, -9.0, 0.0, 9.0, 18.0]
-  xy_resolution_m: 0.5
-  yaw_resolution_deg: 5.0
-  time_resolution_s: 0.25
-  speed_resolution_mps: 0.5
-  acceleration_mps2: 2.0
-  deceleration_mps2: 2.0
+path_planner:
+  ros__parameters:
+    route_update_hz: 10.0
+    frenet_planner_hz: 20.0
+    max_path_length: 50.0
+    lateral_cost_weight: 1.0
+    time_cost_weight: 1.0
+    goal_cost_weight: 10.0
+    progress_cost_weight: 1.0
+    alignment_cost_weight: 10.0
+    checkpoint_radius_m: 2.0
+    heading_tolerance_deg: 10.0
+    alignment_duration_s: 3.0
+    frenet_horizon_candidates_s: [2.0, 3.0, 4.0]
+    xy_resolution_m: 0.5
+    time_resolution_s: 0.5
+    planning_accel_limit_mps2: 5.45
+    planning_decel_limit_mps2: 10.37
 ```
 
-## 확인 항목과 알려진 동작
+`alignment_duration_s`는 기존 goal lane 상태 머신에만 사용한다. `time_resolution_s`는 nominal 다항식 결합 간격이고 `xy_resolution_m`은 그 사이 공간 보간 간격이다. 가감속 기본값은 각각 아이오닉 6 AWD의 공식 0–100 km/h 평균가속도와 아이오닉 6 N의 공식 100–0 km/h 제동거리에서 환산한 값이며 조정 가능한 planner parameter다.
 
-- checkpoint 순서대로 `shortestPathVia()`가 글로벌 lanelet ID 목록을 만드는지 확인한다.
-- 현재 lanelet이 ego footprint와 가장 많이 겹치는 후보인지 확인한다.
-- `/global_path.data[0]`이 현재 lanelet이고, 발행 데이터와 내부 참조가 같은 객체인지 확인한다.
-- 후속 lanelet에서는 즉시 `[1]`, 옆 차선에서는 heading 정렬 3초 후 `[1]`이 goal인지 확인한다.
-- 교차로에서는 `[0]`, `[1]`을 동시에 goal로 사용하는지 확인한다.
-- 다섯 조향각만으로 primitive를 확장하고 `max_node_count` 도달 또는 `openQueue` 소진 시 탐색을 종료하는지 확인한다.
-- primitive 중간의 차량 footprint가 시간별 점유 cell과 겹치면 후보를 버리는지 확인한다.
-- 완성 경로가 입력 stamp 기준 `base_link`의 `/local_path`로 발행되는지 확인한다.
-- `/local_path` 발행 후 `SearchTreeBuilder`가 전체 primitive의 부모 관계와 최종 primitive를 `parent_index`, `final_node_index`로 변환한 `/search_tree`가 같은 stamp로 발행되는지 확인한다.
-- 스냅은 탐색 중 중앙을 선호하지만 경로 전체의 이탈 이력을 누적하지 않으며, 변경·추월·복귀 성공을 보장하지 않는다.
-- 차선 경계와 실선 횡단을 제한하지 않는다.
-- `max_path_length`에 도달한 후보는 `pathStore`에 들어가며, `max_node_count` 도달 또는 `openQueue` 소진 뒤 최상위 후보를 발행한다.
-- `unknown=-1` cell은 통과시키고 양의 occupancy probability만 충돌로 처리한다.
+## 확인
 
-- `PlanningRegistry::ready()`는 `/ego_status`와 `/dynamic_status`를 모두 수신한 뒤 두 주기 루프의 연산을 허용한다.
+```bash
+cmake --build build/path_planner -j2
+ctest --test-dir build/path_planner --output-on-failure
+```
 
-비용·라우팅 회귀 검증: 빌드 후 `ctest --test-dir build/path_planner --output-on-failure` (`BUILD_TESTING=ON`).
+회귀 테스트는 4차·5차 다항식 경계조건, reference projection과 map→base_link 변환을 확인한다. ROS smoke test는 `/global_path`, `/local_path`, `/search_tree` 발행을 확인한다.
