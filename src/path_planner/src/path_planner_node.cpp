@@ -182,6 +182,11 @@ struct PlannerConfig {
     double left_extent_m;
     double right_extent_m;
     double vehicle_height_m;
+    double paik_lookahead_base_m;
+    double paik_lookahead_time_s;
+    double paik_min_speed_mps;
+    double paik_max_lateral_acceleration_mps2;
+    double paik_max_steering_rate_radps;
 };
 
 static lanelet::BasicPolygon2d footprint(double x, double y, double yaw,
@@ -954,6 +959,135 @@ private:
     double wheelbase_m_;
 };
 
+static Primitive paikRollout(const Reference& reference, const EgoStatus& ego,
+    const PlannerConfig& config) {
+    Primitive path;
+    if (reference.points.size() < 2 || reference.length() <= 0.) return path;
+
+    double x = ego.x + config.wheelbase_m * std::cos(ego.heading);
+    double y = ego.y + config.wheelbase_m * std::sin(ego.heading);
+    double yaw = ego.heading;
+    double steering = 0.;
+    double progress = project(reference, {x, y}).s;
+    const double speed = std::max(config.paik_min_speed_mps,
+        static_cast<double>(ego.speed));
+    const double lookahead = config.paik_lookahead_base_m +
+        config.paik_lookahead_time_s * speed;
+    const double steering_curvature = std::tan(config.maximum_steering_rad) /
+        config.wheelbase_m;
+    const double lateral_curvature = config.paik_max_lateral_acceleration_mps2 /
+        (speed * speed);
+    const double curvature_limit = std::min({config.maximum_curvature_per_m,
+        steering_curvature, lateral_curvature});
+    const double step = config.xy_resolution_m;
+    const auto count = static_cast<std::size_t>(std::ceil(config.max_path_length / step));
+
+    path.x_m.push_back(x);
+    path.y_m.push_back(y);
+    path.yaw_rad.push_back(yaw);
+    path.z_m.push_back(sample(reference, progress).z);
+    path.curvature_per_m.push_back(0.);
+    path.reference_s.push_back(progress);
+    path.centerline_offset_m.push_back(project(reference, {x, y}).d);
+
+    for (std::size_t index = 0; index < count && progress < reference.length(); ++index) {
+        const double target_s = std::min(reference.length(), progress + lookahead);
+        const auto target = sample(reference, target_s);
+        const double dx = target.point.x() - x;
+        const double dy = target.point.y() - y;
+        const double distance = std::hypot(dx, dy);
+        if (distance < step * .5) break;
+        const double heading_error = wrap(std::atan2(dy, dx) - yaw);
+        if (std::cos(heading_error) <= 0.) break;
+        const double desired_curvature = std::clamp(
+            2. * std::sin(heading_error) / distance, -curvature_limit, curvature_limit);
+        const double desired_steering = std::atan(config.wheelbase_m * desired_curvature);
+        const double dt = step / speed;
+        const double steering_step = config.paik_max_steering_rate_radps * dt;
+        steering += std::clamp(desired_steering - steering, -steering_step, steering_step);
+        steering = std::clamp(steering, -config.maximum_steering_rad,
+            config.maximum_steering_rad);
+        const double curvature = std::clamp(std::tan(steering) / config.wheelbase_m,
+            -curvature_limit, curvature_limit);
+        const double next_yaw = wrap(yaw + step * curvature);
+        x += step * std::cos(yaw + .5 * step * curvature);
+        y += step * std::sin(yaw + .5 * step * curvature);
+        yaw = next_yaw;
+        const auto projection = project(reference, {x, y});
+        progress = std::max(progress, projection.s);
+        path.x_m.push_back(x);
+        path.y_m.push_back(y);
+        path.yaw_rad.push_back(yaw);
+        path.z_m.push_back(sample(reference, progress).z);
+        path.curvature_per_m.push_back(curvature);
+        path.reference_s.push_back(progress);
+        path.centerline_offset_m.push_back(projection.d);
+        if (target_s >= reference.length() &&
+            (lanelet::BasicPoint2d{x, y} - target.point).norm() <= step) break;
+    }
+    if (path.x_m.size() < 2 || !kinematicallyFeasible(path, ego.heading,
+            config.wheelbase_m, config.maximum_curvature_per_m,
+            config.maximum_steering_rad)) return Primitive{};
+    return path;
+}
+
+class PaikPlanner {
+public:
+    using PathPublisher = rclcpp::Publisher<nav_msgs::msg::Path>;
+    using TreePublisher = rclcpp::Publisher<interfaces::msg::SearchTree>;
+
+    PaikPlanner(const lanelet::LaneletMap& map,
+        const lanelet::routing::RoutingGraph& graph, const PlannerConfig& config,
+        PathPublisher::SharedPtr path_publisher, TreePublisher::SharedPtr tree_publisher)
+        : map_(map), graph_(graph), config_(config), path_builder_(config.wheelbase_m),
+          tree_builder_(config.wheelbase_m), path_publisher_(std::move(path_publisher)),
+          tree_publisher_(std::move(tree_publisher)) {}
+
+    bool tick(const PlanningSnapshot& snapshot) {
+        const auto reference = buildReference(snapshot);
+        if (!reference) return false;
+        auto path = paikRollout(*reference, snapshot.ego, config_);
+        if (path.x_m.size() < 2) return false;
+        if (path_publisher_) path_publisher_->publish(path_builder_.build(path, snapshot.ego));
+        if (tree_publisher_) tree_publisher_->publish(
+            tree_builder_.build(std::vector<Primitive>{path}, 0, snapshot.ego));
+        return true;
+    }
+
+private:
+    std::optional<Reference> buildReference(const PlanningSnapshot& snapshot) const {
+        if (snapshot.global_path.empty()) return std::nullopt;
+        lanelet::Id desired = snapshot.goal_lanes.empty()
+            ? snapshot.global_path.front() : snapshot.goal_lanes.front();
+        auto begin = std::find(snapshot.global_path.begin(), snapshot.global_path.end(), desired);
+        if (begin == snapshot.global_path.end()) begin = snapshot.global_path.begin();
+        Reference reference;
+        for (auto iterator = begin; iterator != snapshot.global_path.end(); ++iterator) {
+            const auto lane = map_.laneletLayer.get(*iterator);
+            if (!reference.lane_ids.empty()) {
+                const auto previous = map_.laneletLayer.get(reference.lane_ids.back());
+                const auto following = graph_.following(previous, false);
+                if (std::none_of(following.begin(), following.end(), [&](const auto& value) {
+                        return value.id() == lane.id();
+                    })) break;
+            }
+            appendCenterline(reference, lane);
+            if (reference.length() >= config_.max_path_length +
+                    config_.paik_lookahead_base_m + config_.wheelbase_m) break;
+        }
+        if (reference.points.size() < 2) return std::nullopt;
+        return reference;
+    }
+
+    const lanelet::LaneletMap& map_;
+    const lanelet::routing::RoutingGraph& graph_;
+    const PlannerConfig& config_;
+    PathBuilder path_builder_;
+    SearchTreeBuilder tree_builder_;
+    PathPublisher::SharedPtr path_publisher_;
+    TreePublisher::SharedPtr tree_publisher_;
+};
+
 class FrenetPlanner {
 public:
     using PathPublisher = rclcpp::Publisher<nav_msgs::msg::Path>;
@@ -984,13 +1118,13 @@ public:
         if(tree_publisher_) tree_publisher_->publish(tree_builder_.build({},0,ego));
         last_failure_.clear();
     }
-    void tick(const PlanningSnapshot& snapshot) {
-        if(snapshot.current_lane==0 || !snapshot.dynamic) { invalidate(snapshot.ego,"missing route/input");return; }
+    bool tick(const PlanningSnapshot& snapshot) {
+        if(snapshot.current_lane==0 || !snapshot.dynamic) { skip("missing route/input");return false; }
         const double horizon=*std::max_element(config_.frenet_horizon_candidates_s.begin(),config_.frenet_horizon_candidates_s.end());
         const double budget=std::min(config_.max_path_length,snapshot.ego.speed*horizon+
             .5*config_.planning_accel_limit_mps2*horizon*horizon);
         const auto reference_set=references_.build(snapshot,budget+config_.rear_axle_to_front_m+2.,config_.rear_axle_to_rear_m+5.);
-        if(reference_set.references.empty()) { skip("disconnected/reference projection");return; }
+        if(reference_set.references.empty()) { skip("disconnected/reference projection");return false; }
         auto candidates=generate(snapshot,reference_set.references);
         const auto& progress=reference_set.references.front();
         const double target=std::min({progress.ego_s+budget,progress.length()-config_.rear_axle_to_front_m,
@@ -1025,8 +1159,8 @@ public:
         }
         if(checked.empty()) {
             RCLCPP_DEBUG(rclcpp::get_logger("path_planner"),"Candidates geometric=%zu velocity=%zu collision=%zu",candidates.size(),velocity_rejected,collision_rejected);
-            if(snapshot.ego.speed < .1) { publishHold(snapshot.ego);return; }
-            skip("no feasible candidate");return;
+            if(snapshot.ego.speed < .1) { publishHold(snapshot.ego);return true; }
+            skip("no feasible candidate");return false;
         }
         std::sort(checked.begin(),checked.end(),[](const auto& a,const auto& b){return a.first<b.first;});
         std::vector<Primitive> valid;
@@ -1039,6 +1173,7 @@ public:
         if(path_publisher_) path_publisher_->publish(path_builder_.build(valid[selected],snapshot.ego));
         if(tree_publisher_) tree_publisher_->publish(tree_builder_.build(valid,selected,snapshot.ego));
         last_failure_.clear();
+        return true;
     }
 
 private:
@@ -1182,7 +1317,12 @@ public:
             declare_parameter<double>("rear_axle_to_rear_m", 1.040),
             declare_parameter<double>("left_extent_m", .943),
             declare_parameter<double>("right_extent_m", .943),
-            declare_parameter<double>("vehicle_height_m", 1.507)};
+            declare_parameter<double>("vehicle_height_m", 1.507),
+            declare_parameter<double>("paik_lookahead_base_m", 4.),
+            declare_parameter<double>("paik_lookahead_time_s", .6),
+            declare_parameter<double>("paik_min_speed_mps", 2.),
+            declare_parameter<double>("paik_max_lateral_acceleration_mps2", 2.),
+            declare_parameter<double>("paik_max_steering_rate_radps", .4)};
         for (const double weight : {config_.lateral_cost_weight, config_.time_cost_weight,
                  config_.goal_cost_weight, config_.progress_cost_weight,
                  config_.alignment_cost_weight, config_.centerline_deviation_cost_weight}) {
@@ -1194,7 +1334,11 @@ public:
             config_.time_resolution_s <= 0. || config_.max_path_length <= 0. ||
             !std::isfinite(config_.lane_overlap_check_delay_s) ||
             config_.lane_overlap_check_delay_s < 0. ||
-            config_.planning_accel_limit_mps2 <= 0. || config_.planning_decel_limit_mps2 <= 0.) {
+            config_.planning_accel_limit_mps2 <= 0. || config_.planning_decel_limit_mps2 <= 0. ||
+            config_.paik_lookahead_base_m <= 0. || config_.paik_lookahead_time_s < 0. ||
+            config_.paik_min_speed_mps <= 0. ||
+            config_.paik_max_lateral_acceleration_mps2 <= 0. ||
+            config_.paik_max_steering_rate_radps <= 0.) {
             throw std::invalid_argument("Frenet horizons and planner resolutions must be positive");
         }
         for (const double horizon : config_.frenet_horizon_candidates_s) {
@@ -1226,6 +1370,8 @@ public:
         route_updater_->setRegistry(registry_);
         planner_ = std::make_unique<FrenetPlanner>(
             *map_, *graph_, config_, local_publisher_, tree_publisher_);
+        paik_planner_ = std::make_unique<PaikPlanner>(
+            map_->laneletMap(), *graph_, config_, local_publisher_, tree_publisher_);
 
         planner_timer_ = create_wall_timer(std::chrono::duration_cast<std::chrono::nanoseconds>(
             std::chrono::duration<double>(1. / planner_hz)), [this] {
@@ -1237,7 +1383,19 @@ public:
                 }
                 if(stamp(input.ego)<=last_planned_stamp_) return;
                 route_updater_->tick(input);
-                planner_->tick(registry_.snapshot());
+                const auto routed = registry_.snapshot();
+                if (planner_->tick(routed)) {
+                    if (using_paik_) RCLCPP_INFO(get_logger(),
+                        "Frenet path recovered; leaving PaikPlanner fallback");
+                    using_paik_ = false;
+                } else if (paik_planner_->tick(routed)) {
+                    if (!using_paik_) RCLCPP_WARN(get_logger(),
+                        "Frenet path unavailable; using PaikPlanner traffic-blind fallback");
+                    using_paik_ = true;
+                } else {
+                    planner_->invalidate(routed.ego, "Frenet and PaikPlanner failed");
+                    using_paik_ = false;
+                }
                 last_planned_stamp_=stamp(input.ego);
             });
     }
@@ -1250,12 +1408,14 @@ private:
     lanelet::routing::RoutingGraphPtr graph_;
     std::unique_ptr<RouteUpdater> route_updater_;
     std::unique_ptr<FrenetPlanner> planner_;
+    std::unique_ptr<PaikPlanner> paik_planner_;
     rclcpp::Subscription<EgoStatus>::SharedPtr ego_subscription_;
     rclcpp::Subscription<DynamicStatus>::SharedPtr dynamic_subscription_;
     rclcpp::Publisher<std_msgs::msg::Int64MultiArray>::SharedPtr global_publisher_;
     rclcpp::Publisher<nav_msgs::msg::Path>::SharedPtr local_publisher_;
     rclcpp::Publisher<interfaces::msg::SearchTree>::SharedPtr tree_publisher_;
     std::int64_t last_planned_stamp_{};
+    bool using_paik_{};
     rclcpp::TimerBase::SharedPtr planner_timer_;
 };
 

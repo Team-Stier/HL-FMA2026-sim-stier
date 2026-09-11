@@ -2,7 +2,7 @@
 
 ## 목표와 입출력
 
-`path_planner`는 `/ego_status`와 `/dynamic_status`를 받아 Lanelet2 글로벌 경로와 시간 점유를 반영한 Frenet 로컬 경로를 생성한다.
+`path_planner`는 `/ego_status`와 `/dynamic_status`를 받아 Lanelet2 글로벌 경로와 시간 점유를 반영한 Frenet 로컬 경로를 생성한다. Frenet이 유효 경로를 만들지 못하면 `PaikPlanner`가 다른 차량의 점유를 무시하고 글로벌 route 중심선을 추종하는 동역학 제한 경로를 최후 수단으로 발행한다.
 
 | 방향 | 토픽 | 타입 |
 |---|---|---|
@@ -16,7 +16,15 @@
 - 글로벌 경로를 발행하기 위해 만든 `global_path.data`를 상태 머신과 Frenet planner가 그대로 참조한다. 이 노드는 `/global_path`를 자기 구독하지 않는다.
 - `/local_path`는 `base_link` 기준 `nav_msgs/Path`이며 stamp는 계획에 사용한 ego 입력 시각이다.
 - QoS는 `BEST_EFFORT / VOLATILE / KEEP_LAST(1)`이다.
-- 이 문서의 클래스·메서드·분기에 나타나지 않은 방어 코드, validator, fallback, watchdog, 이전 결과 재사용은 구현하지 않는다. 설계를 바꿀 때는 이 README와 세 다이어그램을 먼저 갱신한다.
+- 이 문서의 클래스·메서드·분기에 나타나지 않은 방어 코드, validator, fallback, watchdog, 이전 결과 재사용은 구현하지 않는다. 설계를 바꿀 때는 이 README와 세 다이어그램을 함께 갱신한다.
+
+## Planner 우선순위와 PaikPlanner fallback
+
+매 planning tick은 Frenet planner를 항상 먼저 실행한다. Frenet 후보가 하나라도 선택되면 Frenet `/local_path`만 발행한다. reference 생성 실패, 속도 계획 실패 또는 모든 후보의 충돌 판정으로 Frenet이 실패한 tick에만 `PaikPlanner`를 실행한다. 다음 tick에 Frenet이 회복하면 별도 지연이나 latch 없이 즉시 Frenet 경로로 복귀한다.
+
+`PaikPlanner`는 현재 `goal_lanes[0]`을 우선하고, 없으면 `global_path[0]`부터 종방향으로 연결된 Lanelet 중심선을 reference로 만든다. 차량 전륜축에서 가장 가까운 reference station을 찾은 뒤 pure-pursuit 곡률을 목표로 bicycle model을 `xy_resolution_m` 간격으로 적분한다. 조향각, 조향 변화율, 곡률 및 횡가속도 제한을 모두 적용한다.
+
+이 fallback은 `DynamicStatus.occupancy_probability`를 조회하지 않으므로 다른 차량과 장애물을 피하지 않는다. 정적 글로벌 route도 없거나 차량 전방에 유효한 reference를 만들 수 없으면 빈 Path를 발행하고 기존 Controller의 `STOP_NO_LOCAL_PATH`로 전환한다. 정지선과 동적 speed cap 역시 Paik 경로 생성에는 사용하지 않으며, 별도 `/speed_limit` Controller 계약은 그대로 유지한다.
 
 ## Checkpoint와 글로벌 경로
 
@@ -133,7 +141,8 @@ classDiagram
     }
     class RouteUpdater { +tick() }
     class IntersectionMonitor { +inspect(ego) }
-    class FrenetPlanner { +tick(snapshot) }
+    class FrenetPlanner { +tick(snapshot): bool }
+    class PaikPlanner { +tick(snapshot): bool }
     class ReferenceBuilder { +build(currentLane, globalPath): ReferenceSet }
     class VelocityPlanner { +plan(primitive, snapshot, stopAtEnd) }
     class CollisionValidator { +firstCollision(primitive, snapshot, allowed_lanes) }
@@ -160,6 +169,10 @@ classDiagram
     FrenetPlanner *-- PathBuilder
     FrenetPlanner *-- SearchTreeBuilder
     FrenetPlanner *-- Primitive
+    PaikPlanner --> LaneletMap
+    PaikPlanner --> RoutingGraph
+    PaikPlanner *-- PathBuilder
+    PaikPlanner *-- SearchTreeBuilder
     ReferenceBuilder --> LaneletMap
     ReferenceBuilder --> RoutingGraph
     VelocityPlanner --> HdMap
@@ -181,6 +194,7 @@ sequenceDiagram
     participant G as RoutingGraph
     participant GP as /global_path
     participant F as FrenetPlanner
+    participant PK as PaikPlanner
     participant V as VelocityPlanner
     participant C as CollisionValidator
     participant E as CostEvaluator
@@ -294,9 +308,17 @@ sequenceDiagram
         F->>T: candidates, selected
         T->>T: map → base_link
         T-->>ST: SearchTree
-        F->>P: selected Primitive
-        P->>P: map → base_link
-        P-->>LP: Path
+        alt Frenet 후보 선택 성공
+            F->>P: selected Primitive
+            P->>P: map → base_link
+            P-->>LP: Frenet Path
+        else Frenet 후보 없음
+            F-->>PK: fallback 요청
+            PK->>M: global route 중심선 조회
+            PK->>PK: nearest station + pure pursuit<br/>bicycle rollout와 동역학 제한
+            PK->>P: Paik Primitive
+            P-->>LP: Paik fallback Path
+        end
     end
 ```
 
@@ -433,11 +455,18 @@ path_planner:
     wheelbase_m: 2.95
     maximum_curvature_per_m: 0.169492
     maximum_steering_deg: 26.565
+    paik_lookahead_base_m: 4.0
+    paik_lookahead_time_s: 0.6
+    paik_min_speed_mps: 2.0
+    paik_max_lateral_acceleration_mps2: 2.0
+    paik_max_steering_rate_radps: 0.4
 ```
 
 `maximum_curvature_per_m`과 `maximum_steering_deg`는 최소 회전반경 5.9 m와 축거 2.95 m를 기준으로 한 후보 제한이다. 첫 segment와 ego heading의 불연속을 포함해 |Δyaw|/Δs로 이산 곡률을 계산하고, 한계를 넘는 후보는 비용 평가 전에 제외한다. current lane이 교차로이면 기존 global path와 goal lane을 유지한다.
 
 `alignment_duration_s`는 기존 goal lane 상태 머신에만 사용한다. `time_resolution_s`는 nominal 다항식 결합 간격이고 `xy_resolution_m`은 그 사이 공간 보간 간격이다. 가감속 기본값은 각각 아이오닉 6 AWD의 공식 0–100 km/h 평균가속도와 아이오닉 6 N의 공식 100–0 km/h 제동거리에서 환산한 값이며 조정 가능한 planner parameter다.
+
+Paik lookahead는 `paik_lookahead_base_m + paik_lookahead_time_s × max(ego.speed, paik_min_speed_mps)`다. 횡가속도 제한은 `|v²κ| <= paik_max_lateral_acceleration_mps2`, 조향 변화율은 rollout의 공간 step을 현재 속도로 나눈 시간에 `paik_max_steering_rate_radps`를 적용한다. 이 값들은 fallback 경로의 기하학적 실행 가능성 한계이며, 장애물 안전성을 보장하지 않는다.
 
 ## 확인
 

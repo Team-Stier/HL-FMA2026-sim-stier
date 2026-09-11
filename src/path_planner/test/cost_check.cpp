@@ -58,6 +58,43 @@ int main() {
     assert(!kinematicallyFeasible(
         reverse, 0., 2.95, 1. / 5.9, 26.565 * std::acos(-1.) / 180.));
 
+    PlannerConfig paik_config{};
+    paik_config.max_path_length = 20.;
+    paik_config.xy_resolution_m = .5;
+    paik_config.wheelbase_m = 2.944;
+    paik_config.maximum_curvature_per_m = 1. / 5.9;
+    paik_config.maximum_steering_rad = 26.565 * std::acos(-1.) / 180.;
+    paik_config.paik_lookahead_base_m = 4.;
+    paik_config.paik_lookahead_time_s = .6;
+    paik_config.paik_min_speed_mps = 2.;
+    paik_config.paik_max_lateral_acceleration_mps2 = 2.;
+    paik_config.paik_max_steering_rate_radps = .4;
+    Reference paik_reference;
+    paik_reference.points = {{0., 0.}, {80., 0.}};
+    paik_reference.station = {0., 80.};
+    paik_reference.heights = {0., 0.};
+    EgoStatus paik_ego;
+    paik_ego.x = 0.;
+    paik_ego.y = 2.;
+    paik_ego.heading = 0.;
+    paik_ego.speed = 4.;
+    const auto paik_path = paikRollout(paik_reference, paik_ego, paik_config);
+    assert(paik_path.x_m.size() > 2);
+    assert(std::abs(paik_path.x_m.front() - paik_config.wheelbase_m) < tolerance);
+    assert(std::abs(paik_path.y_m.back()) < std::abs(paik_path.y_m.front()));
+    for (std::size_t i = 1; i < paik_path.curvature_per_m.size(); ++i) {
+        const double previous = std::atan(paik_config.wheelbase_m *
+            paik_path.curvature_per_m[i - 1]);
+        const double current = std::atan(paik_config.wheelbase_m *
+            paik_path.curvature_per_m[i]);
+        assert(std::abs(current - previous) <=
+            paik_config.paik_max_steering_rate_radps *
+                paik_config.xy_resolution_m / paik_ego.speed + tolerance);
+        assert(paik_ego.speed * paik_ego.speed *
+            std::abs(paik_path.curvature_per_m[i]) <=
+                paik_config.paik_max_lateral_acceleration_mps2 + tolerance);
+    }
+
     // A 10 cm lanelet must not limit the horizon or remove predecessor coverage.
     lanelet::LaneletMap tiny_map;
     std::vector<lanelet::Point3d> left_edge,right_edge;

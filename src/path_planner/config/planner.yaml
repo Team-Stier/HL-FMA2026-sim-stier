@@ -26,3 +26,8 @@ path_planner:
     left_extent_m: 0.943
     right_extent_m: 0.943
     vehicle_height_m: 1.507
+    paik_lookahead_base_m: 4.0
+    paik_lookahead_time_s: 0.6
+    paik_min_speed_mps: 2.0
+    paik_max_lateral_acceleration_mps2: 2.0
+    paik_max_steering_rate_radps: 0.4
