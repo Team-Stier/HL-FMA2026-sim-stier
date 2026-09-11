@@ -1,0 +1,29 @@
+{
+  "packages": {
+    "control": {
+      "project_dependencies": [
+        "interfaces"
+      ],
+      "forbidden": []
+    },
+    "path_planner": {
+      "project_dependencies": [
+        "interfaces"
+      ],
+      "forbidden": []
+    },
+    "hdmap_dynamic_tracker": {
+      "project_dependencies": [
+        "interfaces"
+      ],
+      "forbidden": []
+    },
+    "speed_annotator": {
+      "project_dependencies": [
+        "interfaces"
+      ],
+      "forbidden": []
+    }
+  },
+  "preserved_visualization_files": true
+}

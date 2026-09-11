@@ -8,13 +8,10 @@ from rclpy.qos import qos_profile_sensor_data, QoSProfile
 from tf2_ros import TransformBroadcaster
 
 
-def transform_from_pose(message):
+def transform_from_pose(message, wheelbase_m):
     transform = TransformStamped()
     transform.header = message.header
     transform.child_frame_id = "base_link"
-    transform.transform.translation.x = float(message.x)
-    transform.transform.translation.y = float(message.y)
-    transform.transform.translation.z = float(message.z)
     cy, sy = math.cos(message.heading / 2), math.sin(message.heading / 2)
     cp, sp = math.cos(message.pitch / 2), math.sin(message.pitch / 2)
     cr, sr = math.cos(message.roll / 2), math.sin(message.roll / 2)
@@ -23,6 +20,9 @@ def transform_from_pose(message):
     rotation.y = cr * sp * cy + sr * cp * sy
     rotation.z = cr * cp * sy - sr * sp * cy
     rotation.w = cr * cp * cy + sr * sp * sy
+    transform.transform.translation.x = message.x + wheelbase_m * math.cos(message.heading)
+    transform.transform.translation.y = message.y + wheelbase_m * math.sin(message.heading)
+    transform.transform.translation.z = float(message.z)
     return transform
 
 
@@ -30,6 +30,7 @@ class PoseTF(Node):
     def __init__(self):
         super().__init__("tf_broadcasting")
         self.broadcaster = TransformBroadcaster(self)
+        self.wheelbase_m = self.declare_parameter("wheelbase_m", 2.944).value
         qos = QoSProfile(depth=1, reliability=qos_profile_sensor_data.reliability)
         self.subscription = self.create_subscription(EgoPose, "/ego_pose", self.receive, qos)
 
@@ -38,7 +39,7 @@ class PoseTF(Node):
                 (message.x, message.y, message.z, message.heading, message.pitch, message.roll)):
             self.get_logger().error("Rejected EgoPose: expected finite map pose")
             return
-        self.broadcaster.sendTransform(transform_from_pose(message))
+        self.broadcaster.sendTransform(transform_from_pose(message, self.wheelbase_m))
 
 
 def main(args=None):

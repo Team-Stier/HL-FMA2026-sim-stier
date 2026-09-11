@@ -53,6 +53,9 @@ class Visualizer(Node):
         self.cell_edges = None
         self.cell_value_cache = {}
         self.cell_marker_cache = {}
+        self.current_lane_flash = False
+        self.map_roads = []
+        self.map_lane_z = {}
         map_path = self.declare_parameter("map_path", "").value
         if map_path:
             from hdmap import hdmap_init
@@ -151,7 +154,9 @@ class Visualizer(Node):
             return
         header = Header(stamp=message.header.stamp, frame_id="base_link")
         body = marker(header, "ego/body", 0, Marker.CUBE, (0.1, 0.5, 1, 0.65))
-        body.pose.position = point(self.vehicle["box_center_forward_offset_m"], 0, self.vehicle["height_m"] / 2)
+        body.pose.position = point(
+            self.vehicle["box_center_forward_offset_m"] - self.vehicle["wheelbase_m"], 0,
+            self.vehicle["height_m"] / 2)
         body.scale.x = float(self.vehicle["length_m"])
         body.scale.y = float(self.vehicle["width_m"])
         body.scale.z = float(self.vehicle["height_m"])
@@ -368,6 +373,21 @@ class Visualizer(Node):
             result.append(line(header, "global_path/local_reference", index, points, (0.2, 1, 0.2, 1), 0.3))
         self.emit("global_path", result)
         self.hud_groups["global_path"] = labels
+        if message.data:
+            self.flash_current_lane(message.data[0])
+
+    def flash_current_lane(self, lane_id):
+        if not self.map_roads:
+            return
+        self.current_lane_flash = not self.current_lane_flash
+        for item in self.map_roads:
+            if item.ns == "map/local_reference/center":
+                active = item.id == lane_id and self.current_lane_flash
+                color = (1, 0.2, 0.1, 1) if active else (0.3, 0.7, 1, 0.6)
+                item.color.r, item.color.g, item.color.b, item.color.a = color
+                for point, base_z in zip(item.points, self.map_lane_z[item.id]):
+                    point.z = base_z + (0.5 if active else 0.0)
+        self.emit("map", batch_lines(self.map_roads))
 
     def speed_limit(self, message):
         self.hud_groups["speed_limit"] = [f"speed/current_limit/0: cap={message.data!r} m/s (unstamped)"]
@@ -422,6 +442,9 @@ class Visualizer(Node):
         if not self.map_drawn:
             header = Header(stamp=self.get_clock().now().to_msg(), frame_id="map")
             roads, cells = self.static_markers(header)
+            self.map_roads = roads
+            self.map_lane_z = {item.id: [point.z for point in item.points] for item in roads
+                               if item.ns == "map/local_reference/center"}
             self.emit("map", batch_lines(roads))
             self.emit("cells", cells)
             self.map_drawn = True

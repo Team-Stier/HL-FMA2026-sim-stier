@@ -1,4 +1,5 @@
 #include "hdmap_dynamic_tracker/motion_predictor.hpp"
+#include "hdmap_dynamic_tracker/signal_state_manager.hpp"
 #include "hdmap_dynamic_tracker/tracker_core.hpp"
 
 #include "hdmap/hdmap.hpp"
@@ -72,19 +73,32 @@ lanelet::BasicPolygon2d toLaneletPolygon(const std::vector<Point2d>& points) {
 struct Snapshot {
     std::int64_t stamp = 0;
     interfaces::msg::EgoPose::SharedPtr ego;
+    double ego_speed_mps = 0.0;
     interfaces::msg::Objects::SharedPtr objects;
     interfaces::msg::TrafficLight::SharedPtr traffic_light;
 };
 
+struct EgoSample {
+    interfaces::msg::EgoPose::SharedPtr message;
+    double speed_mps = 0.0;
+};
+
 struct SignalCellCap {
     hdmap::CellId cell_id = 0;
-    float cap_mps = 0.0F;
+    double distance_from_stop_edge_m = 0.0;
+    double cell_length_m = 0.0;
 };
 
 struct SignalConstraint {
     std::int32_t controller_id = 0;
     std::vector<int> permitted_states;
     std::vector<SignalCellCap> restricted_caps;
+};
+
+struct ActiveSignalApproach {
+    std::size_t constraint_index = 0;
+    double front_axle_to_stopline_m = 0.0;
+    double static_speed_cap_mps = 0.0;
 };
 
 }  // namespace
@@ -96,6 +110,17 @@ public:
           ego_speed_estimator_() {
         frame_id_ = declare_parameter<std::string>("frame_id", "map");
         target_rate_hz_ = declare_parameter<double>("target_rate_hz", 20.0);
+        EgoMotionLimits motion_limits;
+        motion_limits.maximum_speed_mps = declare_parameter<double>("ego_motion.maximum_speed_mps", 60.0);
+        motion_limits.maximum_vertical_speed_mps =
+            declare_parameter<double>("ego_motion.maximum_vertical_speed_mps", 10.0);
+        motion_limits.maximum_yaw_rate_radps =
+            declare_parameter<double>("ego_motion.maximum_yaw_rate_radps", 3.0);
+        motion_limits.minimum_frame_dt_s =
+            declare_parameter<double>("ego_motion.minimum_frame_dt_s", 1.0e-4);
+        motion_limits.maximum_frame_dt_s =
+            declare_parameter<double>("ego_motion.maximum_frame_dt_s", 1.0);
+        ego_speed_estimator_ = EgoSpeedEstimator(motion_limits);
         unknown_probability_ = declare_parameter<double>("occupancy.unknown_probability", -1.0);
         known_free_radius_m_ = declare_parameter<double>("occupancy.known_free_radius_m", 0.0);
         uncertainty_sigma_multiplier_ =
@@ -113,6 +138,7 @@ public:
             braking_distance_table_.push_back({braking_speeds[index], braking_distances[index]});
         }
         rear_axle_to_front_m_ = declare_parameter<double>("vehicle.rear_axle_to_front_m", 3.808);
+        wheelbase_m_ = declare_parameter<double>("vehicle.wheelbase_m", 2.944);
 
         PredictorConfig predictor_config;
         predictor_config.process_acceleration_sigma_mps2 =
@@ -126,13 +152,26 @@ public:
         predictor_ = makeEkfPredictor(predictor_config);
 
         ramp_template_.design_deceleration_mps2 =
-            declare_parameter<double>("signals.design_deceleration_mps2", 2.0);
+            declare_parameter<double>("signals.design_deceleration_mps2", 3.0);
         ramp_template_.braking_distance_factor =
             declare_parameter<double>("signals.braking_distance_factor", 1.0);
         ramp_template_.latency_budget_s =
             declare_parameter<double>("signals.latency_budget_s", 0.25);
         ramp_template_.stop_margin_m =
             declare_parameter<double>("signals.stop_margin_m", 1.0);
+
+        SignalStateManagerConfig state_manager_config;
+        state_manager_config.yellow_decision_deceleration_mps2 = declare_parameter<double>(
+            "signals.yellow_decision_deceleration_mps2", 3.0);
+        state_manager_config.braking_distance_factor = ramp_template_.braking_distance_factor;
+        state_manager_config.latency_budget_s = ramp_template_.latency_budget_s;
+        state_manager_config.stop_margin_m = ramp_template_.stop_margin_m;
+        state_manager_config.hold_speed_mps =
+            declare_parameter<double>("signals.hold_speed_mps", 0.2);
+        state_manager_config.hold_distance_m =
+            declare_parameter<double>("signals.hold_distance_m", 1.0);
+        signal_state_manager_ = std::make_unique<SignalStateManager>(
+            state_manager_config, braking_distance_table_);
 
         validateParameters();
         const auto map_path = resolveMapPath(declare_parameter<std::string>("map_path", ""));
@@ -193,7 +232,8 @@ private:
         if (!std::isfinite(known_free_radius_m_) || known_free_radius_m_ < 0.0 ||
             known_free_radius_m_ > 80.0 ||
             !std::isfinite(uncertainty_sigma_multiplier_) || uncertainty_sigma_multiplier_ <= 0.0 ||
-            !std::isfinite(rear_axle_to_front_m_) || rear_axle_to_front_m_ < 0.0) {
+            !std::isfinite(rear_axle_to_front_m_) || rear_axle_to_front_m_ < 0.0 ||
+            !std::isfinite(wheelbase_m_) || wheelbase_m_ <= 0.0) {
             throw std::invalid_argument("Invalid occupancy or vehicle parameter");
         }
         StopRampParameters validation_ramp = ramp_template_;
@@ -253,11 +293,11 @@ private:
         for (const float static_cap : static_speed_caps_) {
             StopRampParameters ramp = ramp_template_;
             ramp.entry_speed_mps = static_cap;
-            if (!braking_distance_table_.empty()) {
-                ramp.calibrated_braking_distance_m = conservativeBrakingDistance(
-                    static_cap, braking_distance_table_);
+            if (!validStopRamp(ramp, braking_distance_table_)) {
+                throw std::invalid_argument("Signal braking calibration must cover every static speed cap");
             }
-            maximum_ramp_distance = std::max(maximum_ramp_distance, stopRampStartDistance(ramp));
+            maximum_ramp_distance = std::max(maximum_ramp_distance,
+                stopRampStartDistance(ramp, braking_distance_table_));
         }
         std::unordered_map<lanelet::Id, std::unordered_set<hdmap::LaneletId>> rule_lanelets;
         for (const auto& lane : static_map_->laneletMap().laneletLayer) {
@@ -280,7 +320,7 @@ private:
                     continue;
                 }
 
-                std::unordered_map<hdmap::CellId, float> minimum_caps;
+                std::unordered_map<hdmap::CellId, SignalCellCap> minimum_caps;
                 const auto scoped_lanelets = rule_lanelets.find(signal->id());
                 const bool has_lane_scope = scoped_lanelets != rule_lanelets.end() &&
                     !scoped_lanelets->second.empty();
@@ -295,31 +335,24 @@ private:
                     std::unordered_set<hdmap::CellId> visited;
                     while (cell != nullptr && distance_from_stop_edge <= traversal_limit &&
                         visited.insert(cell->id()).second) {
-                        StopRampParameters ramp = ramp_template_;
-                        ramp.entry_speed_mps = static_speed_caps_.at(cell->id());
-                        if (!braking_distance_table_.empty()) {
-                            ramp.calibrated_braking_distance_m = conservativeBrakingDistance(
-                                ramp.entry_speed_mps, braking_distance_table_);
-                        }
-                        if (!validStopRamp(ramp)) {
-                            throw std::invalid_argument(
-                                "Signal braking calibration produced an invalid stop ramp");
-                        }
-                        const double front_bumper_clearance =
-                            std::max(0.0, distance_from_stop_edge - rear_axle_to_front_m_);
-                        const float cap = std::min(static_speed_caps_.at(cell->id()),
-                            static_cast<float>(stopRampCap(front_bumper_clearance, ramp)));
-                        const auto [iterator, inserted] = minimum_caps.emplace(cell->id(), cap);
+                        const double cell_length = cellLength(*cell);
+                        const SignalCellCap candidate{
+                            cell->id(), distance_from_stop_edge, cell_length};
+                        const auto [iterator, inserted] = minimum_caps.emplace(cell->id(), candidate);
                         if (!inserted) {
-                            iterator->second = std::min(iterator->second, cap);
+                            if (distance_from_stop_edge <
+                                iterator->second.distance_from_stop_edge_m) {
+                                iterator->second.distance_from_stop_edge_m = distance_from_stop_edge;
+                                iterator->second.cell_length_m = cell_length;
+                            }
                         }
-                        distance_from_stop_edge += cellLength(*cell);
+                        distance_from_stop_edge += cell_length;
                         cell = cell->previous();
                     }
                 }
                 constraint.restricted_caps.reserve(minimum_caps.size());
                 for (const auto& cap : minimum_caps) {
-                    constraint.restricted_caps.push_back({cap.first, cap.second});
+                    constraint.restricted_caps.push_back(cap.second);
                 }
                 if (constraint.restricted_caps.empty()) {
                     continue;
@@ -365,15 +398,31 @@ private:
             return;
         }
         const auto key = stampKey(*message);
-        if (key == last_ego_status_stamp_) {
+        // SimBridge stamps are monotone receive times; delayed samples must not
+        // roll the estimator or reset cutoff back to an older frame.
+        if (key <= last_ego_status_stamp_) {
             return;
         }
         last_ego_status_stamp_ = key;
         const auto speed = ego_speed_estimator_.update(
-            stampSeconds(*message), message->x, message->y);
+            stampSeconds(*message), message->x, message->y, message->z, message->heading);
+        std::unique_lock<std::mutex> state_lock(tracker_state_mutex_, std::defer_lock);
         if (speed.history_reset) {
-            std::lock_guard<std::mutex> lock(tracker_state_mutex_);
+            // Keep the reset and its new Ego publication ordered with worker
+            // build/publish. The worker releases snapshot_mutex_ before this lock.
+            state_lock.lock();
+            std::lock_guard<std::mutex> snapshot_lock(snapshot_mutex_);
+            reset_cutoff_stamp_ = key;
+            auto erase_before = [key](auto& values) {
+                values.erase(values.begin(), values.lower_bound(key));
+            };
+            erase_before(ego_messages_);
+            erase_before(object_messages_);
+            erase_before(traffic_light_messages_);
             predictor_->reset();
+            signal_state_manager_->reset();
+            RCLCPP_WARN(get_logger(), "Ego discontinuity at stamp %lld: reset speed and tracker history",
+                static_cast<long long>(key));
         }
 
         interfaces::msg::EgoStatus status;
@@ -388,15 +437,10 @@ private:
         ego_status_publisher_->publish(std::move(status));
 
         std::lock_guard<std::mutex> lock(snapshot_mutex_);
-        if (key < last_taken_stamp_) {
-            ego_messages_.clear();
-            object_messages_.clear();
-            traffic_light_messages_.clear();
-            last_taken_stamp_ = 0;
-        } else if (key == last_taken_stamp_) {
+        if (key <= last_taken_stamp_) {
             return;
         }
-        ego_messages_[key] = std::move(message);
+        ego_messages_[key] = EgoSample{std::move(message), speed.speed_mps};
         pruneSnapshotMap(ego_messages_);
     }
 
@@ -406,7 +450,9 @@ private:
             return;
         }
         std::lock_guard<std::mutex> lock(snapshot_mutex_);
-        object_messages_[stampKey(*message)] = std::move(message);
+        const auto key = stampKey(*message);
+        if (key < reset_cutoff_stamp_ || key <= last_taken_stamp_) return;
+        object_messages_[key] = std::move(message);
         pruneSnapshotMap(object_messages_);
     }
 
@@ -416,7 +462,9 @@ private:
             return;
         }
         std::lock_guard<std::mutex> lock(snapshot_mutex_);
-        traffic_light_messages_[stampKey(*message)] = std::move(message);
+        const auto key = stampKey(*message);
+        if (key < reset_cutoff_stamp_ || key <= last_taken_stamp_) return;
+        traffic_light_messages_[key] = std::move(message);
         pruneSnapshotMap(traffic_light_messages_);
     }
 
@@ -437,7 +485,8 @@ private:
             return std::nullopt;
         }
         Snapshot snapshot{key,
-            ego_messages_.at(key), object_messages_.at(key),
+            ego_messages_.at(key).message, ego_messages_.at(key).speed_mps,
+            object_messages_.at(key),
             traffic_light_messages_.at(key)};
         last_taken_stamp_ = key;
         auto erase_through = [key](auto& values) {
@@ -594,18 +643,97 @@ private:
             static_cast<int>(state.state));
     }
 
-    void updateSignalCaps(
-        std::vector<float>& speed_caps,
+    std::optional<ActiveSignalApproach> activeSignalApproach(
+        const interfaces::msg::EgoPose& ego,
         const interfaces::msg::TrafficLight& traffic_light) const {
-        for (const auto& constraint : signal_constraints_) {
-            if (traffic_light.id != constraint.controller_id ||
-                permitted(constraint, traffic_light)) {
+        const double cosine = std::cos(ego.heading);
+        const double sine = std::sin(ego.heading);
+        const Point2d front_axle{
+            ego.x + wheelbase_m_ * cosine,
+            ego.y + wheelbase_m_ * sine};
+        constexpr double kPointHalfExtentM = 0.01;
+        const auto front_axle_cells = static_map_->cellTree().queryOverlaps(
+            toLaneletPolygon({
+                {front_axle.x - kPointHalfExtentM, front_axle.y - kPointHalfExtentM},
+                {front_axle.x + kPointHalfExtentM, front_axle.y - kPointHalfExtentM},
+                {front_axle.x + kPointHalfExtentM, front_axle.y + kPointHalfExtentM},
+                {front_axle.x - kPointHalfExtentM, front_axle.y + kPointHalfExtentM}}),
+            -kUnlimitedZ, kUnlimitedZ);
+        std::unordered_set<hdmap::CellId> current_cells(
+            front_axle_cells.begin(), front_axle_cells.end());
+
+        std::optional<ActiveSignalApproach> active;
+        for (std::size_t constraint_index = 0;
+            constraint_index < signal_constraints_.size(); ++constraint_index) {
+            const auto& constraint = signal_constraints_[constraint_index];
+            if (constraint.controller_id != traffic_light.id) {
                 continue;
             }
             for (const auto& restriction : constraint.restricted_caps) {
-                auto& cap = speed_caps.at(restriction.cell_id);
-                cap = std::min(cap, restriction.cap_mps);
+                if (current_cells.count(restriction.cell_id) == 0U) {
+                    continue;
+                }
+                const auto& center = cell_centers_.at(restriction.cell_id);
+                const double half_cell_length = restriction.cell_length_m * 0.5;
+                const double within_cell = std::clamp(
+                    (center.x - front_axle.x) * cosine +
+                        (center.y - front_axle.y) * sine,
+                    -half_cell_length, half_cell_length);
+                const double distance = std::max(0.0,
+                    restriction.distance_from_stop_edge_m + half_cell_length + within_cell);
+                if (!active || distance < active->front_axle_to_stopline_m) {
+                    active = ActiveSignalApproach{
+                        constraint_index,
+                        distance,
+                        static_speed_caps_.at(restriction.cell_id)};
+                }
             }
+        }
+        return active;
+    }
+
+    void updateSignalCaps(
+        std::vector<float>& speed_caps,
+        const Snapshot& snapshot) {
+        const auto active = activeSignalApproach(*snapshot.ego, *snapshot.traffic_light);
+        SignalStateInput input;
+        input.controller_id = snapshot.traffic_light->id;
+        input.signal_state = snapshot.traffic_light->state;
+        input.ego_speed_mps = snapshot.ego_speed_mps;
+        input.on_approach = active.has_value();
+        if (active) {
+            input.approach_id = active->constraint_index;
+            input.front_axle_to_stopline_m = active->front_axle_to_stopline_m;
+            input.static_speed_cap_mps = active->static_speed_cap_mps;
+            input.permitted = permitted(
+                signal_constraints_.at(active->constraint_index), *snapshot.traffic_light);
+        }
+
+        const auto decision = signal_state_manager_->update(input);
+        if (decision.transitioned) {
+            RCLCPP_INFO(get_logger(),
+                "Signal state: controller=%d raw=%u state=%s speed=%.2f m/s "
+                "front_axle_distance=%.2f m stop_required=%.2f m target_cap=%.2f m/s",
+                input.controller_id, static_cast<unsigned int>(input.signal_state),
+                signalApproachStateName(decision.state), input.ego_speed_mps,
+                input.front_axle_to_stopline_m,
+                decision.required_stopping_distance_m,
+                decision.target_speed_cap_mps);
+        }
+        if (!active || !decision.apply_stop_cap) {
+            return;
+        }
+        for (const auto& restriction :
+            signal_constraints_.at(active->constraint_index).restricted_caps) {
+            StopRampParameters ramp = ramp_template_;
+            ramp.entry_speed_mps = std::min(
+                decision.decision_speed_mps,
+                static_cast<double>(static_speed_caps_.at(restriction.cell_id)));
+            const double front_bumper_clearance = std::max(
+                0.0, restriction.distance_from_stop_edge_m - rear_axle_to_front_m_);
+            auto& cap = speed_caps.at(restriction.cell_id);
+            cap = std::min(cap,
+                static_cast<float>(stopRampCap(front_bumper_clearance, ramp, braking_distance_table_)));
         }
     }
 
@@ -616,8 +744,8 @@ private:
         status.occupancy_probability.assign(
             static_speed_caps_.size() * kOccupancyBinCount,
             static_cast<float>(unknown_probability_));
-        updateSignalCaps(status.speed_cap_mps, *snapshot.traffic_light);
-        std::lock_guard<std::mutex> lock(tracker_state_mutex_);
+        // processLatest owns tracker_state_mutex_ through build and publication.
+        updateSignalCaps(status.speed_cap_mps, snapshot);
         updateOccupancy(status.occupancy_probability, stampSeconds(*snapshot.ego),
             *snapshot.ego, *snapshot.objects);
         return status;
@@ -629,8 +757,14 @@ private:
             return;
         }
         const auto started = std::chrono::steady_clock::now();
-        auto status = buildDynamicStatus(*snapshot);
-        dynamic_status_publisher_->publish(std::move(status));
+        {
+            std::lock_guard<std::mutex> lock(tracker_state_mutex_);
+            // A worker may have taken this snapshot immediately before receiveEgo
+            // reset the predictor. Never rebuild or publish that pre-reset frame.
+            if (snapshot->stamp < reset_cutoff_stamp_) return;
+            auto status = buildDynamicStatus(*snapshot);
+            dynamic_status_publisher_->publish(std::move(status));
+        }
         ++published_snapshots_;
         const auto elapsed = std::chrono::duration<double, std::milli>(
             std::chrono::steady_clock::now() - started).count();
@@ -647,6 +781,7 @@ private:
     double known_free_radius_m_ = 0.0;
     double uncertainty_sigma_multiplier_ = 2.0;
     double rear_axle_to_front_m_ = 3.808;
+    double wheelbase_m_ = 2.944;
     StopRampParameters ramp_template_;
     std::vector<BrakingDistanceSample> braking_distance_table_;
 
@@ -656,15 +791,18 @@ private:
     std::vector<SignalConstraint> signal_constraints_;
 
     EgoSpeedEstimator ego_speed_estimator_;
+    std::unique_ptr<SignalStateManager> signal_state_manager_;
     std::unique_ptr<MotionPredictor> predictor_;
     std::mutex tracker_state_mutex_;
 
     std::mutex snapshot_mutex_;
-    std::map<std::int64_t, interfaces::msg::EgoPose::SharedPtr> ego_messages_;
+    std::map<std::int64_t, EgoSample> ego_messages_;
     std::map<std::int64_t, interfaces::msg::Objects::SharedPtr> object_messages_;
     std::map<std::int64_t, interfaces::msg::TrafficLight::SharedPtr> traffic_light_messages_;
     std::int64_t last_taken_stamp_ = 0;
     std::int64_t last_ego_status_stamp_ = 0;
+    // Written under both mutexes; readers hold the state or snapshot mutex.
+    std::int64_t reset_cutoff_stamp_ = 0;
 
     std::size_t published_snapshots_ = 0;
 

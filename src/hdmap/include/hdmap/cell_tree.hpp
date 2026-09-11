@@ -101,8 +101,8 @@ inline std::vector<CellId> CellTree::queryOverlaps(const lanelet::BasicPolygon2d
     }
     const auto bounds = lanelet::geometry::boundingBox2d(footprint);
     const lanelet::BoundingBox3d box(
-        lanelet::BasicPoint3d(bounds.min().x(), bounds.min().y(), min_z),
-        lanelet::BasicPoint3d(bounds.max().x(), bounds.max().y(), max_z));
+        lanelet::BasicPoint3d(bounds.min().x(), bounds.min().y(), min_z - 0.5),
+        lanelet::BasicPoint3d(bounds.max().x(), bounds.max().y(), max_z + 0.5));
     const auto polygon = normalized_polygon(footprint);
     for (const auto& entry : candidates(box)) {
         if (boost::geometry::intersects(polygons_[entry.second], polygon)) {

@@ -95,6 +95,8 @@ class MarkerOutput:
 
 def search_markers(message):
     count = len(message.x)
+    if count == 0:
+        return []
     if any(len(values) != count for values in (message.y, message.yaw, message.parent_index)):
         raise ValueError("SearchTree array lengths differ")
     if not -1 <= message.final_node_index < count:
@@ -120,8 +122,6 @@ def search_markers(message):
     while current != -1:
         selected.append(positions[current])
         current = message.parent_index[current]
-    if not count:
-        return []
     result = [edges, line(message.header, "search_tree/final", 0, selected, (1, 0.3, 0, 1), 0.16, kind=Marker.LINE_LIST)]
     result.extend(arrow(message.header, "search_tree/yaw", index, position, message.yaw[index])
                   for index, position in enumerate(positions))

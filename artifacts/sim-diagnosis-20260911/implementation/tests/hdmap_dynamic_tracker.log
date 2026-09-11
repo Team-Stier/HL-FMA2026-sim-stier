@@ -1,0 +1,19 @@
+Start testing: Sep 11 07:59 KST
+----------------------------------------------------------
+1/1 Testing: tracker_core_test
+1/1 Test: tracker_core_test
+Command: "/home/stier/HL-FMA2026-sim-stier/build/hdmap_dynamic_tracker/tracker_core_test"
+Directory: /home/stier/HL-FMA2026-sim-stier/build/hdmap_dynamic_tracker
+"tracker_core_test" start time: Sep 11 07:59 KST
+Output:
+----------------------------------------------------------
+tracker_core_test passed
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"tracker_core_test" end time: Sep 11 07:59 KST
+"tracker_core_test" time elapsed: 00:00:00
+----------------------------------------------------------
+
+End testing: Sep 11 07:59 KST

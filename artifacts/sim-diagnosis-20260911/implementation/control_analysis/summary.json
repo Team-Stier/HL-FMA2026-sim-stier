@@ -1,0 +1,26 @@
+{
+  "frames": 178,
+  "lateral_m": {
+    "max": 0.0230359218686654,
+    "p95": 0.00809795694720692,
+    "median": 0.002821883961758845
+  },
+  "heading_deg": {
+    "max": 0.9593748215005395,
+    "p95": 0.4375666732231863
+  },
+  "command_replay_difference_rad": {
+    "max": 0.00043580657284786675,
+    "p95": 1.6213429169275912e-06
+  },
+  "path_age_s": {
+    "max": 0.310701082,
+    "median": 0.140697882
+  },
+  "command_steering_rad": {
+    "min": -0.016939589753746986,
+    "max": 0.10305017977952957
+  },
+  "all_reference_valid": true,
+  "all_mpc_success": true
+}

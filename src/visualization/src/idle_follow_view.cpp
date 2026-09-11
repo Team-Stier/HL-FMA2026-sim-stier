@@ -48,11 +48,12 @@ public:
 
     void update(float wall_dt, float ros_dt) override {
         const auto elapsed = std::chrono::duration<double>(Clock::now() - last_input_).count();
-        if (!mouse_down_ && elapsed >= idle_seconds_->getFloat()) {
+        if (!mouse_down_ && (initial_follow_ || elapsed >= idle_seconds_->getFloat())) {
             Ogre::Vector3 position;
             Ogre::Quaternion orientation;
             if (context_->getFrameManager()->getTransform(std::string("base_link"), position, orientation)) {
                 lookAt(position);
+                initial_follow_ = false;
             }
         }
         FixedOrientationOrthoViewController::update(wall_dt, ros_dt);
@@ -63,6 +64,7 @@ private:
     Clock::time_point last_input_ = Clock::now();
     rviz_common::properties::FloatProperty * idle_seconds_;
     bool mouse_down_ = false;
+    bool initial_follow_ = true;
 };
 
 }

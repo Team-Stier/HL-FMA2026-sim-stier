@@ -2,11 +2,12 @@
 <package format="3">
   <name>path_planner</name>
   <version>0.1.0</version>
-  <description>Lanelet global routing and time-aware Hybrid A* local planning</description>
+  <description>Lanelet global routing with Frenet planning and a kinematic route-follow fallback</description>
   <maintainer email="ppong030206@gmail.com">stier</maintainer>
   <license>Proprietary</license>
   <buildtool_depend>ament_cmake</buildtool_depend>
   <depend>rclcpp</depend>
+  <depend>boost</depend>
   <depend>interfaces</depend>
   <depend>std_msgs</depend>
   <depend>nav_msgs</depend>

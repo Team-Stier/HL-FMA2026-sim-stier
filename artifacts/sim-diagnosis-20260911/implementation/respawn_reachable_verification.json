@@ -1,0 +1,58 @@
+{
+  "scp_t": 1789081264.4881997,
+  "first_new_ego": {
+    "t": 1789081264.533515,
+    "topic": "ego",
+    "data": {
+      "x": 34.96419143676758,
+      "y": 45.885799407958984,
+      "z": 35.54999923706055,
+      "heading": 0.3159928023815155,
+      "speed": 0.0
+    },
+    "stamp": 1789081264531040305
+  },
+  "clear_delay_ms": null,
+  "new_global_delay_ms": 29.92105484008789,
+  "new_global": {
+    "t": 1789081264.563436,
+    "topic": "route",
+    "data": [
+      2534,
+      3307,
+      4119,
+      4843,
+      5027,
+      5211,
+      5650,
+      6137,
+      7355
+    ]
+  },
+  "new_local_delay_ms": 117.67959594726562,
+  "new_local_stamp": 1789081264609099887,
+  "new_local_points": 257,
+  "max_speed_first_two_seconds": 2.6503584384918213,
+  "logs": [
+    {
+      "t": 1789081264.5338793,
+      "topic": "log",
+      "data": {
+        "name": "hdmap_dynamic_tracker",
+        "level": 30,
+        "text": "Ego discontinuity at stamp 1789081264531040305: reset speed and tracker history"
+      },
+      "stamp": 1789081264532274948
+    },
+    {
+      "t": 1789081264.534149,
+      "topic": "log",
+      "data": {
+        "name": "mpc_control",
+        "level": 30,
+        "text": "Controller reset: ego discontinuity"
+      },
+      "stamp": 1789081264532465525
+    }
+  ]
+}

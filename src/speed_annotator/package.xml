@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<package format="3">
+  <name>speed_annotator</name>
+  <version>0.1.0</version>
+  <description>Publishes the minimum speed cap under the ego footprint</description>
+  <maintainer email="ppong030206@gmail.com">stier</maintainer>
+  <license>Proprietary</license>
+  <buildtool_depend>ament_cmake</buildtool_depend>
+  <depend>rclcpp</depend>
+  <depend>interfaces</depend>
+  <depend>hdmap_core</depend>
+  <depend>std_msgs</depend>
+  <test_depend>rclpy</test_depend>
+  <export><build_type>ament_cmake</build_type></export>
+</package>

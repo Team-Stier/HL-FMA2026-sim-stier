@@ -1,0 +1,11 @@
+--- pruned
++++ exhaustive
+@@ -955,7 +955,7 @@
+         double best_cost=std::numeric_limits<double>::infinity();
+         std::size_t velocity_rejected=0,collision_rejected=0;
+         for(const auto& [bound,original_index]:ordered) {
+-            if(bound>best_cost) break;
++            /* exhaustive verification: skip no candidate */
+             auto& candidate=candidates[original_index];
+             const auto& reference=reference_set.references[candidate.reference_index];
+             if(!velocity_.plan(candidate,snapshot,reference)) { ++velocity_rejected;continue; }

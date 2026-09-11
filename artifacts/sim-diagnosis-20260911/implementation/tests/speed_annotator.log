@@ -1,0 +1,19 @@
+Start testing: Sep 11 07:59 KST
+----------------------------------------------------------
+1/1 Testing: speed_annotator_test
+1/1 Test: speed_annotator_test
+Command: "/usr/bin/python3" "/home/stier/HL-FMA2026-sim-stier/src/speed_annotator/test/speed_annotator_test.py" "/home/stier/HL-FMA2026-sim-stier/build/speed_annotator/speed_annotator_node" "/home/stier/HL-FMA2026-sim-stier/src/speed_annotator/../../map/hdmap.bin" "/home/stier/HL-FMA2026-sim-stier/install/hdmap_core/lib/cmake/hdmap_core/../../../lib/python3.12/site-packages"
+Directory: /home/stier/HL-FMA2026-sim-stier/build/speed_annotator
+"speed_annotator_test" start time: Sep 11 07:59 KST
+Output:
+----------------------------------------------------------
+speed_annotator_test: all checks passed
+<end of output>
+Test time =  10.56 sec
+----------------------------------------------------------
+Test Passed.
+"speed_annotator_test" end time: Sep 11 07:59 KST
+"speed_annotator_test" time elapsed: 00:00:10
+----------------------------------------------------------
+
+End testing: Sep 11 07:59 KST

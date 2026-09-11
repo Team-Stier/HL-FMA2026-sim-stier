@@ -1,0 +1,9 @@
+Re-extracting code files in . (no LLM needed)...
+  AST extraction: 100/176 uncached files (56%) [12 workers]
+  AST extraction: 176/176 uncached files (100%) [12 workers]
+[graphify watch] community set changed since labeling (103 saved labels, 104 communities now; renamed 23 community(ies) by their hub). Run `graphify label` to refresh names with the LLM.
+[graphify] backed up curated graph (4 files) -> 2026-09-11/
+[graphify watch] Rebuilt: 1734 nodes, 2765 edges, 104 communities
+[graphify watch] graph.json, graph.html and GRAPH_REPORT.md updated in graphify-out
+Code graph updated. For doc/paper/image changes run /graphify --update in your AI assistant.
+Tip: set GEMINI_API_KEY or GOOGLE_API_KEY to use Gemini for semantic extraction.

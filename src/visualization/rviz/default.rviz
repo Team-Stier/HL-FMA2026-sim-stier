@@ -168,7 +168,7 @@ Visualization Manager:
             Class: visualization/IdleFollow
             Name: Mouse navigation + idle Ego follow
             Target Frame: map
-            Scale: 0.3
+            Scale: 27.0
             Angle: -1.5707963267948966
             X: 805.6425274103005
             Y: 26.2605036022312
@@ -177,7 +177,7 @@ Visualization Manager:
         -   Class: visualization/IdleFollow
             Name: Mouse navigation + idle Ego follow
             Target Frame: map
-            Scale: 0.3
+            Scale: 27.0
             Angle: -1.5707963267948966
             X: 805.6425274103005
             Y: 26.2605036022312

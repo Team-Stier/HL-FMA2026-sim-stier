@@ -1,0 +1,263 @@
+[
+  {
+    "name": "known_north_curve_road173",
+    "start": 1789079828.3806648,
+    "states": {
+      "STOP_STALE_EGO": 1,
+      "STOP_STALE_SPEED_LIMIT": 1,
+      "ACTIVE": 170,
+      "ACTIVE_SHORT_PATH": 8,
+      "STOP_NO_LOCAL_PATH": 2889
+    },
+    "caps": {
+      "8.0": 2232
+    },
+    "speed_max": 7.726251125335693,
+    "moving_samples": 224,
+    "path_n": 2019,
+    "path_valid": 103,
+    "fault_accel_positive": 0,
+    "max_abs_steering": 0.10305017977952957,
+    "cap_overspeed_max": 0,
+    "first_no_path_after_active": 1789079842.7208228,
+    "last_ego": {
+      "x": 841.74853515625,
+      "y": -48.463619232177734,
+      "z": 52.46055603027344,
+      "heading": 0.9374803304672241,
+      "speed": 0.0
+    },
+    "active_seen": true,
+    "valid_path_length_min_median_max": [
+      11.134105272791208,
+      49.999998826529165,
+      50.00000160811115
+    ]
+  },
+  {
+    "name": "south_large_curve_road1909",
+    "start": 1789079989.010686,
+    "states": {
+      "STOP_STALE_EGO": 3,
+      "STOP_NO_LOCAL_PATH": 2486,
+      "ACTIVE": 114,
+      "ACTIVE_SHORT_PATH": 1
+    },
+    "caps": {
+      "30.0": 1541
+    },
+    "speed_max": 8.588329315185547,
+    "moving_samples": 165,
+    "path_n": 1336,
+    "path_valid": 57,
+    "fault_accel_positive": 0,
+    "max_abs_steering": 0.10248963534832001,
+    "cap_overspeed_max": 0,
+    "first_no_path_after_active": 1789080000.006836,
+    "last_ego": {
+      "x": 1041.3621826171875,
+      "y": -1181.005859375,
+      "z": 59.492431640625,
+      "heading": 0.19145391881465912,
+      "speed": 0.0
+    },
+    "active_seen": true,
+    "valid_path_length_min_median_max": [
+      10.683347351035,
+      49.99999861139072,
+      50.000001410751466
+    ]
+  },
+  {
+    "name": "west_steep_downhill_road1602",
+    "start": 1789080124.4036386,
+    "states": {
+      "STOP_NO_LOCAL_PATH": 2442,
+      "ACTIVE_SHORT_PATH": 176,
+      "STOP_MPC_FAILURE:MPC": 32,
+      "ACTIVE": 46
+    },
+    "caps": {
+      "30.0": 1806
+    },
+    "speed_max": 11.148381233215332,
+    "moving_samples": 292,
+    "path_n": 1738,
+    "path_valid": 167,
+    "fault_accel_positive": 0,
+    "max_abs_steering": 0.23257289826869965,
+    "cap_overspeed_max": 0,
+    "first_no_path_after_active": 1789080142.353275,
+    "last_ego": {
+      "x": 565.6719970703125,
+      "y": -382.2340393066406,
+      "z": 41.70000076293945,
+      "heading": 1.0838406085968018,
+      "speed": 0.0
+    },
+    "active_seen": true,
+    "valid_path_length_min_median_max": [
+      13.068870228669896,
+      49.99999975745085,
+      50.000001974339646
+    ]
+  },
+  {
+    "name": "north_uphill_road2819",
+    "start": 1789080264.1269488,
+    "states": {
+      "STOP_STALE_EGO": 14,
+      "STOP_NO_LOCAL_PATH": 2579,
+      "ACTIVE_SHORT_PATH": 562,
+      "STOP_STALE_SPEED_LIMIT": 14,
+      "STOP_MPC_FAILURE:MPC": 86,
+      "ACTIVE": 1,
+      "HOLD_SPEED_LIMIT": 3,
+      "STOP_SHORT_PATH": 4,
+      "STOP_INVALID_PATH:no": 1
+    },
+    "caps": {
+      "30.0": 1677,
+      "0.0": 240,
+      "1.45": 7,
+      "2.54": 5,
+      "10.46": 3,
+      "6.92": 3,
+      "6.09": 3,
+      "5.64": 3
+    },
+    "speed_max": 11.455199241638184,
+    "moving_samples": 727,
+    "path_n": 1925,
+    "path_valid": 374,
+    "fault_accel_positive": 0,
+    "max_abs_steering": 0.017554547637701035,
+    "cap_overspeed_max": 1.063482403755188,
+    "first_no_path_after_active": 1789080281.0663903,
+    "last_ego": {
+      "x": 1447.30078125,
+      "y": 819.1246948242188,
+      "z": 53.02399444580078,
+      "heading": -1.5292637348175049,
+      "speed": 0.0
+    },
+    "active_seen": true,
+    "valid_path_length_min_median_max": [
+      0.07134533714454863,
+      49.999999434466915,
+      50.00000148198899
+    ]
+  },
+  {
+    "name": "west_eastbound_intersection_road76",
+    "start": 1789080432.412839,
+    "states": {
+      "STOP_NO_LOCAL_PATH": 5103,
+      "ACTIVE_SHORT_PATH": 133,
+      "STOP_MPC_FAILURE:MPC": 12,
+      "ACTIVE": 9
+    },
+    "caps": {
+      "30.0": 2993,
+      "0.0": 168
+    },
+    "speed_max": 10.73116683959961,
+    "moving_samples": 217,
+    "path_n": 3144,
+    "path_valid": 90,
+    "fault_accel_positive": 0,
+    "max_abs_steering": 0.05353275686502457,
+    "cap_overspeed_max": 0,
+    "first_no_path_after_active": 1789080452.9029965,
+    "last_ego": {
+      "x": 732.83349609375,
+      "y": -250.51231384277344,
+      "z": 46.900001525878906,
+      "heading": -2.47269868850708,
+      "speed": 0.0
+    },
+    "active_seen": true,
+    "valid_path_length_min_median_max": [
+      19.89319725980344,
+      49.99999894798057,
+      50.00000139537748
+    ]
+  },
+  {
+    "name": "known_north_curve_road173_recovery",
+    "start": 1789080700.058946,
+    "states": {
+      "STOP_NO_LOCAL_PATH": 10670,
+      "ACTIVE": 170,
+      "STOP_STALE_SPEED_LIMIT": 3
+    },
+    "caps": {
+      "8.0": 6170
+    },
+    "speed_max": 9.068340301513672,
+    "moving_samples": 218,
+    "path_n": 6307,
+    "path_valid": 106,
+    "fault_accel_positive": 0,
+    "max_abs_steering": 0.07505390048027039,
+    "cap_overspeed_max": 1.0683403015136719,
+    "first_no_path_after_active": 1789080713.4010868,
+    "last_ego": {
+      "x": 837.6982421875,
+      "y": -55.04553985595703,
+      "z": 52.04831314086914,
+      "heading": 0.8483189344406128,
+      "speed": 0.0
+    },
+    "active_seen": true,
+    "valid_path_length_min_median_max": [
+      43.600067329948786,
+      49.99999935099212,
+      50.000001869968095
+    ]
+  },
+  {
+    "name": "west_eastbound_intersection_road76",
+    "start": 1789081247.0914643,
+    "states": {
+      "STOP_NO_LOCAL_PATH": 6662,
+      "STOP_STALE_EGO": 1,
+      "ACTIVE_SHORT_PATH": 1193,
+      "HOLD_PATH_END": 10,
+      "ACTIVE": 1970,
+      "STOP_STALE_SPEED_LIMIT": 141,
+      "STOP_MPC_FAILURE:MPC": 22
+    },
+    "caps": {
+      "30.0": 4283,
+      "8.0": 1036,
+      "0.08": 173,
+      "2.14": 58,
+      "8.02": 55,
+      "3.04": 8,
+      "3.76": 5,
+      "4.94": 4
+    },
+    "speed_max": 11.59987735748291,
+    "moving_samples": 3096,
+    "path_n": 5531,
+    "path_valid": 1841,
+    "fault_accel_positive": 0,
+    "max_abs_steering": 0.07718956470489502,
+    "cap_overspeed_max": 1.6647729873657227,
+    "first_no_path_after_active": 1789081252.9366384,
+    "last_ego": {
+      "x": 856.908935546875,
+      "y": 98.5626449584961,
+      "z": 54.754249572753906,
+      "heading": 1.6093131303787231,
+      "speed": 9.775494575500488
+    },
+    "active_seen": true,
+    "valid_path_length_min_median_max": [
+      0.05626819149882297,
+      49.99999933683207,
+      50.00000197914583
+    ]
+  }
+]

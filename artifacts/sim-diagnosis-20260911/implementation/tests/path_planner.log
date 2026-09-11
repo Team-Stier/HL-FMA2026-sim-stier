@@ -1,0 +1,18 @@
+Start testing: Sep 11 08:07 KST
+----------------------------------------------------------
+1/1 Testing: cost_check
+1/1 Test: cost_check
+Command: "/home/stier/HL-FMA2026-sim-stier/build/path_planner/cost_check"
+Directory: /home/stier/HL-FMA2026-sim-stier/build/path_planner
+"cost_check" start time: Sep 11 08:07 KST
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.02 sec
+----------------------------------------------------------
+Test Passed.
+"cost_check" end time: Sep 11 08:07 KST
+"cost_check" time elapsed: 00:00:00
+----------------------------------------------------------
+
+End testing: Sep 11 08:07 KST

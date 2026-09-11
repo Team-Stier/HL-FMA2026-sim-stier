@@ -1,0 +1,546 @@
+{
+  "source": "/tmp/sim_diagnosis_extended/events.jsonl",
+  "samples": 1914,
+  "bad_samples": 167,
+  "episodes": [
+    {
+      "start": {
+        "t": 1789073743.7800608,
+        "ego": {
+          "x": 857.3074340820312,
+          "y": -5.135603427886963,
+          "z": 54.85939025878906,
+          "heading": 1.2231535911560059,
+          "speed": 6.467921257019043
+        },
+        "status": "state=ACTIVE solver_success=1 solve_ms=0.005 output_enabled=1 reset_detected=0",
+        "command": {
+          "steering": -0.4000000059604645,
+          "accel": -1.734520673751831
+        },
+        "cap": 30.0,
+        "route": [
+          29001,
+          29168,
+          29439,
+          32840,
+          32974,
+          33068,
+          33348,
+          99175,
+          96120,
+          96205,
+          96736
+        ],
+        "light": [
+          143,
+          5
+        ],
+        "path_t": 1789073743.7783804,
+        "path_n": 57,
+        "path_age": 0.079947144,
+        "path_capture_error_ms": 0.0,
+        "jump": false,
+        "coverage": {
+          "t": 1789073743.78006,
+          "x": 857.307434082031,
+          "y": -5.13560342788696,
+          "z": 54.8593902587891,
+          "heading": 1.22315359115601,
+          "speed": 6.46792125701904,
+          "body_area": 9.14332800000102,
+          "road_overlap_area": 9.13609432353864,
+          "outside_fraction": 0.000791142619227525,
+          "rear_on_road": true,
+          "center_on_road": true,
+          "corners_on_road": [
+            true,
+            false,
+            true,
+            true
+          ],
+          "lanes": [
+            28075,
+            28078,
+            29001
+          ]
+        }
+      },
+      "worst": {
+        "t": 1789073745.021172,
+        "ego": {
+          "x": 860.9547729492188,
+          "y": -0.03560212627053261,
+          "z": 55.22122573852539,
+          "heading": 0.8444458246231079,
+          "speed": 3.4380404949188232
+        },
+        "status": "state=STOP_NO_LOCAL_PATH solver_success=0 solve_ms=0 output_enabled=1 reset_detected=0",
+        "command": {
+          "steering": 0.0,
+          "accel": -3.0
+        },
+        "cap": 30.0,
+        "route": [
+          29001,
+          29168,
+          29439,
+          32840,
+          32974,
+          33068,
+          33348,
+          99175,
+          96120,
+          96205,
+          96736
+        ],
+        "light": [
+          143,
+          5
+        ],
+        "path_t": 1789073743.7783804,
+        "path_n": 57,
+        "path_age": 1.320791972,
+        "path_capture_error_ms": 0.0,
+        "jump": false,
+        "coverage": {
+          "t": 1789073745.02117,
+          "x": 860.954772949219,
+          "y": -0.0356021262705326,
+          "z": 55.2212257385254,
+          "heading": 0.844445824623108,
+          "speed": 3.43804049491882,
+          "body_area": 9.14332800000011,
+          "road_overlap_area": 0.038761486008795,
+          "outside_fraction": 0.995760680792727,
+          "rear_on_road": false,
+          "center_on_road": false,
+          "corners_on_road": [
+            false,
+            false,
+            false,
+            true
+          ],
+          "lanes": [
+            29001
+          ]
+        }
+      },
+      "last": {
+        "t": 1789073745.021172,
+        "ego": {
+          "x": 860.9547729492188,
+          "y": -0.03560212627053261,
+          "z": 55.22122573852539,
+          "heading": 0.8444458246231079,
+          "speed": 3.4380404949188232
+        },
+        "status": "state=STOP_NO_LOCAL_PATH solver_success=0 solve_ms=0 output_enabled=1 reset_detected=0",
+        "command": {
+          "steering": 0.0,
+          "accel": -3.0
+        },
+        "cap": 30.0,
+        "route": [
+          29001,
+          29168,
+          29439,
+          32840,
+          32974,
+          33068,
+          33348,
+          99175,
+          96120,
+          96205,
+          96736
+        ],
+        "light": [
+          143,
+          5
+        ],
+        "path_t": 1789073743.7783804,
+        "path_n": 57,
+        "path_age": 1.320791972,
+        "path_capture_error_ms": 0.0,
+        "jump": false,
+        "coverage": {
+          "t": 1789073745.02117,
+          "x": 860.954772949219,
+          "y": -0.0356021262705326,
+          "z": 55.2212257385254,
+          "heading": 0.844445824623108,
+          "speed": 3.43804049491882,
+          "body_area": 9.14332800000011,
+          "road_overlap_area": 0.038761486008795,
+          "outside_fraction": 0.995760680792727,
+          "rear_on_road": false,
+          "center_on_road": false,
+          "corners_on_road": [
+            false,
+            false,
+            false,
+            true
+          ],
+          "lanes": [
+            29001
+          ]
+        }
+      },
+      "samples": 26
+    },
+    {
+      "start": {
+        "t": 1789073760.6610973,
+        "ego": {
+          "x": 857.2755126953125,
+          "y": 122.04625701904297,
+          "z": 54.365325927734375,
+          "heading": 1.332783579826355,
+          "speed": 5.505236625671387
+        },
+        "status": "state=ACTIVE solver_success=1 solve_ms=0.010069 output_enabled=1 reset_detected=0",
+        "command": {
+          "steering": -0.09577559679746628,
+          "accel": -1.0499999523162842
+        },
+        "cap": 30.0,
+        "route": [
+          29168,
+          29439,
+          32840,
+          32974,
+          33068,
+          33348,
+          99175,
+          96120,
+          96205,
+          96736
+        ],
+        "light": [
+          143,
+          1
+        ],
+        "path_t": 1789073760.6317449,
+        "path_n": 49,
+        "path_age": 0.040166107,
+        "path_capture_error_ms": 0.0,
+        "jump": false,
+        "coverage": {
+          "t": 1789073760.6611,
+          "x": 857.275512695312,
+          "y": 122.046257019043,
+          "z": 54.3653259277344,
+          "heading": 1.33278357982635,
+          "speed": 5.50523662567139,
+          "body_area": 9.14332800000057,
+          "road_overlap_area": 9.14133540051905,
+          "outside_fraction": 0.000217929344929813,
+          "rear_on_road": true,
+          "center_on_road": true,
+          "corners_on_road": [
+            true,
+            false,
+            true,
+            true
+          ],
+          "lanes": [
+            29168
+          ]
+        }
+      },
+      "worst": {
+        "t": 1789073762.3799107,
+        "ego": {
+          "x": 860.0425415039062,
+          "y": 130.78839111328125,
+          "z": 54.205291748046875,
+          "heading": 1.256659984588623,
+          "speed": 5.450057506561279
+        },
+        "status": "state=ACTIVE solver_success=1 solve_ms=0.010049 output_enabled=1 reset_detected=0",
+        "command": {
+          "steering": -0.0031996408943086863,
+          "accel": 0.09326514601707458
+        },
+        "cap": 30.0,
+        "route": [
+          29439,
+          32840,
+          32974,
+          33068,
+          33348,
+          99175,
+          96120,
+          96205,
+          96736
+        ],
+        "light": [
+          143,
+          1
+        ],
+        "path_t": 1789073761.8785357,
+        "path_n": 49,
+        "path_age": 0.518626618,
+        "path_capture_error_ms": 0.0,
+        "jump": false,
+        "coverage": {
+          "t": 1789073762.37991,
+          "x": 860.042541503906,
+          "y": 130.788391113281,
+          "z": 54.2052917480469,
+          "heading": 1.25665998458862,
+          "speed": 5.45005750656128,
+          "body_area": 9.14332800000011,
+          "road_overlap_area": 6.63206762813849,
+          "outside_fraction": 0.274654958442002,
+          "rear_on_road": true,
+          "center_on_road": true,
+          "corners_on_road": [
+            true,
+            false,
+            false,
+            true
+          ],
+          "lanes": [
+            29439
+          ]
+        }
+      },
+      "last": {
+        "t": 1789073767.3802526,
+        "ego": {
+          "x": 871.8980712890625,
+          "y": 156.96372985839844,
+          "z": 53.7099609375,
+          "heading": 1.0028626918792725,
+          "speed": 7.283824920654297
+        },
+        "status": "state=ACTIVE solver_success=1 solve_ms=0.004358 output_enabled=1 reset_detected=0",
+        "command": {
+          "steering": -0.03823177143931389,
+          "accel": 0.9669747948646545
+        },
+        "cap": 30.0,
+        "route": [
+          29439,
+          32840,
+          32974,
+          33068,
+          33348,
+          99175,
+          96120,
+          96205,
+          96736
+        ],
+        "light": [
+          143,
+          1
+        ],
+        "path_t": 1789073767.3337083,
+        "path_n": 21,
+        "path_age": 0.079924875,
+        "path_capture_error_ms": 0.0,
+        "jump": false,
+        "coverage": {
+          "t": 1789073767.38025,
+          "x": 871.898071289062,
+          "y": 156.963729858398,
+          "z": 53.7099609375,
+          "heading": 1.00286269187927,
+          "speed": 7.2838249206543,
+          "body_area": 9.14332799999966,
+          "road_overlap_area": 9.1426365595903,
+          "outside_fraction": 7.56224002196326e-05,
+          "rear_on_road": true,
+          "center_on_road": true,
+          "corners_on_road": [
+            true,
+            true,
+            false,
+            true
+          ],
+          "lanes": [
+            29439,
+            32840
+          ]
+        }
+      },
+      "samples": 135
+    },
+    {
+      "start": {
+        "t": 1789073775.8639503,
+        "ego": {
+          "x": 921.6256103515625,
+          "y": 202.90292358398438,
+          "z": 53.398780822753906,
+          "heading": 0.6546202898025513,
+          "speed": 7.888491630554199
+        },
+        "status": "state=ACTIVE solver_success=1 solve_ms=0.00558 output_enabled=1 reset_detected=0",
+        "command": {
+          "steering": -0.021537834778428078,
+          "accel": 0.7976046204566956
+        },
+        "cap": 30.0,
+        "route": [
+          33348,
+          99175,
+          96120,
+          96205,
+          96736
+        ],
+        "light": [
+          0,
+          0
+        ],
+        "path_t": 1789073775.8367903,
+        "path_n": 65,
+        "path_age": 0.198288078,
+        "path_capture_error_ms": 0.0,
+        "jump": false,
+        "coverage": {
+          "t": 1789073775.86395,
+          "x": 921.625610351562,
+          "y": 202.902923583984,
+          "z": 53.3987808227539,
+          "heading": 0.654620289802551,
+          "speed": 7.8884916305542,
+          "body_area": 9.14332800000011,
+          "road_overlap_area": 3.26064047460511,
+          "outside_fraction": 0.643385813720664,
+          "rear_on_road": true,
+          "center_on_road": true,
+          "corners_on_road": [
+            true,
+            true,
+            true,
+            true
+          ],
+          "lanes": [
+            365117,
+            366608,
+            366777,
+            99175,
+            364512
+          ]
+        }
+      },
+      "worst": {
+        "t": 1789073777.2601132,
+        "ego": {
+          "x": 931.4400634765625,
+          "y": 210.2125244140625,
+          "z": 53.39510726928711,
+          "heading": 0.6325334310531616,
+          "speed": 10.225414276123047
+        },
+        "status": "state=ACTIVE solver_success=1 solve_ms=0.007224 output_enabled=1 reset_detected=0",
+        "command": {
+          "steering": 0.04570953547954559,
+          "accel": 1.726353645324707
+        },
+        "cap": 30.0,
+        "route": [
+          33348,
+          99175,
+          96120,
+          96205,
+          96736
+        ],
+        "light": [
+          0,
+          0
+        ],
+        "path_t": 1789073777.2421992,
+        "path_n": 43,
+        "path_age": 0.159306673,
+        "path_capture_error_ms": 0.0,
+        "jump": false,
+        "coverage": {
+          "t": 1789073777.26011,
+          "x": 931.440063476562,
+          "y": 210.212524414062,
+          "z": 53.3951072692871,
+          "heading": 0.632533431053162,
+          "speed": 10.225414276123,
+          "body_area": 9.1433279999992,
+          "road_overlap_area": 0.606252050119323,
+          "outside_fraction": 0.933694596746461,
+          "rear_on_road": true,
+          "center_on_road": true,
+          "corners_on_road": [
+            true,
+            true,
+            true,
+            true
+          ],
+          "lanes": [
+            99175,
+            365946,
+            366212,
+            365519
+          ]
+        }
+      },
+      "last": {
+        "t": 1789073777.2601132,
+        "ego": {
+          "x": 931.4400634765625,
+          "y": 210.2125244140625,
+          "z": 53.39510726928711,
+          "heading": 0.6325334310531616,
+          "speed": 10.225414276123047
+        },
+        "status": "state=ACTIVE solver_success=1 solve_ms=0.007224 output_enabled=1 reset_detected=0",
+        "command": {
+          "steering": 0.04570953547954559,
+          "accel": 1.726353645324707
+        },
+        "cap": 30.0,
+        "route": [
+          33348,
+          99175,
+          96120,
+          96205,
+          96736
+        ],
+        "light": [
+          0,
+          0
+        ],
+        "path_t": 1789073777.2421992,
+        "path_n": 43,
+        "path_age": 0.159306673,
+        "path_capture_error_ms": 0.0,
+        "jump": false,
+        "coverage": {
+          "t": 1789073777.26011,
+          "x": 931.440063476562,
+          "y": 210.212524414062,
+          "z": 53.3951072692871,
+          "heading": 0.632533431053162,
+          "speed": 10.225414276123,
+          "body_area": 9.1433279999992,
+          "road_overlap_area": 0.606252050119323,
+          "outside_fraction": 0.933694596746461,
+          "rear_on_road": true,
+          "center_on_road": true,
+          "corners_on_road": [
+            true,
+            true,
+            true,
+            true
+          ],
+          "lanes": [
+            99175,
+            365946,
+            366212,
+            365519
+          ]
+        }
+      },
+      "samples": 3
+    }
+  ]
+}

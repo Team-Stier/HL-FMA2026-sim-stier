@@ -1,4 +1,5 @@
 #include "hdmap_dynamic_tracker/motion_predictor.hpp"
+#include "hdmap_dynamic_tracker/signal_state_manager.hpp"
 #include "hdmap_dynamic_tracker/tracker_core.hpp"
 
 #include <algorithm>
@@ -6,6 +7,7 @@
 #include <cmath>
 #include <iostream>
 #include <limits>
+#include <stdexcept>
 #include <utility>
 #include <vector>
 
@@ -56,24 +58,61 @@ bool containsPoint(const std::vector<Point2d>& polygon, const Point2d& point) {
 
 void testEgoSpeed() {
     EgoSpeedEstimator estimator;
-    expectNear(estimator.update(1.0, 0.0, 0.0).speed_mps, 0.0);
-    expectNear(estimator.update(1.1, 0.3, 0.4).speed_mps, 5.0);
-    const auto repeated = estimator.update(1.1, 1.0, 1.0);
-    expectNear(repeated.speed_mps, 0.0);
-    assert(repeated.history_reset);
-    expectNear(estimator.update(1.2, 1.0, 1.2).speed_mps, 2.0);
-    const auto gap = estimator.update(2.0, 1.0, 1.2);
-    assert(!gap.history_reset);
+    expectNear(estimator.update(1.0, 0.0, 0.0, 0.0, 0.0).speed_mps, 0.0);
+    expectNear(estimator.update(1.1, 0.3, 0.4, 0.0, 0.0).speed_mps, 5.0);
+    expectNear(estimator.update(1.6, 0.9, 1.2, 0.0, 0.0).speed_mps, 2.0);
+    const auto stationary = estimator.update(2.0, 0.9, 1.2, 0.0, 0.0);
+    assert(!stationary.history_reset);
+    expectNear(stationary.speed_mps, 0.0);
+    const auto jump = estimator.update(2.1, 99.9, 1.2, 0.0, 0.0);
+    assert(jump.history_reset);
+    expectNear(jump.speed_mps, 0.0); // The old implementation published 990 m/s.
+    expectNear(estimator.update(2.2, 100.0, 1.2, 0.0, 0.0).speed_mps, 1.0);
+    const auto gap = estimator.update(4.0, 101.0, 1.2, 0.0, 0.0);
+    assert(gap.history_reset);
     expectNear(gap.speed_mps, 0.0);
-    expectNear(estimator.update(2.1, 1.0, 1.3).speed_mps, 1.0);
-    const auto jump = estimator.update(2.2, 100.0, 1.3);
-    assert(!jump.history_reset);
-    expectNear(jump.speed_mps, 990.0);
+    expectNear(estimator.update(4.1, 101.1, 1.2, 0.0, 0.0).speed_mps, 1.0);
+    assert(estimator.update(4.1, 102.0, 1.2, 0.0, 0.0).history_reset);
+    assert(estimator.update(4.0, 102.0, 1.2, 0.0, 0.0).history_reset);
+    assert(estimator.update(4.000001, 102.0, 1.2, 0.0, 0.0).history_reset);
+
+    // Long, physically possible movement is not an absolute-distance respawn.
+    estimator.reset();
+    estimator.update(10.0, 0.0, 0.0, 0.0, 0.0);
+    const auto fast = estimator.update(10.6, 30.0, 0.0, 3.0, 0.3);
+    assert(!fast.history_reset);
+    expectNear(fast.speed_mps, 50.0);
+
+    // Recorded upper-to-lower road jump: XY speed alone is below the 60 m/s bound.
+    estimator.reset();
+    estimator.update(20.0, 1447.083496, 865.331848, 52.923733, -1.529468);
+    const auto height_jump = estimator.update(
+        20.0794, 1448.383057, 861.187134, 48.970463, -1.131964);
+    assert(height_jump.history_reset);
+    expectNear(height_jump.speed_mps, 0.0);
+
+    const double pi = std::acos(-1.0);
+    estimator.reset();
+    estimator.update(30.0, 0.0, 0.0, 0.0, pi - 0.01);
+    assert(!estimator.update(30.1, 0.1, 0.0, 0.0, -pi + 0.01).history_reset);
+    const auto heading_jump = estimator.update(30.14, 0.2, 0.0, 0.0, -pi + 0.61);
+    assert(heading_jump.history_reset);
+    expectNear(heading_jump.speed_mps, 0.0);
+    expectNear(estimator.update(30.24, 0.3, 0.0, 0.0, -pi + 0.62).speed_mps, 1.0);
+
     const auto non_finite = estimator.update(
-        std::numeric_limits<double>::quiet_NaN(), 0.0, 0.0);
+        std::numeric_limits<double>::quiet_NaN(), 0.0, 0.0, 0.0, 0.0);
     assert(non_finite.history_reset);
     expectNear(non_finite.speed_mps, 0.0);
-    expectNear(estimator.update(3.0, 0.0, 0.0).speed_mps, 0.0);
+    expectNear(estimator.update(40.0, 0.0, 0.0, 0.0, 0.0).speed_mps, 0.0);
+    assert(estimator.update(40.1, 0.0, 0.0,
+        std::numeric_limits<double>::infinity(), 0.0).history_reset);
+
+    EgoMotionLimits invalid;
+    invalid.maximum_frame_dt_s = invalid.minimum_frame_dt_s;
+    bool rejected = false;
+    try { EgoSpeedEstimator bad(invalid); } catch (const std::invalid_argument&) { rejected = true; }
+    assert(rejected);
 }
 
 void testParsersAndRamp() {
@@ -103,12 +142,12 @@ void testParsersAndRamp() {
     assert(!validBrakingDistanceTable({{2.0, 2.0}, {4.0, 1.0}}));
     assert(!validBrakingDistanceTable({{2.0, 0.0}}));
 
-    StopRampParameters ramp{8.0, 2.0, 1.0, 0.25, 1.0, std::nullopt};
-    expectNear(stopRampProfileLength(ramp), 34.0);
-    expectNear(stopRampStartDistance(ramp), 35.0);
+    StopRampParameters ramp{8.0, 2.0, 1.0, 0.0, 7.0, std::nullopt};
+    expectNear(stopRampProfileLength(ramp), 16.0);
+    expectNear(stopRampStartDistance(ramp), 23.0);
     expectNear(stopRampCap(0.0, ramp), 0.0);
-    expectNear(stopRampCap(18.0, ramp), 4.0);
-    expectNear(stopRampCap(35.0, ramp), 8.0);
+    expectNear(stopRampCap(15.0, ramp), std::sqrt(32.0));
+    expectNear(stopRampCap(23.0, ramp), 8.0);
     for (int metre = -5; metre <= 50; ++metre) {
         const double cap = stopRampCap(static_cast<double>(metre), ramp);
         assert(cap >= 0.0 && cap <= ramp.entry_speed_mps);
@@ -116,23 +155,21 @@ void testParsersAndRamp() {
             assert(cap >= stopRampCap(static_cast<double>(metre - 1), ramp));
         }
     }
-    assert(ramp.entry_speed_mps * ramp.entry_speed_mps /
-        stopRampProfileLength(ramp) <= ramp.design_deceleration_mps2);
+    expectNear(stopRampCap(7.0, ramp), 0.0);
 
-    StopRampParameters no_latency = ramp;
-    no_latency.latency_budget_s = 0.0;
-    expectNear(stopRampProfileLength(no_latency), 32.0);
-    expectNear(stopRampStartDistance(no_latency), 33.0);
-    expectNear(stopRampCap(17.0, no_latency), 4.0);
-    assert(stopRampCap(20.0, ramp) < stopRampCap(20.0, no_latency));
+    StopRampParameters longer = ramp;
+    longer.braking_distance_factor = 2.0;
+    expectNear(stopRampProfileLength(longer), 32.0);
+    expectNear(stopRampStartDistance(longer), 39.0);
+    expectNear(stopRampCap(23.0, longer), std::sqrt(32.0));
 
     StopRampParameters calibrated = ramp;
     calibrated.calibrated_braking_distance_m = 20.0;
-    expectNear(stopRampProfileLength(calibrated), 42.0);
-    expectNear(stopRampStartDistance(calibrated), 43.0);
-    expectNear(stopRampCap(22.0, calibrated), 4.0);
+    expectNear(stopRampProfileLength(calibrated), 20.0);
+    expectNear(stopRampStartDistance(calibrated), 27.0);
+    expectNear(stopRampCap(17.0, calibrated), std::sqrt(32.0));
     calibrated.calibrated_braking_distance_m = 10.0;
-    expectNear(stopRampProfileLength(calibrated), 34.0);
+    expectNear(stopRampProfileLength(calibrated), 16.0);
 
     assert(stopRampCap(std::numeric_limits<double>::quiet_NaN(), ramp) == 0.0);
     assert(stopRampCap(std::numeric_limits<double>::infinity(), ramp) == 0.0);
@@ -148,6 +185,168 @@ void testParsersAndRamp() {
         std::sqrt(std::numeric_limits<double>::max() / 2.0), 1.0, 1.0, 0.0,
         std::numeric_limits<double>::max(), std::nullopt};
     assert(!validStopRamp(ramp));
+}
+
+void testStopRampRespectsBrakingAndLatency() {
+    for (double latency : {0.0, 0.25, 1.0}) {
+        for (double factor : {1.0, 1.5}) {
+            for (const auto calibration : {std::optional<double>{}, std::optional<double>{20.0}}) {
+                StopRampParameters ramp{8.0, 3.0, factor, latency, 7.0, calibration};
+                const double braking_distance = factor * std::max(64.0 / 6.0,
+                    calibration.value_or(0.0));
+                const double coefficient = braking_distance / 64.0;
+                const double start = stopRampStartDistance(ramp);
+                expectNear(stopRampCap(start, ramp), 8.0);
+                double previous_speed = 0.0;
+                constexpr double step = 0.01;
+                for (double remaining = 0.0; remaining <= start + 2.0; remaining += step) {
+                    const double speed = stopRampCap(remaining, ramp);
+                    assert(speed + 1.0e-9 >= previous_speed);
+                    if (speed > 0.0) {
+                        assert(coefficient * speed * speed + latency * speed + 7.0 <=
+                            remaining + 1.0e-8);
+                    }
+                    const double required_brake =
+                        (speed * speed - previous_speed * previous_speed) / (2.0 * step);
+                    assert(required_brake <= 3.0 + 1.0e-7);
+                    previous_speed = speed;
+                }
+            }
+        }
+    }
+    // Scaling only the entry calibration misses a worse low-speed bin.
+    const std::vector<BrakingDistanceSample> table{{2.0, 10.0}, {10.0, 20.0}};
+    for (double latency : {0.0, 0.25}) {
+        StopRampParameters ramp{10.0, 3.0, 1.0, latency, 7.0, std::nullopt};
+        const double start = stopRampStartDistance(ramp, table);
+        expectNear(start, 43.0 + 10.0 * latency);
+        double previous_speed = 0.0;
+        constexpr double step = 0.01;
+        for (double distance = 0.0; distance <= start + 1.0; distance += step) {
+            const double speed = stopRampCap(distance, ramp, table);
+            assert(speed + 1.0e-9 >= previous_speed);
+            if (speed > 1.0e-9) {
+                const auto measured = conservativeBrakingDistance(speed, table);
+                assert(measured);
+                assert(std::max(speed * speed / 6.0, *measured) + speed * latency + 7.0 <=
+                    distance + 1.0e-8);
+            }
+            assert((speed * speed - previous_speed * previous_speed) / (2.0 * step) <=
+                3.0 + 1.0e-7);
+            previous_speed = speed;
+        }
+        expectNear(stopRampCap(start, ramp, table), 10.0);
+        expectNear(stopRampCap(16.99, ramp, table), 0.0); // Lower bin still needs 10 m.
+        ramp.entry_speed_mps = 10.01;
+        assert(!validStopRamp(ramp, table));
+        expectNear(stopRampCap(100.0, ramp, table), 0.0);
+        ramp.entry_speed_mps = 8.0;
+        assert(!validStopRamp(ramp, {{2.0, 10.0}, {2.0, 20.0}}));
+    }
+    StopRampParameters unsupported{8.0, 11.0, 1.0, 0.25, 7.0, std::nullopt};
+    assert(!validStopRamp(unsupported));
+    expectNear(stopRampCap(100.0, unsupported), 0.0);
+    SignalStateManagerConfig invalid;
+    invalid.yellow_decision_deceleration_mps2 = 3.01;
+    bool rejected = false;
+    try { SignalStateManager manager(invalid); } catch (const std::invalid_argument&) { rejected = true; }
+    assert(rejected);
+}
+
+void testYellowSignalStateManager() {
+    SignalStateManagerConfig config;
+    config.yellow_decision_deceleration_mps2 = 3.0;
+    config.braking_distance_factor = 1.0;
+    config.latency_budget_s = 0.25;
+    config.stop_margin_m = 1.0;
+    config.hold_speed_mps = 0.2;
+    config.hold_distance_m = 1.0;
+
+    const double fifty_kph_mps = 50.0 / 3.6;
+    expectNear(ioniq6StoppingDistance(fifty_kph_mps, config),
+        fifty_kph_mps * fifty_kph_mps / 6.0 +
+            fifty_kph_mps * 0.25 + 1.0);
+    expectNear(ioniq6StoppingDistance(fifty_kph_mps, config), 36.622427983539097);
+
+    SignalStateInput input;
+    input.controller_id = 27;
+    input.approach_id = 4;
+    input.signal_state = 2;
+    input.on_approach = true;
+    input.ego_speed_mps = fifty_kph_mps;
+    input.front_axle_to_stopline_m = 40.0;
+    input.static_speed_cap_mps = fifty_kph_mps;
+
+    SignalStateManager stop_manager(config);
+    input.signal_state = 3;
+    input.permitted = true;
+    auto result = stop_manager.update(input);
+    assert(result.state == SignalApproachState::Go);
+
+    input.signal_state = 2;
+    input.permitted = false;
+    result = stop_manager.update(input);
+    assert(result.state == SignalApproachState::StopRequired);
+    assert(result.apply_stop_cap);
+    assert(result.transitioned);
+
+    input.front_axle_to_stopline_m = 20.0;
+    result = stop_manager.update(input);
+    assert(result.state == SignalApproachState::StopRequired);
+    assert(result.apply_stop_cap);
+
+    input.signal_state = 1;
+
+    input.ego_speed_mps = 0.1;
+    input.front_axle_to_stopline_m = 0.8;
+    result = stop_manager.update(input);
+    assert(result.state == SignalApproachState::Hold);
+    assert(result.apply_stop_cap);
+
+    input.signal_state = 3;
+    input.permitted = true;
+    result = stop_manager.update(input);
+    assert(result.state == SignalApproachState::Go);
+    assert(!result.apply_stop_cap);
+
+    SignalStateManager committed_manager(config);
+    input.ego_speed_mps = fifty_kph_mps;
+    input.front_axle_to_stopline_m = 30.0;
+    input.signal_state = 3;
+    input.permitted = true;
+    result = committed_manager.update(input);
+    assert(result.state == SignalApproachState::Go);
+
+    input.signal_state = 2;
+    input.permitted = false;
+    result = committed_manager.update(input);
+    assert(result.state == SignalApproachState::Committed);
+    assert(!result.apply_stop_cap);
+    expectNear(result.target_speed_cap_mps, fifty_kph_mps);
+
+    input.signal_state = 1;
+    input.front_axle_to_stopline_m = 100.0;
+    result = committed_manager.update(input);
+    assert(result.state == SignalApproachState::Committed);
+    assert(!result.apply_stop_cap);
+
+    input.on_approach = false;
+    result = committed_manager.update(input);
+    assert(result.state == SignalApproachState::Clearing);
+    assert(!result.apply_stop_cap);
+    result = committed_manager.update(input);
+    assert(result.state == SignalApproachState::Clearing);
+
+    input.controller_id = 28;
+    result = committed_manager.update(input);
+    assert(result.state == SignalApproachState::Unknown);
+
+    const std::vector<BrakingDistanceSample> calibration{
+        {10.0, 20.0}, {15.0, 40.0}};
+    expectNear(ioniq6StoppingDistance(fifty_kph_mps, config, calibration),
+        40.0 + (fifty_kph_mps * fifty_kph_mps - 100.0) / 6.0 +
+            fifty_kph_mps * 0.25 + 1.0);
+    assert(std::isinf(ioniq6StoppingDistance(16.0, config, calibration)));
 }
 
 void testGeometry() {
@@ -411,6 +610,8 @@ void testAcceptedPositionInnovationStaysAnchored() {
 int main() {
     testEgoSpeed();
     testParsersAndRamp();
+    testStopRampRespectsBrakingAndLatency();
+    testYellowSignalStateManager();
     testGeometry();
     testPredictor();
     testVelocityUsesNextPositionSample();

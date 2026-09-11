@@ -1,0 +1,30 @@
+Start testing: Sep 11 08:02 KST
+----------------------------------------------------------
+2/2 Testing: control_node_test
+2/2 Test: control_node_test
+Command: "/usr/bin/python3" "/home/stier/HL-FMA2026-sim-stier/src/control/test/control_node_test.py" "/home/stier/HL-FMA2026-sim-stier/build/control/mpc_control_node"
+Directory: /home/stier/HL-FMA2026-sim-stier/build/control
+"control_node_test" start time: Sep 11 08:02 KST
+Output:
+----------------------------------------------------------
+[WARN] [1789081365.623944777] [mpc_control]: Control output disabled; publishing /control/candidate only
+[WARN] [1789081365.837571224] [mpc_control]: Path rejected: no Ego pose at path capture stamp
+
+Traceback (most recent call last):
+  File "/home/stier/HL-FMA2026-sim-stier/src/control/test/control_node_test.py", line 191, in <module>
+    main()
+  File "/home/stier/HL-FMA2026-sim-stier/src/control/test/control_node_test.py", line 106, in main
+    state('ACTIVE', True)
+  File "/home/stier/HL-FMA2026-sim-stier/src/control/test/control_node_test.py", line 93, in state
+    assert commands[-1].target_accel <= 0.0, commands[-1]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: interfaces.msg.ControlCommand(header=std_msgs.msg.Header(stamp=builtin_interfaces.msg.Time(sec=1789081366, nanosec=824107482), frame_id='base_link'), steering=0.09997361153364182, target_accel=1.1714149713516235, turn_signal=0)
+<end of output>
+Test time =   1.89 sec
+----------------------------------------------------------
+Test Failed.
+"control_node_test" end time: Sep 11 08:02 KST
+"control_node_test" time elapsed: 00:00:01
+----------------------------------------------------------
+
+End testing: Sep 11 08:02 KST

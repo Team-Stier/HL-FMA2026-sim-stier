@@ -1,0 +1,166 @@
+{
+  "stopline": 544484,
+  "lanelet": 446279,
+  "points": [
+    [
+      1439.2797851550001,
+      977.1770019530002,
+      52.9317321777
+    ],
+    [
+      1442.2769775349998,
+      977.3067626955001,
+      52.9317321777
+    ]
+  ],
+  "center": [
+    1440.778381345,
+    977.2418823242501,
+    52.9317321777
+  ],
+  "yaw": -1.527531499445305,
+  "runs": [
+    {
+      "start": {
+        "t": 1789074491.900809,
+        "ego": {
+          "x": 1439.501708984375,
+          "y": 999.9645385742188,
+          "z": 52.23805618286133,
+          "heading": -1.5331531763076782,
+          "speed": 9.079861640930176
+        },
+        "front_bumper_before_line_m": 18.94867087000529,
+        "closest_corner_before_line_m": 18.94336965664672,
+        "cap": 9.550837516784668,
+        "light": [
+          217,
+          1
+        ],
+        "status": "state=ACTIVE_SHORT_PATH solver_success=1 solve_ms=0.002054 output_enabled=1 reset_detected=0"
+      },
+      "closest": {
+        "t": 1789074495.180172,
+        "ego": {
+          "x": 1440.3961181640625,
+          "y": 983.9381713867188,
+          "z": 52.92362976074219,
+          "heading": -1.511152744293213,
+          "speed": 0.15905070304870605
+        },
+        "front_bumper_before_line_m": 2.8990669853766917,
+        "closest_corner_before_line_m": 2.8836225098216945,
+        "cap": 0.0,
+        "light": [
+          217,
+          1
+        ],
+        "status": "state=STOP_NO_LOCAL_PATH solver_success=0 solve_ms=0 output_enabled=1 reset_detected=0"
+      },
+      "last": {
+        "t": 1789074505.4599893,
+        "ego": {
+          "x": 1440.3961181640625,
+          "y": 983.9381713867188,
+          "z": 52.916290283203125,
+          "heading": -1.511152744293213,
+          "speed": 0.0
+        },
+        "front_bumper_before_line_m": 2.8990669853766917,
+        "closest_corner_before_line_m": 2.8836225098216945,
+        "cap": 0.0,
+        "light": [
+          217,
+          1
+        ],
+        "status": "state=STOP_NO_LOCAL_PATH solver_success=0 solve_ms=0 output_enabled=1 reset_detected=0"
+      }
+    },
+    {
+      "start": {
+        "t": 1789074602.5001037,
+        "ego": {
+          "x": 1439.5850830078125,
+          "y": 999.9844970703125,
+          "z": 52.238033294677734,
+          "heading": -1.5287724733352661,
+          "speed": 9.240097045898438
+        },
+        "front_bumper_before_line_m": 18.964947411670728,
+        "closest_corner_before_line_m": 18.963777173592874,
+        "cap": 9.887994766235352,
+        "light": [
+          217,
+          1
+        ],
+        "status": "state=ACTIVE_SHORT_PATH solver_success=1 solve_ms=0.002385 output_enabled=1 reset_detected=0"
+      },
+      "closest": {
+        "t": 1789074620.3004215,
+        "ego": {
+          "x": 1440.62939453125,
+          "y": 975.0162963867188,
+          "z": 52.91883850097656,
+          "heading": -1.5282577276229858,
+          "speed": 5.966404438018799
+        },
+        "front_bumper_before_line_m": -6.025058403961141,
+        "closest_corner_before_line_m": -6.025743237072532,
+        "cap": 30.0,
+        "light": [
+          0,
+          0
+        ],
+        "status": "state=ACTIVE solver_success=1 solve_ms=0.002314 output_enabled=1 reset_detected=0"
+      },
+      "last": {
+        "t": 1789074620.3004215,
+        "ego": {
+          "x": 1440.62939453125,
+          "y": 975.0162963867188,
+          "z": 52.91883850097656,
+          "heading": -1.5282577276229858,
+          "speed": 5.966404438018799
+        },
+        "front_bumper_before_line_m": -6.025058403961141,
+        "closest_corner_before_line_m": -6.025743237072532,
+        "cap": 30.0,
+        "light": [
+          0,
+          0
+        ],
+        "status": "state=ACTIVE solver_success=1 solve_ms=0.002314 output_enabled=1 reset_detected=0"
+      }
+    }
+  ],
+  "red_stop_and_green_crossing": {
+    "first_red_stop": {
+      "xy": [
+        1440.3961181640625,
+        983.9381713867188
+      ],
+      "front_bumper_margin_m": 2.8990669853766917,
+      "closest_corner_margin_m": 2.8836225098216945
+    },
+    "second_red_stop": {
+      "t": 1789074605.7801871,
+      "xy": [
+        1440.239501953125,
+        984.2785034179688
+      ],
+      "front_bumper_margin_m": 3.245348992351297,
+      "closest_corner_margin_m": 3.2437677678137145
+    },
+    "green_start_t": 1789074616.7000577,
+    "crossing": {
+      "t": 1789074619.0617628,
+      "speed_mps": 3.5320446491241455,
+      "light": [
+        217,
+        5
+      ],
+      "state": "ACTIVE",
+      "front_bumper_margin_m": -0.025918212742042354
+    }
+  }
+}

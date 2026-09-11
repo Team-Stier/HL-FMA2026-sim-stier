@@ -1,0 +1,17 @@
+{
+  "scp_time": 1789080612.0494828,
+  "first_new_ego_time": 1789080612.0906594,
+  "first_new_ego": {
+    "x": 732.83349609375,
+    "y": -250.51231384277344,
+    "z": 46.900001525878906,
+    "heading": -2.47269868850708,
+    "speed": 0.0
+  },
+  "new_global_delay_ms": null,
+  "new_global_head": [],
+  "new_local_delay_ms": null,
+  "new_local_first_point": null,
+  "first_path_empty": true,
+  "max_reported_speed_2s": 0.0
+}

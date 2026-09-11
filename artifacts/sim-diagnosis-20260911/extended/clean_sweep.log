@@ -1,0 +1,14 @@
+SWEEP_READY ['south_large_curve_road1909', 'west_steep_downhill_road1602', 'north_uphill_road2819', 'west_eastbound_intersection_road76']
+NEXT 1 south_large_curve_road1909 stalled
+SENT <Set entity="player" name="Ego"><PosInertial x="1002.360271420964" y="-1181.5493235916038" z="61.37572891014102" hDeg="-16.827979047701085" pDeg="0" rDeg="0"/><Speed value="0"/></Set>
+RUNNING south_large_curve_road1909
+NEXT 2 west_steep_downhill_road1602 stalled
+SENT <Set entity="player" name="Ego"><PosInertial x="486.43684212713623" y="-449.732967438363" z="44.571701387110856" hDeg="38.21427592725937" pDeg="0" rDeg="0"/><Speed value="0"/></Set>
+RUNNING west_steep_downhill_road1602
+NEXT 3 north_uphill_road2819 stalled
+SENT <Set entity="player" name="Ego"><PosInertial x="1435.5403618456833" y="1097.3975982067732" z="47.78279949097291" hDeg="-87.62791517374623" pDeg="0" rDeg="0"/><Speed value="0"/></Set>
+RUNNING north_uphill_road2819
+NEXT 4 west_eastbound_intersection_road76 stalled
+SENT <Set entity="player" name="Ego"><PosInertial x="-43.67190624787195" y="34.998842047847965" z="35.55" hDeg="3.1939964638739404" pDeg="0" rDeg="0"/><Speed value="0"/></Set>
+RUNNING west_eastbound_intersection_road76
+SWEEP_LAST_CASE_RUNNING

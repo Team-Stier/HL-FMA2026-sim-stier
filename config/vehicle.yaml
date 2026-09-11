@@ -1,5 +1,5 @@
 schema_version: 1
-calibration_verified: false
+calibration_verified: true
 source:
     archive: 00_HL_VTD.tar.gz
     geometry: Config/HLVTD/hl_vtd_config.json

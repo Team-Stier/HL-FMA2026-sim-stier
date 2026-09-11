@@ -1,6 +1,6 @@
 schema_version: 1
 configuration_kind: design_draft_not_ros_parameter_file
-allow_motion: false
+allow_motion: true
 hdmap:
     file: map/hdmap.bin
 sim_bridge:
@@ -22,7 +22,7 @@ timeouts_provisional_s:
     dynamic_status: 0.25
     ego_status: 0.25
     local_path: 0.30
-    speed_limit: 0.25
+    speed_limit: 0.50
     control_command: 0.20
 ego_velocity:
     maximum_speed_kph: 300.0
@@ -41,7 +41,7 @@ speed:
     minimum_braking_distance_factor: 1.0
     linear_base_distance: max_twice_measured_braking_distance_and_v_squared_over_design_deceleration
     design_deceleration_mps2: null
-    emergency_target_acceleration_mps2: null
+    emergency_target_acceleration_mps2: -3.0
     latency_budget_s: 0.25
     stop_margin_m: 1.0
     overspeed_tolerance_mps: 0.2

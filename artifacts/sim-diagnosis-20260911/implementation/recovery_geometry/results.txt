@@ -1,0 +1,54 @@
+SNAP 1789080708329900653 xy=802.561707,-84.5154953 d=-0.018283776 heading=0.00358926594
+ RESULT scale=1 generated=15 road_bad=0 velocity_bad=0 collision_bad=0 valid=15 length=50 d_samples=[0,-0.018283776,0.0119062593][2,-0.0112494517,0.0126093026][5,-0.00328046338,0.0143952196][10,0.00111924622,0.0155706808][15,0.000199193702,0.0134662807][20,9.36750677e-17,0.012602507]
+ RESULT scale=0.5 generated=15 road_bad=0 velocity_bad=0 collision_bad=0 valid=15 length=50 d_samples=[0,-0.018283776,0.011906258][2,-0.0111456622,0.0126687345][5,-0.00287222915,0.0142223611][10,4.16333634e-17,0.0157801087][15,4.16333634e-17,0.0133910855][20,4.16333634e-17,0.012602507]
+ RESULT scale=0.25 generated=15 road_bad=0 velocity_bad=0 collision_bad=0 valid=15 length=50 d_samples=[0,-0.018283776,0.0119062428][2,-0.0100504199,0.0130336846][5,-0.000285708741,0.0132734291][10,2.77555756e-17,0.0157801087][15,2.77555756e-17,0.0133910855][20,2.77555756e-17,0.012602507]
+SNAP 1789080711408945837 xy=819.951904,-73.4221878 d=-0.0790338658 heading=-0.0228960065
+ RESULT scale=1 generated=15 road_bad=0 velocity_bad=0 collision_bad=0 valid=15 length=50 d_samples=[0,-0.0790338658,0.0123036286][2,-0.123786359,0.0136077996][5,-0.171622323,0.0136438925][10,-0.172845622,0.0124047783][15,-0.103918654,0.0108634213][20,-0.0277477822,0.0063340956]
+ RESULT scale=0.5 generated=15 road_bad=0 velocity_bad=0 collision_bad=0 valid=15 length=50 d_samples=[0,-0.0790338658,0.012303608][2,-0.118003972,0.0197507842][5,-0.114428586,0.0164947645][10,-0.0161054494,0.0036748563][15,3.88578059e-16,0.0107138253][20,3.88578059e-16,0.00850889302]
+ RESULT scale=0.25 generated=15 road_bad=0 velocity_bad=0 collision_bad=0 valid=15 length=50 d_samples=[0,-0.0790338658,0.0123033799][2,-0.0950322127,0.0331121297][5,-0.0113794893,-0.00692640219][10,3.46944695e-16,0.00940384783][15,3.46944695e-16,0.0107138253][20,3.46944695e-16,0.00850889302]
+SNAP 1789080713089044616 xy=829.235474,-64.5927811 d=-0.349837103 heading=-0.0275465055
+ BAD 10 index=7 ds=1.47425511 d=-0.389396341 curv=0.0135166496 cells=6
+ BAD 11 index=8 ds=1.62501246 d=-0.393169131 curv=0.0138079245 cells=6
+ BAD 13 index=6 ds=1.44416827 d=-0.388940333 curv=0.0126780814 cells=6
+ BAD 14 index=7 ds=1.42188591 d=-0.388361185 curv=0.0126431227 cells=6
+ RESULT scale=1 generated=15 road_bad=4 velocity_bad=0 collision_bad=0 valid=11 length=47.6905444 d_samples=[0,-0.349837103,0.0100972358][2,-0.40195052,0.0161487011][5,-0.434593628,0.019704628][10,-0.332770715,0.0121663272][15,-0.132884249,0.00362212385][20,-0.0107546137,0.000544771312]
+ RESULT scale=0.5 generated=15 road_bad=0 velocity_bad=0 collision_bad=0 valid=15 length=50 d_samples=[0,-0.349837103,0.0100971933][2,-0.390371677,0.0278809581][5,-0.324965634,0.0244025564][10,-0.0486499119,-0.00632721162][15,1.44328993e-15,0.00718172322][20,1.44328993e-15,0.00599021416]
+ RESULT scale=0.25 generated=15 road_bad=0 velocity_bad=0 collision_bad=0 valid=15 length=50 d_samples=[0,-0.349837103,0.0100965943][2,-0.328601498,0.0640461962][5,-0.0417924503,-0.0387177216][10,-6.10622664e-16,0.00801843532][15,-6.10622664e-16,0.00718172322][20,-6.10622664e-16,0.00599021416]
+SNAP 1789080713289339454 xy=830.273926,-63.461216 d=-0.383825113 heading=-0.0267017018
+ BAD 0 index=0 ds=0 d=-0.383825113 curv=0.010495116 cells=6
+ BAD 1 index=0 ds=0 d=-0.383825113 curv=0.0104955244 cells=6
+ BAD 2 index=0 ds=0 d=-0.383825113 curv=0.0104955244 cells=6
+ BAD 3 index=0 ds=0 d=-0.383825113 curv=0.0104953671 cells=6
+ BAD 4 index=0 ds=0 d=-0.383825113 curv=0.0104955435 cells=6
+ BAD 5 index=0 ds=0 d=-0.383825113 curv=0.0104955435 cells=6
+ BAD 6 index=0 ds=0 d=-0.383825113 curv=0.0104954611 cells=6
+ BAD 7 index=0 ds=0 d=-0.383825113 curv=0.0104955503 cells=6
+ BAD 8 index=0 ds=0 d=-0.383825113 curv=0.0104955503 cells=6
+ BAD 9 index=0 ds=0 d=-0.383825113 curv=0.0104955035 cells=6
+ BAD 10 index=0 ds=0 d=-0.383825113 curv=0.0104955537 cells=6
+ BAD 11 index=0 ds=0 d=-0.383825113 curv=0.0104955537 cells=6
+ BAD 12 index=0 ds=0 d=-0.383825113 curv=0.0104955244 cells=6
+ BAD 13 index=0 ds=0 d=-0.383825113 curv=0.0104955562 cells=6
+ BAD 14 index=0 ds=0 d=-0.383825113 curv=0.0104955562 cells=6
+ RESULT scale=1 generated=15 road_bad=15 velocity_bad=0 collision_bad=0 valid=0 length=0 d_samples=
+ RESULT scale=0.5 generated=15 road_bad=15 velocity_bad=0 collision_bad=0 valid=0 length=0 d_samples=
+ RESULT scale=0.25 generated=15 road_bad=15 velocity_bad=0 collision_bad=0 valid=0 length=0 d_samples=
+SNAP 1789080713449244494 xy=831.090271,-62.542511 d=-0.409106773 heading=-0.0248055186
+ BAD 0 index=0 ds=0 d=-0.409106773 curv=0.0108030174 cells=6
+ BAD 1 index=0 ds=0 d=-0.409106773 curv=0.0108034179 cells=6
+ BAD 2 index=0 ds=0 d=-0.409106773 curv=0.0108034179 cells=6
+ BAD 3 index=0 ds=0 d=-0.409106773 curv=0.0108032641 cells=6
+ BAD 4 index=0 ds=0 d=-0.409106773 curv=0.0108034366 cells=6
+ BAD 5 index=0 ds=0 d=-0.409106773 curv=0.0108034366 cells=6
+ BAD 6 index=0 ds=0 d=-0.409106773 curv=0.0108033558 cells=6
+ BAD 7 index=0 ds=0 d=-0.409106773 curv=0.0108034424 cells=6
+ BAD 8 index=0 ds=0 d=-0.409106773 curv=0.0108034424 cells=6
+ BAD 9 index=0 ds=0 d=-0.409106773 curv=0.0108033973 cells=6
+ BAD 10 index=0 ds=0 d=-0.409106773 curv=0.0108034465 cells=6
+ BAD 11 index=0 ds=0 d=-0.409106773 curv=0.0108034465 cells=6
+ BAD 12 index=0 ds=0 d=-0.409106773 curv=0.0108034179 cells=6
+ BAD 13 index=0 ds=0 d=-0.409106773 curv=0.0108034481 cells=6
+ BAD 14 index=0 ds=0 d=-0.409106773 curv=0.0108034481 cells=6
+ RESULT scale=1 generated=15 road_bad=15 velocity_bad=0 collision_bad=0 valid=0 length=0 d_samples=
+ RESULT scale=0.5 generated=15 road_bad=15 velocity_bad=0 collision_bad=0 valid=0 length=0 d_samples=
+ RESULT scale=0.25 generated=15 road_bad=15 velocity_bad=0 collision_bad=0 valid=0 length=0 d_samples=

@@ -1,0 +1,219 @@
+[
+  {
+    "stamp": "1789073540419079927",
+    "case": "short_successor",
+    "old_length_m": 14.9867251695982,
+    "final_length_m": 49.99999907828427,
+    "final_points": 248
+  },
+  {
+    "stamp": "1789073541818990362",
+    "case": "short_successor",
+    "old_length_m": 7.99246415832764,
+    "final_length_m": 50.000000999213334,
+    "final_points": 248
+  },
+  {
+    "stamp": "1789073542378996363",
+    "case": "short_successor",
+    "old_length_m": 6.41553645613524,
+    "final_length_m": 49.99999874664893,
+    "final_points": 248
+  },
+  {
+    "stamp": "1789073543219012296",
+    "case": "short_successor",
+    "old_length_m": 4.13094917075931,
+    "final_length_m": 50.00000084054735,
+    "final_points": 248
+  },
+  {
+    "stamp": "1789073543620074539",
+    "case": "short_successor",
+    "old_length_m": 2.14171505827276,
+    "final_length_m": 50.000001379396295,
+    "final_points": 248
+  },
+  {
+    "stamp": "1789073543899308429",
+    "case": "short_successor",
+    "old_length_m": 14.407891823144,
+    "final_length_m": 50.00000025585785,
+    "final_points": 248
+  },
+  {
+    "stamp": "1789073545618980530",
+    "case": "short_successor",
+    "old_length_m": null,
+    "final_length_m": 0,
+    "final_points": 0
+  },
+  {
+    "stamp": "1789073740419202621",
+    "case": "short_successor",
+    "old_length_m": 14.9810364624687,
+    "final_length_m": 0,
+    "final_points": 0
+  },
+  {
+    "stamp": "1789073742419250729",
+    "case": "short_successor",
+    "old_length_m": 8.63952852237867,
+    "final_length_m": 49.9999985476073,
+    "final_points": 248
+  },
+  {
+    "stamp": "1789073743619551281",
+    "case": "short_successor",
+    "old_length_m": 26.4662086611237,
+    "final_length_m": 50.00000025615117,
+    "final_points": 247
+  },
+  {
+    "stamp": "1789073766299141535",
+    "case": "short_successor",
+    "old_length_m": 12.0059844522165,
+    "final_length_m": 0,
+    "final_points": 0
+  },
+  {
+    "stamp": "1789073768659627516",
+    "case": "short_successor",
+    "old_length_m": 8.20222493996169,
+    "final_length_m": 50.00000066369716,
+    "final_points": 248
+  },
+  {
+    "stamp": "1789073867859596092",
+    "case": "south_curve",
+    "old_length_m": 10.5193940066346,
+    "final_length_m": 49.999999323723095,
+    "final_points": 254
+  },
+  {
+    "stamp": "1789073869619127211",
+    "case": "south_curve",
+    "old_length_m": 8.755453279892,
+    "final_length_m": 50.00000042887647,
+    "final_points": 247
+  },
+  {
+    "stamp": "1789073871819277607",
+    "case": "south_curve",
+    "old_length_m": null,
+    "final_length_m": 0,
+    "final_points": 0
+  },
+  {
+    "stamp": "1789073898658981848",
+    "case": "west_downhill",
+    "old_length_m": 7.94239535060339,
+    "final_length_m": 49.9999999452147,
+    "final_points": 248
+  },
+  {
+    "stamp": "1789073900298947071",
+    "case": "west_downhill",
+    "old_length_m": 12.2328552150193,
+    "final_length_m": 50.000000460850444,
+    "final_points": 248
+  },
+  {
+    "stamp": "1789073902619273356",
+    "case": "west_downhill",
+    "old_length_m": null,
+    "final_length_m": 0,
+    "final_points": 0
+  },
+  {
+    "stamp": "1789073777459150537",
+    "case": "live_long_valid_loses",
+    "old_length_m": 15.7915356219485,
+    "final_length_m": 49.99999999856386,
+    "final_points": 248
+  },
+  {
+    "stamp": "1789073777698673150",
+    "case": "live_long_valid_loses",
+    "old_length_m": 14.1027599573323,
+    "final_length_m": 49.9999995904825,
+    "final_points": 248
+  },
+  {
+    "stamp": "1789073778099122085",
+    "case": "live_long_valid_loses",
+    "old_length_m": 11.3191582984542,
+    "final_length_m": 49.99999959048497,
+    "final_points": 248
+  },
+  {
+    "stamp": "1789074489779071688",
+    "case": "north_red",
+    "old_length_m": null,
+    "final_length_m": 0,
+    "final_points": 0
+  },
+  {
+    "stamp": "1789074490299315605",
+    "case": "north_red",
+    "old_length_m": 19.6828555594031,
+    "final_length_m": 0,
+    "final_points": 0
+  },
+  {
+    "stamp": "1789074491019052099",
+    "case": "north_red",
+    "old_length_m": 13.5663907039776,
+    "final_length_m": 13.566031933189915,
+    "final_points": 65
+  },
+  {
+    "stamp": "1789074491659184671",
+    "case": "north_red",
+    "old_length_m": 9.10576347287007,
+    "final_length_m": 9.10514226539761,
+    "final_points": 65
+  },
+  {
+    "stamp": "1789074492219085931",
+    "case": "north_red",
+    "old_length_m": null,
+    "final_length_m": 0,
+    "final_points": 0
+  },
+  {
+    "stamp": "1789074492900205778",
+    "case": "north_red",
+    "old_length_m": null,
+    "final_length_m": 0,
+    "final_points": 0
+  },
+  {
+    "stamp": "1789074496699048347",
+    "case": "north_red",
+    "old_length_m": null,
+    "final_length_m": 0,
+    "final_points": 0
+  },
+  {
+    "stamp": "1789074614059163865",
+    "case": "north_green",
+    "old_length_m": null,
+    "final_length_m": 0,
+    "final_points": 0
+  },
+  {
+    "stamp": "1789074617219208160",
+    "case": "north_green",
+    "old_length_m": 44.0384040672073,
+    "final_length_m": 44.038566556533034,
+    "final_points": 257
+  },
+  {
+    "stamp": "1789074619018820559",
+    "case": "north_green",
+    "old_length_m": 57.6664518534563,
+    "final_length_m": 50.00000023053887,
+    "final_points": 248
+  }
+]

@@ -1,0 +1,87 @@
+Route: 401819 401650 401647 401618 401613 460898 407353 407362 407419 407618 460525 406875 459815 402136 457909 399945 399686 399234 399153 454841 398091 397366 397193 395406 395307 451993 398690 452668 409435 410258 410360 410405 410497 410605 411361 463065
+lane=401819 intersection=no refs=2 lengths=42.3181,41.8181,
+lane=401650 intersection=no refs=2 lengths=7.5,0.5,
+lane=401647 intersection=no refs=2 lengths=8,7,
+lane=401618 intersection=no refs=2 lengths=27.5,1,
+lane=401613 intersection=no refs=2 lengths=51.0767,26.5,
+lane=460898 intersection=yes refs=1 lengths=51.0768,
+lane=407353 intersection=no refs=2 lengths=27.5001,26.5,
+lane=407362 intersection=no refs=2 lengths=8.00002,1,
+lane=407419 intersection=no refs=2 lengths=31.6057,7.00001,
+lane=407618 intersection=no refs=2 lengths=56.0036,24.6056,
+lane=460525 intersection=yes refs=2 lengths=52.8834,36.2738,
+lane=406875 intersection=no refs=2 lengths=41.9588,21.402,
+lane=459815 intersection=yes refs=2 lengths=59.5877,20.5392,
+lane=402136 intersection=no refs=2 lengths=64.2715,39.11,
+lane=457909 intersection=yes refs=1 lengths=57.165,
+lane=399945 intersection=no refs=1 lengths=35.0052,
+lane=399686 intersection=no refs=1 lengths=6.2464,
+lane=399234 intersection=no refs=2 lengths=25.9756,3.41856,
+lane=399153 intersection=no refs=2 lengths=61.6454,22.9356,
+lane=454841 intersection=yes refs=1 lengths=129.364,
+lane=398091 intersection=no refs=1 lengths=111.946,
+lane=397366 intersection=no refs=1 lengths=43.1912,
+lane=397193 intersection=no refs=1 lengths=25.4816,
+lane=395406 intersection=no refs=2 lengths=20.7744,3.97116,
+lane=395307 intersection=no refs=2 lengths=42.6953,17.1364,
+lane=451993 intersection=yes refs=1 lengths=62.6828,
+lane=398690 intersection=no refs=1 lengths=53.5739,
+lane=452668 intersection=yes refs=1 lengths=109.871,
+lane=409435 intersection=no refs=1 lengths=100.48,
+lane=410258 intersection=no refs=1 lengths=8.00125,
+lane=410360 intersection=no refs=1 lengths=4.44072,
+lane=410405 intersection=no refs=1 lengths=10.9397,
+lane=410497 intersection=no refs=2 lengths=8.96226,7.75959,
+lane=410605 intersection=no refs=2 lengths=92.5191,1.72886,
+lane=411361 intersection=no refs=2 lengths=131.675,91.5302,
+lane=463065 intersection=yes refs=1 lengths=65.3299,
+spawn speed=0 generated=5
+  length=10.9 start=1310.82,464.332 end=1310.32,475.22 offset_max=-3.38813e-20 offset_min=-5.03795e-05
+  length=17.0313 start=1310.82,464.332 end=1310.04,481.345 offset_max=7.45389e-20 offset_min=-5.03795e-05
+  length=21.409 start=1310.82,464.332 end=1309.84,485.719 offset_max=-1.15196e-19 offset_min=-5.03795e-05
+  length=21.409 start=1310.82,464.332 end=1309.84,485.719 offset_max=-1.17203e-06 offset_min=-5.03795e-05
+  length=21.409 start=1310.82,464.332 end=1309.84,485.719 offset_max=-5.21507e-06 offset_min=-5.03795e-05
+spawn speed=5 generated=15
+  length=5 start=1310.82,464.332 end=1310.59,469.327 offset_max=-3.38813e-20 offset_min=-5.03795e-05
+  length=10 start=1310.82,464.332 end=1310.36,474.321 offset_max=-3.38813e-20 offset_min=-5.03795e-05
+  length=20.9 start=1310.82,464.332 end=1309.87,485.21 offset_max=-3.38813e-20 offset_min=-5.03795e-05
+  length=6.25 start=1310.82,464.332 end=1310.53,470.575 offset_max=6.77626e-21 offset_min=-5.03795e-05
+  length=12.5 start=1310.82,464.332 end=1310.25,476.819 offset_max=6.77626e-21 offset_min=-5.03795e-05
+  length=21.409 start=1310.82,464.332 end=1309.84,485.719 offset_max=6.77626e-21 offset_min=-5.03795e-05
+  length=7.5 start=1310.82,464.332 end=1310.48,471.824 offset_max=-3.38813e-20 offset_min=-5.03795e-05
+  length=15 start=1310.82,464.332 end=1310.13,479.316 offset_max=-3.38813e-20 offset_min=-5.03795e-05
+  length=21.409 start=1310.82,464.332 end=1309.84,485.719 offset_max=-1.78786e-06 offset_min=-5.03795e-05
+  length=8.75 start=1310.82,464.332 end=1310.42,473.073 offset_max=-6.77626e-20 offset_min=-5.03795e-05
+  length=17.5 start=1310.82,464.332 end=1310.02,481.814 offset_max=-6.77626e-20 offset_min=-5.03795e-05
+  length=21.409 start=1310.82,464.332 end=1309.84,485.719 offset_max=-7.28864e-06 offset_min=-5.03795e-05
+  length=10 start=1310.82,464.332 end=1310.36,474.321 offset_max=-3.38813e-20 offset_min=-5.03795e-05
+  length=20 start=1310.82,464.332 end=1309.91,484.311 offset_max=-3.38813e-20 offset_min=-5.03795e-05
+  length=21.409 start=1310.82,464.332 end=1309.84,485.719 offset_max=-1.3862e-05 offset_min=-5.03795e-05
+spawn speed=10 generated=15
+  length=10 start=1310.82,464.332 end=1310.36,474.321 offset_max=-3.38813e-20 offset_min=-5.03795e-05
+  length=20 start=1310.82,464.332 end=1309.91,484.311 offset_max=-3.38813e-20 offset_min=-5.03795e-05
+  length=21.409 start=1310.82,464.332 end=1309.84,485.719 offset_max=-3.38813e-20 offset_min=-5.03795e-05
+  length=12.5 start=1310.82,464.332 end=1310.25,476.819 offset_max=-4.74338e-20 offset_min=-5.03795e-05
+  length=21.409 start=1310.82,464.332 end=1309.84,485.719 offset_max=-4.74338e-20 offset_min=-5.03795e-05
+  length=21.409 start=1310.82,464.332 end=1309.84,485.719 offset_max=-2.91718e-06 offset_min=-5.03795e-05
+  length=15 start=1310.82,464.332 end=1310.13,479.316 offset_max=4.74338e-20 offset_min=-5.03795e-05
+  length=21.409 start=1310.82,464.332 end=1309.84,485.719 offset_max=-1.78756e-06 offset_min=-5.03795e-05
+  length=21.409 start=1310.82,464.332 end=1309.84,485.719 offset_max=-1.05702e-05 offset_min=-5.03795e-05
+  length=17.5 start=1310.82,464.332 end=1310.02,481.814 offset_max=-1.15196e-19 offset_min=-5.03795e-05
+  length=21.409 start=1310.82,464.332 end=1309.84,485.719 offset_max=-7.28729e-06 offset_min=-5.03795e-05
+  length=21.409 start=1310.82,464.332 end=1309.84,485.719 offset_max=-1.85274e-05 offset_min=-5.03795e-05
+  length=20 start=1310.82,464.332 end=1309.91,484.311 offset_max=-3.38813e-20 offset_min=-5.03795e-05
+  length=21.409 start=1310.82,464.332 end=1309.84,485.719 offset_max=-1.38592e-05 offset_min=-5.03795e-05
+  length=21.409 start=1310.82,464.332 end=1309.84,485.719 offset_max=-2.51805e-05 offset_min=-5.03795e-05
+outside map: velocity_valid=1 end_speed=10.4403 collision_index=2 point_count=2 forbidden=0
+straight road, centered ego 5 deg error, speed 10: candidates=10
+  length=19.9392 max_y=0.321727 end_y=6.66134e-16
+  length=30.8365 max_y=0.321727 end_y=6.66134e-16
+  length=24.9249 max_y=0.414164 end_y=8.32667e-16
+  length=41.9523 max_y=0.414164 end_y=8.32667e-16
+  length=29.9105 max_y=0.516478 end_y=-2.9976e-15
+  length=54.4302 max_y=0.516478 end_y=-2.9976e-15
+  length=34.8961 max_y=0.589871 end_y=0
+  length=53.9328 max_y=0.589871 end_y=0.0272248
+  length=39.8815 max_y=0.678244 end_y=1.33227e-15
+  length=52.903 max_y=0.678244 end_y=0.132776

@@ -1,0 +1,14 @@
+{"t": 1789070667.3062437, "scp": "<SimCtrl><Stop/><LoadScenario filename=\"HL_FMA_VTD_LivingLab.xml\"/><Init mode=\"operation\"/></SimCtrl>"}
+{"t": 1789070667.5897937, "scp": "<SimCtrl><Start/></SimCtrl>"}
+{"t": 1789070860.9656453, "scp": "<SimCtrl><Stop/><LoadScenario filename=\"HL_FMA_VTD_LivingLab.xml\"/><Init mode=\"operation\"/></SimCtrl>"}
+{"t": 1789070862.2501962, "scp": "<SimCtrl><Start/></SimCtrl>"}
+{"t": 1789070862.2503126, "scp": "<TrafficLight><SetPhase ctrlId=\"136\" phase=\"stop\" syncJunction=\"false\" fadeTime=\"0\"/><SetCtrl ctrlId=\"136\" freeze=\"true\" syncJunction=\"false\"/></TrafficLight>"}
+{"t": 1789070921.0495129, "scp": "<SimCtrl><Stop/><LoadScenario filename=\"HL_FMA_VTD_LivingLab.xml\"/><Init mode=\"operation\"/></SimCtrl>"}
+{"t": 1789070922.0745237, "scp": "<SimCtrl><Start/></SimCtrl>"}
+{"t": 1789070922.0746403, "scp": "<TrafficLight><SetPhase ctrlId=\"136\" phase=\"stop\" syncJunction=\"false\" fadeTime=\"0\"/><SetCtrl ctrlId=\"136\" freeze=\"true\" syncJunction=\"false\"/></TrafficLight>"}
+{"t": 1789071055.9965398, "scp": "<Set entity=\"player\" name=\"Ego\"><PosInertial x=\"732.833512779967\" y=\"-250.512312272020\" z=\"46.9\" hDeg=\"-141.675195215130\" pDeg=\"0\" rDeg=\"0\"/><Speed value=\"0\"/></Set>"}
+{"t": 1789071096.0736103, "scp": "<Set entity=\"player\" name=\"Ego\"><PosInertial x=\"1310.821022782271\" y=\"464.269560747298\" z=\"55.661850518866\" hDeg=\"92.611955550958\" pDeg=\"0\" rDeg=\"0\"/><Speed value=\"0\"/></Set>"}
+{"t": 1789071168.7034993, "action": "suspend_controller_for_natural_red_test", "pid": 142382}
+{"t": 1789071168.7447007, "scp": "<SimCtrl><Stop/><LoadScenario filename=\"HL_FMA_VTD_LivingLab.xml\"/><Init mode=\"operation\"/></SimCtrl>"}
+{"t": 1789071169.6381557, "scp": "<SimCtrl><Start/></SimCtrl>"}
+{"t": 1789071184.645551, "action": "resume_controller_after_15s_signal_phase_delay", "pid": 142382}

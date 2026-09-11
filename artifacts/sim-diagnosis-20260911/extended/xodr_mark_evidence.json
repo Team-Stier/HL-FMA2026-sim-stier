@@ -1,0 +1,658 @@
+[
+  {
+    "road": "173",
+    "road_line": 4755,
+    "lane": "2",
+    "line": 4896,
+    "sOffset": 0.0,
+    "type": "solid"
+  },
+  {
+    "road": "173",
+    "road_line": 4755,
+    "lane": "1",
+    "line": 4904,
+    "sOffset": 0.0,
+    "type": "broken"
+  },
+  {
+    "road": "173",
+    "road_line": 4755,
+    "lane": "1",
+    "line": 4906,
+    "sOffset": 126.0,
+    "type": "none"
+  },
+  {
+    "road": "173",
+    "road_line": 4755,
+    "lane": "1",
+    "line": 4908,
+    "sOffset": 138.6,
+    "type": "broken"
+  },
+  {
+    "road": "173",
+    "road_line": 4755,
+    "lane": "1",
+    "line": 4910,
+    "sOffset": 235.4,
+    "type": "none"
+  },
+  {
+    "road": "173",
+    "road_line": 4755,
+    "lane": "1",
+    "line": 4912,
+    "sOffset": 244.1,
+    "type": "broken"
+  },
+  {
+    "road": "173",
+    "road_line": 4755,
+    "lane": "1",
+    "line": 4914,
+    "sOffset": 359.3,
+    "type": "none"
+  },
+  {
+    "road": "173",
+    "road_line": 4755,
+    "lane": "1",
+    "line": 4916,
+    "sOffset": 380.0,
+    "type": "broken"
+  },
+  {
+    "road": "173",
+    "road_line": 4755,
+    "lane": "0",
+    "line": 4924,
+    "sOffset": 0.0,
+    "type": "solid"
+  },
+  {
+    "road": "173",
+    "road_line": 4755,
+    "lane": "0",
+    "line": 4926,
+    "sOffset": 126.0,
+    "type": "none"
+  },
+  {
+    "road": "173",
+    "road_line": 4755,
+    "lane": "0",
+    "line": 4928,
+    "sOffset": 138.5,
+    "type": "solid"
+  },
+  {
+    "road": "173",
+    "road_line": 4755,
+    "lane": "0",
+    "line": 4930,
+    "sOffset": 235.4,
+    "type": "none"
+  },
+  {
+    "road": "173",
+    "road_line": 4755,
+    "lane": "0",
+    "line": 4932,
+    "sOffset": 244.0,
+    "type": "solid"
+  },
+  {
+    "road": "173",
+    "road_line": 4755,
+    "lane": "0",
+    "line": 4934,
+    "sOffset": 359.3,
+    "type": "none"
+  },
+  {
+    "road": "173",
+    "road_line": 4755,
+    "lane": "0",
+    "line": 4936,
+    "sOffset": 380.0,
+    "type": "solid"
+  },
+  {
+    "road": "173",
+    "road_line": 4755,
+    "lane": "-1",
+    "line": 4946,
+    "sOffset": 0.0,
+    "type": "solid"
+  },
+  {
+    "road": "173",
+    "road_line": 4755,
+    "lane": "3",
+    "line": 4992,
+    "sOffset": 0.0,
+    "type": "solid"
+  },
+  {
+    "road": "173",
+    "road_line": 4755,
+    "lane": "2",
+    "line": 5000,
+    "sOffset": 0.0,
+    "type": "broken"
+  },
+  {
+    "road": "173",
+    "road_line": 4755,
+    "lane": "1",
+    "line": 5008,
+    "sOffset": 0.0,
+    "type": "solid"
+  },
+  {
+    "road": "173",
+    "road_line": 4755,
+    "lane": "0",
+    "line": 5016,
+    "sOffset": 0.0,
+    "type": "solid"
+  },
+  {
+    "road": "173",
+    "road_line": 4755,
+    "lane": "-1",
+    "line": 5027,
+    "sOffset": 0.0,
+    "type": "solid"
+  },
+  {
+    "road": "173",
+    "road_line": 4755,
+    "lane": "2",
+    "line": 5075,
+    "sOffset": 0.0,
+    "type": "solid"
+  },
+  {
+    "road": "173",
+    "road_line": 4755,
+    "lane": "1",
+    "line": 5084,
+    "sOffset": 0.0,
+    "type": "solid"
+  },
+  {
+    "road": "173",
+    "road_line": 4755,
+    "lane": "0",
+    "line": 5092,
+    "sOffset": 0.0,
+    "type": "solid"
+  },
+  {
+    "road": "173",
+    "road_line": 4755,
+    "lane": "-1",
+    "line": 5103,
+    "sOffset": 0.0,
+    "type": "solid"
+  },
+  {
+    "road": "173",
+    "road_line": 4755,
+    "lane": "2",
+    "line": 5151,
+    "sOffset": 0.0,
+    "type": "solid"
+  },
+  {
+    "road": "173",
+    "road_line": 4755,
+    "lane": "1",
+    "line": 5159,
+    "sOffset": 0.0,
+    "type": "solid"
+  },
+  {
+    "road": "173",
+    "road_line": 4755,
+    "lane": "0",
+    "line": 5167,
+    "sOffset": 0.0,
+    "type": "solid"
+  },
+  {
+    "road": "173",
+    "road_line": 4755,
+    "lane": "-1",
+    "line": 5177,
+    "sOffset": 0.0,
+    "type": "broken"
+  },
+  {
+    "road": "173",
+    "road_line": 4755,
+    "lane": "-2",
+    "line": 5186,
+    "sOffset": 0.0,
+    "type": "solid"
+  },
+  {
+    "road": "173",
+    "road_line": 4755,
+    "lane": "1",
+    "line": 5231,
+    "sOffset": 0.0,
+    "type": "solid"
+  },
+  {
+    "road": "173",
+    "road_line": 4755,
+    "lane": "0",
+    "line": 5239,
+    "sOffset": 0.0,
+    "type": "solid"
+  },
+  {
+    "road": "173",
+    "road_line": 4755,
+    "lane": "-1",
+    "line": 5250,
+    "sOffset": 0.0,
+    "type": "broken"
+  },
+  {
+    "road": "173",
+    "road_line": 4755,
+    "lane": "-2",
+    "line": 5258,
+    "sOffset": 0.0,
+    "type": "solid"
+  },
+  {
+    "road": "1222",
+    "road_line": 17411,
+    "lane": "2",
+    "line": 17471,
+    "sOffset": 0.0,
+    "type": "solid"
+  },
+  {
+    "road": "1222",
+    "road_line": 17411,
+    "lane": "1",
+    "line": 17479,
+    "sOffset": 0.0,
+    "type": "broken"
+  },
+  {
+    "road": "1222",
+    "road_line": 17411,
+    "lane": "1",
+    "line": 17481,
+    "sOffset": 60.5,
+    "type": "none"
+  },
+  {
+    "road": "1222",
+    "road_line": 17411,
+    "lane": "1",
+    "line": 17483,
+    "sOffset": 71.0,
+    "type": "broken"
+  },
+  {
+    "road": "1222",
+    "road_line": 17411,
+    "lane": "0",
+    "line": 17491,
+    "sOffset": 0.0,
+    "type": "solid"
+  },
+  {
+    "road": "1222",
+    "road_line": 17411,
+    "lane": "0",
+    "line": 17493,
+    "sOffset": 60.5,
+    "type": "none"
+  },
+  {
+    "road": "1222",
+    "road_line": 17411,
+    "lane": "0",
+    "line": 17495,
+    "sOffset": 71.0,
+    "type": "solid"
+  },
+  {
+    "road": "1222",
+    "road_line": 17411,
+    "lane": "-1",
+    "line": 17505,
+    "sOffset": 0.0,
+    "type": "solid"
+  },
+  {
+    "road": "1222",
+    "road_line": 17411,
+    "lane": "2",
+    "line": 17553,
+    "sOffset": 0.0,
+    "type": "solid"
+  },
+  {
+    "road": "1222",
+    "road_line": 17411,
+    "lane": "1",
+    "line": 17561,
+    "sOffset": 0.0,
+    "type": "broken"
+  },
+  {
+    "road": "1222",
+    "road_line": 17411,
+    "lane": "0",
+    "line": 17569,
+    "sOffset": 0.0,
+    "type": "solid"
+  },
+  {
+    "road": "1222",
+    "road_line": 17411,
+    "lane": "-1",
+    "line": 17579,
+    "sOffset": 0.0,
+    "type": "broken"
+  },
+  {
+    "road": "1222",
+    "road_line": 17411,
+    "lane": "-2",
+    "line": 17587,
+    "sOffset": 0.0,
+    "type": "solid"
+  },
+  {
+    "road": "1602",
+    "road_line": 21702,
+    "lane": "3",
+    "line": 21750,
+    "sOffset": 0.0,
+    "type": "solid"
+  },
+  {
+    "road": "1602",
+    "road_line": 21702,
+    "lane": "2",
+    "line": 21757,
+    "sOffset": 0.0,
+    "type": "broken"
+  },
+  {
+    "road": "1602",
+    "road_line": 21702,
+    "lane": "1",
+    "line": 21764,
+    "sOffset": 0.0,
+    "type": "broken"
+  },
+  {
+    "road": "1602",
+    "road_line": 21702,
+    "lane": "0",
+    "line": 21772,
+    "sOffset": 0.0,
+    "type": "solid"
+  },
+  {
+    "road": "1602",
+    "road_line": 21702,
+    "lane": "-1",
+    "line": 21781,
+    "sOffset": 0.0,
+    "type": "solid"
+  },
+  {
+    "road": "1602",
+    "road_line": 21702,
+    "lane": "-2",
+    "line": 21788,
+    "sOffset": 0.0,
+    "type": "broken"
+  },
+  {
+    "road": "1602",
+    "road_line": 21702,
+    "lane": "-3",
+    "line": 21795,
+    "sOffset": 0.0,
+    "type": "solid"
+  },
+  {
+    "road": "2804",
+    "road_line": 76247,
+    "lane": "2",
+    "line": 76297,
+    "sOffset": 0.0,
+    "type": "solid"
+  },
+  {
+    "road": "2804",
+    "road_line": 76247,
+    "lane": "1",
+    "line": 76305,
+    "sOffset": 0.0,
+    "type": "broken"
+  },
+  {
+    "road": "2804",
+    "road_line": 76247,
+    "lane": "1",
+    "line": 76307,
+    "sOffset": 27.5,
+    "type": "none"
+  },
+  {
+    "road": "2804",
+    "road_line": 76247,
+    "lane": "1",
+    "line": 76309,
+    "sOffset": 35.0,
+    "type": "broken"
+  },
+  {
+    "road": "2804",
+    "road_line": 76247,
+    "lane": "0",
+    "line": 76317,
+    "sOffset": 0.0,
+    "type": "solid"
+  },
+  {
+    "road": "2804",
+    "road_line": 76247,
+    "lane": "0",
+    "line": 76319,
+    "sOffset": 27.5,
+    "type": "none"
+  },
+  {
+    "road": "2804",
+    "road_line": 76247,
+    "lane": "0",
+    "line": 76321,
+    "sOffset": 34.5,
+    "type": "solid"
+  },
+  {
+    "road": "2804",
+    "road_line": 76247,
+    "lane": "-1",
+    "line": 76331,
+    "sOffset": 0.0,
+    "type": "solid"
+  },
+  {
+    "road": "2804",
+    "road_line": 76247,
+    "lane": "-1",
+    "line": 76333,
+    "sOffset": 27.5,
+    "type": "none"
+  },
+  {
+    "road": "2804",
+    "road_line": 76247,
+    "lane": "-1",
+    "line": 76335,
+    "sOffset": 34.5,
+    "type": "solid"
+  },
+  {
+    "road": "2804",
+    "road_line": 76247,
+    "lane": "-2",
+    "line": 76343,
+    "sOffset": 0.0,
+    "type": "broken"
+  },
+  {
+    "road": "2804",
+    "road_line": 76247,
+    "lane": "-2",
+    "line": 76345,
+    "sOffset": 26.5,
+    "type": "none"
+  },
+  {
+    "road": "2804",
+    "road_line": 76247,
+    "lane": "-2",
+    "line": 76347,
+    "sOffset": 34.5,
+    "type": "broken"
+  },
+  {
+    "road": "2804",
+    "road_line": 76247,
+    "lane": "-3",
+    "line": 76355,
+    "sOffset": 0.0,
+    "type": "solid"
+  },
+  {
+    "road": "2819",
+    "road_line": 82613,
+    "lane": "0",
+    "line": 82672,
+    "sOffset": 0.0,
+    "type": "solid"
+  },
+  {
+    "road": "2819",
+    "road_line": 82613,
+    "lane": "-1",
+    "line": 82683,
+    "sOffset": 0.0,
+    "type": "broken"
+  },
+  {
+    "road": "2819",
+    "road_line": 82613,
+    "lane": "-2",
+    "line": 82692,
+    "sOffset": 0.0,
+    "type": "solid"
+  },
+  {
+    "road": "2819",
+    "road_line": 82613,
+    "lane": "0",
+    "line": 82738,
+    "sOffset": 0.0,
+    "type": "solid"
+  },
+  {
+    "road": "2819",
+    "road_line": 82613,
+    "lane": "-1",
+    "line": 82751,
+    "sOffset": 0.0,
+    "type": "broken"
+  },
+  {
+    "road": "2819",
+    "road_line": 82613,
+    "lane": "-2",
+    "line": 82762,
+    "sOffset": 0.0,
+    "type": "broken"
+  },
+  {
+    "road": "2819",
+    "road_line": 82613,
+    "lane": "-3",
+    "line": 82771,
+    "sOffset": 0.0,
+    "type": "broken"
+  },
+  {
+    "road": "2819",
+    "road_line": 82613,
+    "lane": "-4",
+    "line": 82780,
+    "sOffset": 0.0,
+    "type": "solid"
+  },
+  {
+    "road": "2819",
+    "road_line": 82613,
+    "lane": "0",
+    "line": 82825,
+    "sOffset": 0.0,
+    "type": "solid"
+  },
+  {
+    "road": "2819",
+    "road_line": 82613,
+    "lane": "-1",
+    "line": 82835,
+    "sOffset": 0.0,
+    "type": "broken"
+  },
+  {
+    "road": "2819",
+    "road_line": 82613,
+    "lane": "-2",
+    "line": 82843,
+    "sOffset": 0.0,
+    "type": "broken"
+  },
+  {
+    "road": "2819",
+    "road_line": 82613,
+    "lane": "-3",
+    "line": 82851,
+    "sOffset": 0.0,
+    "type": "broken"
+  },
+  {
+    "road": "2819",
+    "road_line": 82613,
+    "lane": "-4",
+    "line": 82860,
+    "sOffset": 0.0,
+    "type": "broken"
+  },
+  {
+    "road": "2819",
+    "road_line": 82613,
+    "lane": "-5",
+    "line": 82870,
+    "sOffset": 0.0,
+    "type": "solid"
+  }
+]

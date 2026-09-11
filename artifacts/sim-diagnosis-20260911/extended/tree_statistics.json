@@ -1,0 +1,112 @@
+{
+  "trees": 2239,
+  "short_selected_count": 616,
+  "longer_surviving_count": 148,
+  "examples": [
+    {
+      "t": 1789073777.7902427,
+      "stamp": 1789073777698673150,
+      "selected_length": 14.102760119188996,
+      "max_valid_length": 58.36454712887653,
+      "valid_count": 15
+    },
+    {
+      "t": 1789073777.851396,
+      "stamp": 1789073777698673150,
+      "selected_length": 14.102760119188996,
+      "max_valid_length": 58.36454712887653,
+      "valid_count": 15
+    },
+    {
+      "t": 1789073777.9039283,
+      "stamp": 1789073777819584331,
+      "selected_length": 13.596115951719147,
+      "max_valid_length": 57.14886738062731,
+      "valid_count": 15
+    },
+    {
+      "t": 1789073777.9613836,
+      "stamp": 1789073777819584331,
+      "selected_length": 13.596115951719147,
+      "max_valid_length": 57.14886738062731,
+      "valid_count": 15
+    },
+    {
+      "t": 1789073778.012091,
+      "stamp": 1789073777899207456,
+      "selected_length": 11.174716868534855,
+      "max_valid_length": 58.03810552668394,
+      "valid_count": 15
+    },
+    {
+      "t": 1789073778.0745595,
+      "stamp": 1789073777899207456,
+      "selected_length": 11.174716868534855,
+      "max_valid_length": 58.03810552668394,
+      "valid_count": 15
+    },
+    {
+      "t": 1789073778.1214535,
+      "stamp": 1789073778059300338,
+      "selected_length": 11.40165886187157,
+      "max_valid_length": 58.72095793118894,
+      "valid_count": 15
+    },
+    {
+      "t": 1789073778.1788473,
+      "stamp": 1789073778059300338,
+      "selected_length": 11.40165886187157,
+      "max_valid_length": 58.72095793118894,
+      "valid_count": 15
+    },
+    {
+      "t": 1789073778.2366931,
+      "stamp": 1789073778099122085,
+      "selected_length": 11.31915832025716,
+      "max_valid_length": 58.473777458721315,
+      "valid_count": 15
+    },
+    {
+      "t": 1789073778.2929044,
+      "stamp": 1789073778099122085,
+      "selected_length": 11.31915832025716,
+      "max_valid_length": 58.473777458721315,
+      "valid_count": 15
+    },
+    {
+      "t": 1789073778.3416553,
+      "stamp": 1789073778259545328,
+      "selected_length": 11.22465428682148,
+      "max_valid_length": 58.19203193961809,
+      "valid_count": 15
+    },
+    {
+      "t": 1789073778.3835692,
+      "stamp": 1789073778259545328,
+      "selected_length": 11.22465428682148,
+      "max_valid_length": 58.19203193961809,
+      "valid_count": 15
+    },
+    {
+      "t": 1789073778.436771,
+      "stamp": 1789073778378964671,
+      "selected_length": 11.367403624636044,
+      "max_valid_length": 58.62187416614678,
+      "valid_count": 15
+    },
+    {
+      "t": 1789073778.4800906,
+      "stamp": 1789073778378964671,
+      "selected_length": 11.367403624636044,
+      "max_valid_length": 58.62187416614678,
+      "valid_count": 15
+    },
+    {
+      "t": 1789073778.5216959,
+      "stamp": 1789073778459459806,
+      "selected_length": 11.225332462119004,
+      "max_valid_length": 58.196460267126895,
+      "valid_count": 15
+    }
+  ]
+}
