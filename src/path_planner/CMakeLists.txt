@@ -2,6 +2,7 @@ cmake_minimum_required(VERSION 3.18)
 project(path_planner LANGUAGES CXX)
 
 find_package(ament_cmake REQUIRED)
+find_package(Boost REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(interfaces REQUIRED)
 find_package(std_msgs REQUIRED)
@@ -25,6 +26,7 @@ foreach(target IN LISTS planner_targets)
   target_compile_features(${target} PRIVATE cxx_std_17)
   target_compile_options(${target} PRIVATE -Wall -Wextra -Wpedantic)
   target_include_directories(${target} PRIVATE
+    ${Boost_INCLUDE_DIRS}
     ${lanelet2_core_INCLUDE_DIRS}
     ${lanelet2_routing_INCLUDE_DIRS}
     ${lanelet2_traffic_rules_INCLUDE_DIRS})

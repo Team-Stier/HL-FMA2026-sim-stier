@@ -1,0 +1,42 @@
+[
+  {
+    "stamp": "1789073740419202621",
+    "replayed_valid": 2,
+    "live_valid": 2,
+    "replayed_selected_index": 0,
+    "live_selected_index": 0,
+    "max_candidate_length_error_m": 6.848876878962074e-07
+  },
+  {
+    "stamp": "1789073742419250729",
+    "replayed_valid": 13,
+    "live_valid": 13,
+    "replayed_selected_index": 12,
+    "live_selected_index": 12,
+    "max_candidate_length_error_m": 7.205531158405165e-07
+  },
+  {
+    "stamp": "1789073743619551281",
+    "replayed_valid": 3,
+    "live_valid": 3,
+    "replayed_selected_index": 2,
+    "live_selected_index": 2,
+    "max_candidate_length_error_m": 7.985725929415821e-07
+  },
+  {
+    "stamp": "1789073766299141535",
+    "replayed_valid": 3,
+    "live_valid": 3,
+    "replayed_selected_index": 2,
+    "live_selected_index": 2,
+    "max_candidate_length_error_m": 6.779489414299178e-07
+  },
+  {
+    "stamp": "1789073768659627516",
+    "replayed_valid": 2,
+    "live_valid": 2,
+    "replayed_selected_index": 1,
+    "live_selected_index": 1,
+    "max_candidate_length_error_m": 5.85503844519053e-07
+  }
+]

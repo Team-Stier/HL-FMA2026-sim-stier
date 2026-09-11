@@ -1,0 +1,280 @@
+{
+  "speed_peak_samples": [
+    {
+      "t": 1789080710.4897804,
+      "stamp": 1789080710.4890783,
+      "x": 814.5135498046875,
+      "y": -77.61710357666016,
+      "z": 50.360530853271484,
+      "heading": 0.611721932888031,
+      "speed": 7.385800361633301,
+      "dt": 0.040143265,
+      "distance": 0.29649004949635294,
+      "xy_speed": 7.385798078366395
+    },
+    {
+      "t": 1789080710.5308247,
+      "stamp": 1789080710.529862,
+      "x": 814.7553100585938,
+      "y": -77.4447021484375,
+      "z": 50.3746452331543,
+      "heading": 0.6155752539634705,
+      "speed": 7.280732154846191,
+      "dt": 0.040783489,
+      "distance": 0.2969347955730789,
+      "xy_speed": 7.280760004939227
+    },
+    {
+      "t": 1789080710.6100538,
+      "stamp": 1789080710.6091967,
+      "x": 815.238037109375,
+      "y": -77.09673309326172,
+      "z": 50.40312576293945,
+      "heading": 0.6227119565010071,
+      "speed": 7.5007452964782715,
+      "dt": 0.079334767,
+      "distance": 0.5950696336697827,
+      "xy_speed": 7.500742186206745
+    },
+    {
+      "t": 1789080710.6503148,
+      "stamp": 1789080710.6489723,
+      "x": 815.4788818359375,
+      "y": -76.92108154296875,
+      "z": 50.417171478271484,
+      "heading": 0.6264135837554932,
+      "speed": 7.494330406188965,
+      "dt": 0.039775813,
+      "distance": 0.29809335690902056,
+      "xy_speed": 7.494337247337234
+    },
+    {
+      "t": 1789080710.6849039,
+      "stamp": 1789080710.681902,
+      "x": 815.719482421875,
+      "y": -76.74421691894531,
+      "z": 50.43154525756836,
+      "heading": 0.6301199197769165,
+      "speed": 9.068340301513672,
+      "dt": 0.032929355,
+      "distance": 0.2986130224628863,
+      "xy_speed": 9.068292484407493
+    },
+    {
+      "t": 1789080710.7305207,
+      "stamp": 1789080710.7292833,
+      "x": 815.9599609375,
+      "y": -76.56614685058594,
+      "z": 50.44599151611328,
+      "heading": 0.6337843537330627,
+      "speed": 6.3153252601623535,
+      "dt": 0.04738156,
+      "distance": 0.29923045587425734,
+      "xy_speed": 6.3153356680163615
+    },
+    {
+      "t": 1789080710.8098407,
+      "stamp": 1789080710.8090503,
+      "x": 816.4403076171875,
+      "y": -76.20682525634766,
+      "z": 50.4754638671875,
+      "heading": 0.6405710577964783,
+      "speed": 7.520266056060791,
+      "dt": 0.079767151,
+      "distance": 0.5998707700603071,
+      "xy_speed": 7.520273227011795
+    },
+    {
+      "t": 1789080710.8503618,
+      "stamp": 1789080710.848982,
+      "x": 816.679443359375,
+      "y": -76.0263671875,
+      "z": 50.49791717529297,
+      "heading": 0.6435220241546631,
+      "speed": 7.50246000289917,
+      "dt": 0.039931576,
+      "distance": 0.2995847422746891,
+      "xy_speed": 7.5024522516889665
+    },
+    {
+      "t": 1789080710.889895,
+      "stamp": 1789080710.8892817,
+      "x": 816.9155883789062,
+      "y": -75.8470230102539,
+      "z": 50.50419998168945,
+      "heading": 0.6465011835098267,
+      "speed": 7.358076095581055,
+      "dt": 0.040299779,
+      "distance": 0.2965279146412572,
+      "xy_speed": 7.35805312086841
+    }
+  ],
+  "peak_xy_speed_200ms": 7.481736103934431,
+  "latest_yaw_response_best": {
+    "lag": 0.1,
+    "gain": 0.8585822254377932,
+    "rmse": 0.004199033739638804
+  },
+  "speed_bins": [
+    {
+      "xy_speed_range": [
+        2,
+        4
+      ],
+      "samples": 21,
+      "gain": 0.9711614245425979
+    },
+    {
+      "xy_speed_range": [
+        4,
+        6
+      ],
+      "samples": 40,
+      "gain": 0.932249344805238
+    },
+    {
+      "xy_speed_range": [
+        6,
+        7
+      ],
+      "samples": 30,
+      "gain": 0.8773885943692349
+    },
+    {
+      "xy_speed_range": [
+        7,
+        8
+      ],
+      "samples": 138,
+      "gain": 0.8348301540593442
+    }
+  ],
+  "commands_near_peak_or_failure": [
+    {
+      "t": 1789080710.4508219,
+      "cmd": {
+        "steering": 0.0446913056075573,
+        "accel": 0.1680089235305786
+      },
+      "paired_status_t": 1789080710.4511821,
+      "paired_status": "state=ACTIVE solver_success=1 solve_ms=0.003797 output_enabled=1 reset_detected=0"
+    },
+    {
+      "t": 1789080710.5009017,
+      "cmd": {
+        "steering": 0.03982978314161301,
+        "accel": 0.25053250789642334
+      },
+      "paired_status_t": 1789080710.5008092,
+      "paired_status": "state=ACTIVE solver_success=1 solve_ms=0.003416 output_enabled=1 reset_detected=0"
+    },
+    {
+      "t": 1789080710.5511003,
+      "cmd": {
+        "steering": 0.04377339407801628,
+        "accel": 0.35669705271720886
+      },
+      "paired_status_t": 1789080710.5509682,
+      "paired_status": "state=ACTIVE solver_success=1 solve_ms=0.002464 output_enabled=1 reset_detected=0"
+    },
+    {
+      "t": 1789080710.6012802,
+      "cmd": {
+        "steering": 0.043223727494478226,
+        "accel": 0.357793390750885
+      },
+      "paired_status_t": 1789080710.6011033,
+      "paired_status": "state=ACTIVE solver_success=1 solve_ms=0.006252 output_enabled=1 reset_detected=0"
+    },
+    {
+      "t": 1789080710.6508758,
+      "cmd": {
+        "steering": 0.03997104987502098,
+        "accel": 0.20779338479042053
+      },
+      "paired_status_t": 1789080710.6511736,
+      "paired_status": "state=ACTIVE solver_success=1 solve_ms=0.006162 output_enabled=1 reset_detected=0"
+    },
+    {
+      "t": 1789080710.7009628,
+      "cmd": {
+        "steering": 0.034920427948236465,
+        "accel": -3.0
+      },
+      "paired_status_t": 1789080710.7008631,
+      "paired_status": "state=ACTIVE solver_success=1 solve_ms=0.00509 output_enabled=1 reset_detected=0"
+    },
+    {
+      "t": 1789080710.7515292,
+      "cmd": {
+        "steering": 0.034508801996707916,
+        "accel": 0.20779338479042053
+      },
+      "paired_status_t": 1789080710.7512956,
+      "paired_status": "state=ACTIVE solver_success=1 solve_ms=0.003376 output_enabled=1 reset_detected=0"
+    },
+    {
+      "t": 1789080710.8010225,
+      "cmd": {
+        "steering": 0.035423699766397476,
+        "accel": 0.357793390750885
+      },
+      "paired_status_t": 1789080710.8008993,
+      "paired_status": "state=ACTIVE solver_success=1 solve_ms=0.001963 output_enabled=1 reset_detected=0"
+    },
+    {
+      "t": 1789080710.8507745,
+      "cmd": {
+        "steering": 0.044162824749946594,
+        "accel": 0.20779338479042053
+      },
+      "paired_status_t": 1789080710.8509905,
+      "paired_status": "state=ACTIVE solver_success=1 solve_ms=0.001553 output_enabled=1 reset_detected=0"
+    },
+    {
+      "t": 1789080710.9009204,
+      "cmd": {
+        "steering": 0.03951648622751236,
+        "accel": 0.28518015146255493
+      },
+      "paired_status_t": 1789080710.9008284,
+      "paired_status": "state=ACTIVE solver_success=1 solve_ms=0.003146 output_enabled=1 reset_detected=0"
+    },
+    {
+      "t": 1789080713.301295,
+      "cmd": {
+        "steering": 0.049742888659238815,
+        "accel": 0.04368164762854576
+      },
+      "paired_status_t": 1789080713.3011215,
+      "paired_status": "state=ACTIVE solver_success=1 solve_ms=0.002816 output_enabled=1 reset_detected=0"
+    },
+    {
+      "t": 1789080713.350984,
+      "cmd": {
+        "steering": 0.029770994558930397,
+        "accel": -3.0
+      },
+      "paired_status_t": 1789080713.3508556,
+      "paired_status": "state=STOP_STALE_SPEED_LIMIT solver_success=0 solve_ms=0 output_enabled=1 reset_detected=0"
+    },
+    {
+      "t": 1789080713.4013858,
+      "cmd": {
+        "steering": 0.009770995005965233,
+        "accel": -3.0
+      },
+      "paired_status_t": 1789080713.4010868,
+      "paired_status": "state=STOP_NO_LOCAL_PATH solver_success=0 solve_ms=0 output_enabled=1 reset_detected=0"
+    },
+    {
+      "t": 1789080713.4510071,
+      "cmd": {
+        "steering": 0.0,
+        "accel": -3.0
+      },
+      "paired_status_t": 1789080713.4509003,
+      "paired_status": "state=STOP_NO_LOCAL_PATH solver_success=0 solve_ms=0 output_enabled=1 reset_detected=0"
+    }
+  ]
+}

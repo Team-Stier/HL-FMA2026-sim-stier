@@ -2,6 +2,7 @@
 
 #include <algorithm>
 #include <cmath>
+#include <limits>
 #include <stdexcept>
 #include <utility>
 
@@ -11,17 +12,10 @@ double ioniq6StoppingDistance(
     double speed_mps,
     const SignalStateManagerConfig& config,
     const std::vector<BrakingDistanceSample>& calibration) {
-    const double theoretical_distance = speed_mps * speed_mps /
-        (2.0 * config.yellow_decision_deceleration_mps2);
-    double braking_distance = theoretical_distance;
-    if (!calibration.empty()) {
-        const auto calibrated = conservativeBrakingDistance(speed_mps, calibration);
-        if (calibrated) {
-            braking_distance = std::max(braking_distance, *calibrated);
-        }
-    }
-    return config.braking_distance_factor * braking_distance +
-        speed_mps * config.latency_budget_s + config.stop_margin_m;
+    const StopRampParameters ramp{speed_mps, config.yellow_decision_deceleration_mps2,
+        config.braking_distance_factor, config.latency_budget_s, config.stop_margin_m, std::nullopt};
+    if (!validStopRamp(ramp, calibration)) return std::numeric_limits<double>::infinity();
+    return stopRampStartDistance(ramp, calibration);
 }
 
 const char* signalApproachStateName(SignalApproachState state) noexcept {
@@ -48,6 +42,7 @@ SignalStateManager::SignalStateManager(
     : config_(config), braking_calibration_(std::move(braking_calibration)) {
     if (!std::isfinite(config_.yellow_decision_deceleration_mps2) ||
         config_.yellow_decision_deceleration_mps2 <= 0.0 ||
+        config_.yellow_decision_deceleration_mps2 > kMaximumDesignDecelerationMps2 ||
         !std::isfinite(config_.braking_distance_factor) ||
         config_.braking_distance_factor < 1.0 ||
         !std::isfinite(config_.latency_budget_s) || config_.latency_budget_s < 0.0 ||

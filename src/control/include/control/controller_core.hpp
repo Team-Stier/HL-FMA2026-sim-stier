@@ -25,15 +25,17 @@ struct PathSnapshot {
 
 struct ReferenceConfig {
     double duplicate_epsilon_m{0.02};
-    double minimum_spacing_m{0.5};
-    double maximum_spacing_m{3.0};
+    double curvature_window_m{0.5};
     double heading_rejection_rad{1.5707963267948966};
     double continuity_weight{0.25};
+    double maximum_projection_distance_m{2.0};
     std::size_t minimum_steps{3};
 };
 
 struct PreparedReference {
     bool valid{false};
+    bool stop_only{false};
+    bool hold_requested{false};
     std::string error;
     std::vector<double> curvature;
     double lateral_error_m{0.0};
@@ -133,6 +135,8 @@ public:
     explicit LongitudinalController(LongitudinalConfig config);
     double update(double target_speed_mps, double measured_speed_mps,
                   double dt_seconds);
+    void setAppliedAcceleration(double acceleration_mps2) noexcept;
+    // Clear feedback history while preserving the last applied acceleration.
     void reset() noexcept;
 
 private:

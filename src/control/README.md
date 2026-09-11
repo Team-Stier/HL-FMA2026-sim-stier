@@ -6,10 +6,10 @@
 
 ## 현재 안전 상태
 
-`config/control.yaml`의 `enable_output=false`, `calibration_verified=false`가
-기본값이다. 이 상태에서는 `/control/candidate`만 발행하고 `/ctrl_cmd`는 발행하지
-않는다. `config/vehicle.yaml`도 calibration 미확정이고 Sim Bridge의
-`allow_motion=false`이므로 실제 주행은 이중 차단된다.
+node 자체의 `enable_output`과 `calibration_verified` 기본값은 false다.
+저장소의 시뮬레이션용 `config/control.yaml`은 두 값을 true로 지정하므로
+launch 시 `/ctrl_cmd`도 발행한다. false 상태의 독립 노드 검사는
+`/control/candidate`만 사용한다.
 
 `wheelbase_m=2.944`, `maximum_steering_rad=0.48`은
 `config/vehicle.yaml`의 `HyundaiIoniq6_23.xml` 모델 설정 출처다. 조향 변화율,
@@ -25,14 +25,30 @@ PID gain, 가감속과 path-end 감속은 모의 검증 초기값이며 실측 �
 - `/control/status`: `std_msgs/String` 진단
 
 차량좌표 path는 `t0`의 Ego pose로 map에 복원한 뒤 현재 Ego pose로 변환한다.
-NaN/Inf, 중복점, 반대방향 segment, 빈/짧은/stale path를 거부한다. 최근접 선택은
-진행방향과 이전 map 투영점 연속성을 함께 사용한다. 로컬 path 끝은 종료가 아니며,
-남은 path가 horizon보다 짧으면 외삽하지 않고 제동 가능 속도로 제한한다.
+NaN/Inf 점이 포함된 path는 전체를 거부하며 중복점은 제거한다. 진행방향,
+최대 투영 거리, capture 높이, 이전 map 투영점 연속성을 확인한다. 빈 Path는
+즉시 이전 경로 실행 권한을 해제한다. 유효하지만 최소 MPC horizon보다 짧은
+경로는 STOP_SHORT_PATH로 감속하고, 원점의 한 pose는 정지 요청/HOLD로 처리한다.
+한 점 경로는 정지 완료를 뜻하지 않으며 이동 중이면 먼저 제동한다.
+새 다점 경로가 오면 정상 제어를 재개한다.
 
-timestamp 역행 또는 위치 점프에서는 path, warm start, PID, 이전 입력과 최근접
-hint를 초기화하고 새 path를 기다린다. stale/solver 실패 시 candidate는 조향을
+경로 끝은 전체 목적지 도착을 뜻하지 않는다. 경로 끝의 제동거리 속도 상한은
+preview 길이와 관계없이 적용한다. 곡률 계산의 공간 간격은 MPC 시간 단계와
+분리하며, 각 단계의 곡률은 현재 속도 × dt에 해당하는 진행거리에서 얻는다.
+
+중복/과거 stamp는 수신 시간을 갱신하지 않는다. 위치·높이·큰 heading 점프나
+입력 공백에서는 path, capture pose 이력, warm start, PID, 최근접 hint를 초기화하고
+reset 이후의 새 path를 기다린다. 실제 직전 발행 조향은 reset에서 지우지 않는다. stale/solver 실패 시 candidate는 조향을
 rate-limit으로 0에 접근시키며 설정된 음의 emergency acceleration을 요청한다.
-통신 단절 때 이 요청이 VTD에 전달됐다고 간주하지 않는다.
+모든 발행 분기에 같은 조향 변화율·크기·유한값 검사를 적용한다. fault는 가속하지
+않으며 zero cap/HOLD는 정지 제동을 유지한다. 통신 단절 때 이 요청이 VTD에
+전달됐다고 간주하지 않는다. 실제 발행 가속도는 PID의 변화율 상태에 반영하므로
+긴급제동/과속 override 해제 후에도 직전 제동값에서 가속을 완만하게 증가시킨다.
+PID reset은 적분·속도 이력을 비우고 실제 마지막 가속도는 보존한다.
+
+`/speed_limit`는 계속 Float32다. speed_annotator는 동일 source stamp의 EgoPose와
+DynamicStatus를 맞추고 새 dynamic snapshot마다 한 번만 발행한다. 새 Ego 때문에
+오래된 dynamic cap을 재발행하지 않는다. 새 trajectory/speed/ETA 메시지는 없다.
 
 ## 빌드와 테스트
 
@@ -45,9 +61,9 @@ source install/setup.bash
 ros2 launch control control.launch.py
 ```
 
-현재 작성 환경에는 ROS 2 Jazzy가 없어 ROS node/ament 빌드는 미실행이다. 독립
-C++17 core는 다음과 같이 빌드해 직선·곡선·중복/빈/짧은 path·capture pose 보상·
-yaw 경계·path-end·solver fail·조향 rate·속도 단위를 모의 검증했다.
+ROS 노드 검사는 별도 ROS domain에서 출력 비활성화 상태로 실행한다. 실제 노드의
+fallback, empty/HOLD와 재출발, stale 입력, yaw/높이/위치 reset, 조향 제한을 검사한다.
+Release 빌드에서도 core 회귀 assert를 활성화한다. 독립 C++ core 확인도 가능하다.
 
 ```bash
 g++ -std=c++17 -Wall -Wextra -Wpedantic -Iinclude \

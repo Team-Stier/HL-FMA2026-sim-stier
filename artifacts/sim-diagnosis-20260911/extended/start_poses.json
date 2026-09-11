@@ -1,0 +1,318 @@
+[
+  {
+    "name": "known_north_curve_road173",
+    "start": {
+      "lane": 28004,
+      "x": 797.2449069973744,
+      "y": -86.63923989072745,
+      "z": 49.52582011949925,
+      "yaw_rad": 0.33903004299738015,
+      "yaw_deg": 19.42499059188871,
+      "station_m": 2.0,
+      "lane_length_m": 98.34437608941735
+    },
+    "target": {
+      "lane": 29001,
+      "x": 856.889201618174,
+      "y": 99.01262749945714,
+      "z": 54.75086215491569,
+      "yaw_rad": 1.6105213215622851,
+      "yaw_deg": 92.27607454135064,
+      "station_m": 105.0,
+      "lane_length_m": 115.58948720159029
+    },
+    "longitudinal_chain": [
+      28004,
+      28075,
+      28078,
+      29001
+    ],
+    "shortest_path": [
+      28004,
+      28075,
+      28078,
+      29001
+    ],
+    "route_centerline_distance_m": 210.03956099782397,
+    "start_attrs": {
+      "intersection": "no",
+      "location": "urban",
+      "one_way": "yes",
+      "participant:vehicle": "yes",
+      "school_zone": "partial",
+      "speed_limit": "8.0 m/s",
+      "speed_source": "minimum_child_cell_cap",
+      "subtype": "road",
+      "type": "lanelet",
+      "xodr_lane_id": "-1",
+      "xodr_road_id": "173",
+      "xodr_s_begin": "138.6",
+      "xodr_s_end": "235.4",
+      "xodr_section_index": "0"
+    }
+  },
+  {
+    "name": "south_large_curve_road1909",
+    "start": {
+      "lane": 148779,
+      "x": 1002.360271420964,
+      "y": -1181.5493235916038,
+      "z": 61.37572891014102,
+      "yaw_rad": -0.29370364083900385,
+      "yaw_deg": -16.827979047701085,
+      "station_m": 89.67085739112858,
+      "lane_length_m": 179.34171478225716
+    },
+    "target": {
+      "lane": 156955,
+      "x": 1063.9318504609028,
+      "y": -998.3542703926327,
+      "z": 54.31715201681953,
+      "yaw_rad": 2.2363223332154325,
+      "yaw_deg": 128.13183132409324,
+      "station_m": 38.84988438575674,
+      "lane_length_m": 77.69976877151348
+    },
+    "longitudinal_chain": [
+      148779,
+      152188,
+      151192,
+      177112,
+      177117,
+      177238,
+      177241,
+      177276,
+      160264,
+      158863,
+      158024,
+      157838,
+      156955
+    ],
+    "shortest_path": [
+      148779,
+      152188,
+      151192,
+      177112,
+      177117,
+      177238,
+      177241,
+      177276,
+      160264,
+      158863,
+      158024,
+      157838,
+      156955
+    ],
+    "route_centerline_distance_m": 287.9260357270669,
+    "start_attrs": {
+      "intersection": "no",
+      "location": "urban",
+      "observed_speed_mark_kph": "30",
+      "one_way": "yes",
+      "participant:vehicle": "yes",
+      "school_zone": "no",
+      "speed_limit": "30.0 m/s",
+      "speed_mark_object_id": "1962",
+      "speed_source": "minimum_child_cell_cap",
+      "subtype": "road",
+      "type": "lanelet",
+      "xodr_lane_id": "-1",
+      "xodr_road_id": "1909",
+      "xodr_s_begin": "0.0",
+      "xodr_s_end": "176.97057233090493",
+      "xodr_section_index": "0"
+    }
+  },
+  {
+    "name": "west_steep_downhill_road1602",
+    "start": {
+      "lane": 110407,
+      "x": 486.43684212713623,
+      "y": -449.732967438363,
+      "z": 44.571701387110856,
+      "yaw_rad": 0.6669649361962852,
+      "yaw_deg": 38.21427592725937,
+      "station_m": 36.573313642022384,
+      "lane_length_m": 73.14662728404477
+    },
+    "target": {
+      "lane": 22849,
+      "x": 466.67996081555236,
+      "y": -250.34210007995412,
+      "z": 44.15761779100639,
+      "yaw_rad": 2.233756982174869,
+      "yaw_deg": 127.98484753649946,
+      "station_m": 28.012580230970404,
+      "lane_length_m": 56.02516046194081
+    },
+    "longitudinal_chain": [
+      110407,
+      528069,
+      115710,
+      116429,
+      116670,
+      116753,
+      17748,
+      18789,
+      19217,
+      19525,
+      20652,
+      21523,
+      22849
+    ],
+    "shortest_path": [
+      110407,
+      528069,
+      115710,
+      116429,
+      116670,
+      116753,
+      17748,
+      18789,
+      19217,
+      19525,
+      20652,
+      21523,
+      22849
+    ],
+    "route_centerline_distance_m": 269.2586369337259,
+    "start_attrs": {
+      "intersection": "no",
+      "location": "urban",
+      "observed_speed_mark_kph": "30",
+      "one_way": "yes",
+      "participant:vehicle": "yes",
+      "school_zone": "no",
+      "speed_limit": "30.0 m/s",
+      "speed_mark_object_id": "1437",
+      "speed_source": "minimum_child_cell_cap",
+      "subtype": "road",
+      "type": "lanelet",
+      "xodr_lane_id": "1",
+      "xodr_road_id": "1602",
+      "xodr_s_begin": "0.0",
+      "xodr_s_end": "73.14664241994129",
+      "xodr_section_index": "0"
+    }
+  },
+  {
+    "name": "north_uphill_road2819",
+    "start": {
+      "lane": 445027,
+      "x": 1435.5403618456833,
+      "y": 1097.3975982067732,
+      "z": 47.78279949097291,
+      "yaw_rad": -1.5293956364401706,
+      "yaw_deg": -87.62791517374623,
+      "station_m": 51.4003610140141,
+      "lane_length_m": 102.8007220280282
+    },
+    "target": {
+      "lane": 448217,
+      "x": 1447.2514366105183,
+      "y": 820.3145882474362,
+      "z": 53.00157987159209,
+      "yaw_rad": -1.5293939580281726,
+      "yaw_deg": -87.62781900782245,
+      "station_m": 51.75050153046622,
+      "lane_length_m": 103.50100306093243
+    },
+    "longitudinal_chain": [
+      445027,
+      445452,
+      446279,
+      500918,
+      448217
+    ],
+    "shortest_path": [
+      445027,
+      445452,
+      446279,
+      500918,
+      448217
+    ],
+    "route_centerline_distance_m": 277.33139811069265,
+    "start_attrs": {
+      "intersection": "no",
+      "location": "urban",
+      "one_way": "yes",
+      "participant:vehicle": "yes",
+      "school_zone": "no",
+      "speed_limit": "30.0 m/s",
+      "speed_source": "minimum_child_cell_cap",
+      "subtype": "road",
+      "type": "lanelet",
+      "xodr_lane_id": "-1",
+      "xodr_road_id": "2819",
+      "xodr_s_begin": "0.0",
+      "xodr_s_end": "102.80100000015062",
+      "xodr_section_index": "0"
+    }
+  },
+  {
+    "name": "west_eastbound_intersection_road76",
+    "start": {
+      "lane": 8862,
+      "x": -43.67190624787195,
+      "y": 34.998842047847965,
+      "z": 35.55,
+      "yaw_rad": 0.05574575459165638,
+      "yaw_deg": 3.1939964638739404,
+      "station_m": 22.00544828293712,
+      "lane_length_m": 44.01089656587424
+    },
+    "target": {
+      "lane": 7355,
+      "x": 183.1307878308055,
+      "y": 142.04053259506597,
+      "z": 37.17860172246114,
+      "yaw_rad": 0.7323037700491764,
+      "yaw_deg": 41.957915345336545,
+      "station_m": 32.836651482701285,
+      "lane_length_m": 65.67330296540257
+    },
+    "longitudinal_chain": [
+      8862,
+      59716,
+      2534,
+      3307,
+      4119,
+      4843,
+      5027,
+      5211,
+      5650,
+      6137,
+      7355
+    ],
+    "shortest_path": [
+      8862,
+      59716,
+      2534,
+      3307,
+      4119,
+      4843,
+      5027,
+      5211,
+      5650,
+      6137,
+      7355
+    ],
+    "route_centerline_distance_m": 258.1997359134557,
+    "start_attrs": {
+      "intersection": "no",
+      "location": "urban",
+      "one_way": "yes",
+      "participant:vehicle": "yes",
+      "school_zone": "no",
+      "speed_limit": "30.0 m/s",
+      "speed_source": "minimum_child_cell_cap",
+      "subtype": "road",
+      "type": "lanelet",
+      "xodr_lane_id": "-1",
+      "xodr_road_id": "76",
+      "xodr_s_begin": "0.0",
+      "xodr_s_end": "44.010896565874205",
+      "xodr_section_index": "0"
+    }
+  }
+]

@@ -1,0 +1,369 @@
+{
+  "start_kst": "2026-09-11T05:51:30.639850+09:00",
+  "end_kst": "2026-09-11T06:20:24.195215+09:00",
+  "duration_s": 1733.5553641319275,
+  "counts": {
+    "ego": 34066,
+    "cap": 49078,
+    "route": 16355,
+    "light": 34099,
+    "summary": 3467,
+    "status": 33115,
+    "command": 33115,
+    "log": 95,
+    "path": 7802
+  },
+  "run_starts": [
+    {
+      "t": 1789073724.0535004,
+      "action": "start_fresh_original_planner",
+      "case": "curve_28004_north",
+      "pid": 178688,
+      "old_pids": [
+        142397
+      ],
+      "checkpoint_file": "/tmp/sim_diagnosis_extended/curve_28004_north.csv",
+      "pose": {
+        "x": 817.2705923390831,
+        "y": -75.54630199623024,
+        "z": 50.527912049319326,
+        "yaw": 0.6728603698865053
+      },
+      "target": {
+        "x": 1022.5099940222682,
+        "y": 281.80840801576096,
+        "z": 51.1767776458889,
+        "yaw": 0.6657131482423865
+      }
+    },
+    {
+      "t": 1789073830.3975406,
+      "action": "start_fresh_original_planner",
+      "case": "south_large_curve_road1909",
+      "pid": 180095,
+      "old_pids": [
+        178688
+      ],
+      "checkpoint_file": "/tmp/sim_diagnosis_extended/south_large_curve_road1909.csv",
+      "pose": {
+        "x": 1002.360271420964,
+        "y": -1181.5493235916038,
+        "z": 61.37572891014102,
+        "yaw": -0.29370364083900385
+      },
+      "target": {
+        "x": 1063.9318504609028,
+        "y": -998.3542703926327
+      }
+    },
+    {
+      "t": 1789073883.3593318,
+      "action": "start_fresh_original_planner",
+      "case": "west_steep_downhill_road1602",
+      "pid": 180680,
+      "old_pids": [
+        180095
+      ],
+      "checkpoint_file": "/tmp/sim_diagnosis_extended/west_steep_downhill_road1602.csv",
+      "pose": {
+        "x": 486.43684212713623,
+        "y": -449.732967438363,
+        "z": 44.571701387110856,
+        "yaw": 0.6669649361962852
+      },
+      "target": {
+        "x": 466.67996081555236,
+        "y": -250.34210007995412
+      }
+    },
+    {
+      "t": 1789073915.3540244,
+      "action": "start_fresh_original_planner",
+      "case": "north_uphill_road2819",
+      "pid": 181051,
+      "old_pids": [
+        180680
+      ],
+      "checkpoint_file": "/tmp/sim_diagnosis_extended/north_uphill_road2819.csv",
+      "pose": {
+        "x": 1435.5403618456833,
+        "y": 1097.3975982067732,
+        "z": 47.78279949097291,
+        "yaw": -1.5293956364401706
+      },
+      "target": {
+        "x": 1447.2514366105183,
+        "y": 820.3145882474362
+      }
+    },
+    {
+      "t": 1789074070.4524405,
+      "action": "start_fresh_original_planner",
+      "case": "west_eastbound_intersection_road76",
+      "pid": 182858,
+      "old_pids": [
+        181051
+      ],
+      "checkpoint_file": "/tmp/sim_diagnosis_extended/west_eastbound_intersection_road76.csv",
+      "pose": {
+        "x": -43.67190624787195,
+        "y": 34.998842047847965,
+        "z": 35.55,
+        "yaw": 0.05574575459165638
+      },
+      "target": {
+        "x": 183.1307878308055,
+        "y": 142.04053259506597
+      }
+    },
+    {
+      "t": 1789074225.419734,
+      "action": "start_fresh_original_planner",
+      "case": "known_north_curve_road173",
+      "pid": 184556,
+      "old_pids": [
+        182858
+      ],
+      "checkpoint_file": "/tmp/sim_diagnosis_extended/known_north_curve_road173.csv",
+      "pose": {
+        "x": 797.2449069973744,
+        "y": -86.63923989072745,
+        "z": 49.52582011949925,
+        "yaw": 0.33903004299738015
+      },
+      "target": {
+        "x": 856.889201618174,
+        "y": 99.01262749945714
+      }
+    },
+    {
+      "t": 1789074310.0622969,
+      "action": "start_fresh_original_planner",
+      "case": "curve_28004_north",
+      "pid": 185622,
+      "old_pids": [
+        184556
+      ],
+      "checkpoint_file": "/tmp/sim_diagnosis_extended/curve_28004_north.csv",
+      "pose": {
+        "x": 817.2705923390831,
+        "y": -75.54630199623024,
+        "z": 50.527912049319326,
+        "yaw": 0.6728603698865053
+      },
+      "target": {
+        "x": 1022.5099940222682,
+        "y": 281.80840801576096,
+        "z": 51.1767776458889,
+        "yaw": 0.6657131482423865
+      }
+    },
+    {
+      "t": 1789074385.9377036,
+      "action": "start_fresh_original_planner",
+      "case": "south_large_curve_road1909",
+      "pid": 187235,
+      "old_pids": [
+        185622
+      ],
+      "checkpoint_file": "/tmp/sim_diagnosis_extended/south_large_curve_road1909.csv",
+      "pose": {
+        "x": 1002.360271420964,
+        "y": -1181.5493235916038,
+        "z": 61.37572891014102,
+        "yaw": -0.29370364083900385
+      },
+      "target": {
+        "x": 1063.9318504609028,
+        "y": -998.3542703926327
+      }
+    },
+    {
+      "t": 1789074440.8388383,
+      "action": "start_fresh_original_planner",
+      "case": "west_steep_downhill_road1602",
+      "pid": 188410,
+      "old_pids": [
+        187235
+      ],
+      "checkpoint_file": "/tmp/sim_diagnosis_extended/west_steep_downhill_road1602.csv",
+      "pose": {
+        "x": 486.43684212713623,
+        "y": -449.732967438363,
+        "z": 44.571701387110856,
+        "yaw": 0.6669649361962852
+      },
+      "target": {
+        "x": 466.67996081555236,
+        "y": -250.34210007995412
+      }
+    },
+    {
+      "t": 1789074473.5527918,
+      "action": "start_fresh_original_planner",
+      "case": "north_uphill_road2819",
+      "pid": 189005,
+      "old_pids": [
+        188410
+      ],
+      "checkpoint_file": "/tmp/sim_diagnosis_extended/north_uphill_road2819.csv",
+      "pose": {
+        "x": 1435.5403618456833,
+        "y": 1097.3975982067732,
+        "z": 47.78279949097291,
+        "yaw": -1.5293956364401706
+      },
+      "target": {
+        "x": 1447.2514366105183,
+        "y": 820.3145882474362
+      }
+    },
+    {
+      "t": 1789074505.9680197,
+      "action": "start_fresh_original_planner",
+      "case": "west_eastbound_intersection_road76",
+      "pid": 189210,
+      "old_pids": [
+        189005
+      ],
+      "checkpoint_file": "/tmp/sim_diagnosis_extended/west_eastbound_intersection_road76.csv",
+      "pose": {
+        "x": -43.67190624787195,
+        "y": 34.998842047847965,
+        "z": 35.55,
+        "yaw": 0.05574575459165638
+      },
+      "target": {
+        "x": 183.1307878308055,
+        "y": 142.04053259506597
+      }
+    },
+    {
+      "t": 1789074584.0489154,
+      "action": "start_fresh_original_planner",
+      "case": "north_uphill_road2819",
+      "pid": 190352,
+      "old_pids": [
+        189210
+      ],
+      "checkpoint_file": "/tmp/sim_diagnosis_extended/north_uphill_road2819.csv",
+      "pose": {
+        "x": 1435.5403618456833,
+        "y": 1097.3975982067732,
+        "z": 47.78279949097291,
+        "yaw": -1.5293956364401706
+      },
+      "target": {
+        "x": 1447.2514366105183,
+        "y": 820.3145882474362
+      }
+    },
+    {
+      "t": 1789075021.3477926,
+      "action": "restore_original_checkpoint_and_binaries",
+      "old_pids": [
+        190352,
+        190433
+      ],
+      "planner_pid": 196088,
+      "controller_pid": 196103,
+      "checkpoint_file": "/home/stier/HL-FMA2026-sim-stier/install/path_planner/share/path_planner/checkpoint/checkpoints.csv"
+    }
+  ],
+  "last_observed": {
+    "ego": {
+      "x": 801.3280029296875,
+      "y": -83.19498443603516,
+      "z": 49.72735595703125,
+      "heading": 0.6509141325950623,
+      "speed": 0.0
+    },
+    "cap": 8.0,
+    "state": "state=STOP_NO_LOCAL_PATH",
+    "cmd": {
+      "steering": 0.0,
+      "accel": -3.0
+    },
+    "route": [
+      30387,
+      29998,
+      29996,
+      29945,
+      532768
+    ],
+    "light": [
+      139,
+      1
+    ],
+    "path_n": 41,
+    "path_age": 139.61014976200386,
+    "end": [
+      811.4167325538182,
+      -79.74995046160988
+    ],
+    "cells": [
+      [
+        4995,
+        28004,
+        "8.0 m/s"
+      ],
+      [
+        4998,
+        28004,
+        "8.0 m/s"
+      ],
+      [
+        4994,
+        28004,
+        "8.0 m/s"
+      ],
+      [
+        4996,
+        28004,
+        "8.0 m/s"
+      ],
+      [
+        5501,
+        30387,
+        "8.0 m/s"
+      ],
+      [
+        4997,
+        28004,
+        "8.0 m/s"
+      ],
+      [
+        5499,
+        30387,
+        "8.0 m/s"
+      ],
+      [
+        5500,
+        30387,
+        "8.0 m/s"
+      ],
+      [
+        5498,
+        30387,
+        "8.0 m/s"
+      ],
+      [
+        5497,
+        30387,
+        "8.0 m/s"
+      ],
+      [
+        5496,
+        30387,
+        "8.0 m/s"
+      ]
+    ]
+  },
+  "note": "Includes SIGSTOP-associated DDS affected runs; these are separated in report and excluded from normal driving findings. No product source/config/original checkpoint edits. Last run restored original checkpoint/binaries.",
+  "diagnostic_sources": [
+    "/tmp/sim_diagnosis_extended",
+    "/tmp/planner_census",
+    "/tmp/control_roadscan"
+  ],
+  "video": "/tmp/sim_diagnosis_extended/front_scan.mkv"
+}

@@ -1,0 +1,35 @@
+Start testing: Sep 11 08:04 KST
+----------------------------------------------------------
+1/2 Testing: control_core_test
+1/2 Test: control_core_test
+Command: "/home/stier/HL-FMA2026-sim-stier/build/control/control_core_test"
+Directory: /home/stier/HL-FMA2026-sim-stier/build/control
+"control_core_test" start time: Sep 11 08:04 KST
+Output:
+----------------------------------------------------------
+control_core_test: all checks passed
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"control_core_test" end time: Sep 11 08:04 KST
+"control_core_test" time elapsed: 00:00:00
+----------------------------------------------------------
+
+2/2 Testing: control_node_test
+2/2 Test: control_node_test
+Command: "/usr/bin/python3" "/home/stier/HL-FMA2026-sim-stier/src/control/test/control_node_test.py" "/home/stier/HL-FMA2026-sim-stier/build/control/mpc_control_node"
+Directory: /home/stier/HL-FMA2026-sim-stier/build/control
+"control_node_test" start time: Sep 11 08:04 KST
+Output:
+----------------------------------------------------------
+control_node_test: all checks passed
+<end of output>
+Test time =  10.67 sec
+----------------------------------------------------------
+Test Passed.
+"control_node_test" end time: Sep 11 08:04 KST
+"control_node_test" time elapsed: 00:00:10
+----------------------------------------------------------
+
+End testing: Sep 11 08:04 KST

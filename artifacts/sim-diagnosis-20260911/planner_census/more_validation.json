@@ -1,0 +1,80 @@
+[
+  {
+    "case": "south_curve",
+    "stamp": 1789073867859596092,
+    "counts": {
+      "kinematic": 22,
+      "valid": 23
+    },
+    "selected_length": 10.5193940066346,
+    "actual_path": true,
+    "actual_length": 10.519393864354301,
+    "counts_match": true,
+    "max_point_error": 2.0088002891213508e-07,
+    "live_valid": 23,
+    "live_selected": 7
+  },
+  {
+    "case": "south_curve",
+    "stamp": 1789073869619127211,
+    "counts": {
+      "kinematic": 44,
+      "valid": 1
+    },
+    "selected_length": 8.755453279892,
+    "actual_path": true,
+    "actual_length": 8.755453354992605,
+    "counts_match": true,
+    "max_point_error": 1.0467516220870915e-07,
+    "live_valid": 1,
+    "live_selected": 0
+  },
+  {
+    "case": "south_curve",
+    "stamp": 1789073871819277607,
+    "counts": {
+      "kinematic": 30
+    },
+    "selected_length": null,
+    "actual_path": false
+  },
+  {
+    "case": "west_downhill",
+    "stamp": 1789073898658981848,
+    "counts": {
+      "kinematic": 16,
+      "valid": 14
+    },
+    "selected_length": 7.94239535060339,
+    "actual_path": true,
+    "actual_length": 7.942395341901067,
+    "counts_match": true,
+    "max_point_error": 5.70031138660221e-08,
+    "live_valid": 14,
+    "live_selected": 0
+  },
+  {
+    "case": "west_downhill",
+    "stamp": 1789073900298947071,
+    "counts": {
+      "kinematic": 11,
+      "valid": 4
+    },
+    "selected_length": 12.2328552150193,
+    "actual_path": true,
+    "actual_length": 12.232855327770842,
+    "counts_match": true,
+    "max_point_error": 3.451874920210384e-07,
+    "live_valid": 4,
+    "live_selected": 1
+  },
+  {
+    "case": "west_downhill",
+    "stamp": 1789073902619273356,
+    "counts": {
+      "kinematic": 20
+    },
+    "selected_length": null,
+    "actual_path": false
+  }
+]

@@ -1,0 +1,15 @@
+{
+  "planner": {
+    "pid": "244945",
+    "cmdline": "/home/stier/HL-FMA2026-sim-stier/install/path_planner/lib/path_planner/path_planner_node --ros-args -r __node:=path_planner --params-file /home/stier/HL-FMA2026-sim-stier/install/path_planner/share/path_planner/config/planner.yaml -p map_path:=/home/stier/HL-FMA2026-sim-stier/map/hdmap.bin -p checkpoint_file:=/home/stier/HL-FMA2026-sim-stier/install/path_planner/share/path_planner/checkpoint/checkpoints.csv -p use_sim_time:=false ",
+    "running_binary_sha256": "a3317a6905789362ae726c00e4f2cb407ef8e26da83a1a851408c4061b324da2",
+    "matches_installed": true
+  },
+  "controller": {
+    "pid": "245026",
+    "cmdline": "/home/stier/HL-FMA2026-sim-stier/install/control/lib/control/mpc_control_node --ros-args -r __node:=mpc_control --params-file /home/stier/HL-FMA2026-sim-stier/install/control/share/control/config/control.yaml ",
+    "running_binary_sha256": "bfa6404e0d8f96f37ad5b3960dab8efe5a625352b2a4dfbd7656556ac3d2be84",
+    "matches_installed": true
+  },
+  "default_checkpoint_matches_source": true
+}

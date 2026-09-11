@@ -13,4 +13,13 @@ target_link_libraries(speed_annotator_node hdmap::core)
 ament_target_dependencies(speed_annotator_node rclcpp interfaces std_msgs)
 
 install(TARGETS speed_annotator_node RUNTIME DESTINATION lib/${PROJECT_NAME})
+if(BUILD_TESTING)
+  enable_testing()
+  find_package(Python3 REQUIRED COMPONENTS Interpreter)
+  add_test(NAME speed_annotator_test COMMAND ${Python3_EXECUTABLE}
+    ${CMAKE_CURRENT_SOURCE_DIR}/test/speed_annotator_test.py
+    $<TARGET_FILE:speed_annotator_node> ${CMAKE_CURRENT_SOURCE_DIR}/../../map/hdmap.bin
+    ${hdmap_core_DIR}/../../../lib/python${Python3_VERSION_MAJOR}.${Python3_VERSION_MINOR}/site-packages)
+  set_tests_properties(speed_annotator_test PROPERTIES TIMEOUT 40)
+endif()
 ament_package()

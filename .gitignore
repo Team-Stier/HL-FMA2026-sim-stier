@@ -57,3 +57,7 @@ __pycache__/
 /.codex/
 /AGENTS.md
 /graphify-out/
+
+# ROS 2 bags exceed GitHub's 100MB file limit
+*.mcap
+rosbag2_*/

@@ -1,0 +1,157 @@
+[
+  {
+    "id": 546761,
+    "attrs": {
+      "api_observation": "selected_controller",
+      "api_selected_controller_id": "217",
+      "controller_id": "217",
+      "distance_to_approach_end_m": "0.0",
+      "lane_validity_source": "unverified_not_specified",
+      "mapping_source": "plugin_road_lane_sign_and_xodr_control",
+      "movement": "right",
+      "movement_source": "xodr_arrow_object:5958",
+      "permitted_states": "3,5",
+      "plugin_green_code": "5",
+      "stopline_scope": "terminal_approach",
+      "subtype": "traffic_light",
+      "type": "regulatory_element"
+    },
+    "line_id": 544478,
+    "xyz": [
+      [
+        1432.7858886750003,
+        976.8958740235,
+        52.9317321777
+      ],
+      [
+        1435.7830810550001,
+        977.0256347655,
+        52.9317321777
+      ]
+    ]
+  },
+  {
+    "id": 546762,
+    "attrs": {
+      "api_observation": "selected_controller",
+      "api_selected_controller_id": "217",
+      "controller_id": "217",
+      "distance_to_approach_end_m": "0.0",
+      "lane_validity_source": "unverified_not_specified",
+      "mapping_source": "plugin_road_lane_sign_and_xodr_control",
+      "movement": "straight",
+      "movement_source": "xodr_arrow_object:5954",
+      "permitted_states": "3,5",
+      "plugin_green_code": "5",
+      "stopline_scope": "terminal_approach",
+      "subtype": "traffic_light",
+      "type": "regulatory_element"
+    },
+    "line_id": 544481,
+    "xyz": [
+      [
+        1436.2825927750002,
+        977.047241211,
+        52.9317321777
+      ],
+      [
+        1439.2797851550001,
+        977.1770019530002,
+        52.9317321777
+      ]
+    ]
+  },
+  {
+    "id": 546763,
+    "attrs": {
+      "api_observation": "selected_controller",
+      "api_selected_controller_id": "217",
+      "controller_id": "217",
+      "distance_to_approach_end_m": "0.0",
+      "lane_validity_source": "unverified_not_specified",
+      "mapping_source": "plugin_road_lane_sign_and_xodr_control",
+      "movement": "straight",
+      "movement_source": "xodr_arrow_object:5956",
+      "permitted_states": "3,5",
+      "plugin_green_code": "5",
+      "stopline_scope": "terminal_approach",
+      "subtype": "traffic_light",
+      "type": "regulatory_element"
+    },
+    "line_id": 544484,
+    "xyz": [
+      [
+        1439.2797851550001,
+        977.1770019530002,
+        52.9317321777
+      ],
+      [
+        1442.2769775349998,
+        977.3067626955001,
+        52.9317321777
+      ]
+    ]
+  },
+  {
+    "id": 546764,
+    "attrs": {
+      "api_observation": "selected_controller",
+      "api_selected_controller_id": "217",
+      "controller_id": "217",
+      "distance_to_approach_end_m": "0.0",
+      "lane_validity_source": "unverified_not_specified",
+      "mapping_source": "plugin_road_lane_sign_and_xodr_control",
+      "movement": "left",
+      "movement_source": "xodr_arrow_object:5955",
+      "permitted_states": "4,5",
+      "plugin_green_code": "5",
+      "stopline_scope": "terminal_approach",
+      "subtype": "traffic_light",
+      "type": "regulatory_element"
+    },
+    "line_id": 544486,
+    "xyz": [
+      [
+        1442.2769775399997,
+        977.3067016605,
+        52.9317321777
+      ],
+      [
+        1445.27416993,
+        977.4364624025002,
+        52.9317321777
+      ]
+    ]
+  },
+  {
+    "id": 546765,
+    "attrs": {
+      "api_observation": "selected_controller",
+      "api_selected_controller_id": "217",
+      "controller_id": "217",
+      "distance_to_approach_end_m": "0.0",
+      "lane_validity_source": "unverified_not_specified",
+      "mapping_source": "plugin_road_lane_sign_and_xodr_control",
+      "movement": "left",
+      "movement_source": "xodr_arrow_object:5957",
+      "permitted_states": "4,5",
+      "plugin_green_code": "5",
+      "stopline_scope": "terminal_approach",
+      "subtype": "traffic_light",
+      "type": "regulatory_element"
+    },
+    "line_id": 544489,
+    "xyz": [
+      [
+        1445.27416993,
+        977.4364624025002,
+        52.9317321777
+      ],
+      [
+        1448.2713623050001,
+        977.5662231444999,
+        52.9317321777
+      ]
+    ]
+  }
+]

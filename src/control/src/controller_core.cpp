@@ -70,11 +70,13 @@ double normalizeAngle(double angle) noexcept {
 
 ReferenceBuilder::ReferenceBuilder(ReferenceConfig config) : config_(config) {
     if (!(config_.duplicate_epsilon_m > 0.0) ||
-        !(config_.minimum_spacing_m > 0.0) ||
-        config_.maximum_spacing_m < config_.minimum_spacing_m ||
+        !std::isfinite(config_.curvature_window_m) ||
+        !(config_.curvature_window_m > 0.0) ||
         !(config_.heading_rejection_rad > 0.0) ||
         config_.heading_rejection_rad > kPi ||
         !finiteNonNegative(config_.continuity_weight) ||
+        !std::isfinite(config_.maximum_projection_distance_m) ||
+        !(config_.maximum_projection_distance_m > 0.0) ||
         config_.minimum_steps < 2) {
         throw std::invalid_argument("invalid reference configuration");
     }
@@ -93,7 +95,10 @@ PreparedReference ReferenceBuilder::prepare(
     if (!std::isfinite(current.x) || !std::isfinite(current.y) ||
         !std::isfinite(current.yaw) || !finiteNonNegative(speed_mps) ||
         !(dt_seconds > 0.0) || !std::isfinite(dt_seconds) ||
-        requested_steps < config_.minimum_steps) {
+        requested_steps < config_.minimum_steps ||
+        !std::isfinite(path.capture_pose_map.x) ||
+        !std::isfinite(path.capture_pose_map.y) ||
+        !std::isfinite(path.capture_pose_map.yaw)) {
         result.error = "invalid state, dt, or horizon";
         return result;
     }
@@ -102,7 +107,8 @@ PreparedReference ReferenceBuilder::prepare(
     std::vector<Point2> current_points;
     for (const Point2 &raw : path.points_at_capture) {
         if (!std::isfinite(raw.x) || !std::isfinite(raw.y)) {
-            continue;
+            result.error = "non-finite path point";
+            return result;
         }
         const Point2 map = capturedPointToMap(raw, path.capture_pose_map);
         const Point2 local = mapPointToCurrent(map, current);
@@ -113,6 +119,17 @@ PreparedReference ReferenceBuilder::prepare(
             map_points.push_back(map);
             current_points.push_back(local);
         }
+    }
+    // A single origin pose is the existing Path contract for a stop request.
+    if (path.points_at_capture.size() == 1 &&
+        std::hypot(path.points_at_capture.front().x,
+                   path.points_at_capture.front().y) <= config_.duplicate_epsilon_m &&
+        std::hypot(current_points.front().x, current_points.front().y) <=
+            config_.maximum_projection_distance_m) {
+        result.valid = true;
+        result.stop_only = true;
+        result.hold_requested = true;
+        return result;
     }
     if (current_points.size() < 2) {
         result.error = "path has fewer than two distinct finite points";
@@ -142,6 +159,10 @@ PreparedReference ReferenceBuilder::prepare(
             0.0, 1.0);
         const Point2 projection = interpolate(current_points[index],
                                              current_points[index + 1], ratio);
+        if (std::hypot(projection.x, projection.y) >
+            config_.maximum_projection_distance_m) {
+            continue;
+        }
         const Point2 projection_map = interpolate(map_points[index],
                                                   map_points[index + 1], ratio);
         const bool use_continuity = has_previous_projection_ &&
@@ -162,7 +183,7 @@ PreparedReference ReferenceBuilder::prepare(
         }
     }
     if (!found) {
-        result.error = "no path segment aligned with vehicle direction";
+        result.error = "no nearby path segment aligned with vehicle direction";
         return result;
     }
 
@@ -182,7 +203,12 @@ PreparedReference ReferenceBuilder::prepare(
     forward.insert(forward.end(), current_points.begin() + best_segment + 2,
                    current_points.end());
     if (forward.size() < 2) {
-        result.error = "no usable path remains ahead";
+        if (std::hypot(projection.x, projection.y) <= config_.duplicate_epsilon_m) {
+            result.valid = true;
+            result.stop_only = true;
+        } else {
+            result.error = "no usable path remains ahead";
+        }
         return result;
     }
 
@@ -193,35 +219,45 @@ PreparedReference ReferenceBuilder::prepare(
                                 forward[index].y - forward[index - 1].y);
     }
     result.remaining_length_m = arc.back();
-    const double spacing = clamp(std::max(speed_mps, 1.0) * dt_seconds,
-                                 config_.minimum_spacing_m,
-                                 config_.maximum_spacing_m);
-    const std::size_t steps = std::min(
-        requested_steps,
-        static_cast<std::size_t>(std::floor(result.remaining_length_m / spacing)));
+    if (!std::isfinite(result.remaining_length_m)) {
+        result.error = "non-finite path length";
+        return result;
+    }
+    const double travel_per_step = speed_mps * dt_seconds;
+    if (!std::isfinite(travel_per_step)) {
+        result.error = "non-finite preview distance";
+        return result;
+    }
+    const double available_steps = travel_per_step > 0.0
+        ? result.remaining_length_m / travel_per_step
+        : static_cast<double>(requested_steps);
+    const std::size_t steps = available_steps >= requested_steps
+        ? requested_steps : static_cast<std::size_t>(std::floor(available_steps));
     if (steps < config_.minimum_steps) {
-        result.error = "path is too short for minimum MPC horizon";
+        result.valid = true;
+        result.stop_only = true;
         return result;
     }
 
-    std::vector<Point2> sampled;
-    sampled.reserve(steps + 1);
-    std::size_t segment = 0;
-    for (std::size_t step = 0; step <= steps; ++step) {
-        const double target_arc = spacing * static_cast<double>(step);
-        while (segment + 1 < arc.size() && arc[segment + 1] < target_arc) {
-            ++segment;
-        }
+    auto sample = [&](double station) {
+        const auto upper = std::upper_bound(arc.begin(), arc.end(), station);
+        const std::size_t segment = std::min(
+            static_cast<std::size_t>(upper - arc.begin() - 1), arc.size() - 2);
         const double length = arc[segment + 1] - arc[segment];
-        sampled.push_back(interpolate(
-            forward[segment], forward[segment + 1],
-            length > 0.0 ? (target_arc - arc[segment]) / length : 0.0));
-    }
-    result.curvature.assign(steps, 0.0);
+        return interpolate(forward[segment], forward[segment + 1],
+                           length > 0.0 ? (station - arc[segment]) / length : 0.0);
+    };
+    // The geometric stencil is independent of the MPC's temporal grid.
+    // In particular 0.5 m must not stand in for v * 0.05 s at low speed.
+    const double window = std::min(config_.curvature_window_m,
+                                    result.remaining_length_m / 2.0);
+    result.curvature.reserve(steps);
     for (std::size_t step = 0; step < steps; ++step) {
-        const std::size_t center = std::min(step + 1, sampled.size() - 2);
-        result.curvature[step] = signedCurvature(
-            sampled[center - 1], sampled[center], sampled[center + 1]);
+        const double station = travel_per_step * static_cast<double>(step);
+        const double center = clamp(station, window,
+                                     result.remaining_length_m - window);
+        result.curvature.push_back(signedCurvature(
+            sample(center - window), sample(center), sample(center + window)));
     }
 
     previous_projection_map_ = interpolate(map_points[best_segment],
@@ -406,13 +442,11 @@ SpeedPolicyResult limitTargetSpeed(
             std::sqrt(config.maximum_lateral_acceleration_mps2 /
                       maximum_curvature));
     }
-    if (remaining_path < requested_preview) {
-        speed = std::min(
-            speed, std::sqrt(2.0 * config.comfortable_deceleration_mps2 *
-                             std::max(0.0, remaining_path -
-                                                   config.path_end_buffer_m)));
-        result.short_path_limited = true;
-    }
+    const double path_end_speed = std::sqrt(
+        2.0 * config.comfortable_deceleration_mps2 *
+        std::max(0.0, remaining_path - config.path_end_buffer_m));
+    result.short_path_limited = path_end_speed < speed;
+    speed = std::min(speed, path_end_speed);
     result.valid = std::isfinite(speed);
     result.target_speed_mps = std::max(0.0, speed);
     if (!result.valid) {
@@ -463,10 +497,16 @@ double LongitudinalController::update(double target_speed, double measured_speed
     return acceleration;
 }
 
+void LongitudinalController::setAppliedAcceleration(double acceleration_mps2) noexcept {
+    previous_acceleration_ = std::isfinite(acceleration_mps2)
+        ? clamp(acceleration_mps2, -config_.maximum_deceleration_mps2,
+                config_.maximum_acceleration_mps2)
+        : -config_.maximum_deceleration_mps2;
+}
+
 void LongitudinalController::reset() noexcept {
     integral_ = 0.0;
     previous_speed_ = 0.0;
-    previous_acceleration_ = 0.0;
     has_previous_speed_ = false;
 }
 

@@ -1,0 +1,33 @@
+{
+  "source_sha256": "4c5703ec5cd43eb64725e8f1aaad21119324d90306d8af66236039ab0abd31cc",
+  "input_count": 31,
+  "exactly_equal_output_cases": 31,
+  "empty_path_cases": 11,
+  "total_pose_samples": 4607,
+  "max_xy_distance_m": 0.0,
+  "max_length_difference_m": 0.0,
+  "mismatches": [],
+  "pruned_valid_candidates": 40,
+  "exhaustive_valid_candidates": 264,
+  "all_source_config_and_input_hashes_unchanged": true,
+  "changed_paths": [],
+  "timing_single_pass_not_benchmark": {
+    "pruned": {
+      "median_ms": 20.399798,
+      "max_ms": 54.735737,
+      "total_ms": 693.411704
+    },
+    "exhaustive": {
+      "median_ms": 48.578677,
+      "max_ms": 112.205197,
+      "total_ms": 1494.743381
+    }
+  },
+  "notes": [
+    "Identical frozen final version 8 in both variants; only pruning break is disabled in exhaustive.",
+    "All output positions XYZ and quaternion XYZW were emitted with 17 decimal significant digits and compared exactly.",
+    "Candidate count and wall-clock runtime intentionally excluded from output equality.",
+    "31 saved inputs only; no terminal checkpoint location and no lane-change intent were present in original replay harness.",
+    "No repository source or live simulator commands were changed by this validation; ROS domains 211 and 212."
+  ]
+}

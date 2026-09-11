@@ -14,6 +14,8 @@ mpc_control:
         speed_limit_timeout_s: 0.25
         capture_pose_tolerance_s: 0.10
         respawn_jump_m: 5.0
+        maximum_height_difference_m: 2.0
+        maximum_projection_distance_m: 2.0
         configured_cruise_speed_mps: 100.0
         speed_limit_margin_mps: 0.5
         comfortable_deceleration_mps2: 2.0

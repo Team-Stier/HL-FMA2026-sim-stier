@@ -1,0 +1,738 @@
+[
+  {
+    "stamp": "1789073768659627516",
+    "ego": {
+      "x": 877.4324951171875,
+      "y": 164.5325927734375,
+      "z": 53.55930709838867,
+      "heading": 0.8812241554260254,
+      "pitch": 0.020159156993031502,
+      "roll": -0.0028394879773259163,
+      "speed": 6.574420928955078
+    },
+    "dynamic_source_stamp": 1789073768659627516,
+    "validation": {
+      "published_path": true,
+      "replayed_winner": 3,
+      "actual_point_count": 21,
+      "replayed_point_count": 21,
+      "max_point_error_m": 1.5394454291905558e-07,
+      "live_valid_count": 2,
+      "replayed_valid_count": 2,
+      "live_selected_index": 1,
+      "replayed_selected_index": 1,
+      "max_valid_length_error_m": 5.85503844519053e-07
+    },
+    "variants": {
+      "baseline": {
+        "current": 32974,
+        "goals": [
+          33068
+        ],
+        "counts": {
+          "forbidden_lane": 12,
+          "kinematic": 1,
+          "valid": 2
+        },
+        "winner": {
+          "id": 3,
+          "horizon": 2.5,
+          "final_length": 8.20222493996169,
+          "stage": "valid",
+          "cost": 1748.31197155938,
+          "cost_terms": {
+            "lateral": 0.112868551423275,
+            "time": 0.906783505103914,
+            "goal": 1.47954383379484e-05,
+            "progress": 1747.05399996956,
+            "alignment": 0.0032062367250617,
+            "centerline": 0.235098501131574
+          }
+        },
+        "longest_valid": {
+          "id": 3,
+          "horizon": 2.5,
+          "final_length": 8.20222493996169,
+          "stage": "valid",
+          "cost": 1748.31197155938,
+          "cost_terms": {
+            "lateral": 0.112868551423275,
+            "time": 0.906783505103914,
+            "goal": 1.47954383379484e-05,
+            "progress": 1747.05399996956,
+            "alignment": 0.0032062367250617,
+            "centerline": 0.235098501131574
+          }
+        }
+      },
+      "extended_reference_only": {
+        "current": 32974,
+        "goals": [
+          33068
+        ],
+        "counts": {
+          "forbidden_lane": 12,
+          "kinematic": 1,
+          "valid": 2
+        },
+        "winner": {
+          "id": 3,
+          "horizon": 2.5,
+          "final_length": 8.20222493996169,
+          "stage": "valid",
+          "cost": 1748.31197155938,
+          "cost_terms": {
+            "lateral": 0.112868551423275,
+            "time": 0.906783505103914,
+            "goal": 1.47954383379484e-05,
+            "progress": 1747.05399996956,
+            "alignment": 0.0032062367250617,
+            "centerline": 0.235098501131574
+          }
+        },
+        "longest_valid": {
+          "id": 3,
+          "horizon": 2.5,
+          "final_length": 8.20222493996169,
+          "stage": "valid",
+          "cost": 1748.31197155938,
+          "cost_terms": {
+            "lateral": 0.112868551423275,
+            "time": 0.906783505103914,
+            "goal": 1.47954383379484e-05,
+            "progress": 1747.05399996956,
+            "alignment": 0.0032062367250617,
+            "centerline": 0.235098501131574
+          }
+        }
+      },
+      "extended_reference_and_allowed": {
+        "current": 32974,
+        "goals": [
+          33068
+        ],
+        "counts": {
+          "kinematic": 1,
+          "valid": 14
+        },
+        "winner": {
+          "id": 12,
+          "horizon": 4,
+          "final_length": 13.1274541524842,
+          "stage": "valid",
+          "cost": 1399.07133430659,
+          "cost_terms": {
+            "lateral": 0.0107902877265308,
+            "time": 1.29820256956018,
+            "goal": 37.9990608206718,
+            "progress": 1359.58463727716,
+            "alignment": 0.000483771458363982,
+            "centerline": 0.17815958001913
+          }
+        },
+        "longest_valid": {
+          "id": 11,
+          "horizon": 3.5,
+          "final_length": 56.3614090009074,
+          "stage": "valid",
+          "cost": 20403.2822814934,
+          "cost_terms": {
+            "lateral": 0.013255665482323,
+            "time": 3.49881798276096,
+            "goal": 20399.7034016477,
+            "progress": 0,
+            "alignment": 0.00699701415251985,
+            "centerline": 0.0598091833019361
+          }
+        }
+      },
+      "extended_reference_allowed_forward_goal": {
+        "current": 32974,
+        "goals": [
+          33068
+        ],
+        "counts": {
+          "kinematic": 1,
+          "valid": 14
+        },
+        "winner": {
+          "id": 14,
+          "horizon": 4,
+          "final_length": 55.8395898595437,
+          "stage": "valid",
+          "cost": 347.445641488852,
+          "cost_terms": {
+            "lateral": 0.0107133533472697,
+            "time": 3.47842439017467,
+            "goal": 343.895198841756,
+            "progress": 0,
+            "alignment": 8.45812223289904e-05,
+            "centerline": 0.0612203223522247
+          }
+        },
+        "longest_valid": {
+          "id": 11,
+          "horizon": 3.5,
+          "final_length": 56.3614090009074,
+          "stage": "valid",
+          "cost": 411.361421028129,
+          "cost_terms": {
+            "lateral": 0.013255665482323,
+            "time": 3.49881798276096,
+            "goal": 407.789496306593,
+            "progress": 0,
+            "alignment": 4.18899910614544e-05,
+            "centerline": 0.0598091833019361
+          }
+        }
+      }
+    }
+  },
+  {
+    "stamp": "1789073777459150537",
+    "ego": {
+      "x": 933.0671997070312,
+      "y": 211.4454803466797,
+      "z": 53.395408630371094,
+      "heading": 0.6535992622375488,
+      "pitch": -0.0031194379553198814,
+      "roll": 0.008439605124294758,
+      "speed": 10.527161598205566
+    },
+    "dynamic_source_stamp": 1789073777459150537,
+    "validation": {
+      "published_path": true,
+      "replayed_winner": 6,
+      "actual_point_count": 35,
+      "replayed_point_count": 35,
+      "max_point_error_m": 2.0913067694634103e-07,
+      "live_valid_count": 15,
+      "replayed_valid_count": 15,
+      "live_selected_index": 6,
+      "replayed_selected_index": 6,
+      "max_valid_length_error_m": 1.7781186798515591e-06
+    },
+    "variants": {
+      "baseline": {
+        "current": 99175,
+        "goals": [
+          99175
+        ],
+        "counts": {
+          "valid": 15
+        },
+        "winner": {
+          "id": 6,
+          "horizon": 3,
+          "final_length": 15.7915356219485,
+          "stage": "valid",
+          "cost": 1261.46111679647,
+          "cost_terms": {
+            "lateral": 0.334638966274297,
+            "time": 1.15484816162012,
+            "goal": 89.2119194933232,
+            "progress": 1170.21903510442,
+            "alignment": 0.00549027015701999,
+            "centerline": 0.535184800677394
+          }
+        },
+        "longest_valid": {
+          "id": 8,
+          "horizon": 3,
+          "final_length": 56.1034161022494,
+          "stage": "valid",
+          "cost": 18754.6785752425,
+          "cost_terms": {
+            "lateral": 0.334638966274297,
+            "time": 2.99988582395951,
+            "goal": 18751.1059611693,
+            "progress": 0,
+            "alignment": 1.86929263069369e-06,
+            "centerline": 0.238087413676214
+          }
+        }
+      },
+      "extended_reference_only": {
+        "current": 99175,
+        "goals": [
+          99175
+        ],
+        "counts": {
+          "valid": 15
+        },
+        "winner": {
+          "id": 6,
+          "horizon": 3,
+          "final_length": 15.7915356219485,
+          "stage": "valid",
+          "cost": 1261.46111679647,
+          "cost_terms": {
+            "lateral": 0.334638966274297,
+            "time": 1.15484816162012,
+            "goal": 89.2119194933232,
+            "progress": 1170.21903510442,
+            "alignment": 0.00549027015701999,
+            "centerline": 0.535184800677394
+          }
+        },
+        "longest_valid": {
+          "id": 8,
+          "horizon": 3,
+          "final_length": 56.1034161022494,
+          "stage": "valid",
+          "cost": 18754.6785752425,
+          "cost_terms": {
+            "lateral": 0.334638966274297,
+            "time": 2.99988582395951,
+            "goal": 18751.1059611693,
+            "progress": 0,
+            "alignment": 1.86929263069369e-06,
+            "centerline": 0.238087413676214
+          }
+        }
+      },
+      "extended_reference_and_allowed": {
+        "current": 99175,
+        "goals": [
+          99175
+        ],
+        "counts": {
+          "valid": 15
+        },
+        "winner": {
+          "id": 6,
+          "horizon": 3,
+          "final_length": 15.7915356219485,
+          "stage": "valid",
+          "cost": 1261.46111679647,
+          "cost_terms": {
+            "lateral": 0.334638966274297,
+            "time": 1.15484816162012,
+            "goal": 89.2119194933232,
+            "progress": 1170.21903510442,
+            "alignment": 0.00549027015701999,
+            "centerline": 0.535184800677394
+          }
+        },
+        "longest_valid": {
+          "id": 8,
+          "horizon": 3,
+          "final_length": 56.1034161022494,
+          "stage": "valid",
+          "cost": 18754.6785752425,
+          "cost_terms": {
+            "lateral": 0.334638966274297,
+            "time": 2.99988582395951,
+            "goal": 18751.1059611693,
+            "progress": 0,
+            "alignment": 1.86929263069369e-06,
+            "centerline": 0.238087413676214
+          }
+        }
+      },
+      "extended_reference_allowed_forward_goal": {
+        "current": 99175,
+        "goals": [
+          99175
+        ],
+        "counts": {
+          "valid": 15
+        },
+        "winner": {
+          "id": 14,
+          "horizon": 4,
+          "final_length": 54.5701863840705,
+          "stage": "valid",
+          "cost": 212.501202594577,
+          "cost_terms": {
+            "lateral": 0.0364018829563489,
+            "time": 2.94250485058996,
+            "goal": 209.18692499223,
+            "progress": 0,
+            "alignment": 1.23406849829097e-05,
+            "centerline": 0.335358528115596
+          }
+        },
+        "longest_valid": {
+          "id": 8,
+          "horizon": 3,
+          "final_length": 56.1034161022494,
+          "stage": "valid",
+          "cost": 376.456669672178,
+          "cost_terms": {
+            "lateral": 0.334638966274297,
+            "time": 2.99988582395951,
+            "goal": 372.884056913734,
+            "progress": 0,
+            "alignment": 5.54533465587262e-07,
+            "centerline": 0.238087413676214
+          }
+        }
+      }
+    }
+  },
+  {
+    "stamp": "1789073777698673150",
+    "ego": {
+      "x": 935.0819702148438,
+      "y": 213.00083923339844,
+      "z": 53.395999908447266,
+      "heading": 0.6566579341888428,
+      "speed": 11.280396461486816
+    },
+    "dynamic_source_stamp": 1789073777459150537,
+    "validation": {
+      "published_path": true,
+      "replayed_winner": 3,
+      "actual_point_count": 31,
+      "replayed_point_count": 31,
+      "max_point_error_m": 1.598687005157308e-07,
+      "live_valid_count": 15,
+      "replayed_valid_count": 15,
+      "live_selected_index": 3,
+      "replayed_selected_index": 3,
+      "max_valid_length_error_m": 1.8460913011608682e-06
+    },
+    "variants": {
+      "baseline": {
+        "current": 99175,
+        "goals": [
+          99175
+        ],
+        "counts": {
+          "valid": 15
+        },
+        "winner": {
+          "id": 3,
+          "horizon": 2.5,
+          "final_length": 14.1027599573323,
+          "stage": "valid",
+          "cost": 1438.44381380943,
+          "cost_terms": {
+            "lateral": 0.623938301126863,
+            "time": 1.00581405123136,
+            "goal": 147.734548946854,
+            "progress": 1288.61184268091,
+            "alignment": 0.00481835939356672,
+            "centerline": 0.46285146991483
+          }
+        },
+        "longest_valid": {
+          "id": 8,
+          "horizon": 3,
+          "final_length": 58.3645470624605,
+          "stage": "valid",
+          "cost": 23148.2134423946,
+          "cost_terms": {
+            "lateral": 0.214647811494603,
+            "time": 2.99994056069265,
+            "goal": 23144.798636904,
+            "progress": 0,
+            "alignment": 1.15633877414203e-06,
+            "centerline": 0.200215962112156
+          }
+        }
+      },
+      "extended_reference_only": {
+        "current": 99175,
+        "goals": [
+          99175
+        ],
+        "counts": {
+          "valid": 15
+        },
+        "winner": {
+          "id": 3,
+          "horizon": 2.5,
+          "final_length": 14.1027599573323,
+          "stage": "valid",
+          "cost": 1438.44381380943,
+          "cost_terms": {
+            "lateral": 0.623938301126863,
+            "time": 1.00581405123136,
+            "goal": 147.734548946854,
+            "progress": 1288.61184268091,
+            "alignment": 0.00481835939356672,
+            "centerline": 0.46285146991483
+          }
+        },
+        "longest_valid": {
+          "id": 8,
+          "horizon": 3,
+          "final_length": 58.3645470624605,
+          "stage": "valid",
+          "cost": 23148.2134423946,
+          "cost_terms": {
+            "lateral": 0.214647811494603,
+            "time": 2.99994056069265,
+            "goal": 23144.798636904,
+            "progress": 0,
+            "alignment": 1.15633877414203e-06,
+            "centerline": 0.200215962112156
+          }
+        }
+      },
+      "extended_reference_and_allowed": {
+        "current": 99175,
+        "goals": [
+          99175
+        ],
+        "counts": {
+          "valid": 15
+        },
+        "winner": {
+          "id": 3,
+          "horizon": 2.5,
+          "final_length": 14.1027599573323,
+          "stage": "valid",
+          "cost": 1438.44381380943,
+          "cost_terms": {
+            "lateral": 0.623938301126863,
+            "time": 1.00581405123136,
+            "goal": 147.734548946854,
+            "progress": 1288.61184268091,
+            "alignment": 0.00481835939356672,
+            "centerline": 0.46285146991483
+          }
+        },
+        "longest_valid": {
+          "id": 8,
+          "horizon": 3,
+          "final_length": 58.3645470624605,
+          "stage": "valid",
+          "cost": 23148.2134423946,
+          "cost_terms": {
+            "lateral": 0.214647811494603,
+            "time": 2.99994056069265,
+            "goal": 23144.798636904,
+            "progress": 0,
+            "alignment": 1.15633877414203e-06,
+            "centerline": 0.200215962112156
+          }
+        }
+      },
+      "extended_reference_allowed_forward_goal": {
+        "current": 99175,
+        "goals": [
+          99175
+        ],
+        "counts": {
+          "valid": 15
+        },
+        "winner": {
+          "id": 5,
+          "horizon": 2.5,
+          "final_length": 45.2309435902589,
+          "stage": "valid",
+          "cost": 253.440581243214,
+          "cost_terms": {
+            "lateral": 0.623938301126863,
+            "time": 2.49994790001208,
+            "goal": 227.352924522473,
+            "progress": 22.743899039293,
+            "alignment": 1.8278767286201e-06,
+            "centerline": 0.219869652432481
+          }
+        },
+        "longest_valid": {
+          "id": 8,
+          "horizon": 3,
+          "final_length": 58.3645470624605,
+          "stage": "valid",
+          "cost": 703.26670705534,
+          "cost_terms": {
+            "lateral": 0.214647811494603,
+            "time": 2.99994056069265,
+            "goal": 699.851902443805,
+            "progress": 0,
+            "alignment": 2.77235575170949e-07,
+            "centerline": 0.200215962112156
+          }
+        }
+      }
+    }
+  },
+  {
+    "stamp": "1789073778099122085",
+    "ego": {
+      "x": 938.5946044921875,
+      "y": 215.70826721191406,
+      "z": 53.3989372253418,
+      "heading": 0.6566579341888428,
+      "pitch": -0.0007226751768030226,
+      "roll": 0.0,
+      "speed": 11.316853523254395
+    },
+    "dynamic_source_stamp": 1789073778099122085,
+    "validation": {
+      "published_path": true,
+      "replayed_winner": 0,
+      "actual_point_count": 25,
+      "replayed_point_count": 25,
+      "max_point_error_m": 1.28320855876611e-07,
+      "live_valid_count": 15,
+      "replayed_valid_count": 15,
+      "live_selected_index": 0,
+      "replayed_selected_index": 0,
+      "max_valid_length_error_m": 1.8481567423123124e-06
+    },
+    "variants": {
+      "baseline": {
+        "current": 99175,
+        "goals": [
+          99175
+        ],
+        "counts": {
+          "valid": 15
+        },
+        "winner": {
+          "id": 0,
+          "horizon": 2,
+          "final_length": 11.3191582984542,
+          "stage": "valid",
+          "cost": 1800.1206506742,
+          "cost_terms": {
+            "lateral": 0.725069363562303,
+            "time": 0.833086510300664,
+            "goal": 302.069075754915,
+            "progress": 1496.20751474004,
+            "alignment": 0.00260222888581114,
+            "centerline": 0.283302076495346
+          }
+        },
+        "longest_valid": {
+          "id": 8,
+          "horizon": 3,
+          "final_length": 58.4737788777436,
+          "stage": "valid",
+          "cost": 27726.5302480854,
+          "cost_terms": {
+            "lateral": 0.0349015955412744,
+            "time": 2.99993560151973,
+            "goal": 27723.4005783918,
+            "progress": 0,
+            "alignment": 2.80749482157868e-07,
+            "centerline": 0.0948322158379325
+          }
+        }
+      },
+      "extended_reference_only": {
+        "current": 99175,
+        "goals": [
+          99175
+        ],
+        "counts": {
+          "valid": 15
+        },
+        "winner": {
+          "id": 0,
+          "horizon": 2,
+          "final_length": 11.3191582984542,
+          "stage": "valid",
+          "cost": 1800.1206506742,
+          "cost_terms": {
+            "lateral": 0.725069363562303,
+            "time": 0.833086510300664,
+            "goal": 302.069075754915,
+            "progress": 1496.20751474004,
+            "alignment": 0.00260222888581114,
+            "centerline": 0.283302076495346
+          }
+        },
+        "longest_valid": {
+          "id": 8,
+          "horizon": 3,
+          "final_length": 58.4737788777436,
+          "stage": "valid",
+          "cost": 27726.5302480854,
+          "cost_terms": {
+            "lateral": 0.0349015955412744,
+            "time": 2.99993560151973,
+            "goal": 27723.4005783918,
+            "progress": 0,
+            "alignment": 2.80749482157868e-07,
+            "centerline": 0.0948322158379325
+          }
+        }
+      },
+      "extended_reference_and_allowed": {
+        "current": 99175,
+        "goals": [
+          99175
+        ],
+        "counts": {
+          "valid": 15
+        },
+        "winner": {
+          "id": 0,
+          "horizon": 2,
+          "final_length": 11.3191582984542,
+          "stage": "valid",
+          "cost": 1800.1206506742,
+          "cost_terms": {
+            "lateral": 0.725069363562303,
+            "time": 0.833086510300664,
+            "goal": 302.069075754915,
+            "progress": 1496.20751474004,
+            "alignment": 0.00260222888581114,
+            "centerline": 0.283302076495346
+          }
+        },
+        "longest_valid": {
+          "id": 8,
+          "horizon": 3,
+          "final_length": 58.4737788777436,
+          "stage": "valid",
+          "cost": 27726.5302480854,
+          "cost_terms": {
+            "lateral": 0.0349015955412744,
+            "time": 2.99993560151973,
+            "goal": 27723.4005783918,
+            "progress": 0,
+            "alignment": 2.80749482157868e-07,
+            "centerline": 0.0948322158379325
+          }
+        }
+      },
+      "extended_reference_allowed_forward_goal": {
+        "current": 99175,
+        "goals": [
+          99175
+        ],
+        "counts": {
+          "valid": 15
+        },
+        "winner": {
+          "id": 5,
+          "horizon": 2.5,
+          "final_length": 45.3221612054066,
+          "stage": "valid",
+          "cost": 243.548563646409,
+          "cost_terms": {
+            "lateral": 0.137985744538642,
+            "time": 2.49995098161907,
+            "goal": 218.914492707126,
+            "progress": 21.882175788203,
+            "alignment": 7.99793051448136e-07,
+            "centerline": 0.113957625128799
+          }
+        },
+        "longest_valid": {
+          "id": 8,
+          "horizon": 3,
+          "final_length": 58.4737788777436,
+          "stage": "valid",
+          "cost": 721.030697566322,
+          "cost_terms": {
+            "lateral": 0.0349015955412744,
+            "time": 2.99993560151973,
+            "goal": 717.901028130741,
+            "progress": 0,
+            "alignment": 2.26813738605393e-08,
+            "centerline": 0.0948322158379325
+          }
+        }
+      }
+    }
+  }
+]

@@ -2,6 +2,12 @@ hdmap_dynamic_tracker:
   ros__parameters:
     frame_id: map
     target_rate_hz: 20.0
+    ego_motion:
+      maximum_speed_mps: 60.0
+      maximum_vertical_speed_mps: 10.0
+      maximum_yaw_rate_radps: 3.0
+      minimum_frame_dt_s: 0.0001
+      maximum_frame_dt_s: 1.0
     occupancy:
       known_free_radius_m: 80.0
       unknown_probability: -1.0
@@ -14,13 +20,12 @@ hdmap_dynamic_tracker:
       initial_velocity_sigma_mps: 5.0
       minimum_frame_dt_s: 0.0001
     signals:
-      # IONIQ 6 shortest measured 100-0 km/h stop: 35.1 m (~11.0 m/s^2).
-      design_deceleration_mps2: 11.0
-      # Yellow-light stop/go decision. This matches the current Control package's
-      # maximum commanded deceleration; replace with VTD IONIQ 6 measurements.
+      # Independent braking contract: both signal decisions and caps assume at
+      # most 3 m/s^2. No other package configuration is read at runtime.
+      design_deceleration_mps2: 3.0
       yellow_decision_deceleration_mps2: 3.0
       braking_distance_factor: 1.0
-      latency_budget_s: 0.0
+      latency_budget_s: 0.25
       # Cells covering this distance before the stop line receive a 0 m/s cap.
       stop_margin_m: 7.0
       hold_speed_mps: 0.2

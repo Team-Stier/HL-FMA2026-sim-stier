@@ -1,0 +1,236 @@
+{
+  "first_invalid": {
+    "sample_count": 66,
+    "max_outside_fraction": 2.23820961764432e-13,
+    "poses_outside_over_1pct": 0,
+    "any_corner_outside": false,
+    "any_rear_axle_outside": false,
+    "first_pose": {
+      "t": 1789070803.00038,
+      "x": 1121.74755859375,
+      "y": 421.602569580078,
+      "z": 49.628101348877,
+      "heading": 1.55762898921967,
+      "speed": 4.50156784057617,
+      "body_area": 9.14332800000011,
+      "road_overlap_area": 9.14332800000098,
+      "outside_fraction": -9.54791801177635e-14,
+      "rear_on_road": true,
+      "corners_on_road": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "lanes": [
+        451363,
+        452187,
+        451993
+      ]
+    },
+    "max_outside_pose": {
+      "t": 1789070808.48103,
+      "x": 1120.91174316406,
+      "y": 436.801116943359,
+      "z": 49.6260871887207,
+      "heading": 1.84456670284271,
+      "speed": 3.00068187713623,
+      "body_area": 9.14332800000011,
+      "road_overlap_area": 9.14332799999806,
+      "outside_fraction": 2.23820961764432e-13,
+      "rear_on_road": true,
+      "corners_on_road": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "lanes": [
+        451363,
+        452050,
+        398540,
+        451993,
+        398690
+      ]
+    },
+    "last_pose": {
+      "t": 1789070817.84023,
+      "x": 1120.40588378906,
+      "y": 438.596130371094,
+      "z": 49.6309814453125,
+      "heading": 1.8453893661499,
+      "speed": 0,
+      "body_area": 9.14332800000011,
+      "road_overlap_area": 9.14332800000025,
+      "outside_fraction": -1.55431223447522e-14,
+      "rear_on_road": true,
+      "corners_on_road": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "lanes": [
+        398540,
+        398690
+      ]
+    }
+  },
+  "after_intersection_relocation": {
+    "sample_count": 175,
+    "max_outside_fraction": 0.161762164461795,
+    "poses_outside_over_1pct": 7,
+    "any_corner_outside": true,
+    "any_rear_axle_outside": true,
+    "first_pose": {
+      "t": 1789071055.04217,
+      "x": 1120.68725585938,
+      "y": 417.350341796875,
+      "z": 49.6301307678223,
+      "heading": 1.5774838924408,
+      "speed": 4.05611944198608,
+      "body_area": 9.14332800000011,
+      "road_overlap_area": 9.14332799999897,
+      "outside_fraction": 1.24344978758018e-13,
+      "rear_on_road": true,
+      "corners_on_road": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "lanes": [
+        451768,
+        451363,
+        452187
+      ]
+    },
+    "max_outside_pose": {
+      "t": 1789071063.47966,
+      "x": 711.852722167969,
+      "y": -267.927398681641,
+      "z": 46.904956817627,
+      "heading": -1.7813538312912,
+      "speed": 5.09319305419922,
+      "body_area": 9.14332800000011,
+      "road_overlap_area": 7.66428347233595,
+      "outside_fraction": 0.161762164461795,
+      "rear_on_road": true,
+      "corners_on_road": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "lanes": [
+        12872,
+        12627
+      ]
+    },
+    "last_pose": {
+      "t": 1789071094.96209,
+      "x": 711.088500976562,
+      "y": -272.082824707031,
+      "z": 46.8928604125977,
+      "heading": -1.75093448162079,
+      "speed": 0,
+      "body_area": 9.14332800000057,
+      "road_overlap_area": 9.14332800000079,
+      "outside_fraction": -2.48689957516035e-14,
+      "rear_on_road": true,
+      "corners_on_road": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "lanes": [
+        12872,
+        12995
+      ]
+    }
+  },
+  "natural_red_stop": {
+    "sample_count": 1,
+    "max_outside_fraction": 0,
+    "poses_outside_over_1pct": 0,
+    "any_corner_outside": false,
+    "any_rear_axle_outside": false,
+    "first_pose": {
+      "t": 0,
+      "x": 601.33795,
+      "y": -119.50121,
+      "z": 45.2575,
+      "heading": 0.76112,
+      "speed": 0,
+      "body_area": 9.14332799999988,
+      "road_overlap_area": 9.14332800000008,
+      "outside_fraction": -2.17603712826531e-14,
+      "rear_on_road": true,
+      "corners_on_road": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "lanes": [
+        34407,
+        34191
+      ]
+    },
+    "max_outside_pose": {
+      "t": 0,
+      "x": 601.33795,
+      "y": -119.50121,
+      "z": 45.2575,
+      "heading": 0.76112,
+      "speed": 0,
+      "body_area": 9.14332799999988,
+      "road_overlap_area": 9.14332800000008,
+      "outside_fraction": -2.17603712826531e-14,
+      "rear_on_road": true,
+      "corners_on_road": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "lanes": [
+        34407,
+        34191
+      ]
+    },
+    "last_pose": {
+      "t": 0,
+      "x": 601.33795,
+      "y": -119.50121,
+      "z": 45.2575,
+      "heading": 0.76112,
+      "speed": 0,
+      "body_area": 9.14332799999988,
+      "road_overlap_area": 9.14332800000008,
+      "outside_fraction": -2.17603712826531e-14,
+      "rear_on_road": true,
+      "corners_on_road": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "lanes": [
+        34407,
+        34191
+      ]
+    }
+  },
+  "independent_relocation_gap_grid": {
+    "outside_points": 518,
+    "sample_points": 3200,
+    "outside_fraction": 0.161875,
+    "lane_ids": [
+      12872,
+      12627
+    ],
+    "interpretation": "Uncovered interior area between native drivable polygons; all four corners and rear axle remain covered. Physical sidewalk or map seam not distinguished."
+  }
+}

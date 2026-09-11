@@ -42,6 +42,7 @@ double approach(double value, double target, double maximum_change) {
 struct TimedPose {
     double stamp_seconds{0.0};
     Pose2 pose;
+    double z_m{};
 };
 
 class MpcControlNode : public rclcpp::Node {
@@ -102,6 +103,9 @@ private:
         capture_pose_tolerance_s_ = declare_parameter(
             "capture_pose_tolerance_s", 0.10);
         respawn_jump_m_ = declare_parameter("respawn_jump_m", 5.0);
+        maximum_height_difference_m_ = declare_parameter("maximum_height_difference_m", 2.0);
+        reference_config_.maximum_projection_distance_m = declare_parameter(
+            "maximum_projection_distance_m", 2.0);
         cruise_speed_mps_ = declare_parameter("configured_cruise_speed_mps", 8.0);
         speed_policy_config_.limit_margin_mps = declare_parameter(
             "speed_limit_margin_mps", 0.5);
@@ -150,7 +154,16 @@ private:
         longitudinal_config_.kd = declare_parameter("longitudinal_kd", 0.0);
         longitudinal_config_.integral_limit = declare_parameter(
             "longitudinal_integral_limit", 3.0);
-        if (!(ego_timeout_s_ > 0.0) || !(path_timeout_s_ > 0.0) ||
+        if (!std::isfinite(mpc_config_.dt_seconds) || !(mpc_config_.dt_seconds > 0.0) ||
+            !std::isfinite(static_cast<float>(mpc_config_.maximum_steering_rad)) ||
+            !(mpc_config_.maximum_steering_rad > 0.0) ||
+            !std::isfinite(mpc_config_.maximum_steering_rate_radps) ||
+            !(mpc_config_.maximum_steering_rate_radps > 0.0) ||
+            !std::isfinite(static_cast<float>(longitudinal_config_.maximum_acceleration_mps2)) ||
+            !std::isfinite(static_cast<float>(longitudinal_config_.maximum_deceleration_mps2)) ||
+            !std::isfinite(maximum_height_difference_m_) ||
+            !(maximum_height_difference_m_ > 0.0) ||
+            !(ego_timeout_s_ > 0.0) || !(path_timeout_s_ > 0.0) ||
             !(speed_limit_timeout_s_ > 0.0) ||
             !(capture_pose_tolerance_s_ >= 0.0) || !(respawn_jump_m_ > 0.0) ||
             !(overspeed_tolerance_mps_ >= overspeed_release_tolerance_mps_) ||
@@ -159,7 +172,7 @@ private:
         }
     }
 
-    bool findCapturePose(double stamp, Pose2 *pose) const {
+    bool findCapturePose(double stamp, TimedPose *pose) const {
         if (ego_history_.empty() || !(stamp > 0.0)) {
             return false;
         }
@@ -175,7 +188,7 @@ private:
         if (error > capture_pose_tolerance_s_) {
             return false;
         }
-        *pose = best->pose;
+        *pose = *best;
         return true;
     }
 
@@ -183,24 +196,34 @@ private:
         const double stamp = stampSeconds(message->header.stamp);
         const Pose2 pose{message->x, message->y, message->heading};
         const bool finite = std::isfinite(pose.x) && std::isfinite(pose.y) &&
-                            std::isfinite(pose.yaw) &&
+                            std::isfinite(pose.yaw) && std::isfinite(message->z) &&
                             std::isfinite(message->speed) && message->speed >= 0.0;
-        if (message->header.frame_id != "map" || !finite || !(stamp > 0.0)) {
+        if (stamp > 0.0 && stamp <= ego_stamp_seconds_) return;
+        if (message->header.frame_id != "map" || !finite || !(stamp > 0.0) ||
+            stamp > now().seconds()) {
             have_ego_ = false;
             return;
         }
-        if (have_ego_ &&
-            (stamp < ego_stamp_seconds_ ||
-             std::hypot(pose.x - ego_pose_.x, pose.y - ego_pose_.y) >
-                 respawn_jump_m_)) {
+        // Replayed/duplicate samples never refresh receipt freshness or undo a reset.
+        const double source_gap = stamp - ego_stamp_seconds_;
+        if (ego_stamp_seconds_ > 0.0 &&
+            (source_gap > ego_timeout_s_ ||
+             steadySeconds() - ego_received_steady_seconds_ > ego_timeout_s_ ||
+             std::hypot(pose.x - ego_pose_.x, pose.y - ego_pose_.y) > respawn_jump_m_ ||
+             std::abs(message->z - ego_z_m_) > maximum_height_difference_m_ ||
+             (source_gap <= ego_timeout_s_ &&
+              std::abs(normalizeAngle(pose.yaw - ego_pose_.yaw)) >
+                  reference_config_.heading_rejection_rad * 0.5))) {
             resetState("ego discontinuity");
+            reset_cutoff_stamp_seconds_ = stamp;
         }
         ego_pose_ = pose;
+        ego_z_m_ = message->z;
         speed_mps_ = message->speed;
         ego_stamp_seconds_ = stamp;
         ego_received_steady_seconds_ = steadySeconds();
         have_ego_ = true;
-        ego_history_.push_back({stamp, pose});
+        ego_history_.push_back({stamp, pose, message->z});
         while (ego_history_.size() > 100) {
             ego_history_.pop_front();
         }
@@ -208,30 +231,54 @@ private:
 
     void onPath(const nav_msgs::msg::Path::SharedPtr message) {
         const double stamp = stampSeconds(message->header.stamp);
-        if (message->header.frame_id != "base_link" || !(stamp > 0.0)) {
+        if (stamp > 0.0 && (stamp < reset_cutoff_stamp_seconds_ ||
+                           stamp < last_path_message_stamp_seconds_)) return;
+        if (message->header.frame_id != "base_link" || !(stamp > 0.0) ||
+            stamp > now().seconds()) {
             have_path_ = false;
             return;
         }
-        PathSnapshot candidate;
-        candidate.stamp_seconds = stamp;
-        if (!findCapturePose(stamp, &candidate.capture_pose_map)) {
+        if (stamp < reset_cutoff_stamp_seconds_ || stamp < last_path_message_stamp_seconds_ ||
+            (stamp == last_path_message_stamp_seconds_ && have_path_ && !message->poses.empty())) {
+            return;
+        }
+        last_path_message_stamp_seconds_ = stamp;
+        // Empty or rejected new paths immediately revoke the previous path.
+        have_path_ = false;
+        if (message->poses.empty()) return;
+        TimedPose capture;
+        if (!findCapturePose(stamp, &capture)) {
             RCLCPP_WARN_THROTTLE(get_logger(), *get_clock(), 1000,
                                  "Path rejected: no Ego pose at path capture stamp");
             return;
         }
+        PathSnapshot candidate;
+        candidate.stamp_seconds = stamp;
+        candidate.capture_pose_map = capture.pose;
         candidate.points_at_capture.reserve(message->poses.size());
         for (const auto &pose : message->poses) {
-            if ((!pose.header.frame_id.empty() &&
-                 pose.header.frame_id != "base_link") ||
+            const auto &position = pose.pose.position;
+            const auto &q = pose.pose.orientation;
+            const double norm = q.x * q.x + q.y * q.y + q.z * q.z + q.w * q.w;
+            if ((!pose.header.frame_id.empty() && pose.header.frame_id != "base_link") ||
                 (!(pose.header.stamp.sec == 0 && pose.header.stamp.nanosec == 0) &&
-                 std::abs(stampSeconds(pose.header.stamp) - stamp) > 1e-6)) {
-                have_path_ = false;
+                 std::abs(stampSeconds(pose.header.stamp) - stamp) > 1e-6) ||
+                !std::isfinite(position.x) || !std::isfinite(position.y) ||
+                !std::isfinite(position.z) || !std::isfinite(norm) ||
+                std::abs(norm - 1.0) > 1e-3) {
                 return;
             }
-            candidate.points_at_capture.push_back(
-                {pose.pose.position.x, pose.pose.position.y});
+            candidate.points_at_capture.push_back({position.x, position.y});
+        }
+        if (message->poses.size() == 1) {
+            const auto &pose = message->poses.front().pose;
+            if (std::hypot(pose.position.x, pose.position.y) >
+                    reference_config_.duplicate_epsilon_m ||
+                std::abs(pose.orientation.x) + std::abs(pose.orientation.y) +
+                    std::abs(pose.orientation.z) > 1e-6) return;
         }
         path_ = std::move(candidate);
+        path_capture_z_m_ = capture.z_m;
         path_stamp_seconds_ = stamp;
         path_received_steady_seconds_ = steadySeconds();
         have_path_ = true;
@@ -250,7 +297,8 @@ private:
 
     void resetState(const std::string &reason) {
         warm_start_.clear();
-        previous_steering_rad_ = 0.0;
+        ego_history_.clear();
+        have_speed_limit_ = false;
         longitudinal_->reset();
         reference_builder_->reset();
         have_path_ = false;
@@ -263,6 +311,26 @@ private:
     void publishCommand(double steering, double acceleration,
                         const std::string &state, bool solver_success,
                         double solve_time_ms = 0.0) {
+        const double steady_now = steadySeconds();
+        const double dt = last_command_steady_seconds_ > 0.0
+            ? std::clamp(steady_now - last_command_steady_seconds_,
+                         0.0, mpc_config_.dt_seconds)
+            : mpc_config_.dt_seconds;
+        const bool finite = std::isfinite(steering) && std::isfinite(acceleration);
+        if (!finite) {
+            steering = 0.0;
+            acceleration = -longitudinal_config_.maximum_deceleration_mps2;
+            warm_start_.clear();
+            longitudinal_->reset();
+            stopping_ = true;
+        }
+        steering = approach(last_published_steering_rad_,
+            std::clamp(steering, -mpc_config_.maximum_steering_rad,
+                       mpc_config_.maximum_steering_rad),
+            mpc_config_.maximum_steering_rate_radps * dt);
+        acceleration = std::clamp(acceleration,
+            -longitudinal_config_.maximum_deceleration_mps2,
+            longitudinal_config_.maximum_acceleration_mps2);
         interfaces::msg::ControlCommand command;
         command.header.stamp = now();
         command.header.frame_id = "base_link";
@@ -270,12 +338,15 @@ private:
         command.target_accel = static_cast<float>(acceleration);
         command.turn_signal = 0;
         candidate_publisher_->publish(command);
-        if (output_enabled_) {
-            command_publisher_->publish(command);
-        }
+        if (output_enabled_) command_publisher_->publish(command);
+        longitudinal_->setAppliedAcceleration(command.target_accel);
+        last_published_steering_rad_ = command.steering;
+        previous_steering_rad_ = command.steering;
+        last_command_steady_seconds_ = steady_now;
         std_msgs::msg::String status;
         std::ostringstream stream;
-        stream << "state=" << state << " solver_success=" << solver_success
+        stream << "state=" << (finite ? state : "STOP_NONFINITE_COMMAND")
+               << " solver_success=" << (finite && solver_success)
                << " solve_ms=" << solve_time_ms
                << " output_enabled=" << output_enabled_
                << " reset_detected=" << reset_detected_;
@@ -284,34 +355,14 @@ private:
         reset_detected_ = false;
     }
 
-    void publishStop(const std::string &reason) {
-        previous_steering_rad_ = approach(
-            previous_steering_rad_, 0.0,
-            mpc_config_.maximum_steering_rate_radps * mpc_config_.dt_seconds);
+    void publishStop(const std::string &reason, bool immediate = true) {
         warm_start_.clear();
-        longitudinal_->reset();
-        publishCommand(previous_steering_rad_,
-                       -longitudinal_config_.maximum_deceleration_mps2,
-                       reason, false);
-    }
-
-    void publishFallback(const std::string &reason,
-                         bool maximum_steering = false) {
-        const double steering_target = maximum_steering && previous_steering_rad_ != 0.0
-            ? std::copysign(mpc_config_.maximum_steering_rad, previous_steering_rad_)
-            : 0.0;
-        previous_steering_rad_ = maximum_steering
-            ? steering_target
-            : approach(previous_steering_rad_, steering_target,
-                       mpc_config_.maximum_steering_rate_radps * mpc_config_.dt_seconds);
-        warm_start_.clear();
-        // ponytail: simulator fallback is capped at 8 m/s; restore fail-safe braking
-        // before using this controller outside the simulator.
-        const double fallback_speed = std::min(
-            {cruise_speed_mps_, 8.0, have_speed_limit_ ? speed_limit_mps_ : 8.0});
-        const double acceleration = longitudinal_->update(
-            fallback_speed, speed_mps_, mpc_config_.dt_seconds);
-        publishCommand(previous_steering_rad_, acceleration, reason, false);
+        if (!stopping_) longitudinal_->reset();
+        stopping_ = true;
+        const double acceleration = immediate || speed_mps_ < 0.1
+            ? -longitudinal_config_.maximum_deceleration_mps2
+            : std::min(0.0, longitudinal_->update(0.0, speed_mps_, mpc_config_.dt_seconds));
+        publishCommand(0.0, acceleration, reason, false);
     }
 
     void onTimer() {
@@ -320,7 +371,7 @@ private:
         if (!have_ego_ || !(ros_now - ego_stamp_seconds_ >= 0.0) ||
             ros_now - ego_stamp_seconds_ > ego_timeout_s_ ||
             steady_now - ego_received_steady_seconds_ > ego_timeout_s_) {
-            publishFallback("FORWARD_STALE_EGO");
+            publishStop("STOP_STALE_EGO");
             return;
         }
         if (!have_path_ || require_new_path_ ||
@@ -333,15 +384,33 @@ private:
         if (!have_speed_limit_ ||
             steady_now - speed_limit_received_steady_seconds_ >
                 speed_limit_timeout_s_) {
-            publishFallback("FORWARD_STALE_SPEED_LIMIT");
+            publishStop("STOP_STALE_SPEED_LIMIT");
             return;
         }
 
+        if (speed_limit_mps_ == 0.0) {
+            publishStop(speed_mps_ < 0.1 ? "HOLD_SPEED_LIMIT" : "STOP_SPEED_LIMIT");
+            return;
+        }
+        if (std::abs(ego_z_m_ - path_capture_z_m_) > maximum_height_difference_m_) {
+            have_path_ = false;
+            publishStop("STOP_PATH_HEIGHT_MISMATCH");
+            return;
+        }
         const PreparedReference reference = reference_builder_->prepare(
             path_, ego_pose_, speed_mps_, mpc_config_.dt_seconds,
             mpc_config_.horizon_steps);
         if (!reference.valid) {
-            publishFallback("FORWARD_INVALID_PATH:" + reference.error, true);
+            publishStop("STOP_INVALID_PATH:" + reference.error);
+            return;
+        }
+        if (reference.stop_only) {
+            const double stopping_distance = speed_mps_ * speed_mps_ /
+                (2.0 * longitudinal_config_.maximum_deceleration_mps2);
+            const bool immediate = reference.hold_requested || stopping_distance >
+                std::max(0.0, reference.remaining_length_m - speed_policy_config_.path_end_buffer_m);
+            publishStop(reference.hold_requested
+                ? (speed_mps_ < 0.1 ? "HOLD" : "STOP_REQUESTED") : "STOP_SHORT_PATH", immediate);
             return;
         }
         const bool warm_start_valid = !warm_start_.empty() &&
@@ -351,7 +420,7 @@ private:
             reference.curvature, previous_steering_rad_,
             warm_start_valid ? &warm_start_ : nullptr);
         if (!lateral.success) {
-            publishFallback("FORWARD_MPC_FAILURE:" + lateral.reason);
+            publishStop("STOP_MPC_FAILURE:" + lateral.reason);
             return;
         }
 
@@ -365,7 +434,7 @@ private:
             speed_policy_config_, cruise_speed_mps_, speed_limit_mps_,
             maximum_curvature, reference.remaining_length_m, requested_preview);
         if (!speed.valid) {
-            publishFallback("FORWARD_SPEED_POLICY_FAILURE:" + speed.error);
+            publishStop("STOP_SPEED_POLICY_FAILURE:" + speed.error);
             return;
         }
 
@@ -377,13 +446,17 @@ private:
                                      overspeed_release_tolerance_mps_) {
             overspeed_override_ = false;
         }
+        if (speed.target_speed_mps == 0.0 && speed_mps_ < 0.1) {
+            publishStop("HOLD_PATH_END");
+            return;
+        }
+        stopping_ = false;
         double acceleration = longitudinal_->update(
             speed.target_speed_mps, speed_mps_, mpc_config_.dt_seconds);
         if (overspeed_override_) {
             acceleration = -longitudinal_config_.maximum_deceleration_mps2;
         }
 
-        previous_steering_rad_ = lateral.steering_rad;
         warm_start_ = lateral.solution;
         if (warm_start_.size() > 1) {
             std::rotate(warm_start_.begin(), warm_start_.begin() + 1,
@@ -391,7 +464,7 @@ private:
             warm_start_.back() = warm_start_[warm_start_.size() - 2];
         }
         last_solved_stamp_seconds_ = path_stamp_seconds_;
-        publishCommand(previous_steering_rad_, acceleration,
+        publishCommand(lateral.steering_rad, acceleration,
                        speed.short_path_limited ? "ACTIVE_SHORT_PATH" : "ACTIVE",
                        true, lateral.solve_time_ms);
     }
@@ -410,6 +483,7 @@ private:
     double speed_limit_timeout_s_{0.25};
     double capture_pose_tolerance_s_{0.10};
     double respawn_jump_m_{5.0};
+    double maximum_height_difference_m_{2.0};
     double cruise_speed_mps_{8.0};
     double overspeed_tolerance_mps_{0.2};
     double overspeed_release_tolerance_mps_{0.1};
@@ -431,6 +505,10 @@ private:
     PathSnapshot path_;
     Pose2 ego_pose_;
     std::vector<double> warm_start_;
+    double ego_z_m_{0.0};
+    double path_capture_z_m_{0.0};
+    double reset_cutoff_stamp_seconds_{0.0};
+    double last_path_message_stamp_seconds_{0.0};
     double ego_stamp_seconds_{0.0};
     double path_stamp_seconds_{0.0};
     double last_solved_stamp_seconds_{0.0};
@@ -440,6 +518,9 @@ private:
     double speed_mps_{0.0};
     double speed_limit_mps_{0.0};
     double previous_steering_rad_{0.0};
+    double last_published_steering_rad_{0.0};
+    double last_command_steady_seconds_{0.0};
+    bool stopping_{false};
     bool have_ego_{false};
     bool have_path_{false};
     bool have_speed_limit_{false};

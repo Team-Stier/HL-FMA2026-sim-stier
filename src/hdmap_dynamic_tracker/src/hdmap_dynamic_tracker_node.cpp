@@ -110,6 +110,17 @@ public:
           ego_speed_estimator_() {
         frame_id_ = declare_parameter<std::string>("frame_id", "map");
         target_rate_hz_ = declare_parameter<double>("target_rate_hz", 20.0);
+        EgoMotionLimits motion_limits;
+        motion_limits.maximum_speed_mps = declare_parameter<double>("ego_motion.maximum_speed_mps", 60.0);
+        motion_limits.maximum_vertical_speed_mps =
+            declare_parameter<double>("ego_motion.maximum_vertical_speed_mps", 10.0);
+        motion_limits.maximum_yaw_rate_radps =
+            declare_parameter<double>("ego_motion.maximum_yaw_rate_radps", 3.0);
+        motion_limits.minimum_frame_dt_s =
+            declare_parameter<double>("ego_motion.minimum_frame_dt_s", 1.0e-4);
+        motion_limits.maximum_frame_dt_s =
+            declare_parameter<double>("ego_motion.maximum_frame_dt_s", 1.0);
+        ego_speed_estimator_ = EgoSpeedEstimator(motion_limits);
         unknown_probability_ = declare_parameter<double>("occupancy.unknown_probability", -1.0);
         known_free_radius_m_ = declare_parameter<double>("occupancy.known_free_radius_m", 0.0);
         uncertainty_sigma_multiplier_ =
@@ -141,7 +152,7 @@ public:
         predictor_ = makeEkfPredictor(predictor_config);
 
         ramp_template_.design_deceleration_mps2 =
-            declare_parameter<double>("signals.design_deceleration_mps2", 2.0);
+            declare_parameter<double>("signals.design_deceleration_mps2", 3.0);
         ramp_template_.braking_distance_factor =
             declare_parameter<double>("signals.braking_distance_factor", 1.0);
         ramp_template_.latency_budget_s =
@@ -282,11 +293,11 @@ private:
         for (const float static_cap : static_speed_caps_) {
             StopRampParameters ramp = ramp_template_;
             ramp.entry_speed_mps = static_cap;
-            if (!braking_distance_table_.empty()) {
-                ramp.calibrated_braking_distance_m = conservativeBrakingDistance(
-                    static_cap, braking_distance_table_);
+            if (!validStopRamp(ramp, braking_distance_table_)) {
+                throw std::invalid_argument("Signal braking calibration must cover every static speed cap");
             }
-            maximum_ramp_distance = std::max(maximum_ramp_distance, stopRampStartDistance(ramp));
+            maximum_ramp_distance = std::max(maximum_ramp_distance,
+                stopRampStartDistance(ramp, braking_distance_table_));
         }
         std::unordered_map<lanelet::Id, std::unordered_set<hdmap::LaneletId>> rule_lanelets;
         for (const auto& lane : static_map_->laneletMap().laneletLayer) {
@@ -387,16 +398,31 @@ private:
             return;
         }
         const auto key = stampKey(*message);
-        if (key == last_ego_status_stamp_) {
+        // SimBridge stamps are monotone receive times; delayed samples must not
+        // roll the estimator or reset cutoff back to an older frame.
+        if (key <= last_ego_status_stamp_) {
             return;
         }
         last_ego_status_stamp_ = key;
         const auto speed = ego_speed_estimator_.update(
-            stampSeconds(*message), message->x, message->y);
+            stampSeconds(*message), message->x, message->y, message->z, message->heading);
+        std::unique_lock<std::mutex> state_lock(tracker_state_mutex_, std::defer_lock);
         if (speed.history_reset) {
-            std::lock_guard<std::mutex> lock(tracker_state_mutex_);
+            // Keep the reset and its new Ego publication ordered with worker
+            // build/publish. The worker releases snapshot_mutex_ before this lock.
+            state_lock.lock();
+            std::lock_guard<std::mutex> snapshot_lock(snapshot_mutex_);
+            reset_cutoff_stamp_ = key;
+            auto erase_before = [key](auto& values) {
+                values.erase(values.begin(), values.lower_bound(key));
+            };
+            erase_before(ego_messages_);
+            erase_before(object_messages_);
+            erase_before(traffic_light_messages_);
             predictor_->reset();
             signal_state_manager_->reset();
+            RCLCPP_WARN(get_logger(), "Ego discontinuity at stamp %lld: reset speed and tracker history",
+                static_cast<long long>(key));
         }
 
         interfaces::msg::EgoStatus status;
@@ -411,12 +437,7 @@ private:
         ego_status_publisher_->publish(std::move(status));
 
         std::lock_guard<std::mutex> lock(snapshot_mutex_);
-        if (key < last_taken_stamp_) {
-            ego_messages_.clear();
-            object_messages_.clear();
-            traffic_light_messages_.clear();
-            last_taken_stamp_ = 0;
-        } else if (key == last_taken_stamp_) {
+        if (key <= last_taken_stamp_) {
             return;
         }
         ego_messages_[key] = EgoSample{std::move(message), speed.speed_mps};
@@ -429,7 +450,9 @@ private:
             return;
         }
         std::lock_guard<std::mutex> lock(snapshot_mutex_);
-        object_messages_[stampKey(*message)] = std::move(message);
+        const auto key = stampKey(*message);
+        if (key < reset_cutoff_stamp_ || key <= last_taken_stamp_) return;
+        object_messages_[key] = std::move(message);
         pruneSnapshotMap(object_messages_);
     }
 
@@ -439,7 +462,9 @@ private:
             return;
         }
         std::lock_guard<std::mutex> lock(snapshot_mutex_);
-        traffic_light_messages_[stampKey(*message)] = std::move(message);
+        const auto key = stampKey(*message);
+        if (key < reset_cutoff_stamp_ || key <= last_taken_stamp_) return;
+        traffic_light_messages_[key] = std::move(message);
         pruneSnapshotMap(traffic_light_messages_);
     }
 
@@ -704,15 +729,11 @@ private:
             ramp.entry_speed_mps = std::min(
                 decision.decision_speed_mps,
                 static_cast<double>(static_speed_caps_.at(restriction.cell_id)));
-            if (!braking_distance_table_.empty()) {
-                ramp.calibrated_braking_distance_m = conservativeBrakingDistance(
-                    ramp.entry_speed_mps, braking_distance_table_);
-            }
             const double front_bumper_clearance = std::max(
                 0.0, restriction.distance_from_stop_edge_m - rear_axle_to_front_m_);
             auto& cap = speed_caps.at(restriction.cell_id);
             cap = std::min(cap,
-                static_cast<float>(stopRampCap(front_bumper_clearance, ramp)));
+                static_cast<float>(stopRampCap(front_bumper_clearance, ramp, braking_distance_table_)));
         }
     }
 
@@ -723,7 +744,7 @@ private:
         status.occupancy_probability.assign(
             static_speed_caps_.size() * kOccupancyBinCount,
             static_cast<float>(unknown_probability_));
-        std::lock_guard<std::mutex> lock(tracker_state_mutex_);
+        // processLatest owns tracker_state_mutex_ through build and publication.
         updateSignalCaps(status.speed_cap_mps, snapshot);
         updateOccupancy(status.occupancy_probability, stampSeconds(*snapshot.ego),
             *snapshot.ego, *snapshot.objects);
@@ -736,8 +757,14 @@ private:
             return;
         }
         const auto started = std::chrono::steady_clock::now();
-        auto status = buildDynamicStatus(*snapshot);
-        dynamic_status_publisher_->publish(std::move(status));
+        {
+            std::lock_guard<std::mutex> lock(tracker_state_mutex_);
+            // A worker may have taken this snapshot immediately before receiveEgo
+            // reset the predictor. Never rebuild or publish that pre-reset frame.
+            if (snapshot->stamp < reset_cutoff_stamp_) return;
+            auto status = buildDynamicStatus(*snapshot);
+            dynamic_status_publisher_->publish(std::move(status));
+        }
         ++published_snapshots_;
         const auto elapsed = std::chrono::duration<double, std::milli>(
             std::chrono::steady_clock::now() - started).count();
@@ -774,6 +801,8 @@ private:
     std::map<std::int64_t, interfaces::msg::TrafficLight::SharedPtr> traffic_light_messages_;
     std::int64_t last_taken_stamp_ = 0;
     std::int64_t last_ego_status_stamp_ = 0;
+    // Written under both mutexes; readers hold the state or snapshot mutex.
+    std::int64_t reset_cutoff_stamp_ = 0;
 
     std::size_t published_snapshots_ = 0;
 

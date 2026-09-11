@@ -1,0 +1,4670 @@
+{
+  "snapshot_count": 10,
+  "published_paths": 5,
+  "cases": [
+    {
+      "stamp": "1789074489779071688",
+      "t": 1789074489.802416,
+      "ego": {
+        "x": 1438.7322998046875,
+        "y": 1020.03271484375,
+        "z": 51.094337463378906,
+        "heading": -1.5296586751937866,
+        "pitch": -0.056883554905653,
+        "roll": 9.727944416226819e-05,
+        "speed": 10.853851318359375
+      },
+      "case": "north_red",
+      "dynamic_source_stamp": 1789074489779071688,
+      "variants": {
+        "baseline": {
+          "current": 445452,
+          "goals": [
+            446279
+          ],
+          "references": [
+            {
+              "kind": "reference",
+              "snapshot": "1789074489779071688",
+              "variant": "baseline",
+              "index": 0,
+              "lanes": [
+                445452,
+                446279
+              ],
+              "length": 68.7201500137521,
+              "initial_s": 26.0303497490205,
+              "remaining": 42.6898002647315,
+              "initial_d": -0.000984770872468341,
+              "heading_error": -0.000994393663644066
+            },
+            {
+              "kind": "reference",
+              "snapshot": "1789074489779071688",
+              "variant": "baseline",
+              "index": 1,
+              "lanes": [
+                445594
+              ],
+              "length": 35.2918165936693,
+              "initial_s": 26.1211652951033,
+              "remaining": 9.17065129856593,
+              "initial_d": -3.14944812783504,
+              "heading_error": -0.000994393665464166
+            },
+            {
+              "kind": "reference",
+              "snapshot": "1789074489779071688",
+              "variant": "baseline",
+              "index": 2,
+              "lanes": [
+                445310
+              ],
+              "length": 35.2090114584087,
+              "initial_s": 26.031132067979,
+              "remaining": 9.17787939042969,
+              "initial_d": 3.45602106105809,
+              "heading_error": 0.00042595959352032
+            }
+          ],
+          "counts": {
+            "kinematic": 24,
+            "velocity": 21
+          },
+          "winner": null,
+          "longest_valid": null,
+          "kinematic_resampling_sensitive_count": 22
+        },
+        "extended_reference_only": {
+          "current": 445452,
+          "goals": [
+            446279
+          ],
+          "references": [
+            {
+              "kind": "reference",
+              "snapshot": "1789074489779071688",
+              "variant": "extended_reference_only",
+              "index": 0,
+              "lanes": [
+                445452,
+                446279,
+                500918
+              ],
+              "length": 174.180535566211,
+              "initial_s": 26.0303497490205,
+              "remaining": 148.15018581719,
+              "initial_d": -0.000984770872468341,
+              "heading_error": -0.000994393663644066
+            },
+            {
+              "kind": "reference",
+              "snapshot": "1789074489779071688",
+              "variant": "extended_reference_only",
+              "index": 1,
+              "lanes": [
+                445594
+              ],
+              "length": 35.2918165936693,
+              "initial_s": 26.1211652951033,
+              "remaining": 9.17065129856593,
+              "initial_d": -3.14944812783504,
+              "heading_error": -0.000994393665464166
+            },
+            {
+              "kind": "reference",
+              "snapshot": "1789074489779071688",
+              "variant": "extended_reference_only",
+              "index": 2,
+              "lanes": [
+                445310
+              ],
+              "length": 35.2090114584087,
+              "initial_s": 26.031132067979,
+              "remaining": 9.17787939042969,
+              "initial_d": 3.45602106105809,
+              "heading_error": 0.00042595959352032
+            }
+          ],
+          "counts": {
+            "kinematic": 24,
+            "velocity": 21
+          },
+          "winner": null,
+          "longest_valid": null,
+          "kinematic_resampling_sensitive_count": 22
+        },
+        "extended_reference_and_allowed": {
+          "current": 445452,
+          "goals": [
+            446279
+          ],
+          "references": [
+            {
+              "kind": "reference",
+              "snapshot": "1789074489779071688",
+              "variant": "extended_reference_and_allowed",
+              "index": 0,
+              "lanes": [
+                445452,
+                446279,
+                500918
+              ],
+              "length": 174.180535566211,
+              "initial_s": 26.0303497490205,
+              "remaining": 148.15018581719,
+              "initial_d": -0.000984770872468341,
+              "heading_error": -0.000994393663644066
+            },
+            {
+              "kind": "reference",
+              "snapshot": "1789074489779071688",
+              "variant": "extended_reference_and_allowed",
+              "index": 1,
+              "lanes": [
+                445594
+              ],
+              "length": 35.2918165936693,
+              "initial_s": 26.1211652951033,
+              "remaining": 9.17065129856593,
+              "initial_d": -3.14944812783504,
+              "heading_error": -0.000994393665464166
+            },
+            {
+              "kind": "reference",
+              "snapshot": "1789074489779071688",
+              "variant": "extended_reference_and_allowed",
+              "index": 2,
+              "lanes": [
+                445310
+              ],
+              "length": 35.2090114584087,
+              "initial_s": 26.031132067979,
+              "remaining": 9.17787939042969,
+              "initial_d": 3.45602106105809,
+              "heading_error": 0.00042595959352032
+            }
+          ],
+          "counts": {
+            "kinematic": 24,
+            "velocity": 21
+          },
+          "winner": null,
+          "longest_valid": null,
+          "kinematic_resampling_sensitive_count": 22
+        },
+        "extended_reference_allowed_forward_goal": {
+          "current": 445452,
+          "goals": [
+            446279
+          ],
+          "references": [
+            {
+              "kind": "reference",
+              "snapshot": "1789074489779071688",
+              "variant": "extended_reference_allowed_forward_goal",
+              "index": 0,
+              "lanes": [
+                445452,
+                446279,
+                500918
+              ],
+              "length": 174.180535566211,
+              "initial_s": 26.0303497490205,
+              "remaining": 148.15018581719,
+              "initial_d": -0.000984770872468341,
+              "heading_error": -0.000994393663644066
+            },
+            {
+              "kind": "reference",
+              "snapshot": "1789074489779071688",
+              "variant": "extended_reference_allowed_forward_goal",
+              "index": 1,
+              "lanes": [
+                445594
+              ],
+              "length": 35.2918165936693,
+              "initial_s": 26.1211652951033,
+              "remaining": 9.17065129856593,
+              "initial_d": -3.14944812783504,
+              "heading_error": -0.000994393665464166
+            },
+            {
+              "kind": "reference",
+              "snapshot": "1789074489779071688",
+              "variant": "extended_reference_allowed_forward_goal",
+              "index": 2,
+              "lanes": [
+                445310
+              ],
+              "length": 35.2090114584087,
+              "initial_s": 26.031132067979,
+              "remaining": 9.17787939042969,
+              "initial_d": 3.45602106105809,
+              "heading_error": 0.00042595959352032
+            }
+          ],
+          "counts": {
+            "kinematic": 24,
+            "velocity": 21
+          },
+          "winner": null,
+          "longest_valid": null,
+          "kinematic_resampling_sensitive_count": 22
+        }
+      },
+      "validation": {
+        "published_path": false,
+        "replayed_winner": -1
+      }
+    },
+    {
+      "stamp": "1789074490299315605",
+      "t": 1789074490.3508852,
+      "ego": {
+        "x": 1438.95703125,
+        "y": 1014.5745849609375,
+        "z": 51.412410736083984,
+        "heading": -1.5296586751937866,
+        "pitch": -0.05182855576276779,
+        "roll": 0.00010394497803645208,
+        "speed": 9.841423988342285
+      },
+      "case": "north_red",
+      "dynamic_source_stamp": 1789074490299315605,
+      "variants": {
+        "baseline": {
+          "current": 445452,
+          "goals": [
+            446279
+          ],
+          "references": [
+            {
+              "kind": "reference",
+              "snapshot": "1789074490299315605",
+              "variant": "baseline",
+              "index": 0,
+              "lanes": [
+                445452,
+                446279
+              ],
+              "length": 68.7201500137521,
+              "initial_s": 31.4931037982346,
+              "remaining": 37.2270462155175,
+              "initial_d": -0.0027537954150321,
+              "heading_error": -0.00111159857791421
+            },
+            {
+              "kind": "reference",
+              "snapshot": "1789074490299315605",
+              "variant": "baseline",
+              "index": 1,
+              "lanes": [
+                445594
+              ],
+              "length": 35.2918165936693,
+              "initial_s": 31.58385994811,
+              "remaining": 3.70795664555925,
+              "initial_d": -3.19672542660742,
+              "heading_error": -0.00111159857791421
+            },
+            {
+              "kind": "reference",
+              "snapshot": "1789074490299315605",
+              "variant": "baseline",
+              "index": 2,
+              "lanes": [
+                445310
+              ],
+              "length": 35.2090114584087,
+              "initial_s": 31.4100018107741,
+              "remaining": 3.79900964763467,
+              "initial_d": 3.52416376210797,
+              "heading_error": 0.0244525559000777
+            }
+          ],
+          "counts": {
+            "kinematic": 6,
+            "valid": 30,
+            "velocity": 9
+          },
+          "winner": {
+            "kind": "candidate",
+            "snapshot": "1789074490299315605",
+            "variant": "baseline",
+            "id": 12,
+            "reference": 0,
+            "horizon": 4,
+            "terminal_nominal_speed": 0,
+            "nominal_end_time": 4,
+            "generation_stop": "horizon",
+            "generated_length": 19.6828555594031,
+            "generated_count": 44,
+            "final_length": 19.6828555594031,
+            "final_count": 44,
+            "stage": "valid",
+            "first_point_gap": 0,
+            "max_curvature_until_reject": 0.00324522311592201,
+            "kinematic_reject_index": 0,
+            "velocity_error": "",
+            "required_initial_speed": 0,
+            "initial_empty_cell_points": 0,
+            "trimmed": false,
+            "collision": {
+              "index": 44,
+              "forbidden": false,
+              "cell": -1,
+              "lane": -1,
+              "bin": -1
+            },
+            "recheck": {
+              "index": 0,
+              "forbidden": false,
+              "cell": -1,
+              "lane": -1,
+              "bin": -1
+            },
+            "collinear_collapsed_kinematic_ok": true,
+            "collinear_collapsed_curvature": 0.00324522311592201,
+            "collinear_collapsed_count": 9,
+            "first_point": [
+              1438.95703125,
+              1014.57458496094
+            ],
+            "cost": 921.291654176147,
+            "cost_terms": {
+              "lateral": 0.00061870209115918,
+              "time": 2.14533934363999,
+              "goal": 0.0158084019008513,
+              "progress": 919.129247032015,
+              "alignment": 1.91331674669725e-05,
+              "centerline": 0.000621563333240365
+            }
+          },
+          "longest_valid": {
+            "kind": "candidate",
+            "snapshot": "1789074490299315605",
+            "variant": "baseline",
+            "id": 12,
+            "reference": 0,
+            "horizon": 4,
+            "terminal_nominal_speed": 0,
+            "nominal_end_time": 4,
+            "generation_stop": "horizon",
+            "generated_length": 19.6828555594031,
+            "generated_count": 44,
+            "final_length": 19.6828555594031,
+            "final_count": 44,
+            "stage": "valid",
+            "first_point_gap": 0,
+            "max_curvature_until_reject": 0.00324522311592201,
+            "kinematic_reject_index": 0,
+            "velocity_error": "",
+            "required_initial_speed": 0,
+            "initial_empty_cell_points": 0,
+            "trimmed": false,
+            "collision": {
+              "index": 44,
+              "forbidden": false,
+              "cell": -1,
+              "lane": -1,
+              "bin": -1
+            },
+            "recheck": {
+              "index": 0,
+              "forbidden": false,
+              "cell": -1,
+              "lane": -1,
+              "bin": -1
+            },
+            "collinear_collapsed_kinematic_ok": true,
+            "collinear_collapsed_curvature": 0.00324522311592201,
+            "collinear_collapsed_count": 9,
+            "first_point": [
+              1438.95703125,
+              1014.57458496094
+            ],
+            "cost": 921.291654176147,
+            "cost_terms": {
+              "lateral": 0.00061870209115918,
+              "time": 2.14533934363999,
+              "goal": 0.0158084019008513,
+              "progress": 919.129247032015,
+              "alignment": 1.91331674669725e-05,
+              "centerline": 0.000621563333240365
+            }
+          },
+          "kinematic_resampling_sensitive_count": 6
+        },
+        "extended_reference_only": {
+          "current": 445452,
+          "goals": [
+            446279
+          ],
+          "references": [
+            {
+              "kind": "reference",
+              "snapshot": "1789074490299315605",
+              "variant": "extended_reference_only",
+              "index": 0,
+              "lanes": [
+                445452,
+                446279,
+                500918
+              ],
+              "length": 174.180535566211,
+              "initial_s": 31.4931037982346,
+              "remaining": 142.687431767976,
+              "initial_d": -0.0027537954150321,
+              "heading_error": -0.00111159857791421
+            },
+            {
+              "kind": "reference",
+              "snapshot": "1789074490299315605",
+              "variant": "extended_reference_only",
+              "index": 1,
+              "lanes": [
+                445594
+              ],
+              "length": 35.2918165936693,
+              "initial_s": 31.58385994811,
+              "remaining": 3.70795664555925,
+              "initial_d": -3.19672542660742,
+              "heading_error": -0.00111159857791421
+            },
+            {
+              "kind": "reference",
+              "snapshot": "1789074490299315605",
+              "variant": "extended_reference_only",
+              "index": 2,
+              "lanes": [
+                445310
+              ],
+              "length": 35.2090114584087,
+              "initial_s": 31.4100018107741,
+              "remaining": 3.79900964763467,
+              "initial_d": 3.52416376210797,
+              "heading_error": 0.0244525559000777
+            }
+          ],
+          "counts": {
+            "kinematic": 6,
+            "valid": 30,
+            "velocity": 9
+          },
+          "winner": {
+            "kind": "candidate",
+            "snapshot": "1789074490299315605",
+            "variant": "extended_reference_only",
+            "id": 12,
+            "reference": 0,
+            "horizon": 4,
+            "terminal_nominal_speed": 0,
+            "nominal_end_time": 4,
+            "generation_stop": "horizon",
+            "generated_length": 19.6828555594031,
+            "generated_count": 44,
+            "final_length": 19.6828555594031,
+            "final_count": 44,
+            "stage": "valid",
+            "first_point_gap": 0,
+            "max_curvature_until_reject": 0.00324522311592201,
+            "kinematic_reject_index": 0,
+            "velocity_error": "",
+            "required_initial_speed": 0,
+            "initial_empty_cell_points": 0,
+            "trimmed": false,
+            "collision": {
+              "index": 44,
+              "forbidden": false,
+              "cell": -1,
+              "lane": -1,
+              "bin": -1
+            },
+            "recheck": {
+              "index": 0,
+              "forbidden": false,
+              "cell": -1,
+              "lane": -1,
+              "bin": -1
+            },
+            "collinear_collapsed_kinematic_ok": true,
+            "collinear_collapsed_curvature": 0.00324522311592201,
+            "collinear_collapsed_count": 9,
+            "first_point": [
+              1438.95703125,
+              1014.57458496094
+            ],
+            "cost": 921.291654176147,
+            "cost_terms": {
+              "lateral": 0.00061870209115918,
+              "time": 2.14533934363999,
+              "goal": 0.0158084019008513,
+              "progress": 919.129247032015,
+              "alignment": 1.91331674669725e-05,
+              "centerline": 0.000621563333240365
+            }
+          },
+          "longest_valid": {
+            "kind": "candidate",
+            "snapshot": "1789074490299315605",
+            "variant": "extended_reference_only",
+            "id": 12,
+            "reference": 0,
+            "horizon": 4,
+            "terminal_nominal_speed": 0,
+            "nominal_end_time": 4,
+            "generation_stop": "horizon",
+            "generated_length": 19.6828555594031,
+            "generated_count": 44,
+            "final_length": 19.6828555594031,
+            "final_count": 44,
+            "stage": "valid",
+            "first_point_gap": 0,
+            "max_curvature_until_reject": 0.00324522311592201,
+            "kinematic_reject_index": 0,
+            "velocity_error": "",
+            "required_initial_speed": 0,
+            "initial_empty_cell_points": 0,
+            "trimmed": false,
+            "collision": {
+              "index": 44,
+              "forbidden": false,
+              "cell": -1,
+              "lane": -1,
+              "bin": -1
+            },
+            "recheck": {
+              "index": 0,
+              "forbidden": false,
+              "cell": -1,
+              "lane": -1,
+              "bin": -1
+            },
+            "collinear_collapsed_kinematic_ok": true,
+            "collinear_collapsed_curvature": 0.00324522311592201,
+            "collinear_collapsed_count": 9,
+            "first_point": [
+              1438.95703125,
+              1014.57458496094
+            ],
+            "cost": 921.291654176147,
+            "cost_terms": {
+              "lateral": 0.00061870209115918,
+              "time": 2.14533934363999,
+              "goal": 0.0158084019008513,
+              "progress": 919.129247032015,
+              "alignment": 1.91331674669725e-05,
+              "centerline": 0.000621563333240365
+            }
+          },
+          "kinematic_resampling_sensitive_count": 6
+        },
+        "extended_reference_and_allowed": {
+          "current": 445452,
+          "goals": [
+            446279
+          ],
+          "references": [
+            {
+              "kind": "reference",
+              "snapshot": "1789074490299315605",
+              "variant": "extended_reference_and_allowed",
+              "index": 0,
+              "lanes": [
+                445452,
+                446279,
+                500918
+              ],
+              "length": 174.180535566211,
+              "initial_s": 31.4931037982346,
+              "remaining": 142.687431767976,
+              "initial_d": -0.0027537954150321,
+              "heading_error": -0.00111159857791421
+            },
+            {
+              "kind": "reference",
+              "snapshot": "1789074490299315605",
+              "variant": "extended_reference_and_allowed",
+              "index": 1,
+              "lanes": [
+                445594
+              ],
+              "length": 35.2918165936693,
+              "initial_s": 31.58385994811,
+              "remaining": 3.70795664555925,
+              "initial_d": -3.19672542660742,
+              "heading_error": -0.00111159857791421
+            },
+            {
+              "kind": "reference",
+              "snapshot": "1789074490299315605",
+              "variant": "extended_reference_and_allowed",
+              "index": 2,
+              "lanes": [
+                445310
+              ],
+              "length": 35.2090114584087,
+              "initial_s": 31.4100018107741,
+              "remaining": 3.79900964763467,
+              "initial_d": 3.52416376210797,
+              "heading_error": 0.0244525559000777
+            }
+          ],
+          "counts": {
+            "kinematic": 6,
+            "valid": 30,
+            "velocity": 9
+          },
+          "winner": {
+            "kind": "candidate",
+            "snapshot": "1789074490299315605",
+            "variant": "extended_reference_and_allowed",
+            "id": 12,
+            "reference": 0,
+            "horizon": 4,
+            "terminal_nominal_speed": 0,
+            "nominal_end_time": 4,
+            "generation_stop": "horizon",
+            "generated_length": 19.6828555594031,
+            "generated_count": 44,
+            "final_length": 19.6828555594031,
+            "final_count": 44,
+            "stage": "valid",
+            "first_point_gap": 0,
+            "max_curvature_until_reject": 0.00324522311592201,
+            "kinematic_reject_index": 0,
+            "velocity_error": "",
+            "required_initial_speed": 0,
+            "initial_empty_cell_points": 0,
+            "trimmed": false,
+            "collision": {
+              "index": 44,
+              "forbidden": false,
+              "cell": -1,
+              "lane": -1,
+              "bin": -1
+            },
+            "recheck": {
+              "index": 0,
+              "forbidden": false,
+              "cell": -1,
+              "lane": -1,
+              "bin": -1
+            },
+            "collinear_collapsed_kinematic_ok": true,
+            "collinear_collapsed_curvature": 0.00324522311592201,
+            "collinear_collapsed_count": 9,
+            "first_point": [
+              1438.95703125,
+              1014.57458496094
+            ],
+            "cost": 921.291654176147,
+            "cost_terms": {
+              "lateral": 0.00061870209115918,
+              "time": 2.14533934363999,
+              "goal": 0.0158084019008513,
+              "progress": 919.129247032015,
+              "alignment": 1.91331674669725e-05,
+              "centerline": 0.000621563333240365
+            }
+          },
+          "longest_valid": {
+            "kind": "candidate",
+            "snapshot": "1789074490299315605",
+            "variant": "extended_reference_and_allowed",
+            "id": 12,
+            "reference": 0,
+            "horizon": 4,
+            "terminal_nominal_speed": 0,
+            "nominal_end_time": 4,
+            "generation_stop": "horizon",
+            "generated_length": 19.6828555594031,
+            "generated_count": 44,
+            "final_length": 19.6828555594031,
+            "final_count": 44,
+            "stage": "valid",
+            "first_point_gap": 0,
+            "max_curvature_until_reject": 0.00324522311592201,
+            "kinematic_reject_index": 0,
+            "velocity_error": "",
+            "required_initial_speed": 0,
+            "initial_empty_cell_points": 0,
+            "trimmed": false,
+            "collision": {
+              "index": 44,
+              "forbidden": false,
+              "cell": -1,
+              "lane": -1,
+              "bin": -1
+            },
+            "recheck": {
+              "index": 0,
+              "forbidden": false,
+              "cell": -1,
+              "lane": -1,
+              "bin": -1
+            },
+            "collinear_collapsed_kinematic_ok": true,
+            "collinear_collapsed_curvature": 0.00324522311592201,
+            "collinear_collapsed_count": 9,
+            "first_point": [
+              1438.95703125,
+              1014.57458496094
+            ],
+            "cost": 921.291654176147,
+            "cost_terms": {
+              "lateral": 0.00061870209115918,
+              "time": 2.14533934363999,
+              "goal": 0.0158084019008513,
+              "progress": 919.129247032015,
+              "alignment": 1.91331674669725e-05,
+              "centerline": 0.000621563333240365
+            }
+          },
+          "kinematic_resampling_sensitive_count": 6
+        },
+        "extended_reference_allowed_forward_goal": {
+          "current": 445452,
+          "goals": [
+            446279
+          ],
+          "references": [
+            {
+              "kind": "reference",
+              "snapshot": "1789074490299315605",
+              "variant": "extended_reference_allowed_forward_goal",
+              "index": 0,
+              "lanes": [
+                445452,
+                446279,
+                500918
+              ],
+              "length": 174.180535566211,
+              "initial_s": 31.4931037982346,
+              "remaining": 142.687431767976,
+              "initial_d": -0.0027537954150321,
+              "heading_error": -0.00111159857791421
+            },
+            {
+              "kind": "reference",
+              "snapshot": "1789074490299315605",
+              "variant": "extended_reference_allowed_forward_goal",
+              "index": 1,
+              "lanes": [
+                445594
+              ],
+              "length": 35.2918165936693,
+              "initial_s": 31.58385994811,
+              "remaining": 3.70795664555925,
+              "initial_d": -3.19672542660742,
+              "heading_error": -0.00111159857791421
+            },
+            {
+              "kind": "reference",
+              "snapshot": "1789074490299315605",
+              "variant": "extended_reference_allowed_forward_goal",
+              "index": 2,
+              "lanes": [
+                445310
+              ],
+              "length": 35.2090114584087,
+              "initial_s": 31.4100018107741,
+              "remaining": 3.79900964763467,
+              "initial_d": 3.52416376210797,
+              "heading_error": 0.0244525559000777
+            }
+          ],
+          "counts": {
+            "kinematic": 6,
+            "valid": 30,
+            "velocity": 9
+          },
+          "winner": {
+            "kind": "candidate",
+            "snapshot": "1789074490299315605",
+            "variant": "extended_reference_allowed_forward_goal",
+            "id": 12,
+            "reference": 0,
+            "horizon": 4,
+            "terminal_nominal_speed": 0,
+            "nominal_end_time": 4,
+            "generation_stop": "horizon",
+            "generated_length": 19.6828555594031,
+            "generated_count": 44,
+            "final_length": 19.6828555594031,
+            "final_count": 44,
+            "stage": "valid",
+            "first_point_gap": 0,
+            "max_curvature_until_reject": 0.00324522311592201,
+            "kinematic_reject_index": 0,
+            "velocity_error": "",
+            "required_initial_speed": 0,
+            "initial_empty_cell_points": 0,
+            "trimmed": false,
+            "collision": {
+              "index": 44,
+              "forbidden": false,
+              "cell": -1,
+              "lane": -1,
+              "bin": -1
+            },
+            "recheck": {
+              "index": 0,
+              "forbidden": false,
+              "cell": -1,
+              "lane": -1,
+              "bin": -1
+            },
+            "collinear_collapsed_kinematic_ok": true,
+            "collinear_collapsed_curvature": 0.00324522311592201,
+            "collinear_collapsed_count": 9,
+            "first_point": [
+              1438.95703125,
+              1014.57458496094
+            ],
+            "cost": 10112.4432994881,
+            "cost_terms": {
+              "lateral": 0.00061870209115918,
+              "time": 2.14533934363999,
+              "goal": 9191.1672181449,
+              "progress": 919.129247032015,
+              "alignment": 0.00025470209290817,
+              "centerline": 0.000621563333240365
+            }
+          },
+          "longest_valid": {
+            "kind": "candidate",
+            "snapshot": "1789074490299315605",
+            "variant": "extended_reference_allowed_forward_goal",
+            "id": 12,
+            "reference": 0,
+            "horizon": 4,
+            "terminal_nominal_speed": 0,
+            "nominal_end_time": 4,
+            "generation_stop": "horizon",
+            "generated_length": 19.6828555594031,
+            "generated_count": 44,
+            "final_length": 19.6828555594031,
+            "final_count": 44,
+            "stage": "valid",
+            "first_point_gap": 0,
+            "max_curvature_until_reject": 0.00324522311592201,
+            "kinematic_reject_index": 0,
+            "velocity_error": "",
+            "required_initial_speed": 0,
+            "initial_empty_cell_points": 0,
+            "trimmed": false,
+            "collision": {
+              "index": 44,
+              "forbidden": false,
+              "cell": -1,
+              "lane": -1,
+              "bin": -1
+            },
+            "recheck": {
+              "index": 0,
+              "forbidden": false,
+              "cell": -1,
+              "lane": -1,
+              "bin": -1
+            },
+            "collinear_collapsed_kinematic_ok": true,
+            "collinear_collapsed_curvature": 0.00324522311592201,
+            "collinear_collapsed_count": 9,
+            "first_point": [
+              1438.95703125,
+              1014.57458496094
+            ],
+            "cost": 10112.4432994881,
+            "cost_terms": {
+              "lateral": 0.00061870209115918,
+              "time": 2.14533934363999,
+              "goal": 9191.1672181449,
+              "progress": 919.129247032015,
+              "alignment": 0.00025470209290817,
+              "centerline": 0.000621563333240365
+            }
+          },
+          "kinematic_resampling_sensitive_count": 6
+        }
+      },
+      "validation": {
+        "published_path": true,
+        "replayed_winner": 12,
+        "actual_point_count": 44,
+        "replayed_point_count": 44,
+        "max_point_error_m": 1.0929857908095433e-07,
+        "live_valid_count": 30,
+        "replayed_valid_count": 30,
+        "live_selected_index": 5,
+        "replayed_selected_index": 5,
+        "max_valid_length_error_m": 8.416992898219178e-07
+      }
+    },
+    {
+      "stamp": "1789074491019052099",
+      "t": 1789074491.0611858,
+      "ego": {
+        "x": 1439.2232666015625,
+        "y": 1007.9300537109375,
+        "z": 51.78339767456055,
+        "heading": -1.5360139608383179,
+        "pitch": -0.05664984509348869,
+        "roll": 0.00022477125457953662,
+        "speed": 9.044195175170898
+      },
+      "case": "north_red",
+      "dynamic_source_stamp": 1789074491019052099,
+      "variants": {
+        "baseline": {
+          "current": 446279,
+          "goals": [
+            500918
+          ],
+          "references": [
+            {
+              "kind": "reference",
+              "snapshot": "1789074491019052099",
+              "variant": "baseline",
+              "index": 0,
+              "lanes": [
+                446279,
+                500918
+              ],
+              "length": 138.979424984033,
+              "initial_s": 2.941839539964,
+              "remaining": 136.037585444069,
+              "initial_d": -0.0152292075594857,
+              "heading_error": -0.00761618012591958
+            },
+            {
+              "kind": "reference",
+              "snapshot": "1789074491019052099",
+              "variant": "baseline",
+              "index": 1,
+              "lanes": [
+                446415
+              ],
+              "length": 33.5160154910031,
+              "initial_s": 2.94162244613211,
+              "remaining": 30.574393044871,
+              "initial_d": -3.24022920754525,
+              "heading_error": -0.00761618012518395
+            },
+            {
+              "kind": "reference",
+              "snapshot": "1789074491019052099",
+              "variant": "baseline",
+              "index": 2,
+              "lanes": [
+                446143
+              ],
+              "length": 33.5258717850333,
+              "initial_s": 2.9424039721547,
+              "remaining": 30.5834678128786,
+              "initial_d": 3.52865954489128,
+              "heading_error": -0.00761618012591958
+            }
+          ],
+          "counts": {
+            "kinematic": 26,
+            "valid": 3,
+            "velocity": 16
+          },
+          "winner": {
+            "kind": "candidate",
+            "snapshot": "1789074491019052099",
+            "variant": "baseline",
+            "id": 6,
+            "reference": 0,
+            "horizon": 3,
+            "terminal_nominal_speed": 0,
+            "nominal_end_time": 3,
+            "generation_stop": "horizon",
+            "generated_length": 13.5663907039776,
+            "generated_count": 31,
+            "final_length": 13.5663907039776,
+            "final_count": 31,
+            "stage": "valid",
+            "first_point_gap": 0,
+            "max_curvature_until_reject": 0.0332910632300042,
+            "kinematic_reject_index": 0,
+            "velocity_error": "",
+            "required_initial_speed": 0,
+            "initial_empty_cell_points": 0,
+            "trimmed": false,
+            "collision": {
+              "index": 31,
+              "forbidden": false,
+              "cell": -1,
+              "lane": -1,
+              "bin": -1
+            },
+            "recheck": {
+              "index": 0,
+              "forbidden": false,
+              "cell": -1,
+              "lane": -1,
+              "bin": -1
+            },
+            "collinear_collapsed_kinematic_ok": true,
+            "collinear_collapsed_curvature": 0.0189346819294232,
+            "collinear_collapsed_count": 7,
+            "first_point": [
+              1439.22326660156,
+              1007.93005371094
+            ],
+            "cost": 4222.92089473079,
+            "cost_terms": {
+              "lateral": 0.0538247385422994,
+              "time": 1.60053218845865,
+              "goal": 2893.84341386222,
+              "progress": 1327.40788633521,
+              "alignment": 0.000804990016549162,
+              "centerline": 0.0144326163402942
+            }
+          },
+          "longest_valid": {
+            "kind": "candidate",
+            "snapshot": "1789074491019052099",
+            "variant": "baseline",
+            "id": 6,
+            "reference": 0,
+            "horizon": 3,
+            "terminal_nominal_speed": 0,
+            "nominal_end_time": 3,
+            "generation_stop": "horizon",
+            "generated_length": 13.5663907039776,
+            "generated_count": 31,
+            "final_length": 13.5663907039776,
+            "final_count": 31,
+            "stage": "valid",
+            "first_point_gap": 0,
+            "max_curvature_until_reject": 0.0332910632300042,
+            "kinematic_reject_index": 0,
+            "velocity_error": "",
+            "required_initial_speed": 0,
+            "initial_empty_cell_points": 0,
+            "trimmed": false,
+            "collision": {
+              "index": 31,
+              "forbidden": false,
+              "cell": -1,
+              "lane": -1,
+              "bin": -1
+            },
+            "recheck": {
+              "index": 0,
+              "forbidden": false,
+              "cell": -1,
+              "lane": -1,
+              "bin": -1
+            },
+            "collinear_collapsed_kinematic_ok": true,
+            "collinear_collapsed_curvature": 0.0189346819294232,
+            "collinear_collapsed_count": 7,
+            "first_point": [
+              1439.22326660156,
+              1007.93005371094
+            ],
+            "cost": 4222.92089473079,
+            "cost_terms": {
+              "lateral": 0.0538247385422994,
+              "time": 1.60053218845865,
+              "goal": 2893.84341386222,
+              "progress": 1327.40788633521,
+              "alignment": 0.000804990016549162,
+              "centerline": 0.0144326163402942
+            }
+          },
+          "kinematic_resampling_sensitive_count": 17
+        },
+        "extended_reference_only": {
+          "current": 446279,
+          "goals": [
+            500918
+          ],
+          "references": [
+            {
+              "kind": "reference",
+              "snapshot": "1789074491019052099",
+              "variant": "extended_reference_only",
+              "index": 0,
+              "lanes": [
+                446279,
+                500918
+              ],
+              "length": 138.979424984033,
+              "initial_s": 2.941839539964,
+              "remaining": 136.037585444069,
+              "initial_d": -0.0152292075594857,
+              "heading_error": -0.00761618012591958
+            },
+            {
+              "kind": "reference",
+              "snapshot": "1789074491019052099",
+              "variant": "extended_reference_only",
+              "index": 1,
+              "lanes": [
+                446415
+              ],
+              "length": 33.5160154910031,
+              "initial_s": 2.94162244613211,
+              "remaining": 30.574393044871,
+              "initial_d": -3.24022920754525,
+              "heading_error": -0.00761618012518395
+            },
+            {
+              "kind": "reference",
+              "snapshot": "1789074491019052099",
+              "variant": "extended_reference_only",
+              "index": 2,
+              "lanes": [
+                446143
+              ],
+              "length": 33.5258717850333,
+              "initial_s": 2.9424039721547,
+              "remaining": 30.5834678128786,
+              "initial_d": 3.52865954489128,
+              "heading_error": -0.00761618012591958
+            }
+          ],
+          "counts": {
+            "kinematic": 26,
+            "valid": 3,
+            "velocity": 16
+          },
+          "winner": {
+            "kind": "candidate",
+            "snapshot": "1789074491019052099",
+            "variant": "extended_reference_only",
+            "id": 6,
+            "reference": 0,
+            "horizon": 3,
+            "terminal_nominal_speed": 0,
+            "nominal_end_time": 3,
+            "generation_stop": "horizon",
+            "generated_length": 13.5663907039776,
+            "generated_count": 31,
+            "final_length": 13.5663907039776,
+            "final_count": 31,
+            "stage": "valid",
+            "first_point_gap": 0,
+            "max_curvature_until_reject": 0.0332910632300042,
+            "kinematic_reject_index": 0,
+            "velocity_error": "",
+            "required_initial_speed": 0,
+            "initial_empty_cell_points": 0,
+            "trimmed": false,
+            "collision": {
+              "index": 31,
+              "forbidden": false,
+              "cell": -1,
+              "lane": -1,
+              "bin": -1
+            },
+            "recheck": {
+              "index": 0,
+              "forbidden": false,
+              "cell": -1,
+              "lane": -1,
+              "bin": -1
+            },
+            "collinear_collapsed_kinematic_ok": true,
+            "collinear_collapsed_curvature": 0.0189346819294232,
+            "collinear_collapsed_count": 7,
+            "first_point": [
+              1439.22326660156,
+              1007.93005371094
+            ],
+            "cost": 4222.92089473079,
+            "cost_terms": {
+              "lateral": 0.0538247385422994,
+              "time": 1.60053218845865,
+              "goal": 2893.84341386222,
+              "progress": 1327.40788633521,
+              "alignment": 0.000804990016549162,
+              "centerline": 0.0144326163402942
+            }
+          },
+          "longest_valid": {
+            "kind": "candidate",
+            "snapshot": "1789074491019052099",
+            "variant": "extended_reference_only",
+            "id": 6,
+            "reference": 0,
+            "horizon": 3,
+            "terminal_nominal_speed": 0,
+            "nominal_end_time": 3,
+            "generation_stop": "horizon",
+            "generated_length": 13.5663907039776,
+            "generated_count": 31,
+            "final_length": 13.5663907039776,
+            "final_count": 31,
+            "stage": "valid",
+            "first_point_gap": 0,
+            "max_curvature_until_reject": 0.0332910632300042,
+            "kinematic_reject_index": 0,
+            "velocity_error": "",
+            "required_initial_speed": 0,
+            "initial_empty_cell_points": 0,
+            "trimmed": false,
+            "collision": {
+              "index": 31,
+              "forbidden": false,
+              "cell": -1,
+              "lane": -1,
+              "bin": -1
+            },
+            "recheck": {
+              "index": 0,
+              "forbidden": false,
+              "cell": -1,
+              "lane": -1,
+              "bin": -1
+            },
+            "collinear_collapsed_kinematic_ok": true,
+            "collinear_collapsed_curvature": 0.0189346819294232,
+            "collinear_collapsed_count": 7,
+            "first_point": [
+              1439.22326660156,
+              1007.93005371094
+            ],
+            "cost": 4222.92089473079,
+            "cost_terms": {
+              "lateral": 0.0538247385422994,
+              "time": 1.60053218845865,
+              "goal": 2893.84341386222,
+              "progress": 1327.40788633521,
+              "alignment": 0.000804990016549162,
+              "centerline": 0.0144326163402942
+            }
+          },
+          "kinematic_resampling_sensitive_count": 17
+        },
+        "extended_reference_and_allowed": {
+          "current": 446279,
+          "goals": [
+            500918
+          ],
+          "references": [
+            {
+              "kind": "reference",
+              "snapshot": "1789074491019052099",
+              "variant": "extended_reference_and_allowed",
+              "index": 0,
+              "lanes": [
+                446279,
+                500918
+              ],
+              "length": 138.979424984033,
+              "initial_s": 2.941839539964,
+              "remaining": 136.037585444069,
+              "initial_d": -0.0152292075594857,
+              "heading_error": -0.00761618012591958
+            },
+            {
+              "kind": "reference",
+              "snapshot": "1789074491019052099",
+              "variant": "extended_reference_and_allowed",
+              "index": 1,
+              "lanes": [
+                446415
+              ],
+              "length": 33.5160154910031,
+              "initial_s": 2.94162244613211,
+              "remaining": 30.574393044871,
+              "initial_d": -3.24022920754525,
+              "heading_error": -0.00761618012518395
+            },
+            {
+              "kind": "reference",
+              "snapshot": "1789074491019052099",
+              "variant": "extended_reference_and_allowed",
+              "index": 2,
+              "lanes": [
+                446143
+              ],
+              "length": 33.5258717850333,
+              "initial_s": 2.9424039721547,
+              "remaining": 30.5834678128786,
+              "initial_d": 3.52865954489128,
+              "heading_error": -0.00761618012591958
+            }
+          ],
+          "counts": {
+            "kinematic": 26,
+            "valid": 3,
+            "velocity": 16
+          },
+          "winner": {
+            "kind": "candidate",
+            "snapshot": "1789074491019052099",
+            "variant": "extended_reference_and_allowed",
+            "id": 6,
+            "reference": 0,
+            "horizon": 3,
+            "terminal_nominal_speed": 0,
+            "nominal_end_time": 3,
+            "generation_stop": "horizon",
+            "generated_length": 13.5663907039776,
+            "generated_count": 31,
+            "final_length": 13.5663907039776,
+            "final_count": 31,
+            "stage": "valid",
+            "first_point_gap": 0,
+            "max_curvature_until_reject": 0.0332910632300042,
+            "kinematic_reject_index": 0,
+            "velocity_error": "",
+            "required_initial_speed": 0,
+            "initial_empty_cell_points": 0,
+            "trimmed": false,
+            "collision": {
+              "index": 31,
+              "forbidden": false,
+              "cell": -1,
+              "lane": -1,
+              "bin": -1
+            },
+            "recheck": {
+              "index": 0,
+              "forbidden": false,
+              "cell": -1,
+              "lane": -1,
+              "bin": -1
+            },
+            "collinear_collapsed_kinematic_ok": true,
+            "collinear_collapsed_curvature": 0.0189346819294232,
+            "collinear_collapsed_count": 7,
+            "first_point": [
+              1439.22326660156,
+              1007.93005371094
+            ],
+            "cost": 4222.92089473079,
+            "cost_terms": {
+              "lateral": 0.0538247385422994,
+              "time": 1.60053218845865,
+              "goal": 2893.84341386222,
+              "progress": 1327.40788633521,
+              "alignment": 0.000804990016549162,
+              "centerline": 0.0144326163402942
+            }
+          },
+          "longest_valid": {
+            "kind": "candidate",
+            "snapshot": "1789074491019052099",
+            "variant": "extended_reference_and_allowed",
+            "id": 6,
+            "reference": 0,
+            "horizon": 3,
+            "terminal_nominal_speed": 0,
+            "nominal_end_time": 3,
+            "generation_stop": "horizon",
+            "generated_length": 13.5663907039776,
+            "generated_count": 31,
+            "final_length": 13.5663907039776,
+            "final_count": 31,
+            "stage": "valid",
+            "first_point_gap": 0,
+            "max_curvature_until_reject": 0.0332910632300042,
+            "kinematic_reject_index": 0,
+            "velocity_error": "",
+            "required_initial_speed": 0,
+            "initial_empty_cell_points": 0,
+            "trimmed": false,
+            "collision": {
+              "index": 31,
+              "forbidden": false,
+              "cell": -1,
+              "lane": -1,
+              "bin": -1
+            },
+            "recheck": {
+              "index": 0,
+              "forbidden": false,
+              "cell": -1,
+              "lane": -1,
+              "bin": -1
+            },
+            "collinear_collapsed_kinematic_ok": true,
+            "collinear_collapsed_curvature": 0.0189346819294232,
+            "collinear_collapsed_count": 7,
+            "first_point": [
+              1439.22326660156,
+              1007.93005371094
+            ],
+            "cost": 4222.92089473079,
+            "cost_terms": {
+              "lateral": 0.0538247385422994,
+              "time": 1.60053218845865,
+              "goal": 2893.84341386222,
+              "progress": 1327.40788633521,
+              "alignment": 0.000804990016549162,
+              "centerline": 0.0144326163402942
+            }
+          },
+          "kinematic_resampling_sensitive_count": 17
+        },
+        "extended_reference_allowed_forward_goal": {
+          "current": 446279,
+          "goals": [
+            500918
+          ],
+          "references": [
+            {
+              "kind": "reference",
+              "snapshot": "1789074491019052099",
+              "variant": "extended_reference_allowed_forward_goal",
+              "index": 0,
+              "lanes": [
+                446279,
+                500918
+              ],
+              "length": 138.979424984033,
+              "initial_s": 2.941839539964,
+              "remaining": 136.037585444069,
+              "initial_d": -0.0152292075594857,
+              "heading_error": -0.00761618012591958
+            },
+            {
+              "kind": "reference",
+              "snapshot": "1789074491019052099",
+              "variant": "extended_reference_allowed_forward_goal",
+              "index": 1,
+              "lanes": [
+                446415
+              ],
+              "length": 33.5160154910031,
+              "initial_s": 2.94162244613211,
+              "remaining": 30.574393044871,
+              "initial_d": -3.24022920754525,
+              "heading_error": -0.00761618012518395
+            },
+            {
+              "kind": "reference",
+              "snapshot": "1789074491019052099",
+              "variant": "extended_reference_allowed_forward_goal",
+              "index": 2,
+              "lanes": [
+                446143
+              ],
+              "length": 33.5258717850333,
+              "initial_s": 2.9424039721547,
+              "remaining": 30.5834678128786,
+              "initial_d": 3.52865954489128,
+              "heading_error": -0.00761618012591958
+            }
+          ],
+          "counts": {
+            "kinematic": 26,
+            "valid": 3,
+            "velocity": 16
+          },
+          "winner": {
+            "kind": "candidate",
+            "snapshot": "1789074491019052099",
+            "variant": "extended_reference_allowed_forward_goal",
+            "id": 6,
+            "reference": 0,
+            "horizon": 3,
+            "terminal_nominal_speed": 0,
+            "nominal_end_time": 3,
+            "generation_stop": "horizon",
+            "generated_length": 13.5663907039776,
+            "generated_count": 31,
+            "final_length": 13.5663907039776,
+            "final_count": 31,
+            "stage": "valid",
+            "first_point_gap": 0,
+            "max_curvature_until_reject": 0.0332910632300042,
+            "kinematic_reject_index": 0,
+            "velocity_error": "",
+            "required_initial_speed": 0,
+            "initial_empty_cell_points": 0,
+            "trimmed": false,
+            "collision": {
+              "index": 31,
+              "forbidden": false,
+              "cell": -1,
+              "lane": -1,
+              "bin": -1
+            },
+            "recheck": {
+              "index": 0,
+              "forbidden": false,
+              "cell": -1,
+              "lane": -1,
+              "bin": -1
+            },
+            "collinear_collapsed_kinematic_ok": true,
+            "collinear_collapsed_curvature": 0.0189346819294232,
+            "collinear_collapsed_count": 7,
+            "first_point": [
+              1439.22326660156,
+              1007.93005371094
+            ],
+            "cost": 14603.2334335108,
+            "cost_terms": {
+              "lateral": 0.0538247385422994,
+              "time": 1.60053218845865,
+              "goal": 13274.1558526793,
+              "progress": 1327.40788633521,
+              "alignment": 0.000904952927727558,
+              "centerline": 0.0144326163402942
+            }
+          },
+          "longest_valid": {
+            "kind": "candidate",
+            "snapshot": "1789074491019052099",
+            "variant": "extended_reference_allowed_forward_goal",
+            "id": 6,
+            "reference": 0,
+            "horizon": 3,
+            "terminal_nominal_speed": 0,
+            "nominal_end_time": 3,
+            "generation_stop": "horizon",
+            "generated_length": 13.5663907039776,
+            "generated_count": 31,
+            "final_length": 13.5663907039776,
+            "final_count": 31,
+            "stage": "valid",
+            "first_point_gap": 0,
+            "max_curvature_until_reject": 0.0332910632300042,
+            "kinematic_reject_index": 0,
+            "velocity_error": "",
+            "required_initial_speed": 0,
+            "initial_empty_cell_points": 0,
+            "trimmed": false,
+            "collision": {
+              "index": 31,
+              "forbidden": false,
+              "cell": -1,
+              "lane": -1,
+              "bin": -1
+            },
+            "recheck": {
+              "index": 0,
+              "forbidden": false,
+              "cell": -1,
+              "lane": -1,
+              "bin": -1
+            },
+            "collinear_collapsed_kinematic_ok": true,
+            "collinear_collapsed_curvature": 0.0189346819294232,
+            "collinear_collapsed_count": 7,
+            "first_point": [
+              1439.22326660156,
+              1007.93005371094
+            ],
+            "cost": 14603.2334335108,
+            "cost_terms": {
+              "lateral": 0.0538247385422994,
+              "time": 1.60053218845865,
+              "goal": 13274.1558526793,
+              "progress": 1327.40788633521,
+              "alignment": 0.000904952927727558,
+              "centerline": 0.0144326163402942
+            }
+          },
+          "kinematic_resampling_sensitive_count": 17
+        }
+      },
+      "validation": {
+        "published_path": true,
+        "replayed_winner": 6,
+        "actual_point_count": 31,
+        "replayed_point_count": 31,
+        "max_point_error_m": 3.045179292399812e-07,
+        "live_valid_count": 3,
+        "replayed_valid_count": 3,
+        "live_selected_index": 2,
+        "replayed_selected_index": 2,
+        "max_valid_length_error_m": 1.2289093831441278e-07
+      }
+    },
+    {
+      "stamp": "1789074491659184671",
+      "t": 1789074491.711004,
+      "ego": {
+        "x": 1439.421875,
+        "y": 1002.1347045898438,
+        "z": 52.112857818603516,
+        "heading": -1.5364148616790771,
+        "pitch": -0.05681641027331352,
+        "roll": 0.000811286736279726,
+        "speed": 9.104947090148926
+      },
+      "case": "north_red",
+      "dynamic_source_stamp": 1789074491659184671,
+      "variants": {
+        "baseline": {
+          "current": 446279,
+          "goals": [
+            500918
+          ],
+          "references": [
+            {
+              "kind": "reference",
+              "snapshot": "1789074491659184671",
+              "variant": "baseline",
+              "index": 0,
+              "lanes": [
+                446279,
+                500918
+              ],
+              "length": 138.979424984033,
+              "initial_s": 8.74038937524243,
+              "remaining": 130.23903560879,
+              "initial_d": -0.0628650980406253,
+              "heading_error": -0.00816509930644216
+            },
+            {
+              "kind": "reference",
+              "snapshot": "1789074491659184671",
+              "variant": "baseline",
+              "index": 1,
+              "lanes": [
+                446415
+              ],
+              "length": 33.5160154910031,
+              "initial_s": 8.7396949222723,
+              "remaining": 24.7763205687308,
+              "initial_d": -3.28786509802424,
+              "heading_error": -0.00816509930343701
+            },
+            {
+              "kind": "reference",
+              "snapshot": "1789074491659184671",
+              "variant": "baseline",
+              "index": 2,
+              "lanes": [
+                446143
+              ],
+              "length": 33.5258717850333,
+              "initial_s": 8.81351198670454,
+              "remaining": 24.7123597983287,
+              "initial_d": 3.41959748630016,
+              "heading_error": -0.0290430648320319
+            }
+          ],
+          "counts": {
+            "kinematic": 22,
+            "valid": 1,
+            "velocity": 22
+          },
+          "winner": {
+            "kind": "candidate",
+            "snapshot": "1789074491659184671",
+            "variant": "baseline",
+            "id": 0,
+            "reference": 0,
+            "horizon": 2,
+            "terminal_nominal_speed": 0,
+            "nominal_end_time": 2,
+            "generation_stop": "horizon",
+            "generated_length": 9.10576347287007,
+            "generated_count": 21,
+            "final_length": 9.10576347287007,
+            "final_count": 21,
+            "stage": "valid",
+            "first_point_gap": 0,
+            "max_curvature_until_reject": 0.0536673987215629,
+            "kinematic_reject_index": 0,
+            "velocity_error": "",
+            "required_initial_speed": 0,
+            "initial_empty_cell_points": 0,
+            "trimmed": false,
+            "collision": {
+              "index": 21,
+              "forbidden": false,
+              "cell": -1,
+              "lane": -1,
+              "bin": -1
+            },
+            "recheck": {
+              "index": 0,
+              "forbidden": false,
+              "cell": -1,
+              "lane": -1,
+              "bin": -1
+            },
+            "collinear_collapsed_kinematic_ok": true,
+            "collinear_collapsed_curvature": 0.0231102215991348,
+            "collinear_collapsed_count": 5,
+            "first_point": [
+              1439.421875,
+              1002.13470458984
+            ],
+            "cost": 4131.21073193722,
+            "cost_terms": {
+              "lateral": 0.613495326438028,
+              "time": 1.46931294704896,
+              "goal": 2456.74474214442,
+              "progress": 1672.33858113685,
+              "alignment": 0.00233604146509731,
+              "centerline": 0.0422643409930744
+            }
+          },
+          "longest_valid": {
+            "kind": "candidate",
+            "snapshot": "1789074491659184671",
+            "variant": "baseline",
+            "id": 0,
+            "reference": 0,
+            "horizon": 2,
+            "terminal_nominal_speed": 0,
+            "nominal_end_time": 2,
+            "generation_stop": "horizon",
+            "generated_length": 9.10576347287007,
+            "generated_count": 21,
+            "final_length": 9.10576347287007,
+            "final_count": 21,
+            "stage": "valid",
+            "first_point_gap": 0,
+            "max_curvature_until_reject": 0.0536673987215629,
+            "kinematic_reject_index": 0,
+            "velocity_error": "",
+            "required_initial_speed": 0,
+            "initial_empty_cell_points": 0,
+            "trimmed": false,
+            "collision": {
+              "index": 21,
+              "forbidden": false,
+              "cell": -1,
+              "lane": -1,
+              "bin": -1
+            },
+            "recheck": {
+              "index": 0,
+              "forbidden": false,
+              "cell": -1,
+              "lane": -1,
+              "bin": -1
+            },
+            "collinear_collapsed_kinematic_ok": true,
+            "collinear_collapsed_curvature": 0.0231102215991348,
+            "collinear_collapsed_count": 5,
+            "first_point": [
+              1439.421875,
+              1002.13470458984
+            ],
+            "cost": 4131.21073193722,
+            "cost_terms": {
+              "lateral": 0.613495326438028,
+              "time": 1.46931294704896,
+              "goal": 2456.74474214442,
+              "progress": 1672.33858113685,
+              "alignment": 0.00233604146509731,
+              "centerline": 0.0422643409930744
+            }
+          },
+          "kinematic_resampling_sensitive_count": 12
+        },
+        "extended_reference_only": {
+          "current": 446279,
+          "goals": [
+            500918
+          ],
+          "references": [
+            {
+              "kind": "reference",
+              "snapshot": "1789074491659184671",
+              "variant": "extended_reference_only",
+              "index": 0,
+              "lanes": [
+                446279,
+                500918
+              ],
+              "length": 138.979424984033,
+              "initial_s": 8.74038937524243,
+              "remaining": 130.23903560879,
+              "initial_d": -0.0628650980406253,
+              "heading_error": -0.00816509930644216
+            },
+            {
+              "kind": "reference",
+              "snapshot": "1789074491659184671",
+              "variant": "extended_reference_only",
+              "index": 1,
+              "lanes": [
+                446415
+              ],
+              "length": 33.5160154910031,
+              "initial_s": 8.7396949222723,
+              "remaining": 24.7763205687308,
+              "initial_d": -3.28786509802424,
+              "heading_error": -0.00816509930343701
+            },
+            {
+              "kind": "reference",
+              "snapshot": "1789074491659184671",
+              "variant": "extended_reference_only",
+              "index": 2,
+              "lanes": [
+                446143
+              ],
+              "length": 33.5258717850333,
+              "initial_s": 8.81351198670454,
+              "remaining": 24.7123597983287,
+              "initial_d": 3.41959748630016,
+              "heading_error": -0.0290430648320319
+            }
+          ],
+          "counts": {
+            "kinematic": 22,
+            "valid": 1,
+            "velocity": 22
+          },
+          "winner": {
+            "kind": "candidate",
+            "snapshot": "1789074491659184671",
+            "variant": "extended_reference_only",
+            "id": 0,
+            "reference": 0,
+            "horizon": 2,
+            "terminal_nominal_speed": 0,
+            "nominal_end_time": 2,
+            "generation_stop": "horizon",
+            "generated_length": 9.10576347287007,
+            "generated_count": 21,
+            "final_length": 9.10576347287007,
+            "final_count": 21,
+            "stage": "valid",
+            "first_point_gap": 0,
+            "max_curvature_until_reject": 0.0536673987215629,
+            "kinematic_reject_index": 0,
+            "velocity_error": "",
+            "required_initial_speed": 0,
+            "initial_empty_cell_points": 0,
+            "trimmed": false,
+            "collision": {
+              "index": 21,
+              "forbidden": false,
+              "cell": -1,
+              "lane": -1,
+              "bin": -1
+            },
+            "recheck": {
+              "index": 0,
+              "forbidden": false,
+              "cell": -1,
+              "lane": -1,
+              "bin": -1
+            },
+            "collinear_collapsed_kinematic_ok": true,
+            "collinear_collapsed_curvature": 0.0231102215991348,
+            "collinear_collapsed_count": 5,
+            "first_point": [
+              1439.421875,
+              1002.13470458984
+            ],
+            "cost": 4131.21073193722,
+            "cost_terms": {
+              "lateral": 0.613495326438028,
+              "time": 1.46931294704896,
+              "goal": 2456.74474214442,
+              "progress": 1672.33858113685,
+              "alignment": 0.00233604146509731,
+              "centerline": 0.0422643409930744
+            }
+          },
+          "longest_valid": {
+            "kind": "candidate",
+            "snapshot": "1789074491659184671",
+            "variant": "extended_reference_only",
+            "id": 0,
+            "reference": 0,
+            "horizon": 2,
+            "terminal_nominal_speed": 0,
+            "nominal_end_time": 2,
+            "generation_stop": "horizon",
+            "generated_length": 9.10576347287007,
+            "generated_count": 21,
+            "final_length": 9.10576347287007,
+            "final_count": 21,
+            "stage": "valid",
+            "first_point_gap": 0,
+            "max_curvature_until_reject": 0.0536673987215629,
+            "kinematic_reject_index": 0,
+            "velocity_error": "",
+            "required_initial_speed": 0,
+            "initial_empty_cell_points": 0,
+            "trimmed": false,
+            "collision": {
+              "index": 21,
+              "forbidden": false,
+              "cell": -1,
+              "lane": -1,
+              "bin": -1
+            },
+            "recheck": {
+              "index": 0,
+              "forbidden": false,
+              "cell": -1,
+              "lane": -1,
+              "bin": -1
+            },
+            "collinear_collapsed_kinematic_ok": true,
+            "collinear_collapsed_curvature": 0.0231102215991348,
+            "collinear_collapsed_count": 5,
+            "first_point": [
+              1439.421875,
+              1002.13470458984
+            ],
+            "cost": 4131.21073193722,
+            "cost_terms": {
+              "lateral": 0.613495326438028,
+              "time": 1.46931294704896,
+              "goal": 2456.74474214442,
+              "progress": 1672.33858113685,
+              "alignment": 0.00233604146509731,
+              "centerline": 0.0422643409930744
+            }
+          },
+          "kinematic_resampling_sensitive_count": 12
+        },
+        "extended_reference_and_allowed": {
+          "current": 446279,
+          "goals": [
+            500918
+          ],
+          "references": [
+            {
+              "kind": "reference",
+              "snapshot": "1789074491659184671",
+              "variant": "extended_reference_and_allowed",
+              "index": 0,
+              "lanes": [
+                446279,
+                500918
+              ],
+              "length": 138.979424984033,
+              "initial_s": 8.74038937524243,
+              "remaining": 130.23903560879,
+              "initial_d": -0.0628650980406253,
+              "heading_error": -0.00816509930644216
+            },
+            {
+              "kind": "reference",
+              "snapshot": "1789074491659184671",
+              "variant": "extended_reference_and_allowed",
+              "index": 1,
+              "lanes": [
+                446415
+              ],
+              "length": 33.5160154910031,
+              "initial_s": 8.7396949222723,
+              "remaining": 24.7763205687308,
+              "initial_d": -3.28786509802424,
+              "heading_error": -0.00816509930343701
+            },
+            {
+              "kind": "reference",
+              "snapshot": "1789074491659184671",
+              "variant": "extended_reference_and_allowed",
+              "index": 2,
+              "lanes": [
+                446143
+              ],
+              "length": 33.5258717850333,
+              "initial_s": 8.81351198670454,
+              "remaining": 24.7123597983287,
+              "initial_d": 3.41959748630016,
+              "heading_error": -0.0290430648320319
+            }
+          ],
+          "counts": {
+            "kinematic": 22,
+            "valid": 1,
+            "velocity": 22
+          },
+          "winner": {
+            "kind": "candidate",
+            "snapshot": "1789074491659184671",
+            "variant": "extended_reference_and_allowed",
+            "id": 0,
+            "reference": 0,
+            "horizon": 2,
+            "terminal_nominal_speed": 0,
+            "nominal_end_time": 2,
+            "generation_stop": "horizon",
+            "generated_length": 9.10576347287007,
+            "generated_count": 21,
+            "final_length": 9.10576347287007,
+            "final_count": 21,
+            "stage": "valid",
+            "first_point_gap": 0,
+            "max_curvature_until_reject": 0.0536673987215629,
+            "kinematic_reject_index": 0,
+            "velocity_error": "",
+            "required_initial_speed": 0,
+            "initial_empty_cell_points": 0,
+            "trimmed": false,
+            "collision": {
+              "index": 21,
+              "forbidden": false,
+              "cell": -1,
+              "lane": -1,
+              "bin": -1
+            },
+            "recheck": {
+              "index": 0,
+              "forbidden": false,
+              "cell": -1,
+              "lane": -1,
+              "bin": -1
+            },
+            "collinear_collapsed_kinematic_ok": true,
+            "collinear_collapsed_curvature": 0.0231102215991348,
+            "collinear_collapsed_count": 5,
+            "first_point": [
+              1439.421875,
+              1002.13470458984
+            ],
+            "cost": 4131.21073193722,
+            "cost_terms": {
+              "lateral": 0.613495326438028,
+              "time": 1.46931294704896,
+              "goal": 2456.74474214442,
+              "progress": 1672.33858113685,
+              "alignment": 0.00233604146509731,
+              "centerline": 0.0422643409930744
+            }
+          },
+          "longest_valid": {
+            "kind": "candidate",
+            "snapshot": "1789074491659184671",
+            "variant": "extended_reference_and_allowed",
+            "id": 0,
+            "reference": 0,
+            "horizon": 2,
+            "terminal_nominal_speed": 0,
+            "nominal_end_time": 2,
+            "generation_stop": "horizon",
+            "generated_length": 9.10576347287007,
+            "generated_count": 21,
+            "final_length": 9.10576347287007,
+            "final_count": 21,
+            "stage": "valid",
+            "first_point_gap": 0,
+            "max_curvature_until_reject": 0.0536673987215629,
+            "kinematic_reject_index": 0,
+            "velocity_error": "",
+            "required_initial_speed": 0,
+            "initial_empty_cell_points": 0,
+            "trimmed": false,
+            "collision": {
+              "index": 21,
+              "forbidden": false,
+              "cell": -1,
+              "lane": -1,
+              "bin": -1
+            },
+            "recheck": {
+              "index": 0,
+              "forbidden": false,
+              "cell": -1,
+              "lane": -1,
+              "bin": -1
+            },
+            "collinear_collapsed_kinematic_ok": true,
+            "collinear_collapsed_curvature": 0.0231102215991348,
+            "collinear_collapsed_count": 5,
+            "first_point": [
+              1439.421875,
+              1002.13470458984
+            ],
+            "cost": 4131.21073193722,
+            "cost_terms": {
+              "lateral": 0.613495326438028,
+              "time": 1.46931294704896,
+              "goal": 2456.74474214442,
+              "progress": 1672.33858113685,
+              "alignment": 0.00233604146509731,
+              "centerline": 0.0422643409930744
+            }
+          },
+          "kinematic_resampling_sensitive_count": 12
+        },
+        "extended_reference_allowed_forward_goal": {
+          "current": 446279,
+          "goals": [
+            500918
+          ],
+          "references": [
+            {
+              "kind": "reference",
+              "snapshot": "1789074491659184671",
+              "variant": "extended_reference_allowed_forward_goal",
+              "index": 0,
+              "lanes": [
+                446279,
+                500918
+              ],
+              "length": 138.979424984033,
+              "initial_s": 8.74038937524243,
+              "remaining": 130.23903560879,
+              "initial_d": -0.0628650980406253,
+              "heading_error": -0.00816509930644216
+            },
+            {
+              "kind": "reference",
+              "snapshot": "1789074491659184671",
+              "variant": "extended_reference_allowed_forward_goal",
+              "index": 1,
+              "lanes": [
+                446415
+              ],
+              "length": 33.5160154910031,
+              "initial_s": 8.7396949222723,
+              "remaining": 24.7763205687308,
+              "initial_d": -3.28786509802424,
+              "heading_error": -0.00816509930343701
+            },
+            {
+              "kind": "reference",
+              "snapshot": "1789074491659184671",
+              "variant": "extended_reference_allowed_forward_goal",
+              "index": 2,
+              "lanes": [
+                446143
+              ],
+              "length": 33.5258717850333,
+              "initial_s": 8.81351198670454,
+              "remaining": 24.7123597983287,
+              "initial_d": 3.41959748630016,
+              "heading_error": -0.0290430648320319
+            }
+          ],
+          "counts": {
+            "kinematic": 22,
+            "valid": 1,
+            "velocity": 22
+          },
+          "winner": {
+            "kind": "candidate",
+            "snapshot": "1789074491659184671",
+            "variant": "extended_reference_allowed_forward_goal",
+            "id": 0,
+            "reference": 0,
+            "horizon": 2,
+            "terminal_nominal_speed": 0,
+            "nominal_end_time": 2,
+            "generation_stop": "horizon",
+            "generated_length": 9.10576347287007,
+            "generated_count": 21,
+            "final_length": 9.10576347287007,
+            "final_count": 21,
+            "stage": "valid",
+            "first_point_gap": 0,
+            "max_curvature_until_reject": 0.0536673987215629,
+            "kinematic_reject_index": 0,
+            "velocity_error": "",
+            "required_initial_speed": 0,
+            "initial_empty_cell_points": 0,
+            "trimmed": false,
+            "collision": {
+              "index": 21,
+              "forbidden": false,
+              "cell": -1,
+              "lane": -1,
+              "bin": -1
+            },
+            "recheck": {
+              "index": 0,
+              "forbidden": false,
+              "cell": -1,
+              "lane": -1,
+              "bin": -1
+            },
+            "collinear_collapsed_kinematic_ok": true,
+            "collinear_collapsed_curvature": 0.0231102215991348,
+            "collinear_collapsed_count": 5,
+            "first_point": [
+              1439.421875,
+              1002.13470458984
+            ],
+            "cost": 18398.4188361943,
+            "cost_terms": {
+              "lateral": 0.613495326438028,
+              "time": 1.46931294704896,
+              "goal": 16723.9526937277,
+              "progress": 1672.33858113685,
+              "alignment": 0.00248871525286169,
+              "centerline": 0.0422643409930744
+            }
+          },
+          "longest_valid": {
+            "kind": "candidate",
+            "snapshot": "1789074491659184671",
+            "variant": "extended_reference_allowed_forward_goal",
+            "id": 0,
+            "reference": 0,
+            "horizon": 2,
+            "terminal_nominal_speed": 0,
+            "nominal_end_time": 2,
+            "generation_stop": "horizon",
+            "generated_length": 9.10576347287007,
+            "generated_count": 21,
+            "final_length": 9.10576347287007,
+            "final_count": 21,
+            "stage": "valid",
+            "first_point_gap": 0,
+            "max_curvature_until_reject": 0.0536673987215629,
+            "kinematic_reject_index": 0,
+            "velocity_error": "",
+            "required_initial_speed": 0,
+            "initial_empty_cell_points": 0,
+            "trimmed": false,
+            "collision": {
+              "index": 21,
+              "forbidden": false,
+              "cell": -1,
+              "lane": -1,
+              "bin": -1
+            },
+            "recheck": {
+              "index": 0,
+              "forbidden": false,
+              "cell": -1,
+              "lane": -1,
+              "bin": -1
+            },
+            "collinear_collapsed_kinematic_ok": true,
+            "collinear_collapsed_curvature": 0.0231102215991348,
+            "collinear_collapsed_count": 5,
+            "first_point": [
+              1439.421875,
+              1002.13470458984
+            ],
+            "cost": 18398.4188361943,
+            "cost_terms": {
+              "lateral": 0.613495326438028,
+              "time": 1.46931294704896,
+              "goal": 16723.9526937277,
+              "progress": 1672.33858113685,
+              "alignment": 0.00248871525286169,
+              "centerline": 0.0422643409930744
+            }
+          },
+          "kinematic_resampling_sensitive_count": 12
+        }
+      },
+      "validation": {
+        "published_path": true,
+        "replayed_winner": 0,
+        "actual_point_count": 21,
+        "replayed_point_count": 21,
+        "max_point_error_m": 3.9261341090373005e-08,
+        "live_valid_count": 1,
+        "replayed_valid_count": 1,
+        "live_selected_index": 0,
+        "replayed_selected_index": 0,
+        "max_valid_length_error_m": 7.525718714873619e-08
+      }
+    },
+    {
+      "stamp": "1789074492219085931",
+      "t": 1789074492.2562869,
+      "ego": {
+        "x": 1439.6207275390625,
+        "y": 997.1386108398438,
+        "z": 52.401084899902344,
+        "heading": -1.5258411169052124,
+        "pitch": -0.05415676534175873,
+        "roll": 0.001811403315514326,
+        "speed": 8.637012481689453
+      },
+      "case": "north_red",
+      "dynamic_source_stamp": 1789074492219085931,
+      "variants": {
+        "baseline": {
+          "current": 446279,
+          "goals": [
+            500918
+          ],
+          "references": [
+            {
+              "kind": "reference",
+              "snapshot": "1789074492219085931",
+              "variant": "baseline",
+              "index": 0,
+              "lanes": [
+                446279,
+                500918
+              ],
+              "length": 138.979424984033,
+              "initial_s": 13.740409672621,
+              "remaining": 125.239015311412,
+              "initial_d": -0.0770124856621677,
+              "heading_error": 0.00227751477102012
+            },
+            {
+              "kind": "reference",
+              "snapshot": "1789074492219085931",
+              "variant": "baseline",
+              "index": 1,
+              "lanes": [
+                446415
+              ],
+              "length": 33.5160154910031,
+              "initial_s": 13.7392923231503,
+              "remaining": 19.7767231678529,
+              "initial_d": -3.30201248564386,
+              "heading_error": 0.00227751477258509
+            },
+            {
+              "kind": "reference",
+              "snapshot": "1789074492219085931",
+              "variant": "baseline",
+              "index": 2,
+              "lanes": [
+                446143
+              ],
+              "length": 33.5258717850333,
+              "initial_s": 13.782726952604,
+              "remaining": 19.7431448324292,
+              "initial_d": 3.35289746736433,
+              "heading_error": -0.0186003023415386
+            }
+          ],
+          "counts": {
+            "kinematic": 30,
+            "velocity": 15
+          },
+          "winner": null,
+          "longest_valid": null,
+          "kinematic_resampling_sensitive_count": 21
+        },
+        "extended_reference_only": {
+          "current": 446279,
+          "goals": [
+            500918
+          ],
+          "references": [
+            {
+              "kind": "reference",
+              "snapshot": "1789074492219085931",
+              "variant": "extended_reference_only",
+              "index": 0,
+              "lanes": [
+                446279,
+                500918
+              ],
+              "length": 138.979424984033,
+              "initial_s": 13.740409672621,
+              "remaining": 125.239015311412,
+              "initial_d": -0.0770124856621677,
+              "heading_error": 0.00227751477102012
+            },
+            {
+              "kind": "reference",
+              "snapshot": "1789074492219085931",
+              "variant": "extended_reference_only",
+              "index": 1,
+              "lanes": [
+                446415
+              ],
+              "length": 33.5160154910031,
+              "initial_s": 13.7392923231503,
+              "remaining": 19.7767231678529,
+              "initial_d": -3.30201248564386,
+              "heading_error": 0.00227751477258509
+            },
+            {
+              "kind": "reference",
+              "snapshot": "1789074492219085931",
+              "variant": "extended_reference_only",
+              "index": 2,
+              "lanes": [
+                446143
+              ],
+              "length": 33.5258717850333,
+              "initial_s": 13.782726952604,
+              "remaining": 19.7431448324292,
+              "initial_d": 3.35289746736433,
+              "heading_error": -0.0186003023415386
+            }
+          ],
+          "counts": {
+            "kinematic": 30,
+            "velocity": 15
+          },
+          "winner": null,
+          "longest_valid": null,
+          "kinematic_resampling_sensitive_count": 21
+        },
+        "extended_reference_and_allowed": {
+          "current": 446279,
+          "goals": [
+            500918
+          ],
+          "references": [
+            {
+              "kind": "reference",
+              "snapshot": "1789074492219085931",
+              "variant": "extended_reference_and_allowed",
+              "index": 0,
+              "lanes": [
+                446279,
+                500918
+              ],
+              "length": 138.979424984033,
+              "initial_s": 13.740409672621,
+              "remaining": 125.239015311412,
+              "initial_d": -0.0770124856621677,
+              "heading_error": 0.00227751477102012
+            },
+            {
+              "kind": "reference",
+              "snapshot": "1789074492219085931",
+              "variant": "extended_reference_and_allowed",
+              "index": 1,
+              "lanes": [
+                446415
+              ],
+              "length": 33.5160154910031,
+              "initial_s": 13.7392923231503,
+              "remaining": 19.7767231678529,
+              "initial_d": -3.30201248564386,
+              "heading_error": 0.00227751477258509
+            },
+            {
+              "kind": "reference",
+              "snapshot": "1789074492219085931",
+              "variant": "extended_reference_and_allowed",
+              "index": 2,
+              "lanes": [
+                446143
+              ],
+              "length": 33.5258717850333,
+              "initial_s": 13.782726952604,
+              "remaining": 19.7431448324292,
+              "initial_d": 3.35289746736433,
+              "heading_error": -0.0186003023415386
+            }
+          ],
+          "counts": {
+            "kinematic": 30,
+            "velocity": 15
+          },
+          "winner": null,
+          "longest_valid": null,
+          "kinematic_resampling_sensitive_count": 21
+        },
+        "extended_reference_allowed_forward_goal": {
+          "current": 446279,
+          "goals": [
+            500918
+          ],
+          "references": [
+            {
+              "kind": "reference",
+              "snapshot": "1789074492219085931",
+              "variant": "extended_reference_allowed_forward_goal",
+              "index": 0,
+              "lanes": [
+                446279,
+                500918
+              ],
+              "length": 138.979424984033,
+              "initial_s": 13.740409672621,
+              "remaining": 125.239015311412,
+              "initial_d": -0.0770124856621677,
+              "heading_error": 0.00227751477102012
+            },
+            {
+              "kind": "reference",
+              "snapshot": "1789074492219085931",
+              "variant": "extended_reference_allowed_forward_goal",
+              "index": 1,
+              "lanes": [
+                446415
+              ],
+              "length": 33.5160154910031,
+              "initial_s": 13.7392923231503,
+              "remaining": 19.7767231678529,
+              "initial_d": -3.30201248564386,
+              "heading_error": 0.00227751477258509
+            },
+            {
+              "kind": "reference",
+              "snapshot": "1789074492219085931",
+              "variant": "extended_reference_allowed_forward_goal",
+              "index": 2,
+              "lanes": [
+                446143
+              ],
+              "length": 33.5258717850333,
+              "initial_s": 13.782726952604,
+              "remaining": 19.7431448324292,
+              "initial_d": 3.35289746736433,
+              "heading_error": -0.0186003023415386
+            }
+          ],
+          "counts": {
+            "kinematic": 30,
+            "velocity": 15
+          },
+          "winner": null,
+          "longest_valid": null,
+          "kinematic_resampling_sensitive_count": 21
+        }
+      },
+      "validation": {
+        "published_path": false,
+        "replayed_winner": -1
+      }
+    },
+    {
+      "stamp": "1789074492900205778",
+      "t": 1789074492.9518456,
+      "ego": {
+        "x": 1439.926025390625,
+        "y": 991.810791015625,
+        "z": 52.70016098022461,
+        "heading": -1.511152744293213,
+        "pitch": -0.03568945452570915,
+        "roll": -0.0008081332198344171,
+        "speed": 6.783694744110107
+      },
+      "case": "north_red",
+      "dynamic_source_stamp": 1789074492900205778,
+      "variants": {
+        "baseline": {
+          "current": 446279,
+          "goals": [
+            500918
+          ],
+          "references": [
+            {
+              "kind": "reference",
+              "snapshot": "1789074492900205778",
+              "variant": "baseline",
+              "index": 0,
+              "lanes": [
+                446279,
+                500918
+              ],
+              "length": 138.979424984033,
+              "initial_s": 19.0764037436811,
+              "remaining": 119.903021240352,
+              "initial_d": 0.000309935107184009,
+              "heading_error": 0.0168205861030251
+            },
+            {
+              "kind": "reference",
+              "snapshot": "1789074492900205778",
+              "variant": "baseline",
+              "index": 1,
+              "lanes": [
+                446415
+              ],
+              "length": 33.5160154910031,
+              "initial_s": 19.0748177975752,
+              "remaining": 14.441197693428,
+              "initial_d": -3.22469006487251,
+              "heading_error": 0.0168205861023958
+            },
+            {
+              "kind": "reference",
+              "snapshot": "1789074492900205778",
+              "variant": "baseline",
+              "index": 2,
+              "lanes": [
+                446143
+              ],
+              "length": 33.5258717850333,
+              "initial_s": 19.0801953456827,
+              "remaining": 14.4456764393506,
+              "initial_d": 3.3756794300786,
+              "heading_error": 0.0168205861030251
+            }
+          ],
+          "counts": {
+            "kinematic": 29,
+            "velocity": 16
+          },
+          "winner": null,
+          "longest_valid": null,
+          "kinematic_resampling_sensitive_count": 11
+        },
+        "extended_reference_only": {
+          "current": 446279,
+          "goals": [
+            500918
+          ],
+          "references": [
+            {
+              "kind": "reference",
+              "snapshot": "1789074492900205778",
+              "variant": "extended_reference_only",
+              "index": 0,
+              "lanes": [
+                446279,
+                500918
+              ],
+              "length": 138.979424984033,
+              "initial_s": 19.0764037436811,
+              "remaining": 119.903021240352,
+              "initial_d": 0.000309935107184009,
+              "heading_error": 0.0168205861030251
+            },
+            {
+              "kind": "reference",
+              "snapshot": "1789074492900205778",
+              "variant": "extended_reference_only",
+              "index": 1,
+              "lanes": [
+                446415
+              ],
+              "length": 33.5160154910031,
+              "initial_s": 19.0748177975752,
+              "remaining": 14.441197693428,
+              "initial_d": -3.22469006487251,
+              "heading_error": 0.0168205861023958
+            },
+            {
+              "kind": "reference",
+              "snapshot": "1789074492900205778",
+              "variant": "extended_reference_only",
+              "index": 2,
+              "lanes": [
+                446143
+              ],
+              "length": 33.5258717850333,
+              "initial_s": 19.0801953456827,
+              "remaining": 14.4456764393506,
+              "initial_d": 3.3756794300786,
+              "heading_error": 0.0168205861030251
+            }
+          ],
+          "counts": {
+            "kinematic": 29,
+            "velocity": 16
+          },
+          "winner": null,
+          "longest_valid": null,
+          "kinematic_resampling_sensitive_count": 11
+        },
+        "extended_reference_and_allowed": {
+          "current": 446279,
+          "goals": [
+            500918
+          ],
+          "references": [
+            {
+              "kind": "reference",
+              "snapshot": "1789074492900205778",
+              "variant": "extended_reference_and_allowed",
+              "index": 0,
+              "lanes": [
+                446279,
+                500918
+              ],
+              "length": 138.979424984033,
+              "initial_s": 19.0764037436811,
+              "remaining": 119.903021240352,
+              "initial_d": 0.000309935107184009,
+              "heading_error": 0.0168205861030251
+            },
+            {
+              "kind": "reference",
+              "snapshot": "1789074492900205778",
+              "variant": "extended_reference_and_allowed",
+              "index": 1,
+              "lanes": [
+                446415
+              ],
+              "length": 33.5160154910031,
+              "initial_s": 19.0748177975752,
+              "remaining": 14.441197693428,
+              "initial_d": -3.22469006487251,
+              "heading_error": 0.0168205861023958
+            },
+            {
+              "kind": "reference",
+              "snapshot": "1789074492900205778",
+              "variant": "extended_reference_and_allowed",
+              "index": 2,
+              "lanes": [
+                446143
+              ],
+              "length": 33.5258717850333,
+              "initial_s": 19.0801953456827,
+              "remaining": 14.4456764393506,
+              "initial_d": 3.3756794300786,
+              "heading_error": 0.0168205861030251
+            }
+          ],
+          "counts": {
+            "kinematic": 29,
+            "velocity": 16
+          },
+          "winner": null,
+          "longest_valid": null,
+          "kinematic_resampling_sensitive_count": 11
+        },
+        "extended_reference_allowed_forward_goal": {
+          "current": 446279,
+          "goals": [
+            500918
+          ],
+          "references": [
+            {
+              "kind": "reference",
+              "snapshot": "1789074492900205778",
+              "variant": "extended_reference_allowed_forward_goal",
+              "index": 0,
+              "lanes": [
+                446279,
+                500918
+              ],
+              "length": 138.979424984033,
+              "initial_s": 19.0764037436811,
+              "remaining": 119.903021240352,
+              "initial_d": 0.000309935107184009,
+              "heading_error": 0.0168205861030251
+            },
+            {
+              "kind": "reference",
+              "snapshot": "1789074492900205778",
+              "variant": "extended_reference_allowed_forward_goal",
+              "index": 1,
+              "lanes": [
+                446415
+              ],
+              "length": 33.5160154910031,
+              "initial_s": 19.0748177975752,
+              "remaining": 14.441197693428,
+              "initial_d": -3.22469006487251,
+              "heading_error": 0.0168205861023958
+            },
+            {
+              "kind": "reference",
+              "snapshot": "1789074492900205778",
+              "variant": "extended_reference_allowed_forward_goal",
+              "index": 2,
+              "lanes": [
+                446143
+              ],
+              "length": 33.5258717850333,
+              "initial_s": 19.0801953456827,
+              "remaining": 14.4456764393506,
+              "initial_d": 3.3756794300786,
+              "heading_error": 0.0168205861030251
+            }
+          ],
+          "counts": {
+            "kinematic": 29,
+            "velocity": 16
+          },
+          "winner": null,
+          "longest_valid": null,
+          "kinematic_resampling_sensitive_count": 11
+        }
+      },
+      "validation": {
+        "published_path": false,
+        "replayed_winner": -1
+      }
+    },
+    {
+      "stamp": "1789074496699048347",
+      "t": 1789074496.7524695,
+      "ego": {
+        "x": 1440.3961181640625,
+        "y": 983.9381713867188,
+        "z": 52.916290283203125,
+        "heading": -1.511152744293213,
+        "pitch": -0.0025284092407673597,
+        "roll": -0.0001430648990208283,
+        "speed": 0.0
+      },
+      "case": "north_red",
+      "dynamic_source_stamp": 1789074496699048347,
+      "variants": {
+        "baseline": {
+          "current": 446279,
+          "goals": [
+            500918
+          ],
+          "references": [
+            {
+              "kind": "reference",
+              "snapshot": "1789074496699048347",
+              "variant": "baseline",
+              "index": 0,
+              "lanes": [
+                446279,
+                500918
+              ],
+              "length": 138.979424984033,
+              "initial_s": 26.9619619466486,
+              "remaining": 112.017463037384,
+              "initial_d": 0.132013078087733,
+              "heading_error": 0.0165841765069838
+            },
+            {
+              "kind": "reference",
+              "snapshot": "1789074496699048347",
+              "variant": "baseline",
+              "index": 1,
+              "lanes": [
+                446415
+              ],
+              "length": 33.5160154910031,
+              "initial_s": 26.9596135796051,
+              "remaining": 6.55640191139809,
+              "initial_d": -3.09298692188867,
+              "heading_error": 0.016584176509429
+            },
+            {
+              "kind": "reference",
+              "snapshot": "1789074496699048347",
+              "variant": "baseline",
+              "index": 2,
+              "lanes": [
+                446143
+              ],
+              "length": 33.5258717850333,
+              "initial_s": 26.9674079603074,
+              "remaining": 6.55846382472583,
+              "initial_d": 3.42441924630003,
+              "heading_error": 0.0165841765069838
+            }
+          ],
+          "counts": {
+            "kinematic": 30
+          },
+          "winner": null,
+          "longest_valid": null,
+          "kinematic_resampling_sensitive_count": 0
+        },
+        "extended_reference_only": {
+          "current": 446279,
+          "goals": [
+            500918
+          ],
+          "references": [
+            {
+              "kind": "reference",
+              "snapshot": "1789074496699048347",
+              "variant": "extended_reference_only",
+              "index": 0,
+              "lanes": [
+                446279,
+                500918
+              ],
+              "length": 138.979424984033,
+              "initial_s": 26.9619619466486,
+              "remaining": 112.017463037384,
+              "initial_d": 0.132013078087733,
+              "heading_error": 0.0165841765069838
+            },
+            {
+              "kind": "reference",
+              "snapshot": "1789074496699048347",
+              "variant": "extended_reference_only",
+              "index": 1,
+              "lanes": [
+                446415
+              ],
+              "length": 33.5160154910031,
+              "initial_s": 26.9596135796051,
+              "remaining": 6.55640191139809,
+              "initial_d": -3.09298692188867,
+              "heading_error": 0.016584176509429
+            },
+            {
+              "kind": "reference",
+              "snapshot": "1789074496699048347",
+              "variant": "extended_reference_only",
+              "index": 2,
+              "lanes": [
+                446143
+              ],
+              "length": 33.5258717850333,
+              "initial_s": 26.9674079603074,
+              "remaining": 6.55846382472583,
+              "initial_d": 3.42441924630003,
+              "heading_error": 0.0165841765069838
+            }
+          ],
+          "counts": {
+            "kinematic": 30
+          },
+          "winner": null,
+          "longest_valid": null,
+          "kinematic_resampling_sensitive_count": 0
+        },
+        "extended_reference_and_allowed": {
+          "current": 446279,
+          "goals": [
+            500918
+          ],
+          "references": [
+            {
+              "kind": "reference",
+              "snapshot": "1789074496699048347",
+              "variant": "extended_reference_and_allowed",
+              "index": 0,
+              "lanes": [
+                446279,
+                500918
+              ],
+              "length": 138.979424984033,
+              "initial_s": 26.9619619466486,
+              "remaining": 112.017463037384,
+              "initial_d": 0.132013078087733,
+              "heading_error": 0.0165841765069838
+            },
+            {
+              "kind": "reference",
+              "snapshot": "1789074496699048347",
+              "variant": "extended_reference_and_allowed",
+              "index": 1,
+              "lanes": [
+                446415
+              ],
+              "length": 33.5160154910031,
+              "initial_s": 26.9596135796051,
+              "remaining": 6.55640191139809,
+              "initial_d": -3.09298692188867,
+              "heading_error": 0.016584176509429
+            },
+            {
+              "kind": "reference",
+              "snapshot": "1789074496699048347",
+              "variant": "extended_reference_and_allowed",
+              "index": 2,
+              "lanes": [
+                446143
+              ],
+              "length": 33.5258717850333,
+              "initial_s": 26.9674079603074,
+              "remaining": 6.55846382472583,
+              "initial_d": 3.42441924630003,
+              "heading_error": 0.0165841765069838
+            }
+          ],
+          "counts": {
+            "kinematic": 30
+          },
+          "winner": null,
+          "longest_valid": null,
+          "kinematic_resampling_sensitive_count": 0
+        },
+        "extended_reference_allowed_forward_goal": {
+          "current": 446279,
+          "goals": [
+            500918
+          ],
+          "references": [
+            {
+              "kind": "reference",
+              "snapshot": "1789074496699048347",
+              "variant": "extended_reference_allowed_forward_goal",
+              "index": 0,
+              "lanes": [
+                446279,
+                500918
+              ],
+              "length": 138.979424984033,
+              "initial_s": 26.9619619466486,
+              "remaining": 112.017463037384,
+              "initial_d": 0.132013078087733,
+              "heading_error": 0.0165841765069838
+            },
+            {
+              "kind": "reference",
+              "snapshot": "1789074496699048347",
+              "variant": "extended_reference_allowed_forward_goal",
+              "index": 1,
+              "lanes": [
+                446415
+              ],
+              "length": 33.5160154910031,
+              "initial_s": 26.9596135796051,
+              "remaining": 6.55640191139809,
+              "initial_d": -3.09298692188867,
+              "heading_error": 0.016584176509429
+            },
+            {
+              "kind": "reference",
+              "snapshot": "1789074496699048347",
+              "variant": "extended_reference_allowed_forward_goal",
+              "index": 2,
+              "lanes": [
+                446143
+              ],
+              "length": 33.5258717850333,
+              "initial_s": 26.9674079603074,
+              "remaining": 6.55846382472583,
+              "initial_d": 3.42441924630003,
+              "heading_error": 0.0165841765069838
+            }
+          ],
+          "counts": {
+            "kinematic": 30
+          },
+          "winner": null,
+          "longest_valid": null,
+          "kinematic_resampling_sensitive_count": 0
+        }
+      },
+      "validation": {
+        "published_path": false,
+        "replayed_winner": -1
+      }
+    },
+    {
+      "stamp": "1789074614059163865",
+      "t": 1789074614.0990057,
+      "ego": {
+        "x": 1440.239501953125,
+        "y": 984.2785034179688,
+        "z": 52.91299819946289,
+        "heading": -1.5292083024978638,
+        "pitch": -0.0036464787553995848,
+        "roll": 1.5140907635213807e-05,
+        "speed": 0.0
+      },
+      "case": "north_green",
+      "dynamic_source_stamp": 1789074614059163865,
+      "variants": {
+        "baseline": {
+          "current": 446279,
+          "goals": [
+            500918
+          ],
+          "references": [
+            {
+              "kind": "reference",
+              "snapshot": "1789074614059163865",
+              "variant": "baseline",
+              "index": 0,
+              "lanes": [
+                446279,
+                500918
+              ],
+              "length": 138.979424984033,
+              "initial_s": 26.6152037314898,
+              "remaining": 112.364221252543,
+              "initial_d": -0.00980952865048766,
+              "heading_error": -0.0014637197576628
+            },
+            {
+              "kind": "reference",
+              "snapshot": "1789074614059163865",
+              "variant": "baseline",
+              "index": 1,
+              "lanes": [
+                446415
+              ],
+              "length": 33.5160154910031,
+              "initial_s": 26.6128800741983,
+              "remaining": 6.90313541680482,
+              "initial_d": -3.23480952862677,
+              "heading_error": -0.00146371975670223
+            },
+            {
+              "kind": "reference",
+              "snapshot": "1789074614059163865",
+              "variant": "baseline",
+              "index": 2,
+              "lanes": [
+                446143
+              ],
+              "length": 33.5258717850333,
+              "initial_s": 26.6891953923856,
+              "remaining": 6.83667639264767,
+              "initial_d": 3.28605704829145,
+              "heading_error": -0.0223411798568005
+            }
+          ],
+          "counts": {
+            "kinematic": 25,
+            "velocity": 5
+          },
+          "winner": null,
+          "longest_valid": null,
+          "kinematic_resampling_sensitive_count": 0
+        },
+        "extended_reference_only": {
+          "current": 446279,
+          "goals": [
+            500918
+          ],
+          "references": [
+            {
+              "kind": "reference",
+              "snapshot": "1789074614059163865",
+              "variant": "extended_reference_only",
+              "index": 0,
+              "lanes": [
+                446279,
+                500918
+              ],
+              "length": 138.979424984033,
+              "initial_s": 26.6152037314898,
+              "remaining": 112.364221252543,
+              "initial_d": -0.00980952865048766,
+              "heading_error": -0.0014637197576628
+            },
+            {
+              "kind": "reference",
+              "snapshot": "1789074614059163865",
+              "variant": "extended_reference_only",
+              "index": 1,
+              "lanes": [
+                446415
+              ],
+              "length": 33.5160154910031,
+              "initial_s": 26.6128800741983,
+              "remaining": 6.90313541680482,
+              "initial_d": -3.23480952862677,
+              "heading_error": -0.00146371975670223
+            },
+            {
+              "kind": "reference",
+              "snapshot": "1789074614059163865",
+              "variant": "extended_reference_only",
+              "index": 2,
+              "lanes": [
+                446143
+              ],
+              "length": 33.5258717850333,
+              "initial_s": 26.6891953923856,
+              "remaining": 6.83667639264767,
+              "initial_d": 3.28605704829145,
+              "heading_error": -0.0223411798568005
+            }
+          ],
+          "counts": {
+            "kinematic": 25,
+            "velocity": 5
+          },
+          "winner": null,
+          "longest_valid": null,
+          "kinematic_resampling_sensitive_count": 0
+        },
+        "extended_reference_and_allowed": {
+          "current": 446279,
+          "goals": [
+            500918
+          ],
+          "references": [
+            {
+              "kind": "reference",
+              "snapshot": "1789074614059163865",
+              "variant": "extended_reference_and_allowed",
+              "index": 0,
+              "lanes": [
+                446279,
+                500918
+              ],
+              "length": 138.979424984033,
+              "initial_s": 26.6152037314898,
+              "remaining": 112.364221252543,
+              "initial_d": -0.00980952865048766,
+              "heading_error": -0.0014637197576628
+            },
+            {
+              "kind": "reference",
+              "snapshot": "1789074614059163865",
+              "variant": "extended_reference_and_allowed",
+              "index": 1,
+              "lanes": [
+                446415
+              ],
+              "length": 33.5160154910031,
+              "initial_s": 26.6128800741983,
+              "remaining": 6.90313541680482,
+              "initial_d": -3.23480952862677,
+              "heading_error": -0.00146371975670223
+            },
+            {
+              "kind": "reference",
+              "snapshot": "1789074614059163865",
+              "variant": "extended_reference_and_allowed",
+              "index": 2,
+              "lanes": [
+                446143
+              ],
+              "length": 33.5258717850333,
+              "initial_s": 26.6891953923856,
+              "remaining": 6.83667639264767,
+              "initial_d": 3.28605704829145,
+              "heading_error": -0.0223411798568005
+            }
+          ],
+          "counts": {
+            "kinematic": 25,
+            "velocity": 5
+          },
+          "winner": null,
+          "longest_valid": null,
+          "kinematic_resampling_sensitive_count": 0
+        },
+        "extended_reference_allowed_forward_goal": {
+          "current": 446279,
+          "goals": [
+            500918
+          ],
+          "references": [
+            {
+              "kind": "reference",
+              "snapshot": "1789074614059163865",
+              "variant": "extended_reference_allowed_forward_goal",
+              "index": 0,
+              "lanes": [
+                446279,
+                500918
+              ],
+              "length": 138.979424984033,
+              "initial_s": 26.6152037314898,
+              "remaining": 112.364221252543,
+              "initial_d": -0.00980952865048766,
+              "heading_error": -0.0014637197576628
+            },
+            {
+              "kind": "reference",
+              "snapshot": "1789074614059163865",
+              "variant": "extended_reference_allowed_forward_goal",
+              "index": 1,
+              "lanes": [
+                446415
+              ],
+              "length": 33.5160154910031,
+              "initial_s": 26.6128800741983,
+              "remaining": 6.90313541680482,
+              "initial_d": -3.23480952862677,
+              "heading_error": -0.00146371975670223
+            },
+            {
+              "kind": "reference",
+              "snapshot": "1789074614059163865",
+              "variant": "extended_reference_allowed_forward_goal",
+              "index": 2,
+              "lanes": [
+                446143
+              ],
+              "length": 33.5258717850333,
+              "initial_s": 26.6891953923856,
+              "remaining": 6.83667639264767,
+              "initial_d": 3.28605704829145,
+              "heading_error": -0.0223411798568005
+            }
+          ],
+          "counts": {
+            "kinematic": 25,
+            "velocity": 5
+          },
+          "winner": null,
+          "longest_valid": null,
+          "kinematic_resampling_sensitive_count": 0
+        }
+      },
+      "validation": {
+        "published_path": false,
+        "replayed_winner": -1
+      }
+    },
+    {
+      "stamp": "1789074617219208160",
+      "t": 1789074617.2515059,
+      "ego": {
+        "x": 1440.239990234375,
+        "y": 984.2667846679688,
+        "z": 52.91128158569336,
+        "heading": -1.5292083024978638,
+        "pitch": -0.004852225072681904,
+        "roll": 1.5058997632877436e-05,
+        "speed": 0.1096377968788147
+      },
+      "case": "north_green",
+      "dynamic_source_stamp": 1789074617219208160,
+      "variants": {
+        "baseline": {
+          "current": 446279,
+          "goals": [
+            500918
+          ],
+          "references": [
+            {
+              "kind": "reference",
+              "snapshot": "1789074617219208160",
+              "variant": "baseline",
+              "index": 0,
+              "lanes": [
+                446279,
+                500918
+              ],
+              "length": 138.979424984033,
+              "initial_s": 26.6269326379592,
+              "remaining": 112.352492346074,
+              "initial_d": -0.00982605662532495,
+              "heading_error": -0.0014637197576628
+            },
+            {
+              "kind": "reference",
+              "snapshot": "1789074617219208160",
+              "variant": "baseline",
+              "index": 1,
+              "lanes": [
+                446415
+              ],
+              "length": 33.5160154910031,
+              "initial_s": 26.6246089806677,
+              "remaining": 6.89140651033543,
+              "initial_d": -3.23482605660183,
+              "heading_error": -0.00146371975670223
+            },
+            {
+              "kind": "reference",
+              "snapshot": "1789074617219208160",
+              "variant": "baseline",
+              "index": 2,
+              "lanes": [
+                446143
+              ],
+              "length": 33.5258717850333,
+              "initial_s": 26.6964614910164,
+              "remaining": 6.82941029401687,
+              "initial_d": 3.28579567192977,
+              "heading_error": -0.0223411798568005
+            }
+          ],
+          "counts": {
+            "kinematic": 40,
+            "valid": 5
+          },
+          "winner": {
+            "kind": "candidate",
+            "snapshot": "1789074617219208160",
+            "variant": "baseline",
+            "id": 14,
+            "reference": 0,
+            "horizon": 4,
+            "terminal_nominal_speed": 21.9096376794307,
+            "nominal_end_time": 4,
+            "generation_stop": "horizon",
+            "generated_length": 44.0384040672073,
+            "generated_count": 93,
+            "final_length": 44.0384040672073,
+            "final_count": 93,
+            "stage": "valid",
+            "first_point_gap": 0,
+            "max_curvature_until_reject": 0.0218614205963818,
+            "kinematic_reject_index": 0,
+            "velocity_error": "",
+            "required_initial_speed": 0,
+            "initial_empty_cell_points": 0,
+            "trimmed": false,
+            "collision": {
+              "index": 93,
+              "forbidden": false,
+              "cell": -1,
+              "lane": -1,
+              "bin": -1
+            },
+            "recheck": {
+              "index": 0,
+              "forbidden": false,
+              "cell": -1,
+              "lane": -1,
+              "bin": -1
+            },
+            "collinear_collapsed_kinematic_ok": true,
+            "collinear_collapsed_curvature": 0.00865060392880184,
+            "collinear_collapsed_count": 9,
+            "first_point": [
+              1440.23999023438,
+              984.266784667969
+            ],
+            "cost": 39.5548138156774,
+            "cost_terms": {
+              "lateral": 0.000110480788319968,
+              "time": 3.9999932851272,
+              "goal": 0.0139217814004462,
+              "progress": 35.54062606589,
+              "alignment": 8.02867050696242e-06,
+              "centerline": 0.000154173800932839
+            }
+          },
+          "longest_valid": {
+            "kind": "candidate",
+            "snapshot": "1789074617219208160",
+            "variant": "baseline",
+            "id": 14,
+            "reference": 0,
+            "horizon": 4,
+            "terminal_nominal_speed": 21.9096376794307,
+            "nominal_end_time": 4,
+            "generation_stop": "horizon",
+            "generated_length": 44.0384040672073,
+            "generated_count": 93,
+            "final_length": 44.0384040672073,
+            "final_count": 93,
+            "stage": "valid",
+            "first_point_gap": 0,
+            "max_curvature_until_reject": 0.0218614205963818,
+            "kinematic_reject_index": 0,
+            "velocity_error": "",
+            "required_initial_speed": 0,
+            "initial_empty_cell_points": 0,
+            "trimmed": false,
+            "collision": {
+              "index": 93,
+              "forbidden": false,
+              "cell": -1,
+              "lane": -1,
+              "bin": -1
+            },
+            "recheck": {
+              "index": 0,
+              "forbidden": false,
+              "cell": -1,
+              "lane": -1,
+              "bin": -1
+            },
+            "collinear_collapsed_kinematic_ok": true,
+            "collinear_collapsed_curvature": 0.00865060392880184,
+            "collinear_collapsed_count": 9,
+            "first_point": [
+              1440.23999023438,
+              984.266784667969
+            ],
+            "cost": 39.5548138156774,
+            "cost_terms": {
+              "lateral": 0.000110480788319968,
+              "time": 3.9999932851272,
+              "goal": 0.0139217814004462,
+              "progress": 35.54062606589,
+              "alignment": 8.02867050696242e-06,
+              "centerline": 0.000154173800932839
+            }
+          },
+          "kinematic_resampling_sensitive_count": 0
+        },
+        "extended_reference_only": {
+          "current": 446279,
+          "goals": [
+            500918
+          ],
+          "references": [
+            {
+              "kind": "reference",
+              "snapshot": "1789074617219208160",
+              "variant": "extended_reference_only",
+              "index": 0,
+              "lanes": [
+                446279,
+                500918
+              ],
+              "length": 138.979424984033,
+              "initial_s": 26.6269326379592,
+              "remaining": 112.352492346074,
+              "initial_d": -0.00982605662532495,
+              "heading_error": -0.0014637197576628
+            },
+            {
+              "kind": "reference",
+              "snapshot": "1789074617219208160",
+              "variant": "extended_reference_only",
+              "index": 1,
+              "lanes": [
+                446415
+              ],
+              "length": 33.5160154910031,
+              "initial_s": 26.6246089806677,
+              "remaining": 6.89140651033543,
+              "initial_d": -3.23482605660183,
+              "heading_error": -0.00146371975670223
+            },
+            {
+              "kind": "reference",
+              "snapshot": "1789074617219208160",
+              "variant": "extended_reference_only",
+              "index": 2,
+              "lanes": [
+                446143
+              ],
+              "length": 33.5258717850333,
+              "initial_s": 26.6964614910164,
+              "remaining": 6.82941029401687,
+              "initial_d": 3.28579567192977,
+              "heading_error": -0.0223411798568005
+            }
+          ],
+          "counts": {
+            "kinematic": 40,
+            "valid": 5
+          },
+          "winner": {
+            "kind": "candidate",
+            "snapshot": "1789074617219208160",
+            "variant": "extended_reference_only",
+            "id": 14,
+            "reference": 0,
+            "horizon": 4,
+            "terminal_nominal_speed": 21.9096376794307,
+            "nominal_end_time": 4,
+            "generation_stop": "horizon",
+            "generated_length": 44.0384040672073,
+            "generated_count": 93,
+            "final_length": 44.0384040672073,
+            "final_count": 93,
+            "stage": "valid",
+            "first_point_gap": 0,
+            "max_curvature_until_reject": 0.0218614205963818,
+            "kinematic_reject_index": 0,
+            "velocity_error": "",
+            "required_initial_speed": 0,
+            "initial_empty_cell_points": 0,
+            "trimmed": false,
+            "collision": {
+              "index": 93,
+              "forbidden": false,
+              "cell": -1,
+              "lane": -1,
+              "bin": -1
+            },
+            "recheck": {
+              "index": 0,
+              "forbidden": false,
+              "cell": -1,
+              "lane": -1,
+              "bin": -1
+            },
+            "collinear_collapsed_kinematic_ok": true,
+            "collinear_collapsed_curvature": 0.00865060392880184,
+            "collinear_collapsed_count": 9,
+            "first_point": [
+              1440.23999023438,
+              984.266784667969
+            ],
+            "cost": 39.5548138156774,
+            "cost_terms": {
+              "lateral": 0.000110480788319968,
+              "time": 3.9999932851272,
+              "goal": 0.0139217814004462,
+              "progress": 35.54062606589,
+              "alignment": 8.02867050696242e-06,
+              "centerline": 0.000154173800932839
+            }
+          },
+          "longest_valid": {
+            "kind": "candidate",
+            "snapshot": "1789074617219208160",
+            "variant": "extended_reference_only",
+            "id": 14,
+            "reference": 0,
+            "horizon": 4,
+            "terminal_nominal_speed": 21.9096376794307,
+            "nominal_end_time": 4,
+            "generation_stop": "horizon",
+            "generated_length": 44.0384040672073,
+            "generated_count": 93,
+            "final_length": 44.0384040672073,
+            "final_count": 93,
+            "stage": "valid",
+            "first_point_gap": 0,
+            "max_curvature_until_reject": 0.0218614205963818,
+            "kinematic_reject_index": 0,
+            "velocity_error": "",
+            "required_initial_speed": 0,
+            "initial_empty_cell_points": 0,
+            "trimmed": false,
+            "collision": {
+              "index": 93,
+              "forbidden": false,
+              "cell": -1,
+              "lane": -1,
+              "bin": -1
+            },
+            "recheck": {
+              "index": 0,
+              "forbidden": false,
+              "cell": -1,
+              "lane": -1,
+              "bin": -1
+            },
+            "collinear_collapsed_kinematic_ok": true,
+            "collinear_collapsed_curvature": 0.00865060392880184,
+            "collinear_collapsed_count": 9,
+            "first_point": [
+              1440.23999023438,
+              984.266784667969
+            ],
+            "cost": 39.5548138156774,
+            "cost_terms": {
+              "lateral": 0.000110480788319968,
+              "time": 3.9999932851272,
+              "goal": 0.0139217814004462,
+              "progress": 35.54062606589,
+              "alignment": 8.02867050696242e-06,
+              "centerline": 0.000154173800932839
+            }
+          },
+          "kinematic_resampling_sensitive_count": 0
+        },
+        "extended_reference_and_allowed": {
+          "current": 446279,
+          "goals": [
+            500918
+          ],
+          "references": [
+            {
+              "kind": "reference",
+              "snapshot": "1789074617219208160",
+              "variant": "extended_reference_and_allowed",
+              "index": 0,
+              "lanes": [
+                446279,
+                500918
+              ],
+              "length": 138.979424984033,
+              "initial_s": 26.6269326379592,
+              "remaining": 112.352492346074,
+              "initial_d": -0.00982605662532495,
+              "heading_error": -0.0014637197576628
+            },
+            {
+              "kind": "reference",
+              "snapshot": "1789074617219208160",
+              "variant": "extended_reference_and_allowed",
+              "index": 1,
+              "lanes": [
+                446415
+              ],
+              "length": 33.5160154910031,
+              "initial_s": 26.6246089806677,
+              "remaining": 6.89140651033543,
+              "initial_d": -3.23482605660183,
+              "heading_error": -0.00146371975670223
+            },
+            {
+              "kind": "reference",
+              "snapshot": "1789074617219208160",
+              "variant": "extended_reference_and_allowed",
+              "index": 2,
+              "lanes": [
+                446143
+              ],
+              "length": 33.5258717850333,
+              "initial_s": 26.6964614910164,
+              "remaining": 6.82941029401687,
+              "initial_d": 3.28579567192977,
+              "heading_error": -0.0223411798568005
+            }
+          ],
+          "counts": {
+            "kinematic": 40,
+            "valid": 5
+          },
+          "winner": {
+            "kind": "candidate",
+            "snapshot": "1789074617219208160",
+            "variant": "extended_reference_and_allowed",
+            "id": 14,
+            "reference": 0,
+            "horizon": 4,
+            "terminal_nominal_speed": 21.9096376794307,
+            "nominal_end_time": 4,
+            "generation_stop": "horizon",
+            "generated_length": 44.0384040672073,
+            "generated_count": 93,
+            "final_length": 44.0384040672073,
+            "final_count": 93,
+            "stage": "valid",
+            "first_point_gap": 0,
+            "max_curvature_until_reject": 0.0218614205963818,
+            "kinematic_reject_index": 0,
+            "velocity_error": "",
+            "required_initial_speed": 0,
+            "initial_empty_cell_points": 0,
+            "trimmed": false,
+            "collision": {
+              "index": 93,
+              "forbidden": false,
+              "cell": -1,
+              "lane": -1,
+              "bin": -1
+            },
+            "recheck": {
+              "index": 0,
+              "forbidden": false,
+              "cell": -1,
+              "lane": -1,
+              "bin": -1
+            },
+            "collinear_collapsed_kinematic_ok": true,
+            "collinear_collapsed_curvature": 0.00865060392880184,
+            "collinear_collapsed_count": 9,
+            "first_point": [
+              1440.23999023438,
+              984.266784667969
+            ],
+            "cost": 39.5548138156774,
+            "cost_terms": {
+              "lateral": 0.000110480788319968,
+              "time": 3.9999932851272,
+              "goal": 0.0139217814004462,
+              "progress": 35.54062606589,
+              "alignment": 8.02867050696242e-06,
+              "centerline": 0.000154173800932839
+            }
+          },
+          "longest_valid": {
+            "kind": "candidate",
+            "snapshot": "1789074617219208160",
+            "variant": "extended_reference_and_allowed",
+            "id": 14,
+            "reference": 0,
+            "horizon": 4,
+            "terminal_nominal_speed": 21.9096376794307,
+            "nominal_end_time": 4,
+            "generation_stop": "horizon",
+            "generated_length": 44.0384040672073,
+            "generated_count": 93,
+            "final_length": 44.0384040672073,
+            "final_count": 93,
+            "stage": "valid",
+            "first_point_gap": 0,
+            "max_curvature_until_reject": 0.0218614205963818,
+            "kinematic_reject_index": 0,
+            "velocity_error": "",
+            "required_initial_speed": 0,
+            "initial_empty_cell_points": 0,
+            "trimmed": false,
+            "collision": {
+              "index": 93,
+              "forbidden": false,
+              "cell": -1,
+              "lane": -1,
+              "bin": -1
+            },
+            "recheck": {
+              "index": 0,
+              "forbidden": false,
+              "cell": -1,
+              "lane": -1,
+              "bin": -1
+            },
+            "collinear_collapsed_kinematic_ok": true,
+            "collinear_collapsed_curvature": 0.00865060392880184,
+            "collinear_collapsed_count": 9,
+            "first_point": [
+              1440.23999023438,
+              984.266784667969
+            ],
+            "cost": 39.5548138156774,
+            "cost_terms": {
+              "lateral": 0.000110480788319968,
+              "time": 3.9999932851272,
+              "goal": 0.0139217814004462,
+              "progress": 35.54062606589,
+              "alignment": 8.02867050696242e-06,
+              "centerline": 0.000154173800932839
+            }
+          },
+          "kinematic_resampling_sensitive_count": 0
+        },
+        "extended_reference_allowed_forward_goal": {
+          "current": 446279,
+          "goals": [
+            500918
+          ],
+          "references": [
+            {
+              "kind": "reference",
+              "snapshot": "1789074617219208160",
+              "variant": "extended_reference_allowed_forward_goal",
+              "index": 0,
+              "lanes": [
+                446279,
+                500918
+              ],
+              "length": 138.979424984033,
+              "initial_s": 26.6269326379592,
+              "remaining": 112.352492346074,
+              "initial_d": -0.00982605662532495,
+              "heading_error": -0.0014637197576628
+            },
+            {
+              "kind": "reference",
+              "snapshot": "1789074617219208160",
+              "variant": "extended_reference_allowed_forward_goal",
+              "index": 1,
+              "lanes": [
+                446415
+              ],
+              "length": 33.5160154910031,
+              "initial_s": 26.6246089806677,
+              "remaining": 6.89140651033543,
+              "initial_d": -3.23482605660183,
+              "heading_error": -0.00146371975670223
+            },
+            {
+              "kind": "reference",
+              "snapshot": "1789074617219208160",
+              "variant": "extended_reference_allowed_forward_goal",
+              "index": 2,
+              "lanes": [
+                446143
+              ],
+              "length": 33.5258717850333,
+              "initial_s": 26.6964614910164,
+              "remaining": 6.82941029401687,
+              "initial_d": 3.28579567192977,
+              "heading_error": -0.0223411798568005
+            }
+          ],
+          "counts": {
+            "kinematic": 40,
+            "valid": 5
+          },
+          "winner": {
+            "kind": "candidate",
+            "snapshot": "1789074617219208160",
+            "variant": "extended_reference_allowed_forward_goal",
+            "id": 14,
+            "reference": 0,
+            "horizon": 4,
+            "terminal_nominal_speed": 21.9096376794307,
+            "nominal_end_time": 4,
+            "generation_stop": "horizon",
+            "generated_length": 44.0384040672073,
+            "generated_count": 93,
+            "final_length": 44.0384040672073,
+            "final_count": 93,
+            "stage": "valid",
+            "first_point_gap": 0,
+            "max_curvature_until_reject": 0.0218614205963818,
+            "kinematic_reject_index": 0,
+            "velocity_error": "",
+            "required_initial_speed": 0,
+            "initial_empty_cell_points": 0,
+            "trimmed": false,
+            "collision": {
+              "index": 93,
+              "forbidden": false,
+              "cell": -1,
+              "lane": -1,
+              "bin": -1
+            },
+            "recheck": {
+              "index": 0,
+              "forbidden": false,
+              "cell": -1,
+              "lane": -1,
+              "bin": -1
+            },
+            "collinear_collapsed_kinematic_ok": true,
+            "collinear_collapsed_curvature": 0.00865060392880184,
+            "collinear_collapsed_count": 9,
+            "first_point": [
+              1440.23999023438,
+              984.266784667969
+            ],
+            "cost": 394.926090230264,
+            "cost_terms": {
+              "lateral": 0.000110480788319968,
+              "time": 3.9999932851272,
+              "goal": 355.385198195987,
+              "progress": 35.54062606589,
+              "alignment": 8.02867051748074e-06,
+              "centerline": 0.000154173800932839
+            }
+          },
+          "longest_valid": {
+            "kind": "candidate",
+            "snapshot": "1789074617219208160",
+            "variant": "extended_reference_allowed_forward_goal",
+            "id": 14,
+            "reference": 0,
+            "horizon": 4,
+            "terminal_nominal_speed": 21.9096376794307,
+            "nominal_end_time": 4,
+            "generation_stop": "horizon",
+            "generated_length": 44.0384040672073,
+            "generated_count": 93,
+            "final_length": 44.0384040672073,
+            "final_count": 93,
+            "stage": "valid",
+            "first_point_gap": 0,
+            "max_curvature_until_reject": 0.0218614205963818,
+            "kinematic_reject_index": 0,
+            "velocity_error": "",
+            "required_initial_speed": 0,
+            "initial_empty_cell_points": 0,
+            "trimmed": false,
+            "collision": {
+              "index": 93,
+              "forbidden": false,
+              "cell": -1,
+              "lane": -1,
+              "bin": -1
+            },
+            "recheck": {
+              "index": 0,
+              "forbidden": false,
+              "cell": -1,
+              "lane": -1,
+              "bin": -1
+            },
+            "collinear_collapsed_kinematic_ok": true,
+            "collinear_collapsed_curvature": 0.00865060392880184,
+            "collinear_collapsed_count": 9,
+            "first_point": [
+              1440.23999023438,
+              984.266784667969
+            ],
+            "cost": 394.926090230264,
+            "cost_terms": {
+              "lateral": 0.000110480788319968,
+              "time": 3.9999932851272,
+              "goal": 355.385198195987,
+              "progress": 35.54062606589,
+              "alignment": 8.02867051748074e-06,
+              "centerline": 0.000154173800932839
+            }
+          },
+          "kinematic_resampling_sensitive_count": 0
+        }
+      },
+      "validation": {
+        "published_path": true,
+        "replayed_winner": 14,
+        "actual_point_count": 93,
+        "replayed_point_count": 93,
+        "max_point_error_m": 1.206382065090916e-06,
+        "live_valid_count": 5,
+        "replayed_valid_count": 5,
+        "live_selected_index": 4,
+        "replayed_selected_index": 4,
+        "max_valid_length_error_m": 1.5786059961442334e-06
+      }
+    },
+    {
+      "stamp": "1789074619018820559",
+      "t": 1789074619.050597,
+      "ego": {
+        "x": 1440.3697509765625,
+        "y": 981.1522827148438,
+        "z": 52.91883850097656,
+        "heading": -1.5290658473968506,
+        "pitch": -0.003324999939650297,
+        "roll": 8.173155947588384e-06,
+        "speed": 3.516712188720703
+      },
+      "case": "north_green",
+      "dynamic_source_stamp": 1789074619018820559,
+      "variants": {
+        "baseline": {
+          "current": 446279,
+          "goals": [
+            500918
+          ],
+          "references": [
+            {
+              "kind": "reference",
+              "snapshot": "1789074619018820559",
+              "variant": "baseline",
+              "index": 0,
+              "lanes": [
+                446279,
+                500918
+              ],
+              "length": 138.979424984033,
+              "initial_s": 29.7441321128639,
+              "remaining": 109.235292871169,
+              "initial_d": -0.0143738076738289,
+              "heading_error": -0.00141437522743759
+            },
+            {
+              "kind": "reference",
+              "snapshot": "1789074619018820559",
+              "variant": "baseline",
+              "index": 1,
+              "lanes": [
+                446415
+              ],
+              "length": 33.5160154910031,
+              "initial_s": 29.7415081739788,
+              "remaining": 3.77450731702431,
+              "initial_d": -3.2393738076488,
+              "heading_error": -0.00141437522732968
+            },
+            {
+              "kind": "reference",
+              "snapshot": "1789074619018820559",
+              "variant": "baseline",
+              "index": 2,
+              "lanes": [
+                446143
+              ],
+              "length": 33.5258717850333,
+              "initial_s": 29.7501560540018,
+              "remaining": 3.77571573103146,
+              "initial_d": 3.24951371696477,
+              "heading_error": -0.00141437522739807
+            }
+          ],
+          "counts": {
+            "kinematic": 30,
+            "valid": 15
+          },
+          "winner": {
+            "kind": "candidate",
+            "snapshot": "1789074619018820559",
+            "variant": "baseline",
+            "id": 14,
+            "reference": 0,
+            "horizon": 4,
+            "terminal_nominal_speed": 25.316708671205,
+            "nominal_end_time": 4,
+            "generation_stop": "max_length_after_time_step",
+            "generated_length": 57.6664518534563,
+            "generated_count": 120,
+            "final_length": 57.6664518534563,
+            "final_count": 120,
+            "stage": "valid",
+            "first_point_gap": 0,
+            "max_curvature_until_reject": 0.0175510319744422,
+            "kinematic_reject_index": 0,
+            "velocity_error": "",
+            "required_initial_speed": 0,
+            "initial_empty_cell_points": 0,
+            "trimmed": false,
+            "collision": {
+              "index": 120,
+              "forbidden": false,
+              "cell": -1,
+              "lane": -1,
+              "bin": -1
+            },
+            "recheck": {
+              "index": 0,
+              "forbidden": false,
+              "cell": -1,
+              "lane": -1,
+              "bin": -1
+            },
+            "collinear_collapsed_kinematic_ok": true,
+            "collinear_collapsed_curvature": 0.00097771170135955,
+            "collinear_collapsed_count": 9,
+            "first_point": [
+              1440.36975097656,
+              981.152282714844
+            ],
+            "cost": 4.01616220722851,
+            "cost_terms": {
+              "lateral": 0.000607633284809263,
+              "time": 3.99998432252603,
+              "goal": 0.0148621253801257,
+              "progress": 0,
+              "alignment": 1.11956851404784e-05,
+              "centerline": 0.000696930352399253
+            }
+          },
+          "longest_valid": {
+            "kind": "candidate",
+            "snapshot": "1789074619018820559",
+            "variant": "baseline",
+            "id": 14,
+            "reference": 0,
+            "horizon": 4,
+            "terminal_nominal_speed": 25.316708671205,
+            "nominal_end_time": 4,
+            "generation_stop": "max_length_after_time_step",
+            "generated_length": 57.6664518534563,
+            "generated_count": 120,
+            "final_length": 57.6664518534563,
+            "final_count": 120,
+            "stage": "valid",
+            "first_point_gap": 0,
+            "max_curvature_until_reject": 0.0175510319744422,
+            "kinematic_reject_index": 0,
+            "velocity_error": "",
+            "required_initial_speed": 0,
+            "initial_empty_cell_points": 0,
+            "trimmed": false,
+            "collision": {
+              "index": 120,
+              "forbidden": false,
+              "cell": -1,
+              "lane": -1,
+              "bin": -1
+            },
+            "recheck": {
+              "index": 0,
+              "forbidden": false,
+              "cell": -1,
+              "lane": -1,
+              "bin": -1
+            },
+            "collinear_collapsed_kinematic_ok": true,
+            "collinear_collapsed_curvature": 0.00097771170135955,
+            "collinear_collapsed_count": 9,
+            "first_point": [
+              1440.36975097656,
+              981.152282714844
+            ],
+            "cost": 4.01616220722851,
+            "cost_terms": {
+              "lateral": 0.000607633284809263,
+              "time": 3.99998432252603,
+              "goal": 0.0148621253801257,
+              "progress": 0,
+              "alignment": 1.11956851404784e-05,
+              "centerline": 0.000696930352399253
+            }
+          },
+          "kinematic_resampling_sensitive_count": 6
+        },
+        "extended_reference_only": {
+          "current": 446279,
+          "goals": [
+            500918
+          ],
+          "references": [
+            {
+              "kind": "reference",
+              "snapshot": "1789074619018820559",
+              "variant": "extended_reference_only",
+              "index": 0,
+              "lanes": [
+                446279,
+                500918
+              ],
+              "length": 138.979424984033,
+              "initial_s": 29.7441321128639,
+              "remaining": 109.235292871169,
+              "initial_d": -0.0143738076738289,
+              "heading_error": -0.00141437522743759
+            },
+            {
+              "kind": "reference",
+              "snapshot": "1789074619018820559",
+              "variant": "extended_reference_only",
+              "index": 1,
+              "lanes": [
+                446415
+              ],
+              "length": 33.5160154910031,
+              "initial_s": 29.7415081739788,
+              "remaining": 3.77450731702431,
+              "initial_d": -3.2393738076488,
+              "heading_error": -0.00141437522732968
+            },
+            {
+              "kind": "reference",
+              "snapshot": "1789074619018820559",
+              "variant": "extended_reference_only",
+              "index": 2,
+              "lanes": [
+                446143
+              ],
+              "length": 33.5258717850333,
+              "initial_s": 29.7501560540018,
+              "remaining": 3.77571573103146,
+              "initial_d": 3.24951371696477,
+              "heading_error": -0.00141437522739807
+            }
+          ],
+          "counts": {
+            "kinematic": 30,
+            "valid": 15
+          },
+          "winner": {
+            "kind": "candidate",
+            "snapshot": "1789074619018820559",
+            "variant": "extended_reference_only",
+            "id": 14,
+            "reference": 0,
+            "horizon": 4,
+            "terminal_nominal_speed": 25.316708671205,
+            "nominal_end_time": 4,
+            "generation_stop": "max_length_after_time_step",
+            "generated_length": 57.6664518534563,
+            "generated_count": 120,
+            "final_length": 57.6664518534563,
+            "final_count": 120,
+            "stage": "valid",
+            "first_point_gap": 0,
+            "max_curvature_until_reject": 0.0175510319744422,
+            "kinematic_reject_index": 0,
+            "velocity_error": "",
+            "required_initial_speed": 0,
+            "initial_empty_cell_points": 0,
+            "trimmed": false,
+            "collision": {
+              "index": 120,
+              "forbidden": false,
+              "cell": -1,
+              "lane": -1,
+              "bin": -1
+            },
+            "recheck": {
+              "index": 0,
+              "forbidden": false,
+              "cell": -1,
+              "lane": -1,
+              "bin": -1
+            },
+            "collinear_collapsed_kinematic_ok": true,
+            "collinear_collapsed_curvature": 0.00097771170135955,
+            "collinear_collapsed_count": 9,
+            "first_point": [
+              1440.36975097656,
+              981.152282714844
+            ],
+            "cost": 4.01616220722851,
+            "cost_terms": {
+              "lateral": 0.000607633284809263,
+              "time": 3.99998432252603,
+              "goal": 0.0148621253801257,
+              "progress": 0,
+              "alignment": 1.11956851404784e-05,
+              "centerline": 0.000696930352399253
+            }
+          },
+          "longest_valid": {
+            "kind": "candidate",
+            "snapshot": "1789074619018820559",
+            "variant": "extended_reference_only",
+            "id": 14,
+            "reference": 0,
+            "horizon": 4,
+            "terminal_nominal_speed": 25.316708671205,
+            "nominal_end_time": 4,
+            "generation_stop": "max_length_after_time_step",
+            "generated_length": 57.6664518534563,
+            "generated_count": 120,
+            "final_length": 57.6664518534563,
+            "final_count": 120,
+            "stage": "valid",
+            "first_point_gap": 0,
+            "max_curvature_until_reject": 0.0175510319744422,
+            "kinematic_reject_index": 0,
+            "velocity_error": "",
+            "required_initial_speed": 0,
+            "initial_empty_cell_points": 0,
+            "trimmed": false,
+            "collision": {
+              "index": 120,
+              "forbidden": false,
+              "cell": -1,
+              "lane": -1,
+              "bin": -1
+            },
+            "recheck": {
+              "index": 0,
+              "forbidden": false,
+              "cell": -1,
+              "lane": -1,
+              "bin": -1
+            },
+            "collinear_collapsed_kinematic_ok": true,
+            "collinear_collapsed_curvature": 0.00097771170135955,
+            "collinear_collapsed_count": 9,
+            "first_point": [
+              1440.36975097656,
+              981.152282714844
+            ],
+            "cost": 4.01616220722851,
+            "cost_terms": {
+              "lateral": 0.000607633284809263,
+              "time": 3.99998432252603,
+              "goal": 0.0148621253801257,
+              "progress": 0,
+              "alignment": 1.11956851404784e-05,
+              "centerline": 0.000696930352399253
+            }
+          },
+          "kinematic_resampling_sensitive_count": 6
+        },
+        "extended_reference_and_allowed": {
+          "current": 446279,
+          "goals": [
+            500918
+          ],
+          "references": [
+            {
+              "kind": "reference",
+              "snapshot": "1789074619018820559",
+              "variant": "extended_reference_and_allowed",
+              "index": 0,
+              "lanes": [
+                446279,
+                500918
+              ],
+              "length": 138.979424984033,
+              "initial_s": 29.7441321128639,
+              "remaining": 109.235292871169,
+              "initial_d": -0.0143738076738289,
+              "heading_error": -0.00141437522743759
+            },
+            {
+              "kind": "reference",
+              "snapshot": "1789074619018820559",
+              "variant": "extended_reference_and_allowed",
+              "index": 1,
+              "lanes": [
+                446415
+              ],
+              "length": 33.5160154910031,
+              "initial_s": 29.7415081739788,
+              "remaining": 3.77450731702431,
+              "initial_d": -3.2393738076488,
+              "heading_error": -0.00141437522732968
+            },
+            {
+              "kind": "reference",
+              "snapshot": "1789074619018820559",
+              "variant": "extended_reference_and_allowed",
+              "index": 2,
+              "lanes": [
+                446143
+              ],
+              "length": 33.5258717850333,
+              "initial_s": 29.7501560540018,
+              "remaining": 3.77571573103146,
+              "initial_d": 3.24951371696477,
+              "heading_error": -0.00141437522739807
+            }
+          ],
+          "counts": {
+            "kinematic": 30,
+            "valid": 15
+          },
+          "winner": {
+            "kind": "candidate",
+            "snapshot": "1789074619018820559",
+            "variant": "extended_reference_and_allowed",
+            "id": 14,
+            "reference": 0,
+            "horizon": 4,
+            "terminal_nominal_speed": 25.316708671205,
+            "nominal_end_time": 4,
+            "generation_stop": "max_length_after_time_step",
+            "generated_length": 57.6664518534563,
+            "generated_count": 120,
+            "final_length": 57.6664518534563,
+            "final_count": 120,
+            "stage": "valid",
+            "first_point_gap": 0,
+            "max_curvature_until_reject": 0.0175510319744422,
+            "kinematic_reject_index": 0,
+            "velocity_error": "",
+            "required_initial_speed": 0,
+            "initial_empty_cell_points": 0,
+            "trimmed": false,
+            "collision": {
+              "index": 120,
+              "forbidden": false,
+              "cell": -1,
+              "lane": -1,
+              "bin": -1
+            },
+            "recheck": {
+              "index": 0,
+              "forbidden": false,
+              "cell": -1,
+              "lane": -1,
+              "bin": -1
+            },
+            "collinear_collapsed_kinematic_ok": true,
+            "collinear_collapsed_curvature": 0.00097771170135955,
+            "collinear_collapsed_count": 9,
+            "first_point": [
+              1440.36975097656,
+              981.152282714844
+            ],
+            "cost": 4.01616220722851,
+            "cost_terms": {
+              "lateral": 0.000607633284809263,
+              "time": 3.99998432252603,
+              "goal": 0.0148621253801257,
+              "progress": 0,
+              "alignment": 1.11956851404784e-05,
+              "centerline": 0.000696930352399253
+            }
+          },
+          "longest_valid": {
+            "kind": "candidate",
+            "snapshot": "1789074619018820559",
+            "variant": "extended_reference_and_allowed",
+            "id": 14,
+            "reference": 0,
+            "horizon": 4,
+            "terminal_nominal_speed": 25.316708671205,
+            "nominal_end_time": 4,
+            "generation_stop": "max_length_after_time_step",
+            "generated_length": 57.6664518534563,
+            "generated_count": 120,
+            "final_length": 57.6664518534563,
+            "final_count": 120,
+            "stage": "valid",
+            "first_point_gap": 0,
+            "max_curvature_until_reject": 0.0175510319744422,
+            "kinematic_reject_index": 0,
+            "velocity_error": "",
+            "required_initial_speed": 0,
+            "initial_empty_cell_points": 0,
+            "trimmed": false,
+            "collision": {
+              "index": 120,
+              "forbidden": false,
+              "cell": -1,
+              "lane": -1,
+              "bin": -1
+            },
+            "recheck": {
+              "index": 0,
+              "forbidden": false,
+              "cell": -1,
+              "lane": -1,
+              "bin": -1
+            },
+            "collinear_collapsed_kinematic_ok": true,
+            "collinear_collapsed_curvature": 0.00097771170135955,
+            "collinear_collapsed_count": 9,
+            "first_point": [
+              1440.36975097656,
+              981.152282714844
+            ],
+            "cost": 4.01616220722851,
+            "cost_terms": {
+              "lateral": 0.000607633284809263,
+              "time": 3.99998432252603,
+              "goal": 0.0148621253801257,
+              "progress": 0,
+              "alignment": 1.11956851404784e-05,
+              "centerline": 0.000696930352399253
+            }
+          },
+          "kinematic_resampling_sensitive_count": 6
+        },
+        "extended_reference_allowed_forward_goal": {
+          "current": 446279,
+          "goals": [
+            500918
+          ],
+          "references": [
+            {
+              "kind": "reference",
+              "snapshot": "1789074619018820559",
+              "variant": "extended_reference_allowed_forward_goal",
+              "index": 0,
+              "lanes": [
+                446279,
+                500918
+              ],
+              "length": 138.979424984033,
+              "initial_s": 29.7441321128639,
+              "remaining": 109.235292871169,
+              "initial_d": -0.0143738076738289,
+              "heading_error": -0.00141437522743759
+            },
+            {
+              "kind": "reference",
+              "snapshot": "1789074619018820559",
+              "variant": "extended_reference_allowed_forward_goal",
+              "index": 1,
+              "lanes": [
+                446415
+              ],
+              "length": 33.5160154910031,
+              "initial_s": 29.7415081739788,
+              "remaining": 3.77450731702431,
+              "initial_d": -3.2393738076488,
+              "heading_error": -0.00141437522732968
+            },
+            {
+              "kind": "reference",
+              "snapshot": "1789074619018820559",
+              "variant": "extended_reference_allowed_forward_goal",
+              "index": 2,
+              "lanes": [
+                446143
+              ],
+              "length": 33.5258717850333,
+              "initial_s": 29.7501560540018,
+              "remaining": 3.77571573103146,
+              "initial_d": 3.24951371696477,
+              "heading_error": -0.00141437522739807
+            }
+          ],
+          "counts": {
+            "kinematic": 30,
+            "valid": 15
+          },
+          "winner": {
+            "kind": "candidate",
+            "snapshot": "1789074619018820559",
+            "variant": "extended_reference_allowed_forward_goal",
+            "id": 11,
+            "reference": 0,
+            "horizon": 3.5,
+            "terminal_nominal_speed": 22.591708671205,
+            "nominal_end_time": 3.5,
+            "generation_stop": "horizon",
+            "generated_length": 45.6893786225272,
+            "generated_count": 97,
+            "final_length": 45.6893786225272,
+            "final_count": 97,
+            "stage": "valid",
+            "first_point_gap": 0,
+            "max_curvature_until_reject": 0.0146184590151212,
+            "kinematic_reject_index": 0,
+            "velocity_error": "",
+            "required_initial_speed": 0,
+            "initial_empty_cell_points": 0,
+            "trimmed": false,
+            "collision": {
+              "index": 97,
+              "forbidden": false,
+              "cell": -1,
+              "lane": -1,
+              "bin": -1
+            },
+            "recheck": {
+              "index": 0,
+              "forbidden": false,
+              "cell": -1,
+              "lane": -1,
+              "bin": -1
+            },
+            "collinear_collapsed_kinematic_ok": true,
+            "collinear_collapsed_curvature": 0.00119273620471771,
+            "collinear_collapsed_count": 8,
+            "first_point": [
+              1440.36975097656,
+              981.152282714844
+            ],
+            "cost": 207.865401671833,
+            "cost_terms": {
+              "lateral": 0.00102543685890648,
+              "time": 3.49998388618359,
+              "goal": 185.782255026586,
+              "progress": 18.5814566599254,
+              "alignment": 9.45837287946538e-06,
+              "centerline": 0.000671203906003214
+            }
+          },
+          "longest_valid": {
+            "kind": "candidate",
+            "snapshot": "1789074619018820559",
+            "variant": "extended_reference_allowed_forward_goal",
+            "id": 14,
+            "reference": 0,
+            "horizon": 4,
+            "terminal_nominal_speed": 25.316708671205,
+            "nominal_end_time": 4,
+            "generation_stop": "max_length_after_time_step",
+            "generated_length": 57.6664518534563,
+            "generated_count": 120,
+            "final_length": 57.6664518534563,
+            "final_count": 120,
+            "stage": "valid",
+            "first_point_gap": 0,
+            "max_curvature_until_reject": 0.0175510319744422,
+            "kinematic_reject_index": 0,
+            "velocity_error": "",
+            "required_initial_speed": 0,
+            "initial_empty_cell_points": 0,
+            "trimmed": false,
+            "collision": {
+              "index": 120,
+              "forbidden": false,
+              "cell": -1,
+              "lane": -1,
+              "bin": -1
+            },
+            "recheck": {
+              "index": 0,
+              "forbidden": false,
+              "cell": -1,
+              "lane": -1,
+              "bin": -1
+            },
+            "collinear_collapsed_kinematic_ok": true,
+            "collinear_collapsed_curvature": 0.00097771170135955,
+            "collinear_collapsed_count": 9,
+            "first_point": [
+              1440.36975097656,
+              981.152282714844
+            ],
+            "cost": 591.798244719356,
+            "cost_terms": {
+              "lateral": 0.000607633284809263,
+              "time": 3.99998432252603,
+              "goal": 587.796944637508,
+              "progress": 0,
+              "alignment": 1.11956851402243e-05,
+              "centerline": 0.000696930352399253
+            }
+          },
+          "kinematic_resampling_sensitive_count": 6
+        }
+      },
+      "validation": {
+        "published_path": true,
+        "replayed_winner": 14,
+        "actual_point_count": 120,
+        "replayed_point_count": 120,
+        "max_point_error_m": 2.771128192423013e-07,
+        "live_valid_count": 15,
+        "replayed_valid_count": 15,
+        "live_selected_index": 14,
+        "replayed_selected_index": 14,
+        "max_valid_length_error_m": 5.046618980486528e-07
+      }
+    }
+  ]
+}

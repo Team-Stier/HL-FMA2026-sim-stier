@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="390"><rect width="1100" height="390" fill="#fafbfd"/><style>text{font-family:"Noto Sans CJK KR",sans-serif;fill:#253348;font-size:14px}</style>
+<text x="30" y="43" style="font-size:25px;fill:#253348">73.3m 기준선이 남아 있어도 15.79m 후보를 선택</text>
+<text x="30" y="76" style="font-size:14px;fill:#253348">동일 시각의 ego·DynamicStatus로 원본 계산 재현. 두 후보 모두 모든 검사를 통과.</text>
+<text x="30" y="150" style="font-size:18px;fill:#253348">선택: 15.79m</text>
+<rect x="225" y="120" width="3.2398012868627895" height="45" fill="#df693f"/>
+<rect x="228.2398012868628" y="120" width="42.49742811694999" height="45" fill="#256eaa"/>
+<text x="282.73722940381276" y="150" style="font-size:15px;fill:#253348">합계 1,261.5</text>
+<text x="30" y="260" style="font-size:18px;fill:#253348">미선택: 56.10m</text>
+<rect x="225" y="230" width="680.9612164845694" height="45" fill="#df693f"/>
+<rect x="905.9612164845694" y="230" width="0.0" height="45" fill="#256eaa"/>
+<text x="917.9612164845694" y="260" style="font-size:15px;fill:#253348">합계 18,754.7</text>
+<text x="225" y="326" style="font-size:15px;fill:#253348">주황: 가까운 목표점과 끝점 거리 비용 / 파랑: 50m 미달 비용</text>
+<text x="30" y="370" style="font-size:12px;fill:#253348">stamp 1789073777459150537 · 합계에는 작은 시간/횡방향 비용도 포함 · 길수록 낮은 비용이 되는 설계가 아님</text>
+</svg>

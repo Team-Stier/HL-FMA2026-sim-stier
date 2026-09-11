@@ -31,10 +31,15 @@ install(DIRECTORY config launch DESTINATION share/${PROJECT_NAME})
 
 if(BUILD_TESTING)
     enable_testing()
+    find_package(Python3 REQUIRED COMPONENTS Interpreter)
     add_executable(control_core_test test/control_core_test.cpp)
     target_compile_features(control_core_test PUBLIC cxx_std_17)
+    target_compile_options(control_core_test PRIVATE -UNDEBUG)
     target_link_libraries(control_core_test control_core)
     add_test(NAME control_core_test COMMAND control_core_test)
+    add_test(NAME control_node_test COMMAND ${Python3_EXECUTABLE}
+        ${CMAKE_CURRENT_SOURCE_DIR}/test/control_node_test.py $<TARGET_FILE:mpc_control_node>)
+    set_tests_properties(control_node_test PROPERTIES TIMEOUT 40)
 endif()
 
 ament_export_include_directories(include)

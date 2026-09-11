@@ -1,0 +1,147 @@
+[
+  {
+    "stamp": 1789073540419079927,
+    "has_path": true,
+    "winner": 12,
+    "counts": {
+      "forbidden_lane": 2,
+      "kinematic": 7,
+      "valid": 6
+    },
+    "expected_count": 35,
+    "actual_count": 35,
+    "max_point_error_m": 2.7621168889681487e-07
+  },
+  {
+    "stamp": 1789073541818990362,
+    "has_path": true,
+    "winner": 3,
+    "counts": {
+      "forbidden_lane": 8,
+      "kinematic": 6,
+      "valid": 1
+    },
+    "expected_count": 20,
+    "actual_count": 20,
+    "max_point_error_m": 1.651737830238796e-07
+  },
+  {
+    "stamp": 1789073542378996363,
+    "has_path": true,
+    "winner": 0,
+    "counts": {
+      "forbidden_lane": 13,
+      "kinematic": 1,
+      "valid": 1
+    },
+    "expected_count": 17,
+    "actual_count": 17,
+    "max_point_error_m": 1.7570718177747902e-07
+  },
+  {
+    "stamp": 1789073543219012296,
+    "has_path": true,
+    "winner": 0,
+    "counts": {
+      "valid": 15
+    },
+    "expected_count": 11,
+    "actual_count": 11,
+    "max_point_error_m": 7.224897659058943e-08
+  },
+  {
+    "stamp": 1789073543620074539,
+    "has_path": true,
+    "winner": 1,
+    "counts": {
+      "kinematic": 2,
+      "valid": 13
+    },
+    "expected_count": 6,
+    "actual_count": 6,
+    "max_point_error_m": 5.927124789286093e-08
+  },
+  {
+    "stamp": 1789073543899308429,
+    "has_path": true,
+    "winner": 13,
+    "counts": {
+      "kinematic": 6,
+      "valid": 9
+    },
+    "expected_count": 33,
+    "actual_count": 33,
+    "max_point_error_m": 1.5501284383287566e-07
+  },
+  {
+    "stamp": 1789073545618980530,
+    "has_path": false,
+    "winner": -1,
+    "counts": {
+      "kinematic": 15
+    }
+  },
+  {
+    "stamp": 1789073740419202621,
+    "has_path": true,
+    "winner": 1,
+    "counts": {
+      "forbidden_lane": 8,
+      "kinematic": 5,
+      "valid": 2
+    },
+    "expected_count": 33,
+    "actual_count": 33,
+    "max_point_error_m": 2.730569166416757e-07
+  },
+  {
+    "stamp": 1789073742419250729,
+    "has_path": true,
+    "winner": 14,
+    "counts": {
+      "kinematic": 2,
+      "valid": 13
+    },
+    "expected_count": 19,
+    "actual_count": 19,
+    "max_point_error_m": 2.535590470529742e-07
+  },
+  {
+    "stamp": 1789073743619551281,
+    "has_path": true,
+    "winner": 13,
+    "counts": {
+      "kinematic": 12,
+      "valid": 3
+    },
+    "expected_count": 57,
+    "actual_count": 57,
+    "max_point_error_m": 4.246911859854066e-07
+  },
+  {
+    "stamp": 1789073766299141535,
+    "has_path": true,
+    "winner": 12,
+    "counts": {
+      "forbidden_lane": 9,
+      "kinematic": 3,
+      "valid": 3
+    },
+    "expected_count": 29,
+    "actual_count": 29,
+    "max_point_error_m": 4.3132081845782017e-07
+  },
+  {
+    "stamp": 1789073768659627516,
+    "has_path": true,
+    "winner": 3,
+    "counts": {
+      "forbidden_lane": 12,
+      "kinematic": 1,
+      "valid": 2
+    },
+    "expected_count": 21,
+    "actual_count": 21,
+    "max_point_error_m": 1.5394454291905558e-07
+  }
+]

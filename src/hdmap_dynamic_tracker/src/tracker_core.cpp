@@ -58,8 +58,21 @@ std::string compactLower(std::string value) {
 
 }  // namespace
 
-EgoSpeedResult EgoSpeedEstimator::update(double stamp_s, double x, double y) {
-    if (!std::isfinite(stamp_s) || !std::isfinite(x) || !std::isfinite(y)) {
+EgoSpeedEstimator::EgoSpeedEstimator(EgoMotionLimits limits) : limits_(limits) {
+    for (const double value : {limits.maximum_speed_mps, limits.maximum_vertical_speed_mps,
+             limits.maximum_yaw_rate_radps, limits.minimum_frame_dt_s, limits.maximum_frame_dt_s}) {
+        if (!std::isfinite(value) || value <= 0.0) {
+            throw std::invalid_argument("Ego motion limits must be finite and positive");
+        }
+    }
+    if (limits.minimum_frame_dt_s >= limits.maximum_frame_dt_s) {
+        throw std::invalid_argument("Ego frame dt limits must increase");
+    }
+}
+
+EgoSpeedResult EgoSpeedEstimator::update(double stamp_s, double x, double y, double z, double yaw) {
+    if (!std::isfinite(stamp_s) || !std::isfinite(x) || !std::isfinite(y) ||
+        !std::isfinite(z) || !std::isfinite(yaw)) {
         reset();
         return {0.0, true};
     }
@@ -68,19 +81,29 @@ EgoSpeedResult EgoSpeedEstimator::update(double stamp_s, double x, double y) {
         stamp_s_ = stamp_s;
         x_ = x;
         y_ = y;
+        z_ = z;
+        yaw_ = yaw;
         return {};
     }
 
     const double dt = stamp_s - stamp_s_;
     const double distance = std::hypot(x - x_, y - y_);
+    const double height_change = std::abs(z - z_);
+    const double yaw_delta = yaw - yaw_;
+    const double yaw_change = std::abs(normalizeAngle(yaw_delta));
     stamp_s_ = stamp_s;
     x_ = x;
     y_ = y;
-    if (!std::isfinite(dt) || dt <= 0.0) {
+    z_ = z;
+    yaw_ = yaw;
+    if (!std::isfinite(dt) || dt < limits_.minimum_frame_dt_s ||
+        dt > limits_.maximum_frame_dt_s) {
         return {0.0, true};
     }
     const double speed = distance / dt;
-    if (!std::isfinite(speed)) {
+    if (!std::isfinite(speed) || speed > limits_.maximum_speed_mps ||
+        !std::isfinite(height_change) || height_change / dt > limits_.maximum_vertical_speed_mps ||
+        !std::isfinite(yaw_delta) || yaw_change / dt > limits_.maximum_yaw_rate_radps) {
         return {0.0, true};
     }
     return {speed, false};
@@ -91,6 +114,8 @@ void EgoSpeedEstimator::reset() {
     stamp_s_ = 0.0;
     x_ = 0.0;
     y_ = 0.0;
+    z_ = 0.0;
+    yaw_ = 0.0;
 }
 
 bool validBrakingDistanceTable(const std::vector<BrakingDistanceSample>& samples) {
@@ -136,10 +161,38 @@ std::optional<double> conservativeBrakingDistance(
     return sample->braking_distance_m;
 }
 
-bool validStopRamp(const StopRampParameters& parameters) {
+namespace {
+
+double brakingEnvelopeDistance(double speed, const StopRampParameters& parameters,
+    const std::vector<BrakingDistanceSample>& calibration) {
+    if (speed == 0.0) return 0.0;
+    double coefficient = 1.0 / (2.0 * parameters.design_deceleration_mps2);
+    if (calibration.empty() && parameters.calibrated_braking_distance_m) {
+        coefficient = std::max(coefficient, *parameters.calibrated_braking_distance_m /
+            (parameters.entry_speed_mps * parameters.entry_speed_mps));
+    }
+    double penalty = 0.0;
+    double lower_speed = 0.0;
+    for (const auto& sample : calibration) {
+        if (speed <= lower_speed) break;
+        // Preserve the worst distance in each speed bin while making
+        // B(v) - v^2/(2a) nondecreasing. Its inverse cannot demand >a braking,
+        // including the first calibration bin immediately above zero speed.
+        penalty = std::max(penalty,
+            sample.braking_distance_m - coefficient * lower_speed * lower_speed);
+        lower_speed = sample.speed_mps;
+    }
+    return parameters.braking_distance_factor * (coefficient * speed * speed + penalty);
+}
+
+}  // namespace
+
+bool validStopRamp(const StopRampParameters& parameters,
+    const std::vector<BrakingDistanceSample>& calibration) {
     if (!std::isfinite(parameters.entry_speed_mps) || parameters.entry_speed_mps < 0.0 ||
         !std::isfinite(parameters.design_deceleration_mps2) ||
         parameters.design_deceleration_mps2 <= 0.0 ||
+        parameters.design_deceleration_mps2 > kMaximumDesignDecelerationMps2 ||
         !std::isfinite(parameters.braking_distance_factor) ||
         parameters.braking_distance_factor < 1.0 ||
         !std::isfinite(parameters.latency_budget_s) || parameters.latency_budget_s < 0.0 ||
@@ -148,57 +201,57 @@ bool validStopRamp(const StopRampParameters& parameters) {
             (!std::isfinite(*parameters.calibrated_braking_distance_m) ||
                 *parameters.calibrated_braking_distance_m < 0.0 ||
                 (parameters.entry_speed_mps > 0.0 &&
-                    *parameters.calibrated_braking_distance_m == 0.0)))) {
+                    *parameters.calibrated_braking_distance_m == 0.0))) ||
+        (!calibration.empty() && (!validBrakingDistanceTable(calibration) ||
+            parameters.entry_speed_mps > calibration.back().speed_mps))) {
         return false;
     }
-    const double theoretical_braking_distance =
-        parameters.entry_speed_mps * parameters.entry_speed_mps /
-        (2.0 * parameters.design_deceleration_mps2);
-    const double measured_braking_distance = parameters.calibrated_braking_distance_m
-        ? *parameters.calibrated_braking_distance_m
-        : 0.0;
-    const double braking_span = parameters.braking_distance_factor *
-        std::max(theoretical_braking_distance, measured_braking_distance);
+    const double braking_span = brakingEnvelopeDistance(parameters.entry_speed_mps, parameters, calibration);
     const double latency_span = parameters.entry_speed_mps * parameters.latency_budget_s;
-    return std::isfinite(theoretical_braking_distance) &&
-        std::isfinite(measured_braking_distance) && std::isfinite(braking_span) &&
-        std::isfinite(latency_span) && std::isfinite(braking_span + latency_span) &&
+    return std::isfinite(braking_span) && std::isfinite(latency_span) &&
         std::isfinite(braking_span + latency_span + parameters.stop_margin_m);
 }
 
-double stopRampProfileLength(const StopRampParameters& parameters) {
-    if (!validStopRamp(parameters)) {
-        return 0.0;
-    }
-    const double theoretical_braking_distance =
-        parameters.entry_speed_mps * parameters.entry_speed_mps /
-        (2.0 * parameters.design_deceleration_mps2);
-    const double measured_braking_distance = parameters.calibrated_braking_distance_m
-        ? *parameters.calibrated_braking_distance_m
-        : 0.0;
-    return parameters.braking_distance_factor *
-        std::max(theoretical_braking_distance, measured_braking_distance) +
+double stopRampProfileLength(const StopRampParameters& parameters,
+    const std::vector<BrakingDistanceSample>& calibration) {
+    if (!validStopRamp(parameters, calibration)) return 0.0;
+    return brakingEnvelopeDistance(parameters.entry_speed_mps, parameters, calibration) +
         parameters.entry_speed_mps * parameters.latency_budget_s;
 }
 
-double stopRampStartDistance(const StopRampParameters& parameters) {
-    if (!validStopRamp(parameters)) {
-        return 0.0;
-    }
-    return parameters.stop_margin_m + stopRampProfileLength(parameters);
+double stopRampStartDistance(const StopRampParameters& parameters,
+    const std::vector<BrakingDistanceSample>& calibration) {
+    if (!validStopRamp(parameters, calibration)) return 0.0;
+    return parameters.stop_margin_m + stopRampProfileLength(parameters, calibration);
 }
 
-double stopRampCap(double distance_to_stop_m, const StopRampParameters& parameters) {
-    if (!std::isfinite(distance_to_stop_m) || !validStopRamp(parameters)) {
-        return 0.0;
+double stopRampCap(double distance_to_stop_m, const StopRampParameters& parameters,
+    const std::vector<BrakingDistanceSample>& calibration) {
+    if (!std::isfinite(distance_to_stop_m) || !validStopRamp(parameters, calibration)) return 0.0;
+    const double available = distance_to_stop_m - parameters.stop_margin_m;
+    if (available <= 0.0 || parameters.entry_speed_mps == 0.0) return 0.0;
+    const double profile_length = stopRampProfileLength(parameters, calibration);
+    if (available >= profile_length) return parameters.entry_speed_mps;
+    if (!calibration.empty()) {
+        double low = 0.0;
+        double high = parameters.entry_speed_mps;
+        for (int iteration = 0; iteration < 48; ++iteration) {
+            const double speed = low + (high - low) * 0.5;
+            const double required = brakingEnvelopeDistance(speed, parameters, calibration) +
+                parameters.latency_budget_s * speed;
+            if (required <= available) low = speed;
+            else high = speed;
+        }
+        return low;
     }
-    const double profile_length = stopRampProfileLength(parameters);
-    if (profile_length <= std::numeric_limits<double>::epsilon()) {
-        return 0.0;
-    }
-    const double ratio = std::clamp(
-        (distance_to_stop_m - parameters.stop_margin_m) / profile_length, 0.0, 1.0);
-    return parameters.entry_speed_mps * ratio;
+    // Analytic inverse of B(v) + latency*v; a longer entry calibration weakens a.
+    const double coefficient = brakingEnvelopeDistance(
+        parameters.entry_speed_mps, parameters, {}) /
+        (parameters.entry_speed_mps * parameters.entry_speed_mps);
+    const double denominator = parameters.latency_budget_s + std::hypot(
+        parameters.latency_budget_s, 2.0 * std::sqrt(coefficient) * std::sqrt(available));
+    const double cap = 2.0 * (available / denominator);
+    return std::isfinite(cap) ? std::min(parameters.entry_speed_mps, cap) : 0.0;
 }
 
 std::optional<double> parseSpeedLimitMps(const std::string& text) {

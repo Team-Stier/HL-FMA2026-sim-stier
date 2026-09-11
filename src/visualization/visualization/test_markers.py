@@ -36,13 +36,16 @@ def check():
                     [point(0, lane_id), point(1, lane_id)], (0.3, 0.7, 1, 0.6))
                for lane_id in (7, 8)]
     flashes = []
-    visualizer = SimpleNamespace(map_roads=centers, current_lane_flash=False,
+    visualizer = SimpleNamespace(map_roads=centers, map_lane_z={7: [0, 0], 8: [0, 0]},
+                                 current_lane_flash=False,
                                  emit=lambda topic, markers: flashes.append((topic, markers)))
     Visualizer.flash_current_lane(visualizer, 7)
     assert (centers[0].color.r, centers[0].color.g) == (1.0, 0.2)
     assert (centers[1].color.r, centers[1].color.g) == (0.3, 0.7)
+    assert all(point.z == 0.5 for point in centers[0].points)
     Visualizer.flash_current_lane(visualizer, 7)
     assert (centers[0].color.r, centers[0].color.g) == (0.3, 0.7)
+    assert all(point.z == 0.0 for point in centers[0].points)
     assert all(topic == "map" for topic, _ in flashes)
 
 

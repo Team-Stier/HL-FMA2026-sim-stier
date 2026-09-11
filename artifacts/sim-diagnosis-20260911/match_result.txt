@@ -1,0 +1,3 @@
+t=1789070763.1898332 current=99175 candidates=11 closest_prefix_error=8.42895e-07 expected_count=81 selected=3 candidate_count=81 d0=-0.0265047 d_end=-2.1233e-15 d_min=-0.0265047 d_max=0.247063
+t=1789070759.1455138 current=33348 candidates=12 closest_prefix_error=1.26789e-06 expected_count=116 selected=11 candidate_count=116 d0=-0.301407 d_end=-0.00770325 d_min=-0.355564 d_max=-0.00770325
+t=1789070769.1349847 current=96120 candidates=15 closest_prefix_error=1.8273e-06 expected_count=108 selected=11 candidate_count=108 d0=-0.16691 d_end=-0.0044866 d_min=-0.171718 d_max=-0.0044866

@@ -7,50 +7,137 @@
 
 #include <algorithm>
 #include <array>
+#include <chrono>
 #include <cmath>
 #include <cstdlib>
+#include <deque>
 #include <limits>
 #include <memory>
-#include <optional>
+#include <stdexcept>
 
 class SpeedAnnotator final : public rclcpp::Node {
 public:
     SpeedAnnotator() : Node("speed_annotator") {
         const auto path = declare_parameter<std::string>("map_path", "");
         map_ = hdmap::hdmap_init(path.empty() ? std::getenv("HDMAP_PATH") : path);
+        input_timeout_s_ = declare_parameter("input_timeout_s", 0.25);
+        if (!std::isfinite(input_timeout_s_) || !(input_timeout_s_ > 0.0)) {
+            throw std::invalid_argument("input_timeout_s must be finite and positive");
+        }
         const auto qos = rclcpp::QoS(1).best_effort();
         publisher_ = create_publisher<std_msgs::msg::Float32>("/speed_limit", qos);
         ego_subscription_ = create_subscription<interfaces::msg::EgoPose>("/ego_pose", qos,
-            [this](const interfaces::msg::EgoPose& message) { ego_ = message; publish(); });
+            [this](const interfaces::msg::EgoPose& message) {
+                const auto stamp = rclcpp::Time(message.header.stamp).nanoseconds();
+                if (stamp <= last_ego_stamp_) return;
+                if (rclcpp::Time(message.header.stamp) > now()) {
+                    ego_history_.clear();
+                    publishCap(0.F);
+                    return;
+                }
+                if (message.header.frame_id != "map" || stamp <= 0 ||
+                    !std::isfinite(message.x) || !std::isfinite(message.y) ||
+                    !std::isfinite(message.z) || !std::isfinite(message.heading)) {
+                    ego_history_.clear();
+                    last_ego_stamp_ = stamp;
+                    reset_cutoff_stamp_ = stamp;
+                    publishCap(0.F);
+                    return;
+                }
+                if (!ego_history_.empty()) {
+                    const auto& previous = ego_history_.back();
+                    const double source_gap = (stamp - last_ego_stamp_) * 1e-9;
+                    const double receipt_gap = std::chrono::duration<double>(
+                        std::chrono::steady_clock::now() - last_ego_received_).count();
+                    if (source_gap > input_timeout_s_ || receipt_gap > input_timeout_s_ ||
+                        std::hypot(message.x - previous.x, message.y - previous.y) > 5.0 ||
+                        std::abs(message.z - previous.z) > 2.0 ||
+                        std::abs(std::remainder(message.heading - previous.heading,
+                                              2.0 * std::acos(-1.0))) > std::acos(-1.0) / 4.0) {
+                        ego_history_.clear();
+                        reset_cutoff_stamp_ = stamp;
+                        publishCap(0.F);
+                    }
+                }
+                last_ego_stamp_ = stamp;
+                last_ego_received_ = std::chrono::steady_clock::now();
+                ego_history_.push_back(message);
+                while (ego_history_.size() > 100) ego_history_.pop_front();
+                publish();
+            });
         dynamic_subscription_ = create_subscription<interfaces::msg::DynamicStatus>("/dynamic_status", qos,
-            [this](const interfaces::msg::DynamicStatus& message) { dynamic_ = message; publish(); });
+            [this](interfaces::msg::DynamicStatus::ConstSharedPtr message) {
+                const auto stamp = rclcpp::Time(message->header.stamp).nanoseconds();
+                if (stamp <= 0 || rclcpp::Time(message->header.stamp) > now()) {
+                    publishCap(0.F);
+                    return;
+                }
+                if (dynamic_ && stamp <= rclcpp::Time(dynamic_->header.stamp).nanoseconds()) return;
+                dynamic_ = std::move(message);
+                dynamic_received_ = std::chrono::steady_clock::now();
+                publish();
+            });
     }
 
 private:
-    void publish() {
-        if (!ego_ || !dynamic_) return;
-
-        const double c = std::cos(ego_->heading);
-        const double s = std::sin(ego_->heading);
-        lanelet::BasicPolygon2d footprint;
-        for (const auto [x, y] : std::array<std::array<double, 2>, 4>{{
-                 {3.808, .943}, {3.808, -.943}, {-1.040, -.943}, {-1.040, .943}}}) {
-            footprint.emplace_back(ego_->x + c * x - s * y, ego_->y + s * x + c * y);
-        }
-
-        float cap = std::numeric_limits<float>::infinity();
-        for (const auto cell : map_->cellTree().queryOverlaps(
-                 footprint, ego_->z, ego_->z + 1.507)) {
-            cap = std::min(cap, dynamic_->speed_cap_mps[cell]);
-        }
+    void publishCap(float cap) {
         std_msgs::msg::Float32 message;
-        message.data = std::isfinite(cap) ? cap : 0.F;
+        message.data = cap;
         publisher_->publish(message);
     }
 
+    void publish() {
+        if (!dynamic_) return;
+        const auto stamp = rclcpp::Time(dynamic_->header.stamp).nanoseconds();
+        // Float32 cannot carry source time: never freshen it by replaying an old cap.
+        if (stamp <= last_published_stamp_ || stamp < reset_cutoff_stamp_) return;
+        const double source_age = now().seconds() - rclcpp::Time(dynamic_->header.stamp).seconds();
+        const double receipt_age = std::chrono::duration<double>(
+            std::chrono::steady_clock::now() - dynamic_received_).count();
+        if (dynamic_->header.frame_id != "map" || stamp <= 0 || source_age < 0.0 ||
+            source_age > input_timeout_s_ || receipt_age > input_timeout_s_ ||
+            dynamic_->speed_cap_mps.size() != map_->cells().size()) {
+            last_published_stamp_ = stamp;
+            publishCap(0.F);
+            return;
+        }
+        // Accept either arrival order without mixing locations from different frames.
+        const auto ego = std::find_if(ego_history_.rbegin(), ego_history_.rend(),
+            [stamp](const auto& candidate) {
+                return rclcpp::Time(candidate.header.stamp).nanoseconds() == stamp;
+            });
+        if (ego == ego_history_.rend()) return;
+        last_published_stamp_ = stamp;
+        const double c = std::cos(ego->heading);
+        const double s = std::sin(ego->heading);
+        lanelet::BasicPolygon2d footprint;
+        for (const auto [x, y] : std::array<std::array<double, 2>, 4>{{
+                 {3.808, .943}, {3.808, -.943}, {-1.040, -.943}, {-1.040, .943}}}) {
+            footprint.emplace_back(ego->x + c * x - s * y, ego->y + s * x + c * y);
+        }
+        float cap = std::numeric_limits<float>::infinity();
+        for (const auto cell : map_->cellTree().queryOverlaps(
+                 footprint, ego->z, ego->z + 1.507)) {
+            if (cell >= dynamic_->speed_cap_mps.size() ||
+                !std::isfinite(dynamic_->speed_cap_mps[cell]) ||
+                dynamic_->speed_cap_mps[cell] < 0.F) {
+                publishCap(0.F);
+                return;
+            }
+            cap = std::min(cap, dynamic_->speed_cap_mps[cell]);
+        }
+        publishCap(std::isfinite(cap) ? cap : 0.F);
+    }
+
     std::unique_ptr<hdmap::HdMap> map_;
-    std::optional<interfaces::msg::EgoPose> ego_;
-    std::optional<interfaces::msg::DynamicStatus> dynamic_;
+    std::deque<interfaces::msg::EgoPose> ego_history_;
+    interfaces::msg::DynamicStatus::ConstSharedPtr dynamic_;
+    std::chrono::steady_clock::time_point dynamic_received_;
+    std::chrono::steady_clock::time_point last_ego_received_;
+    std::int64_t last_ego_stamp_{};
+    std::int64_t last_published_stamp_{};
+    std::int64_t reset_cutoff_stamp_{};
+    double input_timeout_s_{};
     rclcpp::Publisher<std_msgs::msg::Float32>::SharedPtr publisher_;
     rclcpp::Subscription<interfaces::msg::EgoPose>::SharedPtr ego_subscription_;
     rclcpp::Subscription<interfaces::msg::DynamicStatus>::SharedPtr dynamic_subscription_;
