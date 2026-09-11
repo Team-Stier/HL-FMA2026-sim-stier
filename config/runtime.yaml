@@ -22,7 +22,7 @@ timeouts_provisional_s:
     dynamic_status: 0.25
     ego_status: 0.25
     local_path: 0.30
-    speed_limit: 0.25
+    speed_limit: 0.50
     control_command: 0.20
 ego_velocity:
     maximum_speed_kph: 300.0

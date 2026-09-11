@@ -18,7 +18,7 @@ path_planner:
     lane_overlap_check_delay_s: 1.0
     planning_accel_limit_mps2: 5.45
     planning_decel_limit_mps2: 10.37
-    wheelbase_m: 2.95
+    wheelbase_m: 2.944
     maximum_curvature_per_m: 0.169492
     maximum_steering_deg: 26.565
     rear_axle_to_front_m: 3.808

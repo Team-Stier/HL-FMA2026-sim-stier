@@ -77,6 +77,8 @@ ReferenceBuilder::ReferenceBuilder(ReferenceConfig config) : config_(config) {
         !finiteNonNegative(config_.continuity_weight) ||
         !std::isfinite(config_.maximum_projection_distance_m) ||
         !(config_.maximum_projection_distance_m > 0.0) ||
+        !std::isfinite(config_.wheelbase_m) ||
+        !(config_.wheelbase_m > 0.0) ||
         config_.minimum_steps < 2) {
         throw std::invalid_argument("invalid reference configuration");
     }
@@ -125,7 +127,7 @@ PreparedReference ReferenceBuilder::prepare(
         std::hypot(path.points_at_capture.front().x,
                    path.points_at_capture.front().y) <= config_.duplicate_epsilon_m &&
         std::hypot(current_points.front().x, current_points.front().y) <=
-            config_.maximum_projection_distance_m) {
+            config_.maximum_projection_distance_m + config_.wheelbase_m) {
         result.valid = true;
         result.stop_only = true;
         result.hold_requested = true;

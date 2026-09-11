@@ -36,6 +36,9 @@ namespace path_planner {
 
 using EgoStatus = interfaces::msg::EgoStatus;
 using DynamicStatus = interfaces::msg::DynamicStatus;
+
+constexpr std::int64_t kSyncToleranceNs = 100000000; // 100 ms
+constexpr double kMaxSnapshotAgeS = 1.0;
 struct Primitive {
     std::vector<double> x_m;
     std::vector<double> y_m;
@@ -127,10 +130,20 @@ private:
     void match() {
         if (!pending_) return;
         const auto time = rclcpp::Time(pending_->header.stamp).nanoseconds();
-        const auto found = std::find_if(egos_.begin(), egos_.end(),
-            [&](const EgoStatus& ego) { return stamp(ego) == time; });
-        if (found == egos_.end()) return;
-        snapshot_.ego = *found;
+        const EgoStatus* best = nullptr;
+        std::int64_t best_error = kSyncToleranceNs + 1;
+        for (const auto& ego : egos_) {
+            const auto ego_stamp = stamp(ego);
+            const auto error = ego_stamp > time ? ego_stamp - time : time - ego_stamp;
+            if (error > kSyncToleranceNs) continue;
+            if (!best || error < best_error ||
+                (error == best_error && ego_stamp <= time && stamp(*best) > time)) {
+                best = &ego;
+                best_error = error;
+            }
+        }
+        if (!best) return;
+        snapshot_.ego = *best;
         snapshot_.dynamic = std::move(pending_);
         ready_ = true;
     }
@@ -733,7 +746,7 @@ public:
         : map_(map), config_(config) {}
 
     bool plan(Primitive& primitive, const PlanningSnapshot& snapshot, const Reference& reference, bool stop_at_end = false) const {
-        const auto count = primitive.x_m.size();
+        auto count = primitive.x_m.size();
         if (count < 2) return false;
         std::vector<double> distance(count, 0.);
         primitive.speed_mps.assign(count, std::numeric_limits<double>::infinity());
@@ -754,6 +767,21 @@ public:
                         static_cast<double>(snapshot.dynamic->speed_cap_mps[cell]));
                 }
             }
+        }
+        std::size_t stop_index = count;
+        for (std::size_t index = 0; index < count; ++index) {
+            if (!(primitive.speed_mps[index] > 0.)) {
+                stop_index = index;
+                break;
+            }
+        }
+        if (stop_index == 0) return false;
+        if (stop_index < count) {
+            if (stop_index < 2) return false;
+            resize(primitive, stop_index);
+            distance.resize(stop_index);
+            count = stop_index;
+            stop_at_end = true;
         }
         primitive.speed_mps.front() = snapshot.ego.speed;
         for (std::size_t index = 1; index < count; ++index) {
@@ -859,9 +887,10 @@ private:
     const PlannerConfig& config_;
 };
 
-static std::pair<double, double> toBaseLink(const EgoStatus& ego, double x, double y) {
-    const double dx = x - ego.x;
-    const double dy = y - ego.y;
+static std::pair<double, double> toBaseLink(const EgoStatus& ego, double x, double y,
+                                            double wheelbase_m) {
+    const double dx = x - ego.x - wheelbase_m * std::cos(ego.heading);
+    const double dy = y - ego.y - wheelbase_m * std::sin(ego.heading);
     const double c = std::cos(ego.heading);
     const double s = std::sin(ego.heading);
     return {c * dx + s * dy, -s * dx + c * dy};
@@ -869,12 +898,15 @@ static std::pair<double, double> toBaseLink(const EgoStatus& ego, double x, doub
 
 class PathBuilder {
 public:
+    explicit PathBuilder(double wheelbase_m) : wheelbase_m_(wheelbase_m) {}
+
     nav_msgs::msg::Path build(const Primitive& primitive, const EgoStatus& ego) const {
         nav_msgs::msg::Path path;
         path.header = ego.header;
         path.header.frame_id = "base_link";
         for (std::size_t index = 0; index < primitive.x_m.size(); ++index) {
-            const auto [x, y] = toBaseLink(ego, primitive.x_m[index], primitive.y_m[index]);
+            const auto [x, y] = toBaseLink(ego, primitive.x_m[index], primitive.y_m[index],
+                                           wheelbase_m_);
             geometry_msgs::msg::PoseStamped pose;
             pose.header = path.header;
             pose.pose.position.x = x;
@@ -886,20 +918,26 @@ public:
         }
         return path;
     }
+
+private:
+    double wheelbase_m_;
 };
 
 class SearchTreeBuilder {
 public:
+    explicit SearchTreeBuilder(double wheelbase_m) : wheelbase_m_(wheelbase_m) {}
+
     interfaces::msg::SearchTree build(const std::vector<Primitive>& candidates,
         std::size_t selected, const EgoStatus& ego) const {
         interfaces::msg::SearchTree tree;
         tree.header = ego.header;
         tree.header.frame_id = "base_link";
+        tree.final_node_index = -1;
         for (std::size_t candidate_index = 0; candidate_index < candidates.size(); ++candidate_index) {
             std::int32_t parent = -1;
             for (std::size_t index = 0; index < candidates[candidate_index].x_m.size(); ++index) {
                 const auto [x, y] = toBaseLink(ego, candidates[candidate_index].x_m[index],
-                    candidates[candidate_index].y_m[index]);
+                    candidates[candidate_index].y_m[index], wheelbase_m_);
                 tree.x.push_back(static_cast<float>(x));
                 tree.y.push_back(static_cast<float>(y));
                 tree.yaw.push_back(static_cast<float>(wrap(
@@ -911,6 +949,9 @@ public:
         }
         return tree;
     }
+
+private:
+    double wheelbase_m_;
 };
 
 class FrenetPlanner {
@@ -923,15 +964,25 @@ public:
         TreePublisher::SharedPtr tree_publisher)
         : map_(map), config_(config), references_(map.laneletMap(), graph),
           velocity_(map, config), validator_(map, config), costs_(config),
+          path_builder_(config.wheelbase_m), tree_builder_(config.wheelbase_m),
           path_publisher_(std::move(path_publisher)), tree_publisher_(std::move(tree_publisher)) {}
 
     void invalidate(const EgoStatus& ego,const char* reason) {
         if(path_publisher_) path_publisher_->publish(path_builder_.build(Primitive{},ego));
         if(tree_publisher_) tree_publisher_->publish(tree_builder_.build({},0,ego));
-        if(last_failure_!=reason) {
-            RCLCPP_WARN(rclcpp::get_logger("path_planner"),"Local path invalid: %s",reason);
-            last_failure_=reason;
-        }
+        logFailure("Local path invalid", reason);
+    }
+    void skip(const char* reason) {
+        logFailure("Local path skipped", reason);
+    }
+    void publishHold(const EgoStatus& ego) {
+        Primitive hold;
+        hold.x_m = {ego.x + config_.wheelbase_m * std::cos(ego.heading)};
+        hold.y_m = {ego.y + config_.wheelbase_m * std::sin(ego.heading)};
+        hold.yaw_rad = {ego.heading};
+        if(path_publisher_) path_publisher_->publish(path_builder_.build(hold,ego));
+        if(tree_publisher_) tree_publisher_->publish(tree_builder_.build({},0,ego));
+        last_failure_.clear();
     }
     void tick(const PlanningSnapshot& snapshot) {
         if(snapshot.current_lane==0 || !snapshot.dynamic) { invalidate(snapshot.ego,"missing route/input");return; }
@@ -939,7 +990,7 @@ public:
         const double budget=std::min(config_.max_path_length,snapshot.ego.speed*horizon+
             .5*config_.planning_accel_limit_mps2*horizon*horizon);
         const auto reference_set=references_.build(snapshot,budget+config_.rear_axle_to_front_m+2.,config_.rear_axle_to_rear_m+5.);
-        if(reference_set.references.empty()) { invalidate(snapshot.ego,"disconnected/reference projection");return; }
+        if(reference_set.references.empty()) { skip("disconnected/reference projection");return; }
         auto candidates=generate(snapshot,reference_set.references);
         const auto& progress=reference_set.references.front();
         const double target=std::min({progress.ego_s+budget,progress.length()-config_.rear_axle_to_front_m,
@@ -974,7 +1025,8 @@ public:
         }
         if(checked.empty()) {
             RCLCPP_DEBUG(rclcpp::get_logger("path_planner"),"Candidates geometric=%zu velocity=%zu collision=%zu",candidates.size(),velocity_rejected,collision_rejected);
-            invalidate(snapshot.ego,"no feasible candidate");return;
+            if(snapshot.ego.speed < .1) { publishHold(snapshot.ego);return; }
+            skip("no feasible candidate");return;
         }
         std::sort(checked.begin(),checked.end(),[](const auto& a,const auto& b){return a.first<b.first;});
         std::vector<Primitive> valid;
@@ -1090,6 +1142,13 @@ private:
     PathPublisher::SharedPtr path_publisher_;
     TreePublisher::SharedPtr tree_publisher_;
     std::string last_failure_;
+
+    void logFailure(const char* prefix, const char* reason) {
+        if(last_failure_!=reason) {
+            RCLCPP_WARN(rclcpp::get_logger("path_planner"),"%s: %s",prefix,reason);
+            last_failure_=reason;
+        }
+    }
 };
 
 class PathPlannerNode : public rclcpp::Node {
@@ -1116,7 +1175,7 @@ public:
             declare_parameter<double>("lane_overlap_check_delay_s", 1.),
             declare_parameter<double>("planning_accel_limit_mps2", 5.45),
             declare_parameter<double>("planning_decel_limit_mps2", 10.37),
-            declare_parameter<double>("wheelbase_m", 2.95),
+            declare_parameter<double>("wheelbase_m", 2.944),
             declare_parameter<double>("maximum_curvature_per_m", 1. / 5.9),
             declare_parameter<double>("maximum_steering_deg", 26.565) * pi / 180.,
             declare_parameter<double>("rear_axle_to_front_m", 3.808),
@@ -1173,8 +1232,8 @@ public:
                 if(!registry_.hasEgo()) return;
                 const auto input=registry_.snapshot();
                 const double age=registry_.ready() ? now().seconds()-rclcpp::Time(input.ego.header.stamp).seconds() : 1.;
-                if(!registry_.ready() || age<0. || age>.5) {
-                    planner_->invalidate(registry_.latestEgo(),"missing/stale synchronized input");return;
+                if(!registry_.ready() || age<0. || age>kMaxSnapshotAgeS) {
+                    planner_->skip("missing/stale synchronized input");return;
                 }
                 if(stamp(input.ego)<=last_planned_stamp_) return;
                 route_updater_->tick(input);

@@ -21,6 +21,10 @@ if ((${#missing[@]})); then
     sudo apt-get install -y "${missing[@]}"
 fi
 source /opt/ros/jazzy/setup.bash
+# ROS Jazzy ships for Ubuntu's Python 3.12. CMake FindPython3 otherwise
+# picks ~/.local/bin/python3.11 (uv) first; rosidl_adapter then fails
+# with ModuleNotFoundError: em.
+ROS_PYTHON=/usr/bin/python3
 if [[ -z "${DISPLAY:-}" && -z "${WAYLAND_DISPLAY:-}" ]]; then
     echo "RViz requires a graphical desktop (DISPLAY or WAYLAND_DISPLAY)." >&2
     exit 1
@@ -69,13 +73,13 @@ if targets:
     raise SystemExit("Some ROS processes did not exit")
 CLEAN
 cmake -S src/hdmap -B build/hdmap_core -DCMAKE_INSTALL_PREFIX="$ROOT/install/hdmap_core" \
-    -DCMAKE_BUILD_TYPE=Release
+    -DCMAKE_BUILD_TYPE=Release -DPython3_EXECUTABLE="$ROS_PYTHON"
 cmake --build build/hdmap_core --parallel 2
 cmake --install build/hdmap_core
 export CMAKE_PREFIX_PATH="$ROOT/install/hdmap_core${CMAKE_PREFIX_PATH:+:$CMAKE_PREFIX_PATH}"
 colcon build --base-paths src/interfaces src/sim_bridge src/tf_broadcasting \
     src/hdmap_dynamic_tracker src/path_planner src/speed_annotator src/control src/visualization --cmake-clean-cache \
-    --cmake-args -DCMAKE_BUILD_TYPE=Release
+    --cmake-args -DCMAKE_BUILD_TYPE=Release -DPython3_EXECUTABLE="$ROS_PYTHON"
 source install/setup.bash
 export PYTHONPATH="$ROOT/install/hdmap_core/lib/python3.12/site-packages${PYTHONPATH:+:$PYTHONPATH}"
 export HDMAP_PATH="${HDMAP_PATH:-$ROOT/map/hdmap.bin}"

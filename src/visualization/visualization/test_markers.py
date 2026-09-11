@@ -1,11 +1,12 @@
 """Run with: python3 -m visualization.test_markers (with the ROS workspace sourced)."""
 from types import SimpleNamespace
 
+from interfaces.msg import SearchTree
 from lanelet2.core import LaneletMap, LineString3d, Point3d
 from std_msgs.msg import Header
 from visualization_msgs.msg import Marker
 
-from .markers import batch_lines, line, point
+from .markers import batch_lines, line, point, search_markers
 from .node import Visualizer
 
 
@@ -47,6 +48,12 @@ def check():
     assert (centers[0].color.r, centers[0].color.g) == (0.3, 0.7)
     assert all(point.z == 0.0 for point in centers[0].points)
     assert all(topic == "map" for topic, _ in flashes)
+
+    empty_tree = SearchTree()
+    empty_tree.final_node_index = 0
+    assert search_markers(empty_tree) == []
+    empty_tree.final_node_index = -1
+    assert search_markers(empty_tree) == []
 
 
 if __name__ == "__main__":

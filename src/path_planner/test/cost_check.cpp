@@ -145,6 +145,24 @@ int main() {
     registry.onDynamic(make_dynamic(e2));assert(!registry.ready());
     registry.onDynamic(make_dynamic(respawn));assert(registry.ready());
     assert(stamp(registry.snapshot().ego)==stamp(respawn));
+    PlanningRegistry nearby;
+    const auto near_ego=make_ego(11,0,1.);
+    nearby.onEgo(near_ego);
+    auto near_dynamic=make_dynamic(near_ego);
+    near_dynamic->header.stamp.nanosec=40000000; // 40 ms later than ego
+    nearby.onDynamic(near_dynamic);
+    assert(nearby.ready());
+    assert(stamp(nearby.snapshot().ego)==stamp(near_ego));
+    SearchTreeBuilder trees(2.944);
+    const auto empty_tree=trees.build({},0,near_ego);
+    assert(empty_tree.final_node_index==-1);
+    assert(empty_tree.x.empty());
+    PathBuilder paths(2.944);
+    Primitive hold;hold.x_m={10.};hold.y_m={20.+2.944};hold.yaw_rad={std::acos(-1.)/2.};
+    EgoStatus hold_ego;hold_ego.x=10.;hold_ego.y=20.;hold_ego.heading=std::acos(-1.)/2.;
+    const auto hold_path=paths.build(hold,hold_ego);
+    assert(hold_path.poses.size()==1);
+    assert(std::hypot(hold_path.poses.front().pose.position.x,hold_path.poses.front().pose.position.y)<1e-6);
 
     Reference continuous;
     for(int i=0;i<=40;++i) {
@@ -207,7 +225,7 @@ int main() {
     ego.x = 10.;
     ego.y = 20.;
     ego.heading = std::acos(-1.) / 2.;
-    const auto [x, y] = toBaseLink(ego, 10., 22.);
-    assert(std::abs(x - 2.) < tolerance);
+    const auto [x, y] = toBaseLink(ego, 10., 22., 2.944);
+    assert(std::abs(x - (2. - 2.944)) < tolerance);
     assert(std::abs(y) < tolerance);
 }

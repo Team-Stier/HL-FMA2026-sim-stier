@@ -99,7 +99,7 @@ private:
         mpc_config_.dt_seconds = declare_parameter("control_period_s", 0.05);
         ego_timeout_s_ = declare_parameter("ego_timeout_s", 0.25);
         path_timeout_s_ = declare_parameter("path_timeout_s", 0.30);
-        speed_limit_timeout_s_ = declare_parameter("speed_limit_timeout_s", 0.25);
+        speed_limit_timeout_s_ = declare_parameter("speed_limit_timeout_s", 0.50);
         capture_pose_tolerance_s_ = declare_parameter(
             "capture_pose_tolerance_s", 0.10);
         respawn_jump_m_ = declare_parameter("respawn_jump_m", 5.0);
@@ -126,6 +126,7 @@ private:
         overspeed_release_tolerance_mps_ = declare_parameter(
             "overspeed_release_tolerance_mps", 0.1);
         mpc_config_.wheelbase_m = declare_parameter("wheelbase_m", 2.944);
+        reference_config_.wheelbase_m = mpc_config_.wheelbase_m;
         mpc_config_.maximum_steering_rad = declare_parameter(
             "maximum_steering_rad", 0.48);
         mpc_config_.maximum_steering_rate_radps = declare_parameter(
@@ -242,10 +243,10 @@ private:
             (stamp == last_path_message_stamp_seconds_ && have_path_ && !message->poses.empty())) {
             return;
         }
-        last_path_message_stamp_seconds_ = stamp;
-        // Empty or rejected new paths immediately revoke the previous path.
-        have_path_ = false;
+        // A failed generation is empty, not a stop request. Keep the last path until timeout.
         if (message->poses.empty()) return;
+        last_path_message_stamp_seconds_ = stamp;
+        have_path_ = false;
         TimedPose capture;
         if (!findCapturePose(stamp, &capture)) {
             RCLCPP_WARN_THROTTLE(get_logger(), *get_clock(), 1000,
@@ -254,7 +255,10 @@ private:
         }
         PathSnapshot candidate;
         candidate.stamp_seconds = stamp;
-        candidate.capture_pose_map = capture.pose;
+        candidate.capture_pose_map = {
+            capture.pose.x + mpc_config_.wheelbase_m * std::cos(capture.pose.yaw),
+            capture.pose.y + mpc_config_.wheelbase_m * std::sin(capture.pose.yaw),
+            capture.pose.yaw};
         candidate.points_at_capture.reserve(message->poses.size());
         for (const auto &pose : message->poses) {
             const auto &position = pose.pose.position;
@@ -310,7 +314,8 @@ private:
 
     void publishCommand(double steering, double acceleration,
                         const std::string &state, bool solver_success,
-                        double solve_time_ms = 0.0) {
+                        double solve_time_ms = 0.0,
+                        bool limit_acceleration_jerk = true) {
         const double steady_now = steadySeconds();
         const double dt = last_command_steady_seconds_ > 0.0
             ? std::clamp(steady_now - last_command_steady_seconds_,
@@ -331,6 +336,10 @@ private:
         acceleration = std::clamp(acceleration,
             -longitudinal_config_.maximum_deceleration_mps2,
             longitudinal_config_.maximum_acceleration_mps2);
+        if (limit_acceleration_jerk && finite) {
+            acceleration = approach(last_published_acceleration_mps2_, acceleration,
+                longitudinal_config_.acceleration_rate_mps3 * dt);
+        }
         interfaces::msg::ControlCommand command;
         command.header.stamp = now();
         command.header.frame_id = "base_link";
@@ -341,6 +350,7 @@ private:
         if (output_enabled_) command_publisher_->publish(command);
         longitudinal_->setAppliedAcceleration(command.target_accel);
         last_published_steering_rad_ = command.steering;
+        last_published_acceleration_mps2_ = command.target_accel;
         previous_steering_rad_ = command.steering;
         last_command_steady_seconds_ = steady_now;
         std_msgs::msg::String status;
@@ -362,7 +372,7 @@ private:
         const double acceleration = immediate || speed_mps_ < 0.1
             ? -longitudinal_config_.maximum_deceleration_mps2
             : std::min(0.0, longitudinal_->update(0.0, speed_mps_, mpc_config_.dt_seconds));
-        publishCommand(0.0, acceleration, reason, false);
+        publishCommand(0.0, acceleration, reason, false, 0.0, !immediate);
     }
 
     void onTimer() {
@@ -384,7 +394,7 @@ private:
         if (!have_speed_limit_ ||
             steady_now - speed_limit_received_steady_seconds_ >
                 speed_limit_timeout_s_) {
-            publishStop("STOP_STALE_SPEED_LIMIT");
+            publishStop("STOP_STALE_SPEED_LIMIT", false);
             return;
         }
 
@@ -480,7 +490,7 @@ private:
     bool output_enabled_{false};
     double ego_timeout_s_{0.25};
     double path_timeout_s_{0.30};
-    double speed_limit_timeout_s_{0.25};
+    double speed_limit_timeout_s_{0.50};
     double capture_pose_tolerance_s_{0.10};
     double respawn_jump_m_{5.0};
     double maximum_height_difference_m_{2.0};
@@ -519,6 +529,7 @@ private:
     double speed_limit_mps_{0.0};
     double previous_steering_rad_{0.0};
     double last_published_steering_rad_{0.0};
+    double last_published_acceleration_mps2_{0.0};
     double last_command_steady_seconds_{0.0};
     bool stopping_{false};
     bool have_ego_{false};

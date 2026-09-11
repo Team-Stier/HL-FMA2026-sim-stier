@@ -29,6 +29,7 @@ struct ReferenceConfig {
     double heading_rejection_rad{1.5707963267948966};
     double continuity_weight{0.25};
     double maximum_projection_distance_m{2.0};
+    double wheelbase_m{2.944};
     std::size_t minimum_steps{3};
 };
 

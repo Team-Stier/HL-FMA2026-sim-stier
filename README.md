@@ -17,12 +17,12 @@ HL Mando Future Mobility Award 2026 시뮬레이션 부문을 위한 ROS 2 Jazzy
 |---|---|
 | Fixed Frame | `map` |
 | `map` | VTD/XODR 지도에 고정된 XYZ 좌표. 자동차가 움직이거나 회전해도 원점·축은 움직이지 않음. 오른손 좌표계, +z 위 |
-| `base_link` | Ego 후륜축 중심의 중립 하중 노면 기준점. +x 전방, +y 좌측, +z 위 |
+| `base_link` | Ego 전륜축 중심의 중립 하중 노면 기준점. +x 전방, +y 좌측, +z 위 |
 | 단위 | m, s, m/s, m/s², rad. heading/yaw, pitch, roll은 rad |
 | 기본 RViz | top-down, 화면 위 +x, 왼쪽 +y. 차량 중심을 따라가되 월드 방향 고정 |
 | TF | 모든 TF는 `tf_broadcasting` 노드만 발행 |
 
-화면 방향은 RViz 카메라 설정으로 맞추며 지도 좌표를 회전시키지 않는다. 차량 프레임은 차체 pitch/roll에도 움직인다. 충돌 box 중심은 후륜축과 다르므로 차량 config의 오프셋을 적용한다. 2D 충돌 근사와 3D 표시의 차이를 공개한다.
+화면 방향은 RViz 카메라 설정으로 맞추며 지도 좌표를 회전시키지 않는다. 차량 프레임은 차체 pitch/roll에도 움직인다. 충돌 box 중심은 base_link(전륜축)과 다르므로 차량 config의 후륜축 대비 오프셋에서 wheelbase_m을 뺀 값을 적용한다. 2D 충돌 근사와 3D 표시의 차이를 공개한다.
 
 ### Timestamp
 
@@ -476,7 +476,7 @@ Python은 hdmap_init에서 연결한 previous를 조회한다. setPrevious는 Py
 | `/traffic_light` | `interfaces/msg/TrafficLight` | 해당 없음; frame_id 빈 문자열 | Bridge → Tracker | Header, raw controller ID/state 하나 |
 | `/dynamic_status` | `interfaces/msg/DynamicStatus` | `map` | Tracker → Planner/Annotator, Visualizer | Header, 모든 cell 상태; Ego 없음 |
 | `/ego_status` | `interfaces/msg/EgoStatus` | `map` | Tracker → Planner/Annotator/Control, Visualizer | Header, x/y/z/heading/pitch/roll/speed |
-| `/local_path` | `nav_msgs/msg/Path` | `base_link`; 각 pose도 동일 | Planner → Control, RViz Path | snapshot stamp t0, rear-axle poses |
+| `/local_path` | `nav_msgs/msg/Path` | `base_link`; 각 pose도 동일 | Planner → Control, RViz Path | snapshot stamp t0, 전륜축(base_link) pose 목록 |
 | `/search_tree` | `interfaces/msg/SearchTree` | `base_link`; snapshot t0 | Planner → Visualizer | x/y(m), yaw(rad), parent_index; 루트 부모=-1, final_node_index=-1이면 최종 노드 없음 |
 | `/global_path` | `std_msgs/msg/Int64MultiArray` | `map`의 ID 참조; Header 없음 | Planner → Visualizer | shortestPathVia 결과 lanelet ID 순서; 빈 리스트=유효 경로 없음 |
 | `/speed_limit` | `std_msgs/msg/Float32` | 해당 없음; 스칼라, Header 없음 | Annotator → Control | 현재 cell의 cap m/s |
@@ -528,7 +528,7 @@ flowchart LR
     TF --> USERS((TF consumers))
 ```
 
-Bridge pose를 직접 받아 raw Ego 기준 TF를 발행한다. parent=map, child=base_link, source stamp 그대로.  timeout 때 과거 pose에 현재 stamp를 찍어 재발행하지 않는다. reset/respawn jump를 숨기지 않는다. `/tf_static`은 실제 static frame이 필요해질 때만 이 노드가 발행한다.
+Bridge의 후륜축 Ego pose를 받아 heading 방향으로 wheelbase_m만큼 앞당긴 전륜축을 base_link로 발행한다. parent=map, child=base_link, source stamp 그대로. timeout 때 과거 pose에 현재 stamp를 찍어 재발행하지 않는다. reset/respawn jump를 숨기지 않는다. `/tf_static`은 실제 static frame이 필요해질 때만 이 노드가 발행한다.
 
 ## Debugging and visualization
 

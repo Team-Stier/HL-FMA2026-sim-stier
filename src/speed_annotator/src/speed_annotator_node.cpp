@@ -9,6 +9,7 @@
 #include <array>
 #include <chrono>
 #include <cmath>
+#include <cstdint>
 #include <cstdlib>
 #include <deque>
 #include <limits>
@@ -20,7 +21,7 @@ public:
     SpeedAnnotator() : Node("speed_annotator") {
         const auto path = declare_parameter<std::string>("map_path", "");
         map_ = hdmap::hdmap_init(path.empty() ? std::getenv("HDMAP_PATH") : path);
-        input_timeout_s_ = declare_parameter("input_timeout_s", 0.25);
+        input_timeout_s_ = declare_parameter("input_timeout_s", 0.50);
         if (!std::isfinite(input_timeout_s_) || !(input_timeout_s_ > 0.0)) {
             throw std::invalid_argument("input_timeout_s must be finite and positive");
         }
@@ -101,12 +102,28 @@ private:
             publishCap(0.F);
             return;
         }
-        // Accept either arrival order without mixing locations from different frames.
-        const auto ego = std::find_if(ego_history_.rbegin(), ego_history_.rend(),
+        // Prefer an exact stamp, then the nearest Ego within 100 ms.
+        const auto exact = std::find_if(ego_history_.rbegin(), ego_history_.rend(),
             [stamp](const auto& candidate) {
                 return rclcpp::Time(candidate.header.stamp).nanoseconds() == stamp;
             });
-        if (ego == ego_history_.rend()) return;
+        const interfaces::msg::EgoPose* ego = exact == ego_history_.rend() ? nullptr : &(*exact);
+        if (!ego) {
+            constexpr std::int64_t kSyncToleranceNs = 100000000;
+            std::int64_t best_error = kSyncToleranceNs + 1;
+            for (const auto& candidate : ego_history_) {
+                const auto candidate_stamp = rclcpp::Time(candidate.header.stamp).nanoseconds();
+                const auto error = candidate_stamp > stamp ? candidate_stamp - stamp : stamp - candidate_stamp;
+                if (error > kSyncToleranceNs) continue;
+                if (!ego || error < best_error ||
+                    (error == best_error && candidate_stamp <= stamp &&
+                     rclcpp::Time(ego->header.stamp).nanoseconds() > stamp)) {
+                    ego = &candidate;
+                    best_error = error;
+                }
+            }
+        }
+        if (!ego) return;
         last_published_stamp_ = stamp;
         const double c = std::cos(ego->heading);
         const double s = std::sin(ego->heading);

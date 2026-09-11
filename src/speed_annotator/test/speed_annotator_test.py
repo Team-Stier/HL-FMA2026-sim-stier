@@ -121,6 +121,17 @@ def main():
         dynamic_pub.publish(dynamic(old, 10.0))
         expect(0.0, before)
         pair(5.0)
+        before = len(caps)
+        e = ego()
+        ego_pub.publish(e)
+        spin(.08)
+        delayed = dynamic(e, 4.0)
+        delayed.header.stamp.nanosec = e.header.stamp.nanosec + 40000000
+        if delayed.header.stamp.nanosec >= 1000000000:
+            delayed.header.stamp.sec += 1
+            delayed.header.stamp.nanosec -= 1000000000
+        dynamic_pub.publish(delayed)
+        expect(4.0, before)
         assert process.poll() is None
         print('speed_annotator_test: all checks passed')
     except BaseException:

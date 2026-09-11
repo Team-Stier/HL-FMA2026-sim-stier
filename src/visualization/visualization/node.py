@@ -154,7 +154,9 @@ class Visualizer(Node):
             return
         header = Header(stamp=message.header.stamp, frame_id="base_link")
         body = marker(header, "ego/body", 0, Marker.CUBE, (0.1, 0.5, 1, 0.65))
-        body.pose.position = point(self.vehicle["box_center_forward_offset_m"], 0, self.vehicle["height_m"] / 2)
+        body.pose.position = point(
+            self.vehicle["box_center_forward_offset_m"] - self.vehicle["wheelbase_m"], 0,
+            self.vehicle["height_m"] / 2)
         body.scale.x = float(self.vehicle["length_m"])
         body.scale.y = float(self.vehicle["width_m"])
         body.scale.z = float(self.vehicle["height_m"])

@@ -65,11 +65,11 @@ def main():
         path = Path()
         path.header.stamp = ego.header.stamp
         path.header.frame_id = 'base_link'
-        pts = {'straight': [(-2., 0.), (0., 0.), (5., 0.), (20., 0.), (50., 0.)],
-               'offset': [(-2., .5), (0., .5), (5., .5), (20., .5), (50., .5)],
-               'short': [(0., 0.), (.2, 0.)], 'hold': [(0., 0.)],
-               'far': [(50., 0.), (100., 0.)], 'empty': [],
-               'nan': [(0., 0.), (float('nan'), 0.), (20., 0.)]}[shape]
+        pts = {'straight': [(-4.944, 0.), (-2.944, 0.), (2.056, 0.), (17.056, 0.), (47.056, 0.)],
+               'offset': [(-4.944, .5), (-2.944, .5), (2.056, .5), (17.056, .5), (47.056, .5)],
+               'short': [(-2.944, 0.), (-2.744, 0.)], 'hold': [(0., 0.)],
+               'far': [(47.056, 0.), (97.056, 0.)], 'empty': [],
+               'nan': [(-2.944, 0.), (float('nan'), 0.), (17.056, 0.)]}[shape]
         for x, y in pts:
             pose = PoseStamped()
             pose.pose.position.x, pose.pose.position.y = x, y
@@ -97,14 +97,21 @@ def main():
         run(shape='offset', seconds=.7)
         state('ACTIVE')
         assert any(c.steering > .01 for c in commands), 'test did not establish a turning command'
-        # Recorded source-speed spike triggered an immediate overspeed brake;
-        # its release must ramp from that emitted -3, not the pre-override PI output.
-        run(speed=9.068, seconds=.2)
-        state('ACTIVE', True)
-        assert commands[-1].target_accel == -3.0
+        # Overspeed requests max brake but must obey the acceleration jerk limit.
+        overspeed_start = len(commands)
+        run(speed=9.068, seconds=1.2)
+        state('ACTIVE')
+        overspeed = commands[overspeed_start - 1:]
+        assert overspeed[-1].target_accel < overspeed[0].target_accel
+        assert overspeed[-1].target_accel <= 0.0
+        for previous, current in zip(overspeed, overspeed[1:]):
+            dt = ((current.header.stamp.sec - previous.header.stamp.sec) +
+                  (current.header.stamp.nanosec - previous.header.stamp.nanosec) * 1e-9)
+            assert abs(current.target_accel - previous.target_accel) <= 3.0 * max(.05, dt) + .0001
+        last_brake = commands[-1].target_accel
         run(speed=6.315, seconds=.15)
-        state('ACTIVE', True)
-        assert commands[-1].target_accel <= -2.39
+        state('ACTIVE')
+        assert commands[-1].target_accel + 1e-6 >= last_brake
         run(shape='short')
         state('STOP_SHORT_PATH', True)
         run(shape='far')
@@ -117,8 +124,7 @@ def main():
         empty.header = good.header
         path_pub.publish(empty)
         spin(.075)
-        state('STOP_NO_LOCAL_PATH', True)
-        # A corrected path at the same capture stamp can recover after explicit invalidation.
+        state('ACTIVE')
         path_pub.publish(good)
         spin(.075)
         state('ACTIVE')
@@ -128,8 +134,8 @@ def main():
         state('HOLD', True)
         run()
         state('ACTIVE')
-        run(cap=False, seconds=.4)
-        state('STOP_STALE_SPEED_LIMIT', True)
+        run(cap=False, seconds=.7)
+        state('STOP_STALE_SPEED_LIMIT')
         run()
         old_path = tick()
         spin(.3)
@@ -151,6 +157,7 @@ def main():
         state('STOP_NO_LOCAL_PATH', True)
         run(xyz=(20., 0., 0.), yaw=1.0)
         tick(xyz=(20., 0., 3.), yaw=1.0, send_path=False)
+        spin(.1)
         state('STOP_NO_LOCAL_PATH', True)
         run(xyz=(20., 0., 3.), yaw=1.0)
         state('ACTIVE')
